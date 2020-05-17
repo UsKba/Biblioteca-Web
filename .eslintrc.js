@@ -8,17 +8,22 @@ module.exports = {
     'react-app',
     'airbnb',
     'plugin:@typescript-eslint/recommended',
+
+    "plugin:react/recommended",
+
     'prettier/@typescript-eslint',
+    "plugin:prettier/recommended",
   ],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 6,
+    ecmaVersion: 2020,
     sourceType: 'module',
   },
   plugins: [
@@ -31,7 +36,7 @@ module.exports = {
     'react/jsx-filename-extension': [
       'error',
       {
-        extensions: ['.tsx'],
+        extensions: ['.jsx', '.tsx'],
       },
     ],
     "import/extensions": [
@@ -49,9 +54,15 @@ module.exports = {
     '@typescript-eslint/explicit-member-accessibility': 'off',
 
     'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'error'
+    'react-hooks/exhaustive-deps': 'error',
+
+    "camelcase": "off",
+    '@typescript-eslint/camelcase': 'off',
   },
   settings: {
+    react: {
+      version: "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
+    },
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts', '.tsx'],
     },
@@ -60,5 +71,3 @@ module.exports = {
     },
   },
 };
-
-
