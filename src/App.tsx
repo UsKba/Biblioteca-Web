@@ -9,13 +9,13 @@ import store from './store';
 function App() {
   return (
     <Provider store={store}>
-    <>
-      <GlobalStyle />
-      <BrowserRouter>
-        <Routes />
-      </BrowserRouter>
-    </>
-   </Provider>
+      <>
+        <GlobalStyle />
+        <BrowserRouter>
+          <Routes />
+        </BrowserRouter>
+      </>
+    </Provider>
   );
 }
 

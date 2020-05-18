@@ -5,13 +5,26 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 16px
+  }
+
+  html{
+    height: 100%;
   }
 
   body {
-    background: #f5f5f5;
-    font-size: 16px;
-    color: #333;
+    background-image: linear-gradient(to right, #483D8B, #7B68EE);
+    display: flex;
+    flex-direction: column;
     font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    height: 100%;
+  }
+
+  div#root{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
 `;
