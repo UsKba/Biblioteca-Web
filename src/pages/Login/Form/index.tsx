@@ -11,8 +11,21 @@ import {
 } from './styles';
 
 const Form: React.FC = () => {
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
+  const [matricula, setMatricula] = useState('');
+  const [senha, setSenha] = useState('');
+  const [aviso, setAviso] = useState(false);
+
+  function atualizarMatricula(evento: React.ChangeEvent<HTMLInputElement>) {
+    setMatricula(evento.target.value);
+  }
+
+  function atualizarSenha(evento: React.ChangeEvent<HTMLInputElement>) {
+    setSenha(evento.target.value);
+  }
+
+  function chamarSuap() {
+    setAviso(true);
+  }
 
   return (
     <Container>
@@ -21,8 +34,8 @@ const Form: React.FC = () => {
         <Input
           id="matricula"
           type="text"
-          value={login}
-          onChange={(event) => setLogin(event.target.value)}
+          value={matricula}
+          onChange={atualizarMatricula}
         />
       </InputContainer>
 
@@ -31,13 +44,18 @@ const Form: React.FC = () => {
         <Input
           id="senha"
           type="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
+          value={senha}
+          onChange={atualizarSenha}
         />
       </InputContainer>
+      <Warning>{aviso && 'Matricula ou senha inválida'}</Warning>
+      <LoginButton
+        disabled={senha.length === 0 || matricula.length === 0}
+        onClick={chamarSuap}
+      >
+        ENTRAR
+      </LoginButton>
 
-      <Warning>Matricula ou senha inválida</Warning>
-      <LoginButton>ENTRAR</LoginButton>
       <ForgotPassword href="https://suap.ifrn.edu.br/comum/solicitar_trocar_senha/">
         Esqueci minha senha
       </ForgotPassword>

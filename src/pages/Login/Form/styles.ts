@@ -27,7 +27,10 @@ export const InputLabel = styled.label`
 
 export const LoginButton = styled.button`
   margin: 15px 0px;
+
   background-image: linear-gradient(to right, #483d8b, #7b68ee);
+  cursor: pointer;
+
   color: #fff;
   font-weight: bold;
   font-size: 16px;
@@ -35,9 +38,14 @@ export const LoginButton = styled.button`
   padding: 20px 0px;
   border-radius: 10px;
 
-  cursor: pointer;
   border: none;
   outline: none;
+  transition: 0.5s;
+  &:disabled {
+    background-image: none;
+    background-color: #777;
+    cursor: default;
+  }
 `;
 
 export const ForgotPassword = styled.a`
@@ -48,6 +56,6 @@ export const ForgotPassword = styled.a`
   margin-bottom: 80px;
 `;
 
-export const Warning = styled.text`
+export const Warning = styled.p`
   color: #f00;
 `;
