@@ -21,7 +21,7 @@ import {
   Rightside,
 } from './styles';
 
-const Homepage: React.FC = () => {
+const NavbarComponent: React.FC = () => {
   return (
     <Container>
       <Navbar>
@@ -70,4 +70,4 @@ const Homepage: React.FC = () => {
   );
 };
 
-export default Homepage;
+export default NavbarComponent;
