@@ -9,7 +9,10 @@ import Navbar from './components/Navbar';
 export default function Routes() {
   return (
     <>
-      <Route path={['/inicial', '/biblioteca']} component={Navbar} />
+      <Route
+        path={['/inicial', '/biblioteca', '/reserva']}
+        component={Navbar}
+      />
       <Switch>
         <Route path="/inicial" exact component={Homepage} />
         <Route path="/login" exact component={Login} />
