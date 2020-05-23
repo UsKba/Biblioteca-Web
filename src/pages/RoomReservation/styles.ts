@@ -15,6 +15,6 @@ export const DatePicker = styled.div`
 export const DateInterval = styled.h1`
   font-weight: lighter;
   font-size: 30px;
-  margin-right: 25.2px;
-  margin-left: 25.2px;
+  margin-right: 25px;
+  margin-left: 25px;
 `;
