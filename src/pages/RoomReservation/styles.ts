@@ -18,3 +18,25 @@ export const DateInterval = styled.h1`
   margin-right: 25px;
   margin-left: 25px;
 `;
+export const RoomList = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Line = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+interface IRectangle {
+  backgroundColor?: string;
+}
+
+export const Rectangle = styled.div<IRectangle>`
+  display: flex;
+  flex-grow: 1;
+  width: 150px;
+  height: 50px;
+  border: 1px solid #000;
+  background-color: ${(props) => props.backgroundColor};
+`;
