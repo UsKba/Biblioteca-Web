@@ -57,8 +57,8 @@ interface IWeekName {
 export const WeekName = styled.span<IWeekName>`
   cursor: pointer;
 
-  color: ${(props) => (props.active ? '#509' : '#333')};
-  ${(props) => props.active && 'border-bottom: 5px solid #509'};
+  color: ${(props) => (props.active ? '#483D8B' : '#333')};
+  ${(props) => props.active && 'border-bottom: 5px solid #483D8B'};
   ${(props) => props.active && 'font-weight: bold'};
 
   padding: 5px 15px;

@@ -22,9 +22,9 @@ const RoomReservation: React.FC = () => {
   return (
     <Container>
       <DatePicker>
-        <FontAwesomeIcon icon={faChevronLeft} size="2x" color="#509" />
+        <FontAwesomeIcon icon={faChevronLeft} size="2x" color="#483D8B" />
         <DateInterval>25/04 - 29/05</DateInterval>
-        <FontAwesomeIcon icon={faChevronRight} size="2x" color="#509" />
+        <FontAwesomeIcon icon={faChevronRight} size="2x" color="#483D8B" />
       </DatePicker>
       <Weeks>
         <Week>
@@ -51,15 +51,15 @@ const RoomReservation: React.FC = () => {
         </Weeks>      
       <RoomList>
         <Line>
-          <Rectangle backgroundColor="#007bff"></Rectangle>
-          <Rectangle backgroundColor="#007bff">F1-3</Rectangle>
-          <Rectangle backgroundColor="#007bff">F1-4</Rectangle>
-          <Rectangle backgroundColor="#007bff">F1-5</Rectangle>
-          <Rectangle backgroundColor="#007bff">F1-6</Rectangle>
+          <Rectangle backgroundColor="#1c91ff"></Rectangle>
+          <Rectangle backgroundColor="#1c91ff">F1-3</Rectangle>
+          <Rectangle backgroundColor="#1c91ff">F1-4</Rectangle>
+          <Rectangle backgroundColor="#1c91ff">F1-5</Rectangle>
+          <Rectangle backgroundColor="#1c91ff">F1-6</Rectangle>
         </Line>
 
         <Line>
-          <Rectangle backgroundColor="#007bff">07:15 - 08:00</Rectangle>
+          <Rectangle backgroundColor="#1c91ff">07:15 - 08:00</Rectangle>
           <Rectangle >
 
           </Rectangle>
@@ -69,8 +69,8 @@ const RoomReservation: React.FC = () => {
         </Line>
 
         <Line>
-          <Rectangle backgroundColor="#007bff">08:00 - 09:00</Rectangle>
-          <Rectangle backgroundColor="#007bff">
+          <Rectangle backgroundColor="#1c91ff">08:00 - 09:00</Rectangle>
+          <Rectangle backgroundColor="#1c91ff">
             <StudentName>Nathan</StudentName>
             <StudentName>José Eduardo</StudentName>
             <StudentName>Halyson</StudentName>
@@ -82,7 +82,7 @@ const RoomReservation: React.FC = () => {
         </Line>
 
         <Line>
-          <Rectangle backgroundColor="#007bff">09:00 - 10:00</Rectangle>
+          <Rectangle backgroundColor="#1c91ff">09:00 - 10:00</Rectangle>
           <Rectangle></Rectangle>
           <Rectangle></Rectangle>
           <Rectangle backgroundColor="#F55">
@@ -98,7 +98,7 @@ const RoomReservation: React.FC = () => {
         </Line>
 
         <Line>
-          <Rectangle backgroundColor="#007bff">10:00 - 11:00</Rectangle>
+          <Rectangle backgroundColor="#1c91ff">10:00 - 11:00</Rectangle>
           <Rectangle backgroundColor="#F55">
             <StudentName>Natália</StudentName>
             <StudentName>João Eduardo</StudentName>
@@ -119,7 +119,7 @@ const RoomReservation: React.FC = () => {
         </Line>
 
         <Line>
-          <Rectangle backgroundColor="#007bff">11:00 - 12:00</Rectangle>
+          <Rectangle backgroundColor="#1c91ff">11:00 - 12:00</Rectangle>
           <Rectangle backgroundColor="#F55">
             <StudentName>Nathan</StudentName>
             <StudentName>José Eduardo</StudentName>
