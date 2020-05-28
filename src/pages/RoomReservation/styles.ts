@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
+
 export const Container = styled.div`
   width: 100%;
   display: flex;
   flex: 1;
   flex-direction: column;
+  margin: auto;
 `;
 
 export const DatePicker = styled.div`
@@ -55,6 +57,7 @@ export const Rectangle = styled.div<IRectangle>`
   flex: 1 1;
   padding: 15px;
   min-height: 100px;
+  max-height: 100px;
   border: 0px solid rgba(0, 0, 0, 0.1);
   border-bottom-width: 1px;
   border-left-width: 1px;

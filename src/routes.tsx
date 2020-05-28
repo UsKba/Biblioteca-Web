@@ -4,19 +4,23 @@ import { Switch, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Homepage from './pages/Homepage/';
 import RoomReservation from './pages/RoomReservation';
+import Profile from './pages/Profile';
+import Computers from './pages/Computers';
 import Navbar from './components/Navbar';
 
 export default function Routes() {
   return (
     <>
       <Route
-        path={['/inicial', '/biblioteca', '/reserva']}
+        path={['/home', '/reserve', '/profile', '/computers']}
         component={Navbar}
       />
       <Switch>
-        <Route path="/inicial" exact component={Homepage} />
+        <Route path="/home" exact component={Homepage} />
         <Route path="/login" exact component={Login} />
-        <Route path="/reserva" exact component={RoomReservation} />
+        <Route path="/reserve" exact component={RoomReservation} />
+        <Route path="/profile" exact component={Profile} />
+        <Route path='/computers' exact component={Computers} />
       </Switch>
     </>
   );

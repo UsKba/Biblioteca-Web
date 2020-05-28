@@ -18,13 +18,15 @@ import {
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
 
+import colors from '../../styles/colors';
+
 const RoomReservation: React.FC = () => {
   return (
     <Container>
       <DatePicker>
-        <FontAwesomeIcon icon={faChevronLeft} size="2x" color="#483D8B" />
+        <FontAwesomeIcon icon={faChevronLeft} size="2x" color={colors.primary} />
         <DateInterval>25/04 - 29/05</DateInterval>
-        <FontAwesomeIcon icon={faChevronRight} size="2x" color="#483D8B" />
+        <FontAwesomeIcon icon={faChevronRight} size="2x" color={colors.primary} />
       </DatePicker>
       <Weeks>
         <Week>
@@ -70,7 +72,7 @@ const RoomReservation: React.FC = () => {
 
         <Line>
           <Rectangle backgroundColor="#1c91ff">08:00 - 09:00</Rectangle>
-          <Rectangle backgroundColor="#1c91ff">
+          <Rectangle backgroundColor={colors.secondary}>
             <StudentName>Nathan</StudentName>
             <StudentName>José Eduardo</StudentName>
             <StudentName>Halyson</StudentName>
@@ -89,10 +91,8 @@ const RoomReservation: React.FC = () => {
             <StudentName>Idaslon</StudentName>
             <StudentName>Carlos Eduardo</StudentName>
             <StudentName>Bruno Eduardo</StudentName>
-            <StudentName>João Victor</StudentName>
-            <StudentName>Sebas Tião</StudentName>
-            <StudentName>Lucas</StudentName>
-            <StudentName>Caio</StudentName>
+            <StudentName>...</StudentName>
+            
           </Rectangle>
           <Rectangle></Rectangle>
         </Line>
@@ -103,10 +103,7 @@ const RoomReservation: React.FC = () => {
             <StudentName>Natália</StudentName>
             <StudentName>João Eduardo</StudentName>
             <StudentName>Júlio</StudentName>
-            <StudentName>César</StudentName>
-            <StudentName>Artur</StudentName>
-            <StudentName>Arthur</StudentName>
-            <StudentName>George</StudentName>
+            <StudentName>...</StudentName>
 
           </Rectangle>
           <Rectangle backgroundColor="#F55">
@@ -121,13 +118,10 @@ const RoomReservation: React.FC = () => {
         <Line>
           <Rectangle backgroundColor="#1c91ff">11:00 - 12:00</Rectangle>
           <Rectangle backgroundColor="#F55">
-            <StudentName>Nathan</StudentName>
             <StudentName>José Eduardo</StudentName>
             <StudentName>Halysete</StudentName>
             <StudentName>Halynildo</StudentName>
-            <StudentName>Halyne</StudentName>
-            <StudentName>Halex</StudentName>
-            <StudentName>Halynildo</StudentName>
+            <StudentName>...</StudentName>
 
           </Rectangle>
           <Rectangle></Rectangle>
@@ -136,7 +130,10 @@ const RoomReservation: React.FC = () => {
         </Line>
       </RoomList>
     </Container>
-  ); //ari se voce esta vendo isso mande mensagem dizendo eu vi o easter egg bruno video voz
+    
+  );
+
+ //ari se voce esta vendo isso mande mensagem dizendo eu vi o easter egg bruno video voz
 };
 
 export default RoomReservation;
