@@ -23,44 +23,52 @@ import {
 
 const NavbarComponent: React.FC = (props) => {
   console.log(props);
+
   return (
     <Container>
       <Navbar>
         <Leftside>
-          <NavItem>
-            <NavLogo src={require('../../assets/Logo.png')} />
-          </NavItem>
-          <NavItem>
-            <FontAwesomeIcon
-              icon={faChalkboardTeacher}
-              size="lg"
-              color="#FFF"
-            />
-            <NavItemName>Salas</NavItemName>
-          </NavItem>
+          <a href="http://localhost:3000/login">
+            <NavItem>
+              <NavLogo src={require('../../assets/Logo.png')} />
+            </NavItem>
+          </a>
+          <a href="http://localhost:3000/reserve">
+            <NavItem>
+              <FontAwesomeIcon
+                icon={faChalkboardTeacher}
+                size="lg"
+                color="#FFF"
+              />
+              <NavItemName>Salas</NavItemName>
+            </NavItem>
+          </a>
+          <a href="http://localhost:3000/computers">
+            <NavItem>
+              <FontAwesomeIcon icon={faDesktop} size="lg" color="#fff" />
 
-          <NavItem>
-            <FontAwesomeIcon icon={faDesktop} size="lg" color="#fff" />
-
-            <NavItemName>Computadores</NavItemName>
-          </NavItem>
-
+              <NavItemName>Computadores</NavItemName>
+            </NavItem>
+          </a>
           <NavItem>
             <FontAwesomeIcon icon={faBookOpen} size="lg" color="#fff" />
             <NavItemName>Biblioteca</NavItemName>
           </NavItem>
 
-          <NavItem>
-            <FontAwesomeIcon icon={faUser} size="lg" color="#fff" />
-            <NavItemName>Perfil</NavItemName>
-          </NavItem>
+          <a href="http://localhost:3000/profile">
+            <NavItem>
+              <FontAwesomeIcon icon={faUser} size="lg" color="#fff" />
+              <NavItemName>Perfil</NavItemName>
+            </NavItem>
+          </a>
         </Leftside>
 
         <Rightside>
-          <NavItem>
-            <FontAwesomeIcon icon={faHome} size="lg" color="#fff" />
-          </NavItem>
-
+          <a href="http://localhost:3000/home">
+            <NavItem>
+              <FontAwesomeIcon icon={faHome} size="lg" color="#fff" />
+            </NavItem>
+          </a>
           <NavItem>
             <FontAwesomeIcon icon={faBell} size="lg" color="#fff" />
           </NavItem>
