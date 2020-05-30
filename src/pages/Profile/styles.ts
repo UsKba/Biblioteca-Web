@@ -11,7 +11,7 @@ export const ProfilePanel = styled.div`
   flex-direction: row;
   width: 45%;
   background-color: #fff;
-
+  max-height: 45%;
   padding: 10px;
   border-radius: 5px;
   margin-right: 10px;
@@ -26,15 +26,16 @@ export const LeftSide = styled.div`
 
 export const SearchingBar = styled.div`
   height: 25px;
-  width: 300px;
+  width: 195px;
   background-color: #fff;
   border-radius: 6px;
+  margin-right: 5px;
   cursor: text;
 `;
 
 export const AddFriends = styled.div`
-  height: 25px;
   width: 25px;
+  min-width: 5%;
   background-color: #333;
   border-radius: 6px;
 `;
@@ -42,7 +43,8 @@ export const AddFriends = styled.div`
 export const FriendsPanel = styled.div`
   display: flex;
   flex-direction: column;
-  width: 25%;
+  width: 92%;
+  height: 120%;
   background-color: #c4c4c4;
   margin-top: 7px;
   padding: 10px;
@@ -98,4 +100,5 @@ export const FriendsDetails = styled.div`
 
 export const SearchArea = styled.div`
   display: flex;
+  margin-right: 10px;
 `

@@ -49,7 +49,7 @@ const Profile: React.FC = () => {
             </FriendsInformation>
           </FriendsPanelDetails>
 
-          {/* <FriendsPanelDetails>
+          <FriendsPanelDetails>
             <ProfileIcon>
               <ProfileIconInitials>B</ProfileIconInitials>
             </ProfileIcon>
@@ -64,7 +64,7 @@ const Profile: React.FC = () => {
             <FriendsInformation>
               <FriendsDetails>Halyson Santos</FriendsDetails>
             </FriendsInformation>
-          </FriendsPanelDetails> */}
+          </FriendsPanelDetails>
         </FriendsPanel>
       </LeftSide>
     </Container>
