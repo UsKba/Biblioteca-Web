@@ -1,36 +1,40 @@
 import styled from 'styled-components';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  display: flex;
+
+  margin-top: 20px;
+`;
 
 export const ProfilePanel = styled.div`
   display: flex;
   flex-direction: row;
   width: 45%;
   background-color: #fff;
-  margin-top: 20px;
+
   padding: 10px;
   border-radius: 5px;
   margin-right: 10px;
-  min-width: 25%;
+  /* min-width: 25%; */
   min-height: 180px;
   margin-left: 40px;
 `;
+
+export const LeftSide = styled.div`
+  margin-left: auto;
+`
 
 export const SearchingBar = styled.div`
   height: 25px;
   width: 300px;
   background-color: #fff;
   border-radius: 6px;
-  margin-left: 970px;
-  margin-top: -178px;
-  margin-bottom: -25px;
   cursor: text;
 `;
 
 export const AddFriends = styled.div`
   height: 25px;
   width: 25px;
-  margin-left: 1280px;
   background-color: #333;
   border-radius: 6px;
 `;
@@ -43,8 +47,8 @@ export const FriendsPanel = styled.div`
   margin-top: 7px;
   padding: 10px;
   border-radius: 5px;
-  margin-right: 5px;
-  margin-left: 970px;
+  /* margin-right: auto; */
+  /* margin-left: 970px; */
 `;
 
 export const FriendsPanelDetails = styled.div`
@@ -64,6 +68,7 @@ export const ProfileIcon = styled.div`
   color: #fff;
   border-radius: 8px;
 `;
+
 
 export const ProfileIconInitials = styled.span`
   font-size: 35px;
@@ -90,3 +95,7 @@ export const FriendsInformation = styled.div`
 export const FriendsDetails = styled.div`
   margin-bottom: 15px;
 `;
+
+export const SearchArea = styled.div`
+  display: flex;
+`
