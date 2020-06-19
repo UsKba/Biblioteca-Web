@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const Container = styled.div`
   width: 100%;
   display: flex;
@@ -18,6 +17,7 @@ export const DatePicker = styled.div`
   background-color: #fff;
   margin-top: 20px;
   padding: 10px;
+  border-radius: 15px 15px 0 0;
 `;
 
 export const DateInterval = styled.h1`
@@ -32,7 +32,7 @@ export const RoomList = styled.div`
   flex: 1;
   width: 90%;
   align-self: center;
-  border-radius: 10px;
+
   background-color: #fff;
 `;
 
@@ -40,11 +40,6 @@ export const Line = styled.div`
   display: flex;
   flex-direction: row;
   flex: 1 1;
-
-  &:first {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-  }
 `;
 
 interface IRectangle {
@@ -99,8 +94,8 @@ export const Week = styled.div`
 export const WeekName = styled.span<IWeekName>`
   cursor: pointer;
 
-  color: ${(props) => (props.active ? '#483D8B' : '#333')}; 
-  ${(props) => props.active && 'border-bottom: 5px solid #483D8B'}; 
+  color: ${(props) => (props.active ? '#483D8B' : '#333')};
+  ${(props) => props.active && 'border-bottom: 5px solid #483D8B'};
   ${(props) => props.active && 'font-weight: bold'};
 
   padding: 5px 15px;

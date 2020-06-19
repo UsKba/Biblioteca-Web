@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { 
+import {
   Container,
   DatePicker,
   DateInterval,
@@ -10,7 +10,7 @@ import {
   StudentName,
   Weeks,
   Week,
-  WeekName
+  WeekName,
 } from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -24,33 +24,39 @@ const RoomReservation: React.FC = () => {
   return (
     <Container>
       <DatePicker>
-        <FontAwesomeIcon icon={faChevronLeft} size="2x" color={colors.primary} />
+        <FontAwesomeIcon
+          icon={faChevronLeft}
+          size="2x"
+          color={colors.primary}
+        />
         <DateInterval>25/04 - 29/05</DateInterval>
-        <FontAwesomeIcon icon={faChevronRight} size="2x" color={colors.primary} />
+        <FontAwesomeIcon
+          icon={faChevronRight}
+          size="2x"
+          color={colors.primary}
+        />
       </DatePicker>
       <Weeks>
         <Week>
-        <WeekName>Segunda</WeekName>
+          <WeekName>Segunda</WeekName>
         </Week>
-       
-        <Week>
-        <WeekName active={true}>Terça</WeekName>
-        </Week>
-       
-        <Week>
-        <WeekName>Quarta</WeekName>
-        </Week>
-       
-        <Week>
-        <WeekName>Quinta</WeekName>
-        </Week>
-       
-        <Week>
-        <WeekName>Sexta</WeekName>
-        </Week>
-       
 
-        </Weeks>      
+        <Week>
+          <WeekName active={true}>Terça</WeekName>
+        </Week>
+
+        <Week>
+          <WeekName>Quarta</WeekName>
+        </Week>
+
+        <Week>
+          <WeekName>Quinta</WeekName>
+        </Week>
+
+        <Week>
+          <WeekName>Sexta</WeekName>
+        </Week>
+      </Weeks>
       <RoomList>
         <Line>
           <Rectangle backgroundColor="#1c91ff"></Rectangle>
@@ -62,9 +68,7 @@ const RoomReservation: React.FC = () => {
 
         <Line>
           <Rectangle backgroundColor="#1c91ff">07:15 - 08:00</Rectangle>
-          <Rectangle >
-
-          </Rectangle>
+          <Rectangle></Rectangle>
           <Rectangle></Rectangle>
           <Rectangle></Rectangle>
           <Rectangle></Rectangle>
@@ -76,7 +80,6 @@ const RoomReservation: React.FC = () => {
             <StudentName>Nathan</StudentName>
             <StudentName>José Eduardo</StudentName>
             <StudentName>Halyson</StudentName>
-
           </Rectangle>
           <Rectangle></Rectangle>
           <Rectangle></Rectangle>
@@ -92,7 +95,6 @@ const RoomReservation: React.FC = () => {
             <StudentName>Carlos Eduardo</StudentName>
             <StudentName>Bruno Eduardo</StudentName>
             <StudentName>...</StudentName>
-            
           </Rectangle>
           <Rectangle></Rectangle>
         </Line>
@@ -104,7 +106,6 @@ const RoomReservation: React.FC = () => {
             <StudentName>João Eduardo</StudentName>
             <StudentName>Júlio</StudentName>
             <StudentName>...</StudentName>
-
           </Rectangle>
           <Rectangle backgroundColor="#F55">
             <StudentName>Haline</StudentName>
@@ -122,7 +123,6 @@ const RoomReservation: React.FC = () => {
             <StudentName>Halysete</StudentName>
             <StudentName>Halynildo</StudentName>
             <StudentName>...</StudentName>
-
           </Rectangle>
           <Rectangle></Rectangle>
           <Rectangle></Rectangle>
@@ -130,10 +130,9 @@ const RoomReservation: React.FC = () => {
         </Line>
       </RoomList>
     </Container>
-    
   );
 
- //ari se voce esta vendo isso mande mensagem dizendo eu vi o easter egg bruno video voz
+  //ari se voce esta vendo isso mande mensagem dizendo eu vi o easter egg bruno video voz
 };
 
 export default RoomReservation;

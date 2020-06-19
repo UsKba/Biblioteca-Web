@@ -21,6 +21,58 @@ import {
   Rightside,
 } from './styles';
 
+const users = [
+  {
+    name: 'Lonlon',
+    email: 'lonlon@gmail.com',
+    id: 1,
+  },
+  {
+    name: 'Zanat',
+    email: 'zanat@gmail.com',
+    id: 2,
+  },
+  {
+    name: 'Neitan',
+    email: 'neitan@gmail.com',
+    id: 3,
+  },
+  {
+    name: 'Neitan',
+    email: undefined,
+    id: 4,
+  },
+];
+
+const user = users.find((user) => user.email === 'neitan@gmail.com');
+
+// const user1 = users.find((user) => {
+//   return user.email === 'neitan@gmail.com';
+// });
+
+// const user = users.find((user) => {
+//   if (user.email === 'neitan@gmail.com') {
+//     return true;
+//   }
+
+//   return false;
+// });
+
+// const user = users.find((user) => {
+//   if (user.email === 'neitan@gmail.com') {
+//     return true;
+//   }
+// });
+
+// const user = users.find((user) => {
+//   if (user.email === 'neitan@gmail.com') {
+//     return user;
+//   }
+// });
+
+console.log('user');
+console.log(user);
+
 const NavbarComponent: React.FC = (props) => {
   console.log(props);
 

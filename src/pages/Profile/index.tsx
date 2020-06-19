@@ -14,6 +14,24 @@ import {
 } from './styles';
 // import { Container } from './styles';
 
+const users = [
+  {
+    name: 'Lonlon',
+    email: 'lonlon@gmail.com',
+    id: 1,
+  },
+  {
+    name: 'Zanat',
+    email: 'zanat@gmail.com',
+    id: 2,
+  },
+  {
+    name: 'Neitan',
+    email: 'neitan@gmail.com',
+    id: 3,
+  },
+];
+
 const Profile: React.FC = () => {
   return (
     <>
