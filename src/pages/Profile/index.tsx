@@ -1,18 +1,20 @@
 import React from 'react';
 import {
+  Container,
   ProfilePanel,
   ProfileIcon,
   ProfileIconInitials,
   ProfileInformation,
   ProfileInformationDetails,
+  LeftSide,
   FriendsPanel,
   FriendsInformation,
   FriendsDetails,
   FriendsPanelDetails,
   SearchingBar,
   AddFriends,
+  SearchArea
 } from './styles';
-// import { Container } from './styles';
 
 const users = [
   {
@@ -34,7 +36,7 @@ const users = [
 
 const Profile: React.FC = () => {
   return (
-    <>
+    <Container>
       <ProfilePanel>
         <ProfileIcon>
           <ProfileIconInitials>H</ProfileIconInitials>
@@ -48,36 +50,42 @@ const Profile: React.FC = () => {
         </ProfileInformation>
       </ProfilePanel>
 
-      <SearchingBar></SearchingBar>
-      <AddFriends></AddFriends>
 
-      <FriendsPanel>
-        <FriendsPanelDetails>
-          <ProfileIcon>
-            <ProfileIconInitials>D</ProfileIconInitials>
-          </ProfileIcon>
-          <FriendsInformation>
-            <FriendsDetails>José Dudu</FriendsDetails>
-          </FriendsInformation>
-        </FriendsPanelDetails>
-        <FriendsPanelDetails>
-          <ProfileIcon>
-            <ProfileIconInitials>B</ProfileIconInitials>
-          </ProfileIcon>
-          <FriendsInformation>
-            <FriendsDetails>Bruno Eduardo</FriendsDetails>
-          </FriendsInformation>
-        </FriendsPanelDetails>
-        <FriendsPanelDetails>
-          <ProfileIcon>
-            <ProfileIconInitials>H</ProfileIconInitials>
-          </ProfileIcon>
-          <FriendsInformation>
-            <FriendsDetails>Halyson Santos</FriendsDetails>
-          </FriendsInformation>
-        </FriendsPanelDetails>
-      </FriendsPanel>
-    </>
+      <LeftSide>
+        <SearchArea>
+          <SearchingBar></SearchingBar>
+          <AddFriends></AddFriends>
+        </SearchArea>
+
+        <FriendsPanel>
+          <FriendsPanelDetails>
+            <ProfileIcon>
+              <ProfileIconInitials>D</ProfileIconInitials>
+            </ProfileIcon>
+            <FriendsInformation>
+              <FriendsDetails>José Dudu</FriendsDetails>
+            </FriendsInformation>
+          </FriendsPanelDetails>
+
+          <FriendsPanelDetails>
+            <ProfileIcon>
+              <ProfileIconInitials>B</ProfileIconInitials>
+            </ProfileIcon>
+            <FriendsInformation>
+              <FriendsDetails>Bruno Eduardo</FriendsDetails>
+            </FriendsInformation>
+          </FriendsPanelDetails>
+          <FriendsPanelDetails>
+            <ProfileIcon>
+              <ProfileIconInitials>H</ProfileIconInitials>
+            </ProfileIcon>
+            <FriendsInformation>
+              <FriendsDetails>Halyson Santos</FriendsDetails>
+            </FriendsInformation>
+          </FriendsPanelDetails>
+        </FriendsPanel>
+      </LeftSide>
+    </Container>
   );
 };
 
