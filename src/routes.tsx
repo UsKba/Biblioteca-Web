@@ -7,12 +7,13 @@ import RoomReservation from './pages/RoomReservation';
 import Profile from './pages/Profile';
 import Computers from './pages/Computers';
 import Navbar from './components/Navbar';
+import RentRoom from './pages/RentRoom';
 
 export default function Routes() {
   return (
     <>
       <Route
-        path={['/home', '/reserve', '/profile', '/computers']}
+        path={['/home', '/reserve', '/profile', '/computers', '/rent']}
         component={Navbar}
       />
       <Switch>
@@ -21,6 +22,7 @@ export default function Routes() {
         <Route path="/reserve" exact component={RoomReservation} />
         <Route path="/profile" exact component={Profile} />
         <Route path='/computers' exact component={Computers} />
+        <Route path="/rent" exact component={RentRoom} />
       </Switch>
     </>
   );

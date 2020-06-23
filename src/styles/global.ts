@@ -11,7 +11,6 @@ export default createGlobalStyle`
   html{
     height: 100%;
   }
-
   body {
     background-image: linear-gradient(to right, #483D8B, #7B68EE);
     display: flex;
@@ -19,6 +18,10 @@ export default createGlobalStyle`
     font-family: Arial, Helvetica, sans-serif;
     width: 100%;
     height: 100%;
+  }
+
+  a{
+    text-decoration:none;
   }
 
   div#root{
