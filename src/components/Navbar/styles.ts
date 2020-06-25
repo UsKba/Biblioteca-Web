@@ -5,7 +5,7 @@ export const Container = styled.div``;
 export const Navbar = styled.ul`
   background-color: #333;
   width: 100%;
-
+  height: 74%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -26,6 +26,7 @@ export const Leftside = styled.div`
 export const Rightside = styled.div`
   display: flex;
 `;
+
 
 export const NavItemName = styled.span`
   margin-top: 5px;

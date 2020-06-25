@@ -9,8 +9,33 @@ export const Container = styled.div`
   align-self: center;
   padding: 12vh;
   border-radius: 10px;
+  padding: 60px 10px;
+`;
 
+export const Warning = styled.label`
+  background-color: #FF6663;
+  width:13.8em;
+  padding: 10px 5px;
+  border-radius:0.7em;
+  color:white;
+  align-items: center;
+  text-align: center;
+  margin-top: 55px;
 
+`
+
+export const LeftItemsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const MiddleItemsContainer = styled.div`
+  display:flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 220.8px 0 0;
 `;
 
 export const ComponentsContainer = styled.div`
@@ -35,6 +60,7 @@ export const InputContainer = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
 
 export const Input = styled.input`
   border: 1px solid #000;
@@ -66,7 +92,7 @@ export const Button = styled.button`
   padding:0.7em 0;
   width:30%;
   margin-top:5em;
-  background-color:#468ab8;
+  background-color: #483D8B;
   color: #fff;
   border-radius:7px;
 
@@ -75,7 +101,7 @@ export const Button = styled.button`
 export const AddComponentButton = styled.button`
   width: 40px;
   height: 40px;
-  background-image: linear-gradient(to right, #483D8B, #7B68EE);
+  background-color: #483D8B;
   margin-left: 10px;
   font-weight: bold;
   color: #fff;
@@ -108,7 +134,7 @@ export const Span = styled.span`
   border-radius: 6px;
   margin-bottom:0.5em;
   color: #fff;
-  background-image: linear-gradient(to right, #483D8B, #7B68EE);
+  background-color: #483D8B;
 
 
 `;
