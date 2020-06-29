@@ -5,11 +5,9 @@ export const Container = styled.div``;
 export const Navbar = styled.ul`
   background-color: #333;
   width: 100%;
-  height: 74%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 10px;
   list-style: none;
   justify-content: space-between;
 `;
