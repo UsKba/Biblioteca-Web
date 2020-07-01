@@ -21,6 +21,8 @@ import {
   Rightside,
 } from './styles';
 
+import {Link} from 'react-router-dom'
+
 const users = [
   {
     name: 'Lonlon',
@@ -46,46 +48,24 @@ const users = [
 
 const user = users.find((user) => user.email === 'neitan@gmail.com');
 
-// const user1 = users.find((user) => {
-//   return user.email === 'neitan@gmail.com';
-// });
 
-// const user = users.find((user) => {
-//   if (user.email === 'neitan@gmail.com') {
-//     return true;
-//   }
-
-//   return false;
-// });
-
-// const user = users.find((user) => {
-//   if (user.email === 'neitan@gmail.com') {
-//     return true;
-//   }
-// });
-
-// const user = users.find((user) => {
-//   if (user.email === 'neitan@gmail.com') {
-//     return user;
-//   }
-// });
 
 console.log('user');
 console.log(user);
 
-const NavbarComponent: React.FC = (props) => {
-  console.log(props);
+const NavbarComponent: React.FC = () => {
+
 
   return (
     <Container>
       <Navbar>
         <Leftside>
-          <a href="http://localhost:3000/login">
+          <Link to="/login">
             <NavItem>
               <NavLogo src={require('../../assets/Logo.png')} />
             </NavItem>
-          </a>
-          <a href="http://localhost:3000/reserve">
+          </Link>
+          <Link to="/reserve">
             <NavItem>
               <FontAwesomeIcon
                 icon={faChalkboardTeacher}
@@ -94,40 +74,45 @@ const NavbarComponent: React.FC = (props) => {
               />
               <NavItemName>Salas</NavItemName>
             </NavItem>
-          </a>
-          <a href="http://localhost:3000/computers">
+          </Link>
+          <Link to="/computers">
             <NavItem>
               <FontAwesomeIcon icon={faDesktop} size="lg" color="#fff" />
 
               <NavItemName>Computadores</NavItemName>
             </NavItem>
-          </a>
+          </Link>
+
+          <Link to="/library">
           <NavItem>
             <FontAwesomeIcon icon={faBookOpen} size="lg" color="#fff" />
             <NavItemName>Biblioteca</NavItemName>
           </NavItem>
-
-          <a href="http://localhost:3000/profile">
+          </Link>
+          <Link to="/profile">
             <NavItem>
               <FontAwesomeIcon icon={faUser} size="lg" color="#fff" />
               <NavItemName>Perfil</NavItemName>
             </NavItem>
-          </a>
+          </Link>
         </Leftside>
 
         <Rightside>
-          <a href="http://localhost:3000/home">
-            <NavItem>
+          <Link to="/home">
+            <NavItem small>
               <FontAwesomeIcon icon={faHome} size="lg" color="#fff" />
             </NavItem>
-          </a>
-          <NavItem>
+          </Link>
+          <Link to="/settings/notificacao">
+          <NavItem small>
             <FontAwesomeIcon icon={faBell} size="lg" color="#fff" />
           </NavItem>
-
-          <NavItem>
-            <FontAwesomeIcon icon={faCog} size="lg" color="#fff" />
-          </NavItem>
+          </Link>
+          <Link to="/settings/">
+            <NavItem small>
+              <FontAwesomeIcon icon={faCog} size="lg" color="#fff" />
+            </NavItem>
+          </Link>
         </Rightside>
       </Navbar>
     </Container>

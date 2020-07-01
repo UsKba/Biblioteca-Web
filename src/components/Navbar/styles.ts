@@ -32,7 +32,11 @@ export const NavItemName = styled.span`
   color: #fff;
 `;
 
-export const NavItem = styled.li`
+interface NavItemProps {
+  small ?: boolean;
+}
+
+export const NavItem = styled.li<NavItemProps>`
   padding: 10px;
   margin-right: 40px;
   display: flex;
@@ -40,10 +44,11 @@ export const NavItem = styled.li`
   align-items: center;
   cursor: pointer;
 
-  &:last-child {
-    margin-right: 0px;
-  }
+  ${(props) => {
+    if(props.small) return "margin-right: 0px;"
+  }}
 `;
+
 
 export const NavLogo = styled.img`
   height: 53px;

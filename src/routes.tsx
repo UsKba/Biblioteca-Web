@@ -10,12 +10,13 @@ import Navbar from './components/Navbar';
 import RentRoom from './pages/RentRoom';
 import LibrarianReport from './pages/LibrarianReport';
 import Settings from './pages/Settings';
+import LibraryView from './pages/LibraryView';
 
 export default function Routes() {
   return (
     <>
       <Route
-        path={['/home', '/reserve', '/profile', '/computers', '/rent', '/report', '/settings']}
+        path={['/home', '/reserve', '/profile', '/computers', '/rent', '/report', '/settings', '/topview']}
         component={Navbar}
       />
       <Switch>
@@ -26,7 +27,8 @@ export default function Routes() {
         <Route path='/computers' exact component={Computers} />
         <Route path="/rent" exact component={RentRoom} />
         <Route path="/report" exact component={LibrarianReport} />
-        <Route path="/settings" exact component={Settings} />
+        <Route path="/settings" component={Settings} />
+        <Route path="/topview" exact component={LibraryView} />
       </Switch>
     </>
   );

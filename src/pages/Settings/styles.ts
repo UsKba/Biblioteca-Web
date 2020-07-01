@@ -36,6 +36,6 @@ export const LeftSide = styled.div`
 
 export const RightSide = styled.div`
   display: flex;
-
+  flex: 1;
 `;
 
