@@ -66,7 +66,7 @@ export const RoomButtonLarge = styled.button`
   color: #fff;
   font-weight: 400;
   width: 25%;
-  height: 21em;
+  height: 16em;
   border: none;
   border-radius: 0 10px 0 0;
 `;
@@ -88,6 +88,11 @@ export const MiddleSide = styled.div`
 
 `;
 
+export const MiddleSideItems = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 export const DownMiddleSide = styled.div`
   display: flex;
   flex-direction: column;
@@ -96,16 +101,46 @@ export const DownMiddleSide = styled.div`
 
 export const RightSide = styled.div`
   display: flex;
+  flex-direction: column;
   flex: 1;
+`;
+
+export const RightSideTop = styled.div`
+  display: flex;
   flex-direction: row;
+`;
+
+export const RightSideDown = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const RightSideRight = styled.div`
+  display: flex;
+  flex: 1;
 `;
 
 export const Bookshelf = styled.div`
   display: row;
-  background-color:grey;
+  background-color: grey;
   width: 10%;
-  height: 30%;
+  height: 6em;
   margin: 0 10% 0 5%;
 `;
+
+export const Bookshelf2 = styled.div`
+  background-color: grey;
+  width: 25%;
+  height: 12em;
+  margin: 0 1.5em 3em 6em;
+`;
+
+export const Bookshelf3 = styled.div`
+  background-color: grey;
+  width: 22em;
+  height: 2em;
+  margin: 0 0 10% 8%;
+`;
+
 
 
