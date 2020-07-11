@@ -83,7 +83,7 @@ const NavbarComponent: React.FC = () => {
             </NavItem>
           </Link>
 
-          <Link to="/library">
+          <Link to="/topview">
           <NavItem>
             <FontAwesomeIcon icon={faBookOpen} size="lg" color="#fff" />
             <NavItemName>Biblioteca</NavItemName>

@@ -8,7 +8,6 @@ export const Container = styled.div`
   background-color: #fff;
   margin-top:20px;
   border-radius: 10px;
-
 `;
 
 export const IndividualButton = styled.button`

@@ -11,6 +11,10 @@ import RentRoom from './pages/RentRoom';
 import LibrarianReport from './pages/LibrarianReport';
 import Settings from './pages/Settings';
 import LibraryView from './pages/LibraryView';
+// Bibliotecario
+
+import Inbox from './pages/Inbox';
+
 
 export default function Routes() {
   return (
@@ -29,6 +33,7 @@ export default function Routes() {
         <Route path="/report" exact component={LibrarianReport} />
         <Route path="/settings" component={Settings} />
         <Route path="/topview" exact component={LibraryView} />
+        <Route path="/inbox" exact component={Inbox} />
         </Switch>
     </>
   );
