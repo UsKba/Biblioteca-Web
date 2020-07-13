@@ -14,13 +14,22 @@ import LibraryView from './pages/LibraryView';
 // Bibliotecario
 
 import Inbox from './pages/Inbox';
-
+import ComputersManagement from './pages/ComputersManagement';
 
 export default function Routes() {
   return (
     <>
       <Route
-        path={['/home', '/reserve', '/profile', '/computers', '/rent', '/report', '/settings', '/topview']}
+        path={[
+          '/home',
+          '/reserve',
+          '/profile',
+          '/computers',
+          '/rent',
+          '/report',
+          '/settings',
+          '/topview',
+        ]}
         component={Navbar}
       />
       <Switch>
@@ -28,13 +37,14 @@ export default function Routes() {
         <Route path="/login" exact component={Login} />
         <Route path="/reserve" exact component={RoomReservation} />
         <Route path="/profile" exact component={Profile} />
-        <Route path='/computers' exact component={Computers} />
+        <Route path="/computers" exact component={Computers} />
         <Route path="/rent" exact component={RentRoom} />
         <Route path="/report" exact component={LibrarianReport} />
         <Route path="/settings" component={Settings} />
         <Route path="/topview" exact component={LibraryView} />
         <Route path="/inbox" exact component={Inbox} />
-        </Switch>
+        <Route path="/pcmanagement" exact component={ComputersManagement} />
+      </Switch>
     </>
   );
 }
