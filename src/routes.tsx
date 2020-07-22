@@ -1,6 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
+
+//eae men tudo bom?
 import Login from './pages/Login';
 import Homepage from './pages/Homepage/';
 import RoomReservation from './pages/RoomReservation';
@@ -11,6 +13,7 @@ import RentRoom from './pages/RentRoom';
 import LibrarianReport from './pages/LibrarianReport';
 import Settings from './pages/Settings';
 import LibraryView from './pages/LibraryView';
+import Students from './pages/Students';
 // Bibliotecario
 
 import Inbox from './pages/Inbox';
@@ -44,7 +47,10 @@ export default function Routes() {
         <Route path="/topview" exact component={LibraryView} />
         <Route path="/inbox" exact component={Inbox} />
         <Route path="/pcmanagement" exact component={ComputersManagement} />
+        <Route path="/students" exact component={Students} />
       </Switch>
     </>
   );
 }
+//eae men tudo certp?
+//tudo otimo bruno
