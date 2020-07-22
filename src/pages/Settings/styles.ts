@@ -4,8 +4,8 @@ export const Container = styled.div`
   display: flex;
   flex: 1;
   background-color: #fff;
-  width: 90%;
-  margin: 20px 0 20px 0;
+  width: 98%;
+  margin: 15px;
   align-self: center;
   border-radius:0.7em;
   justify-content: space-between;

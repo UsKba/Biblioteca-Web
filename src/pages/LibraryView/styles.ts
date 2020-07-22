@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  width: 90%;
-  height: 90%;
+  flex: 1;
+  width: 98%;
   align-self: center;
   background-color: #fff;
-  margin-top:20px;
   border-radius: 10px;
+  margin: 15px;
 `;
 
 export const IndividualButton = styled.button`

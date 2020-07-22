@@ -7,14 +7,17 @@ import {
   ProfileInformation,
   ProfileInformationDetails,
   LeftSide,
+  RightSide,
   FriendsPanel,
   FriendsInformation,
   FriendsDetails,
   FriendsPanelDetails,
   SearchingBar,
   AddFriends,
-  SearchArea
+  SearchArea,
+  MessageButton
 } from './styles';
+import PageHome from '../Profile/PageHome';
 
 const users = [
   {
@@ -36,31 +39,34 @@ const users = [
 
 const Profile: React.FC = () => {
   return (
+
     <Container>
-      <ProfilePanel>
-        <ProfileIcon>
-          <ProfileIconInitials>H</ProfileIconInitials>
-        </ProfileIcon>
-        <ProfileInformation>
-          <ProfileInformationDetails>Halyson Junior</ProfileInformationDetails>
-          <ProfileInformationDetails>20181104010017</ProfileInformationDetails>
-          <ProfileInformationDetails>
-            santos.junior@ifrn.edu.br
-          </ProfileInformationDetails>
-        </ProfileInformation>
-      </ProfilePanel>
-
-
       <LeftSide>
+        <ProfilePanel>
+          <ProfileIcon>
+            <ProfileIconInitials>H</ProfileIconInitials>
+          </ProfileIcon>
+          <ProfileInformation>
+            <ProfileInformationDetails>Halyson Junior</ProfileInformationDetails>
+            <ProfileInformationDetails>20181104010017</ProfileInformationDetails>
+            <ProfileInformationDetails>
+              santos.junior@ifrn.edu.br
+            </ProfileInformationDetails>
+          </ProfileInformation>
+        </ProfilePanel>
+        <PageHome/>
+      </LeftSide>
+
+      <RightSide>
         <SearchArea>
-          <SearchingBar></SearchingBar>
+          <SearchingBar type="text" id="data"></SearchingBar>
           <AddFriends></AddFriends>
         </SearchArea>
 
         <FriendsPanel>
           <FriendsPanelDetails>
             <ProfileIcon>
-              <ProfileIconInitials>D</ProfileIconInitials>
+              <ProfileIconInitials>J</ProfileIconInitials>
             </ProfileIcon>
             <FriendsInformation>
               <FriendsDetails>José Dudu</FriendsDetails>
@@ -84,8 +90,10 @@ const Profile: React.FC = () => {
             </FriendsInformation>
           </FriendsPanelDetails>
         </FriendsPanel>
-      </LeftSide>
+        <MessageButton>Falar com Bibliotecário</MessageButton>
+      </RightSide>
     </Container>
+
   );
 };
 

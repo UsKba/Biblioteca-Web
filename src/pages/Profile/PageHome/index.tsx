@@ -3,7 +3,6 @@ import {
   Container,
   DatePicker,
   DateInterval,
-  MessageButton,
   DayReservesContainer,
   Weeks,
   Week,
@@ -113,7 +112,6 @@ const Homepage: React.FC = () => {
         </Reserves>
       </DayReservesContainer>
 
-      <MessageButton>Falar com Hally</MessageButton>
     </Container>
   );
 };

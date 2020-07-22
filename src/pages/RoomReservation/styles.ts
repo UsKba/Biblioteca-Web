@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100%;
   display: flex;
   flex: 1;
+  width: 100%;
   flex-direction: column;
-  margin: auto;
+  margin: 15px 0 15px 0;
 `;
 
 export const DatePicker = styled.div`
@@ -15,9 +15,8 @@ export const DatePicker = styled.div`
   width: 90%;
   align-self: center;
   background-color: #fff;
-  margin-top: 20px;
   padding: 10px;
-  border-radius: 15px 15px 0 0;
+  border-radius: 10px 10px 0 0;
 `;
 
 export const DateInterval = styled.h1`

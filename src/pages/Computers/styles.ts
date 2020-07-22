@@ -5,13 +5,13 @@ import { faDesktop } from '@fortawesome/free-solid-svg-icons';
 export const Container = styled.div`
   display: flex;
   flex: 1;
-  width: 90%;
+  width: 98%;
   justify-content: space-between;
   background-color: #fff;
   align-self: center;
   padding: 12vh;
   border-radius: 10px;
-  margin-top: 20px;
+  margin: 15px 0 15px 0;
 `;
 
 export const ComputersContainer = styled.div`

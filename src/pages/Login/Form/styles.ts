@@ -23,10 +23,16 @@ export const Input = styled.input`
   border: 1px solid #000;
   font-size: 25px;
   padding: 10px;
+  border: 1px solid #483d8b;
+  @media screen and (max-width: 400px){
+    font-size: 18px;
+    padding: 7.5px;
+  }
 `;
 
 export const InputLabel = styled.label`
   font-size: 16px;
+  font-weight: bold;
   margin-left: 10px;
   color: #483d8b;
 `;
@@ -40,7 +46,7 @@ export const LoginButton = styled.button`
   color: #fff;
   font-weight: bold;
   font-size: 16px;
-  width: 70%;
+  width: 80%;
   padding: 20px 0px;
   border-radius: 10px;
 
@@ -52,14 +58,17 @@ export const LoginButton = styled.button`
     background-color: #777;
     cursor: default;
   }
+  @media screen and (max-width: 400px){
+    font-size: 14px;
+    padding: 16px;
+  }
 `;
 
 export const ForgotPassword = styled.a`
   color: #483d8b;
   text-decoration: none;
   font-size: 16px;
-
-  margin-bottom: 80px;
+  margin-top: 25px;
 `;
 
 export const Warning = styled.p`

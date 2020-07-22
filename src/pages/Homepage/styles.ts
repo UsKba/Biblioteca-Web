@@ -2,26 +2,27 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: row;
-  height: 100%;
-  justify-content: space-between;
+  flex: 1;
 `;
 export const DayReservesContainer = styled.div`
   width: 60%;
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
+  margin-left: 15px;
 `;
 
 export const DatePicker = styled.div`
   display: flex;
   flex-direction: row;
   background-color: #fff;
-  margin-top: 20px;
+  margin-top: 15px;
   padding: 10px;
   align-items: center;
   justify-content: center;
-  border-radius: 15px 15px 0 0;
+  border-radius: 10px 10px 0 0;
 `;
 
 export const DateInterval = styled.h1`
@@ -31,7 +32,9 @@ export const DateInterval = styled.h1`
   margin-left: 25px;
 `;
 export const MessageButton = styled.button`
-  align-self: flex-end;
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
   background-color: #333;
   cursor: pointer;
   color: #fff;
@@ -42,7 +45,6 @@ export const MessageButton = styled.button`
   border-radius: 10px;
   border: none;
   outline: none;
-  margin: 15px;
 `;
 
 export const Week = styled.div`
@@ -73,24 +75,28 @@ export const Weeks = styled.div`
   display: flex;
   flex-direction: row;
   background-color: #fff;
-  border-radius: 0 0 15px 15px;
+  border-radius: 0 0 10px 10px;
+  margin-bottom: 15px;
 `;
 
 export const Reserves = styled.div`
-  flex-direction: row;
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
+
+  @media screen and (max-width: 400px){
+    justify-content: center;
+  }
 `;
 
 export const Reserve = styled.div`
   display: flex;
-  margin-top: 10px;
-  padding: 30px;
+  margin-bottom: 15px;
+  padding: 20px;
   flex-direction: column;
   background-color: #fff;
   border-radius: 5px;
-  margin-right: 10px;
-  min-width: 25%;
+  min-width: 180px;
 `;
 
 export const Room = styled.span`

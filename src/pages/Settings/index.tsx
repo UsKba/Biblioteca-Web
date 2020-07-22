@@ -19,7 +19,7 @@ const Settings= () => {
       <LeftSide>
         <Button onClick={() => history.push('/settings/user/')} active={pathname === '/settings/user/'}>Configurações do Usuário</Button>
         <Button onClick={() => history.push('/settings/notification/')} active={pathname === '/settings/notification/'}>Configurações de Notificação</Button>
-        <Button onClick={() => history.push('/settings/voz/')} active={pathname === '/settings/voz/'}>Morra Bruno Voz</Button>
+        <Button onClick={() => history.push('/settings/voz/')} active={pathname === '/settings/voz/'}>Configurações de Grupo</Button>
       </LeftSide>
 
       <RightSide>
@@ -34,7 +34,7 @@ const Settings= () => {
             </Route>
 
             <Route path="/settings/voz" exact>
-              <div>Configurações de Voz</div>
+              <div>Configurações de Grupo </div>
             </Route>
 
         </Switch>
