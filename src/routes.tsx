@@ -13,11 +13,13 @@ import RentRoom from './pages/RentRoom';
 import LibrarianReport from './pages/LibrarianReport';
 import Settings from './pages/Settings';
 import LibraryView from './pages/LibraryView';
-import Students from './pages/Students';
 // Bibliotecario
 
 import Inbox from './pages/Inbox';
 import ComputersManagement from './pages/ComputersManagement';
+import Students from './pages/Students';
+import SideBar from './components/SideBar';
+import LibrarianHome from './pages/LibrarianHome';
 
 export default function Routes() {
   return (
@@ -35,6 +37,16 @@ export default function Routes() {
         ]}
         component={Navbar}
       />
+      <Route
+        path={[
+          '/lhome'
+/*        '/lhome',
+          '/inbox',
+          '/pcmanagement',
+          '/students' */
+        ]}
+        component={SideBar}
+      />
       <Switch>
         <Route path="/home" exact component={Homepage} />
         <Route path="/login" exact component={Login} />
@@ -44,7 +56,9 @@ export default function Routes() {
         <Route path="/rent" exact component={RentRoom} />
         <Route path="/report" exact component={LibrarianReport} />
         <Route path="/settings" component={Settings} />
-        <Route path="/topview" exact component={LibraryView} />
+        <Route path="/topview" exact component={LibraryView} />]
+
+        <Route path="/lhome" exact component={LibrarianHome}/>
         <Route path="/inbox" exact component={Inbox} />
         <Route path="/pcmanagement" exact component={ComputersManagement} />
         <Route path="/students" exact component={Students} />
