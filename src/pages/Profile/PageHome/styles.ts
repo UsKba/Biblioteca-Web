@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex: 1;
 `;
 export const DayReservesContainer = styled.div`
-  width: 60%;
+  width: 65%;
   display: flex;
   flex-direction: column;
   margin-left: 15px;
@@ -20,7 +20,7 @@ export const DatePicker = styled.div`
   padding: 10px;
   align-items: center;
   justify-content: center;
-  border-radius: 10px 10px 0 0;
+  border-radius: 5px 5px 0 0;
 `;
 
 export const DateInterval = styled.h1`
@@ -58,7 +58,7 @@ export const Weeks = styled.div`
   display: flex;
   flex-direction: row;
   background-color: #fff;
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 5px 5px;
   margin-bottom: 15px;
 `;
 

@@ -20,6 +20,7 @@ import ComputersManagement from './pages/ComputersManagement';
 import Students from './pages/Students';
 import SideBar from './components/SideBar';
 import LibrarianHome from './pages/LibrarianHome';
+import RoomMaganement from './pages/RoomMaganement';
 
 export default function Routes() {
   return (
@@ -62,6 +63,7 @@ export default function Routes() {
         <Route path="/inbox" exact component={Inbox} />
         <Route path="/pcmanagement" exact component={ComputersManagement} />
         <Route path="/students" exact component={Students} />
+        <Route path="/roommng" exact component={RoomMaganement}/>
       </Switch>
     </>
   );
