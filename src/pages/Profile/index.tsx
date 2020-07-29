@@ -5,9 +5,12 @@ import {
   ProfileIcon,
   ProfileIconInitials,
   ProfileInformation,
+  ProfileName,
+  EmailContainer,
   ProfileInformationDetails,
   LeftSide,
   RightSide,
+  FriendsContainer,
   FriendsPanel,
   FriendsDetails,
   FriendsPanelDetails,
@@ -21,6 +24,7 @@ import {
   MessageButton
 } from './styles';
 import PageHome from '../Profile/PageHome';
+import FriendList from '../Profile/FriendList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPlus,
@@ -55,88 +59,18 @@ const Profile: React.FC = () => {
             <ProfileIconInitials>H</ProfileIconInitials>
           </ProfileIcon>
           <ProfileInformation>
-            <ProfileInformationDetails>Halyson Junior</ProfileInformationDetails>
-            <ProfileInformationDetails>20181104010017</ProfileInformationDetails>
-            <ProfileInformationDetails>santos.junior@ifrn.edu.br</ProfileInformationDetails>
+            <ProfileName>Halyson Junior</ProfileName>
+            <ProfileInformationDetails>(20181104010017)</ProfileInformationDetails>
+            <EmailContainer>
+             <ProfileInformationDetails>santos.junior@ifrn.edu.br</ProfileInformationDetails>
+            </EmailContainer>
           </ProfileInformation>
         </ProfilePanel>
         <PageHome/>
       </LeftSide>
 
       <RightSide>
-        <SearchArea>
-          <SearchingBar type="text" id="data" placeholder="Pesquise por amigos..."></SearchingBar>
-          <IconContainer>
-            <FontAwesomeIcon
-                icon={faSearch}
-                size= 'xs'
-                color= '#fff'
-            />
-          </IconContainer>
-        </SearchArea>
-
-        <FriendsPanel>
-          <FriendsPanelDetails>
-            <FriendIcon>
-              <FriendIconInitials>J</FriendIconInitials>
-            </FriendIcon>
-            <FriendsDetails>José Dudu</FriendsDetails>
-          </FriendsPanelDetails>
-
-          <FriendsPanelDetails>
-            <FriendIcon>
-              <FriendIconInitials>J</FriendIconInitials>
-            </FriendIcon>
-            <FriendsDetails>José Dudu</FriendsDetails>
-          </FriendsPanelDetails>
-
-          <FriendsPanelDetails>
-            <FriendIcon>
-              <FriendIconInitials>J</FriendIconInitials>
-            </FriendIcon>
-            <FriendsDetails>José Dudu</FriendsDetails>
-          </FriendsPanelDetails>
-
-          <FriendsPanelDetails>
-            <FriendIcon>
-              <FriendIconInitials>J</FriendIconInitials>
-            </FriendIcon>
-            <FriendsDetails>José Dudu</FriendsDetails>
-          </FriendsPanelDetails>
-
-          <FriendsPanelDetails>
-            <FriendIcon>
-              <FriendIconInitials>J</FriendIconInitials>
-            </FriendIcon>
-            <FriendsDetails>José Dudu</FriendsDetails>
-          </FriendsPanelDetails>
-
-          <FriendsPanelDetails>
-            <FriendIcon>
-              <FriendIconInitials>J</FriendIconInitials>
-            </FriendIcon>
-            <FriendsDetails>José Dudu</FriendsDetails>
-          </FriendsPanelDetails>
-
-          <FriendsPanelDetails>
-            <FriendIcon>
-              <FriendIconInitials>J</FriendIconInitials>
-            </FriendIcon>
-            <FriendsDetails>José Dudu</FriendsDetails>
-          </FriendsPanelDetails>
-
-        </FriendsPanel>
-
-        <AddArea>
-          <AddSpan>Adicione amigos agora:</AddSpan>
-          <IconContainer>
-            <FontAwesomeIcon
-                  icon={faPlus}
-                  size= 'xs'
-                  color= '#fff'
-              />
-          </IconContainer>
-        </AddArea>
+        <FriendList></FriendList>
         <MessageButton>Falar com Bibliotecário</MessageButton>
       </RightSide>
     </Container>

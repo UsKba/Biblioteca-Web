@@ -10,6 +10,7 @@ export const Container = styled.div`
   padding: 12vh;
   border-radius: 10px;
   padding: 60px 10px;
+  justify-content: space-between;
 `;
 
 export const Warning = styled.label`
@@ -21,7 +22,7 @@ export const Warning = styled.label`
   align-items: center;
   text-align: center;
   margin-top: 55px;
-
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `
 
 export const LeftItemsContainer = styled.div`
@@ -32,10 +33,12 @@ export const LeftItemsContainer = styled.div`
 
 export const MiddleItemsContainer = styled.div`
   display:flex;
-  flex: 1;
   flex-direction: column;
   align-items: center;
-  padding: 0 220.8px 0 0;
+`;
+
+export const RightItemsContainer = styled.div`
+  display: flex;
 `;
 
 export const ComponentsContainer = styled.div`
@@ -63,12 +66,12 @@ export const InputContainer = styled.div`
 
 
 export const Input = styled.input`
-  border: 1px solid #000;
+  border: 1px solid #777;
   font-size: 15px;
   padding: 10px;
   width: 280px;
   border-radius:6px;
-
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;
 
 export const InputLabel = styled.label`
@@ -92,21 +95,25 @@ export const Button = styled.button`
   padding:0.7em 0;
   width:30%;
   margin-top:5em;
-  background-color: #483D8B;
+  background-color: #007BFF;
   color: #fff;
+  border: none;
   border-radius:7px;
-
+  cursor: pointer;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;
 
 export const AddComponentButton = styled.button`
   width: 40px;
   height: 40px;
-  background-color: #483D8B;
+  background-color: #333;
   margin-left: 10px;
   font-weight: bold;
   color: #fff;
   border: none;
   border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;
 
 export const Text = styled.label`
@@ -126,16 +133,15 @@ export const SpanContainer = styled.div`
 `;
 
 export const Span = styled.span`
-  border: 1px solid #000;
+  border: 1px solid #777;
   font-size: 15px;
   padding: 10px;
   width: 500px;
   min-height: 35px;
   border-radius: 6px;
   margin-bottom:0.5em;
-  color: #fff;
-  background-color: #483D8B;
-
+  color: #000;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 
 `;
 

@@ -30,7 +30,7 @@ const Form: React.FC = () => {
   return (
     <Container>
       <InputContainer>
-        <InputLabel htmlFor="matricula">Matrícula Suap</InputLabel>
+        <InputLabel htmlFor="matricula">Matrícula Suap:</InputLabel>
         <Input
           id="matricula"
           type="text"
@@ -40,7 +40,7 @@ const Form: React.FC = () => {
       </InputContainer>
 
       <InputContainer>
-        <InputLabel htmlFor="senha">Senha</InputLabel>
+        <InputLabel htmlFor="senha">Senha:</InputLabel>
         <Input
           id="senha"
           type="password"

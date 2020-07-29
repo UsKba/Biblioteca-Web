@@ -25,9 +25,9 @@ const Homepage: React.FC = () => {
     <Container>
       <DayReservesContainer>
         <DatePicker>
-          <FontAwesomeIcon icon={faChevronLeft} size="2x" color="#483D8B" />
+          <FontAwesomeIcon icon={faChevronLeft} size="2x" color="#333" />
           <DateInterval>23/05 - 29/05</DateInterval>
-          <FontAwesomeIcon icon={faChevronRight} size="2x" color="#483D8B" />
+          <FontAwesomeIcon icon={faChevronRight} size="2x" color="#333" />
         </DatePicker>
 
         <Weeks>

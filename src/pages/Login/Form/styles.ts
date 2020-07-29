@@ -23,7 +23,9 @@ export const Input = styled.input`
   border: 1px solid #000;
   font-size: 25px;
   padding: 10px;
-  border: 1px solid #483d8b;
+  border-radius: 8px;
+  border: 1px solid #444;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   @media screen and (max-width: 400px){
     font-size: 18px;
     padding: 7.5px;
@@ -34,13 +36,15 @@ export const InputLabel = styled.label`
   font-size: 16px;
   font-weight: bold;
   margin-left: 10px;
-  color: #483d8b;
+  color: #333;
 `;
 
 export const LoginButton = styled.button`
   margin: 15px 0px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 
-  background-image: linear-gradient(to right, #483d8b, #7b68ee);
+
+  background-image: linear-gradient(to right, #AACC00, #2B9348);
   cursor: pointer;
 
   color: #fff;
@@ -55,7 +59,7 @@ export const LoginButton = styled.button`
   transition: 0.5s;
   &:disabled {
     background-image: none;
-    background-color: #777;
+    background-color: #555;
     cursor: default;
   }
   @media screen and (max-width: 400px){
@@ -65,10 +69,10 @@ export const LoginButton = styled.button`
 `;
 
 export const ForgotPassword = styled.a`
-  color: #483d8b;
-  text-decoration: none;
+  color: #333;
+  text-decoration: underline;
   font-size: 16px;
-  margin-top: 25px;
+  margin-top: 5px;
 `;
 
 export const Warning = styled.p`

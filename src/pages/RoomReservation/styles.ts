@@ -93,8 +93,8 @@ export const Week = styled.div`
 export const WeekName = styled.span<IWeekName>`
   cursor: pointer;
 
-  color: ${(props) => (props.active ? '#483D8B' : '#333')};
-  ${(props) => props.active && 'border-bottom: 5px solid #483D8B'};
+  color: ${(props) => (props.active ? '#333' : '#333')};
+  ${(props) => props.active && 'border-bottom: 5px solid #333'};
   ${(props) => props.active && 'font-weight: bold'};
 
   padding: 5px 15px;

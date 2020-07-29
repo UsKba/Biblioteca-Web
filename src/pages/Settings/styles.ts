@@ -19,7 +19,7 @@ export const Button = styled.button<ButtonProps>`
   height: fit-content;
   font-size: 0.9em;
   padding: 1em 1.5em;
-  background-color: ${({active})=> active===true?'#7B68EE':'#483D8B'};
+  background-color: ${({active})=> active===true?'#2B9348':'#333'};
   color: #fff;
   border: none;
   margin-bottom: 0.3em;

@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   flex: 1;
+  margin-top: 180px;
 `;
 export const DayReservesContainer = styled.div`
   width: 65%;
@@ -21,6 +22,7 @@ export const DatePicker = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 5px 5px 0 0;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;
 
 export const DateInterval = styled.h1`
@@ -44,8 +46,8 @@ interface IWeekName {
 export const WeekName = styled.span<IWeekName>`
   cursor: pointer;
 
-  color: ${(props) => (props.active ? '#483D8B' : '#333')};
-  ${(props) => props.active && 'border-bottom: 5px solid #483D8B'};
+  color: ${(props) => (props.active ? '#333' : '#333')};
+  ${(props) => props.active && 'border-bottom: 5px solid #333'};
   ${(props) => props.active && 'font-weight: bold'};
 
   padding: 5px 15px;
@@ -60,6 +62,7 @@ export const Weeks = styled.div`
   background-color: #fff;
   border-radius: 0 0 5px 5px;
   margin-bottom: 15px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;
 
 export const Reserves = styled.div`
@@ -80,6 +83,7 @@ export const Reserve = styled.div`
   background-color: #fff;
   border-radius: 5px;
   min-width: 180px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;
 
 export const Room = styled.span`

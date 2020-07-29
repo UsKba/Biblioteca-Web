@@ -1,39 +1,5 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  display: flex;
-  flex: 1;
-`;
-
-export const ProfilePanel = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
-  width: 40%;
-  background-color: #fff;
-  height: 30em;
-  padding: 10px;
-  border-radius: 5px;
-  /* min-width: 25%; */
-  min-height: 120px;
-  margin: 40px 0 0 115px;
-  align-items: center;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-
-`;
-
-export const LeftSide = styled.div`
-  display:flex;
-  flex-direction: column;
-`;
-
-export const RightSide = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  margin-left: auto;
-`
-
 export const SearchingBar = styled.input`
   height: 25px;
   width: 190px;
@@ -82,19 +48,6 @@ export const FriendsPanelDetails = styled.div`
   margin-bottom: 10px;
 `;
 
-export const ProfileIcon = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  height: 100px;
-  background-color: #333;
-  color: #fff;
-  border-radius: 100px;
-  margin-top: 23px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-`;
-
 export const FriendIcon = styled.div`
   display: flex;
   align-items: center;
@@ -107,37 +60,8 @@ export const FriendIcon = styled.div`
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;
 
-export const ProfileIconInitials = styled.span`
-  font-size: 50px;
-`;
-
 export const FriendIconInitials = styled.span`
   font-size: 15px;
-`;
-
-export const ProfileInformation = styled.div`
-  margin-top: 30px;
-  height: 70px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: space-between;
-`;
-
-export const ProfileInformationDetails = styled.span`
-  font-weight: bold;
-`;
-
-export const ProfileName = styled.span`
-  font-size: 28px;
-  font-weight: bold;
-`;
-
-export const EmailContainer = styled.div`
-  margin-top: 95%;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;
 
 export const FriendsDetails = styled.div`
@@ -165,23 +89,5 @@ export const AddSpan = styled.span`
   color: #333;
   padding: 4px 10px;
   border-radius: 5px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-`;
-
-export const MessageButton = styled.button`
-  position: fixed;
-  right: 15px;
-  bottom: 15px;
-  margin-top: auto;
-  background-color: #333;
-  cursor: pointer;
-  color: #fff;
-  font-weight: bold;
-  font-size: 16px;
-  width: 200px;
-  padding: 20px 0px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;

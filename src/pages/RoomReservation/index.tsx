@@ -27,13 +27,13 @@ const RoomReservation: React.FC = () => {
         <FontAwesomeIcon
           icon={faChevronLeft}
           size="2x"
-          color={colors.primary}
+          color={colors.black}
         />
         <DateInterval>25/04 - 29/05</DateInterval>
         <FontAwesomeIcon
           icon={faChevronRight}
           size="2x"
-          color={colors.primary}
+          color={colors.black}
         />
       </DatePicker>
       <Weeks>

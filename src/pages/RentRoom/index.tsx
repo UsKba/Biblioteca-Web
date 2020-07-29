@@ -4,6 +4,7 @@ import {
     ComponentsContainer,
     LeftItemsContainer,
     MiddleItemsContainer,
+    RightItemsContainer,
     InputButtonContainer,
     InputContainer,
     InputLabel,
@@ -17,6 +18,8 @@ import {
     Text,
     Warning
 } from './styles';
+
+import FriendList from '../RentRoom/FriendList';
 
 const RentRoom: React.FC = () => {
 
@@ -42,33 +45,36 @@ const RentRoom: React.FC = () => {
       </LeftItemsContainer>
 
       <MiddleItemsContainer>
-      <ComponentsContainer>
-        <InputContainer>
-          <InputLabel>Adicionar Componentes:</InputLabel>
-          <InputButtonContainer>
-            <Input
-            type='text'
-            value={username}
-            onChange={(event) =>{
-              setUsername(event.target.value);
+        <ComponentsContainer>
+          <InputContainer>
+            <InputLabel>Adicionar Componentes:</InputLabel>
+            <InputButtonContainer>
+              <Input
+              type='text'
+              value={username}
+              onChange={(event) =>{
+                setUsername(event.target.value);
 
-            }}
-            >
-            </Input>
-            <AddComponentButton onClick={handleAddComponent}> + </AddComponentButton>
-          </InputButtonContainer>
+              }}
+              >
+              </Input>
+              <AddComponentButton onClick={handleAddComponent}> + </AddComponentButton>
+            </InputButtonContainer>
 
-        </InputContainer>
-        <SpanContainer>
-          <SpanLabel>Grupo:</SpanLabel>
-          <Span>{components[0]}</Span>
-          <Span>{components[1]}</Span>
-          <Span>{components[2]}</Span>
-        </SpanContainer>
-        <Button >Reservar Sala</Button>
-      </ComponentsContainer>
+          </InputContainer>
+          <SpanContainer>
+            <SpanLabel>Grupo:</SpanLabel>
+            <Span>{components[0]}</Span>
+            <Span>{components[1]}</Span>
+            <Span>{components[2]}</Span>
+          </SpanContainer>
+          <Button >Reservar Sala</Button>
+        </ComponentsContainer>
       </MiddleItemsContainer>
 
+      <RightItemsContainer>
+        <FriendList></FriendList>
+      </RightItemsContainer>
     </Container>
   );
 }
