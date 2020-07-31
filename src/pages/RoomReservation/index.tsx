@@ -11,6 +11,10 @@ import {
   Weeks,
   Week,
   WeekName,
+  Color,
+  ColorStatus,
+  ColorName,
+  RoomTypes,
 } from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -36,6 +40,23 @@ const RoomReservation: React.FC = () => {
           color={colors.black}
         />
       </DatePicker>
+      <RoomTypes>
+        <ColorStatus>
+          <Color status={0} /> <ColorName>Ocupada</ColorName>
+        </ColorStatus>
+        <ColorStatus>
+          <Color status={1}/> <ColorName>Reservada</ColorName>
+        </ColorStatus>
+        <ColorStatus>
+          <Color status={2}/> <ColorName>Disponível</ColorName>
+        </ColorStatus>
+        <ColorStatus>
+          <Color status={3}/> <ColorName>Sua Reserva</ColorName>
+        </ColorStatus>
+        <ColorStatus>
+          <Color status={4}/> <ColorName>Indisponível</ColorName>
+        </ColorStatus>
+      </RoomTypes>
       <Weeks>
         <Week>
           <WeekName>Segunda</WeekName>
@@ -76,7 +97,7 @@ const RoomReservation: React.FC = () => {
 
         <Line>
           <Rectangle backgroundColor="#1c91ff">08:00 - 09:00</Rectangle>
-          <Rectangle backgroundColor={colors.secondary}>
+          <Rectangle backgroundColor="#2B9348">
             <StudentName>Nathan</StudentName>
             <StudentName>José Eduardo</StudentName>
             <StudentName>Halyson</StudentName>
@@ -101,7 +122,7 @@ const RoomReservation: React.FC = () => {
 
         <Line>
           <Rectangle backgroundColor="#1c91ff">10:00 - 11:00</Rectangle>
-          <Rectangle backgroundColor="#F55">
+          <Rectangle backgroundColor="orange">
             <StudentName>Natália</StudentName>
             <StudentName>João Eduardo</StudentName>
             <StudentName>Júlio</StudentName>
@@ -124,9 +145,9 @@ const RoomReservation: React.FC = () => {
             <StudentName>Halynildo</StudentName>
             <StudentName>...</StudentName>
           </Rectangle>
+          <Rectangle backgroundColor="#333"></Rectangle>
           <Rectangle></Rectangle>
-          <Rectangle></Rectangle>
-          <Rectangle></Rectangle>
+          <Rectangle backgroundColor="#333"></Rectangle>
         </Line>
       </RoomList>
     </Container>

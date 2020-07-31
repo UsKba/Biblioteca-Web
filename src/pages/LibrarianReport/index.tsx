@@ -7,7 +7,7 @@ import {
     SubjectContainer,
     Button,
     Label,
-    Span,
+    Message,
     Select
 } from './styles';
 
@@ -25,10 +25,8 @@ const LibrarianReport: React.FC = () => {
             </SubjectContainer>
 
             <ContentContainer>
-              <Label>Conteúdo:
-
-              </Label>
-              <Span>Mensagem...</Span>
+              <Label>Conteúdo:</Label>
+              <Message type="text" id="data" placeholder="Digite aqui..."></Message>
             </ContentContainer>
 
             <Button>Enviar</Button>

@@ -13,12 +13,14 @@ export const BoxContainer = styled.div`
   background-color:#fff;
   height: 80%;
   width: 60%;
+  border-radius: 7px;
 `;
 
 export const SubjectContainer = styled.div`
-    margin-top: 0.5em;
-    display: flex;
-    flex-direction: row;
+  margin-top: 0.5em;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
 `;
 
 export const ContentContainer = styled.div`
@@ -32,11 +34,11 @@ export const Button = styled.button`
   padding: 0.5em 2em;
   margin-top: 20px;
   margin-left: 0.5em;
-  background-color: #483D8B;
+  background-color: #2B9348;
   color: #fff;
   border: none;
   width: 30%;
-
+  border-radius: 5px;
   @media (max-width: 1024px) {
 
   }
@@ -48,12 +50,14 @@ export const Label = styled.label`
   font-size: 20px;
   font-weight: bolder;
   margin-right: 0.3em;
+
 `;
 
-export const Span = styled.span`
+export const Message = styled.input`
   font-size: 16px;
-  margin-left: 2em;
-  padding: 0 1em 17em 0;
+  margin: 0 10px 0 10px;
+  padding: 0 1em 17em 1em;
+
 `;
 
 export const Select = styled.select`

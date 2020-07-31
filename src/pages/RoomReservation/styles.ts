@@ -19,6 +19,40 @@ export const DatePicker = styled.div`
   border-radius: 10px 10px 0 0;
 `;
 
+export const RoomTypes = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  width: 90%;
+  background-color: #fff;
+  padding: 10px 120px 10px 120px;
+`;
+
+interface IRoomStatus {
+  status: number;
+}
+
+const RoomColors = ['#f55', 'orange', 'white', '#2B9348', '#333'];
+
+export const Color = styled.div<IRoomStatus>`
+  width: 25px;
+  height: 25px;
+  background-color: ${({ status }) => RoomColors[status]};
+  border-radius: 100px;
+  align-self: center;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+`;
+
+export const ColorStatus = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const ColorName = styled.span`
+  font-size: 16px;
+  margin-left: 5px;
+`;
+
 export const DateInterval = styled.h1`
   font-weight: lighter;
   font-size: 30px;
@@ -31,7 +65,6 @@ export const RoomList = styled.div`
   flex: 1;
   width: 90%;
   align-self: center;
-
   background-color: #fff;
 `;
 

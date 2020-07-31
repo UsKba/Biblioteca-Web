@@ -30,6 +30,7 @@ import {
   faPlus,
   faSearch
 } from '@fortawesome/free-solid-svg-icons';
+import {Link} from 'react-router-dom'
 
 const users = [
   {
@@ -71,7 +72,10 @@ const Profile: React.FC = () => {
 
       <RightSide>
         <FriendList></FriendList>
-        <MessageButton>Falar com Bibliotecário</MessageButton>
+        <Link to='/report'>
+          <MessageButton>Falar com Bibliotecário</MessageButton>
+        </Link>
+
       </RightSide>
     </Container>
 

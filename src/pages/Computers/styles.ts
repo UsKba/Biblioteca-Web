@@ -9,7 +9,7 @@ export const Container = styled.div`
   justify-content: space-between;
   background-color: #fff;
   align-self: center;
-  padding: 12vh;
+  padding: 50px;
   border-radius: 10px;
   margin: 15px 0 15px 0;
 `;
@@ -55,6 +55,7 @@ export const ComputersOverviewContainer = styled.div`
   flex-wrap: wrap;
   background-color: #eee;
   width: 40%;
+  border-radius: 5px;
 `;
 
 export const ComputerIcon = styled(FontAwesomeIcon).attrs({
@@ -71,4 +72,16 @@ export const ComputerOverview = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+interface ButtonProps {
+  active?: boolean;
+}
+
+export const Button = styled.button<ButtonProps>`
+  background-color: white;
+  border: none;
+  max-height: 2em;
+  align-self: center;
+  margin-left: 1em;
 `;

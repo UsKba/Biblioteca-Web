@@ -1,10 +1,32 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faChevronLeft,
+  faChevronRight,
+} from '@fortawesome/free-solid-svg-icons';
+import {useHistory, Switch, Route } from 'react-router-dom';
 
-import { Container, ComputerContainer, ComputerName, ComputerStatus, ComputersContainer, ComputersOverviewContainer, ComputerOverview, ComputerIcon } from './styles';
+import { Container,
+         ComputerContainer,
+         ComputerName,
+         ComputerStatus,
+         ComputersContainer,
+         ComputersOverviewContainer,
+         ComputerOverview,
+         ComputerIcon,
+         Button
+        } from './styles';
 
 const Computers: React.FC = () => {
-  return <Container>
-
+  const history = useHistory();
+  const pathname = history.location.pathname;
+  return  (
+  <Container>
+    <Switch>
+      <Route path="/computers/dois" exact>
+                <div>Configurações do usuário</div>
+      </Route>
+    </Switch>
 
     <ComputersContainer>
       <ComputerContainer>
@@ -118,8 +140,10 @@ const Computers: React.FC = () => {
 
 
     </ComputersOverviewContainer>
+    <Button onClick={() => history.push('/computers/dois/')} active={pathname === '/computers/dois/'}><FontAwesomeIcon icon={faChevronRight} size="2x" color="#333" /></Button>
 
   </Container>
+  );
 }
 
 export default Computers;
