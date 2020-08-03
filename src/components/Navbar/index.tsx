@@ -9,6 +9,9 @@ import {
   faHome,
   faBell,
   faCog,
+  faBars,
+  faTv,
+  faEnvelope
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -17,8 +20,13 @@ import {
   NavItem,
   NavItemName,
   NavLogo,
-  Leftside,
-  Rightside,
+  LeftSide,
+  RightSide,
+  MiddleSide,
+  Logo,
+  Sidebar,
+  SidebarItem,
+  SidebarItemName
 } from './styles';
 
 import {Link} from 'react-router-dom'
@@ -48,75 +56,87 @@ const users = [
 
 const user = users.find((user) => user.email === 'neitan@gmail.com');
 
-
-
-console.log('user');
-console.log(user);
-
 const NavbarComponent: React.FC = () => {
 
 
   return (
-    <Container>
-      <Navbar>
-        <Leftside>
-          <Link to="/login">
-            <NavItem>
-              <NavLogo src={require('../../assets/Logo.png')} />
-            </NavItem>
-          </Link>
-          <Link to="/reserve">
-            <NavItem>
-              <FontAwesomeIcon
-                icon={faChalkboardTeacher}
-                size="lg"
-                color="#FFF"
-              />
-              <NavItemName>Salas</NavItemName>
-            </NavItem>
-          </Link>
-          <Link to="/computers">
-            <NavItem>
-              <FontAwesomeIcon icon={faDesktop} size="lg" color="#fff" />
+    <>
+      <Container>
+        <Navbar>
+          <LeftSide>
+            <Link to="#">
+              <NavItem>
+              <FontAwesomeIcon icon={faBars} size="2x" color="#333" />
+              </NavItem>
+            </Link>
+          </LeftSide>
 
-              <NavItemName>Computadores</NavItemName>
-            </NavItem>
-          </Link>
+          <MiddleSide>
+            <Logo src={require('../../assets/Logo_Name.png')}/>
+          </MiddleSide>
 
-          <Link to="/topview">
-          <NavItem>
-            <FontAwesomeIcon icon={faBookOpen} size="lg" color="#fff" />
-            <NavItemName>Biblioteca</NavItemName>
-          </NavItem>
-          </Link>
-          <Link to="/profile">
-            <NavItem>
-              <FontAwesomeIcon icon={faUser} size="lg" color="#fff" />
-              <NavItemName>Perfil</NavItemName>
-            </NavItem>
-          </Link>
-        </Leftside>
-
-        <Rightside>
-          <Link to="/home">
+          <RightSide>
+            <Link to="/settings/notificacao">
             <NavItem small>
-              <FontAwesomeIcon icon={faHome} size="lg" color="#fff" />
+              <FontAwesomeIcon icon={faBell} size="2x" color="#333" />
             </NavItem>
-          </Link>
-          <Link to="/settings/notificacao">
-          <NavItem small>
-            <FontAwesomeIcon icon={faBell} size="lg" color="#fff" />
-          </NavItem>
-          </Link>
-          <Link to="/settings/">
-            <NavItem small>
-              <FontAwesomeIcon icon={faCog} size="lg" color="#fff" />
-            </NavItem>
-          </Link>
-        </Rightside>
-      </Navbar>
-    </Container>
+            </Link>
+            <Link to="/settings/">
+              <NavItem small>
+                <FontAwesomeIcon icon={faCog} size="2x" color="#333" />
+              </NavItem>
+            </Link>
+          </RightSide>
+        </Navbar>
+      </Container>
+
+      <Sidebar>
+        <SidebarItem>
+
+          <FontAwesomeIcon icon={faHome} size="lg" color="#333" />
+          <SidebarItemName>Início</SidebarItemName>
+        </SidebarItem>
+
+        <SidebarItem>
+
+          <FontAwesomeIcon icon={faUser} size="lg" color="#333" />
+          <SidebarItemName>Perfil</SidebarItemName>
+        </SidebarItem>
+
+        <SidebarItem>
+
+          <FontAwesomeIcon icon={faBookOpen} size="lg" color="#333" />
+          <SidebarItemName>Biblioteca</SidebarItemName>
+        </SidebarItem>
+
+        <SidebarItem>
+
+          <FontAwesomeIcon icon={faChalkboardTeacher} size="lg" color="#333" />
+          <SidebarItemName>Salas</SidebarItemName>
+        </SidebarItem>
+
+        <SidebarItem>
+
+          <FontAwesomeIcon icon={faTv} size="lg" color="#333" />
+          <SidebarItemName>Computadores</SidebarItemName>
+        </SidebarItem>
+        <SidebarItem>
+
+          <FontAwesomeIcon icon={faEnvelope} size="lg" color="#333" />
+          <SidebarItemName>Sobre</SidebarItemName>
+        </SidebarItem>
+
+      </Sidebar>
+    </>
+
+
   );
 };
 
 export default NavbarComponent;
+
+/* <Link to="/profile">
+            <NavItem small>
+              <FontAwesomeIcon icon={faHome} size="lg" color="#333" />
+            </NavItem>
+          </Link>*/

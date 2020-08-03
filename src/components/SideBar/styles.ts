@@ -10,7 +10,7 @@ export const SideBarL = styled.ul`
   flex-direction: column;
   width: 16%;
   height: 100%;
-  background-image: linear-gradient(to right, #483D8B, #7B68EE);
+  background-color: #fff;
   list-style: none;
 `;
 
@@ -20,20 +20,19 @@ export const LibrarianIcon = styled.div`
   height: 160px;
   background-color:white;
   margin: 5px 0 10px 30px;
-  border: 3px solid #fff;
+  border: 3px solid #333;
 `;
 
 export const LibrarianName = styled.span`
   text-align: center;
-  color: #fff;
+  color: #333;
   padding: 5px;
 `;
 
 export const LibrarianInfo = styled.li`
   padding: 12px;
-  background-color: #7B68EE;
-  color: #fff;
-  font-weight: lighter;
+  background-color: #fff;
+  color: #333;
   margin-bottom: 2px;
   text-align: center;
   cursor: pointer;

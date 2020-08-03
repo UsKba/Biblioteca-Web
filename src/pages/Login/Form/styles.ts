@@ -24,7 +24,7 @@ export const Input = styled.input`
   font-size: 25px;
   padding: 10px;
   border-radius: 8px;
-  border: 1px solid #444;
+  border: 1px solid rgba(222,222,222, 0.7);
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   @media screen and (max-width: 400px){
     font-size: 18px;

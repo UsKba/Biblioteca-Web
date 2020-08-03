@@ -11,18 +11,22 @@ export const DayReservesContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 15px;
+  border-radius: 5px;
+  padding: 15px 15px 0 15px;
+  background-color: rgba(0,0,0, 0.5);
+  align-items:center;
 `;
 
 export const DatePicker = styled.div`
   display: flex;
   flex-direction: row;
   background-color: #fff;
-  margin-top: 15px;
   padding: 10px;
   align-items: center;
   justify-content: center;
   border-radius: 5px 5px 0 0;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+  width: 100%;
 `;
 
 export const DateInterval = styled.h1`
@@ -61,8 +65,8 @@ export const Weeks = styled.div`
   flex-direction: row;
   background-color: #fff;
   border-radius: 0 0 5px 5px;
+
   margin-bottom: 15px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;
 
 export const Reserves = styled.div`
@@ -83,7 +87,7 @@ export const Reserve = styled.div`
   background-color: #fff;
   border-radius: 5px;
   min-width: 180px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
 `;
 
 export const Room = styled.span`

@@ -8,7 +8,6 @@ export const SearchingBar = styled.input`
   border-radius: 5px;
   padding: 5px;
   cursor: text;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;
 
 export const IconContainer = styled.div`
@@ -20,11 +19,13 @@ export const IconContainer = styled.div`
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;
 
 export const FriendsContainer = styled.div`
   margin: 40px 40px 0 0;
+  background-color: rgba(3,3,3, 0.5);
+  padding: 10px;
+  border-radius: 5px;
 `;
 
 export const FriendsPanel = styled.div`
@@ -36,7 +37,6 @@ export const FriendsPanel = styled.div`
   margin-top: 7px;
   padding: 10px;
   border-radius: 5px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 
   /* margin-right: auto; */
   /* margin-left: 970px; */
@@ -89,5 +89,4 @@ export const AddSpan = styled.span`
   color: #333;
   padding: 4px 10px;
   border-radius: 5px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;
