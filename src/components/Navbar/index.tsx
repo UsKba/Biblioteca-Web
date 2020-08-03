@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -11,7 +11,7 @@ import {
   faCog,
   faBars,
   faTv,
-  faEnvelope
+  faEnvelope,
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -26,10 +26,10 @@ import {
   Logo,
   Sidebar,
   SidebarItem,
-  SidebarItemName
+  SidebarItemName,
 } from './styles';
 
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const users = [
   {
@@ -57,29 +57,41 @@ const users = [
 const user = users.find((user) => user.email === 'neitan@gmail.com');
 
 const NavbarComponent: React.FC = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  function closeSidebar() {
+    setSidebarOpen(false);
+  }
+
+  function showSidebar() {
+    setSidebarOpen(true);
+  }
+
+  function toggleSidebar() {
+    setSidebarOpen(!sidebarOpen);
+  }
 
   return (
-    <>
+    <div onMouseLeave={closeSidebar}>
       <Container>
         <Navbar>
           <LeftSide>
-            <Link to="#">
+            <Link to="#" onMouseEnter={showSidebar} onClick={toggleSidebar}>
               <NavItem>
-              <FontAwesomeIcon icon={faBars} size="2x" color="#333" />
+                <FontAwesomeIcon icon={faBars} size="2x" color="#333" />
               </NavItem>
             </Link>
           </LeftSide>
 
           <MiddleSide>
-            <Logo src={require('../../assets/Logo_Name.png')}/>
+            <Logo src={require('../../assets/Logo_Name.png')} />
           </MiddleSide>
 
           <RightSide>
             <Link to="/settings/notificacao">
-            <NavItem small>
-              <FontAwesomeIcon icon={faBell} size="2x" color="#333" />
-            </NavItem>
+              <NavItem small>
+                <FontAwesomeIcon icon={faBell} size="2x" color="#333" />
+              </NavItem>
             </Link>
             <Link to="/settings/">
               <NavItem small>
@@ -90,46 +102,51 @@ const NavbarComponent: React.FC = () => {
         </Navbar>
       </Container>
 
-      <Sidebar>
+      <Sidebar open={sidebarOpen}>
         <SidebarItem>
-
-          <FontAwesomeIcon icon={faHome} size="lg" color="#333" />
-          <SidebarItemName>Início</SidebarItemName>
+          <Link to="/profile">
+            <FontAwesomeIcon icon={faHome} size="lg" color="#333" />
+            <SidebarItemName>Início</SidebarItemName>
+          </Link>
         </SidebarItem>
 
         <SidebarItem>
-
-          <FontAwesomeIcon icon={faUser} size="lg" color="#333" />
-          <SidebarItemName>Perfil</SidebarItemName>
+          <Link to="/profile">
+            <FontAwesomeIcon icon={faUser} size="lg" color="#333" />
+            <SidebarItemName>Perfil</SidebarItemName>
+          </Link>
         </SidebarItem>
 
         <SidebarItem>
-
-          <FontAwesomeIcon icon={faBookOpen} size="lg" color="#333" />
-          <SidebarItemName>Biblioteca</SidebarItemName>
+          <Link to="/topview">
+            <FontAwesomeIcon icon={faBookOpen} size="lg" color="#333" />
+            <SidebarItemName>Biblioteca</SidebarItemName>
+          </Link>
         </SidebarItem>
 
         <SidebarItem>
-
-          <FontAwesomeIcon icon={faChalkboardTeacher} size="lg" color="#333" />
-          <SidebarItemName>Salas</SidebarItemName>
+          <Link to="/reserve">
+            <FontAwesomeIcon
+              icon={faChalkboardTeacher}
+              size="lg"
+              color="#333"
+            />
+            <SidebarItemName>Salas</SidebarItemName>
+          </Link>
         </SidebarItem>
 
         <SidebarItem>
-
-          <FontAwesomeIcon icon={faTv} size="lg" color="#333" />
-          <SidebarItemName>Computadores</SidebarItemName>
+          <Link to="/computers">
+            <FontAwesomeIcon icon={faTv} size="lg" color="#333" />
+            <SidebarItemName>Computadores</SidebarItemName>
+          </Link>
         </SidebarItem>
         <SidebarItem>
-
           <FontAwesomeIcon icon={faEnvelope} size="lg" color="#333" />
           <SidebarItemName>Sobre</SidebarItemName>
         </SidebarItem>
-
       </Sidebar>
-    </>
-
-
+    </div>
   );
 };
 

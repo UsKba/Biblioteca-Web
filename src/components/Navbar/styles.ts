@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  margin-bottom: 70px;
+`;
 
 export const Navbar = styled.ul`
+  position: fixed;
   background-color: #fff;
   width: 100%;
   display: flex;
@@ -12,7 +15,6 @@ export const Navbar = styled.ul`
   justify-content: space-between;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   height: 70px;
-
 `;
 
 export const LeftSide = styled.div`
@@ -43,7 +45,7 @@ export const NavItemName = styled.span`
 `;
 
 interface NavItemProps {
-  small ?: boolean;
+  small?: boolean;
 }
 
 export const NavItem = styled.li<NavItemProps>`
@@ -55,36 +57,48 @@ export const NavItem = styled.li<NavItemProps>`
   cursor: pointer;
 
   ${(props) => {
-    if(props.small) return "margin-right: 0px;"
+    if (props.small) return 'margin-right: 0px;';
   }}
 `;
-
 
 export const NavLogo = styled.img`
   height: 53px;
   width: 53px;
 `;
 
+interface SidebarProps {
+  open: boolean;
+}
 
-export const Sidebar = styled.div`
+export const Sidebar = styled.div<SidebarProps>`
   display: flex;
   flex-direction: column;
-  background-color: #FFF;
+  background-color: #fff;
   width: 270px;
   z-index: 1;
-  height: 350px;
-  position: absolute;
+  height: fit-content;
+  position: fixed;
   top: 70px;
+  height: 100%;
+  left: -270px;
   border-radius: 0px 0px 7px 7px;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
-`
+  box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.2);
+
+  transition: 0.5s;
+
+  ${(props) => {
+    if (props.open) return 'left: 0px;';
+  }}
+`;
 
 export const SidebarItem = styled.div`
   display: flex;
   margin: 10px 15px;
-`
+  align-items: center;
+`;
 
 export const SidebarItemName = styled.span`
   font-size: 22px;
   margin-left: 8px;
-`
+  color: black;
+`;
