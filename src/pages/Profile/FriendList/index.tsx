@@ -32,6 +32,18 @@ const FriendList: React.FC = () => {
           </SearchArea>
 
           <FriendsPanel>
+
+            <AddArea>
+              <AddSpan>Adicione amigos agora:</AddSpan>
+              <IconContainer>
+                <FontAwesomeIcon
+                      icon={faPlus}
+                      size= 'xs'
+                      color= '#fff'
+                  />
+              </IconContainer>
+            </AddArea>
+
             <FriendsPanelDetails>
               <FriendIcon>
                 <FriendIconInitials>J</FriendIconInitials>
@@ -83,16 +95,6 @@ const FriendList: React.FC = () => {
 
           </FriendsPanel>
 
-          <AddArea>
-            <AddSpan>Adicione amigos agora:</AddSpan>
-            <IconContainer>
-              <FontAwesomeIcon
-                    icon={faPlus}
-                    size= 'xs'
-                    color= '#fff'
-                />
-            </IconContainer>
-          </AddArea>
         </FriendsContainer>
   );
 }

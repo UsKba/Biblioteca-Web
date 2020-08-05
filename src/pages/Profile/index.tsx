@@ -9,6 +9,7 @@ import {
   EmailContainer,
   ProfileInformationDetails,
   LeftSide,
+  MiddleSide,
   RightSide,
   FriendsContainer,
   FriendsPanel,
@@ -67,8 +68,12 @@ const Profile: React.FC = () => {
             </EmailContainer>
           </ProfileInformation>
         </ProfilePanel>
-        <PageHome/>
+
       </LeftSide>
+
+      <MiddleSide>
+        <PageHome/>
+      </MiddleSide>
 
       <RightSide>
         <FriendList></FriendList>

@@ -1,26 +1,29 @@
 import styled from 'styled-components';
+import colors from '../../../styles/colors';
 
 export const Container = styled.div`
   display: flex;
+  align-self: center;
+  justify-content: center;
   align-items: center;
   flex: 1;
-  margin-top: 180px;
+  margin-top: 40px;
 `;
 export const DayReservesContainer = styled.div`
-  width: 65%;
+  width: 85%;
   display: flex;
   flex-direction: column;
   margin-left: 15px;
   border-radius: 5px;
   padding: 15px 15px 0 15px;
-  background-color: rgba(0,0,0, 0.5);
+  background-color: rgba(3,3,3,0.8);
   align-items:center;
 `;
 
 export const DatePicker = styled.div`
   display: flex;
   flex-direction: row;
-  background-color: #fff;
+  background-color: ${colors.terciary};
   padding: 10px;
   align-items: center;
   justify-content: center;
@@ -63,9 +66,8 @@ export const Weeks = styled.div`
   align-self: center;
   display: flex;
   flex-direction: row;
-  background-color: #fff;
+  background-color: ${colors.terciary};
   border-radius: 0 0 5px 5px;
-
   margin-bottom: 15px;
 `;
 
@@ -84,7 +86,7 @@ export const Reserve = styled.div`
   margin-bottom: 15px;
   padding: 20px;
   flex-direction: column;
-  background-color: #fff;
+  background-color: ${colors.terciary};
   border-radius: 5px;
   min-width: 180px;
 

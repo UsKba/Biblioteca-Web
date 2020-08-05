@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import colors from '../../styles/colors';
 
 export const Container = styled.div`
   margin-bottom: 70px;
@@ -73,7 +74,7 @@ interface SidebarProps {
 export const Sidebar = styled.div<SidebarProps>`
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background-color: ${colors.terciary};
   width: 270px;
   z-index: 1;
   height: fit-content;

@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import colors from '../../../styles/colors';
 
 export const SearchingBar = styled.input`
   height: 25px;
-  width: 190px;
-  background-color: #fff;
+  width: 220px;
+  background-color: ${colors.terciary};
   border: none;
   border-radius: 5px;
   padding: 5px;
@@ -23,7 +24,7 @@ export const IconContainer = styled.div`
 
 export const FriendsContainer = styled.div`
   margin: 40px 40px 0 0;
-  background-color: rgba(3,3,3, 0.5);
+  background-color: rgba(3,3,3,0.8);
   padding: 10px;
   border-radius: 5px;
 `;
@@ -33,7 +34,7 @@ export const FriendsPanel = styled.div`
   flex-direction: column;
   min-height: 300px;
   min-height: 120px;
-  background-color: #fff;
+  background-color: ${colors.terciary};
   margin-top: 7px;
   padding: 10px;
   border-radius: 5px;
@@ -55,7 +56,7 @@ export const FriendIcon = styled.div`
   width: 35px;
   height: 35px;
   background-color: #333;
-  color: #fff;
+  color: ${colors.terciary};
   border-radius: 100px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;
@@ -70,22 +71,21 @@ export const FriendsDetails = styled.div`
 
 export const SearchArea = styled.div`
   display: flex;
-  width: 225px;
+  width: 250px;
   justify-content: space-between;
 `;
 
 export const AddArea = styled.div`
   display: flex;
   width: 225px;
-  margin-top: 6px;
-
+  margin-bottom: 5px;
   justify-content: space-between;
 `;
 
 export const AddSpan = styled.span`
   font-size: 15px;
   font-weight: bold;
-  background-color: #fff;
+  background-color: ${colors.terciary};
   color: #333;
   padding: 4px 10px;
   border-radius: 5px;

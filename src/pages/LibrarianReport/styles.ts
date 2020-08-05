@@ -53,7 +53,7 @@ export const Label = styled.label`
 
 `;
 
-export const Message = styled.input`
+export const Message = styled.textarea`
   font-size: 16px;
   margin: 0 10px 0 10px;
   padding: 0 1em 17em 1em;

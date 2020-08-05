@@ -26,7 +26,7 @@ const LibrarianReport: React.FC = () => {
 
             <ContentContainer>
               <Label>Conteúdo:</Label>
-              <Message type="text" id="data" placeholder="Digite aqui..."></Message>
+              <Message id="data" placeholder="Digite aqui..."></Message>
             </ContentContainer>
 
             <Button>Enviar</Button>
