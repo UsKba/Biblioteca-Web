@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import background from '../assets/doodles.png';
 
 export default createGlobalStyle`
   * {
@@ -13,6 +14,7 @@ export default createGlobalStyle`
   }
   body {
     background-image: linear-gradient(to right, #AACC00, #2B9348);
+    background-image: ${background};
     display: flex;
     flex-direction: column;
     font-family: Arial, Helvetica, sans-serif;

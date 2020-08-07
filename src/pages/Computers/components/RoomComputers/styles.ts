@@ -4,6 +4,7 @@ import { faDesktop } from '@fortawesome/free-solid-svg-icons';
 
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
   flex: 1;
   width: 98%;
   justify-content: space-between;
@@ -25,7 +26,7 @@ export const ComputersContainer = styled.div`
 
 export const ComputerContainer = styled.div`
   display: flex;
-  flex-basis: 16.6666%;
+  flex-basis: 15%;
   justify-content: center;
   align-items: center;
 `;
@@ -39,13 +40,14 @@ interface IComputerStatus {
   status: number;
 }
 
-const statusColors = ['green', 'yellow', 'red', 'black'];
+const statusColors = ['#2B9348', '#f2f072', '#f55', '#333'];
 
 export const ComputerStatus = styled.div<IComputerStatus>`
   width: 30px;
   height: 30px;
   border-radius: 50%;
   background-color: ${({ status }) => statusColors[status]};
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;
 
 export const ComputersOverviewContainer = styled.div`
@@ -54,6 +56,7 @@ export const ComputersOverviewContainer = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   background-color: #eee;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   width: 40%;
   border-radius: 5px;
 `;
@@ -62,10 +65,12 @@ export const ComputerIcon = styled(FontAwesomeIcon).attrs({
   icon: faDesktop,
   color: 'white',
   size: '3x',
-})`
-  background-color: green;
+})<IComputerStatus>`
+  background-color: ${({ status }) => statusColors[status]};
   padding: 10px;
   border-radius: 5px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
 `;
 export const ComputerOverview = styled.div`
   flex-basis: 16.6666%;
@@ -84,4 +89,27 @@ export const Button = styled.button<ButtonProps>`
   max-height: 2em;
   align-self: center;
   margin-left: 1em;
+`;
+
+export const StatusSpan = styled.span`
+  font-size: 16px;
+  margin-left: 5px;
+`;
+
+export const StatusContainer = styled.div`
+  display: flex;
+  padding: 2px;
+  margin-top: 5px;
+  align-items: center;
+`;
+
+export const TopSide = styled.div`
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 9px;
+  height: 10em;
+  padding: 1px;
+`;
+
+export const BottomSide = styled.div`
+  display: flex;
 `;

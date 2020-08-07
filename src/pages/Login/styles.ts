@@ -10,6 +10,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
+
   @media screen and (max-width: 400px){
     height: 100%;
     border-radius: 0px;
@@ -27,3 +28,13 @@ export const Logo = styled.img`
   }
 `;
 
+export const BackgroundContainer = styled.div`
+
+`;
+
+export const Image = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+
+`;
