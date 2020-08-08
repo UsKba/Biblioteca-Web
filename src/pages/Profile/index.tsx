@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import api from '../../services/api';
-import { AxiosResponseError } from '../../types';
-import FriendList from './FriendList';
+import api from '~/services/api';
+
+import FriendList from '~/components/FriendList';
+
+import { AxiosResponseError } from '~/types';
+
 import PageHome from './PageHome';
 import {
   Container,

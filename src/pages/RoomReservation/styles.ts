@@ -17,6 +17,11 @@ export const DatePicker = styled.div`
   background-color: #fff;
   padding: 10px;
   border-radius: 10px 10px 0 0;
+
+  > svg {
+    font-size: 2rem;
+    color: #333;
+  }
 `;
 
 export const RoomTypes = styled.div`

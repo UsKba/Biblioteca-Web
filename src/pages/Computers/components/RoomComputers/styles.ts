@@ -1,6 +1,8 @@
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDesktop } from '@fortawesome/free-solid-svg-icons';
+
+import { FaDesktop } from 'react-icons/fa';
+
+import colors from '~/styles/colors';
 
 export const Container = styled.div`
   display: flex;
@@ -36,17 +38,15 @@ export const ComputerName = styled.span`
   margin-right: 30px;
 `;
 
-interface IComputerStatus {
+interface ComputerStatusProps {
   status: number;
 }
 
-const statusColors = ['#2B9348', '#f2f072', '#f55', '#333'];
-
-export const ComputerStatus = styled.div<IComputerStatus>`
+export const ComputerStatus = styled.div<ComputerStatusProps>`
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: ${({ status }) => statusColors[status]};
+  background-color: ${({ status }) => colors.computerStatus[status]};
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;
 
@@ -61,16 +61,15 @@ export const ComputersOverviewContainer = styled.div`
   border-radius: 5px;
 `;
 
-export const ComputerIcon = styled(FontAwesomeIcon).attrs({
-  icon: faDesktop,
+export const ComputerIcon = styled(FaDesktop).attrs({
   color: 'white',
-  size: '3x',
-})<IComputerStatus>`
-  background-color: ${({ status }) => statusColors[status]};
+})<ComputerStatusProps>`
+  background-color: ${({ status }) => colors.computerStatus[status]};
   padding: 10px;
   border-radius: 5px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 
+  font-size: 3rem;
 `;
 export const ComputerOverview = styled.div`
   flex-basis: 16.6666%;

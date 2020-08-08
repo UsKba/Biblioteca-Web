@@ -3,7 +3,6 @@ import React from 'react';
 import {
   Container,
   RightContainer,
-  LeftContainer,
   ColumnContainer,
   ComputerIcon,
   ComputerOverview,
@@ -25,26 +24,26 @@ const ComputersManagement: React.FC = () => {
         <AlterationLeft>
           <ButtonContainer>
             <AlterationComputer>PC 01</AlterationComputer>
-            <AlterationStatus></AlterationStatus>
+            <AlterationStatus />
           </ButtonContainer>
         </AlterationLeft>
         <AlterationRight>
           <AlterationSpan>Alterar Para:</AlterationSpan>
           <ButtonContainer>
             <AlterationButton>Disponível</AlterationButton>
-            <AlterationStatus></AlterationStatus>
+            <AlterationStatus />
           </ButtonContainer>
           <ButtonContainer>
             <AlterationButton>Ausente</AlterationButton>
-            <AlterationStatus></AlterationStatus>
+            <AlterationStatus />
           </ButtonContainer>
           <ButtonContainer>
             <AlterationButton>Ocupado</AlterationButton>
-            <AlterationStatus></AlterationStatus>
+            <AlterationStatus />
           </ButtonContainer>
           <ButtonContainer>
             <AlterationButton>Quebrado</AlterationButton>
-            <AlterationStatus></AlterationStatus>
+            <AlterationStatus />
           </ButtonContainer>
         </AlterationRight>
       </AlterationContainer>
@@ -52,50 +51,50 @@ const ComputersManagement: React.FC = () => {
         <ColumnContainer>
           <ComputersOverviewContainer>
             <ComputerOverview>
-              <ComputerIcon></ComputerIcon>
+              <ComputerIcon />
             </ComputerOverview>
           </ComputersOverviewContainer>
 
           <ComputersOverviewContainer>
             <ComputerOverview>
-              <ComputerIcon></ComputerIcon>
+              <ComputerIcon />
             </ComputerOverview>
           </ComputersOverviewContainer>
 
           <ComputersOverviewContainer>
             <ComputerOverview>
-              <ComputerIcon></ComputerIcon>
+              <ComputerIcon />
             </ComputerOverview>
           </ComputersOverviewContainer>
 
           <ComputersOverviewContainer>
             <ComputerOverview>
-              <ComputerIcon></ComputerIcon>
+              <ComputerIcon />
             </ComputerOverview>
           </ComputersOverviewContainer>
         </ColumnContainer>
         <ColumnContainer>
           <ComputersOverviewContainer>
             <ComputerOverview>
-              <ComputerIcon></ComputerIcon>
+              <ComputerIcon />
             </ComputerOverview>
           </ComputersOverviewContainer>
 
           <ComputersOverviewContainer>
             <ComputerOverview>
-              <ComputerIcon></ComputerIcon>
+              <ComputerIcon />
             </ComputerOverview>
           </ComputersOverviewContainer>
 
           <ComputersOverviewContainer>
             <ComputerOverview>
-              <ComputerIcon></ComputerIcon>
+              <ComputerIcon />
             </ComputerOverview>
           </ComputersOverviewContainer>
 
           <ComputersOverviewContainer>
             <ComputerOverview>
-              <ComputerIcon></ComputerIcon>
+              <ComputerIcon />
             </ComputerOverview>
           </ComputersOverviewContainer>
         </ColumnContainer>

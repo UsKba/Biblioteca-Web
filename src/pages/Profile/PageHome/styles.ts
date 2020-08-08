@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import colors from '../../../styles/colors';
 
 export const Container = styled.div`
@@ -16,8 +17,8 @@ export const DayReservesContainer = styled.div`
   margin-left: 15px;
   border-radius: 5px;
   padding: 15px 15px 0 15px;
-  background-color: rgba(3,3,3,0.8);
-  align-items:center;
+  background-color: rgba(3, 3, 3, 0.8);
+  align-items: center;
 `;
 
 export const DatePicker = styled.div`
@@ -30,6 +31,11 @@ export const DatePicker = styled.div`
   border-radius: 5px 5px 0 0;
 
   width: 100%;
+
+  > svg {
+    color: #333;
+    font-size: 2rem;
+  }
 `;
 
 export const DateInterval = styled.h1`
@@ -76,7 +82,7 @@ export const Reserves = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
 
-  @media screen and (max-width: 400px){
+  @media screen and (max-width: 400px) {
     justify-content: center;
   }
 `;
@@ -89,7 +95,6 @@ export const Reserve = styled.div`
   background-color: ${colors.terciary};
   border-radius: 5px;
   min-width: 180px;
-
 `;
 
 export const Room = styled.span`

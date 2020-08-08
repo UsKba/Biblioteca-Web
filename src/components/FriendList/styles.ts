@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import colors from '../../../styles/colors';
+
+import colors from '~/styles/colors';
 
 export const SearchingBar = styled.input`
   height: 25px;
@@ -19,12 +20,19 @@ export const IconContainer = styled.div`
   background-color: #333;
   border: none;
   border-radius: 6px;
+
   cursor: pointer;
+
+  > svg {
+    color: #fff;
+
+    font-size: 10px;
+  }
 `;
 
 export const FriendsContainer = styled.div`
   margin: 40px 40px 0 0;
-  background-color: rgba(3,3,3,0.8);
+  background-color: rgba(3, 3, 3, 0.8);
   padding: 10px;
   border-radius: 5px;
 `;

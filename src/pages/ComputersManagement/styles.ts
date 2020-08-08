@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDesktop } from '@fortawesome/free-solid-svg-icons';
+
+import { FaDesktop } from 'react-icons/fa';
 
 export const Container = styled.div`
   display: flex;
@@ -19,10 +19,6 @@ export const RightContainer = styled.div`
   align-self: right;
   margin-bottom: 20px;
   padding: 5px;
-`;
-
-export const LeftContainer = styled.div`
-  display: flex;
 `;
 
 export const ColumnContainer = styled.div`
@@ -53,14 +49,14 @@ export const ComputersOverviewContainer = styled.div`
   cursor: pointer;
 `;
 
-export const ComputerIcon = styled(FontAwesomeIcon).attrs({
-  icon: faDesktop,
+export const ComputerIcon = styled(FaDesktop).attrs({
   color: 'white',
-  size: '3x',
 })`
   background-color: gray;
   padding: 7px;
   border-radius: 5px;
+
+  font-size: 3rem;
 `;
 
 export const AlterationContainer = styled.div`

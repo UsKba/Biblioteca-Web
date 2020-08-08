@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+
+import { Link } from 'react-router-dom';
+
 import colors from '../../styles/colors';
 
 export const Container = styled.div`
@@ -39,12 +42,6 @@ export const Logo = styled.img`
   height: 50px;
 `;
 
-export const NavItemName = styled.span`
-  margin-top: 5px;
-  font-size: 16px;
-  color: #333;
-`;
-
 interface NavItemProps {
   small?: boolean;
 }
@@ -57,14 +54,14 @@ export const NavItem = styled.li<NavItemProps>`
   align-items: center;
   cursor: pointer;
 
-  ${(props) => {
-    if (props.small) return 'margin-right: 0px;';
-  }}
-`;
+  ${(props) => props.small && 'margin-right: 0px;'}
 
-export const NavLogo = styled.img`
-  height: 53px;
-  width: 53px;
+  svg {
+    color: #333;
+
+    font-size: 24px;
+    font-size: 1.5rem;
+  }
 `;
 
 interface SidebarProps {
@@ -87,15 +84,23 @@ export const Sidebar = styled.div<SidebarProps>`
 
   transition: 0.5s;
 
-  ${(props) => {
-    if (props.open) return 'left: 0px;';
-  }}
+  ${(props) => props.open && 'left: 0px;'}
 `;
 
 export const SidebarItem = styled.div`
-  display: flex;
   margin: 10px 15px;
+`;
+
+export const StyledLink = styled(Link)`
+  display: flex;
   align-items: center;
+
+  > svg {
+    color: #333;
+
+    font-size: 20px;
+    font-size: 1.25rem;
+  }
 `;
 
 export const SidebarItemName = styled.span`

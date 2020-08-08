@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display:flex;
+  display: flex;
   flex: 1;
-  margin-top:20px;
+  margin-top: 20px;
   background-color: #fff;
   width: 90%;
   align-self: center;
@@ -14,16 +14,16 @@ export const Container = styled.div`
 `;
 
 export const Warning = styled.label`
-  background-color: #FF6663;
-  width:13.8em;
+  background-color: #ff6663;
+  width: 13.8em;
   padding: 10px 5px;
-  border-radius:0.7em;
-  color:white;
+  border-radius: 0.7em;
+  color: white;
   align-items: center;
   text-align: center;
   margin-top: 55px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-`
+`;
 
 export const LeftItemsContainer = styled.div`
   display: flex;
@@ -32,7 +32,7 @@ export const LeftItemsContainer = styled.div`
 `;
 
 export const MiddleItemsContainer = styled.div`
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
 `;
@@ -46,7 +46,6 @@ export const ComponentsContainer = styled.div`
   flex: 1;
   flex-direction: column;
   align-items: center;
-
 `;
 
 export const InputButtonContainer = styled.div`
@@ -64,13 +63,12 @@ export const InputContainer = styled.div`
   align-items: center;
 `;
 
-
 export const Input = styled.input`
   border: 1px solid #777;
   font-size: 15px;
   padding: 10px;
   width: 280px;
-  border-radius:6px;
+  border-radius: 6px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;
 
@@ -78,27 +76,19 @@ export const InputLabel = styled.label`
   font-size: 16px;
   font-weight: bold;
   margin-right: 15%;
- /* color: #483d8b;*/
-`;
-
-export const ButtonContainer = styled.div`
-  width: 100%;
-  margin: 15px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  /* color: #483d8b;*/
 `;
 
 export const Button = styled.button`
-  height:fit-content;
-  font-size:1.1em;
-  padding:0.7em 0;
-  width:30%;
-  margin-top:5em;
-  background-color: #007BFF;
+  height: fit-content;
+  font-size: 1.1em;
+  padding: 0.7em 0;
+  width: 30%;
+  margin-top: 5em;
+  background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius:7px;
+  border-radius: 7px;
   cursor: pointer;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;
@@ -128,8 +118,7 @@ export const SpanContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align:left;
-
+  text-align: left;
 `;
 
 export const Span = styled.span`
@@ -139,10 +128,9 @@ export const Span = styled.span`
   width: 500px;
   min-height: 35px;
   border-radius: 6px;
-  margin-bottom:0.5em;
+  margin-bottom: 0.5em;
   color: #000;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-
 `;
 
 export const SpanLabel = styled.label`

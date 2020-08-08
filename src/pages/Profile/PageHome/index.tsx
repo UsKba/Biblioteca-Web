@@ -1,4 +1,6 @@
 import React from 'react';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+
 import {
   Container,
   DatePicker,
@@ -14,20 +16,15 @@ import {
   StudentName,
 } from './styles';
 // import { Container } from './styles';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faChevronLeft,
-  faChevronRight,
-} from '@fortawesome/free-solid-svg-icons';
 
 const Homepage: React.FC = () => {
   return (
     <Container>
       <DayReservesContainer>
         <DatePicker>
-          <FontAwesomeIcon icon={faChevronLeft} size="2x" color="#333" />
+          <FaChevronLeft />
           <DateInterval>23/05 - 29/05</DateInterval>
-          <FontAwesomeIcon icon={faChevronRight} size="2x" color="#333" />
+          <FaChevronRight />
         </DatePicker>
 
         <Weeks>
@@ -36,7 +33,7 @@ const Homepage: React.FC = () => {
           </Week>
 
           <Week>
-            <WeekName active={true}>Terça</WeekName>
+            <WeekName active>Terça</WeekName>
           </Week>
 
           <Week>
@@ -111,7 +108,6 @@ const Homepage: React.FC = () => {
           </Reserve>
         </Reserves>
       </DayReservesContainer>
-
     </Container>
   );
 };

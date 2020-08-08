@@ -1,4 +1,7 @@
 import React from 'react';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+
+import colors from '~/styles/colors';
 
 import {
   Container,
@@ -16,45 +19,36 @@ import {
   ColorName,
   RoomTypes,
 } from './styles';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faChevronLeft,
-  faChevronRight,
-} from '@fortawesome/free-solid-svg-icons';
-
-import colors from '../../styles/colors';
 
 const RoomReservation: React.FC = () => {
   return (
     <Container>
       <DatePicker>
-        <FontAwesomeIcon
-          icon={faChevronLeft}
-          size="2x"
-          color={colors.black}
-        />
+        <FaChevronLeft />
         <DateInterval>25/04 - 29/05</DateInterval>
-        <FontAwesomeIcon
-          icon={faChevronRight}
-          size="2x"
-          color={colors.black}
-        />
+
+        <FaChevronRight />
       </DatePicker>
       <RoomTypes>
         <ColorStatus>
-          <Color status={0} /> <ColorName>Ocupada</ColorName>
+          <Color status={0} />
+          <ColorName>Ocupada</ColorName>
         </ColorStatus>
         <ColorStatus>
-          <Color status={1}/> <ColorName>Reservada</ColorName>
+          <Color status={1} />
+          <ColorName>Reservada</ColorName>
         </ColorStatus>
         <ColorStatus>
-          <Color status={2}/> <ColorName>Disponível</ColorName>
+          <Color status={2} />
+          <ColorName>Disponível</ColorName>
         </ColorStatus>
         <ColorStatus>
-          <Color status={3}/> <ColorName>Sua Reserva</ColorName>
+          <Color status={3} />
+          <ColorName>Sua Reserva</ColorName>
         </ColorStatus>
         <ColorStatus>
-          <Color status={4}/> <ColorName>Indisponível</ColorName>
+          <Color status={4} />
+          <ColorName>Indisponível</ColorName>
         </ColorStatus>
       </RoomTypes>
       <Weeks>
@@ -63,7 +57,7 @@ const RoomReservation: React.FC = () => {
         </Week>
 
         <Week>
-          <WeekName active={true}>Terça</WeekName>
+          <WeekName active>Terça</WeekName>
         </Week>
 
         <Week>
@@ -80,7 +74,7 @@ const RoomReservation: React.FC = () => {
       </Weeks>
       <RoomList>
         <Line>
-          <Rectangle backgroundColor="#1c91ff"></Rectangle>
+          <Rectangle backgroundColor="#1c91ff" />
           <Rectangle backgroundColor="#1c91ff">F1-3</Rectangle>
           <Rectangle backgroundColor="#1c91ff">F1-4</Rectangle>
           <Rectangle backgroundColor="#1c91ff">F1-5</Rectangle>
@@ -89,10 +83,10 @@ const RoomReservation: React.FC = () => {
 
         <Line>
           <Rectangle backgroundColor="#1c91ff">07:15 - 08:00</Rectangle>
-          <Rectangle></Rectangle>
-          <Rectangle></Rectangle>
-          <Rectangle></Rectangle>
-          <Rectangle></Rectangle>
+          <Rectangle />
+          <Rectangle />
+          <Rectangle />
+          <Rectangle />
         </Line>
 
         <Line>
@@ -102,22 +96,22 @@ const RoomReservation: React.FC = () => {
             <StudentName>José Eduardo</StudentName>
             <StudentName>Halyson</StudentName>
           </Rectangle>
-          <Rectangle></Rectangle>
-          <Rectangle></Rectangle>
-          <Rectangle></Rectangle>
+          <Rectangle />
+          <Rectangle />
+          <Rectangle />
         </Line>
 
         <Line>
           <Rectangle backgroundColor="#1c91ff">09:00 - 10:00</Rectangle>
-          <Rectangle></Rectangle>
-          <Rectangle></Rectangle>
+          <Rectangle />
+          <Rectangle />
           <Rectangle backgroundColor="#F55">
             <StudentName>Idaslon</StudentName>
             <StudentName>Carlos Eduardo</StudentName>
             <StudentName>Bruno Eduardo</StudentName>
             <StudentName>...</StudentName>
           </Rectangle>
-          <Rectangle></Rectangle>
+          <Rectangle />
         </Line>
 
         <Line>
@@ -133,8 +127,8 @@ const RoomReservation: React.FC = () => {
             <StudentName>Haludilson</StudentName>
             <StudentName>Haleber</StudentName>
           </Rectangle>
-          <Rectangle></Rectangle>
-          <Rectangle></Rectangle>
+          <Rectangle />
+          <Rectangle />
         </Line>
 
         <Line>
@@ -145,15 +139,15 @@ const RoomReservation: React.FC = () => {
             <StudentName>Halynildo</StudentName>
             <StudentName>...</StudentName>
           </Rectangle>
-          <Rectangle backgroundColor="#333"></Rectangle>
-          <Rectangle></Rectangle>
-          <Rectangle backgroundColor="#333"></Rectangle>
+          <Rectangle backgroundColor="#333" />
+          <Rectangle />
+          <Rectangle backgroundColor="#333" />
         </Line>
       </RoomList>
     </Container>
   );
 
-  //ari se voce esta vendo isso mande mensagem dizendo eu vi o easter egg bruno video voz
+  // ari se voce esta vendo isso mande mensagem dizendo eu vi o easter egg bruno video voz
 };
 
 export default RoomReservation;
