@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import colors from '../../styles/colors';
 
 export const Container = styled.div`
@@ -20,18 +21,16 @@ export const ProfilePanel = styled.div`
   margin: 40px 0 0 40px;
   align-items: center;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-
 `;
 
 export const LeftSide = styled.div`
-  display:flex;
+  display: flex;
   flex-direction: column;
 `;
 
 export const MiddleSide = styled.div`
   display: flex;
   flex: 1;
-
 `;
 
 export const RightSide = styled.div`
@@ -39,7 +38,7 @@ export const RightSide = styled.div`
   flex-direction: column;
   height: 100%;
   margin-left: auto;
-`
+`;
 
 export const SearchingBar = styled.input`
   height: 25px;

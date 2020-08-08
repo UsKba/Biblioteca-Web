@@ -1,4 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import api from '../../services/api';
+import { AxiosResponseError } from '../../types';
+import FriendList from './FriendList';
+import PageHome from './PageHome';
 import {
   Container,
   ProfilePanel,
@@ -11,49 +17,41 @@ import {
   LeftSide,
   MiddleSide,
   RightSide,
-  FriendsContainer,
-  FriendsPanel,
-  FriendsDetails,
-  FriendsPanelDetails,
-  FriendIcon,
-  FriendIconInitials,
-  SearchingBar,
-  IconContainer,
-  SearchArea,
-  AddArea,
-  AddSpan,
-  MessageButton
+  MessageButton,
 } from './styles';
-import PageHome from '../Profile/PageHome';
-import FriendList from '../Profile/FriendList';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faPlus,
-  faSearch
-} from '@fortawesome/free-solid-svg-icons';
-import {Link} from 'react-router-dom'
 
-const users = [
-  {
-    name: 'Lonlon',
-    email: 'lonlon@gmail.com',
-    id: 1,
-  },
-  {
-    name: 'Zanat',
-    email: 'zanat@gmail.com',
-    id: 2,
-  },
-  {
-    name: 'Neitan',
-    email: 'neitan@gmail.com',
-    id: 3,
-  },
-];
+interface UserResponse {
+  name: string;
+  enrollment: string;
+  email: string;
+  id: number;
+}
 
 const Profile: React.FC = () => {
-  return (
+  const [username, setUsername] = useState('');
+  const [enrollment, setEnrollment] = useState('');
+  const [email, setEmail] = useState('');
 
+  useEffect(() => {
+    async function load() {
+      try {
+        const response = await api.get<UserResponse>('/users/1');
+        const { name } = response.data;
+
+        setUsername(name);
+        setEnrollment(response.data.enrollment);
+        setEmail(response.data.email);
+      } catch (err) {
+        const responseError = err as AxiosResponseError;
+
+        console.log('error', responseError.response?.data?.error);
+      }
+    }
+
+    load();
+  }, []);
+
+  return (
     <Container>
       <LeftSide>
         <ProfilePanel>
@@ -61,29 +59,26 @@ const Profile: React.FC = () => {
             <ProfileIconInitials>H</ProfileIconInitials>
           </ProfileIcon>
           <ProfileInformation>
-            <ProfileName>Halyson Junior</ProfileName>
-            <ProfileInformationDetails>(20181104010017)</ProfileInformationDetails>
+            <ProfileName>{username}</ProfileName>
+            <ProfileInformationDetails>{enrollment}</ProfileInformationDetails>
             <EmailContainer>
-             <ProfileInformationDetails>santos.junior@ifrn.edu.br</ProfileInformationDetails>
+              <ProfileInformationDetails>{email}</ProfileInformationDetails>
             </EmailContainer>
           </ProfileInformation>
         </ProfilePanel>
-
       </LeftSide>
 
       <MiddleSide>
-        <PageHome/>
+        <PageHome />
       </MiddleSide>
 
       <RightSide>
-        <FriendList></FriendList>
-        <Link to='/report'>
+        <FriendList />
+        <Link to="/report">
           <MessageButton>Falar com Bibliotecário</MessageButton>
         </Link>
-
       </RightSide>
     </Container>
-
   );
 };
 
