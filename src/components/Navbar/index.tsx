@@ -9,6 +9,7 @@ import {
   FaBars,
   FaTv,
   FaEnvelope,
+  FaTimes,
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
@@ -111,6 +112,12 @@ const NavbarComponent: React.FC = () => {
           <StyledLink to="/about">
             <FaEnvelope />
             <SidebarItemName>Sobre</SidebarItemName>
+          </StyledLink>
+        </SidebarItem>
+        <SidebarItem>
+          <StyledLink to="/login">
+            <FaTimes />
+            <SidebarItemName>Sair</SidebarItemName>
           </StyledLink>
         </SidebarItem>
       </Sidebar>

@@ -6,10 +6,9 @@ import colors from '~/styles/colors';
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
   flex: 1;
   width: 98%;
-  justify-content: space-between;
+
   background-color: #fff;
   align-self: center;
   padding: 50px;
@@ -17,25 +16,18 @@ export const Container = styled.div`
   margin: 15px 0 15px 0;
 `;
 
-export const ComputersContainer = styled.div`
+export const ComputerList = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex-wrap: wrap;
-  flex: 1;
-  width: 60%;
 `;
 
 export const ComputerContainer = styled.div`
   display: flex;
-  flex-basis: 15%;
-  justify-content: center;
-  align-items: center;
+  padding: 10px;
 `;
 
 export const ComputerName = styled.span`
   font-size: 25px;
-  margin-right: 30px;
+  margin-right: 8px;
 `;
 
 interface ComputerStatusProps {
@@ -45,19 +37,18 @@ interface ComputerStatusProps {
 export const ComputerStatus = styled.div<ComputerStatusProps>`
   width: 30px;
   height: 30px;
-  border-radius: 50%;
+  border-radius: 100px;
   background-color: ${({ status }) => colors.computerStatus[status]};
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;
-
 export const ComputersOverviewContainer = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
   background-color: #eee;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  width: 40%;
+  height: 23.5%;
+  width: 90%;
   border-radius: 5px;
 `;
 
@@ -87,7 +78,6 @@ export const Button = styled.button<ButtonProps>`
   border: none;
   max-height: 2em;
   align-self: center;
-  margin-left: 1em;
   svg {
     font-size: 25px;
   }
@@ -105,6 +95,12 @@ export const StatusContainer = styled.div`
   align-items: center;
 `;
 
+export const MiddleSide = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+`;
+
 export const LeftSide = styled.div`
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 9px;
@@ -112,6 +108,10 @@ export const LeftSide = styled.div`
   padding: 1px;
 `;
 
-export const BottomSide = styled.div`
+export const MiddleLeftSide = styled.div`
   display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-left: 10px;
+  align-items: center;
 `;
