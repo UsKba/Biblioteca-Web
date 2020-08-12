@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import SideBar from './components/SideBar';
 import Computers from './pages/Computers';
 import ComputersManagement from './pages/ComputersManagement';
+import Home from './pages/Home';
 import Inbox from './pages/Inbox';
 import LibrarianHome from './pages/LibrarianHome';
 import LibrarianReport from './pages/LibrarianReport';
@@ -22,7 +23,7 @@ export default function Routes() {
   return (
     <>
       <Route
-        path={['/reserve', '/profile', '/computers', '/rent', '/report', '/settings', '/topview']}
+        path={['/reserve', '/profile', '/computers', '/rent', '/report', '/settings', '/topview', '/home']}
         component={Navbar}
       />
       <Route path={['/lhome']} component={SideBar} />
@@ -35,6 +36,7 @@ export default function Routes() {
         <Route path="/report" exact component={LibrarianReport} />
         <Route path="/settings" component={Settings} />
         <Route path="/topview" exact component={LibraryView} />
+        <Route path="/home" exact component={Home} />
         ]
         <Route path="/lhome" exact component={LibrarianHome} />
         <Route path="/inbox" exact component={Inbox} />

@@ -24,9 +24,9 @@ export const Input = styled.input`
   font-size: 25px;
   padding: 10px;
   border-radius: 8px;
-  border: 1px solid rgba(222,222,222, 0.7);
+  border: 1px solid rgba(222, 222, 222, 0.7);
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  @media screen and (max-width: 400px){
+  @media screen and (max-width: 400px) {
     font-size: 18px;
     padding: 7.5px;
   }
@@ -43,8 +43,7 @@ export const LoginButton = styled.button`
   margin: 15px 0px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 
-
-  background-image: linear-gradient(to right, #AACC00, #2B9348);
+  background-image: linear-gradient(to right, #aacc00, #2b9348);
   cursor: pointer;
 
   color: #fff;
@@ -62,7 +61,7 @@ export const LoginButton = styled.button`
     background-color: #555;
     cursor: default;
   }
-  @media screen and (max-width: 400px){
+  @media screen and (max-width: 400px) {
     font-size: 14px;
     padding: 16px;
   }

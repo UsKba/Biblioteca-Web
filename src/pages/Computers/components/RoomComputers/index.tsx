@@ -22,7 +22,7 @@ interface Props {
   handleClick: (state: boolean) => void;
 }
 const RoomComputers = ({ handleClick }: Props) => {
-  const [modalVisible, setModalVisible] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
       <ComputerModal modalVisible={modalVisible} setModalVisible={setModalVisible} />

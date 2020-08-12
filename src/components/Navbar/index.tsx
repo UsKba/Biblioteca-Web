@@ -75,7 +75,7 @@ const NavbarComponent: React.FC = () => {
 
       <Sidebar open={sidebarOpen}>
         <SidebarItem>
-          <StyledLink to="/profile">
+          <StyledLink to="/home">
             <FaHome />
             <SidebarItemName>Início</SidebarItemName>
           </StyledLink>
