@@ -35,9 +35,9 @@ const NavbarComponent: React.FC = () => {
     setSidebarOpen(false);
   }
 
-  function showSidebar() {
-    setSidebarOpen(true);
-  }
+  // function showSidebar() {
+  //   setSidebarOpen(true);
+  // }
 
   function toggleSidebar() {
     setSidebarOpen(!sidebarOpen);
@@ -48,7 +48,8 @@ const NavbarComponent: React.FC = () => {
       <Container>
         <Navbar>
           <LeftSide>
-            <NavItem onMouseEnter={showSidebar} onClick={toggleSidebar}>
+            {/* onMouseEnter={showSidebar} */}
+            <NavItem onClick={toggleSidebar}>
               <FaBars />
             </NavItem>
           </LeftSide>

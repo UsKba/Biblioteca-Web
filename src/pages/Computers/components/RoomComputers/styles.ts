@@ -14,7 +14,7 @@ export const Container = styled.div`
   align-self: center;
   padding: 50px;
   border-radius: 10px;
-  margin: 15px 0 15px 0;
+  margin: 15px;
 `;
 
 export const ComputersContainer = styled.div`
@@ -115,3 +115,26 @@ export const LeftSide = styled.div`
 export const BottomSide = styled.div`
   display: flex;
 `;
+
+export const ComputerButton = styled.button`
+  cursor: pointer;
+  align-self: center;
+  background: none;
+  border: none;
+  outline: none;
+`;
+// flex-basis: 16.6666%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+
+// flex-basis: 16.6666%;
+// display: flex;
+// justify-content: center;
+// align-items: center;
+// cursor: pointer;
+// align-self: center;
+// width: 48px;
+// height: 48px;
+// background: none;
+// padding: 0;

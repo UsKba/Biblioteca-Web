@@ -56,6 +56,7 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
     'react/jsx-props-no-spreading': 'off',
+    'react/prop-types': 'off',
 
     '@typescript-eslint/no-unused-vars': [
       'error',

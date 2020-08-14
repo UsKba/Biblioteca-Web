@@ -6,17 +6,17 @@ export const Container = styled.div`
   width: 98%;
   align-self: center;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 13px;
   margin: 15px;
 `;
 
 export const IndividualButton = styled.button`
-  width:9em;
-  height:30%;
+  width: 9em;
+  height: 30%;
   background-color: #ff9d00;
   color: #fff;
   font-weight: 400;
-  border:none;
+  border: none;
   border-radius: 10px 0 0 0;
 `;
 
@@ -31,9 +31,9 @@ export const ComputerRoomButton = styled.button`
 `;
 
 export const ComputerButton = styled.button`
-  width:6em;
-  height:3.5em;
-  background-color:#00c99e;
+  width: 6em;
+  height: 3.5em;
+  background-color: #00c99e;
   color: #fff;
   font-weight: 400;
   border: none;
@@ -41,17 +41,17 @@ export const ComputerButton = styled.button`
 `;
 
 export const LibrarianButton = styled.button`
-  background-color:#003d9e;
+  background-color: #003d9e;
   color: #fff;
   font-weight: 400;
-  width:20em;
-  height:12em;
+  width: 20em;
+  height: 12em;
   border: none;
   margin-left: 10em;
 `;
 
 export const RoomButton = styled.button`
-  background-color: #D64C4C;
+  background-color: #d64c4c;
   color: #fff;
   font-weight: 400;
   width: 25%;
@@ -61,7 +61,7 @@ export const RoomButton = styled.button`
 `;
 
 export const RoomButtonLarge = styled.button`
-  background-color: #D64C4C;
+  background-color: #d64c4c;
   color: #fff;
   font-weight: 400;
   width: 25%;
@@ -84,7 +84,6 @@ export const TopMiddleSide = styled.div`
 export const MiddleSide = styled.div`
   display: flex;
   flex-direction: column;
-
 `;
 
 export const MiddleSideItems = styled.div`
@@ -95,7 +94,6 @@ export const MiddleSideItems = styled.div`
 export const DownMiddleSide = styled.div`
   display: flex;
   flex-direction: column;
-
 `;
 
 export const RightSide = styled.div`
@@ -112,11 +110,6 @@ export const RightSideTop = styled.div`
 export const RightSideDown = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-export const RightSideRight = styled.div`
-  display: flex;
-  flex: 1;
 `;
 
 export const Bookshelf = styled.div`
@@ -140,6 +133,3 @@ export const Bookshelf3 = styled.div`
   height: 2em;
   margin: 0 0 10% 8%;
 `;
-
-
-

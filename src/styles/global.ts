@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+
 import background from '../assets/doodles.png';
 
 export default createGlobalStyle`
@@ -34,4 +35,4 @@ export default createGlobalStyle`
 
 `;
 
-/* #AACC00, #2B9348*/
+/* #AACC00, #2B9348 */

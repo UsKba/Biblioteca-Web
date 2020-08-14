@@ -5,8 +5,10 @@ import colors from '../../styles/colors';
 export const Container = styled.div`
   display: flex;
   flex: 1;
+  width: 98%;
+  margin: 15px;
+  align-self: center;
 `;
-
 export const ProfilePanel = styled.div`
   display: flex;
   flex-direction: column;
@@ -18,7 +20,6 @@ export const ProfilePanel = styled.div`
   border-radius: 5px;
   /* min-width: 25%; */
   min-height: 120px;
-  margin: 40px 0 0 40px;
   align-items: center;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;

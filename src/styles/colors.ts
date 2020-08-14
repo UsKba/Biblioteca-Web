@@ -6,7 +6,7 @@ const colors = {
   red: '#f55',
   black: '#333',
 
-  computerStatus: ['#2B9348', '#f2f072', '#f55', '#333'],
+  computerStatus: ['#2B9348', '#faa61a', '#f55', '#333'],
 };
 
 export default colors;

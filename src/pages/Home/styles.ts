@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  width: 96.5%;
-  height: 90%;
-  margin: 20px;
+  flex: 1;
+  width: 98%;
+  margin: 15px;
   align-self: center;
   background-color: #fff;
   border-radius: 10px;
@@ -53,14 +53,15 @@ export const IconSpan = styled.span`
 
 export const H1 = styled.div`
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 38px;
+  font-size: 44px;
   color: #80b918;
   width: 100%;
   height: 22%;
   margin-top: 10px;
+  margin-bottom: 35px;
   align-self: center;
   padding: 30px;
-  text-shadow: 2px 2px #322c42;
+  text-shadow: 0px 0px 2px #322c42;
   font-weight: bold;
   text-align: center;
 `;

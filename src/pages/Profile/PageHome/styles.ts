@@ -8,7 +8,6 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex: 1;
-  margin-top: 40px;
 `;
 export const DayReservesContainer = styled.div`
   width: 85%;
@@ -52,11 +51,11 @@ export const Week = styled.div`
   text-align: center;
 `;
 
-interface IWeekName {
+interface WeekName {
   active?: boolean;
 }
 
-export const WeekName = styled.span<IWeekName>`
+export const WeekName = styled.span<WeekName>`
   cursor: pointer;
 
   color: ${(props) => (props.active ? '#333' : '#333')};

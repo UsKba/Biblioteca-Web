@@ -31,7 +31,6 @@ export const IconContainer = styled.div`
 `;
 
 export const FriendsContainer = styled.div`
-  margin: 40px 40px 0 0;
   background-color: rgba(3, 3, 3, 0.8);
   padding: 10px;
   border-radius: 5px;

@@ -3,16 +3,17 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex: 1;
-  width: 100%;
+  width: 98%;
   flex-direction: column;
-  margin: 15px 0 15px 0;
+  border-radius: 10px;
+  margin: 15px;
 `;
 
 export const DatePicker = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 90%;
+  width: 100%;
   align-self: center;
   background-color: #fff;
   padding: 10px;
@@ -28,18 +29,18 @@ export const RoomTypes = styled.div`
   display: flex;
   justify-content: space-between;
   align-self: center;
-  width: 90%;
+  width: 100%;
   background-color: #fff;
   padding: 10px 120px 10px 120px;
 `;
 
-interface IRoomStatus {
+interface RoomStatus {
   status: number;
 }
 
 const RoomColors = ['#f55', 'orange', 'white', '#2B9348', '#333'];
 
-export const Color = styled.div<IRoomStatus>`
+export const Color = styled.div<RoomStatus>`
   width: 25px;
   height: 25px;
   background-color: ${({ status }) => RoomColors[status]};
@@ -68,7 +69,7 @@ export const RoomList = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  width: 90%;
+  width: 100%;
   align-self: center;
   background-color: #fff;
 `;
@@ -79,11 +80,11 @@ export const Line = styled.div`
   flex: 1 1;
 `;
 
-interface IRectangle {
+interface Rectangle {
   backgroundColor?: string;
 }
 
-export const Rectangle = styled.div<IRectangle>`
+export const Rectangle = styled.div<Rectangle>`
   display: flex;
   flex-direction: column;
   flex: 1 1;
@@ -109,7 +110,7 @@ export const StudentName = styled.span`
 `;
 
 export const Weeks = styled.div`
-  width: 90%;
+  width: 100%;
   align-self: center;
   display: flex;
   flex-direction: row;
@@ -117,7 +118,7 @@ export const Weeks = styled.div`
   background-color: #fff;
 `;
 
-interface IWeekName {
+interface WeekName {
   active?: boolean;
 }
 
@@ -128,7 +129,7 @@ export const Week = styled.div`
   text-align: center;
 `;
 
-export const WeekName = styled.span<IWeekName>`
+export const WeekName = styled.span<WeekName>`
   cursor: pointer;
 
   color: ${(props) => (props.active ? '#333' : '#333')};

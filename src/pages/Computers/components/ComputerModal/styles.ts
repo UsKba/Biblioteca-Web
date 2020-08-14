@@ -5,7 +5,7 @@ interface AlphaProps {
 }
 
 export const Alpha = styled.div<AlphaProps>`
-  display: flex;
+  z-index: 1;
   flex: 1;
   align-items: center;
   justify-content: center;
@@ -13,7 +13,7 @@ export const Alpha = styled.div<AlphaProps>`
   position: fixed;
   height: 100%;
   width: 100%;
-  z-index: ${({ modalVisible }) => (modalVisible ? 1 : -1)};
+  display: ${({ modalVisible }) => (modalVisible ? 'flex' : 'none')};
 `;
 export const Popup = styled.div`
   display: column;

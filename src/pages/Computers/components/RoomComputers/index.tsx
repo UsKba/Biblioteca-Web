@@ -11,6 +11,7 @@ import {
   ComputersOverviewContainer,
   ComputerOverview,
   ComputerIcon,
+  ComputerButton,
   Button,
   StatusContainer,
   StatusSpan,
@@ -23,9 +24,18 @@ interface Props {
 }
 const RoomComputers = ({ handleClick }: Props) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [selectedComputer, setSelectedComputer] = useState('');
+  function openModal(computer: string) {
+    setSelectedComputer(computer);
+    setModalVisible(true);
+  }
   return (
     <>
-      <ComputerModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
+      <ComputerModal
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+        selectedComputer={selectedComputer}
+      />
       <Container>
         <BottomSide>
           <LeftSide>
@@ -111,51 +121,75 @@ const RoomComputers = ({ handleClick }: Props) => {
 
           <ComputersOverviewContainer>
             <ComputerOverview>
-              <ComputerIcon status={0} />
+              <ComputerButton onClick={() => openModal('01')}>
+                <ComputerIcon status={0} />
+              </ComputerButton>
             </ComputerOverview>
 
             <ComputerOverview>
-              <ComputerIcon status={1} />
+              <ComputerButton onClick={() => openModal('02')}>
+                <ComputerIcon status={1} />
+              </ComputerButton>
             </ComputerOverview>
 
             <ComputerOverview>
-              <ComputerIcon status={2} />
+              <ComputerButton onClick={() => openModal('03')}>
+                <ComputerIcon status={2} />
+              </ComputerButton>
             </ComputerOverview>
 
             <ComputerOverview>
-              <ComputerIcon status={3} />
+              <ComputerButton onClick={() => openModal('04')}>
+                <ComputerIcon status={3} />
+              </ComputerButton>
             </ComputerOverview>
 
             <ComputerOverview>
-              <ComputerIcon status={0} />
+              <ComputerButton onClick={() => openModal('05')}>
+                <ComputerIcon status={0} />
+              </ComputerButton>
             </ComputerOverview>
 
             <ComputerOverview>
-              <ComputerIcon status={1} />
+              <ComputerButton onClick={() => openModal('06')}>
+                <ComputerIcon status={1} />
+              </ComputerButton>
             </ComputerOverview>
 
             <ComputerOverview>
-              <ComputerIcon status={1} />
+              <ComputerButton onClick={() => openModal('07')}>
+                <ComputerIcon status={1} />
+              </ComputerButton>
             </ComputerOverview>
 
             <ComputerOverview>
-              <ComputerIcon status={2} />
+              <ComputerButton onClick={() => openModal('08')}>
+                <ComputerIcon status={2} />
+              </ComputerButton>
             </ComputerOverview>
 
             <ComputerOverview>
-              <ComputerIcon status={3} />
+              <ComputerButton onClick={() => openModal('09')}>
+                <ComputerIcon status={3} />
+              </ComputerButton>
             </ComputerOverview>
 
             <ComputerOverview>
-              <ComputerIcon status={0} />
+              <ComputerButton onClick={() => openModal('10')}>
+                <ComputerIcon status={0} />
+              </ComputerButton>
             </ComputerOverview>
 
             <ComputerOverview>
-              <ComputerIcon status={0} />
+              <ComputerButton onClick={() => openModal('11')}>
+                <ComputerIcon status={0} />
+              </ComputerButton>
             </ComputerOverview>
 
             <ComputerOverview>
-              <ComputerIcon status={0} />
+              <ComputerButton onClick={() => openModal('12')}>
+                <ComputerIcon status={0} />
+              </ComputerButton>
             </ComputerOverview>
           </ComputersOverviewContainer>
           <Button onClick={() => handleClick(false)}>

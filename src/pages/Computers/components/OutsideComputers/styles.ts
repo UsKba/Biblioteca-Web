@@ -83,6 +83,14 @@ export const Button = styled.button<ButtonProps>`
   }
 `;
 
+export const ComputerButton = styled.button`
+  cursor: pointer;
+  align-self: center;
+  background: none;
+  border: none;
+  outline: none;
+`;
+
 export const StatusSpan = styled.span`
   font-size: 16px;
   margin-left: 5px;

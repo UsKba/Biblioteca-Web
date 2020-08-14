@@ -11,14 +11,12 @@ const Home: React.FC = () => {
       <LeftSide>
         <H1>
           Reserve suas salas
-{' '}
-<br />
+          <br />
           sem sair de casa
         </H1>
         <H2>
           Com a Smart Library, você consegue reservar salas,
-{' '}
-<br />
+          <br />
           cheque se computadores estão disponíveis.
         </H2>
         <IconList>

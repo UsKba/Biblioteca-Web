@@ -14,12 +14,16 @@ import {
 interface OwnProps {
   modalVisible: boolean;
   setModalVisible: (newState: boolean) => void;
+  selectedComputer: string;
 }
-const ComputerModal: React.FC<OwnProps> = ({ modalVisible, setModalVisible }) => {
+const ComputerModal: React.FC<OwnProps> = ({ modalVisible, setModalVisible, selectedComputer }) => {
   return (
-    <Alpha modalVisible={modalVisible}>
+    <Alpha modalVisible={modalVisible} onClick={() => setModalVisible(false)}>
       <Popup>
-        <PopupContentTop>Computador: PC 01</PopupContentTop>
+        <PopupContentTop>
+          Computador: PC-
+          {selectedComputer}
+        </PopupContentTop>
         <PopupContentDiv>
           <PopupContentMid>Status: Disponível</PopupContentMid>
           <PopupStatus />

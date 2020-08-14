@@ -9,7 +9,6 @@ import {
   RightSide,
   RightSideTop,
   RightSideDown,
-  RightSideRight,
   Container,
   IndividualButton,
   ComputerRoomButton,
