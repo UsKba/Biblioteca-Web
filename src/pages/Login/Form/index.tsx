@@ -35,7 +35,7 @@ const Form: React.FC = () => {
     // pass123
 
     try {
-      await api.post<SessionResponse>('/sessions', {
+      await api.post<SessionResponse>('/users', {
         enrollment: matricula,
         password: senha,
       });
