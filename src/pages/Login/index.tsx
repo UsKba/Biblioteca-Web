@@ -1,44 +1,19 @@
-import React, { useEffect } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import React from 'react';
 
-import suap from '~/services/suap';
+import Spinner from '~/components/Spinner';
 
-import Form from './Form';
-import { Container, Logo } from './styles';
+import LogoImg from '~/assets/Logo.png';
+import { useAuth } from '~/contexts/AuthContext';
+
+import { Container, Logo, LoginButton } from './styles';
 
 export default function Login() {
-  const history = useHistory();
-
-  useEffect(() => {
-    suap.init();
-
-    // suap.logout();
-
-    console.log('Entrou');
-    console.log(suap.getLoginURL());
-    console.log('Authenticado', suap.isAuthenticated());
-
-    if (suap.isAuthenticated()) {
-      const scope = 'identificacao email&state=';
-
-      suap.getResource(scope, (response: any) => {
-        // fazer requisiçao pro backend
-
-        // token
-
-        console.log(JSON.stringify(response, null, 4));
-      });
-    }
-  }, []);
-
-  // function handleLogin() {
-  //   history.push(suap.getLoginURL(), {});
-  // }
+  const { signInSuapUrl, loading } = useAuth();
 
   return (
     <Container>
-      <Logo src={require('../../assets/Logo.png')} />
-      <a href={suap.getLoginURL()}>Login com o SUAP</a>
+      <Logo src={LogoImg} />
+      <LoginButton>{loading ? <Spinner /> : <a href={signInSuapUrl}>Login com o SUAP</a>}</LoginButton>
     </Container>
   );
 }

@@ -1,17 +1,23 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import { Provider } from 'react-redux';
-import Routes from './routes';
-import GlobalStyle from './styles/global';
+import { AuthProvider } from '~/contexts/AuthContext';
+
+// import Routes from './routes';
+import Routes from './Rotes';
 import store from './store';
+import GlobalStyle from './styles/global';
+
 function App() {
   return (
     <Provider store={store}>
       <>
         <GlobalStyle />
         <BrowserRouter>
-          <Routes />
+          <AuthProvider>
+            <Routes />
+          </AuthProvider>
         </BrowserRouter>
       </>
     </Provider>

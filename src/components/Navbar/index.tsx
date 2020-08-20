@@ -13,6 +13,8 @@ import {
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
+import { useAuth } from '~/contexts/AuthContext';
+
 import logo from '../../assets/Logo_Name.png';
 import {
   Container,
@@ -30,7 +32,11 @@ import {
 
 const NavbarComponent: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { signOut } = useAuth();
 
+  function handleSignOut() {
+    signOut();
+  }
   function closeSidebar() {
     setSidebarOpen(false);
   }
@@ -115,8 +121,12 @@ const NavbarComponent: React.FC = () => {
             <SidebarItemName>Sobre</SidebarItemName>
           </StyledLink>
         </SidebarItem>
-        <SidebarItem>
-          <StyledLink to="/login">
+        <SidebarItem
+          onClick={() => {
+            handleSignOut();
+          }}
+        >
+          <StyledLink to="/">
             <FaTimes />
             <SidebarItemName>Sair</SidebarItemName>
           </StyledLink>

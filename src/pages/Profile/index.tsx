@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-import api from '~/services/api';
+// import api from '~/services/api';
 
 import FriendList from '~/components/FriendList';
 
-import { AxiosResponseError } from '~/types';
+import { useAuth } from '~/contexts/AuthContext';
+// import { AxiosResponseError } from '~/types';
 
 import PageHome from './PageHome';
 import {
@@ -31,41 +32,43 @@ interface UserResponse {
 }
 
 const Profile: React.FC = () => {
-  const [username, setUsername] = useState('');
-  const [enrollment, setEnrollment] = useState('');
-  const [email, setEmail] = useState('');
+  const { user } = useAuth();
+  // como usar api 2020 atualizado
+  // useEffect(() => {
+  //   async function load() {
+  //     try {
+  //       const response = await api.get<UserResponse>('/users/1');
+  //       const { name } = response.data;
 
-  useEffect(() => {
-    async function load() {
-      try {
-        const response = await api.get<UserResponse>('/users/1');
-        const { name } = response.data;
+  //       setUsername(name);
+  //       setEnrollment(response.data.enrollment);
+  //       setEmail(response.data.email);
+  //     } catch (err) {
+  //       const responseError = err as AxiosResponseError;
 
-        setUsername(name);
-        setEnrollment(response.data.enrollment);
-        setEmail(response.data.email);
-      } catch (err) {
-        const responseError = err as AxiosResponseError;
+  //       console.log('error', responseError.response?.data?.error);
+  //     }
+  //   }
 
-        console.log('error', responseError.response?.data?.error);
-      }
-    }
-
-    load();
-  }, []);
+  //   load();
+  // }, []);
 
   return (
     <Container>
       <LeftSide>
         <ProfilePanel>
           <ProfileIcon>
-            <ProfileIconInitials>H</ProfileIconInitials>
+            <ProfileIconInitials>{user.name[0].toUpperCase()}</ProfileIconInitials>
           </ProfileIcon>
           <ProfileInformation>
-            <ProfileName>{username}</ProfileName>
-            <ProfileInformationDetails>{enrollment}</ProfileInformationDetails>
+            <ProfileName>{user.name}</ProfileName>
+            <ProfileInformationDetails>
+              Campus-
+              {user.campus}
+            </ProfileInformationDetails>
+            <ProfileInformationDetails>{user.enrollment}</ProfileInformationDetails>
             <EmailContainer>
-              <ProfileInformationDetails>{email}</ProfileInformationDetails>
+              <ProfileInformationDetails>{user.email}</ProfileInformationDetails>
             </EmailContainer>
           </ProfileInformation>
         </ProfilePanel>

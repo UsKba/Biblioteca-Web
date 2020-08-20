@@ -123,6 +123,7 @@ export const FriendIconInitials = styled.span`
 `;
 
 export const ProfileInformation = styled.div`
+  flex: 1;
   margin-top: 30px;
   height: 70px;
   display: flex;
@@ -141,7 +142,7 @@ export const ProfileName = styled.span`
 `;
 
 export const EmailContainer = styled.div`
-  margin-top: 95%;
+  margin-top: auto;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
