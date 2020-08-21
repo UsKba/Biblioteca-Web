@@ -7,7 +7,7 @@ import {
   FaBell,
   FaCog,
   FaBars,
-  FaTv,
+  FaDesktop,
   FaEnvelope,
   FaTimes,
 } from 'react-icons/fa';
@@ -37,9 +37,9 @@ const NavbarComponent: React.FC = () => {
   function handleSignOut() {
     signOut();
   }
-  function closeSidebar() {
-    setSidebarOpen(false);
-  }
+  // function closeSidebar() {
+  //   setSidebarOpen(false);
+  // }
 
   // function showSidebar() {
   //   setSidebarOpen(true);
@@ -50,7 +50,7 @@ const NavbarComponent: React.FC = () => {
   }
 
   return (
-    <div onMouseLeave={closeSidebar}>
+    <div>
       <Container>
         <Navbar>
           <LeftSide>
@@ -111,7 +111,7 @@ const NavbarComponent: React.FC = () => {
 
         <SidebarItem>
           <StyledLink to="/computers">
-            <FaTv />
+            <FaDesktop />
             <SidebarItemName>Computadores</SidebarItemName>
           </StyledLink>
         </SidebarItem>
@@ -126,7 +126,7 @@ const NavbarComponent: React.FC = () => {
             handleSignOut();
           }}
         >
-          <StyledLink to="/">
+          <StyledLink to="/home">
             <FaTimes />
             <SidebarItemName>Sair</SidebarItemName>
           </StyledLink>

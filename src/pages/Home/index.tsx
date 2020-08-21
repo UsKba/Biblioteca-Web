@@ -1,11 +1,25 @@
 import React from 'react';
-import { FaDesktop, FaUserPlus, FaUsers } from 'react-icons/fa';
+import { FaDesktop, FaUserPlus, FaChalkboardTeacher } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 import home_image01 from '~/assets/home_image01.png';
+import { useAuth } from '~/contexts/AuthContext';
 
-import { Container, LeftSide, RightSide, H1, H2, Image, IconList, IconSpan, IconContainer } from './styles';
+import {
+  Container,
+  LeftSide,
+  RightSide,
+  H1,
+  H2,
+  Image,
+  IconList,
+  IconSpan,
+  IconContainer,
+  InitialButton,
+} from './styles';
 
 const Home: React.FC = () => {
+  const { signed } = useAuth();
   return (
     <Container>
       <LeftSide>
@@ -29,10 +43,15 @@ const Home: React.FC = () => {
             <IconSpan>Encontrar Amigos</IconSpan>
           </IconContainer>
           <IconContainer>
-            <FaUsers />
+            <FaChalkboardTeacher />
             <IconSpan>Reserve Salas de Estudo</IconSpan>
           </IconContainer>
         </IconList>
+        {!signed && (
+          <Link to="/login">
+            <InitialButton>Entre agora!</InitialButton>
+          </Link>
+        )}
       </LeftSide>
       <RightSide>
         <Image src={home_image01} />

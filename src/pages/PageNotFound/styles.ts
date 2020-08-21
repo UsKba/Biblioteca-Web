@@ -10,73 +10,41 @@ export const Container = styled.div`
   border-radius: 10px;
 `;
 
-export const LeftSide = styled.div`
-  display: flex;
-  flex-direction: column;
+export const Text = styled.div`
+  display: column;
   align-items: center;
-  width: 47%;
-  height: 100%;
-  border-radius: 7px 0 0 7px;
+  margin-left: 4em;
+  margin-top: 4em;
+  height: 70%;
+  width: 50%;
 `;
 
-export const RightSide = styled.div`
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const Image = styled.img`
-  height: 450px;
-  margin-right: 15px;
-`;
-
-export const IconContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  svg {
-    font-size: 50px;
-    color: #333;
-  }
-`;
-
-export const IconList = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-export const IconSpan = styled.span`
-  display: flex;
-  width: 200px;
-  padding: 20px;
-  text-align: center;
-  justify-content: center;
-`;
-
-export const H1 = styled.div`
+export const T1 = styled.div`
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 44px;
   color: #80b918;
   width: 100%;
-  height: 22%;
+  height: 11%;
   margin-top: 10px;
-  margin-bottom: 35px;
-  align-self: center;
-  padding: 30px;
   text-shadow: 0px 0px 2px #322c42;
   font-weight: bold;
-  text-align: center;
 `;
 
-export const H2 = styled.p`
+export const T2 = styled.p`
   font-size: 20px;
   font-weight: bold;
   color: #322c42;
   width: 100%;
   height: 22%;
   margin-top: 1em;
-  text-align: center;
+  text-align: justify;
+  text-justify: inter-word;
+`;
+
+export const Buttons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
 `;
 
 export const InitialButton = styled.button`
@@ -89,7 +57,7 @@ export const InitialButton = styled.button`
   color: #fff;
   font-weight: bold;
   font-size: 16px;
-  width: 275px;
+  width: 200px;
   padding: 15px 0px;
   border-radius: 5px;
 

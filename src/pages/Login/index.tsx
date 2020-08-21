@@ -7,7 +7,7 @@ import { useAuth } from '~/contexts/AuthContext';
 
 import { Container, Logo, LoginButton } from './styles';
 
-export default function Login() {
+const Login: React.FC = () => {
   const { signInSuapUrl, loading } = useAuth();
 
   return (
@@ -16,4 +16,6 @@ export default function Login() {
       <LoginButton>{loading ? <Spinner /> : <a href={signInSuapUrl}>Login com o SUAP</a>}</LoginButton>
     </Container>
   );
-}
+};
+
+export default Login;

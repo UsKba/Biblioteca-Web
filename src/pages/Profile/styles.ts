@@ -12,13 +12,11 @@ export const Container = styled.div`
 export const ProfilePanel = styled.div`
   display: flex;
   flex-direction: column;
-  min-width: 300px;
-  width: 35%;
+  width: 315px;
   background-color: ${colors.terciary};
   height: 30em;
   padding: 10px;
   border-radius: 5px;
-  /* min-width: 25%; */
   min-height: 120px;
   align-items: center;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
@@ -32,6 +30,7 @@ export const LeftSide = styled.div`
 export const MiddleSide = styled.div`
   display: flex;
   flex: 1;
+  justify-content: center;
 `;
 
 export const RightSide = styled.div`

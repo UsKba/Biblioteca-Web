@@ -7,13 +7,11 @@ export const Container = styled.div`
   align-self: center;
   justify-content: center;
   align-items: center;
-  flex: 1;
 `;
 export const DayReservesContainer = styled.div`
-  width: 85%;
+  width: 673px;
   display: flex;
   flex-direction: column;
-  margin-left: 15px;
   border-radius: 5px;
   padding: 15px 15px 0 15px;
   background-color: rgba(3, 3, 3, 0.8);
