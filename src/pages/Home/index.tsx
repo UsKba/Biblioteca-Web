@@ -1,6 +1,8 @@
 import React from 'react';
 import { FaDesktop, FaUserPlus, FaChalkboardTeacher } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+
+import Spinner from '~/components/Spinner';
 
 import home_image01 from '~/assets/home_image01.png';
 import { useAuth } from '~/contexts/AuthContext';
@@ -19,7 +21,8 @@ import {
 } from './styles';
 
 const Home: React.FC = () => {
-  const { signed } = useAuth();
+  const { signed, signInSuapUrl, loading } = useAuth();
+
   return (
     <Container>
       <LeftSide>
@@ -48,9 +51,9 @@ const Home: React.FC = () => {
           </IconContainer>
         </IconList>
         {!signed && (
-          <Link to="/login">
-            <InitialButton>Entre agora!</InitialButton>
-          </Link>
+          <a href={signInSuapUrl}>
+            <InitialButton>{loading ? <Spinner /> : 'Login com o SUAP'}</InitialButton>
+          </a>
         )}
       </LeftSide>
       <RightSide>

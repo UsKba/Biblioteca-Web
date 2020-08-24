@@ -13,7 +13,10 @@ import {
   Reserve,
   Hour,
   Room,
-  StudentName,
+  Date,
+  HourInfo,
+  InfoH,
+  // StudentName,
 } from './styles';
 // import { Container } from './styles';
 
@@ -52,59 +55,68 @@ const Homepage: React.FC = () => {
         <Reserves>
           <Reserve>
             <Room>F1 - 3</Room>
-            <Hour>10:00 - 11:00</Hour>
-            <StudentName>Bruno Eduardo</StudentName>
-            <StudentName>Felipe</StudentName>
-            <StudentName>Nathan</StudentName>
-            <StudentName>Halyson</StudentName>
+
+            <Hour>
+              Horário
+              <HourInfo>
+                <InfoH>
+                  Entrada
+                  <br />
+                  08:00
+                </InfoH>
+                <InfoH>
+                  Saída
+                  <br />
+                  09:00
+                </InfoH>
+              </HourInfo>
+            </Hour>
+
+            <Date>30/05</Date>
           </Reserve>
 
           <Reserve>
-            <Room>F1 - 6</Room>
-            <Hour>15:00 - 16:00</Hour>
-            <StudentName>Bruno Eduardo</StudentName>
-            <StudentName>Ivo Mastre</StudentName>
-            <StudentName>Idaslon Pereira</StudentName>
-            <StudentName>João Eduardo</StudentName>
+            <Room>F1 - 3</Room>
+
+            <Hour>
+              Horário
+              <HourInfo>
+                <InfoH>
+                  Entrada
+                  <br />
+                  08:00
+                </InfoH>
+                <InfoH>
+                  Saída
+                  <br />
+                  09:00
+                </InfoH>
+              </HourInfo>
+            </Hour>
+
+            <Date>30/05</Date>
           </Reserve>
 
           <Reserve>
-            <Room>F1 - 5</Room>
-            <Hour>7:15 - 8:00</Hour>
-            <StudentName>João Luís</StudentName>
-            <StudentName>Hiterlan</StudentName>
-            <StudentName>Gabriel</StudentName>
-            <StudentName>João Vitor</StudentName>
-            <StudentName>Expedito</StudentName>
-            <StudentName>Lino</StudentName>
-            <StudentName>Max Miller</StudentName>
-            <StudentName>Luana</StudentName>
-          </Reserve>
+            <Room>F1 - 3</Room>
 
-          <Reserve>
-            <Room>F1 - 5</Room>
-            <Hour>7:15 - 8:00</Hour>
-            <StudentName>João Luís</StudentName>
-            <StudentName>Hiterlan</StudentName>
-            <StudentName>Gabriel</StudentName>
-            <StudentName>João Vitor</StudentName>
-            <StudentName>Expedito</StudentName>
-            <StudentName>Lino</StudentName>
-            <StudentName>Max Miller</StudentName>
-            <StudentName>Luana</StudentName>
-          </Reserve>
+            <Hour>
+              Horário
+              <HourInfo>
+                <InfoH>
+                  Entrada
+                  <br />
+                  08:00
+                </InfoH>
+                <InfoH>
+                  Saída
+                  <br />
+                  09:00
+                </InfoH>
+              </HourInfo>
+            </Hour>
 
-          <Reserve>
-            <Room>F1 - 5</Room>
-            <Hour>19:00 - 20:00</Hour>
-            <StudentName>João Luís</StudentName>
-            <StudentName>Hiterlan</StudentName>
-            <StudentName>Gabriel</StudentName>
-            <StudentName>João Vitor</StudentName>
-            <StudentName>Expedito</StudentName>
-            <StudentName>Lino</StudentName>
-            <StudentName>Max Miller</StudentName>
-            <StudentName>Luana</StudentName>
+            <Date>30/05</Date>
           </Reserve>
         </Reserves>
       </DayReservesContainer>

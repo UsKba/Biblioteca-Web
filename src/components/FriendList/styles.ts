@@ -31,7 +31,7 @@ export const IconContainer = styled.div`
 `;
 
 export const FriendsContainer = styled.div`
-  background-color: rgba(3, 3, 3, 0.8);
+  background-color: rgba(3, 3, 3, 0.6);
   padding: 10px;
   border-radius: 5px;
 `;

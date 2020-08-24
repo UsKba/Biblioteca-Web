@@ -13,7 +13,9 @@ const Login: React.FC = () => {
   return (
     <Container>
       <Logo src={LogoImg} />
-      <LoginButton>{loading ? <Spinner /> : <a href={signInSuapUrl}>Login com o SUAP</a>}</LoginButton>
+      <a href={signInSuapUrl}>
+        <LoginButton>{loading ? <Spinner /> : 'Login com o SUAP'}</LoginButton>
+      </a>
     </Container>
   );
 };

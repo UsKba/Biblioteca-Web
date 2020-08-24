@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Container, T1, T2, Text, InitialButton, Buttons } from './styles';
+import Img1 from '~/assets/error404_img1.png';
+
+import { Container, T1, T2, Text, InitialButton, Buttons, Image } from './styles';
 
 const PageNotFound: React.FC = () => {
   return (
@@ -24,6 +26,7 @@ const PageNotFound: React.FC = () => {
           </Link>
         </Buttons>
       </Text>
+      <Image src={Img1} />
     </Container>
   );
 };

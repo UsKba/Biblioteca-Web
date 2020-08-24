@@ -17,7 +17,7 @@ export default function Routes() {
   return (
     <>
       <Route
-        path={['/reserve', '/profile', '/computers', '/rent', '/report', '/settings', '/topview', '/home', '/login']}
+        path={['/reserve', '/profile', '/computers', '/rent', '/report', '/settings', '/topview', '/home']}
         component={Navbar}
       />
       <Switch>

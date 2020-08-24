@@ -1,7 +1,11 @@
 /* eslint-disable no-undef */
-const CLIENT_ID = 'BFQAvAsreihZpPRaHshKwcGMFNxzJgx9fJuzkth8';
-const REDIRECT_URI = 'http://localhost:3000/login';
+const CLIENT_ID = 'RhbGlTFhHHN0c9TlqzhXHWYoK2jenc5wWK9cCyuB';
+let REDIRECT_URI = 'http://localhost:3000/home';
 const SUAP_URL = 'https://suap.ifrn.edu.br';
+
+if (process.env.NODE_ENV === 'PRODUCTION') {
+  REDIRECT_URI = 'https://mystifying-kirch-1890cf.netlify.app';
+}
 
 const suap = new SuapClient(SUAP_URL, CLIENT_ID, REDIRECT_URI);
 

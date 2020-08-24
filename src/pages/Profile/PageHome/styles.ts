@@ -4,18 +4,16 @@ import colors from '../../../styles/colors';
 
 export const Container = styled.div`
   display: flex;
-  align-self: center;
   justify-content: center;
-  align-items: center;
 `;
 export const DayReservesContainer = styled.div`
+  align-self: flex-start;
   width: 673px;
   display: flex;
   flex-direction: column;
   border-radius: 5px;
   padding: 15px 15px 0 15px;
-  background-color: rgba(3, 3, 3, 0.8);
-  align-items: center;
+  background-color: rgba(3, 3, 3, 0.6);
 `;
 
 export const DatePicker = styled.div`
@@ -76,8 +74,9 @@ export const Weeks = styled.div`
 
 export const Reserves = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex: 1;
   flex-wrap: wrap;
+  justify-content: space-between;
 
   @media screen and (max-width: 400px) {
     justify-content: center;
@@ -87,9 +86,7 @@ export const Reserves = styled.div`
 export const Reserve = styled.div`
   display: flex;
   margin-bottom: 15px;
-  padding: 20px;
   flex-direction: column;
-  background-color: ${colors.terciary};
   border-radius: 5px;
   min-width: 180px;
 `;
@@ -98,13 +95,35 @@ export const Room = styled.span`
   font-weight: bold;
   font-size: 20px;
   text-align: center;
+  border-radius: 7px 7px 0 0;
+  margin-bottom: 4px;
+  background-color: ${colors.terciary};
 `;
 export const Hour = styled.span`
-  margin-top: 15px;
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
   font-weight: bold;
+
+  background-color: ${colors.terciary};
+  height: 4em;
   text-align: center;
 `;
-export const StudentName = styled.span`
+
+export const HourInfo = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
+
+export const InfoH = styled.span`
   text-align: center;
+  margin-top: 5px;
+`;
+
+export const Date = styled.span`
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 0 0 7px 7px;
+  margin-top: 4px;
+  background-color: ${colors.terciary};
 `;

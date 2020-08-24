@@ -40,7 +40,7 @@ export const AuthProvider: React.FC = ({ children }) => {
       await new Promise((resolve) => {
         setTimeout(() => {
           resolve({});
-        }, 2000);
+        });
       });
 
       localStorage.setItem('@RNAuth:user', JSON.stringify(formattedUser));
@@ -95,6 +95,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   }, [handleSignIn]);
 
   function signOut() {
+    history.push('/home');
     localStorage.clear();
     suap.logout();
     setIsSigned(false);

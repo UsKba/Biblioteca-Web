@@ -63,7 +63,7 @@ const user = users.find((user) => {
 
 export default {};
 
-/*console.log('AAAAAAA');
+/* console.log('AAAAAAA');
 const userMapUpdated = users.map((user) => {
   return {
     name: user.name,

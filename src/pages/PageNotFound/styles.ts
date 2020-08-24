@@ -13,8 +13,7 @@ export const Container = styled.div`
 export const Text = styled.div`
   display: column;
   align-items: center;
-  margin-left: 4em;
-  margin-top: 4em;
+  margin: 3em 0 0 3em;
   height: 70%;
   width: 50%;
 `;
@@ -73,4 +72,10 @@ export const InitialButton = styled.button`
     font-size: 14px;
     padding: 16px;
   }
+`;
+
+export const Image = styled.img`
+  width: 597.5px;
+  height: 398.125px;
+  align-self: center;
 `;
