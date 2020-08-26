@@ -26,6 +26,18 @@ interface AuthContextData {
   loading: boolean;
 }
 
+interface UserBackendResponse {
+  // user: Omit<User, 'campus'>;
+  user: {
+    name: string;
+    email: string;
+    enrollment: string;
+    campus: string;
+    id: number;
+  };
+  token: string;
+}
+
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
@@ -37,18 +49,26 @@ export const AuthProvider: React.FC = ({ children }) => {
   const handleSignIn = useCallback(
     async (formattedUser: User) => {
       setLoading(true);
-      await new Promise((resolve) => {
-        setTimeout(() => {
-          resolve({});
-        });
+
+      const { email, enrollment, name } = formattedUser;
+
+      const response = await api.post<UserBackendResponse>('/sessions', {
+        enrollment,
+        name,
+        email,
+        // campus: user.campus,
       });
 
+      const { token } = response.data;
+
       localStorage.setItem('@RNAuth:user', JSON.stringify(formattedUser));
-      localStorage.setItem('@RNAuth:token', 'o token vai aqui');
+      localStorage.setItem('@RNAuth:token', token);
+      api.defaults.headers = { authorization: `Bearer ${token}` };
 
       setUser(formattedUser);
       setLoading(false);
       setIsSigned(true);
+
       if (history.location.hash) {
         history.push('/profile');
       }
@@ -62,7 +82,7 @@ export const AuthProvider: React.FC = ({ children }) => {
       const storagedToken = localStorage.getItem('@RNAuth:token');
 
       if (storagedUser && storagedToken) {
-        api.defaults.headers.Authorization = `Bearer ${storagedToken}`;
+        api.defaults.headers.authorization = `Bearer ${storagedToken}`;
         setUser(JSON.parse(storagedUser));
         setIsSigned(true);
       }

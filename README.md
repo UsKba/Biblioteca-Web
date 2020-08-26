@@ -15,3 +15,13 @@ React template with eslint prettier redux/sagas configurations
 Clone this repository
 Run `yarn` on root directory
 Run `yarn start`
+
+BACKEND
+
+POST: Quando você quer cadastrar alguma coisa;
+
+GET: Pegar algo já cadastrado;
+
+PUT: Atualizar algo já cadastrado;
+
+DELETE: Deletar algo já cadastrado.
