@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { Link } from 'react-router-dom';
+
 export const Container = styled.div`
   display: flex;
   flex: 1;
@@ -22,7 +24,7 @@ export const IndividualButton = styled.button`
 
 export const ComputerRoomButton = styled.button`
   width: 9em;
-  height: 70%;
+  height: 100%;
   background-color: #0d9e00;
   color: #fff;
   font-weight: 400;
@@ -31,7 +33,7 @@ export const ComputerRoomButton = styled.button`
 `;
 
 export const ComputerButton = styled.button`
-  width: 6em;
+  width: 5em;
   height: 3.5em;
   background-color: #00c99e;
   color: #fff;
@@ -132,4 +134,8 @@ export const Bookshelf3 = styled.div`
   width: 22em;
   height: 2em;
   margin: 0 0 10% 8%;
+`;
+
+export const StyledLink = styled(Link)`
+  height: 70%;
 `;
