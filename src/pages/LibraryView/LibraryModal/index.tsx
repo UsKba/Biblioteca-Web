@@ -11,6 +11,7 @@ import {
   TableBottom,
   RightInfo,
   LeftInfo,
+  RoomName,
 } from './styles';
 
 interface OwnProps {
@@ -25,7 +26,8 @@ const LibraryModal: React.FC<OwnProps> = ({ modalVisible, setModalVisible, selec
       <Container>
         <Model />
         <Table>
-          {selectedRoom}
+          <RoomName>{selectedRoom}</RoomName>
+
           <TableTop />
           <TableBottom>
             <TableLeft>

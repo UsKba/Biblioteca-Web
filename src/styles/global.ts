@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-import background from '~/assets/doodles.png';
+// import background from '~/assets/doodles.png';
 
 export default createGlobalStyle`
   * {
@@ -10,18 +10,25 @@ export default createGlobalStyle`
     font-size: 16px
   }
 
-  html{
-    background-image: linear-gradient(to right, #AACC00, #2B9348);
-    height: 100%;
+  *, input, button {
+    font-family: 'Roboto', 'sans-serif';
   }
-  body {
-    /* background-image: linear-gradient(to right, #AACC00, #2B9348); */
 
+  button{
+    outline: none;
+    cursor: pointer;
+  }
+
+  html{
+    background-color: #F0F2F5;
+
+  }
+
+  body {
     display: flex;
+    flex: 1;
     flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
-    width: 100%;
-    height: 100%;
+    min-height: 100vh;
   }
 
   a{
@@ -29,10 +36,6 @@ export default createGlobalStyle`
   }
 
   div#root{
-    background-size:cover;
-    background-attachment:fixed;
-    background-image: url(${background});
-
     display: flex;
     flex: 1;
     flex-direction: column;

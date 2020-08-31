@@ -15,15 +15,12 @@ import { Link } from 'react-router-dom';
 
 import { useAuth } from '~/contexts/AuthContext';
 
-import logo from '../../assets/Logo_Name.png';
 import {
   Container,
   Navbar,
   NavItem,
   LeftSide,
   RightSide,
-  MiddleSide,
-  Logo,
   Sidebar,
   SidebarItem,
   SidebarItemName,
@@ -59,10 +56,6 @@ const NavbarComponent: React.FC = () => {
               <FaBars />
             </NavItem>
           </LeftSide>
-
-          <MiddleSide>
-            <Logo src={logo} />
-          </MiddleSide>
 
           <RightSide>
             <Link to="/settings/notificacao">

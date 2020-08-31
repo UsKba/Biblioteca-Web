@@ -28,7 +28,6 @@ export default function Routes() {
         <Route path="/report" exact component={LibrarianReport} />
         <Route path="/settings" component={Settings} />
         <Route path="/topview" exact component={LibraryView} />
-        <Route path="/home" exact component={Home} />
         <Route path="/" component={PageNotFound} />
       </Switch>
 

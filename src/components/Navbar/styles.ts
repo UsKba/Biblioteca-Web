@@ -2,23 +2,23 @@ import styled from 'styled-components';
 
 import { Link } from 'react-router-dom';
 
-import colors from '../../styles/colors';
+import colors from '~/styles/colors';
 
 export const Container = styled.div`
-  margin-bottom: 70px;
+  margin-bottom: 50px;
 `;
 
 export const Navbar = styled.ul`
   position: fixed;
-  background-color: #fff;
+  background-color: ${colors.terciary};
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   list-style: none;
   justify-content: space-between;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  height: 70px;
+  /* box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); */
+  height: 50px;
 `;
 
 export const LeftSide = styled.div`
@@ -31,10 +31,6 @@ export const LeftSide = styled.div`
 `;
 
 export const RightSide = styled.div`
-  display: flex;
-`;
-
-export const MiddleSide = styled.div`
   display: flex;
 `;
 
@@ -76,9 +72,9 @@ export const Sidebar = styled.div<SidebarProps>`
   z-index: 1;
   height: fit-content;
   position: fixed;
-  top: 70px;
+  top: 50px;
   height: 100%;
-  left: -270px;
+  left: -272px;
   border-radius: 0px 0px 7px 7px;
   box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.2);
 

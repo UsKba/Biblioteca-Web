@@ -1,9 +1,11 @@
 const colors = {
-  primary: '#483D8B',
-  secondary: '#7B68EE',
+  primary: '#638AF2',
+  secondary: '#3D6DCC',
   terciary: '#fff',
+  background: '#F0F2F5',
+  dark: '#322C42',
   blue: '#1c91ff',
-  red: '#f55',
+  red: '#EF476F',
   black: '#333',
 
   computerStatus: ['#2B9348', '#faa61a', '#f55', '#333'],
