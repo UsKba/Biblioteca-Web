@@ -20,32 +20,30 @@ export const IconContainer = styled.div`
   background-color: #333;
   border: none;
   border-radius: 6px;
-
   cursor: pointer;
 
   > svg {
     color: #fff;
-
     font-size: 10px;
   }
 `;
 
 export const FriendsContainer = styled.div`
-  background-color: rgba(3, 3, 3, 0.6);
-  padding: 10px;
-  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: red;
+  padding: 14px 10px 0 10px;
 `;
 
 export const FriendsPanel = styled.div`
   display: flex;
+  height: 561px;
   flex-direction: column;
-  min-height: 300px;
-  min-height: 120px;
   background-color: ${colors.terciary};
   margin-top: 7px;
   padding: 10px;
   border-radius: 5px;
-
   /* margin-right: auto; */
   /* margin-left: 970px; */
 `;
