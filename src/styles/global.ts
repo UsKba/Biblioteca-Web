@@ -19,6 +19,10 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 
+input{
+  outline: none;
+}
+
   html{
     background-color: #F0F2F5;
 

@@ -6,8 +6,9 @@ export const Container = styled.div`
   display: flex;
   flex: 1;
   width: 100%;
-  align-self: center;
+  justify-content: space-between;
 `;
+
 export const ProfilePanel = styled.div`
   display: flex;
   flex-direction: column;
@@ -23,22 +24,25 @@ export const ProfilePanel = styled.div`
 
 export const LeftSide = styled.div`
   display: flex;
-  width: 23.2%;
+  width: 100%;
+  max-width: 300px;
 `;
 
 export const MiddleSide = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
+
+  width: 100%;
+  max-width: 1000px;
+
   padding: 14px 34px 0 34px;
 `;
 
 export const RightSide = styled.div`
+  width: 100%;
+  max-width: 300px;
   display: flex;
   justify-content: flex-start;
-  width: 23.2%;
-  flex-direction: column;
-  background-color: green;
 `;
 
 interface LineStatus {
@@ -71,13 +75,16 @@ export const Title = styled.span`
 
 export const ReserveContainer = styled.div`
   display: flex;
+  justify-content: space-around;
+
   width: 100%;
   height: 110px;
-  background-color: ${colors.terciary};
-  justify-content: space-around;
-  border-left: solid 6px cyan;
-  border-radius: 5px;
+
   margin-bottom: 10px;
+
+  border-radius: 5px;
+  border-left: solid 6px #4ad2d8;
+  background-color: ${colors.terciary};
 `;
 
 export const ReserveLeftSide = styled.div`
@@ -198,6 +205,7 @@ export const CampusContainer = styled.div`
     color: ${colors.secondary};
     font-size: 20px;
   }
+  align-items: top;
 `;
 
 export const Campus = styled.span`
@@ -207,193 +215,34 @@ export const Campus = styled.span`
   margin-right: 10px;
 `;
 
-// export const Container = styled.div`
-//   display: flex;
-//   flex: 1;
-//   width: 100%;
-//   align-self: center;
-//   background-color: green;
-// `;
-// export const ProfilePanel = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   width: 315px;
-//   background-color: ${colors.terciary};
-//   height: 30em;
-//   padding: 10px;
-//   border-radius: 5px;
-//   min-height: 120px;
-//   align-items: center;
-//   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-// `;
+export const NotifHead = styled.div`
+  height: 2em;
+  width: 100%;
+  margin-left: 5px;
+`;
 
-// export const LeftSide = styled.div`
-//   display: flex;
-//   flex-direction: column;
-// `;
+export const NotiMail = styled.span`
+  color: #666666;
+  font-size: 14px;
+  margin-left: 5px;
+`;
 
-// export const MiddleSide = styled.div`
-//   display: flex;
-//   flex: 1;
-//   justify-content: center;
-// `;
+export const NotiTitle = styled.span`
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 19px;
+`;
 
-// export const RightSide = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   height: 100%;
-//   margin-left: auto;
-// `;
+export const NotiP = styled.span`
+  font-size: 15px;
+  margin-top: 10px;
+`;
 
-// export const SearchingBar = styled.input`
-//   height: 25px;
-//   width: 190px;
-//   background-color: ${colors.terciary};
-//   border: none;
-//   border-radius: 5px;
-//   padding: 5px;
-//   cursor: text;
-//   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-// `;
+export const NotiText = styled.span`
+  display: flex;
+  flex-direction: column;
+`;
 
-// export const IconContainer = styled.div`
-//   padding: 3px 7.25px;
-//   align-items: center;
-//   justify-content: center;
-//   min-width: 5%;
-//   background-color: #333;
-//   border: none;
-//   border-radius: 6px;
-//   cursor: pointer;
-//   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-// `;
-
-// export const FriendsContainer = styled.div`
-//   margin: 40px 40px 0 0;
-// `;
-
-// export const FriendsPanel = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   min-height: 300px;
-//   min-height: 120px;
-//   background-color: ${colors.terciary};
-//   margin-top: 7px;
-//   padding: 10px;
-//   border-radius: 5px;
-//   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-
-//   /* margin-right: auto; */
-//   /* margin-left: 970px; */
-// `;
-
-// export const FriendsPanelDetails = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   margin-bottom: 10px;
-// `;
-
-// export const ProfileIcon = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: 100px;
-//   height: 100px;
-//   background-color: #333;
-//   color: #fff;
-//   border-radius: 100px;
-//   margin-top: 23px;
-//   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-// `;
-
-// export const FriendIcon = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: 35px;
-//   height: 35px;
-//   background-color: #333;
-//   color: ${colors.terciary};
-//   border-radius: 100px;
-//   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-// `;
-
-// export const ProfileIconInitials = styled.span`
-//   font-size: 50px;
-// `;
-
-// export const FriendIconInitials = styled.span`
-//   font-size: 15px;
-// `;
-
-// export const ProfileInformation = styled.div`
-//   flex: 1;
-//   margin-top: 30px;
-//   height: 70px;
-//   display: flex;
-//   flex-direction: column;
-//   text-align: center;
-//   justify-content: space-between;
-// `;
-
-// export const ProfileInformationDetails = styled.span`
-//   font-weight: bold;
-// `;
-
-// export const ProfileName = styled.span`
-//   font-size: 28px;
-//   font-weight: bold;
-// `;
-
-// export const EmailContainer = styled.div`
-//   margin-top: auto;
-//   padding: 10px;
-//   border-radius: 5px;
-//   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-// `;
-
-// export const FriendsDetails = styled.div`
-//   padding: 10px;
-// `;
-
-// export const SearchArea = styled.div`
-//   display: flex;
-//   width: 225px;
-//   justify-content: space-between;
-// `;
-
-// export const AddArea = styled.div`
-//   display: flex;
-//   width: 225px;
-//   margin-top: 6px;
-
-//   justify-content: space-between;
-// `;
-
-// export const AddSpan = styled.span`
-//   font-size: 15px;
-//   font-weight: bold;
-//   background-color: ${colors.terciary};
-//   color: #333;
-//   padding: 4px 10px;
-//   border-radius: 5px;
-//   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-// `;
-
-// export const MessageButton = styled.button`
-//   position: fixed;
-//   right: 15px;
-//   bottom: 15px;
-//   margin-top: auto;
-//   background-color: #333;
-//   cursor: pointer;
-//   color: #fff;
-//   font-weight: bold;
-//   font-size: 16px;
-//   width: 200px;
-//   padding: 20px 0px;
-//   border-radius: 10px;
-//   border: none;
-//   outline: none;
-//   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-// `;
+export const Notification = styled.div`
+  display: column;
+`;

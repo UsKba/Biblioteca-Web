@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom';
 // import api from '~/services/api';
 
 import FriendList from '~/components/FriendList';
+import { FriendIcon, FriendIconInitials } from '~/components/FriendList/styles';
 
 import { useAuth } from '~/contexts/AuthContext';
 // import { AxiosResponseError } from '~/types';
 
-import PageHome from './PageHome';
 import {
   Container,
   LeftSide,
@@ -39,6 +39,12 @@ import {
   Email,
   Campus,
   CampusContainer,
+  NotifHead,
+  NotiMail,
+  NotiTitle,
+  NotiP,
+  NotiText,
+  Notification,
 } from './styles';
 
 interface UserResponse {
@@ -112,6 +118,7 @@ const Profile: React.FC = () => {
         </ReserveList>
         <SideLine backGroundColor="#3D6DCC" alignment="flex-end" />
       </LeftSide>
+
       <MiddleSide>
         <Title>Perfil</Title>
         <BackgroundContainer>
@@ -132,13 +139,34 @@ const Profile: React.FC = () => {
           </ProfileLeftSide>
           <ProfileRightSide>
             <CampusContainer>
-              <Campus>{user.campus}</Campus>
-              <FiMapPin />
+              <a href="https://goo.gl/maps/ALWeMF7grNxuXKQc6" target="_blank" rel="noopener noreferrer">
+                <Campus>{user.campus}</Campus>
+                <FiMapPin />
+              </a>
             </CampusContainer>
           </ProfileRightSide>
         </BackgroundContainer>
+
         <Title>Notificações</Title>
-        <BackgroundContainer />
+        <BackgroundContainer>
+          <FriendIcon>
+            <FriendIconInitials>T</FriendIconInitials>
+          </FriendIcon>
+          <Notification>
+            <NotifHead>
+              Tallys Aureliano Júnior
+              <NotiMail>{'<tallys@aureliano.com.br>'}</NotiMail>
+            </NotifHead>
+            <NotiText>
+              <NotiTitle>Trabalho</NotiTitle>
+              <NotiP>
+                It is a long established fact that a reader will be distracted by the readable content of a page when
+                looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution
+                of letters, as opposed to using.
+              </NotiP>
+            </NotiText>
+          </Notification>
+        </BackgroundContainer>
       </MiddleSide>
       <RightSide>
         <SideLine backGroundColor="#638AF2" alignment="flex-start" />
@@ -149,35 +177,3 @@ const Profile: React.FC = () => {
 };
 
 export default Profile;
-
-/* <Container>
-      <LeftSide>
-        <ProfilePanel>
-          <ProfileIcon>
-            <ProfileIconInitials>{user.name[0].toUpperCase()}</ProfileIconInitials>
-          </ProfileIcon>
-          <ProfileInformation>
-            <ProfileName>{user.name}</ProfileName>
-            <ProfileInformationDetails>
-              Campus-
-              {user.campus}
-            </ProfileInformationDetails>
-            <ProfileInformationDetails>{user.enrollment}</ProfileInformationDetails>
-            <EmailContainer>
-              <ProfileInformationDetails>{user.email}</ProfileInformationDetails>
-            </EmailContainer>
-          </ProfileInformation>
-        </ProfilePanel>
-      </LeftSide>
-
-      <MiddleSide>
-        <PageHome />
-      </MiddleSide>
-
-      <RightSide>
-        <FriendList />
-        <Link to="/report">
-          <MessageButton>Falar com Bibliotecário</MessageButton>
-        </Link>
-      </RightSide>
-    </Container> */

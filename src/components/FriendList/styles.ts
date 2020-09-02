@@ -2,54 +2,89 @@ import styled from 'styled-components';
 
 import colors from '~/styles/colors';
 
+export const FriendsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 14px 10px 0 10px;
+`;
+
+export const TitlePanel = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 19px;
+  svg {
+    color: ${colors.secondary};
+    font-size: 15px;
+  }
+`;
+
+export const Title = styled.span`
+  font-size: 22px;
+  font-weight: bold;
+  font-family: 'Ubuntu';
+`;
+
+export const SearchArea = styled.div`
+  display: flex;
+  height: 45px;
+  width: 277px;
+`;
+
+export const SearchHashTag = styled.span`
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Ubuntu';
+
+  height: 45px;
+  width: 35px;
+  padding: 10px;
+  border-radius: 6px 0 0 6px;
+
+  background-color: ${colors.terciary};
+  color: #666666;
+`;
+
 export const SearchingBar = styled.input`
-  height: 25px;
+  height: 45px;
   width: 220px;
   background-color: ${colors.terciary};
   border: none;
-  border-radius: 5px;
+  border-radius: 0;
   padding: 5px;
   cursor: text;
 `;
 
 export const IconContainer = styled.div`
-  padding: 3px 7.25px;
+  display: flex;
   align-items: center;
-  justify-content: center;
+  padding: 3px 7.25px;
   min-width: 5%;
-  background-color: #333;
+  background-color: ${colors.terciary};
   border: none;
-  border-radius: 6px;
+  border-radius: 0 6px 6px 0;
   cursor: pointer;
 
   > svg {
-    color: #fff;
-    font-size: 10px;
+    color: ${colors.dark};
+    font-size: 15px;
   }
-`;
-
-export const FriendsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  background-color: red;
-  padding: 14px 10px 0 10px;
 `;
 
 export const FriendsPanel = styled.div`
   display: flex;
-  height: 561px;
+  flex: 1;
   flex-direction: column;
-  background-color: ${colors.terciary};
   margin-top: 7px;
-  padding: 10px;
   border-radius: 5px;
-  /* margin-right: auto; */
-  /* margin-left: 970px; */
 `;
 
 export const FriendsPanelDetails = styled.div`
   display: flex;
+  background-color: ${colors.terciary};
+  padding: 10px;
+  border-radius: 5px;
   flex-direction: row;
   margin-bottom: 10px;
 `;
@@ -60,38 +95,42 @@ export const FriendIcon = styled.div`
   justify-content: center;
   width: 35px;
   height: 35px;
-  background-color: #333;
+  background-color: #638af2;
   color: ${colors.terciary};
   border-radius: 100px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;
 
 export const FriendIconInitials = styled.span`
   font-size: 15px;
 `;
 
-export const FriendsDetails = styled.div`
-  padding: 10px;
-`;
-
-export const SearchArea = styled.div`
+export const FriendsDetails = styled.span`
   display: flex;
-  width: 250px;
-  justify-content: space-between;
+  flex-direction: column;
+
+  margin-left: 5px;
 `;
 
-export const AddArea = styled.div`
+export const FriendName = styled.span`
+  color: ${colors.dark};
+  margin-bottom: 3px;
+`;
+
+export const FriendEnrollment = styled.span`
+  font-size: 14px;
+  color: ${colors.dark};
+`;
+
+export const EnrollmentContainer = styled.div`
   display: flex;
-  width: 225px;
-  margin-bottom: 5px;
-  justify-content: space-between;
 `;
 
-export const AddSpan = styled.span`
-  font-size: 15px;
+export const FriendHashTag = styled.span`
+  font-family: 'Ubuntu';
   font-weight: bold;
-  background-color: ${colors.terciary};
-  color: #333;
-  padding: 4px 10px;
-  border-radius: 5px;
+  font-size: 15px;
+  opacity: 80%;
+  color: ${colors.dark};
+
+  margin-right: 5px;
 `;

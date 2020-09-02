@@ -5,81 +5,127 @@ import {
   FriendsContainer,
   FriendsPanel,
   FriendsDetails,
+  FriendName,
+  FriendEnrollment,
+  FriendHashTag,
   FriendsPanelDetails,
   FriendIcon,
   FriendIconInitials,
   SearchingBar,
-  IconContainer,
   SearchArea,
-  AddArea,
-  AddSpan,
+  SearchHashTag,
+  IconContainer,
+  TitlePanel,
+  Title,
+  EnrollmentContainer,
 } from './styles';
 
 const FriendList: React.FC = () => {
   return (
     <FriendsContainer>
+      <TitlePanel>
+        <Title>Amigos</Title>
+        <FaPlus />
+      </TitlePanel>
+
       <SearchArea>
-        <SearchingBar type="text" id="data" placeholder="Pesquise por amigos..." />
+        <SearchHashTag>#</SearchHashTag>
+        <SearchingBar type="text" id="data" placeholder="Pesquise por amigos... " />
         <IconContainer>
           <FaSearch />
         </IconContainer>
       </SearchArea>
 
       <FriendsPanel>
-        <AddArea>
-          <AddSpan>Adicione amigos agora:</AddSpan>
-          <IconContainer>
-            <FaPlus />
-          </IconContainer>
-        </AddArea>
-
         <FriendsPanelDetails>
           <FriendIcon>
             <FriendIconInitials>J</FriendIconInitials>
           </FriendIcon>
-          <FriendsDetails>José Dudu</FriendsDetails>
+          <FriendsDetails>
+            <FriendName>José Dudu</FriendName>
+            <EnrollmentContainer>
+              <FriendHashTag>#</FriendHashTag>
+              <FriendEnrollment>20181104010017</FriendEnrollment>
+            </EnrollmentContainer>
+          </FriendsDetails>
         </FriendsPanelDetails>
 
         <FriendsPanelDetails>
           <FriendIcon>
             <FriendIconInitials>R</FriendIconInitials>
           </FriendIcon>
-          <FriendsDetails>Rebecca Lewis</FriendsDetails>
+          <FriendsDetails>
+            <FriendName>Rebecca Lewis</FriendName>
+            <EnrollmentContainer>
+              <FriendHashTag>#</FriendHashTag>
+              <FriendEnrollment>20181104010017</FriendEnrollment>
+            </EnrollmentContainer>
+          </FriendsDetails>
         </FriendsPanelDetails>
 
         <FriendsPanelDetails>
           <FriendIcon>
             <FriendIconInitials>E</FriendIconInitials>
           </FriendIcon>
-          <FriendsDetails>Elise Butler</FriendsDetails>
+          <FriendsDetails>
+            <FriendName>Elise Butler</FriendName>
+            <EnrollmentContainer>
+              <FriendHashTag>#</FriendHashTag>
+              <FriendEnrollment>20181104010017</FriendEnrollment>
+            </EnrollmentContainer>
+          </FriendsDetails>
         </FriendsPanelDetails>
 
         <FriendsPanelDetails>
           <FriendIcon>
             <FriendIconInitials>S</FriendIconInitials>
           </FriendIcon>
-          <FriendsDetails>Sara West</FriendsDetails>
+          <FriendsDetails>
+            <FriendName>Sara West</FriendName>
+            <EnrollmentContainer>
+              <FriendHashTag>#</FriendHashTag>
+              <FriendEnrollment>20181104010017</FriendEnrollment>
+            </EnrollmentContainer>
+          </FriendsDetails>
         </FriendsPanelDetails>
 
         <FriendsPanelDetails>
           <FriendIcon>
             <FriendIconInitials>A</FriendIconInitials>
           </FriendIcon>
-          <FriendsDetails>Aaliyah Mendoza</FriendsDetails>
+          <FriendsDetails>
+            <FriendName>Aaliyah Mendoza</FriendName>
+            <EnrollmentContainer>
+              <FriendHashTag>#</FriendHashTag>
+              <FriendEnrollment>20181104010017</FriendEnrollment>
+            </EnrollmentContainer>
+          </FriendsDetails>
         </FriendsPanelDetails>
 
         <FriendsPanelDetails>
           <FriendIcon>
             <FriendIconInitials>J</FriendIconInitials>
           </FriendIcon>
-          <FriendsDetails>Joshua Robertson</FriendsDetails>
+          <FriendsDetails>
+            <FriendName>Joshua Robertson</FriendName>
+            <EnrollmentContainer>
+              <FriendHashTag>#</FriendHashTag>
+              <FriendEnrollment>20181104010017</FriendEnrollment>
+            </EnrollmentContainer>
+          </FriendsDetails>
         </FriendsPanelDetails>
 
         <FriendsPanelDetails>
           <FriendIcon>
             <FriendIconInitials>R</FriendIconInitials>
           </FriendIcon>
-          <FriendsDetails>Rose Fisher</FriendsDetails>
+          <FriendsDetails>
+            <FriendName>Rose Fisher</FriendName>
+            <EnrollmentContainer>
+              <FriendHashTag>#</FriendHashTag>
+              <FriendEnrollment>20181104010017</FriendEnrollment>
+            </EnrollmentContainer>
+          </FriendsDetails>
         </FriendsPanelDetails>
       </FriendsPanel>
     </FriendsContainer>
