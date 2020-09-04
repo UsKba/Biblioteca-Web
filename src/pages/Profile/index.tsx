@@ -1,12 +1,11 @@
 import React from 'react';
-import { FaChevronDown } from 'react-icons/fa';
-import { FiMapPin } from 'react-icons/fi';
+import { FiMapPin, FiTrash2 } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 // import api from '~/services/api';
-
 import FriendList from '~/components/FriendList';
 import { FriendIcon, FriendIconInitials } from '~/components/FriendList/styles';
+import ReserveList from '~/components/ReserveList';
 
 import { useAuth } from '~/contexts/AuthContext';
 // import { AxiosResponseError } from '~/types';
@@ -17,14 +16,7 @@ import {
   MiddleSide,
   RightSide,
   SideLine,
-  ReserveList,
   Title,
-  ReserveContainer,
-  ReserveLeftSide,
-  ReserveRightSide,
-  ReserveTitle,
-  ReserveText,
-  ReserveGroupName,
   BackgroundContainer,
   ProfileIcon,
   ProfileIconInitials,
@@ -45,6 +37,12 @@ import {
   NotiP,
   NotiText,
   Notification,
+  NotiTop,
+  MobileNav,
+  MobileNavText,
+  Line,
+  LibrarianButton,
+  StyledLink,
 } from './styles';
 
 interface UserResponse {
@@ -80,46 +78,29 @@ const Profile: React.FC = () => {
   return (
     <Container>
       <LeftSide>
-        <ReserveList>
-          <Title>Reservas</Title>
-          <ReserveContainer>
-            <ReserveLeftSide>
-              <ReserveTitle>Reserva da Sala F1-3</ReserveTitle>
-              <ReserveText>Sala reservada às 07-00 - 08:00 no dia</ReserveText>
-              <ReserveText>7 de abril de 2020</ReserveText>
-              <ReserveGroupName>Os caba</ReserveGroupName>
-            </ReserveLeftSide>
-            <ReserveRightSide>
-              <FaChevronDown />
-            </ReserveRightSide>
-          </ReserveContainer>
-          <ReserveContainer>
-            <ReserveLeftSide>
-              <ReserveTitle>Reserva da Sala F1-3</ReserveTitle>
-              <ReserveText>Sala reservada às 07-00 - 08:00 no dia</ReserveText>
-              <ReserveText>7 de abril de 2020</ReserveText>
-              <ReserveGroupName>Os caba</ReserveGroupName>
-            </ReserveLeftSide>
-            <ReserveRightSide>
-              <FaChevronDown />
-            </ReserveRightSide>
-          </ReserveContainer>
-          <ReserveContainer>
-            <ReserveLeftSide>
-              <ReserveTitle>Reserva da Sala F1-3</ReserveTitle>
-              <ReserveText>Sala reservada às 07-00 - 08:00 no dia</ReserveText>
-              <ReserveText>7 de abril de 2020</ReserveText>
-              <ReserveGroupName>Os caba</ReserveGroupName>
-            </ReserveLeftSide>
-            <ReserveRightSide>
-              <FaChevronDown />
-            </ReserveRightSide>
-          </ReserveContainer>
-        </ReserveList>
+        <ReserveList />
         <SideLine backGroundColor="#3D6DCC" alignment="flex-end" />
       </LeftSide>
 
       <MiddleSide>
+        <MobileNav>
+          <MobileNavText>
+            {' '}
+            Reservas
+            <Line />
+          </MobileNavText>
+          <MobileNavText>
+            {' '}
+            Perfil
+            <Line />
+          </MobileNavText>
+          <MobileNavText>
+            {' '}
+            Amigos
+            <Line />
+          </MobileNavText>
+        </MobileNav>
+
         <Title>Perfil</Title>
         <BackgroundContainer>
           <ProfileLeftSide>
@@ -149,14 +130,17 @@ const Profile: React.FC = () => {
 
         <Title>Notificações</Title>
         <BackgroundContainer>
-          <FriendIcon>
-            <FriendIconInitials>T</FriendIconInitials>
-          </FriendIcon>
           <Notification>
-            <NotifHead>
-              Tallys Aureliano Júnior
-              <NotiMail>{'<tallys@aureliano.com.br>'}</NotiMail>
-            </NotifHead>
+            <NotiTop>
+              <FriendIcon>
+                <FriendIconInitials>T</FriendIconInitials>
+              </FriendIcon>
+              <NotifHead>
+                Tallys Aureliano Júnior
+                <NotiMail>{'<tallys@aureliano.com.br>'}</NotiMail>
+              </NotifHead>
+            </NotiTop>
+
             <NotiText>
               <NotiTitle>Trabalho</NotiTitle>
               <NotiP>
@@ -164,9 +148,13 @@ const Profile: React.FC = () => {
                 looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution
                 of letters, as opposed to using.
               </NotiP>
+              <FiTrash2 />
             </NotiText>
           </Notification>
         </BackgroundContainer>
+        <StyledLink to="/report">
+          <LibrarianButton>Falar com o bibliotecário</LibrarianButton>
+        </StyledLink>
       </MiddleSide>
       <RightSide>
         <SideLine backGroundColor="#638AF2" alignment="flex-start" />

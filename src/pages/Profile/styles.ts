@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { Link } from 'react-router-dom';
+
 import colors from '../../styles/colors';
 
 export const Container = styled.div`
@@ -26,6 +28,9 @@ export const LeftSide = styled.div`
   display: flex;
   width: 100%;
   max-width: 300px;
+  @media only screen and (max-width: 640px) {
+    display: none;
+  }
 `;
 
 export const MiddleSide = styled.div`
@@ -36,6 +41,10 @@ export const MiddleSide = styled.div`
   max-width: 1000px;
 
   padding: 14px 34px 0 34px;
+
+  @media only screen and (max-width: 640px) {
+    padding: 14px 10px 0 10px;
+  }
 `;
 
 export const RightSide = styled.div`
@@ -43,6 +52,9 @@ export const RightSide = styled.div`
   max-width: 300px;
   display: flex;
   justify-content: flex-start;
+  @media only screen and (max-width: 640px) {
+    display: none;
+  }
 `;
 
 interface LineStatus {
@@ -58,74 +70,20 @@ export const SideLine = styled.div<LineStatus>`
   background-color: ${(props) => props.backGroundColor};
 `;
 
-export const ReserveList = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: 14px;
-`;
-
 export const Title = styled.span`
   font-size: 22px;
   font-family: 'Ubuntu';
   font-weight: bold;
   margin-bottom: 20px;
   color: ${colors.dark};
-`;
-
-export const ReserveContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-
-  width: 100%;
-  height: 110px;
-
-  margin-bottom: 10px;
-
-  border-radius: 5px;
-  border-left: solid 6px #4ad2d8;
-  background-color: ${colors.terciary};
-`;
-
-export const ReserveLeftSide = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const ReserveRightSide = styled.div`
-  display: flex;
-  align-items: center;
-  svg {
-    font-size: 15px;
-    color: ${colors.dark};
+  @media only screen and (max-width: 640px) {
+    font-size: 16px;
   }
-`;
-
-export const ReserveTitle = styled.span`
-  font-size: 15px;
-  font-weight: 600;
-  color: ${colors.text};
-  align-self: center;
-  margin: 11px 0 13px 0;
-`;
-
-export const ReserveText = styled.span`
-  font-size: 13px;
-  margin-left: 11px;
-  color: ${colors.text};
-`;
-
-export const ReserveGroupName = styled.span`
-  font-size: 14px;
-  font-family: 'Ubuntu';
-  font-weight: bold;
-  color: ${colors.text};
-  margin: 10px 0 0 11px;
 `;
 
 export const BackgroundContainer = styled.div`
   display: flex;
-  height: 160px;
+  max-height: 220px;
   width: 100%;
   background-color: ${colors.terciary};
   padding: 18px;
@@ -148,6 +106,9 @@ export const ProfileName = styled.span`
   font-weight: bold;
   color: ${colors.dark};
   margin-bottom: 10px;
+  @media only screen and (max-width: 640px) {
+    font-size: 18px;
+  }
 `;
 
 export const HashTag = styled.span`
@@ -216,33 +177,98 @@ export const Campus = styled.span`
 `;
 
 export const NotifHead = styled.div`
+  display: flex;
   height: 2em;
-  width: 100%;
   margin-left: 5px;
+  align-items: center;
 `;
 
 export const NotiMail = styled.span`
   color: #666666;
   font-size: 14px;
   margin-left: 5px;
+  @media only screen and (max-width: 640px) {
+    display: none;
+  }
 `;
 
 export const NotiTitle = styled.span`
   margin-top: 10px;
   font-weight: bold;
   font-size: 19px;
+  @media only screen and (max-width: 640px) {
+    font-size: 15px;
+  }
 `;
 
 export const NotiP = styled.span`
-  font-size: 15px;
+  font-size: 14px;
   margin-top: 10px;
+  text-align: justify;
 `;
 
-export const NotiText = styled.span`
+export const NotiText = styled.div`
   display: flex;
   flex-direction: column;
+  svg {
+    color: ${colors.dark};
+    font-size: 20px;
+    align-self: flex-end;
+  }
 `;
 
 export const Notification = styled.div`
   display: column;
+`;
+
+export const NotiTop = styled.div`
+  display: flex;
+`;
+
+export const MobileNav = styled.div`
+  display: none;
+  @media only screen and (max-width: 640px) {
+    display: flex;
+    width: 301px;
+    height: 30px;
+    align-self: center;
+    justify-content: space-around;
+    margin-bottom: 14px;
+  }
+`;
+
+export const MobileNavText = styled.div`
+  @media only screen and (max-width: 640px) {
+    height: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Ubuntu';
+  }
+`;
+
+export const Line = styled.div`
+  @media screen and (max-width: 640px) {
+    font-family: 'Ubuntu';
+    width: 50px;
+    background-color: #3d6dcc;
+    width: 80px;
+    height: 3px;
+  }
+`;
+
+export const LibrarianButton = styled.button`
+  padding: 15px;
+  border-radius: 5px;
+  border: none;
+
+  background-color: ${colors.secondary};
+  color: ${colors.terciary};
+
+  @media only screen and (max-width: 640px) {
+    margin-bottom: 10px;
+  }
+`;
+
+export const StyledLink = styled(Link)`
+  width: 206px;
 `;

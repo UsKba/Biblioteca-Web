@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import colors from '~/styles/colors';
+
 interface AlphaProps {
   modalVisible: boolean;
 }
@@ -21,7 +23,7 @@ export const Container = styled.div`
   width: 80%;
   height: 70%;
   align-self: center;
-  background-color: #fff;
+  background-color: ${colors.terciary};
   border-radius: 13px;
   margin: 15px;
 `;
@@ -30,14 +32,15 @@ export const Model = styled.div`
   width: 60%;
   height: 100%;
   align-self: left;
-  background-color: lightblue;
-  border-radius: 7px;
+  background-color: ${colors.background};
+  border-radius: 7px 0 0 7px;
 `;
 
 export const Table = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+  background-color: ${colors.terciary};
   border: 1px solid rgba(0, 0, 0, 0.1);
   margin: 5em 1em 1em 1em;
   border-radius: 7px 7px 0 0;

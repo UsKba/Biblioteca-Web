@@ -1,4 +1,5 @@
 import React from 'react';
+import { AiOutlineThunderbolt } from 'react-icons/ai';
 import { FaDesktop, FaUserPlus, FaChalkboardTeacher } from 'react-icons/fa';
 // import { Link } from 'react-router-dom';
 
@@ -69,6 +70,10 @@ const Home: React.FC = () => {
             <IconContainer>
               <FaChalkboardTeacher />
               <IconSpan>Reserve Salas de Estudo</IconSpan>
+            </IconContainer>
+            <IconContainer>
+              <AiOutlineThunderbolt />
+              <IconSpan>Rápido e Fácil</IconSpan>
             </IconContainer>
           </IconList>
         </LeftSide>

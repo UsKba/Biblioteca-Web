@@ -14,6 +14,9 @@ export const TopSide = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
+  @media screen and (max-width: 600px) {
+    justify-content: center;
+  }
 `;
 
 export const TextButton = styled.span`
@@ -33,6 +36,9 @@ export const Button = styled.button`
   padding: 9px 57px;
   margin-right: 20px;
   height: 50px;
+  @media screen and (max-width: 600px) {
+    margin-right: 0;
+  }
 `;
 
 export const BottomSide = styled.div`
@@ -46,6 +52,11 @@ export const LeftSide = styled.div`
   width: 47%;
   height: 100%;
   border-radius: 7px 0 0 7px;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    justify-content: center;
+  }
 `;
 
 export const RightSide = styled.div`
@@ -53,12 +64,19 @@ export const RightSide = styled.div`
   flex: 1;
   align-items: center;
   justify-content: center;
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 
 export const Image = styled.img`
   height: 439.21px;
   margin-right: 20px;
   margin-top: 74px;
+
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 
 export const IconContainer = styled.div`
@@ -69,6 +87,11 @@ export const IconContainer = styled.div`
     font-size: 50px;
     color: ${colors.dark};
   }
+  @media screen and (max-width: 600px) {
+    svg {
+      font-size: 30px;
+    }
+  }
 `;
 
 export const IconList = styled.div`
@@ -78,13 +101,18 @@ export const IconList = styled.div`
 
 export const IconSpan = styled.span`
   display: flex;
-  width: 200px;
   padding: 20px;
   text-align: center;
   justify-content: center;
+
+  @media screen and (max-width: 600px) {
+    padding: 10px;
+  }
 `;
 
 export const H1 = styled.div`
+  display: flex;
+  flex-direction: column;
   font-family: 'Ubuntu', sans-serif;
   font-size: 55px;
   color: #322c42;
@@ -94,6 +122,10 @@ export const H1 = styled.div`
   margin-left: 90px;
   margin-bottom: 35px;
   font-weight: bold;
+
+  @media screen and (max-width: 600px) {
+    font-size: 32px;
+  }
 `;
 
 export const H2 = styled.p`
@@ -104,48 +136,31 @@ export const H2 = styled.p`
   height: 22%;
   margin-left: 90px;
   margin-bottom: 5em;
+  @media screen and (max-width: 600px) {
+    padding: 40px;
+    font-size: 16px;
+    margin: 0;
+  }
 `;
 
 export const Line1 = styled.div`
   background-color: #3d6dcc;
   width: 80px;
   height: 3px;
+  @media screen and (max-width: 600px) {
+    width: 50px;
+  }
 `;
 
 export const Line2 = styled.div`
   background-color: #638af2;
   width: 80px;
   height: 3px;
+  @media screen and (max-width: 600px) {
+    width: 50px;
+  }
 `;
 
 export const LineContainer = styled.div`
   display: flex;
 `;
-
-// export const InitialButton = styled.button`
-//   margin: 15px 0px;
-//   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-
-//   background-image: linear-gradient(to right, #aacc00, #2b9348);
-//   cursor: pointer;
-
-//   color: #fff;
-//   font-weight: bold;
-//   font-size: 16px;
-//   width: 275px;
-//   padding: 15px 0px;
-//   border-radius: 5px;
-
-//   border: none;
-//   outline: none;
-//   transition: 0.5s;
-//   &:disabled {
-//     background-image: none;
-//     background-color: #555;
-//     cursor: default;
-//   }
-//   @media screen and (max-width: 400px) {
-//     font-size: 14px;
-//     padding: 16px;
-//   }
-// `;
