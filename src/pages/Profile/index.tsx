@@ -1,6 +1,5 @@
 import React from 'react';
 import { FiMapPin, FiTrash2 } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
 
 // import api from '~/services/api';
 import FriendList from '~/components/FriendList';
