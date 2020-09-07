@@ -45,6 +45,19 @@ input{
     flex-direction: column;
   }
 
+  /* Input search enrollment */
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+
 `;
 
 /* #AACC00, #2B9348 */

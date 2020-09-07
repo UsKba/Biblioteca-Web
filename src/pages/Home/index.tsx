@@ -33,8 +33,8 @@ const Home: React.FC = () => {
   return (
     <Container>
       <TopSide>
-        <TextButton>Suporte</TextButton>
-        <TextButton>Sobre</TextButton>
+        <TextButton to="#">Suporte</TextButton>
+        <TextButton to="#">Sobre</TextButton>
         {!signed && (
           <a href={signInSuapUrl}>
             <Button>{loading ? <Spinner /> : 'Entrar'}</Button>
@@ -63,17 +63,20 @@ const Home: React.FC = () => {
               <FaDesktop />
               <IconSpan>Confira os Computadores</IconSpan>
             </IconContainer>
+
             <IconContainer>
               <FaUserPlus />
               <IconSpan>Encontrar Amigos</IconSpan>
             </IconContainer>
+
             <IconContainer>
               <FaChalkboardTeacher />
               <IconSpan>Reserve Salas de Estudo</IconSpan>
             </IconContainer>
+
             <IconContainer>
               <AiOutlineThunderbolt />
-              <IconSpan>Rápido e Fácil</IconSpan>
+              <IconSpan>Rápido e Prático</IconSpan>
             </IconContainer>
           </IconList>
         </LeftSide>

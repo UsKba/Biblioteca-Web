@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiMapPin, FiTrash2 } from 'react-icons/fi';
 
 // import api from '~/services/api';
@@ -30,18 +30,19 @@ import {
   Email,
   Campus,
   CampusContainer,
-  NotifHead,
-  NotiMail,
-  NotiTitle,
-  NotiP,
-  NotiText,
+  NotificationHead,
+  NotificationMail,
+  NotificationTitle,
+  NotificationParaghaph,
+  NotificationText,
   Notification,
-  NotiTop,
+  NotificationTop,
   MobileNav,
   MobileNavText,
   Line,
   LibrarianButton,
   StyledLink,
+  NotificationContainer,
 } from './styles';
 
 interface UserResponse {
@@ -53,6 +54,7 @@ interface UserResponse {
 
 const Profile: React.FC = () => {
   const { user } = useAuth();
+  const [screenSwipe, setScreenSwipe] = useState(1);
 
   // como usar api 2020 atualizado
   // useEffect(() => {
@@ -74,32 +76,38 @@ const Profile: React.FC = () => {
   //   load();
   // }, []);
 
+  // function handleChangeSWipe(index: number) {
+  //   setScreenSwipe(index)
+  // }
+
+  function handleChangeSwipe(index: number) {
+    setScreenSwipe(index);
+  }
+
   return (
     <Container>
-      <LeftSide>
+      <MobileNav>
+        <MobileNavText onClick={() => handleChangeSwipe(0)}>
+          {/* <MobileNavText onClick={() => handleChangeSWipe(0)}> */}
+          Reservas
+          <Line />
+        </MobileNavText>
+        <MobileNavText onClick={() => handleChangeSwipe(1)}>
+          Perfil
+          <Line />
+        </MobileNavText>
+        <MobileNavText onClick={() => handleChangeSwipe(2)}>
+          Amigos
+          <Line />
+        </MobileNavText>
+      </MobileNav>
+
+      <LeftSide visible={screenSwipe === 0}>
         <ReserveList />
         <SideLine backGroundColor="#3D6DCC" alignment="flex-end" />
       </LeftSide>
 
-      <MiddleSide>
-        <MobileNav>
-          <MobileNavText>
-            {' '}
-            Reservas
-            <Line />
-          </MobileNavText>
-          <MobileNavText>
-            {' '}
-            Perfil
-            <Line />
-          </MobileNavText>
-          <MobileNavText>
-            {' '}
-            Amigos
-            <Line />
-          </MobileNavText>
-        </MobileNav>
-
+      <MiddleSide visible={screenSwipe === 1}>
         <Title>Perfil</Title>
         <BackgroundContainer>
           <ProfileLeftSide>
@@ -128,34 +136,35 @@ const Profile: React.FC = () => {
         </BackgroundContainer>
 
         <Title>Notificações</Title>
-        <BackgroundContainer>
+        <NotificationContainer>
           <Notification>
-            <NotiTop>
+            <NotificationTop>
               <FriendIcon>
                 <FriendIconInitials>T</FriendIconInitials>
               </FriendIcon>
-              <NotifHead>
+              <NotificationHead>
                 Tallys Aureliano Júnior
-                <NotiMail>{'<tallys@aureliano.com.br>'}</NotiMail>
-              </NotifHead>
-            </NotiTop>
+                <NotificationMail>{'<tallys@aureliano.com.br>'}</NotificationMail>
+              </NotificationHead>
+            </NotificationTop>
 
-            <NotiText>
-              <NotiTitle>Trabalho</NotiTitle>
-              <NotiP>
+            <NotificationText>
+              <NotificationTitle>Trabalho</NotificationTitle>
+              <NotificationParaghaph>
                 It is a long established fact that a reader will be distracted by the readable content of a page when
                 looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution
                 of letters, as opposed to using.
-              </NotiP>
+              </NotificationParaghaph>
               <FiTrash2 />
-            </NotiText>
+            </NotificationText>
           </Notification>
-        </BackgroundContainer>
+        </NotificationContainer>
         <StyledLink to="/report">
           <LibrarianButton>Falar com o bibliotecário</LibrarianButton>
         </StyledLink>
       </MiddleSide>
-      <RightSide>
+
+      <RightSide visible={screenSwipe === 2}>
         <SideLine backGroundColor="#638AF2" alignment="flex-start" />
         <FriendList />
       </RightSide>

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { Link } from 'react-router-dom';
+
 import colors from '~/styles/colors';
 
 export const Container = styled.div`
@@ -19,7 +21,7 @@ export const TopSide = styled.div`
   }
 `;
 
-export const TextButton = styled.span`
+export const TextButton = styled(Link)`
   font-size: 20px;
   color: ${colors.dark};
   margin-right: 20px;
@@ -36,6 +38,17 @@ export const Button = styled.button`
   padding: 9px 57px;
   margin-right: 20px;
   height: 50px;
+
+  &:hover {
+    background-color: ${colors.primary};
+    color: ${colors.terciary};
+  }
+
+  &:active {
+    background-color: rgba(99, 138, 242, 0.6);
+    border: 3px solid rgba(99, 138, 242, 0.9);
+  }
+
   @media screen and (max-width: 600px) {
     margin-right: 0;
   }
@@ -83,25 +96,31 @@ export const IconContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  svg {
-    font-size: 50px;
-    color: ${colors.dark};
-  }
+
   @media screen and (max-width: 600px) {
     svg {
       font-size: 30px;
     }
   }
+
+  svg {
+    font-size: 50px;
+    color: ${colors.dark};
+  }
 `;
 
 export const IconList = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  justify-items: center;
 `;
 
 export const IconSpan = styled.span`
   display: flex;
   padding: 20px;
+  width: 100%;
+  max-width: 130px;
   text-align: center;
   justify-content: center;
 
@@ -118,13 +137,13 @@ export const H1 = styled.div`
   color: #322c42;
   width: 100%;
   height: 22%;
-  margin-top: 80px;
   margin-left: 90px;
   margin-bottom: 35px;
   font-weight: bold;
 
   @media screen and (max-width: 600px) {
     font-size: 32px;
+    margin-top: 50px;
   }
 `;
 

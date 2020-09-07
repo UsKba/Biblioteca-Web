@@ -7,6 +7,11 @@ export const Container = styled.div`
   flex-direction: column;
   flex: 1;
   padding: 14px;
+
+  @media only screen and (max-width: 640px) {
+    padding: 0;
+    margin-bottom: 8em;
+  }
 `;
 
 export const Title = styled.span`
@@ -15,6 +20,10 @@ export const Title = styled.span`
   font-weight: bold;
   margin-bottom: 20px;
   color: ${colors.dark};
+
+  @media only screen and (max-width: 640px) {
+    font-size: 17px;
+  }
 `;
 
 export const ReserveContainer = styled.div`

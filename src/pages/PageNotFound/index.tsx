@@ -18,7 +18,7 @@ const PageNotFound: React.FC = () => {
           contato com nosso suporte.
         </T2>
         <Buttons>
-          <Link to="/home">
+          <Link to="/profile">
             <InitialButton>Página Inicial</InitialButton>
           </Link>
           <Link to="/#">

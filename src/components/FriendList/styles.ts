@@ -17,6 +17,7 @@ export const TitlePanel = styled.div`
   svg {
     color: ${colors.secondary};
     font-size: 15px;
+    cursor: pointer;
   }
 `;
 
@@ -24,51 +25,10 @@ export const Title = styled.span`
   font-size: 22px;
   font-weight: bold;
   font-family: 'Ubuntu';
-`;
+  color: ${colors.dark};
 
-export const SearchArea = styled.div`
-  display: flex;
-  height: 45px;
-  width: 277px;
-`;
-
-export const SearchHashTag = styled.span`
-  font-size: 20px;
-  font-weight: bold;
-  font-family: 'Ubuntu';
-
-  height: 45px;
-  width: 35px;
-  padding: 10px;
-  border-radius: 6px 0 0 6px;
-
-  background-color: ${colors.terciary};
-  color: #666666;
-`;
-
-export const SearchingBar = styled.input`
-  height: 45px;
-  width: 220px;
-  background-color: ${colors.terciary};
-  border: none;
-  border-radius: 0;
-  padding: 5px;
-  cursor: text;
-`;
-
-export const IconContainer = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 3px 7.25px;
-  min-width: 5%;
-  background-color: ${colors.terciary};
-  border: none;
-  border-radius: 0 6px 6px 0;
-  cursor: pointer;
-
-  > svg {
-    color: ${colors.dark};
-    font-size: 15px;
+  @media screen and (max-width: 600px) {
+    font-size: 16px;
   }
 `;
 
@@ -98,6 +58,7 @@ export const FriendIcon = styled.div`
   background-color: #638af2;
   color: ${colors.terciary};
   border-radius: 100px;
+  margin-left: 7px;
 `;
 
 export const FriendIconInitials = styled.span`
@@ -108,11 +69,13 @@ export const FriendsDetails = styled.span`
   display: flex;
   flex-direction: column;
 
-  margin-left: 5px;
+  margin-left: 11px;
 `;
 
 export const FriendName = styled.span`
   color: ${colors.dark};
+  font-size: 14px;
+  font-weight: 600;
   margin-bottom: 3px;
 `;
 
@@ -123,6 +86,7 @@ export const FriendEnrollment = styled.span`
 
 export const EnrollmentContainer = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 export const FriendHashTag = styled.span`
@@ -131,6 +95,28 @@ export const FriendHashTag = styled.span`
   font-size: 15px;
   opacity: 80%;
   color: ${colors.dark};
-
   margin-right: 5px;
+`;
+
+export const LineContainer = styled.div`
+  display: flex;
+  margin: 15px 0 30px auto;
+`;
+
+export const Line1 = styled.div`
+  background-color: #3d6dcc;
+  width: 40px;
+  height: 3px;
+  @media screen and (max-width: 600px) {
+    width: 50px;
+  }
+`;
+
+export const Line2 = styled.div`
+  background-color: #638af2;
+  width: 40px;
+  height: 3px;
+  @media screen and (max-width: 600px) {
+    width: 50px;
+  }
 `;

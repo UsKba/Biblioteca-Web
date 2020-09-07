@@ -1,6 +1,7 @@
 import React from 'react';
-import { FaPlus, FaSearch } from 'react-icons/fa';
+import { FaPlus } from 'react-icons/fa';
 
+import EnrollmentInput from '../EnrollmentInput';
 import {
   FriendsContainer,
   FriendsPanel,
@@ -11,13 +12,12 @@ import {
   FriendsPanelDetails,
   FriendIcon,
   FriendIconInitials,
-  SearchingBar,
-  SearchArea,
-  SearchHashTag,
-  IconContainer,
   TitlePanel,
   Title,
   EnrollmentContainer,
+  Line1,
+  Line2,
+  LineContainer,
 } from './styles';
 
 const FriendList: React.FC = () => {
@@ -28,13 +28,12 @@ const FriendList: React.FC = () => {
         <FaPlus />
       </TitlePanel>
 
-      <SearchArea>
-        <SearchHashTag>#</SearchHashTag>
-        <SearchingBar type="text" id="data" placeholder="Pesquise por amigos... " />
-        <IconContainer>
-          <FaSearch />
-        </IconContainer>
-      </SearchArea>
+      <EnrollmentInput />
+
+      <LineContainer>
+        <Line2 />
+        <Line1 />
+      </LineContainer>
 
       <FriendsPanel>
         <FriendsPanelDetails>
