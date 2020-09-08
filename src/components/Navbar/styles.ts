@@ -53,7 +53,7 @@ export const NavItem = styled.li<NavItemProps>`
   ${(props) => props.small && 'margin-right: 0px;'}
 
   svg {
-    color: #333;
+    color: ${colors.dark};
 
     font-size: 24px;
     font-size: 1.5rem;
@@ -91,16 +91,25 @@ export const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
 
-  > svg {
-    color: #333;
+  svg {
+    color: ${colors.dark};
 
     font-size: 20px;
     font-size: 1.25rem;
+  }
+
+  &:hover {
+    svg {
+      color: ${colors.primary};
+    }
+    span {
+      color: ${colors.primary};
+    }
   }
 `;
 
 export const SidebarItemName = styled.span`
   font-size: 22px;
   margin-left: 8px;
-  color: black;
+  color: ${colors.dark};
 `;

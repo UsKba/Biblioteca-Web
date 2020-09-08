@@ -95,7 +95,7 @@ export const FriendHashTag = styled.span`
   font-size: 15px;
   opacity: 80%;
   color: ${colors.dark};
-  margin-right: 5px;
+  margin-right: 3px;
 `;
 
 export const LineContainer = styled.div`

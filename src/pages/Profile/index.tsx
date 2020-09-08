@@ -29,14 +29,17 @@ import {
   EnrollmentAndInformation,
   Email,
   Campus,
-  CampusContainer,
+  CampusA,
   NotificationHead,
   NotificationMail,
   NotificationTitle,
   NotificationParaghaph,
+  NotificationDate,
   NotificationText,
   Notification,
   NotificationTop,
+  NotificationLeft,
+  NotificationRight,
   MobileNav,
   MobileNavText,
   Line,
@@ -126,12 +129,10 @@ const Profile: React.FC = () => {
             <Email>{user.email}</Email>
           </ProfileLeftSide>
           <ProfileRightSide>
-            <CampusContainer>
-              <a href="https://goo.gl/maps/ALWeMF7grNxuXKQc6" target="_blank" rel="noopener noreferrer">
-                <Campus>{user.campus}</Campus>
-                <FiMapPin />
-              </a>
-            </CampusContainer>
+            <CampusA href="https://goo.gl/maps/ALWeMF7grNxuXKQc6" target="_blank" rel="noopener noreferrer">
+              <Campus>{user.campus}</Campus>
+              <FiMapPin />
+            </CampusA>
           </ProfileRightSide>
         </BackgroundContainer>
 
@@ -139,13 +140,18 @@ const Profile: React.FC = () => {
         <NotificationContainer>
           <Notification>
             <NotificationTop>
-              <FriendIcon>
-                <FriendIconInitials>T</FriendIconInitials>
-              </FriendIcon>
-              <NotificationHead>
-                Tallys Aureliano Júnior
-                <NotificationMail>{'<tallys@aureliano.com.br>'}</NotificationMail>
-              </NotificationHead>
+              <NotificationLeft>
+                <FriendIcon>
+                  <FriendIconInitials>T</FriendIconInitials>
+                </FriendIcon>
+                <NotificationHead>
+                  Tallys Aureliano Júnior
+                  <NotificationMail>{'<tallys@aureliano.com.br>'}</NotificationMail>
+                </NotificationHead>
+              </NotificationLeft>
+              <NotificationRight>
+                <NotificationDate>15:31 - 22/08</NotificationDate>
+              </NotificationRight>
             </NotificationTop>
 
             <NotificationText>

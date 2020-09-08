@@ -128,7 +128,7 @@ export const ProfileInformation = styled.div`
 
 export const ProfileName = styled.span`
   font-size: 25px;
-  font-weight: bold;
+  font-weight: 500;
   color: ${colors.dark};
   margin-bottom: 10px;
   @media only screen and (max-width: 640px) {
@@ -153,6 +153,7 @@ export const Email = styled.span`
   font-size: 16px;
   font-weight: bold;
   margin-top: 20px;
+  color: ${colors.dark};
 `;
 
 export const EnrollmentContainer = styled.div`
@@ -185,7 +186,7 @@ export const ProfileRightSide = styled.div`
   flex: 1;
 `;
 
-export const CampusContainer = styled.div`
+export const CampusA = styled.a`
   display: flex;
   svg {
     color: ${colors.secondary};
@@ -219,9 +220,11 @@ export const NotificationMail = styled.span`
 `;
 
 export const NotificationTitle = styled.span`
-  margin-top: 10px;
+  margin-top: 22px;
+  font-family: 'Ubuntu';
   font-weight: bold;
   font-size: 19px;
+  color: ${colors.dark};
   @media only screen and (max-width: 640px) {
     font-size: 15px;
   }
@@ -229,9 +232,17 @@ export const NotificationTitle = styled.span`
 
 export const NotificationParaghaph = styled.span`
   font-size: 14px;
-  margin-top: 10px;
+  font-family: 'Roboto';
   text-align: justify;
-  margin-right: 15px;
+  margin: 10px 20px 0 0;
+  color: ${colors.dark};
+`;
+
+export const NotificationDate = styled.span`
+  font-size: 12px;
+  font-family: 'Roboto';
+
+  color: #666666;
 `;
 
 export const NotificationText = styled.div`
@@ -251,6 +262,16 @@ export const Notification = styled.div`
 
 export const NotificationTop = styled.div`
   display: flex;
+  justify-content: space-between;
+`;
+
+export const NotificationLeft = styled.div`
+  display: flex;
+`;
+
+export const NotificationRight = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export const MobileNav = styled.div`
@@ -307,5 +328,5 @@ export const LibrarianButton = styled.button`
 `;
 
 export const StyledLink = styled(Link)`
-  width: 206px;
+  max-width: 210px;
 `;

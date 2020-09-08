@@ -4,7 +4,6 @@ import {
   FaUser,
   FaBookOpen,
   FaHome,
-  FaBell,
   FaCog,
   FaBars,
   FaDesktop,
@@ -34,13 +33,6 @@ const NavbarComponent: React.FC = () => {
   function handleSignOut() {
     signOut();
   }
-  // function closeSidebar() {
-  //   setSidebarOpen(false);
-  // }
-
-  // function showSidebar() {
-  //   setSidebarOpen(true);
-  // }
 
   function toggleSidebar() {
     setSidebarOpen(!sidebarOpen);
@@ -58,12 +50,6 @@ const NavbarComponent: React.FC = () => {
           </LeftSide>
 
           <RightSide>
-            <Link to="/settings/notificacao">
-              <NavItem small>
-                <FaBell />
-              </NavItem>
-            </Link>
-
             <Link to="/settings/">
               <NavItem small>
                 <FaCog />

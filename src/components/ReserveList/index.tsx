@@ -5,8 +5,7 @@ import {
   Container,
   Title,
   ReserveContainer,
-  ReserveLeftSide,
-  ReserveRightSide,
+  ArrowTextContainer,
   ReserveTitle,
   ReserveText,
   ReserveGroupName,
@@ -19,37 +18,31 @@ const ReserveList: React.FC = () => {
     <Container>
       <Title>Reservas</Title>
       <ReserveContainer>
-        <ReserveLeftSide>
-          <ReserveTitle>Reserva da Sala F1-3</ReserveTitle>
-          <ReserveText>Sala reservada às 07-00 - 08:00 no dia</ReserveText>
-          <ReserveText>7 de abril de 2020</ReserveText>
-          <ReserveGroupName>Os caba</ReserveGroupName>
-        </ReserveLeftSide>
-        <ReserveRightSide>
+        <ReserveTitle>Reserva da Sala F1-3</ReserveTitle>
+        <ArrowTextContainer>
+          <ReserveText>Sala reservada às 07-00 - 08:00 no dia 7 de abril de 2020</ReserveText>
           <FaChevronDown />
-        </ReserveRightSide>
+        </ArrowTextContainer>
+        <ReserveText />
+        <ReserveGroupName>Os caba</ReserveGroupName>
       </ReserveContainer>
       <ReserveContainer>
-        <ReserveLeftSide>
-          <ReserveTitle>Reserva da Sala F1-3</ReserveTitle>
-          <ReserveText>Sala reservada às 07-00 - 08:00 no dia</ReserveText>
-          <ReserveText>7 de abril de 2020</ReserveText>
-          <ReserveGroupName>Os caba</ReserveGroupName>
-        </ReserveLeftSide>
-        <ReserveRightSide>
+        <ReserveTitle>Reserva da Sala F1-3</ReserveTitle>
+        <ArrowTextContainer>
+          <ReserveText>Sala reservada às 07-00 - 08:00 no dia 7 de abril de 2020</ReserveText>
           <FaChevronDown />
-        </ReserveRightSide>
+        </ArrowTextContainer>
+        <ReserveText />
+        <ReserveGroupName>Os caba</ReserveGroupName>
       </ReserveContainer>
       <ReserveContainer>
-        <ReserveLeftSide>
-          <ReserveTitle>Reserva da Sala F1-3</ReserveTitle>
-          <ReserveText>Sala reservada às 07-00 - 08:00 no dia</ReserveText>
-          <ReserveText>7 de abril de 2020</ReserveText>
-          <ReserveGroupName>Os caba</ReserveGroupName>
-        </ReserveLeftSide>
-        <ReserveRightSide>
+        <ReserveTitle>Reserva da Sala F1-3</ReserveTitle>
+        <ArrowTextContainer>
+          <ReserveText>Sala reservada às 07-00 - 08:00 no dia 7 de abril de 2020</ReserveText>
           <FaChevronDown />
-        </ReserveRightSide>
+        </ArrowTextContainer>
+        <ReserveText />
+        <ReserveGroupName>Os caba</ReserveGroupName>
       </ReserveContainer>
     </Container>
   );

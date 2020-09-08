@@ -28,30 +28,19 @@ export const Title = styled.span`
 
 export const ReserveContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
+  align-items: center;
 
   width: 100%;
-  height: 110px;
+  height: 120px;
 
   margin-bottom: 10px;
-
   border-radius: 5px;
   border-left: solid 6px #4ad2d8;
+  padding: 10px;
+
   background-color: ${colors.terciary};
-`;
-
-export const ReserveLeftSide = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const ReserveRightSide = styled.div`
-  display: flex;
-  align-items: center;
-  svg {
-    font-size: 15px;
-    color: ${colors.dark};
-  }
 `;
 
 export const ReserveTitle = styled.span`
@@ -59,12 +48,11 @@ export const ReserveTitle = styled.span`
   font-weight: 600;
   color: ${colors.text};
   align-self: center;
-  margin: 11px 0 13px 0;
 `;
 
 export const ReserveText = styled.span`
   font-size: 13px;
-  margin-left: 11px;
+  text-align: justify;
   color: ${colors.text};
 `;
 
@@ -73,5 +61,14 @@ export const ReserveGroupName = styled.span`
   font-family: 'Ubuntu';
   font-weight: bold;
   color: ${colors.text};
-  margin: 10px 0 0 11px;
+  align-self: flex-start;
+`;
+
+export const ArrowTextContainer = styled.div`
+  display: flex;
+  svg {
+    font-size: 20px;
+    color: ${colors.dark};
+    margin-left: 10px;
+  }
 `;
