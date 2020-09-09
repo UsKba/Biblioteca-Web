@@ -38,6 +38,7 @@ export const Button = styled.button`
   padding: 9px 57px;
   margin-right: 20px;
   height: 50px;
+  transition: 0.3s;
 
   &:hover {
     background-color: ${colors.primary};

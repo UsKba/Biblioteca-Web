@@ -1,15 +1,101 @@
 import React from 'react';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-import { Container, TableContainer, Title, TopSide, BottomSide } from './styles';
+import colors from '~/styles/colors';
+
+import {
+  Container,
+  TableContainer,
+  Title,
+  TopSide,
+  BottomSide,
+  DateList,
+  ScheduleList,
+  ScheduleButton,
+  Rectangle,
+  CurrentDayContainer,
+  CurrentDay,
+  CurrentMonth,
+  WeekDayContainer,
+  WeekDay,
+  WeekDayNumber,
+} from './styles';
 
 const RoomReservation: React.FC = () => {
   return (
     <Container>
       <Title>Salas</Title>
       <TableContainer>
-        <TopSide />
-        <BottomSide />
+        <TopSide>
+          <CurrentDayContainer>
+            <CurrentDay>27</CurrentDay>
+            <CurrentMonth>Janeiro</CurrentMonth>
+          </CurrentDayContainer>
+          <DateList>
+            <WeekDayContainer>
+              <WeekDay>Seg</WeekDay>
+              <WeekDayNumber>09</WeekDayNumber>
+            </WeekDayContainer>
+            <WeekDayContainer>
+              <WeekDay>Ter</WeekDay>
+              <WeekDayNumber>10</WeekDayNumber>
+            </WeekDayContainer>
+            <WeekDayContainer>
+              <WeekDay>Qua</WeekDay>
+              <WeekDayNumber>11</WeekDayNumber>
+            </WeekDayContainer>
+            <WeekDayContainer>
+              <WeekDay>Qui</WeekDay>
+              <WeekDayNumber>12</WeekDayNumber>
+            </WeekDayContainer>
+            <WeekDayContainer>
+              <WeekDay>Sex</WeekDay>
+              <WeekDayNumber>13</WeekDayNumber>
+            </WeekDayContainer>
+          </DateList>
+          <ScheduleList>
+            <ScheduleButton>Manhã</ScheduleButton>
+            <ScheduleButton>Tarde</ScheduleButton>
+            <ScheduleButton>Noite</ScheduleButton>
+          </ScheduleList>
+        </TopSide>
+
+        <BottomSide>
+          <Rectangle backgroundColor={colors.primary}>Salas e Horários</Rectangle>
+          <Rectangle backgroundColor={colors.primary}>Sala F1-3</Rectangle>
+          <Rectangle backgroundColor={colors.primary}>Sala F1-4</Rectangle>
+          <Rectangle backgroundColor={colors.primary}>Sala F1-5</Rectangle>
+          <Rectangle backgroundColor={colors.primary}>Sala F1-6</Rectangle>
+
+          <Rectangle backgroundColor={colors.primary}>7:15 - 8:00</Rectangle>
+          <Rectangle borderColor={colors.roomStatus[2]} />
+          <Rectangle />
+          <Rectangle />
+          <Rectangle borderColor={colors.roomStatus[3]} />
+
+          <Rectangle backgroundColor={colors.primary}>8:00 - 9:00</Rectangle>
+          <Rectangle />
+          <Rectangle borderColor={colors.roomStatus[0]} />
+          <Rectangle borderColor={colors.roomStatus[2]} />
+          <Rectangle />
+
+          <Rectangle backgroundColor={colors.primary}>9:00 - 10:00</Rectangle>
+          <Rectangle />
+          <Rectangle />
+          <Rectangle />
+          <Rectangle borderColor={colors.roomStatus[2]} />
+
+          <Rectangle backgroundColor={colors.primary}>10:00 - 11:00</Rectangle>
+          <Rectangle />
+          <Rectangle />
+          <Rectangle borderColor={colors.roomStatus[2]} />
+          <Rectangle />
+
+          <Rectangle backgroundColor={colors.primary}>11:00 - 12:00</Rectangle>
+          <Rectangle borderColor={colors.roomStatus[3]} />
+          <Rectangle />
+          <Rectangle />
+          <Rectangle borderColor={colors.roomStatus[3]} />
+        </BottomSide>
       </TableContainer>
     </Container>
   );

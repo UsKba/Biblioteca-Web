@@ -1,28 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Img1 from '~/assets/error404_img1.png';
+import Img1 from '~/assets/oops.svg';
+import { Button } from '~/pages/Home/styles';
 
-import { Container, T1, T2, Text, InitialButton, Buttons, Image } from './styles';
+import { Container, T1, T2, Text, InitialButton, Buttons, Image, OutlineButton } from './styles';
 
 const PageNotFound: React.FC = () => {
   return (
     <Container>
       <Text>
-        <T1>Página não encontrada</T1>
+        <T1>
+          Oops...
+          <br />
+          Nada por aqui!
+        </T1>
         <T2>
-          A página que você tentou acessar não existe,
+          Você não tem acesso a esta página
           <br />
-          tente voltar para a página inicial, ou entre em
-          <br />
-          contato com nosso suporte.
+          ou ela não existe
         </T2>
         <Buttons>
           <Link to="/profile">
-            <InitialButton>Página Inicial</InitialButton>
+            <OutlineButton>Página Inicial</OutlineButton>
           </Link>
           <Link to="/#">
-            <InitialButton>Suporte</InitialButton>
+            <OutlineButton>Suporte</OutlineButton>
           </Link>
         </Buttons>
       </Text>

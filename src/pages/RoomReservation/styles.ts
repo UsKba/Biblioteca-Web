@@ -7,7 +7,6 @@ export const Container = styled.div`
   flex: 1;
   width: 100%;
   flex-direction: column;
-  background-color: brown;
   align-items: center;
   justify-content: center;
 `;
@@ -35,18 +34,132 @@ export const Title = styled.span`
 `;
 
 export const TopSide = styled.div`
-  width: 100%;
-  height: 30%;
+  display: flex;
 
-  background-color: green;
+  width: 100%;
+  height: 35%;
+
+  padding: 0 18px 18px 50px;
+
+  background-color: ${colors.terciary};
 `;
 
-export const DateList = styled.div``;
+export const DateList = styled.div`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+`;
+
+export const WeekDayContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const WeekDay = styled.span`
+  font-family: 'Ubuntu';
+  font-size: 18px;
+
+  color: ${colors.text};
+
+  margin-bottom: 15px;
+`;
+
+export const WeekDayNumber = styled.span`
+  font-family: 'Roboto';
+  font-size: 20px;
+  font-weight: bold;
+
+  color: ${colors.text};
+`;
+
+export const CurrentDayContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 155px;
+
+  border-radius: 0 0 90px 90px;
+
+  background-color: ${colors.primary};
+`;
+
+export const CurrentDay = styled.span`
+  font-size: 45px;
+  font-family: 'Ubuntu';
+  font-weight: bold;
+
+  color: ${colors.terciary};
+
+  margin-top: 25px;
+`;
+
+export const CurrentMonth = styled.span`
+  font-size: 25px;
+  font-family: 'Ubuntu';
+
+  color: ${colors.terciary};
+
+  margin-top: 10px;
+`;
+
+export const ScheduleList = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding-top: 18px;
+
+  width: 100%;
+  max-width: 200px;
+  height: 160px;
+`;
+
+export const ScheduleButton = styled.button`
+  width: 100%;
+  height: 45px;
+
+  border: 2px solid ${colors.primary};
+  border-radius: 100px;
+  background-color: ${colors.terciary};
+  color: ${colors.text};
+`;
 
 export const BottomSide = styled.div`
+  display: flex;
   flex: 1;
+  flex-wrap: wrap;
 
-  background-color: orange;
+  justify-content: center;
+
+  padding: 0 0 30px 25px;
+`;
+
+interface RectangleProps {
+  backgroundColor?: string;
+  borderColor?: string;
+}
+
+export const Rectangle = styled.div<RectangleProps>`
+  text-align: center;
+
+  width: 100%;
+  max-width: 150px;
+  height: 48px;
+
+  margin: 10px 25px 10px 0;
+  border-radius: 8px;
+  border: 2px solid ${(props) => props.borderColor || colors.primary};
+  padding: 13.5px;
+
+  background-color: ${(props) => props.backgroundColor || colors.background};
+
+  font-family: 'Roboto';
+  font-size: 16px;
+  color: ${colors.terciary};
 `;
 
 // export const DatePicker = styled.div`
