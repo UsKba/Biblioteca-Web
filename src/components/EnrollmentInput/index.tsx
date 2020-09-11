@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
 
-import { SearchingBar, SearchArea, SearchHashTag, IconContainer } from './styles';
+import { SearchingBar, SearchArea, SearchHashTag, IconContainer, SearchAreaProps } from './styles';
 
 const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
   const isKeyValid = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]+$/.test(e.key);
@@ -10,15 +10,21 @@ const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
   }
 };
 
-type Props = React.InputHTMLAttributes<HTMLInputElement>;
-const EnrollmentInput: React.FC<Props> = (props) => {
+type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
+interface OwmProps {
+  hideIcon?: boolean;
+}
+type Props = OwmProps & InputProps & SearchAreaProps;
+const EnrollmentInput: React.FC<Props> = ({ hideIcon, backgroundColor, ...rest }) => {
   return (
-    <SearchArea>
+    <SearchArea backgroundColor={backgroundColor}>
       <SearchHashTag>#</SearchHashTag>
-      <SearchingBar type="text" onKeyDown={handleKeyDown} placeholder="Pesquise por amigos " {...props} />
-      <IconContainer>
-        <FaSearch />
-      </IconContainer>
+      <SearchingBar type="text" onKeyDown={handleKeyDown} placeholder="Pesquise por amigos " {...rest} />
+      {!hideIcon && (
+        <IconContainer>
+          <FaSearch />
+        </IconContainer>
+      )}
     </SearchArea>
   );
 };

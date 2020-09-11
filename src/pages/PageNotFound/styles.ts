@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import colors from '~/styles/colors';
 
-import { Button } from '~/pages/Home/styles';
+import { Button } from '~/components/MainButton/styles';
 
 export const Container = styled.div`
   display: flex;
@@ -54,31 +54,6 @@ export const Buttons = styled.div`
   justify-content: space-between;
   width: 60%;
   margin-top: 5em;
-`;
-
-export const InitialButton = styled.button`
-  margin: 15px 0px;
-  background-color: ${colors.terciary};
-  border: 3px solid ${colors.primary};
-  cursor: pointer;
-  color: ${colors.primary};
-  font-weight: bold;
-  font-size: 16px;
-  width: 200px;
-  padding: 15px 0px;
-  border-radius: 34px;
-  outline: none;
-  transition: 0.3s;
-
-  &:hover {
-    background-color: ${colors.primary}};
-    color: ${colors.terciary};
-  }
-
-  @media screen and (max-width: 400px) {
-    font-size: 14px;
-    padding: 16px;
-  }
 `;
 
 export const Image = styled.img`

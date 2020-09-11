@@ -2,9 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Img1 from '~/assets/oops.svg';
-import { Button } from '~/pages/Home/styles';
 
-import { Container, T1, T2, Text, InitialButton, Buttons, Image, OutlineButton } from './styles';
+import { Container, T1, T2, Text, Buttons, Image, OutlineButton } from './styles';
 
 const PageNotFound: React.FC = () => {
   return (

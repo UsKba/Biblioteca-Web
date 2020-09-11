@@ -1,140 +1,183 @@
 import styled from 'styled-components';
 
+import colors from '~/styles/colors';
+
+import { Button } from '~/components/MainButton/styles';
+
 export const Container = styled.div`
   display: flex;
   flex: 1;
-  background-color: #fff;
-  width: 98%;
-  align-self: center;
-  margin: 15px;
-  border-radius: 10px;
-  padding: 60px 10px;
+  width: 100%;
   justify-content: space-between;
+  @media only screen and (max-width: 640px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
-export const Warning = styled.label`
-  background-color: #ff6663;
-  width: 13.8em;
-  padding: 10px 5px;
-  border-radius: 0.7em;
-  color: white;
-  align-items: center;
+interface MobileModeProps {
+  visible?: boolean;
+}
+
+export const LeftSide = styled.div<MobileModeProps>`
+  display: flex;
+  width: 100%;
+  max-width: 300px;
+
+  @media only screen and (max-width: 640px) {
+    display: ${(props) => !props.visible && 'none'};
+  }
+`;
+
+export const MiddleSide = styled.div<MobileModeProps>`
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 1000px;
+
+  padding: 14px 34px 0 34px;
+
+  background-color: ${colors.terciary};
+  @media only screen and (max-width: 640px) {
+    padding: 14px 10px 0 10px;
+    display: ${(props) => !props.visible && 'none'};
+  }
+`;
+
+export const RightSide = styled.div<MobileModeProps>`
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  justify-content: flex-start;
+  @media only screen and (max-width: 640px) {
+    display: ${(props) => !props.visible && 'none'};
+    justify-content: center;
+  }
+`;
+
+export const RoomScheduling = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 10em;
+  margin: 36px 0 50px 0;
+`;
+
+export const Title = styled.span`
+  font-size: 36px;
+  font-family: 'Ubuntu';
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: ${colors.dark};
+`;
+
+export const Title2 = styled.span`
+  font-size: 24px;
+  font-family: 'Ubuntu';
+  font-weight: 500;
+  margin-bottom: 36px;
+  color: ${colors.dark};
+`;
+
+export const Shift = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+`;
+
+export const ChooseShift = styled.div`
+  display: flex;
+  width: 100%;
+  height: 4em;
+  justify-content: space-around;
+`;
+
+export const ShiftButton = styled(Button)`
+  width: 10em;
+`;
+
+export const Hour = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ChooseHour = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
+
+export const HourButton = styled(Button)`
+  width: 16em;
+  margin-bottom: 1em;
+`;
+
+export const RoomContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ChooseRoom = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 14px;
+`;
+
+export const Room = styled.span`
+  font-family: 'Ubuntu';
   text-align: center;
-  margin-top: 55px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  color: ${colors.dark};
 `;
 
-export const LeftItemsContainer = styled.div`
+export const RoomButton = styled.button`
   display: flex;
+  background-color: transparent;
   flex-direction: column;
-  align-items: center;
+  border: 3px solid ${colors.terciary};
+  border-radius: 8px;
+  padding: 10px;
+
+  &:hover {
+    border: 3px solid ${colors.primary};
+  }
 `;
 
-export const MiddleItemsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-export const RightItemsContainer = styled.div`
-  display: flex;
+export const Image = styled.img`
+  height: 77px;
+  width: 125;
+  margin-top: 10px;
 `;
 
 export const ComponentsContainer = styled.div`
   display: flex;
-  flex: 1;
   flex-direction: column;
-  align-items: center;
 `;
 
-export const InputButtonContainer = styled.div`
+export const Components = styled.div`
   display: flex;
-  flex: 1;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
 `;
 
 export const InputContainer = styled.div`
-  width: 100%;
-  margin: 15px 0;
   display: flex;
-  flex-direction: column;
+`;
+
+export const InputButton = styled.button`
   align-items: center;
-`;
+  justify-content: center;
 
-export const Input = styled.input`
-  border: 1px solid #777;
-  font-size: 15px;
-  padding: 10px;
-  width: 280px;
-  border-radius: 6px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-`;
+  height: 50px;
+  width: 50px;
 
-export const InputLabel = styled.label`
-  font-size: 16px;
-  font-weight: bold;
-  margin-right: 15%;
-  /* color: #483d8b;*/
-`;
-
-export const Button = styled.button`
-  height: fit-content;
-  font-size: 1.1em;
-  padding: 0.7em 0;
-  width: 30%;
-  margin-top: 5em;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 7px;
-  cursor: pointer;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-`;
-
-export const AddComponentButton = styled.button`
-  width: 40px;
-  height: 40px;
-  background-color: #333;
   margin-left: 10px;
+
+  font-size: 25px;
   font-weight: bold;
-  color: #fff;
+
   border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-`;
 
-export const Text = styled.label`
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 30px;
-  font-weight: 4;
-`;
-
-export const SpanContainer = styled.div`
-  width: 100%;
-  margin: 15px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: left;
-`;
-
-export const Span = styled.span`
-  border: 1px solid #777;
-  font-size: 15px;
-  padding: 10px;
-  width: 500px;
-  min-height: 35px;
-  border-radius: 6px;
-  margin-bottom: 0.5em;
-  color: #000;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-`;
-
-export const SpanLabel = styled.label`
-  font-size: 16px;
-  font-weight: bolder;
-  margin-right: 48.2%;
-  margin-bottom: 5px;
+  color: ${colors.terciary};
+  background-color: ${colors.primary};
 `;

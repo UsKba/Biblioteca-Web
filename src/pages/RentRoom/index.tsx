@@ -1,79 +1,150 @@
-import React, { useState } from 'react';
+import React from 'react';
 
+import colors from '~/styles/colors';
+
+import DateList from '~/components/DateList';
+import EnrollmentInput from '~/components/EnrollmentInput';
 import FriendList from '~/components/FriendList';
+
+import room from '~/assets/room.jpg';
 
 import {
   Container,
+  LeftSide,
+  MiddleSide,
+  RightSide,
+  RoomScheduling,
+  Title,
+  Title2,
+  ChooseShift,
+  ShiftButton,
+  Shift,
+  Hour,
+  ChooseHour,
+  HourButton,
+  ChooseRoom,
+  Room,
+  RoomContainer,
+  Image,
+  RoomButton,
+  Components,
   ComponentsContainer,
-  LeftItemsContainer,
-  MiddleItemsContainer,
-  RightItemsContainer,
-  InputButtonContainer,
   InputContainer,
-  InputLabel,
-  Input,
-  Button,
-  AddComponentButton,
-  SpanContainer,
-  SpanLabel,
-  Span,
-  Text,
-  Warning,
+  InputButton,
 } from './styles';
 
 const RentRoom: React.FC = () => {
-  const [components, setComponents] = useState<string[]>([]);
-  const [username, setUsername] = useState('');
+  //   const [components, setComponents] = useState<string[]>([]);
+  //   const [username, setUsername] = useState('');
 
-  function handleAddComponent() {
-    if (components[2] === undefined) {
-      setComponents([...components, username]);
-    } else if (components[2] !== undefined) {
-      alert('Grupo cheio');
-    }
-  }
+  //   function handleAddComponent() {
+  //     if (components[2] === undefined) {
+  //       setComponents([...components, username]);
+  //     } else if (components[2] !== undefined) {
+  //       alert('Grupo cheio');
+  //     }
+  //   }
 
   return (
     <Container>
-      <LeftItemsContainer>
-        <Text>
-          Sala F1-5
-          <br />
-          8:00 - 9:00
-        </Text>
-        <Warning>Idaslon já está em uma sala nesse horário</Warning>
-      </LeftItemsContainer>
-
-      <MiddleItemsContainer>
+      <LeftSide />
+      <MiddleSide>
+        <RoomScheduling>
+          <Title>Agendamento de sala</Title>
+          <Title2>Escolha uma data</Title2>
+          <DateList />
+        </RoomScheduling>
+        <Shift>
+          <Title2>Escolha um turno</Title2>
+          <ChooseShift>
+            <ShiftButton> Manhã</ShiftButton>
+            <ShiftButton>Tarde</ShiftButton>
+            <ShiftButton>Noite</ShiftButton>
+          </ChooseShift>
+        </Shift>
+        <Hour>
+          <Title2>Escolha um horário</Title2>
+          <ChooseHour>
+            <HourButton>7:15 - 8:00</HourButton>
+            <HourButton>8:00 - 9:00</HourButton>
+            <HourButton>9:00 - 10:00</HourButton>
+            <HourButton>10:00 - 11:00</HourButton>
+          </ChooseHour>
+        </Hour>
+        <RoomContainer>
+          <Title2>Escolha uma sala</Title2>
+          <ChooseRoom>
+            <RoomButton>
+              <Room>F1-3</Room>
+              <Image src={room} />
+            </RoomButton>
+            <RoomButton>
+              <Room>F1-4</Room>
+              <Image src={room} />
+            </RoomButton>
+            <RoomButton>
+              <Room>F1-5</Room>
+              <Image src={room} />
+            </RoomButton>
+            <RoomButton>
+              <Room>F1-6</Room>
+              <Image src={room} />
+            </RoomButton>
+          </ChooseRoom>
+        </RoomContainer>
         <ComponentsContainer>
-          <InputContainer>
-            <InputLabel>Adicionar Componentes:</InputLabel>
-            <InputButtonContainer>
-              <Input
-                type="text"
-                value={username}
-                onChange={(event) => {
-                  setUsername(event.target.value);
-                }}
-              />
-              <AddComponentButton onClick={handleAddComponent}> + </AddComponentButton>
-            </InputButtonContainer>
-          </InputContainer>
-          <SpanContainer>
-            <SpanLabel>Grupo:</SpanLabel>
-            <Span>{components[0]}</Span>
-            <Span>{components[1]}</Span>
-            <Span>{components[2]}</Span>
-          </SpanContainer>
-          <Button>Reservar Sala</Button>
+          <Title2>Componentes</Title2>
+          <Components>
+            <InputContainer>
+              <EnrollmentInput placeholder="Digite um nome" hideIcon backgroundColor={colors.background} />
+              <InputButton>+</InputButton>
+            </InputContainer>
+          </Components>
         </ComponentsContainer>
-      </MiddleItemsContainer>
-
-      <RightItemsContainer>
+      </MiddleSide>
+      <RightSide>
         <FriendList />
-      </RightItemsContainer>
+      </RightSide>
     </Container>
   );
 };
 
 export default RentRoom;
+
+/* <LeftItemsContainer>
+<Text>
+  Sala F1-5
+  <br />
+  8:00 - 9:00
+</Text>
+<Warning>Idaslon já está em uma sala nesse horário</Warning>
+</LeftItemsContainer>
+
+<MiddleItemsContainer>
+<ComponentsContainer>
+  <InputContainer>
+    <InputLabel>Adicionar Componentes:</InputLabel>
+    <InputButtonContainer>
+      <Input
+        type="text"
+        value={username}
+        onChange={(event) => {
+          setUsername(event.target.value);
+        }}
+      />
+      <AddComponentButton onClick={handleAddComponent}> + </AddComponentButton>
+    </InputButtonContainer>
+  </InputContainer>
+  <SpanContainer>
+    <SpanLabel>Grupo:</SpanLabel>
+    <Span>{components[0]}</Span>
+    <Span>{components[1]}</Span>
+    <Span>{components[2]}</Span>
+  </SpanContainer>
+  <Button>Reservar Sala</Button>
+</ComponentsContainer>
+</MiddleItemsContainer>
+
+<RightItemsContainer>
+<FriendList />
+</RightItemsContainer> */
