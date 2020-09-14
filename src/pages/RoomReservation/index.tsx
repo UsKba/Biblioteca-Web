@@ -8,6 +8,7 @@ import {
   Container,
   TableContainer,
   Title,
+  TitleContainer,
   TopSide,
   BottomSide,
   ScheduleList,
@@ -16,12 +17,19 @@ import {
   CurrentDayContainer,
   CurrentDay,
   CurrentMonth,
+  StyledLink,
+  RentButton,
 } from './styles';
 
 const RoomReservation: React.FC = () => {
   return (
     <Container>
-      <Title>Salas</Title>
+      <TitleContainer>
+        <Title>Salas</Title>
+        <StyledLink to="/rent">
+          <RentButton>Alugar sala</RentButton>
+        </StyledLink>
+      </TitleContainer>
       <TableContainer>
         <TopSide>
           <CurrentDayContainer>
@@ -38,10 +46,10 @@ const RoomReservation: React.FC = () => {
 
         <BottomSide>
           <Rectangle backgroundColor={colors.primary}>Salas e Horários</Rectangle>
-          <Rectangle backgroundColor={colors.primary}>Sala F1-3</Rectangle>
-          <Rectangle backgroundColor={colors.primary}>Sala F1-4</Rectangle>
-          <Rectangle backgroundColor={colors.primary}>Sala F1-5</Rectangle>
-          <Rectangle backgroundColor={colors.primary}>Sala F1-6</Rectangle>
+          <Rectangle backgroundColor={colors.primary}> F1-3</Rectangle>
+          <Rectangle backgroundColor={colors.primary}> F1-4</Rectangle>
+          <Rectangle backgroundColor={colors.primary}> F1-5</Rectangle>
+          <Rectangle backgroundColor={colors.primary}> F1-6</Rectangle>
 
           <Rectangle backgroundColor={colors.primary}>7:15 - 8:00</Rectangle>
           <Rectangle borderColor={colors.roomStatus[2]} />

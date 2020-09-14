@@ -11,8 +11,8 @@ const AccessDenied: React.FC = () => {
       <H1>Ops!</H1>
       <H2>Você não tem acesso a essa página.</H2>
 
-      <Link to="/home">
-        <InitialButton>Página Inicial</InitialButton>
+      <Link to="/">
+        <InitialButton>Retornar</InitialButton>
       </Link>
     </Container>
   );

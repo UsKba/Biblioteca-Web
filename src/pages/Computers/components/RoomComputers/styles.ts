@@ -8,13 +8,12 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  width: 98%;
+  width: 100%;
   justify-content: space-between;
-  background-color: #fff;
+  background-color: #f0f2f5;
   align-self: center;
   padding: 50px;
   border-radius: 10px;
-  margin: 15px;
 `;
 
 export const ComputersContainer = styled.div`
@@ -22,8 +21,10 @@ export const ComputersContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
-  flex: 1;
-  width: 60%;
+  width: 734px;
+  height: 539px;
+  background-color: ${colors.primary};
+  border-radius: 7px;
 `;
 
 export const ComputerContainer = styled.div`
@@ -31,6 +32,17 @@ export const ComputerContainer = styled.div`
   flex-basis: 15%;
   justify-content: center;
   align-items: center;
+  border-radius: 7px;
+`;
+
+export const ComputerWhiteBackground = styled.div`
+  display: flex;
+  width: 129px;
+  height: 50px;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
 `;
 
 export const ComputerName = styled.span`
@@ -43,11 +55,10 @@ interface ComputerStatusProps {
 }
 
 export const ComputerStatus = styled.div<ComputerStatusProps>`
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background-color: ${({ status }) => colors.computerStatus[status]};
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `;
 
 export const ComputersOverviewContainer = styled.div`
@@ -106,8 +117,9 @@ export const StatusContainer = styled.div`
 `;
 
 export const LeftSide = styled.div`
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 9px;
+  background-color: #fff;
+  border-left: solid 2px ${colors.primary};
+  border-radius: 7px;
   height: 10em;
   padding: 1px;
 `;

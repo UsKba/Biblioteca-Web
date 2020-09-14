@@ -70,7 +70,7 @@ export const AuthProvider: React.FC = ({ children }) => {
       setIsSigned(true);
 
       if (history.location.hash) {
-        history.push('/profile');
+        history.push('/');
       }
     },
     [history]
@@ -115,7 +115,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   }, [handleSignIn]);
 
   function signOut() {
-    history.push('/home');
+    history.push('/');
     localStorage.clear();
     suap.logout();
     setIsSigned(false);

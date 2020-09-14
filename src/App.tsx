@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from '~/contexts/AuthContext';
 
 // import Routes from './routes';
-import Routes from './Rotes';
+import Routes from './routes';
 import store from './store';
 import GlobalStyle from './styles/global';
 

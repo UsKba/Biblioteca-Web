@@ -80,6 +80,16 @@ export const Title2 = styled.span`
   color: ${colors.dark};
 `;
 
+export const Title3 = styled.span`
+  font-size: 18px;
+  font-family: 'Ubuntu';
+  font-weight: bold;
+
+  margin: 20px 0 20px 0;
+
+  color: ${colors.text};
+`;
+
 export const Shift = styled.div`
   display: flex;
   flex-direction: column;
@@ -168,8 +178,8 @@ export const InputButton = styled.button`
   align-items: center;
   justify-content: center;
 
-  height: 50px;
-  width: 50px;
+  height: 45px;
+  width: 45px;
 
   margin-left: 10px;
 
@@ -180,4 +190,25 @@ export const InputButton = styled.button`
 
   color: ${colors.terciary};
   background-color: ${colors.primary};
+`;
+
+export const ComponentList = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Component = styled.span`
+  font-size: 16px;
+  font-family: 'Roboto';
+
+  padding: 15px 5px;
+
+  height: 45px;
+  width: 100%;
+  max-width: 250px;
+
+  margin-bottom: 10px;
+
+  background-color: ${colors.background};
+  color: ${colors.text};
 `;

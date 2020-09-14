@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import colors from '~/styles/colors';
 
@@ -16,6 +16,7 @@ import {
   RoomScheduling,
   Title,
   Title2,
+  Title3,
   ChooseShift,
   ShiftButton,
   Shift,
@@ -31,19 +32,21 @@ import {
   ComponentsContainer,
   InputContainer,
   InputButton,
+  ComponentList,
+  Component,
 } from './styles';
 
 const RentRoom: React.FC = () => {
-  //   const [components, setComponents] = useState<string[]>([]);
-  //   const [username, setUsername] = useState('');
+  const [components, setComponents] = useState<string[]>([]);
+  const [username, setUsername] = useState('');
 
-  //   function handleAddComponent() {
-  //     if (components[2] === undefined) {
-  //       setComponents([...components, username]);
-  //     } else if (components[2] !== undefined) {
-  //       alert('Grupo cheio');
-  //     }
-  //   }
+  function handleAddComponent() {
+    if (components[3] === undefined) {
+      setComponents([...components, username]);
+    } else if (components[3] !== undefined) {
+      alert('Grupo cheio');
+    }
+  }
 
   return (
     <Container>
@@ -96,9 +99,24 @@ const RentRoom: React.FC = () => {
           <Title2>Componentes</Title2>
           <Components>
             <InputContainer>
-              <EnrollmentInput placeholder="Digite um nome" hideIcon backgroundColor={colors.background} />
-              <InputButton>+</InputButton>
+              <EnrollmentInput
+                placeholder="Digite um nome"
+                hideIcon
+                backgroundColor={colors.background}
+                value={username}
+                onChange={(event) => {
+                  setUsername(event.target.value);
+                }}
+              />
+              <InputButton onClick={handleAddComponent}>+</InputButton>
             </InputContainer>
+            <Title3>Grupo:</Title3>
+            <ComponentList>
+              <Component>{components[0]}</Component>
+              <Component>{components[1]}</Component>
+              <Component>{components[2]}</Component>
+              <Component>{components[3]}</Component>
+            </ComponentList>
           </Components>
         </ComponentsContainer>
       </MiddleSide>

@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
+import { Link } from 'react-router-dom';
+
 import colors from '~/styles/colors';
+
+import { Button } from '~/components/MainButton/styles';
 
 export const Container = styled.div`
   display: flex;
@@ -13,7 +17,7 @@ export const Container = styled.div`
 
 export const TableContainer = styled.div`
   display: flex;
-  height: 550px;
+  height: 600px;
   width: 100%;
   max-width: 950px;
   flex-direction: column;
@@ -30,7 +34,7 @@ export const Title = styled.span`
 
   color: ${colors.dark};
 
-  margin: 10px 0 10px 0;
+  margin: 10px 10px 10px 0;
 `;
 
 export const TopSide = styled.div`
@@ -129,4 +133,20 @@ export const Rectangle = styled.div<RectangleProps>`
   font-family: 'Roboto';
   font-size: 16px;
   color: ${colors.terciary};
+`;
+
+export const TitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  max-width: 950px;
+`;
+
+export const RentButton = styled(Button)`
+  margin: 0;
+`;
+
+export const StyledLink = styled(Link)`
+  height: 50px;
 `;

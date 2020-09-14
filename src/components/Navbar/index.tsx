@@ -1,15 +1,5 @@
 import React, { useState } from 'react';
-import {
-  FaChalkboardTeacher,
-  FaUser,
-  FaBookOpen,
-  FaHome,
-  FaCog,
-  FaBars,
-  FaDesktop,
-  FaEnvelope,
-  FaTimes,
-} from 'react-icons/fa';
+import { FaChalkboardTeacher, FaBookOpen, FaHome, FaCog, FaBars, FaDesktop, FaEnvelope, FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 import { useAuth } from '~/contexts/AuthContext';
@@ -61,16 +51,9 @@ const NavbarComponent: React.FC = () => {
 
       <Sidebar open={sidebarOpen}>
         <SidebarItem>
-          <StyledLink to="/home">
+          <StyledLink to="/">
             <FaHome />
             <SidebarItemName>Início</SidebarItemName>
-          </StyledLink>
-        </SidebarItem>
-
-        <SidebarItem>
-          <StyledLink to="/profile">
-            <FaUser />
-            <SidebarItemName>Perfil</SidebarItemName>
           </StyledLink>
         </SidebarItem>
 
@@ -105,7 +88,7 @@ const NavbarComponent: React.FC = () => {
             handleSignOut();
           }}
         >
-          <StyledLink to="/home">
+          <StyledLink to="/">
             <FaTimes />
             <SidebarItemName>Sair</SidebarItemName>
           </StyledLink>

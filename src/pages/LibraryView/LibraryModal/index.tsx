@@ -1,5 +1,7 @@
 import React from 'react';
 
+import colors from '~/styles/colors';
+
 import {
   Container,
   Model,
@@ -31,18 +33,18 @@ const LibraryModal: React.FC<OwnProps> = ({ modalVisible, setModalVisible, selec
           <TableTop />
           <TableBottom>
             <TableLeft>
-              <LeftInfo backgroundColor="#1c91ff">07:15 - 08:15</LeftInfo>
-              <LeftInfo backgroundColor="#1c91ff">08:15 - 09:15</LeftInfo>
-              <LeftInfo backgroundColor="#1c91ff">09:15 - 10:15</LeftInfo>
-              <LeftInfo backgroundColor="#1c91ff">10:15 - 11:15</LeftInfo>
-              <LeftInfo backgroundColor="#1c91ff">11:15 - 12:00</LeftInfo>
+              <LeftInfo backgroundColor={colors.primary}>07:15 - 08:15</LeftInfo>
+              <LeftInfo backgroundColor={colors.primary}>08:15 - 09:15</LeftInfo>
+              <LeftInfo backgroundColor={colors.primary}>09:15 - 10:15</LeftInfo>
+              <LeftInfo backgroundColor={colors.primary}>10:15 - 11:15</LeftInfo>
+              <LeftInfo backgroundColor={colors.primary}>11:15 - 12:00</LeftInfo>
             </TableLeft>
             <TableRight>
-              <RightInfo backgroundColor="#F55">Bruno, Halyson, Arthur</RightInfo>
-              <RightInfo backgroundColor="#2B9348">Hiterlan, Breno, Dudu</RightInfo>
-              <RightInfo backgroundColor="#faa61a">Isadora, Caio, Silvio </RightInfo>
-              <RightInfo> </RightInfo>
-              <RightInfo backgroundColor="#faa61a">Idaslon, Nathan, Nayara</RightInfo>
+              <RightInfo backgroundColor={colors.roomStatus[2]}>Bruno, Halyson, Arthur</RightInfo>
+              <RightInfo backgroundColor={colors.roomStatus[0]}>Hiterlan, Breno, Dudu</RightInfo>
+              <RightInfo />
+              <RightInfo backgroundColor={colors.roomStatus[3]}> </RightInfo>
+              <RightInfo backgroundColor={colors.roomStatus[2]}>Idaslon, Nathan, Nayara</RightInfo>
             </TableRight>
           </TableBottom>
         </Table>
