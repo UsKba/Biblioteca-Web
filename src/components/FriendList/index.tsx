@@ -18,6 +18,9 @@ import {
   Line1,
   Line2,
   LineContainer,
+  EmptyContainer,
+  EmptyTitle,
+  EmptySpan,
 } from './styles';
 
 const FriendList: React.FC = () => {
@@ -35,6 +38,10 @@ const FriendList: React.FC = () => {
         <Line1 />
       </LineContainer>
 
+      <EmptyContainer>
+        <EmptyTitle>Ninguém aqui...</EmptyTitle>
+        <EmptySpan>Você não possui amigos, clique em + para adicionar alguém.</EmptySpan>
+      </EmptyContainer>
       <FriendsPanel>
         <FriendsPanelDetails>
           <FriendIcon>

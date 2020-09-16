@@ -20,7 +20,7 @@ const PageNotFound: React.FC = () => {
           ou ela não existe
         </T2>
         <Buttons>
-          <Link to="/home">
+          <Link to="/#">
             <OutlineButton>Página Inicial</OutlineButton>
           </Link>
           <Link to="/#">

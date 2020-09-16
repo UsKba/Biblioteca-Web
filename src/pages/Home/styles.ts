@@ -330,3 +330,34 @@ export const LibrarianButton = styled.button`
 export const StyledLink = styled(Link)`
   max-width: 210px;
 `;
+
+export const EmptyContainer = styled.div`
+  display: flex;
+  display: none;
+  flex-direction: column;
+
+  max-width: 450px;
+  height: 100px;
+
+  padding: 10px;
+  align-items: center;
+  text-align: center;
+
+  background-color: ${colors.terciary};
+`;
+
+export const EmptyTitle = styled.span`
+  font-family: 'Ubuntu';
+  font-size: 16px;
+
+  margin-bottom: 10px;
+
+  color: ${colors.dark};
+`;
+
+export const EmptySpan = styled.span`
+  font-family: 'Roboto';
+  font-size: 14px;
+
+  color: ${colors.text};
+`;

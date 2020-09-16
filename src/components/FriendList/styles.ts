@@ -32,6 +32,10 @@ export const Title = styled.span`
   }
 `;
 
+// interface FriendPanelProps {
+//   goDown: boolean;
+// }
+
 export const FriendsPanel = styled.div`
   display: flex;
   flex: 1;
@@ -119,4 +123,35 @@ export const Line2 = styled.div`
   @media screen and (max-width: 600px) {
     width: 50px;
   }
+`;
+
+export const EmptyContainer = styled.div`
+  display: flex;
+  display: none;
+  flex-direction: column;
+
+  max-width: 450px;
+  height: 100px;
+
+  padding: 10px;
+  align-items: center;
+  text-align: center;
+
+  background-color: ${colors.terciary};
+`;
+
+export const EmptyTitle = styled.span`
+  font-family: 'Ubuntu';
+  font-size: 16px;
+
+  margin-bottom: 10px;
+
+  color: ${colors.dark};
+`;
+
+export const EmptySpan = styled.span`
+  font-family: 'Roboto';
+  font-size: 14px;
+
+  color: ${colors.text};
 `;

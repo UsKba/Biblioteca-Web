@@ -46,6 +46,9 @@ import {
   LibrarianButton,
   StyledLink,
   NotificationContainer,
+  EmptyContainer,
+  EmptySpan,
+  EmptyTitle,
 } from './styles';
 
 interface UserResponse {
@@ -137,6 +140,14 @@ const Home: React.FC = () => {
         </BackgroundContainer>
 
         <Title>Notificações</Title>
+
+        <EmptyContainer>
+          <EmptyTitle>Caixa de correio vazia...</EmptyTitle>
+          <EmptySpan>
+            Você não possui nenhuma notificação, quando ocorrer algo na biblioteca nós o avisaremos aqui.
+          </EmptySpan>
+        </EmptyContainer>
+
         <NotificationContainer>
           <Notification>
             <NotificationTop>
