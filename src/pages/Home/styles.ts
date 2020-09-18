@@ -323,7 +323,6 @@ export const LibrarianButton = styled.button`
 
   &:active {
     background-color: rgba(99, 138, 242, 0.6);
-    border: 3px solid rgba(99, 138, 242, 0.9);
   }
 `;
 

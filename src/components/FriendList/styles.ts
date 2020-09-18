@@ -35,6 +35,20 @@ export const Title = styled.span`
 // interface FriendPanelProps {
 //   goDown: boolean;
 // }
+interface FriendsPanelHiddenProps {
+  small?: boolean;
+}
+
+export const FriendsPanelHidden = styled.div<FriendsPanelHiddenProps>`
+  display: none;
+  flex-direction: column;
+  margin-top: 7px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: 0.5s;
+
+  ${(props) => props.small && 'display: flex;'}
+`;
 
 export const FriendsPanel = styled.div`
   display: flex;
@@ -102,9 +116,14 @@ export const FriendHashTag = styled.span`
   margin-right: 3px;
 `;
 
-export const LineContainer = styled.div`
+interface LineContainerProps {
+  left?: boolean;
+}
+
+export const LineContainer = styled.div<LineContainerProps>`
   display: flex;
   margin: 15px 0 30px auto;
+  ${(props) => props.left && 'margin: 15px auto 30px 0;'}
 `;
 
 export const Line1 = styled.div`
@@ -154,4 +173,13 @@ export const EmptySpan = styled.span`
   font-size: 14px;
 
   color: ${colors.text};
+`;
+
+interface PlusContainerProps {
+  rotateIcon?: boolean;
+}
+
+export const PlusContainer = styled.div<PlusContainerProps>`
+  transition: 0.28s;
+  ${(props) => props.rotateIcon && `transform: rotate(45deg);`}
 `;
