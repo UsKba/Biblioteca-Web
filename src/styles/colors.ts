@@ -1,6 +1,5 @@
 const colors = {
   primary: '#638AF2',
-
   secondary: '#3D6DCC',
   text: '#2E4568',
   terciary: '#fff',
@@ -8,6 +7,7 @@ const colors = {
   dark: '#322C42',
   blue: '#1c91ff',
   red: '#EF476F',
+  lightred: '#f56e8e',
   black: '#333',
 
   computerStatus: ['#2B9348', '#faa61a', '#f55', '#333'],

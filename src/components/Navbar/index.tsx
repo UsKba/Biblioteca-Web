@@ -40,7 +40,7 @@ const NavbarComponent: React.FC = () => {
           </LeftSide>
 
           <RightSide>
-            <Link to="/settings/">
+            <Link to="/settings">
               <NavItem small>
                 <FaCog />
               </NavItem>
@@ -65,7 +65,7 @@ const NavbarComponent: React.FC = () => {
         </SidebarItem>
 
         <SidebarItem>
-          <StyledLink to="/reserve">
+          <StyledLink to="/reserve-morning">
             <FaChalkboardTeacher />
             <SidebarItemName>Salas</SidebarItemName>
           </StyledLink>

@@ -21,7 +21,7 @@ export const Alpha = styled.div<AlphaProps>`
 export const Container = styled.div`
   display: flex;
   width: 80%;
-  height: 70%;
+  height: 60%;
   align-self: center;
   background-color: ${colors.terciary};
   border-radius: 13px;

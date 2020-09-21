@@ -23,6 +23,9 @@ export const IndividualButton = styled.button`
   color: #fff;
   border: none;
   border-radius: 10px 0 0 0;
+  &:hover {
+    background-color: #7e9ced;
+  }
 `;
 
 // #ff9d00
@@ -35,6 +38,9 @@ export const ComputerRoomButton = styled.button`
   font-weight: 400;
   border: none;
   border-radius: 0 0 0 10px;
+  &:hover {
+    background-color: ${colors.primary};
+  }
 `;
 
 // #0d9e00
@@ -48,6 +54,9 @@ export const ComputerButton = styled.button`
   border: none;
   border-radius: 0 0 10px 10px;
   margin: 0 1em 0 0;
+  &:hover {
+    background-color: ${colors.primary};
+  }
 `;
 
 // #00c99e
@@ -62,6 +71,9 @@ export const LibrarianButton = styled.button`
 
   border: none;
   border-radius: 10px 10px 0 0;
+  &:hover {
+    background-color: ${colors.primary};
+  }
 `;
 
 // #003d9e
@@ -74,8 +86,10 @@ export const RoomButton = styled.button`
   height: 9em;
   border: none;
   border-right: solid #fff 3px;
-
   border-radius: 0 0 10px 10px;
+  &:hover {
+    background-color: #7e9ced;
+  }
 `;
 
 // #d64c4c
@@ -88,6 +102,9 @@ export const RoomButtonLarge = styled.button`
   height: 16em;
   border: none;
   border-radius: 0 10px 0 10px;
+  &:hover {
+    background-color: #7e9ced;
+  }
 `;
 
 export const LeftSide = styled.div`

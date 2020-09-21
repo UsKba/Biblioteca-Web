@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 /**
  * Classe que representa um token de autorização.
  *
@@ -253,3 +255,4 @@ const SuapClient = function (authHost, clientID, redirectURI) {
     });
   };
 };
+

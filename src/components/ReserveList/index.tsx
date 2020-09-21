@@ -29,13 +29,13 @@ const ReserveList: React.FC = () => {
   const [reserves, setReserves] = useState([
     {
       title: 'Reserva da sala F1-3',
-      text: 'Sala reservada às 07-00 - 08:00 no dia 7 de abril de 2020',
+      text: 'Sala reservada às 07:00 - 08:00 no dia 7 de abril de 2020',
       students: ['Daniel', 'Idaslon', 'Charles'],
       id: 0,
     },
     {
       title: 'Reserva da sala F1-4',
-      text: 'Sala reservada às 08-00 - 09:00 no dia 7 de abril de 2020',
+      text: 'Sala reservada às 08:00 - 09:00 no dia 7 de abril de 2020',
       students: ['Bruno', 'Caio', 'Alamberg', 'Sílvio', 'Halyson'],
       id: 1,
     },

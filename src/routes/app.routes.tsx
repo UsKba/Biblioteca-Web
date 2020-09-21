@@ -18,11 +18,18 @@ export default function Routes() {
       <Route path={['/reserve', '/', '/computers', '/rent', '/report', '/settings', '/topview']} component={Navbar} />
       <Switch>
         <Route path="/reserve" exact component={RoomReservation} />
+        <Route path="/reserve-morning" exact component={RoomReservation} />
+        <Route path="/reserve-afternoon" exact component={RoomReservation} />
+        <Route path="/reserve-night" exact component={RoomReservation} />
         <Route path="/" exact component={Home} />
         <Route path="/computers" exact component={Computers} />
         <Route path="/rent" exact component={RentRoom} />
         <Route path="/report" exact component={LibrarianReport} />
-        <Route path="/settings" component={Settings} />
+        <Route path="/settings" exact component={Settings} />
+        <Route path="/settings-user" exact component={Settings} />
+        <Route path="/settings-notification" exact component={Settings} />
+        <Route path="/settings-voz" exact component={Settings} />
+
         <Route path="/topview" exact component={LibraryView} />
         <Route path="/" component={PageNotFound} />
       </Switch>

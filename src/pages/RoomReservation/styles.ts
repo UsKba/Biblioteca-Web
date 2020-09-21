@@ -23,8 +23,6 @@ export const TableContainer = styled.div`
   flex-direction: column;
 
   background-color: ${colors.terciary};
-
-  margin-bottom: 70px;
 `;
 
 export const Title = styled.span`
@@ -54,6 +52,7 @@ export const CurrentDayContainer = styled.div`
   align-items: center;
 
   width: 155px;
+  height: 160px;
 
   border-radius: 0 0 90px 90px;
 
@@ -91,14 +90,18 @@ export const ScheduleList = styled.div`
   height: 160px;
 `;
 
-export const ScheduleButton = styled.button`
+interface ButtonProps {
+  active?: boolean;
+}
+
+export const ScheduleButton = styled(Button)<ButtonProps>`
   width: 100%;
   height: 45px;
 
   border: 2px solid ${colors.primary};
   border-radius: 100px;
-  background-color: ${colors.terciary};
-  color: ${colors.text};
+  background-color: ${({ active }) => (active === true ? `${colors.primary}` : `${colors.terciary}`)};
+  color: ${({ active }) => (active === true ? `${colors.terciary}` : `${colors.text}`)};
 `;
 
 export const BottomSide = styled.div`

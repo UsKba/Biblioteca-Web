@@ -134,6 +134,9 @@ export const GroupMember = styled.div`
   svg {
     color: ${colors.primary};
     cursor: pointer;
+    &:hover {
+      color: ${colors.red};
+    }
   }
 `;
 

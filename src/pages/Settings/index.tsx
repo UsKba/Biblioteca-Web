@@ -10,28 +10,28 @@ const Settings: React.FC = () => {
   return (
     <Container>
       <LeftSide>
-        <Button onClick={() => history.push('/settings/user/')} active={pathname === '/settings/user/'}>
+        <Button onClick={() => history.push('/settings-user')} active={pathname === '/settings-user'}>
           Configurações do Usuário
         </Button>
-        <Button onClick={() => history.push('/settings/notification/')} active={pathname === '/settings/notification/'}>
+        <Button onClick={() => history.push('/settings-notification')} active={pathname === '/settings-notification'}>
           Configurações de Notificação
         </Button>
-        <Button onClick={() => history.push('/settings/voz/')} active={pathname === '/settings/voz/'}>
+        <Button onClick={() => history.push('/settings-voz')} active={pathname === '/settings-voz'}>
           Configurações de Grupo
         </Button>
       </LeftSide>
 
       <RightSide>
         <Switch>
-          <Route path="/settings/user" exact>
+          <Route path="/settings-user" exact>
             <div>Configurações do usuário</div>
           </Route>
 
-          <Route path="/settings/notification" exact>
+          <Route path="/settings-notification" exact>
             <div>Configurações de Notificação</div>
           </Route>
 
-          <Route path="/settings/voz" exact>
+          <Route path="/settings-voz" exact>
             <div>Configurações de Grupo </div>
           </Route>
         </Switch>

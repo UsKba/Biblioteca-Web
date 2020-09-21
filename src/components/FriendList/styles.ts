@@ -18,6 +18,9 @@ export const TitlePanel = styled.div`
     color: ${colors.secondary};
     font-size: 15px;
     cursor: pointer;
+    &:hover {
+      color: ${colors.primary};
+    }
   }
 `;
 
@@ -40,14 +43,20 @@ interface FriendsPanelHiddenProps {
 }
 
 export const FriendsPanelHidden = styled.div<FriendsPanelHiddenProps>`
-  display: none;
+  display: flex;
   flex-direction: column;
+  overflow: hidden;
+
+  height: 0px;
+
   margin-top: 7px;
   border-radius: 5px;
   margin-bottom: 10px;
-  transition: 0.5s;
 
-  ${(props) => props.small && 'display: flex;'}
+  opacity: 0;
+
+  transition: 0.5s;
+  ${(props) => props.small && ' height:155px; visibility: visible; opacity: 1;'}
 `;
 
 export const FriendsPanel = styled.div`
@@ -181,5 +190,6 @@ interface PlusContainerProps {
 
 export const PlusContainer = styled.div<PlusContainerProps>`
   transition: 0.28s;
-  ${(props) => props.rotateIcon && `transform: rotate(45deg);`}
+  ${(props) =>
+    props.rotateIcon && `transform: rotate(45deg); svg{ color: ${colors.red}; &:hover { color: ${colors.lightred}};}`}
 `;

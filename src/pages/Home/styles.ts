@@ -191,6 +191,9 @@ export const CampusA = styled.a`
   svg {
     color: ${colors.secondary};
     font-size: 20px;
+    &:hover {
+      color: ${colors.primary};
+    }
   }
   align-items: top;
 `;
@@ -253,6 +256,10 @@ export const NotificationText = styled.div`
     color: ${colors.dark};
     font-size: 20px;
     align-self: flex-end;
+    &:hover {
+      color: ${colors.red};
+      cursor: pointer;
+    }
   }
 `;
 
