@@ -10,6 +10,12 @@ import {
   InfoContainer,
   InfoContainerContent,
   InfoContainerMessage,
+  BottomContainer,
+  TopContainer,
+  TagsContainer,
+  Tags,
+  PlusButton,
+  TagsNameContainer,
 } from './styles';
 
 const LibrarianReport: React.FC = () => {
@@ -17,17 +23,33 @@ const LibrarianReport: React.FC = () => {
     <Container>
       <BoxContainer>
         <ContentContainer>
-          <InfoContainer>
-            <InfoContainerContent>
-              Remetente: Destinatário:
-              <InfoContainerMessage />
-            </InfoContainerContent>
-          </InfoContainer>
-          <Label>Conteúdo:</Label>
+          <TopContainer>
+            <InfoContainer>
+              <InfoContainerContent>
+                Remetente:
+                <InfoContainerMessage placeholder="aluno@gmail.com" />
+              </InfoContainerContent>
+              <InfoContainerContent>
+                Destinatário:
+                <InfoContainerMessage placeholder="bibliotecário@gmail.com" />
+              </InfoContainerContent>
+            </InfoContainer>
+            <TagsNameContainer>
+              <Label>Tags:</Label>
+              <TagsContainer>
+                <Tags>Barulho</Tags>
+                <Tags>Aparelho Quebrado</Tags>
+                <Tags>Aluno</Tags>
+                <Tags>Outro</Tags>
+              </TagsContainer>
+            </TagsNameContainer>
+          </TopContainer>
+          <Label>Mensagem:</Label>
           <Message id="data" placeholder="Digite aqui..." />
         </ContentContainer>
-
-        <Button>Enviar</Button>
+        <BottomContainer>
+          <Button>Enviar</Button>
+        </BottomContainer>
       </BoxContainer>
     </Container>
   );
