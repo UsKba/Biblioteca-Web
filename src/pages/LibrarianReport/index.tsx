@@ -1,4 +1,5 @@
 import React from 'react';
+import { FiPlus } from 'react-icons/fi';
 
 import {
   Container,
@@ -16,6 +17,7 @@ import {
   Tags,
   PlusButton,
   TagsNameContainer,
+  TopContainerWithButton,
 } from './styles';
 
 const LibrarianReport: React.FC = () => {
@@ -24,16 +26,22 @@ const LibrarianReport: React.FC = () => {
       <BoxContainer>
         <ContentContainer>
           <TopContainer>
-            <InfoContainer>
-              <InfoContainerContent>
-                Remetente:
-                <InfoContainerMessage placeholder="aluno@gmail.com" />
-              </InfoContainerContent>
-              <InfoContainerContent>
-                Destinatário:
-                <InfoContainerMessage placeholder="bibliotecário@gmail.com" />
-              </InfoContainerContent>
-            </InfoContainer>
+            <TopContainerWithButton>
+              <InfoContainer>
+                <InfoContainerContent>
+                  Remetente:
+                  <InfoContainerMessage placeholder="aluno@gmail.com" />
+                </InfoContainerContent>
+                <InfoContainerContent>
+                  Destinatário:
+                  <InfoContainerMessage placeholder="bibliotecário@gmail.com" />
+                </InfoContainerContent>
+              </InfoContainer>
+              <PlusButton>
+                <FiPlus />
+              </PlusButton>
+            </TopContainerWithButton>
+
             <TagsNameContainer>
               <Label>Tags:</Label>
               <TagsContainer>

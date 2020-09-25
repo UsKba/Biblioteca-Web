@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import colors from '../../styles/colors';
-
 export const Container = styled.div`
   display: flex;
   flex: 1;
@@ -17,6 +15,10 @@ export const BoxContainer = styled.div`
   width: 90%;
   border-radius: 7px;
   padding: 50px;
+`;
+
+export const TopContainerWithButton = styled.div`
+  display: flex;
 `;
 
 export const InfoContainer = styled.div`
@@ -59,22 +61,21 @@ export const Button = styled.button`
   border: none;
   border-radius: 5px;
 
-  margin-left: 10px;
   @media (max-width: 1024px) {
   }
 `;
 
 export const Label = styled.label`
-  margin: 0.5em;
+  margin: 0.5em 0 0.5em 0;
   font-size: 20px;
   font-weight: bolder;
   margin-right: 0.3em;
+  margin-bottom: 0.3em;
 `;
 
 export const Message = styled.textarea`
   height: 5em;
   font-size: 16px;
-  margin: 0 10px 0 10px;
   padding: 1em 1em 17em 1em;
   border-radius: 7px;
   background-color: #f0f2f5;
@@ -103,10 +104,19 @@ export const BottomContainer = styled.div`
 `;
 
 export const PlusButton = styled.div`
-  width: 25px;
-  height: 25px;
+  width: 35px;
+  height: 35px;
   background-color: #799bf8;
   border-radius: 4px;
+  margin: 3.5em 0 0 0.7em;
+  text-align: center;
+  padding: 7px 1px 0 0;
+  svg {
+    font-size: 20px;
+    font-weight: bold;
+
+    color: white;
+  }
 `;
 
 export const TagsContainer = styled.div`

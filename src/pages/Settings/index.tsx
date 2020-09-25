@@ -1,7 +1,22 @@
 import React from 'react';
+import { BsCardChecklist } from 'react-icons/bs';
+import { FaUserAlt, FaUsers, FaBell, FaCogs } from 'react-icons/fa';
 import { useHistory, Switch, Route } from 'react-router-dom';
 
-import { Container, LeftSide, RightSide, Button } from './styles';
+import ToggleSwitch from '~/components/ToggleSwitch';
+
+import {
+  Container,
+  LeftSide,
+  RightSide,
+  ButtonList,
+  Button,
+  Label,
+  SettingContainer,
+  SettingSpanContainer,
+  SettingTitle,
+  SettingDesc,
+} from './styles';
 
 // settings/v
 const Settings: React.FC = () => {
@@ -10,29 +25,62 @@ const Settings: React.FC = () => {
   return (
     <Container>
       <LeftSide>
-        <Button onClick={() => history.push('/settings-user')} active={pathname === '/settings-user'}>
-          Configurações do Usuário
-        </Button>
-        <Button onClick={() => history.push('/settings-notification')} active={pathname === '/settings-notification'}>
-          Configurações de Notificação
-        </Button>
-        <Button onClick={() => history.push('/settings-voz')} active={pathname === '/settings-voz'}>
-          Configurações de Grupo
-        </Button>
+        <Label>Configurações</Label>
+        <ButtonList>
+          <Button onClick={() => history.push('/settings-general')} active={pathname === '/settings-general'}>
+            <BsCardChecklist />
+            Configurações Gerais
+          </Button>
+          <Button onClick={() => history.push('/settings-user')} active={pathname === '/settings-user'}>
+            <FaUserAlt />
+            Configurações do Usuário
+          </Button>
+          <Button onClick={() => history.push('/settings-notification')} active={pathname === '/settings-notification'}>
+            <FaBell />
+            Configurações de Notificações
+          </Button>
+          <Button onClick={() => history.push('/settings-voz')} active={pathname === '/settings-voz'}>
+            <FaUsers />
+            Configurações de Grupo
+          </Button>
+          <Button>
+            <FaCogs />
+            Configurações de Exemplo
+          </Button>
+        </ButtonList>
       </LeftSide>
-
       <RightSide>
         <Switch>
           <Route path="/settings-user" exact>
-            <div>Configurações do usuário</div>
+            <Label>Configurações do Usuário</Label>
           </Route>
 
           <Route path="/settings-notification" exact>
-            <div>Configurações de Notificação</div>
+            <Label>Configurações de Notificação</Label>
+            <SettingContainer>
+              <SettingSpanContainer>
+                <SettingTitle>Aviso de Notificações</SettingTitle>
+                <SettingDesc>Avisa quando você recebe uma nova notificação sem estar na página inicial</SettingDesc>
+              </SettingSpanContainer>
+              <ToggleSwitch />
+            </SettingContainer>
           </Route>
 
           <Route path="/settings-voz" exact>
-            <div>Configurações de Grupo </div>
+            <Label>Configurações de Grupo </Label>
+            <SettingContainer>
+              <SettingSpanContainer>
+                <SettingTitle>Entrada automática em grupos</SettingTitle>
+                <SettingDesc>
+                  Permite você entrar em grupos automaticamente (desde que não entrem em conflito de horários).
+                </SettingDesc>
+              </SettingSpanContainer>
+              <ToggleSwitch />
+            </SettingContainer>
+          </Route>
+
+          <Route path="/settings-general" exact>
+            <Label>Configurações Gerais</Label>
           </Route>
         </Switch>
       </RightSide>

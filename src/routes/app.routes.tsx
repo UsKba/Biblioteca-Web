@@ -5,6 +5,7 @@ import Navbar from '~/components/Navbar';
 
 import Computers from '~/pages/Computers';
 import Home from '~/pages/Home';
+import Inbox from '~/pages/Inbox';
 import LibrarianReport from '~/pages/LibrarianReport';
 import LibraryView from '~/pages/LibraryView';
 import PageNotFound from '~/pages/PageNotFound';
@@ -28,9 +29,12 @@ export default function Routes() {
         <Route path="/settings" exact component={Settings} />
         <Route path="/settings-user" exact component={Settings} />
         <Route path="/settings-notification" exact component={Settings} />
+        <Route path="/settings-general" exact component={Settings} />
         <Route path="/settings-voz" exact component={Settings} />
-
         <Route path="/topview" exact component={LibraryView} />
+
+        <Route path="/inbox" exact component={Inbox} />
+
         <Route path="/" component={PageNotFound} />
       </Switch>
 
