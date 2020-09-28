@@ -60,8 +60,16 @@ export const RoomScheduling = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 10em;
-  margin: 36px 0 50px 0;
+  margin-top: 36px;
+`;
+
+export const DateListContainer = styled.div`
+  display: flex;
+  align-items: center;
+  align-self: center;
+  height: 50px;
+  width: 80%;
+  margin-bottom: 40px;
 `;
 
 export const Title = styled.span`
@@ -103,8 +111,18 @@ export const ChooseShift = styled.div`
   justify-content: space-around;
 `;
 
-export const ShiftButton = styled(Button)`
+interface ShiftButtonProps {
+  active?: boolean;
+}
+
+export const ShiftButton = styled(Button)<ShiftButtonProps>`
   width: 10em;
+  background-color: ${({ active }) => (active === false ? `${colors.terciary}` : `${colors.primary}`)};
+  color: ${({ active }) => (active === false ? `${colors.primary}` : `${colors.terciary}`)};
+
+  &:hover {
+    background-color: ${({ active }) => (active === false ? `${colors.lightprimary}` : `${colors.primary}`)};
+  }
 `;
 
 export const Hour = styled.div`
@@ -118,8 +136,20 @@ export const ChooseHour = styled.div`
   flex-wrap: wrap;
 `;
 
-export const HourButton = styled(Button)`
+interface HourButtonProps {
+  active?: boolean;
+}
+
+export const HourButton = styled(Button)<HourButtonProps>`
   width: 16em;
+
+  background-color: ${({ active }) => (active === false ? `${colors.terciary}` : `${colors.primary}`)};
+  color: ${({ active }) => (active === false ? `${colors.primary}` : `${colors.terciary}`)};
+
+  &:hover {
+    background-color: ${({ active }) => (active === false ? `${colors.lightprimary}` : `${colors.primary}`)};
+  }
+
   margin-bottom: 1em;
 `;
 
@@ -141,16 +171,20 @@ export const Room = styled.span`
   color: ${colors.dark};
 `;
 
-export const RoomButton = styled.button`
+interface RoomButtonProps {
+  active?: boolean;
+}
+
+export const RoomButton = styled.button<RoomButtonProps>`
   display: flex;
   background-color: transparent;
   flex-direction: column;
-  border: 3px solid ${colors.terciary};
+  border: 3px solid ${({ active }) => (active === false ? `${colors.terciary}` : `${colors.primary}`)};
   border-radius: 8px;
   padding: 10px;
 
   &:hover {
-    border: 3px solid ${colors.primary};
+    border: 3px solid ${({ active }) => (active === false ? `${colors.lightprimary}` : `${colors.primary}`)};
   }
 `;
 

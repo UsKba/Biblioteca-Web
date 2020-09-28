@@ -21,6 +21,8 @@ import {
   ErrorContainer,
   ErrorSpan,
   ErrorSpanLink,
+  ComputerStatus,
+  ComputerTextContainer,
 } from './styles';
 
 interface Props {
@@ -53,48 +55,78 @@ const RoomComputers = ({ handleClick }: Props) => {
               <H2>Laboratório</H2>
               <ComputerList>
                 <ComputerButton onClick={() => openModal('01')}>
-                  <ComputerName>Computador 01</ComputerName>
-                  <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                  <ComputerTextContainer>
+                    <ComputerName>Computador 01</ComputerName>
+                    <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                  </ComputerTextContainer>
+                  <ComputerStatus status={0} />
                 </ComputerButton>
                 <ComputerButton onClick={() => openModal('02')}>
-                  <ComputerName>Computador 02</ComputerName>
-                  <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                  <ComputerTextContainer>
+                    <ComputerName>Computador 02</ComputerName>
+                    <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                  </ComputerTextContainer>
+                  <ComputerStatus status={0} />
                 </ComputerButton>
                 <ComputerButton onClick={() => openModal('03')}>
-                  <ComputerName>Computador 03</ComputerName>
-                  <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                  <ComputerTextContainer>
+                    <ComputerName>Computador 03</ComputerName>
+                    <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                  </ComputerTextContainer>
+                  <ComputerStatus status={1} />
                 </ComputerButton>
                 <ComputerButton onClick={() => openModal('04')}>
-                  <ComputerName>Computador 04</ComputerName>
-                  <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                  <ComputerTextContainer>
+                    <ComputerName>Computador 04</ComputerName>
+                    <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                  </ComputerTextContainer>
+                  <ComputerStatus status={3} />
                 </ComputerButton>
                 <ComputerButton onClick={() => openModal('05')}>
-                  <ComputerName>Computador 05</ComputerName>
-                  <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                  <ComputerTextContainer>
+                    <ComputerName>Computador 05</ComputerName>
+                    <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                  </ComputerTextContainer>
+                  <ComputerStatus status={1} />
                 </ComputerButton>
                 <ComputerButton onClick={() => openModal('06')}>
-                  <ComputerName>Computador 06</ComputerName>
-                  <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                  <ComputerTextContainer>
+                    <ComputerName>Computador 06</ComputerName>
+                    <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                  </ComputerTextContainer>
+                  <ComputerStatus status={0} />
                 </ComputerButton>
               </ComputerList>
             </MiddleLeft>
             <MiddleRight>
               <H2>Biblioteca</H2>
               <ComputerButton onClick={() => openModal('01')}>
-                <ComputerName>Computador 01</ComputerName>
-                <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                <ComputerTextContainer>
+                  <ComputerName>Computador 01</ComputerName>
+                  <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                </ComputerTextContainer>
+                <ComputerStatus status={0} />
               </ComputerButton>
               <ComputerButton onClick={() => openModal('02')}>
-                <ComputerName>Computador 02</ComputerName>
-                <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                <ComputerTextContainer>
+                  <ComputerName>Computador 02</ComputerName>
+                  <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                </ComputerTextContainer>
+                <ComputerStatus status={0} />
               </ComputerButton>
               <ComputerButton onClick={() => openModal('03')}>
-                <ComputerName>Computador 03</ComputerName>
-                <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                <ComputerTextContainer>
+                  <ComputerName>Computador 03</ComputerName>
+                  <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                </ComputerTextContainer>
+                <ComputerStatus status={2} />
               </ComputerButton>
               <ComputerButton onClick={() => openModal('04')}>
-                <ComputerName>Computador 04</ComputerName>
-                <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                <ComputerTextContainer>
+                  <ComputerName>Computador 04</ComputerName>
+                  <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                </ComputerTextContainer>
+                <ComputerStatus status={1} />
               </ComputerButton>
             </MiddleRight>
           </MiddleBottom>

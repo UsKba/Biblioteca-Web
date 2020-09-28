@@ -12,10 +12,24 @@ export const Container = styled.div`
   padding: 0 50px;
 `;
 
-export const WeekDayContainer = styled.div`
+interface WeekDayProps {
+  active?: boolean;
+}
+
+export const WeekDayContainer = styled.div<WeekDayProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  cursor: pointer;
+
+  padding: 10px 5px;
+  border: 3px solid ${({ active }) => (active === false ? `${colors.terciary}` : `${colors.primary}`)};
+  border-radius: 100px;
+
+  &:hover {
+    border: 3px solid ${({ active }) => (active === false ? `${colors.lightprimary}` : `${colors.primary}`)};
+  }
 `;
 
 export const WeekDay = styled.span`

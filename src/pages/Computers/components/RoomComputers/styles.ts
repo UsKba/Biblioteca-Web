@@ -86,9 +86,8 @@ export const ComputerList = styled.div`
 
 export const ComputerButton = styled.button`
   display: flex;
-  flex-direction: column;
-
-  align-items: flex-start;
+  align-items: center;
+  justify-content: space-between;
 
   width: 95%;
 
@@ -109,6 +108,24 @@ export const ComputerName = styled.span`
   margin-bottom: 5px;
 
   color: ${colors.dark};
+`;
+
+export const ComputerTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+interface ComputerStatusProps {
+  status: number;
+}
+
+export const ComputerStatus = styled.div<ComputerStatusProps>`
+  display: flex;
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  background-color: ${({ status }) => colors.computerStatus[status]};
 `;
 
 export const ComputerSpan = styled.span`

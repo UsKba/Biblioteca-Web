@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Navbar from '~/components/Navbar';
 
+import About from '~/pages/About';
 import Computers from '~/pages/Computers';
 import Home from '~/pages/Home';
 import Inbox from '~/pages/Inbox';
@@ -32,6 +33,7 @@ export default function Routes() {
         <Route path="/settings-general" exact component={Settings} />
         <Route path="/settings-voz" exact component={Settings} />
         <Route path="/topview" exact component={LibraryView} />
+        <Route path="/about" exact component={About} />
 
         <Route path="/inbox" exact component={Inbox} />
 

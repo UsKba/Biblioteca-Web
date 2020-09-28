@@ -35,12 +35,32 @@ export const Slider = styled.span`
   }
 `;
 
-export const SliderInput = styled.input`
+interface SliderInputProps {
+  active?: boolean;
+}
+export const SliderInput = styled.input<SliderInputProps>`
   &:checked + ${Slider} {
-    background-color: ${colors.primary};
+    background-color: ${({ active }) => (active === false ? `` : `${colors.primary}`)};
     &:before {
-      transform: translateX(20px);
-      background-color: white;
+      transform: ${({ active }) => (active === false ? `` : `translateX(20px)`)};
+      background-color: ${({ active }) => (active === false ? `` : `${colors.terciary}`)};
     }
   }
 `;
+
+// &:checked + ${Slider} {
+//   background-color: ${({ active }) => (active === true ? `` : `${colors.primary}`)};
+//   &:before {
+//     transform: ${({ active }) => (active === true ? `` : `translateX(20px)`)};
+//     background-color: ${({ active }) => (active === true ? `` : `${colors.terciary}`)};
+//   }
+// }
+// `;
+
+// &:checked + ${Slider} {
+//   background-color: ${colors.primary};
+//   &:before {
+//     transform: translateX(20px);
+//     background-color: white;
+//   }
+// }

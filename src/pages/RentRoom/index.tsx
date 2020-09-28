@@ -14,6 +14,7 @@ import {
   MiddleSide,
   RightSide,
   RoomScheduling,
+  DateListContainer,
   Title,
   Title2,
   Title3,
@@ -39,6 +40,9 @@ import {
 const RentRoom: React.FC = () => {
   const [components, setComponents] = useState<string[]>([]);
   const [username, setUsername] = useState('');
+  const [selectedShiftButton, setSelectedShiftButton] = useState(0);
+  const [selectedHourButton, setSelectedHourButton] = useState(0);
+  const [selectedRoomButton, setSelectedRoomButton] = useState(0);
 
   function handleAddComponent() {
     if (components[3] === undefined) {
@@ -55,41 +59,57 @@ const RentRoom: React.FC = () => {
         <RoomScheduling>
           <Title>Agendamento de sala</Title>
           <Title2>Escolha uma data</Title2>
-          <DateList />
         </RoomScheduling>
+        <DateListContainer>
+          <DateList />
+        </DateListContainer>
         <Shift>
           <Title2>Escolha um turno</Title2>
           <ChooseShift>
-            <ShiftButton> Manhã</ShiftButton>
-            <ShiftButton>Tarde</ShiftButton>
-            <ShiftButton>Noite</ShiftButton>
+            <ShiftButton onClick={() => setSelectedShiftButton(1)} active={selectedShiftButton === 1}>
+              Manhã
+            </ShiftButton>
+            <ShiftButton onClick={() => setSelectedShiftButton(2)} active={selectedShiftButton === 2}>
+              Tarde
+            </ShiftButton>
+            <ShiftButton onClick={() => setSelectedShiftButton(3)} active={selectedShiftButton === 3}>
+              Noite
+            </ShiftButton>
           </ChooseShift>
         </Shift>
         <Hour>
           <Title2>Escolha um horário</Title2>
           <ChooseHour>
-            <HourButton>7:15 - 8:00</HourButton>
-            <HourButton>8:00 - 9:00</HourButton>
-            <HourButton>9:00 - 10:00</HourButton>
-            <HourButton>10:00 - 11:00</HourButton>
+            <HourButton onClick={() => setSelectedHourButton(1)} active={selectedHourButton === 1}>
+              7:15 - 8:00
+            </HourButton>
+            <HourButton onClick={() => setSelectedHourButton(2)} active={selectedHourButton === 2}>
+              8:00 - 9:00
+            </HourButton>
+            <HourButton onClick={() => setSelectedHourButton(3)} active={selectedHourButton === 3}>
+              9:00 - 10:00
+            </HourButton>
+            <HourButton onClick={() => setSelectedHourButton(4)} active={selectedHourButton === 4}>
+              10:00 - 11:00
+            </HourButton>
           </ChooseHour>
         </Hour>
         <RoomContainer>
           <Title2>Escolha uma sala</Title2>
           <ChooseRoom>
-            <RoomButton>
+            <RoomButton onClick={() => setSelectedRoomButton(1)} active={selectedRoomButton === 1}>
               <Room>F1-3</Room>
               <Image src={room} />
             </RoomButton>
-            <RoomButton>
+            <RoomButton onClick={() => setSelectedRoomButton(2)} active={selectedRoomButton === 2}>
               <Room>F1-4</Room>
               <Image src={room} />
             </RoomButton>
-            <RoomButton>
+            <RoomButton onClick={() => setSelectedRoomButton(3)} active={selectedRoomButton === 3}>
               <Room>F1-5</Room>
               <Image src={room} />
             </RoomButton>
-            <RoomButton>
+            <RoomButton onClick={() => setSelectedRoomButton(4)} active={selectedRoomButton === 4}>
               <Room>F1-6</Room>
               <Image src={room} />
             </RoomButton>
