@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
-import { FaChalkboardTeacher, FaBookOpen, FaHome, FaCog, FaBars, FaDesktop, FaEnvelope, FaTimes } from 'react-icons/fa';
+import {
+  FaChalkboardTeacher,
+  FaBookOpen,
+  FaHome,
+  FaCog,
+  FaBars,
+  FaDesktop,
+  FaEnvelope,
+  FaTimes,
+  FaBell,
+} from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 import { useAuth } from '~/contexts/AuthContext';
@@ -40,6 +50,11 @@ const NavbarComponent: React.FC = () => {
           </LeftSide>
 
           <RightSide>
+            <Link to="/">
+              <NavItem small>
+                <FaBell />
+              </NavItem>
+            </Link>
             <Link to="/settings">
               <NavItem small>
                 <FaCog />

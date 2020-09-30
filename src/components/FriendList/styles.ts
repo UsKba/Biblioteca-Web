@@ -49,7 +49,6 @@ export const FriendsPanelHidden = styled.div<FriendsPanelHiddenProps>`
 
   height: 0px;
 
-  margin-top: 7px;
   border-radius: 5px;
   margin-bottom: 10px;
 
@@ -61,8 +60,10 @@ export const FriendsPanelHidden = styled.div<FriendsPanelHiddenProps>`
 
 export const FriendsPanel = styled.div`
   display: flex;
-  flex: 1;
+
   flex-direction: column;
+  overflow-y: auto;
+
   margin-top: 7px;
   border-radius: 5px;
 `;
@@ -131,8 +132,8 @@ interface LineContainerProps {
 
 export const LineContainer = styled.div<LineContainerProps>`
   display: flex;
-  margin: 15px 0 30px auto;
-  ${(props) => props.left && 'margin: 15px auto 30px 0;'}
+  margin: 15px 0 15px auto;
+  ${(props) => props.left && 'margin: 15px auto 15px 0;'}
 `;
 
 export const Line1 = styled.div`

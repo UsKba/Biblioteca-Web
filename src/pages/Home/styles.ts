@@ -267,6 +267,21 @@ export const Notification = styled.div`
   display: column;
 `;
 
+interface TrashContainerProps {
+  big?: boolean;
+}
+
+export const TrashContainer = styled.div<TrashContainerProps>`
+  display: flex;
+  justify-content: space-between;
+  width: 10em;
+  height: 3em;
+  background-color: #fff;
+  border-radius: 7px;
+  margin-bottom: 40px;
+  ${(props) => props.big && `height: 8em;`}
+`;
+
 export const NotificationTop = styled.div`
   display: flex;
   justify-content: space-between;

@@ -49,40 +49,69 @@ const Settings: React.FC = () => {
           </Button>
         </ButtonList>
       </LeftSide>
+
       <RightSide>
-        <Switch>
-          <Route path="/settings-user" exact>
-            <Label>Configurações do Usuário</Label>
-          </Route>
+        <Route path="/settings-user" exact>
+          <Label>Configurações do Usuário</Label>
+          <SettingContainer>
+            <SettingSpanContainer>
+              <SettingTitle>Aceitar amigos automaticamente</SettingTitle>
+              <SettingDesc>Aceita amigos sem necessidade de adiciona-los</SettingDesc>
+            </SettingSpanContainer>
+            <ToggleSwitch />
+          </SettingContainer>
+        </Route>
 
-          <Route path="/settings-notification" exact>
-            <Label>Configurações de Notificação</Label>
-            <SettingContainer>
-              <SettingSpanContainer>
-                <SettingTitle>Aviso de Notificações</SettingTitle>
-                <SettingDesc>Avisa quando você recebe uma nova notificação sem estar na página inicial</SettingDesc>
-              </SettingSpanContainer>
-              <ToggleSwitch />
-            </SettingContainer>
-          </Route>
+        <Route path="/settings-notification" exact>
+          <Label>Configurações de Notificação</Label>
+          <SettingContainer>
+            <SettingSpanContainer>
+              <SettingTitle>Aviso de Notificações</SettingTitle>
+              <SettingDesc>Avisa quando você recebe uma nova notificação sem estar na página inicial</SettingDesc>
+            </SettingSpanContainer>
+            <ToggleSwitch />
+          </SettingContainer>
 
-          <Route path="/settings-voz" exact>
-            <Label>Configurações de Grupo </Label>
-            <SettingContainer>
-              <SettingSpanContainer>
-                <SettingTitle>Entrada automática em grupos</SettingTitle>
-                <SettingDesc>
-                  Permite você entrar em grupos automaticamente (desde que não entrem em conflito de horários).
-                </SettingDesc>
-              </SettingSpanContainer>
-              <ToggleSwitch />
-            </SettingContainer>
-          </Route>
+          <SettingContainer>
+            <SettingSpanContainer>
+              <SettingTitle>Notificações de computadores</SettingTitle>
+              <SettingDesc>Avisa quando um novo computador está disponível</SettingDesc>
+            </SettingSpanContainer>
+            <ToggleSwitch />
+          </SettingContainer>
 
-          <Route path="/settings-general" exact>
-            <Label>Configurações Gerais</Label>
-          </Route>
-        </Switch>
+          <SettingContainer>
+            <SettingSpanContainer>
+              <SettingTitle>Notificações de salas</SettingTitle>
+              <SettingDesc>Avisa quando uma nova sala está disponível</SettingDesc>
+            </SettingSpanContainer>
+            <ToggleSwitch />
+          </SettingContainer>
+        </Route>
+
+        <Route path="/settings-voz" exact>
+          <Label>Configurações de Grupo </Label>
+          <SettingContainer>
+            <SettingSpanContainer>
+              <SettingTitle>Entrada automática em grupos</SettingTitle>
+              <SettingDesc>
+                Permite você entrar em grupos automaticamente (desde que não entrem em conflito de horários).
+              </SettingDesc>
+            </SettingSpanContainer>
+            <ToggleSwitch />
+          </SettingContainer>
+        </Route>
+
+        <Route path="/settings-general" exact>
+          <Label>Configurações Gerais</Label>
+          <SettingContainer>
+            <SettingSpanContainer>
+              <SettingTitle>Tema Escuro</SettingTitle>
+              <SettingDesc>Abilita um tema escuro do site para uso noturno</SettingDesc>
+            </SettingSpanContainer>
+            <ToggleSwitch />
+          </SettingContainer>
+        </Route>
       </RightSide>
     </Container>
   );

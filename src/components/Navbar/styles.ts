@@ -58,6 +58,11 @@ export const NavItem = styled.li<NavItemProps>`
     font-size: 24px;
     font-size: 1.5rem;
   }
+
+  &:hover {
+    svg {
+      color: ${colors.primary};
+    }
 `;
 
 interface SidebarProps {
