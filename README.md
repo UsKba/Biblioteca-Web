@@ -25,3 +25,8 @@ GET: Pegar algo já cadastrado;
 PUT: Atualizar algo já cadastrado;
 
 DELETE: Deletar algo já cadastrado.
+
+
+room_id: 5;
+hour_id: 3;
+users_id: 1,2,3;

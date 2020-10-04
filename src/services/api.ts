@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://test-kadu-bakend.herokuapp.com/',
+  baseURL: 'https://smart-library-3.herokuapp.com/',
 });
 
 export default api;

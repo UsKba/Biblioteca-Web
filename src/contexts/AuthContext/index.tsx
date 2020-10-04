@@ -52,7 +52,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
       const { email, enrollment, name } = formattedUser;
 
-      const response = await api.post<UserBackendResponse>('/sessions', {
+      const response = await api.post<UserBackendResponse>('/login', {
         enrollment,
         name,
         email,

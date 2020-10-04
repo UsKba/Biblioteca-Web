@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 
+import api from '~/services/api';
+
 import colors from '~/styles/colors';
 
 import DateList from '~/components/DateList';
 import EnrollmentInput from '~/components/EnrollmentInput';
 import FriendList from '~/components/FriendList';
+import Button from '~/components/MainButton';
 
 import room from '~/assets/room.jpg';
 
@@ -37,18 +40,46 @@ import {
   Component,
 } from './styles';
 
+interface ReserveResponse {
+  day: number;
+  id: number;
+  month: number;
+  roomId: number;
+  scheduleId: number;
+  year: number;
+}
+
 const RentRoom: React.FC = () => {
-  const [components, setComponents] = useState<string[]>([]);
+  const [components, setComponents] = useState<number[]>([]);
   const [username, setUsername] = useState('');
   const [selectedShiftButton, setSelectedShiftButton] = useState(0);
   const [selectedHourButton, setSelectedHourButton] = useState(0);
   const [selectedRoomButton, setSelectedRoomButton] = useState(0);
 
   function handleAddComponent() {
-    if (components[3] === undefined) {
-      setComponents([...components, username]);
-    } else if (components[3] !== undefined) {
-      alert('Grupo cheio');
+    if (components.length < 6) {
+      setComponents([...components, Number(username)]);
+      setUsername('');
+    } else {
+      alert('Grupo cheio!');
+    }
+  }
+
+  async function handleCreateReserve() {
+    try {
+      const response = await api.post<ReserveResponse>('/reserves', {
+        roomId: 1,
+        scheduleId: 2,
+        day: 6,
+        month: 9,
+        year: 2020,
+        classmatesIDs: components,
+      });
+      console.log(response.data);
+      alert('Reserva criada!');
+    } catch (e) {
+      console.log(e.response.data);
+      alert(e.response.data.error);
     }
   }
 
@@ -120,6 +151,7 @@ const RentRoom: React.FC = () => {
           <Components>
             <InputContainer>
               <EnrollmentInput
+                type="number"
                 placeholder="Digite um nome"
                 hideIcon
                 backgroundColor={colors.background}
@@ -132,13 +164,13 @@ const RentRoom: React.FC = () => {
             </InputContainer>
             <Title3>Grupo:</Title3>
             <ComponentList>
-              <Component>{components[0]}</Component>
-              <Component>{components[1]}</Component>
-              <Component>{components[2]}</Component>
-              <Component>{components[3]}</Component>
+              {components.map((component) => (
+                <Component key={component}>{component}</Component>
+              ))}
             </ComponentList>
           </Components>
         </ComponentsContainer>
+        <HourButton onClick={handleCreateReserve}>Alugar Sala</HourButton>
       </MiddleSide>
       <RightSide>
         <FriendList />
