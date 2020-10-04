@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import api from '~/services/api';
 
@@ -50,6 +51,8 @@ interface ReserveResponse {
 }
 
 const RentRoom: React.FC = () => {
+  const history = useHistory();
+
   const [components, setComponents] = useState<number[]>([]);
   const [username, setUsername] = useState('');
   const [selectedShiftButton, setSelectedShiftButton] = useState(0);
@@ -70,12 +73,14 @@ const RentRoom: React.FC = () => {
       const response = await api.post<ReserveResponse>('/reserves', {
         roomId: 1,
         scheduleId: 2,
-        day: 6,
+        day: 9,
         month: 9,
+        // janeiro = month: 0
         year: 2020,
         classmatesIDs: components,
       });
       console.log(response.data);
+      history.push('/');
       alert('Reserva criada!');
     } catch (e) {
       console.log(e.response.data);
