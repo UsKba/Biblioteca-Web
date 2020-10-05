@@ -55,7 +55,43 @@ const RentRoom: React.FC = () => {
 
   const [components, setComponents] = useState<number[]>([]);
   const [username, setUsername] = useState('');
-  const [selectedShiftButton, setSelectedShiftButton] = useState(0);
+  const [schedules, setSchedules] = useState([
+    {
+      id: 1,
+      periodId: 1,
+      text: '7:15 - 8:00',
+    },
+    {
+      id: 2,
+      periodId: 1,
+      text: '8:00 - 9:00',
+    },
+
+    {
+      id: 3,
+      periodId: 2,
+      text: '13:15 - 14:00',
+    },
+
+    {
+      id: 4,
+      periodId: 2,
+      text: '14:00 - 15:00',
+    },
+    {
+      id: 5,
+      periodId: 3,
+      text: '18:15 - 19:00',
+    },
+    {
+      id: 6,
+      periodId: 3,
+      text: '19:00 - 20:00',
+    },
+  ]);
+
+  const [selectedPeriodId, setSelectedPeriodId] = useState(1);
+
   const [selectedHourButton, setSelectedHourButton] = useState(0);
   const [selectedRoomButton, setSelectedRoomButton] = useState(0);
 
@@ -73,7 +109,7 @@ const RentRoom: React.FC = () => {
       const response = await api.post<ReserveResponse>('/reserves', {
         roomId: 1,
         scheduleId: 2,
-        day: 9,
+        day: 15,
         month: 9,
         // janeiro = month: 0
         year: 2020,
@@ -83,7 +119,7 @@ const RentRoom: React.FC = () => {
       history.push('/');
       alert('Reserva criada!');
     } catch (e) {
-      console.log(e.response.data);
+      console.log(e);
       alert(e.response.data.error);
     }
   }
@@ -102,13 +138,13 @@ const RentRoom: React.FC = () => {
         <Shift>
           <Title2>Escolha um turno</Title2>
           <ChooseShift>
-            <ShiftButton onClick={() => setSelectedShiftButton(1)} active={selectedShiftButton === 1}>
+            <ShiftButton onClick={() => setSelectedPeriodId(1)} active={selectedPeriodId === 1}>
               Manhã
             </ShiftButton>
-            <ShiftButton onClick={() => setSelectedShiftButton(2)} active={selectedShiftButton === 2}>
+            <ShiftButton onClick={() => setSelectedPeriodId(2)} active={selectedPeriodId === 2}>
               Tarde
             </ShiftButton>
-            <ShiftButton onClick={() => setSelectedShiftButton(3)} active={selectedShiftButton === 3}>
+            <ShiftButton onClick={() => setSelectedPeriodId(3)} active={selectedPeriodId === 3}>
               Noite
             </ShiftButton>
           </ChooseShift>
@@ -116,18 +152,31 @@ const RentRoom: React.FC = () => {
         <Hour>
           <Title2>Escolha um horário</Title2>
           <ChooseHour>
-            <HourButton onClick={() => setSelectedHourButton(1)} active={selectedHourButton === 1}>
+            {schedules.map((schedule) => (
+              <HourButton
+                key={schedule.id}
+                onClick={() => setSelectedHourButton(schedule.id)}
+                colorActive={selectedHourButton === schedule.id}
+                visible={schedule.periodId === selectedPeriodId}
+              >
+                {schedule.text}
+              </HourButton>
+            ))}
+            {/* <HourButton onClick={() => setSelectedHourButton(1)} colorActive={selectedHourButton === 1}>
               7:15 - 8:00
             </HourButton>
-            <HourButton onClick={() => setSelectedHourButton(2)} active={selectedHourButton === 2}>
+            <HourButton onClick={() => setSelectedHourButton(2)} colorActive={selectedHourButton === 2}>
               8:00 - 9:00
             </HourButton>
-            <HourButton onClick={() => setSelectedHourButton(3)} active={selectedHourButton === 3}>
+            <HourButton onClick={() => setSelectedHourButton(3)} colorActive={selectedHourButton === 3}>
               9:00 - 10:00
             </HourButton>
-            <HourButton onClick={() => setSelectedHourButton(4)} active={selectedHourButton === 4}>
+            <HourButton onClick={() => setSelectedHourButton(4)} colorActive={selectedHourButton === 4}>
               10:00 - 11:00
             </HourButton>
+            <HourButton onClick={() => setSelectedHourButton(5)} colorActive={selectedHourButton === 5}>
+              11:00 - 12:00
+            </HourButton> */}
           </ChooseHour>
         </Hour>
         <RoomContainer>

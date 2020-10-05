@@ -68,7 +68,7 @@ export const AuthProvider: React.FC = ({ children }) => {
       setUser(formattedUser);
       setLoading(false);
       setIsSigned(true);
-
+      console.log(token);
       if (history.location.hash) {
         history.push('/');
       }

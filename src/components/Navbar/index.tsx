@@ -50,11 +50,6 @@ const NavbarComponent: React.FC = () => {
           </LeftSide>
 
           <RightSide>
-            <Link to="/">
-              <NavItem small>
-                <FaBell />
-              </NavItem>
-            </Link>
             <Link to="/settings">
               <NavItem small>
                 <FaCog />

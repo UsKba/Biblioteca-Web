@@ -273,10 +273,10 @@ interface TrashContainerProps {
 
 export const TrashContainer = styled.div<TrashContainerProps>`
   display: flex;
-  justify-content: space-between;
-  width: 10em;
-  height: 3em;
-  background-color: #fff;
+  align-items: center;
+  width: 100%;
+
+  background-color: lightblue;
   border-radius: 7px;
   margin-bottom: 40px;
   ${(props) => props.big && `height: 8em;`}

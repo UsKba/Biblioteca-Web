@@ -183,10 +183,11 @@ const Home: React.FC = () => {
             </NotificationText>
           </Notification>
         </NotificationContainer>
-        <TrashContainer big={trashOpen}>
-          Lixeira
+
+        {/*  <TrashContainer big={trashOpen}>
+          <Title>Lixeira</Title>
           <FaChevronDown onClick={() => toggleTrash()} />
-        </TrashContainer>
+        </TrashContainer> */}
         <StyledLink to="/report">
           <LibrarianButton>Falar com o bibliotecário</LibrarianButton>
         </StyledLink>

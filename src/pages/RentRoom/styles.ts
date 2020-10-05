@@ -132,22 +132,24 @@ export const Hour = styled.div`
 
 export const ChooseHour = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
 `;
 
 interface HourButtonProps {
-  active?: boolean;
+  colorActive?: boolean;
+  visible?: boolean;
 }
 
 export const HourButton = styled(Button)<HourButtonProps>`
+  display: ${({ visible }) => (visible === false ? 'none' : 'block')};
   width: 16em;
 
-  background-color: ${({ active }) => (active === false ? `${colors.terciary}` : `${colors.primary}`)};
-  color: ${({ active }) => (active === false ? `${colors.primary}` : `${colors.terciary}`)};
+  background-color: ${({ colorActive }) => (colorActive === false ? `${colors.terciary}` : `${colors.primary}`)};
+  color: ${({ colorActive }) => (colorActive === false ? `${colors.primary}` : `${colors.terciary}`)};
 
   &:hover {
-    background-color: ${({ active }) => (active === false ? `${colors.lightprimary}` : `${colors.primary}`)};
+    background-color: ${({ colorActive }) => (colorActive === false ? `${colors.lightprimary}` : `${colors.primary}`)};
   }
 
   margin-bottom: 1em;
