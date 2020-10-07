@@ -17,10 +17,11 @@ export const Container = styled.div`
 
 export const TableContainer = styled.div`
   display: flex;
-  height: 600px;
   width: 100%;
   max-width: 950px;
   flex-direction: column;
+
+  margin-bottom: 20px;
 
   background-color: ${colors.terciary};
 `;
@@ -76,6 +77,8 @@ export const CurrentMonth = styled.span`
   color: ${colors.terciary};
 
   margin-top: 10px;
+
+  text-transform: capitalize;
 `;
 
 export const ScheduleList = styled.div`

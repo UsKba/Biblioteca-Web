@@ -42,9 +42,15 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
   const history = useHistory();
-  const [user, setUser] = useState({} as User);
+  const [user, setUser] = useState({
+    name: 'Idaslon',
+    email: 'idaslon@gmail.com',
+    enrollment: '20181104010024',
+    campus: 'CA',
+    id: 24,
+  } as User);
   const [loading, setLoading] = useState(false);
-  const [isSigned, setIsSigned] = useState(false);
+  const [isSigned, setIsSigned] = useState(true);
 
   const handleSignIn = useCallback(
     async (formattedUser: User) => {

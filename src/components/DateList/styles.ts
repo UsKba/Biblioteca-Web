@@ -48,3 +48,10 @@ export const WeekDayNumber = styled.span`
 
   color: ${colors.text};
 `;
+
+export const Chevrons = styled.div`
+  svg {
+    font-size: 20px;
+    color: ${colors.dark};
+  }
+`;

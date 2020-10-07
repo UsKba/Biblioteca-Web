@@ -56,8 +56,6 @@ const ReserveList: React.FC = () => {
   }
   useEffect(() => {
     async function loadReserves() {
-      console.log('alo');
-
       try {
         const response = await api.get<ReserveResponse[]>('/reserves');
         const formatter = new Intl.DateTimeFormat('pt-br', { month: 'long' });
@@ -81,7 +79,7 @@ const ReserveList: React.FC = () => {
         setReserves(reservesFormatted);
       } catch (e) {
         // console.log(e.response.data);
-        alert(e.response.data.error);
+        // alert(e.response.data.error);
       }
     }
     loadReserves();

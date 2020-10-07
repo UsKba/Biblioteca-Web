@@ -25,6 +25,10 @@ import {
 const RoomReservation: React.FC = () => {
   const history = useHistory();
   const { pathname } = history.location;
+  const formatter = new Intl.DateTimeFormat('pt-br', { month: 'long' });
+  const reserveDate = new Date();
+  const monthFormatted = formatter.format(reserveDate);
+
   return (
     <Container>
       <TitleContainer>
@@ -36,8 +40,8 @@ const RoomReservation: React.FC = () => {
       <TableContainer>
         <TopSide>
           <CurrentDayContainer>
-            <CurrentDay>27</CurrentDay>
-            <CurrentMonth>Janeiro</CurrentMonth>
+            <CurrentDay>{reserveDate.getDate()}</CurrentDay>
+            <CurrentMonth>{monthFormatted}</CurrentMonth>
           </CurrentDayContainer>
           <DateList />
           <ScheduleList>
