@@ -54,6 +54,7 @@ const ReserveList: React.FC = () => {
       setMenuIndex(index);
     }
   }
+
   useEffect(() => {
     async function loadReserves() {
       try {
@@ -98,6 +99,7 @@ const ReserveList: React.FC = () => {
         <EmptyTitle>Não há reservas...</EmptyTitle>
         <EmptySpan>Você não possui reservas, reserve uma sala na página de reservas.</EmptySpan>
       </EmptyContainer>
+
       {reserves.map((reserve, index) => (
         <ReserveContainer key={String(reserve.id)} small={menuIndex === index} studentsAmount={reserve.students.length}>
           <ReserveTopSide onClick={() => toggleDropmenu(index)} rotateIcon={menuIndex === index}>

@@ -98,24 +98,24 @@ export const Title3 = styled.span`
   color: ${colors.text};
 `;
 
-export const Shift = styled.div`
+export const Period = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 50px;
 `;
 
-export const ChooseShift = styled.div`
+export const ChoosePeriod = styled.div`
   display: flex;
   width: 100%;
   height: 4em;
   justify-content: space-around;
 `;
 
-interface ShiftButtonProps {
+interface PeriodButtonProps {
   active?: boolean;
 }
 
-export const ShiftButton = styled(Button)<ShiftButtonProps>`
+export const PeriodButton = styled(Button)<PeriodButtonProps>`
   width: 10em;
   background-color: ${({ active }) => (active === false ? `${colors.terciary}` : `${colors.primary}`)};
   color: ${({ active }) => (active === false ? `${colors.primary}` : `${colors.terciary}`)};

@@ -13,6 +13,7 @@ export const Container = styled.div`
   flex: 1;
   width: 100%;
   justify-content: space-between;
+
   @media only screen and (max-width: 640px) {
     flex-direction: column;
     align-items: center;
@@ -62,6 +63,7 @@ export const RightSide = styled.div<MobileModeProps>`
   max-width: 300px;
   display: flex;
   justify-content: flex-start;
+
   @media only screen and (max-width: 640px) {
     display: ${(props) => !props.visible && 'none'};
     justify-content: center;

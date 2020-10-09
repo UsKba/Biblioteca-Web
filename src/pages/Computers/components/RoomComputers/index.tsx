@@ -23,6 +23,9 @@ import {
   ErrorSpanLink,
   ComputerStatus,
   ComputerTextContainer,
+  MobileNavText,
+  MobileNav,
+  Line,
 } from './styles';
 
 interface Props {
@@ -31,6 +34,11 @@ interface Props {
 const RoomComputers = ({ handleClick }: Props) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedComputer, setSelectedComputer] = useState('');
+  const [screenSwipe, setScreenSwipe] = useState(1);
+
+  function handleChangeSwipe(index: number) {
+    setScreenSwipe(index);
+  }
   function openModal(computer: string) {
     setSelectedComputer(computer);
     setModalVisible(true);
@@ -43,6 +51,17 @@ const RoomComputers = ({ handleClick }: Props) => {
         selectedComputer={selectedComputer}
       />
       <Container>
+        <MobileNav>
+          <MobileNavText onClick={() => handleChangeSwipe(0)}>
+            Laboratório
+            <Line />
+          </MobileNavText>
+          <MobileNavText onClick={() => handleChangeSwipe(1)}>
+            Biblioteca
+            <Line />
+          </MobileNavText>
+        </MobileNav>
+
         <LeftSide>
           <Status />
         </LeftSide>
@@ -51,7 +70,7 @@ const RoomComputers = ({ handleClick }: Props) => {
             <H1>Computadores</H1>
           </MiddleTop>
           <MiddleBottom>
-            <MiddleLeft>
+            <MiddleLeft visible={screenSwipe === 0}>
               <H2>Laboratório</H2>
               <ComputerList>
                 <ComputerButton onClick={() => openModal('01')}>
@@ -98,7 +117,7 @@ const RoomComputers = ({ handleClick }: Props) => {
                 </ComputerButton>
               </ComputerList>
             </MiddleLeft>
-            <MiddleRight>
+            <MiddleRight visible={screenSwipe === 1}>
               <H2>Biblioteca</H2>
               <ComputerButton onClick={() => openModal('01')}>
                 <ComputerTextContainer>

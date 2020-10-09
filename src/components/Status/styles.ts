@@ -11,6 +11,11 @@ export const Container = styled.div`
   padding: 4px;
   max-height: 8.5em;
   justify-content: space-between;
+  display: none;
+  @media only screen and (max-width: 640px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 interface ComputerStatusProps {

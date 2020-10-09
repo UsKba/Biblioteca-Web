@@ -42,15 +42,9 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
   const history = useHistory();
-  const [user, setUser] = useState({
-    name: 'Idaslon',
-    email: 'idaslon@gmail.com',
-    enrollment: '20181104010024',
-    campus: 'CA',
-    id: 24,
-  } as User);
+  const [user, setUser] = useState({} as User);
   const [loading, setLoading] = useState(false);
-  const [isSigned, setIsSigned] = useState(true);
+  const [isSigned, setIsSigned] = useState(false);
 
   const handleSignIn = useCallback(
     async (formattedUser: User) => {
@@ -74,7 +68,7 @@ export const AuthProvider: React.FC = ({ children }) => {
       setUser(formattedUser);
       setLoading(false);
       setIsSigned(true);
-      console.log(token);
+      // console.log(token);
       if (history.location.hash) {
         history.push('/');
       }

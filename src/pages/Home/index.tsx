@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { FaChevronDown } from 'react-icons/fa';
 import { FiMapPin, FiTrash2 } from 'react-icons/fi';
 
 // import api from '~/services/api';
@@ -50,7 +49,6 @@ import {
   EmptyContainer,
   EmptySpan,
   EmptyTitle,
-  TrashContainer,
 } from './styles';
 
 interface UserResponse {
@@ -63,7 +61,6 @@ interface UserResponse {
 const Home: React.FC = () => {
   const { user } = useAuth();
   const [screenSwipe, setScreenSwipe] = useState(1);
-  const [trashOpen, setTrashListOpen] = useState(false);
 
   // como usar api 2020 atualizado
   // useEffect(() => {
@@ -92,16 +89,10 @@ const Home: React.FC = () => {
   function handleChangeSwipe(index: number) {
     setScreenSwipe(index);
   }
-
-  function toggleTrash() {
-    setTrashListOpen(!trashOpen);
-  }
-
   return (
     <Container>
       <MobileNav>
         <MobileNavText onClick={() => handleChangeSwipe(0)}>
-          {/* <MobileNavText onClick={() => handleChangeSWipe(0)}> */}
           Reservas
           <Line />
         </MobileNavText>

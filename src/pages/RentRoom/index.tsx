@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import api from '~/services/api';
@@ -10,7 +10,7 @@ import EnrollmentInput from '~/components/EnrollmentInput';
 import FriendList from '~/components/FriendList';
 import Button from '~/components/MainButton';
 
-import room from '~/assets/room.jpg';
+import roomPath from '~/assets/room.jpg';
 
 import {
   Container,
@@ -22,9 +22,9 @@ import {
   Title,
   Title2,
   Title3,
-  ChooseShift,
-  ShiftButton,
-  Shift,
+  ChoosePeriod,
+  PeriodButton,
+  Period,
   Hour,
   ChooseHour,
   HourButton,
@@ -50,46 +50,35 @@ interface ReserveResponse {
   year: number;
 }
 
+interface PeriodState {
+  id: number;
+  name: string;
+  initialHour: string;
+  endHour: string;
+}
+
+interface ScheduleState {
+  id: number;
+  initialHour: string;
+  endHour: string;
+  periodId: number;
+}
+
+interface RoomState {
+  id: number;
+  initials: string;
+  available: boolean;
+}
+
 const RentRoom: React.FC = () => {
   const history = useHistory();
 
-  const [components, setComponents] = useState<number[]>([]);
   const [username, setUsername] = useState('');
-  const [schedules, setSchedules] = useState([
-    {
-      id: 1,
-      periodId: 1,
-      text: '7:15 - 8:00',
-    },
-    {
-      id: 2,
-      periodId: 1,
-      text: '8:00 - 9:00',
-    },
+  const [components, setComponents] = useState<number[]>([]);
+  const [schedules, setSchedules] = useState([] as ScheduleState[]);
+  const [rooms, setRooms] = useState([] as RoomState[]);
 
-    {
-      id: 3,
-      periodId: 2,
-      text: '13:15 - 14:00',
-    },
-
-    {
-      id: 4,
-      periodId: 2,
-      text: '14:00 - 15:00',
-    },
-    {
-      id: 5,
-      periodId: 3,
-      text: '18:15 - 19:00',
-    },
-    {
-      id: 6,
-      periodId: 3,
-      text: '19:00 - 20:00',
-    },
-  ]);
-
+  const [periods, setPeriods] = useState([] as PeriodState[]);
   const [selectedPeriodId, setSelectedPeriodId] = useState(1);
 
   const [selectedHourButton, setSelectedHourButton] = useState(0);
@@ -109,7 +98,7 @@ const RentRoom: React.FC = () => {
       const response = await api.post<ReserveResponse>('/reserves', {
         roomId: 1,
         scheduleId: 2,
-        day: 15,
+        day: 22,
         month: 9,
         // janeiro = month: 0
         year: 2020,
@@ -124,6 +113,39 @@ const RentRoom: React.FC = () => {
     }
   }
 
+  useEffect(() => {
+    async function loadSchedules() {
+      try {
+        const response = await api.get('/schedules');
+        setSchedules(response.data);
+      } catch (e) {
+        console.log(e.response.data);
+      }
+    }
+
+    async function loadPeriods() {
+      try {
+        const response = await api.get('/periods');
+        setPeriods(response.data);
+      } catch (e) {
+        console.log(e.response.data);
+      }
+    }
+
+    async function loadRooms() {
+      try {
+        const response = await api.get('/rooms');
+        setRooms(response.data);
+      } catch (e) {
+        console.log(e.response.data);
+      }
+    }
+
+    loadSchedules();
+    loadPeriods();
+    loadRooms();
+  }, []);
+
   return (
     <Container>
       <LeftSide />
@@ -135,20 +157,20 @@ const RentRoom: React.FC = () => {
         <DateListContainer>
           <DateList />
         </DateListContainer>
-        <Shift>
+        <Period>
           <Title2>Escolha um turno</Title2>
-          <ChooseShift>
-            <ShiftButton onClick={() => setSelectedPeriodId(1)} active={selectedPeriodId === 1}>
-              Manhã
-            </ShiftButton>
-            <ShiftButton onClick={() => setSelectedPeriodId(2)} active={selectedPeriodId === 2}>
-              Tarde
-            </ShiftButton>
-            <ShiftButton onClick={() => setSelectedPeriodId(3)} active={selectedPeriodId === 3}>
-              Noite
-            </ShiftButton>
-          </ChooseShift>
-        </Shift>
+          <ChoosePeriod>
+            {periods.map((period) => (
+              <PeriodButton
+                key={period.id}
+                onClick={() => setSelectedPeriodId(period.id)}
+                active={selectedPeriodId === period.id}
+              >
+                {period.name}
+              </PeriodButton>
+            ))}
+          </ChoosePeriod>
+        </Period>
         <Hour>
           <Title2>Escolha um horário</Title2>
           <ChooseHour>
@@ -159,45 +181,40 @@ const RentRoom: React.FC = () => {
                 colorActive={selectedHourButton === schedule.id}
                 visible={schedule.periodId === selectedPeriodId}
               >
-                {schedule.text}
+                {`${schedule.initialHour} - ${schedule.endHour}`}
               </HourButton>
             ))}
-            {/* <HourButton onClick={() => setSelectedHourButton(1)} colorActive={selectedHourButton === 1}>
-              7:15 - 8:00
-            </HourButton>
-            <HourButton onClick={() => setSelectedHourButton(2)} colorActive={selectedHourButton === 2}>
-              8:00 - 9:00
-            </HourButton>
-            <HourButton onClick={() => setSelectedHourButton(3)} colorActive={selectedHourButton === 3}>
-              9:00 - 10:00
-            </HourButton>
-            <HourButton onClick={() => setSelectedHourButton(4)} colorActive={selectedHourButton === 4}>
-              10:00 - 11:00
-            </HourButton>
-            <HourButton onClick={() => setSelectedHourButton(5)} colorActive={selectedHourButton === 5}>
-              11:00 - 12:00
-            </HourButton> */}
           </ChooseHour>
         </Hour>
         <RoomContainer>
           <Title2>Escolha uma sala</Title2>
           <ChooseRoom>
-            <RoomButton onClick={() => setSelectedRoomButton(1)} active={selectedRoomButton === 1}>
-              <Room>F1-3</Room>
+            {rooms.map((room) => (
+              <RoomButton
+                key={room.id}
+                onClick={() => setSelectedRoomButton(room.id)}
+                active={selectedRoomButton === room.id}
+              >
+                <Room>{room.initials}</Room>
+                <Image src={roomPath} />
+              </RoomButton>
+            ))}
+            {/* <RoomButton onClick={() => setSelectedRoomButton(rooms[0].id)} active={selectedRoomButton === rooms[0].id}>
+              <Room>{rooms[0].initials}</Room>
               <Image src={room} />
             </RoomButton>
-            <RoomButton onClick={() => setSelectedRoomButton(2)} active={selectedRoomButton === 2}>
-              <Room>F1-4</Room>
+            <RoomButton onClick={() => setSelectedRoomButton(rooms[1].id)} active={selectedRoomButton === rooms[1].id}>
+              <Room>{rooms[1].id}</Room>
               <Image src={room} />
             </RoomButton>
-            <RoomButton onClick={() => setSelectedRoomButton(3)} active={selectedRoomButton === 3}>
-              <Room>F1-5</Room>
+            <RoomButton onClick={() => setSelectedRoomButton(rooms[2].id)} active={selectedRoomButton === rooms[2].id}>
+              <Room>{rooms[2].id}</Room>
               <Image src={room} />
             </RoomButton>
-            <RoomButton onClick={() => setSelectedRoomButton(4)} active={selectedRoomButton === 4}>
-              <Room>F1-6</Room>
+            <RoomButton onClick={() => setSelectedRoomButton(rooms[3].id)} active={selectedRoomButton === rooms[3].id}>
+              <Room>{rooms[3].id}</Room>
               <Image src={room} />
-            </RoomButton>
+            </RoomButton> */}
           </ChooseRoom>
         </RoomContainer>
         <ComponentsContainer>
