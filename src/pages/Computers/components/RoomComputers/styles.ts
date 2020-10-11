@@ -58,7 +58,6 @@ export const MiddleLeft = styled.div<MobileModeProps>`
     flex-direction: column;
     align-items: center;
     align-self: center;
-
     padding-right: 0;
     display: ${(props) => !props.visible && 'none'};
   }

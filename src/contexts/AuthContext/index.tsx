@@ -9,12 +9,20 @@ interface User {
   email: string;
   enrollment: string;
   campus: string;
+  id: number;
 }
 
 interface UserSuapResponse {
   nome: string;
   email: string;
   identificacao: string;
+  campus: string;
+}
+
+interface SignInParams {
+  name: string;
+  email: string;
+  enrollment: string;
   campus: string;
 }
 
@@ -32,7 +40,6 @@ interface UserBackendResponse {
     name: string;
     email: string;
     enrollment: string;
-    campus: string;
     id: number;
   };
   token: string;
@@ -47,10 +54,10 @@ export const AuthProvider: React.FC = ({ children }) => {
   const [isSigned, setIsSigned] = useState(false);
 
   const handleSignIn = useCallback(
-    async (formattedUser: User) => {
+    async (formattedUser: SignInParams) => {
       setLoading(true);
 
-      const { email, enrollment, name } = formattedUser;
+      const { email, enrollment, name, campus } = formattedUser;
 
       const response = await api.post<UserBackendResponse>('/login', {
         enrollment,
@@ -60,14 +67,16 @@ export const AuthProvider: React.FC = ({ children }) => {
       });
 
       const { token } = response.data;
-
-      localStorage.setItem('@RNAuth:user', JSON.stringify(formattedUser));
+      const newUser = { ...response.data.user, campus };
+      // ... pega toda a informacao do response.data.user e poe no novo objeto
+      localStorage.setItem('@RNAuth:user', JSON.stringify(newUser));
       localStorage.setItem('@RNAuth:token', token);
       api.defaults.headers = { authorization: `Bearer ${token}` };
 
-      setUser(formattedUser);
+      setUser(newUser);
       setLoading(false);
       setIsSigned(true);
+
       // console.log(token);
       if (history.location.hash) {
         history.push('/');

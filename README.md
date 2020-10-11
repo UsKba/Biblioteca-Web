@@ -30,3 +30,10 @@ DELETE: Deletar algo já cadastrado.
 room_id: 5;
 hour_id: 3;
 users_id: 1,2,3;
+
+const newUser = { ...response.data.user, campus };
+... pega toda a informacao do response.data.user e poe no novo objeto
+
+o async em uma função é quando o que você for fazer na função demorar (como pegar dados do backend)
+
+useEffect chama sua função assim que a página carregar

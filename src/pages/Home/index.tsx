@@ -51,13 +51,6 @@ import {
   EmptyTitle,
 } from './styles';
 
-interface UserResponse {
-  name: string;
-  enrollment: string;
-  email: string;
-  id: number;
-}
-
 const Home: React.FC = () => {
   const { user } = useAuth();
   const [screenSwipe, setScreenSwipe] = useState(1);

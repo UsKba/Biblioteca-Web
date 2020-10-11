@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import api from '~/services/api';
@@ -11,6 +11,7 @@ import FriendList from '~/components/FriendList';
 import Button from '~/components/MainButton';
 
 import roomPath from '~/assets/room.jpg';
+import { useAuth } from '~/contexts/AuthContext';
 
 import {
   Container,
@@ -73,6 +74,9 @@ interface RoomState {
 const RentRoom: React.FC = () => {
   const history = useHistory();
 
+  const { user } = useAuth();
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const [username, setUsername] = useState('');
   const [components, setComponents] = useState<number[]>([]);
   const [schedules, setSchedules] = useState([] as ScheduleState[]);
@@ -81,24 +85,52 @@ const RentRoom: React.FC = () => {
   const [periods, setPeriods] = useState([] as PeriodState[]);
   const [selectedPeriodId, setSelectedPeriodId] = useState(1);
 
-  const [selectedHourButton, setSelectedHourButton] = useState(0);
-  const [selectedRoomButton, setSelectedRoomButton] = useState(0);
+  const [selectedScheduleId, setSelectedScheduleId] = useState(0);
+  const [selectedRoomId, setSelectedRoomId] = useState(0);
 
   function handleAddComponent() {
-    if (components.length < 6) {
-      setComponents([...components, Number(username)]);
-      setUsername('');
-    } else {
+    const findComponent = components.find((element) => {
+      return element === Number(username);
+    });
+
+    if (username === '') {
+      alert('Por favor digite um id');
+      return;
+    }
+
+    if (findComponent !== undefined) {
+      alert('Não é possível adicionar o mesmo usuário duas vezes.');
+      return;
+    }
+
+    if (components.length >= 6) {
       alert('Grupo cheio!');
+      return;
+    }
+
+    setComponents([...components, Number(username)]);
+    setUsername('');
+
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }
+
+  function removeComponent(componentId: number) {
+    if (componentId !== user.id) {
+      const newComponents = components.filter((element) => {
+        return element !== componentId;
+      });
+      setComponents(newComponents);
     }
   }
 
   async function handleCreateReserve() {
     try {
       const response = await api.post<ReserveResponse>('/reserves', {
-        roomId: 1,
-        scheduleId: 2,
-        day: 22,
+        roomId: selectedRoomId,
+        scheduleId: selectedScheduleId,
+        day: 23,
         month: 9,
         // janeiro = month: 0
         year: 2020,
@@ -146,6 +178,10 @@ const RentRoom: React.FC = () => {
     loadRooms();
   }, []);
 
+  useEffect(() => {
+    setComponents([user.id]);
+  }, [user]);
+
   return (
     <Container>
       <LeftSide />
@@ -177,8 +213,8 @@ const RentRoom: React.FC = () => {
             {schedules.map((schedule) => (
               <HourButton
                 key={schedule.id}
-                onClick={() => setSelectedHourButton(schedule.id)}
-                colorActive={selectedHourButton === schedule.id}
+                onClick={() => setSelectedScheduleId(schedule.id)}
+                colorActive={selectedScheduleId === schedule.id}
                 visible={schedule.periodId === selectedPeriodId}
               >
                 {`${schedule.initialHour} - ${schedule.endHour}`}
@@ -190,31 +226,11 @@ const RentRoom: React.FC = () => {
           <Title2>Escolha uma sala</Title2>
           <ChooseRoom>
             {rooms.map((room) => (
-              <RoomButton
-                key={room.id}
-                onClick={() => setSelectedRoomButton(room.id)}
-                active={selectedRoomButton === room.id}
-              >
+              <RoomButton key={room.id} onClick={() => setSelectedRoomId(room.id)} active={selectedRoomId === room.id}>
                 <Room>{room.initials}</Room>
                 <Image src={roomPath} />
               </RoomButton>
             ))}
-            {/* <RoomButton onClick={() => setSelectedRoomButton(rooms[0].id)} active={selectedRoomButton === rooms[0].id}>
-              <Room>{rooms[0].initials}</Room>
-              <Image src={room} />
-            </RoomButton>
-            <RoomButton onClick={() => setSelectedRoomButton(rooms[1].id)} active={selectedRoomButton === rooms[1].id}>
-              <Room>{rooms[1].id}</Room>
-              <Image src={room} />
-            </RoomButton>
-            <RoomButton onClick={() => setSelectedRoomButton(rooms[2].id)} active={selectedRoomButton === rooms[2].id}>
-              <Room>{rooms[2].id}</Room>
-              <Image src={room} />
-            </RoomButton>
-            <RoomButton onClick={() => setSelectedRoomButton(rooms[3].id)} active={selectedRoomButton === rooms[3].id}>
-              <Room>{rooms[3].id}</Room>
-              <Image src={room} />
-            </RoomButton> */}
           </ChooseRoom>
         </RoomContainer>
         <ComponentsContainer>
@@ -223,6 +239,7 @@ const RentRoom: React.FC = () => {
             <InputContainer>
               <EnrollmentInput
                 type="number"
+                ref={inputRef}
                 placeholder="Digite um nome"
                 hideIcon
                 backgroundColor={colors.background}
@@ -236,7 +253,9 @@ const RentRoom: React.FC = () => {
             <Title3>Grupo:</Title3>
             <ComponentList>
               {components.map((component) => (
-                <Component key={component}>{component}</Component>
+                <Component key={component} onClick={() => removeComponent(component)}>
+                  {component}
+                </Component>
               ))}
             </ComponentList>
           </Components>
@@ -251,41 +270,3 @@ const RentRoom: React.FC = () => {
 };
 
 export default RentRoom;
-
-/* <LeftItemsContainer>
-<Text>
-  Sala F1-5
-  <br />
-  8:00 - 9:00
-</Text>
-<Warning>Idaslon já está em uma sala nesse horário</Warning>
-</LeftItemsContainer>
-
-<MiddleItemsContainer>
-<ComponentsContainer>
-  <InputContainer>
-    <InputLabel>Adicionar Componentes:</InputLabel>
-    <InputButtonContainer>
-      <Input
-        type="text"
-        value={username}
-        onChange={(event) => {
-          setUsername(event.target.value);
-        }}
-      />
-      <AddComponentButton onClick={handleAddComponent}> + </AddComponentButton>
-    </InputButtonContainer>
-  </InputContainer>
-  <SpanContainer>
-    <SpanLabel>Grupo:</SpanLabel>
-    <Span>{components[0]}</Span>
-    <Span>{components[1]}</Span>
-    <Span>{components[2]}</Span>
-  </SpanContainer>
-  <Button>Reservar Sala</Button>
-</ComponentsContainer>
-</MiddleItemsContainer>
-
-<RightItemsContainer>
-<FriendList />
-</RightItemsContainer> */

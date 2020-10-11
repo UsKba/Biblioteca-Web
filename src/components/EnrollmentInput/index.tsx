@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
 import { SearchingBar, SearchArea, SearchHashTag, IconContainer, SearchAreaProps } from './styles';
@@ -17,11 +17,14 @@ interface OwmProps {
   hideIcon?: boolean;
 }
 type Props = OwmProps & InputProps & SearchAreaProps;
-const EnrollmentInput: React.FC<Props> = ({ hideIcon, backgroundColor, ...rest }) => {
+const EnrollmentInput: React.ForwardRefRenderFunction<HTMLInputElement, Props> = (
+  { hideIcon, backgroundColor, ...rest },
+  ref
+) => {
   return (
     <SearchArea backgroundColor={backgroundColor}>
       <SearchHashTag>#</SearchHashTag>
-      <SearchingBar type="text" placeholder="Pesquise por amigos " {...rest} />
+      <SearchingBar ref={ref} type="text" placeholder="Pesquise por amigos " {...rest} />
       {!hideIcon && (
         <IconContainer>
           <FaSearch />
@@ -31,4 +34,4 @@ const EnrollmentInput: React.FC<Props> = ({ hideIcon, backgroundColor, ...rest }
   );
 };
 
-export default EnrollmentInput;
+export default forwardRef(EnrollmentInput);
