@@ -196,6 +196,27 @@ export const Image = styled.img`
   margin-top: 10px;
 `;
 
+export const GroupContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 50px;
+`;
+
+export const Group = styled.span`
+  font-size: 16px;
+  font-family: 'Roboto';
+
+  padding: 15px 5px;
+
+  height: 45px;
+  width: 100%;
+  max-width: 250px;
+
+  background-color: ${colors.background};
+  color: ${colors.text};
+`;
+
 export const ComponentsContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -234,6 +255,9 @@ export const ComponentList = styled.div`
 `;
 
 export const Component = styled.span`
+  display: flex;
+  justify-content: space-between;
+
   font-size: 16px;
   font-family: 'Roboto';
 
@@ -247,4 +271,12 @@ export const Component = styled.span`
 
   background-color: ${colors.background};
   color: ${colors.text};
+
+  svg {
+    cursor: pointer;
+
+    &:hover {
+      color: ${colors.red};
+    }
+  }
 `;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { FiTrash2 } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
 
 import api from '~/services/api';
@@ -8,7 +9,7 @@ import colors from '~/styles/colors';
 import DateList from '~/components/DateList';
 import EnrollmentInput from '~/components/EnrollmentInput';
 import FriendList from '~/components/FriendList';
-import Button from '~/components/MainButton';
+// import Button from '~/components/MainButton';
 
 import roomPath from '~/assets/room.jpg';
 import { useAuth } from '~/contexts/AuthContext';
@@ -34,6 +35,8 @@ import {
   RoomContainer,
   Image,
   RoomButton,
+  GroupContainer,
+  Group,
   Components,
   ComponentsContainer,
   InputContainer,
@@ -78,6 +81,8 @@ const RentRoom: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [username, setUsername] = useState('');
+  const [groupName, setGroupName] = useState('');
+  const [groupA, setGroupA] = useState('');
   const [components, setComponents] = useState<number[]>([]);
   const [schedules, setSchedules] = useState([] as ScheduleState[]);
   const [rooms, setRooms] = useState([] as RoomState[]);
@@ -87,6 +92,15 @@ const RentRoom: React.FC = () => {
 
   const [selectedScheduleId, setSelectedScheduleId] = useState(0);
   const [selectedRoomId, setSelectedRoomId] = useState(0);
+
+  function handleNameGroup() {
+    if (groupName === '') {
+      alert('Por favor digite um nome');
+      return;
+    }
+
+    setGroupA(groupName);
+  }
 
   function handleAddComponent() {
     const findComponent = components.find((element) => {
@@ -233,8 +247,26 @@ const RentRoom: React.FC = () => {
             ))}
           </ChooseRoom>
         </RoomContainer>
+        <GroupContainer>
+          <Title2>Nomeie seu grupo:</Title2>
+          <InputContainer>
+            <EnrollmentInput
+              type="text"
+              hideIcon
+              placeholder="Digite um nome"
+              backgroundColor={colors.background}
+              value={groupName}
+              onChange={(event) => {
+                setGroupName(event.target.value);
+              }}
+            />
+            <InputButton onClick={handleNameGroup}>+</InputButton>
+          </InputContainer>
+          <Title3>Nome:</Title3>
+          <Group>{groupA}</Group>
+        </GroupContainer>
         <ComponentsContainer>
-          <Title2>Componentes</Title2>
+          <Title2>Adicione componentes:</Title2>
           <Components>
             <InputContainer>
               <EnrollmentInput
@@ -253,8 +285,9 @@ const RentRoom: React.FC = () => {
             <Title3>Grupo:</Title3>
             <ComponentList>
               {components.map((component) => (
-                <Component key={component} onClick={() => removeComponent(component)}>
+                <Component key={component}>
                   {component}
+                  <FiTrash2 onClick={() => removeComponent(component)} />
                 </Component>
               ))}
             </ComponentList>
