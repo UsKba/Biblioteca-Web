@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaPlus, FaChevronDown } from 'react-icons/fa';
-import { FiTrash2 } from 'react-icons/fi';
+import { FaPlus, FaChevronDown, FaTimes } from 'react-icons/fa';
 
 import api from '~/services/api';
 
@@ -27,6 +26,22 @@ import {
 } from './styles';
 
 interface ReserveResponse {
+  room: {
+    id: number;
+    initials: string;
+  };
+  schedule: {
+    id: number;
+    initialHour: string;
+    endHour: string;
+    periodId: number;
+  };
+  users: {
+    id: number;
+    enrollment: string;
+    email: string;
+    name: string;
+  }[];
   day: number;
   id: number;
   month: number;
@@ -55,6 +70,10 @@ const ReserveList: React.FC = () => {
     }
   }
 
+  function deleteGroupMember() {
+    alert('alo');
+  }
+
   useEffect(() => {
     async function loadReserves() {
       try {
@@ -64,16 +83,23 @@ const ReserveList: React.FC = () => {
 
         const reservesFormatted = response.data.map((reserve) => {
           const { year, month, day, id } = reserve;
+          const { initials } = reserve.room;
+          const { initialHour, endHour } = reserve.schedule;
+
           const reserveDate = new Date(year, month, day);
 
           const monthFormatted = formatter.format(reserveDate);
-          const text = `Sala reservada às 07:00 - 08:00 no dia ${day} de ${monthFormatted} de ${year}`;
+          const title = `Reserva da sala ${initials}`;
+          const text = `Sala reservada às ${initialHour} - ${endHour} no dia ${day} de ${monthFormatted} de ${year}`;
 
+          const students = reserve.users.map((user) => {
+            return user.name;
+          });
           return {
-            title: 'Reserva da sala F1-3',
+            title,
             groupTitle: 'Os cara',
             text,
-            students: ['Daniel', 'Idaslon', 'Charles'],
+            students,
             id,
           };
         });
@@ -118,7 +144,7 @@ const ReserveList: React.FC = () => {
                 <GroupMember key={student}>
                   <GroupMemberIcon>{student[0]}</GroupMemberIcon>
                   <GroupMemberName>{student}</GroupMemberName>
-                  <FiTrash2 />
+                  <FaTimes onClick={() => deleteGroupMember()} />
                 </GroupMember>
               ))}
             </GroupMemberList>

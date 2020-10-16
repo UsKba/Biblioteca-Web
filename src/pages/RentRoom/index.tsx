@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FiTrash2 } from 'react-icons/fi';
+import { FaTimes } from 'react-icons/fa';
 import { useHistory } from 'react-router-dom';
 
 import api from '~/services/api';
@@ -9,7 +9,9 @@ import colors from '~/styles/colors';
 import DateList from '~/components/DateList';
 import EnrollmentInput from '~/components/EnrollmentInput';
 import FriendList from '~/components/FriendList';
-// import Button from '~/components/MainButton';
+
+// yar
+import ReserveList from '~/components/ReserveList';
 
 import roomPath from '~/assets/room.jpg';
 import { useAuth } from '~/contexts/AuthContext';
@@ -198,7 +200,9 @@ const RentRoom: React.FC = () => {
 
   return (
     <Container>
-      <LeftSide />
+      <LeftSide>
+        <ReserveList />
+      </LeftSide>
       <MiddleSide>
         <RoomScheduling>
           <Title>Agendamento de sala</Title>
@@ -287,7 +291,7 @@ const RentRoom: React.FC = () => {
               {components.map((component) => (
                 <Component key={component}>
                   {component}
-                  <FiTrash2 onClick={() => removeComponent(component)} />
+                  <FaTimes onClick={() => removeComponent(component)} />
                 </Component>
               ))}
             </ComponentList>

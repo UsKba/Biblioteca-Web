@@ -274,9 +274,9 @@ export const Component = styled.span`
 
   svg {
     cursor: pointer;
-
+    color: ${colors.red};
     &:hover {
-      color: ${colors.red};
+      color: ${colors.lightred};
     }
   }
 `;

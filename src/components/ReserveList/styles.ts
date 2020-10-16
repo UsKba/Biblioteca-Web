@@ -132,10 +132,10 @@ export const GroupMember = styled.div`
   margin-bottom: 7px;
 
   svg {
-    color: ${colors.primary};
+    color: ${colors.red};
     cursor: pointer;
     &:hover {
-      color: ${colors.red};
+      color: ${colors.lightred};
     }
   }
 `;
