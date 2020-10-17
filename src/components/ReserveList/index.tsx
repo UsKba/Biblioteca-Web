@@ -38,6 +38,11 @@ interface ReserveResponse {
   };
   users: {
     id: number;
+    role: {
+      id: number;
+      name: string;
+      slug: string;
+    };
     enrollment: string;
     email: string;
     name: string;
@@ -54,7 +59,18 @@ interface ReserveState {
   title: string;
   groupTitle: string;
   text: string;
-  students: string[];
+  students: {
+    name: string;
+    id: number;
+    role: {
+      id: number;
+      name: string;
+      slug: string;
+    };
+    enrollment: string;
+    email: string;
+  }[];
+
   id: number;
 }
 
@@ -70,8 +86,31 @@ const ReserveList: React.FC = () => {
     }
   }
 
-  function deleteGroupMember() {
-    alert('alo');
+  async function deleteGroupMember(reserveId: number, userId: number) {
+    const findReserve = reserves.find((reserve) => {
+      return reserve.id === reserveId;
+    });
+
+    if (findReserve === undefined) {
+      alert('Reserva não encontrada');
+      return;
+    }
+
+    if (findReserve.students.length <= 3) {
+      alert('Pelo menos 3 usuários na reserva são necessários');
+      return;
+    }
+    try {
+      const response = await api.delete(`/reserves/${reserveId}/users/${userId}`);
+      alert('Usuário deletado!');
+    } catch (e) {
+      console.log(e.response.data);
+      alert(e.response.data.error);
+    }
+
+    // const newStudents = findReserve.students.filter((student) => {
+    //   if(userId !== )
+    // });
   }
 
   useEffect(() => {
@@ -92,14 +131,17 @@ const ReserveList: React.FC = () => {
           const title = `Reserva da sala ${initials}`;
           const text = `Sala reservada às ${initialHour} - ${endHour} no dia ${day} de ${monthFormatted} de ${year}`;
 
-          const students = reserve.users.map((user) => {
-            return user.name;
-          });
+          // const students = reserve.users.map((user) => {
+          //   return {
+          //     name: user.name,
+          //     id: user.id,
+          //   };
+          // });
           return {
             title,
             groupTitle: 'Os cara',
             text,
-            students,
+            students: reserve.users,
             id,
           };
         });
@@ -141,10 +183,10 @@ const ReserveList: React.FC = () => {
           <ReserveBottomSide>
             <GroupMemberList>
               {reserve.students.map((student) => (
-                <GroupMember key={student}>
-                  <GroupMemberIcon>{student[0]}</GroupMemberIcon>
-                  <GroupMemberName>{student}</GroupMemberName>
-                  <FaTimes onClick={() => deleteGroupMember()} />
+                <GroupMember key={student.id}>
+                  <GroupMemberIcon>{student.name[0]}</GroupMemberIcon>
+                  <GroupMemberName>{student.name}</GroupMemberName>
+                  <FaTimes onClick={() => deleteGroupMember(reserve.id, student.id)} />
                 </GroupMember>
               ))}
             </GroupMemberList>
