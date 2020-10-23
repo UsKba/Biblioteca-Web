@@ -45,7 +45,7 @@ export const TitlePanel = styled.div`
 
 interface ReserveContainerProps {
   small?: boolean;
-  studentsAmount: number;
+  usersAmount: number;
 }
 
 export const ReserveContainer = styled.div<ReserveContainerProps>`
@@ -64,7 +64,7 @@ export const ReserveContainer = styled.div<ReserveContainerProps>`
 
   transition: 0.25s;
   background-color: ${colors.terciary};
-  ${(props) => props.small && `height: ${170 + props.studentsAmount * 32}px;`}
+  ${(props) => props.small && `height: ${170 + props.usersAmount * 32}px;`}
 `;
 
 interface ReserveTopSideProps {

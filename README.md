@@ -37,3 +37,27 @@ const newUser = { ...response.data.user, campus };
 o async em uma função é quando o que você for fazer na função demorar (como pegar dados do backend)
 
 useEffect chama sua função assim que a página carregar
+
+ como usar api 2020 atualizado
+ useEffect(() => {
+   async function load() {
+     try {
+       const response = await api.get<UserResponse>('/users/1');
+       const { name } = response.data;
+
+       setUsername(name);
+       setEnrollment(response.data.enrollment);
+       setEmail(response.data.email);
+     } catch (err) {
+       const responseError = err as AxiosResponseError;
+
+       console.log('error', responseError.response?.data?.error);
+     }
+   }
+
+   load();
+ }, []);
+
+ function handleChangeSWipe(index: number) {
+   setScreenSwipe(index)
+ }

@@ -59,7 +59,7 @@ interface ReserveState {
   title: string;
   groupTitle: string;
   text: string;
-  students: {
+  users: {
     name: string;
     id: number;
     role: {
@@ -96,21 +96,47 @@ const ReserveList: React.FC = () => {
       return;
     }
 
-    if (findReserve.students.length <= 3) {
+    if (findReserve.users.length <= 3) {
       alert('Pelo menos 3 usuários na reserva são necessários');
       return;
     }
     try {
-      const response = await api.delete(`/reserves/${reserveId}/users/${userId}`);
+      await api.delete(`/reserves/${reserveId}/users/${userId}`);
       alert('Usuário deletado!');
+
+      const newUsers = findReserve.users.filter((user) => {
+        return user.id !== userId;
+      });
+      const newReserves = reserves.map((reserve) => {
+        if (reserve.id === reserveId) {
+          return {
+            ...reserve,
+            users: newUsers,
+          };
+        }
+        return reserve;
+      });
+      setReserves(newReserves);
     } catch (e) {
       console.log(e.response.data);
       alert(e.response.data.error);
     }
+  }
 
-    // const newStudents = findReserve.students.filter((student) => {
-    //   if(userId !== )
-    // });
+  async function deleteReserve(reserveId: number) {
+    try {
+      await api.delete(`/reserves/${reserveId}`);
+      alert('Reserva deletada');
+
+      const newReserves = reserves.filter((reserve) => {
+        return reserve.id !== reserveId;
+      });
+
+      setReserves(newReserves);
+    } catch (e) {
+      console.log(e.response.data);
+      alert(e.response.data.error);
+    }
   }
 
   useEffect(() => {
@@ -131,17 +157,11 @@ const ReserveList: React.FC = () => {
           const title = `Reserva da sala ${initials}`;
           const text = `Sala reservada às ${initialHour} - ${endHour} no dia ${day} de ${monthFormatted} de ${year}`;
 
-          // const students = reserve.users.map((user) => {
-          //   return {
-          //     name: user.name,
-          //     id: user.id,
-          //   };
-          // });
           return {
             title,
             groupTitle: 'Os cara',
             text,
-            students: reserve.users,
+            users: reserve.users,
             id,
           };
         });
@@ -169,7 +189,7 @@ const ReserveList: React.FC = () => {
       </EmptyContainer>
 
       {reserves.map((reserve, index) => (
-        <ReserveContainer key={String(reserve.id)} small={menuIndex === index} studentsAmount={reserve.students.length}>
+        <ReserveContainer key={String(reserve.id)} small={menuIndex === index} usersAmount={reserve.users.length}>
           <ReserveTopSide onClick={() => toggleDropmenu(index)} rotateIcon={menuIndex === index}>
             <ReserveTitle>{reserve.title}</ReserveTitle>
             <ArrowTextContainer>
@@ -182,7 +202,7 @@ const ReserveList: React.FC = () => {
 
           <ReserveBottomSide>
             <GroupMemberList>
-              {reserve.students.map((student) => (
+              {reserve.users.map((student) => (
                 <GroupMember key={student.id}>
                   <GroupMemberIcon>{student.name[0]}</GroupMemberIcon>
                   <GroupMemberName>{student.name}</GroupMemberName>
@@ -190,7 +210,7 @@ const ReserveList: React.FC = () => {
                 </GroupMember>
               ))}
             </GroupMemberList>
-            <DeleteReserveButton>Cancelar Reserva</DeleteReserveButton>
+            <DeleteReserveButton onClick={() => deleteReserve(reserve.id)}>Deletar Reserva</DeleteReserveButton>
           </ReserveBottomSide>
         </ReserveContainer>
       ))}

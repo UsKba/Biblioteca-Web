@@ -9,8 +9,6 @@ import colors from '~/styles/colors';
 import DateList from '~/components/DateList';
 import EnrollmentInput from '~/components/EnrollmentInput';
 import FriendList from '~/components/FriendList';
-
-// yar
 import ReserveList from '~/components/ReserveList';
 
 import roomPath from '~/assets/room.jpg';
