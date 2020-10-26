@@ -64,7 +64,7 @@ export const ReserveContainer = styled.div<ReserveContainerProps>`
 
   transition: 0.25s;
   background-color: ${colors.terciary};
-  ${(props) => props.small && `height: ${170 + props.usersAmount * 32}px;`}
+  ${(props) => props.small && `height: ${170 + props.usersAmount * 46}px;`}//32px
 `;
 
 interface ReserveTopSideProps {
@@ -128,8 +128,10 @@ export const GroupMemberList = styled.div`
 export const GroupMember = styled.div`
   display: flex;
   align-items: center;
-
+  background-color: ${colors.background};
+  border-radius: 7px;
   margin-bottom: 7px;
+  padding: 7px;
 
   svg {
     color: ${colors.red};
@@ -161,7 +163,6 @@ export const GroupMemberName = styled.span`
   font-size: 14px;
   font-family: 'Roboto';
   margin-right: auto;
-
   color: ${colors.text};
 `;
 
@@ -181,7 +182,7 @@ export const DeleteReserveButton = styled.button`
 
   text-align: center;
 
-  margin: 0 0 10px auto;
+  margin-left: auto;
 
   padding: 8px 6px;
   border-radius: 5px;

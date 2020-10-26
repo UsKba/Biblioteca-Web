@@ -1,38 +1,38 @@
-import React, { useState } from 'react';
-import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
 
-import { Container, WeekDayContainer, WeekDay, WeekDayNumber, Chevrons } from './styles';
+import getFirstDayOfWeek from '~/utils/firstDayOfWeek';
+import { isWeekend, DAY_IN_MILLISECONDS } from '~/utils/time';
 
-const DateList: React.FC = () => {
-  const [selectedWeekDay, setSelectedWeekDay] = useState(0);
+import { Container } from './styles';
+import WeekDay from './WeekDay';
+
+interface Props {
+  selectDay?: (day: Date) => void;
+}
+
+const DateList: React.FC<Props> = ({ selectDay }) => {
+  const sunday = getFirstDayOfWeek();
+  const today = new Date();
+
+  const [selectedWeekDay, setSelectedWeekDay] = useState(isWeekend(today) ? 1 : today.getDay());
+  const days = [1, 2, 3, 4, 5];
+
+  useEffect(() => {
+    if (!selectDay) return;
+    const selectedDate = new Date(sunday.getTime() + selectedWeekDay * DAY_IN_MILLISECONDS);
+    selectDay(selectedDate);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedWeekDay, selectDay, sunday.getTime]);
   return (
     <Container>
-      <Chevrons>
-        <FaChevronLeft />
-      </Chevrons>
-      <WeekDayContainer onClick={() => setSelectedWeekDay(1)} active={selectedWeekDay === 1}>
-        <WeekDay>Seg</WeekDay>
-        <WeekDayNumber>09</WeekDayNumber>
-      </WeekDayContainer>
-      <WeekDayContainer onClick={() => setSelectedWeekDay(2)} active={selectedWeekDay === 2}>
-        <WeekDay>Ter</WeekDay>
-        <WeekDayNumber>10</WeekDayNumber>
-      </WeekDayContainer>
-      <WeekDayContainer onClick={() => setSelectedWeekDay(3)} active={selectedWeekDay === 3}>
-        <WeekDay>Qua</WeekDay>
-        <WeekDayNumber>11</WeekDayNumber>
-      </WeekDayContainer>
-      <WeekDayContainer onClick={() => setSelectedWeekDay(4)} active={selectedWeekDay === 4}>
-        <WeekDay>Qui</WeekDay>
-        <WeekDayNumber>12</WeekDayNumber>
-      </WeekDayContainer>
-      <WeekDayContainer onClick={() => setSelectedWeekDay(5)} active={selectedWeekDay === 5}>
-        <WeekDay>Sex</WeekDay>
-        <WeekDayNumber>13</WeekDayNumber>
-      </WeekDayContainer>
-      <Chevrons>
-        <FaChevronRight />
-      </Chevrons>
+      {days.map((day) => (
+        <WeekDay
+          key={day}
+          date={new Date(sunday.getTime() + day * DAY_IN_MILLISECONDS)}
+          active={selectedWeekDay === day}
+          onClick={() => setSelectedWeekDay(day)}
+        />
+      ))}
     </Container>
   );
 };

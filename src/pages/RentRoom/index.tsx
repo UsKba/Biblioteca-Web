@@ -86,13 +86,12 @@ const RentRoom: React.FC = () => {
   const [components, setComponents] = useState<number[]>([]);
   const [schedules, setSchedules] = useState([] as ScheduleState[]);
   const [rooms, setRooms] = useState([] as RoomState[]);
-
+  const [selectedDay, setSelectedDay] = useState<Date>(new Date());
   const [periods, setPeriods] = useState([] as PeriodState[]);
   const [selectedPeriodId, setSelectedPeriodId] = useState(1);
 
   const [selectedScheduleId, setSelectedScheduleId] = useState(0);
   const [selectedRoomId, setSelectedRoomId] = useState(0);
-
   function handleNameGroup() {
     if (groupName === '') {
       alert('Por favor digite um nome');
@@ -144,10 +143,10 @@ const RentRoom: React.FC = () => {
       const response = await api.post<ReserveResponse>('/reserves', {
         roomId: selectedRoomId,
         scheduleId: selectedScheduleId,
-        day: 23,
-        month: 9,
+        day: selectedDay.getDate(),
+        month: selectedDay.getMonth(),
         // janeiro = month: 0
-        year: 2020,
+        year: selectedDay.getFullYear(),
         classmatesIDs: components,
       });
       console.log(response.data);
@@ -207,7 +206,7 @@ const RentRoom: React.FC = () => {
           <Title2>Escolha uma data</Title2>
         </RoomScheduling>
         <DateListContainer>
-          <DateList />
+          <DateList selectDay={setSelectedDay} />
         </DateListContainer>
         <Period>
           <Title2>Escolha um turno</Title2>
