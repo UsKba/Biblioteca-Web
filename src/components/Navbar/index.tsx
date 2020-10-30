@@ -24,6 +24,8 @@ import {
   SidebarItem,
   SidebarItemName,
   StyledLink,
+  SidebarContainer,
+  SpaceRemaining,
 } from './styles';
 
 const NavbarComponent: React.FC = () => {
@@ -59,51 +61,54 @@ const NavbarComponent: React.FC = () => {
         </Navbar>
       </Container>
 
-      <Sidebar open={sidebarOpen}>
-        <SidebarItem>
-          <StyledLink to="/">
-            <FaHome />
-            <SidebarItemName>Início</SidebarItemName>
-          </StyledLink>
-        </SidebarItem>
+      <SidebarContainer open={sidebarOpen}>
+        <Sidebar open={sidebarOpen}>
+          <SidebarItem>
+            <StyledLink to="/">
+              <FaHome />
+              <SidebarItemName>Início</SidebarItemName>
+            </StyledLink>
+          </SidebarItem>
 
-        <SidebarItem>
-          <StyledLink to="/topview">
-            <FaBookOpen />
-            <SidebarItemName>Biblioteca</SidebarItemName>
-          </StyledLink>
-        </SidebarItem>
+          <SidebarItem>
+            <StyledLink to="/topview">
+              <FaBookOpen />
+              <SidebarItemName>Biblioteca</SidebarItemName>
+            </StyledLink>
+          </SidebarItem>
 
-        <SidebarItem>
-          <StyledLink to="/reserve-morning">
-            <FaChalkboardTeacher />
-            <SidebarItemName>Salas</SidebarItemName>
-          </StyledLink>
-        </SidebarItem>
+          <SidebarItem>
+            <StyledLink to="/reserve-morning">
+              <FaChalkboardTeacher />
+              <SidebarItemName>Salas</SidebarItemName>
+            </StyledLink>
+          </SidebarItem>
 
-        <SidebarItem>
-          <StyledLink to="/computers">
-            <FaDesktop />
-            <SidebarItemName>Computadores</SidebarItemName>
-          </StyledLink>
-        </SidebarItem>
-        <SidebarItem>
-          <StyledLink to="/about">
-            <FaEnvelope />
-            <SidebarItemName>Sobre</SidebarItemName>
-          </StyledLink>
-        </SidebarItem>
-        <SidebarItem
-          onClick={() => {
-            handleSignOut();
-          }}
-        >
-          <StyledLink to="/">
-            <FaTimes />
-            <SidebarItemName>Sair</SidebarItemName>
-          </StyledLink>
-        </SidebarItem>
-      </Sidebar>
+          <SidebarItem>
+            <StyledLink to="/computers">
+              <FaDesktop />
+              <SidebarItemName>Computadores</SidebarItemName>
+            </StyledLink>
+          </SidebarItem>
+          <SidebarItem>
+            <StyledLink to="/about">
+              <FaEnvelope />
+              <SidebarItemName>Sobre</SidebarItemName>
+            </StyledLink>
+          </SidebarItem>
+          <SidebarItem
+            onClick={() => {
+              handleSignOut();
+            }}
+          >
+            <StyledLink to="/">
+              <FaTimes />
+              <SidebarItemName>Sair</SidebarItemName>
+            </StyledLink>
+          </SidebarItem>
+        </Sidebar>
+        <SpaceRemaining open={sidebarOpen} onClick={toggleSidebar} />
+      </SidebarContainer>
     </div>
   );
 };

@@ -8,24 +8,29 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  width: 100%;
   align-self: center;
+
+  width: 100%;
 `;
 
 export const TopSide = styled.div`
   display: flex;
   justify-content: flex-end;
+
   margin-top: 20px;
+
   @media screen and (max-width: 600px) {
     justify-content: center;
   }
 `;
 
 export const TextButton = styled(Link)`
+  align-self: center;
+
+  margin-right: 20px;
+
   font-size: 20px;
   color: ${colors.dark};
-  margin-right: 20px;
-  align-self: center;
 `;
 
 export const BottomSide = styled.div`
@@ -36,8 +41,10 @@ export const LeftSide = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   width: 47%;
   height: 100%;
+
   border-radius: 7px 0 0 7px;
 
   @media screen and (max-width: 600px) {
@@ -51,6 +58,7 @@ export const RightSide = styled.div`
   flex: 1;
   align-items: center;
   justify-content: center;
+
   @media screen and (max-width: 600px) {
     display: none;
   }
@@ -58,6 +66,7 @@ export const RightSide = styled.div`
 
 export const Image = styled.img`
   height: 439.21px;
+
   margin-right: 20px;
   margin-top: 74px;
 
@@ -93,10 +102,11 @@ export const IconList = styled.div`
 export const IconSpan = styled.span`
   display: flex;
   padding: 20px;
-  width: 100%;
-  max-width: 130px;
   text-align: center;
   justify-content: center;
+
+  width: 100%;
+  max-width: 130px;
 
   @media screen and (max-width: 600px) {
     padding: 10px;
@@ -106,14 +116,17 @@ export const IconSpan = styled.span`
 export const H1 = styled.div`
   display: flex;
   flex-direction: column;
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 55px;
-  color: #322c42;
+
   width: 100%;
   height: 22%;
   margin-left: 90px;
   margin-bottom: 35px;
+
+  color: #322c42;
+
   font-weight: bold;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 55px;
 
   @media screen and (max-width: 600px) {
     font-size: 32px;
@@ -122,13 +135,16 @@ export const H1 = styled.div`
 `;
 
 export const H2 = styled.p`
-  font-size: 20px;
-  font-weight: bold;
-  color: #322c42;
   width: 100%;
   height: 22%;
+
   margin-left: 90px;
   margin-bottom: 5em;
+
+  color: #322c42;
+  font-size: 20px;
+  font-weight: bold;
+
   @media screen and (max-width: 600px) {
     padding: 40px;
     font-size: 16px;
@@ -137,18 +153,22 @@ export const H2 = styled.p`
 `;
 
 export const Line1 = styled.div`
-  background-color: #3d6dcc;
   width: 80px;
   height: 3px;
+
+  background-color: #3d6dcc;
+
   @media screen and (max-width: 600px) {
     width: 50px;
   }
 `;
 
 export const Line2 = styled.div`
-  background-color: #638af2;
   width: 80px;
   height: 3px;
+
+  background-color: #638af2;
+
   @media screen and (max-width: 600px) {
     width: 50px;
   }

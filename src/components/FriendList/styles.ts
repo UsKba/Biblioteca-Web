@@ -4,8 +4,9 @@ import colors from '~/styles/colors';
 
 export const FriendsContainer = styled.div`
   display: flex;
-  flex-direction: column;
   flex: 1;
+  flex-direction: column;
+
   padding: 14px 10px 0 10px;
 `;
 
@@ -13,10 +14,14 @@ export const TitlePanel = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   margin-bottom: 19px;
+
   svg {
-    color: ${colors.secondary};
     font-size: 15px;
+
+    color: ${colors.secondary};
+
     cursor: pointer;
     &:hover {
       color: ${colors.primary};
@@ -28,6 +33,7 @@ export const Title = styled.span`
   font-size: 22px;
   font-weight: bold;
   font-family: 'Ubuntu';
+
   color: ${colors.dark};
 
   @media screen and (max-width: 600px) {
@@ -53,40 +59,46 @@ export const FriendsPanelHidden = styled.div<FriendsPanelHiddenProps>`
   margin-bottom: 10px;
 
   opacity: 0;
-
   transition: 0.5s;
   ${(props) => props.small && ' height:155px; visibility: visible; opacity: 1;'}
 `;
 
 export const FriendsPanel = styled.div`
   display: flex;
-
   flex-direction: column;
   overflow-y: auto;
 
   margin-top: 7px;
+
   border-radius: 5px;
 `;
 
 export const FriendsPanelDetails = styled.div`
   display: flex;
-  background-color: ${colors.terciary};
-  padding: 10px;
-  border-radius: 5px;
   flex-direction: row;
+
   margin-bottom: 10px;
+  padding: 10px;
+
+  border-radius: 5px;
+
+  background-color: ${colors.terciary};
 `;
 
 export const FriendIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 35px;
   height: 35px;
+
+  margin-left: 7px;
+
+  border-radius: 100px;
+
   background-color: #638af2;
   color: ${colors.terciary};
-  border-radius: 100px;
-  margin-left: 7px;
 `;
 
 export const FriendIconInitials = styled.span`
@@ -101,14 +113,17 @@ export const FriendsDetails = styled.span`
 `;
 
 export const FriendName = styled.span`
-  color: ${colors.dark};
+  margin-bottom: 3px;
+
   font-size: 14px;
   font-weight: 600;
-  margin-bottom: 3px;
+
+  color: ${colors.dark};
 `;
 
 export const FriendEnrollment = styled.span`
   font-size: 14px;
+
   color: ${colors.dark};
 `;
 
@@ -118,12 +133,13 @@ export const EnrollmentContainer = styled.div`
 `;
 
 export const FriendHashTag = styled.span`
+  margin-right: 3px;
+
   font-family: 'Ubuntu';
   font-weight: bold;
   font-size: 15px;
-  opacity: 80%;
+
   color: ${colors.dark};
-  margin-right: 3px;
 `;
 
 interface LineContainerProps {
@@ -132,23 +148,28 @@ interface LineContainerProps {
 
 export const LineContainer = styled.div<LineContainerProps>`
   display: flex;
+
   margin: 15px 0 15px auto;
   ${(props) => props.left && 'margin: 15px auto 15px 0;'}
 `;
 
 export const Line1 = styled.div`
-  background-color: #3d6dcc;
   width: 40px;
   height: 3px;
+
+  background-color: #3d6dcc;
+
   @media screen and (max-width: 600px) {
     width: 50px;
   }
 `;
 
 export const Line2 = styled.div`
-  background-color: #638af2;
   width: 40px;
   height: 3px;
+
+  background-color: #638af2;
+
   @media screen and (max-width: 600px) {
     width: 50px;
   }
@@ -158,13 +179,13 @@ export const EmptyContainer = styled.div`
   display: flex;
   display: none;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
 
   max-width: 450px;
   height: 100px;
 
   padding: 10px;
-  align-items: center;
-  text-align: center;
 
   background-color: ${colors.terciary};
 `;
@@ -191,6 +212,7 @@ interface PlusContainerProps {
 
 export const PlusContainer = styled.div<PlusContainerProps>`
   transition: 0.28s;
+
   ${(props) =>
     props.rotateIcon && `transform: rotate(45deg); svg{ color: ${colors.red}; &:hover { color: ${colors.lightred}};}`}
 `;

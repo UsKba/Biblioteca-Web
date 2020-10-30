@@ -9,16 +9,18 @@ export const Container = styled.div`
 `;
 
 export const Navbar = styled.ul`
-  position: fixed;
-  background-color: ${colors.terciary};
-  width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  list-style: none;
   justify-content: space-between;
-  /* box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); */
+  align-items: center;
+  position: fixed;
+
   height: 50px;
+  width: 100%;
+
+  background-color: ${colors.terciary};
+
+  list-style: none;
 `;
 
 export const LeftSide = styled.div`
@@ -43,11 +45,12 @@ interface NavItemProps {
 }
 
 export const NavItem = styled.li<NavItemProps>`
-  padding: 10px;
-  margin-right: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  padding: 10px;
+  margin-right: 40px;
   cursor: pointer;
 
   ${(props) => props.small && 'margin-right: 0px;'}
@@ -63,6 +66,7 @@ export const NavItem = styled.li<NavItemProps>`
     svg {
       color: ${colors.primary};
     }
+  }
 `;
 
 interface SidebarProps {
@@ -72,16 +76,16 @@ interface SidebarProps {
 export const Sidebar = styled.div<SidebarProps>`
   display: flex;
   flex-direction: column;
-  background-color: ${colors.terciary};
-  width: 270px;
   z-index: 1;
-  height: fit-content;
   position: fixed;
-  top: 50px;
-  height: 100%;
   left: -272px;
+
+  height: 100%;
+  width: 270px;
+
   border-radius: 0px 0px 7px 7px;
-  box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.2);
+
+  background-color: ${colors.terciary};
 
   transition: 0.5s;
 
@@ -114,7 +118,30 @@ export const StyledLink = styled(Link)`
 `;
 
 export const SidebarItemName = styled.span`
-  font-size: 22px;
   margin-left: 8px;
+
   color: ${colors.dark};
+
+  font-size: 22px;
+`;
+
+export const SidebarContainer = styled.div<SidebarProps>`
+  display: flex;
+  flex: 1;
+`;
+
+interface SpaceRemainingProps {
+  open: boolean;
+}
+
+export const SpaceRemaining = styled.div<SpaceRemainingProps>`
+  display: ${({ open }) => (open ? 'flex' : 'none')};
+  flex: 1;
+  z-index: ${({ open }) => (open ? '0' : '-1')};
+  position: fixed;
+
+  height: 100vh;
+  width: 100%;
+
+  background-color: rgba(0, 0, 0, 0);
 `;

@@ -8,6 +8,7 @@ export interface SearchAreaProps {
 
 export const SearchArea = styled.div<SearchAreaProps>`
   display: flex;
+
   height: 45px;
   width: 277px;
 
@@ -17,13 +18,14 @@ export const SearchArea = styled.div<SearchAreaProps>`
 `;
 
 export const SearchHashTag = styled.span`
+  height: 45px;
+  width: 35px;
+
+  padding: 10px;
+
   font-size: 20px;
   font-weight: bold;
   font-family: 'Ubuntu';
-
-  height: 45px;
-  width: 35px;
-  padding: 10px;
 
   color: #666666;
 `;
@@ -31,23 +33,30 @@ export const SearchHashTag = styled.span`
 export const SearchingBar = styled.input`
   height: 45px;
   width: 220px;
-  border: none;
-  background-color: transparent;
-  border-radius: 0;
+
   padding: 5px;
+
+  border: none;
+  border-radius: 0;
+
+  background-color: transparent;
+
   cursor: text;
 `;
 
 export const IconContainer = styled.div`
   display: flex;
   align-items: center;
-  padding: 3px 7.25px;
+
   min-width: 5%;
+
+  padding: 3px 7.25px;
+
   border: none;
   cursor: pointer;
 
   > svg {
-    color: ${colors.dark};
     font-size: 15px;
+    color: ${colors.dark};
   }
 `;

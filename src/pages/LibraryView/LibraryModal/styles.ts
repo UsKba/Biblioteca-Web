@@ -7,94 +7,118 @@ interface AlphaProps {
 }
 
 export const Alpha = styled.div<AlphaProps>`
-  z-index: 1;
+  display: ${({ modalVisible }) => (modalVisible ? 'flex' : 'none')};
   flex: 1;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
+  z-index: 1;
+
   height: 100%;
   width: 100%;
-  display: ${({ modalVisible }) => (modalVisible ? 'flex' : 'none')};
+
+  background-color: rgba(0, 0, 0, 0.7);
 `;
 
 export const Container = styled.div`
   display: flex;
-  width: 80%;
-  height: 60%;
   align-self: center;
-  background-color: ${colors.terciary};
+
+  height: 60%;
+  width: 80%;
+
   border-radius: 13px;
   margin: 15px;
+
+  background-color: ${colors.terciary};
 `;
 
 export const Model = styled.div`
-  width: 60%;
-  height: 100%;
   align-self: left;
-  background-color: ${colors.background};
+
+  height: 100%;
+  width: 60%;
+
   border-radius: 7px 0 0 7px;
+
+  background-color: ${colors.background};
 `;
 
 export const Table = styled.div`
   display: flex;
-  flex-direction: column;
   flex: 1;
-  background-color: ${colors.terciary};
+  flex-direction: column;
+
   border: 1px solid rgba(0, 0, 0, 0.1);
-  margin: 5em 1em 1em 1em;
   border-radius: 7px 7px 0 0;
+  margin: 5em 1em 1em 1em;
+
+  background-color: ${colors.terciary};
 `;
 
 export const TableTop = styled.div`
-  width: 100%;
   height: 12%;
+  width: 100%;
 `;
 
 export const TableBottom = styled.div`
   display: flex;
-  height: 80%;
   flex: 1;
+
+  height: 80%;
 `;
 
 export const TableLeft = styled.div`
-  width: 35%;
   align-self: bottom;
+
+  width: 35%;
 `;
 export const TableRight = styled.div`
-  width: 65%;
   justify-content: center;
+
+  width: 65%;
 `;
 
 interface Rectangle {
   backgroundColor?: string;
 }
 export const RightInfo = styled.div<Rectangle>`
-  color: #fff;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  width: 100%;
-  height: 20%;
   text-align: center;
+
+  height: 20%;
+  width: 100%;
+
   padding: 14px;
-  font-size: 18px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+
   background-color: ${(props) => props.backgroundColor};
+  color: #fff;
+
+  font-size: 18px;
 `;
 
 export const LeftInfo = styled.div<Rectangle>`
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: none;
-  border-left: none;
-  width: 100%;
-  height: 20%;
-  padding: 15px;
   text-align: center;
-  font-size: 18px;
-  color: #fff;
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: none;
+  border-bottom: none;
+
+  height: 20%;
+  width: 100%;
+
+  padding: 15px;
+
   background-color: ${(props) => props.backgroundColor};
+  color: #fff;
+
+  font-size: 18px;
 `;
 
 export const RoomName = styled.div`
-  font-size: 18px;
   text-align: center;
+
   padding: 15px;
+
+  font-size: 18px;
 `;

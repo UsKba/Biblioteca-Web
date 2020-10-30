@@ -10,11 +10,14 @@ export const Container = styled.div`
 export const BoxContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+
   height: 80%;
   width: 90%;
+
   border-radius: 7px;
   padding: 50px;
+
+  background-color: #fff;
 `;
 
 export const TopContainerWithButton = styled.div`
@@ -24,27 +27,33 @@ export const TopContainerWithButton = styled.div`
 export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
+
   width: 22em;
   height: 6em;
 `;
 
 export const InfoContainerContent = styled.div`
   display: flex;
+  justify-content: space-between;
+
+  margin-top: 10px;
+
   font-family: 'Roboto';
   font-size: 20px;
   font-weight: bold;
-  margin-top: 10px;
-  justify-content: space-between;
 `;
 
 export const InfoContainerMessage = styled.input`
   width: 220px;
-  font-size: 16px;
-  border-radius: 4px;
-  background-color: #f0f2f5;
-  border: none;
-  outline: none;
+
   padding: 8px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+
+  background-color: #f0f2f5;
+
+  font-size: 16px;
 `;
 
 export const ContentContainer = styled.div`
@@ -55,39 +64,46 @@ export const ContentContainer = styled.div`
 export const Button = styled.button`
   height: 40px;
   width: 150px;
-  font-size: 1.1em;
-  background-color: #799bf8;
-  color: #fff;
+
   border: none;
   border-radius: 5px;
 
+  background-color: #799bf8;
+  color: #fff;
+
+  font-size: 1.1em;
   @media (max-width: 1024px) {
   }
 `;
 
 export const Label = styled.label`
   margin: 0.5em 0 0.5em 0;
-  font-size: 20px;
-  font-weight: bolder;
   margin-right: 0.3em;
   margin-bottom: 0.3em;
+
+  font-size: 20px;
+  font-weight: bolder;
 `;
 
 export const Message = styled.textarea`
-  height: 5em;
-  font-size: 16px;
-  padding: 1em 1em 17em 1em;
-  border-radius: 7px;
-  background-color: #f0f2f5;
-  border: none;
   resize: none;
   overflow: auto;
+
+  height: 5em;
+
+  padding: 1em 1em 17em 1em;
+  border: none;
+  border-radius: 7px;
   outline: none;
+
+  background-color: #f0f2f5;
+
+  font-size: 16px;
 `;
 
 export const Select = styled.select`
-  font-size: 18px;
   padding: 0.3em 0.6em;
+  font-size: 18px;
 `;
 
 export const TopContainer = styled.div`
@@ -97,20 +113,26 @@ export const TopContainer = styled.div`
 
 export const BottomContainer = styled.div`
   display: flex;
-  width: 16em;
-  height: 3em;
-  margin-top: 10px;
   justify-content: space-between;
+
+  height: 3em;
+  width: 16em;
+
+  margin-top: 10px;
 `;
 
 export const PlusButton = styled.div`
-  width: 35px;
+  text-align: center;
+
   height: 35px;
+  width: 35px;
+
   background-color: #799bf8;
+
+  padding: 7px 1px 0 0;
   border-radius: 4px;
   margin: 3.5em 0 0 0.7em;
-  text-align: center;
-  padding: 7px 1px 0 0;
+
   svg {
     font-size: 20px;
     font-weight: bold;
@@ -121,28 +143,37 @@ export const PlusButton = styled.div`
 
 export const TagsContainer = styled.div`
   display: flex;
-  height: 7em;
-  width: auto;
-  max-width: 37em;
-  font-size: 16px;
-  border-radius: 4px;
-  background-color: #f0f2f5;
-  padding: 10px;
   align-items: flex-start;
   flex-wrap: wrap;
   overflow: auto;
+
+  height: 7em;
+  width: auto;
+  max-width: 37em;
+
+  padding: 10px;
+  border-radius: 4px;
+
+  background-color: #f0f2f5;
+
+  font-size: 16px;
 `;
 
 export const Tags = styled.div`
+  text-align: center;
+
+  width: fit-content;
+
+  padding: 4px 5px;
+  border-radius: 15px;
+  margin: 6px 6px 0 0;
+
+  background-color: #c6d4f6;
+
+  color: #638af2;
+
   font-size: 12px;
   font-weight: bold;
-  color: #638af2;
-  width: fit-content;
-  background-color: #c6d4f6;
-  border-radius: 15px;
-  padding: 4px 5px;
-  text-align: center;
-  margin: 6px 6px 0 0;
   cursor: pointer;
 `;
 

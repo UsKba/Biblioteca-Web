@@ -5,8 +5,11 @@ import colors from '~/styles/colors';
 export const Container = styled.div`
   display: flex;
   flex: 1;
-  padding: 30px 15px;
+
   width: 100%;
+
+  padding: 30px 15px;
+
   border-radius: 7px;
 `;
 
@@ -14,10 +17,13 @@ export const LeftSide = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 15px;
+
   margin-right: 15px;
-  background-color: ${colors.terciary};
+  padding: 15px;
+
   border-radius: 7px;
+
+  background-color: ${colors.terciary};
 `;
 
 export const RightSide = styled.div`
@@ -25,8 +31,9 @@ export const RightSide = styled.div`
   flex-direction: column;
   flex: 3;
 
-  border-radius: 7px;
   padding: 15px;
+
+  border-radius: 7px;
 
   background-color: ${colors.terciary};
 `;
@@ -84,10 +91,12 @@ export const Button = styled.button<ButtonProps>`
 
 export const Label = styled.label`
   margin: 0.5em;
+  margin-right: 0.3em;
+
   font-family: 'Roboto';
   font-size: 20px;
   font-weight: bolder;
-  margin-right: 0.3em;
+
   color: ${colors.dark};
 `;
 
@@ -100,6 +109,7 @@ export const SettingContainer = styled.div`
 
   margin: 0 0 10px 10px;
   padding: 5px 10px 10px 5px;
+
   border: solid 1px #d8d8d8;
 `;
 
@@ -109,10 +119,11 @@ export const SettingSpanContainer = styled.div`
 `;
 
 export const SettingTitle = styled.span`
+  margin-bottom: 3px;
+
   font-family: 'Roboto';
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 3px;
 
   color: #999;
 `;

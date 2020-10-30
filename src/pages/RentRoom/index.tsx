@@ -90,7 +90,7 @@ const RentRoom: React.FC = () => {
   const [periods, setPeriods] = useState([] as PeriodState[]);
   const [selectedPeriodId, setSelectedPeriodId] = useState(1);
 
-  const [selectedScheduleId, setSelectedScheduleId] = useState(0);
+  const [selectedScheduleId, setSelectedScheduleId] = useState(1);
   const [selectedRoomId, setSelectedRoomId] = useState(0);
   function handleNameGroup() {
     if (groupName === '') {
@@ -232,7 +232,7 @@ const RentRoom: React.FC = () => {
                 colorActive={selectedScheduleId === schedule.id}
                 visible={schedule.periodId === selectedPeriodId}
               >
-                {`${schedule.initialHour} - ${schedule.endHour}`}
+                {`${schedule.initialHour} - ${schedule.endHour} `}
               </HourButton>
             ))}
           </ChooseHour>

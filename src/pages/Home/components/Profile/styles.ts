@@ -4,11 +4,14 @@ import colors from '~/styles/colors';
 
 export const Container = styled.div`
   display: flex;
+
   max-height: 220px;
   width: 100%;
-  background-color: ${colors.terciary};
+
   padding: 18px;
   margin-bottom: 40px;
+
+  background-color: ${colors.terciary};
 `;
 
 export const ProfileLeftSide = styled.div`
@@ -19,38 +22,47 @@ export const ProfileLeftSide = styled.div`
 export const ProfileInformation = styled.div`
   display: flex;
   flex-direction: column;
+
   margin-left: 15px;
+
   color: ${colors.dark};
 `;
 
 export const ProfileName = styled.span`
+  margin-bottom: 10px;
+
+  color: ${colors.dark};
+
   font-size: 25px;
   font-weight: 500;
-  color: ${colors.dark};
-  margin-bottom: 10px;
   @media only screen and (max-width: 640px) {
     font-size: 18px;
   }
 `;
 
 export const HashTag = styled.span`
-  font-size: 19px;
-  color: ${colors.dark};
-  font-family: 'Ubuntu';
-  font-weight: 600;
   margin-right: 5px;
+
+  color: ${colors.dark};
+
+  font-size: 19px;
+  font-weight: 600;
+  font-family: 'Ubuntu';
 `;
 
 export const Enrollment = styled.span`
-  font-size: 15px;
   color: ${colors.dark};
+
+  font-size: 15px;
 `;
 
 export const Email = styled.span`
+  margin-top: 20px;
+
+  color: ${colors.dark};
+
   font-size: 16px;
   font-weight: bold;
-  margin-top: 20px;
-  color: ${colors.dark};
 `;
 
 export const EnrollmentContainer = styled.div`
@@ -66,11 +78,14 @@ export const ProfileIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
+
   height: 60px;
+  width: 60px;
+
+  border-radius: 100px;
+
   background-color: ${colors.primary};
   color: ${colors.terciary};
-  border-radius: 100px;
 `;
 
 export const ProfileIconInitials = styled.span`
@@ -79,25 +94,27 @@ export const ProfileIconInitials = styled.span`
 
 export const ProfileRightSide = styled.div`
   display: flex;
-  justify-content: flex-end;
   flex: 1;
+  justify-content: flex-end;
 `;
 
 export const CampusA = styled.a`
   display: flex;
+  align-items: top;
   svg {
-    color: ${colors.secondary};
     font-size: 20px;
+    color: ${colors.secondary};
     &:hover {
       color: ${colors.primary};
     }
   }
-  align-items: top;
 `;
 
 export const Campus = styled.span`
+  margin-right: 10px;
+
+  color: ${colors.dark};
+
   font-size: 19px;
   font-weight: bold;
-  color: ${colors.dark};
-  margin-right: 10px;
 `;

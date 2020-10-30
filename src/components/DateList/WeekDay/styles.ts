@@ -11,13 +11,14 @@ export const WeekDayContainer = styled.div<WeekDayProps>`
   flex-direction: column;
   align-items: center;
 
-  cursor: pointer;
-
   padding: 10px 5px;
+
   border: 3px solid ${({ active }) => (active === false ? `${colors.terciary}` : `${colors.primary}`)};
   border-radius: 100px;
 
   background-color: ${({ active }) => (active === false ? `${colors.terciary}` : `${colors.primary}`)};
+
+  cursor: pointer;
 
   span {
     color: ${({ active }) => (active === false ? `${colors.text}` : `${colors.terciary}`)};
@@ -29,12 +30,12 @@ export const WeekDayContainer = styled.div<WeekDayProps>`
 `;
 
 export const DayOfWeek = styled.span<WeekDayProps>`
+  margin-bottom: 15px;
+
   font-family: 'Ubuntu';
   font-size: 18px;
 
   color: ${colors.text};
-
-  margin-bottom: 15px;
 `;
 
 export const WeekDayNumber = styled.span`
