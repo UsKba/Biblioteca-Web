@@ -8,7 +8,6 @@ import {
   FriendsDetails,
   FriendName,
   FriendEnrollment,
-  FriendHashTag,
   FriendsPanelDetails,
   FriendIcon,
   FriendIconInitials,
@@ -65,7 +64,6 @@ const FriendList: React.FC = () => {
           <FriendsDetails>
             <FriendName>Joaldo Martin</FriendName>
             <EnrollmentContainer>
-              <FriendHashTag>#</FriendHashTag>
               <FriendEnrollment>20181104010028</FriendEnrollment>
             </EnrollmentContainer>
           </FriendsDetails>
@@ -77,7 +75,6 @@ const FriendList: React.FC = () => {
           <FriendsDetails>
             <FriendName>Otário Oliveira</FriendName>
             <EnrollmentContainer>
-              <FriendHashTag>#</FriendHashTag>
               <FriendEnrollment>20181104010031</FriendEnrollment>
             </EnrollmentContainer>
           </FriendsDetails>
@@ -101,8 +98,10 @@ const FriendList: React.FC = () => {
           <FriendsDetails>
             <FriendName>José Dudu</FriendName>
             <EnrollmentContainer>
-              <FriendHashTag>#</FriendHashTag>
-              <FriendEnrollment>20181104010017</FriendEnrollment>
+              <FriendEnrollment>
+                <strong># </strong>
+                20181104010017
+              </FriendEnrollment>
             </EnrollmentContainer>
           </FriendsDetails>
         </FriendsPanelDetails>
@@ -114,8 +113,10 @@ const FriendList: React.FC = () => {
           <FriendsDetails>
             <FriendName>Rebecca Lewis</FriendName>
             <EnrollmentContainer>
-              <FriendHashTag>#</FriendHashTag>
-              <FriendEnrollment>20181104010016</FriendEnrollment>
+              <FriendEnrollment>
+                <strong># </strong>
+                20181104010016
+              </FriendEnrollment>
             </EnrollmentContainer>
           </FriendsDetails>
         </FriendsPanelDetails>
@@ -127,8 +128,10 @@ const FriendList: React.FC = () => {
           <FriendsDetails>
             <FriendName>Elise Butler</FriendName>
             <EnrollmentContainer>
-              <FriendHashTag>#</FriendHashTag>
-              <FriendEnrollment>20181104010013</FriendEnrollment>
+              <FriendEnrollment>
+                <strong># </strong>
+                20181104010013
+              </FriendEnrollment>
             </EnrollmentContainer>
           </FriendsDetails>
         </FriendsPanelDetails>
@@ -140,8 +143,10 @@ const FriendList: React.FC = () => {
           <FriendsDetails>
             <FriendName>Sara West</FriendName>
             <EnrollmentContainer>
-              <FriendHashTag>#</FriendHashTag>
-              <FriendEnrollment>20181104010010</FriendEnrollment>
+              <FriendEnrollment>
+                <strong># </strong>
+                20181104010010
+              </FriendEnrollment>
             </EnrollmentContainer>
           </FriendsDetails>
         </FriendsPanelDetails>
@@ -153,8 +158,10 @@ const FriendList: React.FC = () => {
           <FriendsDetails>
             <FriendName>Aaliyah Mendoza</FriendName>
             <EnrollmentContainer>
-              <FriendHashTag>#</FriendHashTag>
-              <FriendEnrollment>20181104010019</FriendEnrollment>
+              <FriendEnrollment>
+                <strong># </strong>
+                20181104010019
+              </FriendEnrollment>
             </EnrollmentContainer>
           </FriendsDetails>
         </FriendsPanelDetails>
@@ -166,8 +173,10 @@ const FriendList: React.FC = () => {
           <FriendsDetails>
             <FriendName>Joshua Robertson</FriendName>
             <EnrollmentContainer>
-              <FriendHashTag>#</FriendHashTag>
-              <FriendEnrollment>20181104010030</FriendEnrollment>
+              <FriendEnrollment>
+                <strong># </strong>
+                20181104010030
+              </FriendEnrollment>
             </EnrollmentContainer>
           </FriendsDetails>
         </FriendsPanelDetails>
@@ -179,8 +188,24 @@ const FriendList: React.FC = () => {
           <FriendsDetails>
             <FriendName>Rose Fisher</FriendName>
             <EnrollmentContainer>
-              <FriendHashTag>#</FriendHashTag>
-              <FriendEnrollment>20181104010063</FriendEnrollment>
+              <FriendEnrollment>
+                <strong># </strong>
+                20181104010063
+              </FriendEnrollment>
+            </EnrollmentContainer>
+          </FriendsDetails>
+        </FriendsPanelDetails>
+        <FriendsPanelDetails>
+          <FriendIcon>
+            <FriendIconInitials>L</FriendIconInitials>
+          </FriendIcon>
+          <FriendsDetails>
+            <FriendName>Louis Jerma</FriendName>
+            <EnrollmentContainer>
+              <FriendEnrollment>
+                <strong># </strong>
+                20181104010012
+              </FriendEnrollment>
             </EnrollmentContainer>
           </FriendsDetails>
         </FriendsPanelDetails>

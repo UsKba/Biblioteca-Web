@@ -6,13 +6,20 @@ interface Props {
   date: Date;
   onClick: () => void;
   active: boolean;
+  disabled?: boolean;
 }
 
 const WEEK_DAYS = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
 
-const WeekDay: React.FC<Props> = ({ date, onClick, active }) => {
+const WeekDay: React.FC<Props> = ({ date, onClick, active, disabled }) => {
   return (
-    <WeekDayContainer onClick={onClick} active={active}>
+    <WeekDayContainer
+      disabled={disabled}
+      onClick={() => {
+        if (!disabled) onClick();
+      }}
+      active={active}
+    >
       <DayOfWeek>{WEEK_DAYS[date.getDay()]}</DayOfWeek>
       <WeekDayNumber>{date.getDate()}</WeekDayNumber>
     </WeekDayContainer>

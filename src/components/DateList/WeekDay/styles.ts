@@ -4,6 +4,7 @@ import colors from '~/styles/colors';
 
 interface WeekDayProps {
   active?: boolean;
+  disabled?: boolean;
 }
 
 export const WeekDayContainer = styled.div<WeekDayProps>`
@@ -15,17 +16,19 @@ export const WeekDayContainer = styled.div<WeekDayProps>`
 
   border: 3px solid ${({ active }) => (active === false ? `${colors.terciary}` : `${colors.primary}`)};
   border-radius: 100px;
-
   background-color: ${({ active }) => (active === false ? `${colors.terciary}` : `${colors.primary}`)};
 
-  cursor: pointer;
+  ${({ disabled }) => disabled && 'background-color: #636363; border: 3px solid #636363;'}
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
 
   span {
     color: ${({ active }) => (active === false ? `${colors.text}` : `${colors.terciary}`)};
+    ${({ disabled }) => disabled && 'color: #FFF;'}
   }
 
   &:hover {
     border: 3px solid ${({ active }) => (active === false ? `${colors.lightprimary}` : `${colors.primary}`)};
+    ${({ disabled }) => disabled && 'border: 3px solid #636363;'}
   }
 `;
 

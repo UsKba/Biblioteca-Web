@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { FaTimes } from 'react-icons/fa';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 import api from '~/services/api';
 
@@ -30,6 +30,8 @@ import {
   Hour,
   ChooseHour,
   HourButton,
+  RentButton,
+  CancelButton,
   ChooseRoom,
   Room,
   RoomContainer,
@@ -43,6 +45,7 @@ import {
   InputButton,
   ComponentList,
   Component,
+  ErrorContainer,
 } from './styles';
 
 interface ReserveResponse {
@@ -91,7 +94,29 @@ const RentRoom: React.FC = () => {
   const [selectedPeriodId, setSelectedPeriodId] = useState(1);
 
   const [selectedScheduleId, setSelectedScheduleId] = useState(1);
-  const [selectedRoomId, setSelectedRoomId] = useState(0);
+  const [selectedRoomId, setSelectedRoomId] = useState(1);
+
+  const [groupNameError, setGroupNameError] = useState('');
+  const [addComponentError, setAddComponentError] = useState('');
+
+  useEffect(() => {
+    const selectedPeriodSchedules = schedules.filter((schedule) => schedule.periodId === selectedPeriodId);
+    if (selectedPeriodSchedules.length === 0) return;
+    const firstScheduleId = selectedPeriodSchedules[0].id;
+
+    setSelectedScheduleId(firstScheduleId);
+  }, [schedules, selectedPeriodId]);
+
+  function validateGroupName() {
+    if (groupName === '') {
+      setGroupNameError('O nome do grupo não pode estar vazio');
+    } else if (groupName.length < 3) {
+      setGroupNameError('O nome do grupo não pode ter menos que 3 caracteres');
+    } else {
+      setGroupNameError('');
+    }
+  }
+
   function handleNameGroup() {
     if (groupName === '') {
       alert('Por favor digite um nome');
@@ -107,17 +132,17 @@ const RentRoom: React.FC = () => {
     });
 
     if (username === '') {
-      alert('Por favor digite um id');
+      setAddComponentError('Por favor digite um id');
       return;
     }
 
     if (findComponent !== undefined) {
-      alert('Não é possível adicionar o mesmo usuário duas vezes.');
+      setAddComponentError('Não é possível adicionar o mesmo usuário duas vezes.');
       return;
     }
 
     if (components.length >= 6) {
-      alert('Grupo cheio!');
+      setAddComponentError('Grupo cheio!');
       return;
     }
 
@@ -198,6 +223,9 @@ const RentRoom: React.FC = () => {
   return (
     <Container>
       <LeftSide>
+        <Link to="/">
+          <CancelButton>Cancelar Reserva</CancelButton>
+        </Link>
         <ReserveList />
       </LeftSide>
       <MiddleSide>
@@ -249,21 +277,26 @@ const RentRoom: React.FC = () => {
           </ChooseRoom>
         </RoomContainer>
         <GroupContainer>
-          <Title2>Nomeie seu grupo:</Title2>
+          <Title2>Nomeie sua reserva:</Title2>
           <InputContainer>
             <EnrollmentInput
               type="text"
+              onBlur={() => {
+                validateGroupName();
+              }}
               hideIcon
-              placeholder="Digite um nome"
+              placeholder="Exemplo: Grupo de História"
               backgroundColor={colors.background}
               value={groupName}
               onChange={(event) => {
                 setGroupName(event.target.value);
               }}
             />
-            <InputButton onClick={handleNameGroup}>+</InputButton>
           </InputContainer>
-          <Title3>Nome:</Title3>
+          <ErrorContainer error={groupNameError !== ''}>{groupNameError}</ErrorContainer>
+          <div>
+            <RentButton onClick={handleNameGroup}>Salvar</RentButton>
+          </div>
           <Group>{groupA}</Group>
         </GroupContainer>
         <ComponentsContainer>
@@ -283,6 +316,7 @@ const RentRoom: React.FC = () => {
               />
               <InputButton onClick={handleAddComponent}>+</InputButton>
             </InputContainer>
+            <ErrorContainer error={addComponentError !== ''}>{addComponentError}</ErrorContainer>
             <Title3>Grupo:</Title3>
             <ComponentList>
               {components.map((component) => (
@@ -294,7 +328,9 @@ const RentRoom: React.FC = () => {
             </ComponentList>
           </Components>
         </ComponentsContainer>
-        <HourButton onClick={handleCreateReserve}>Alugar Sala</HourButton>
+        <div>
+          <RentButton onClick={handleCreateReserve}>Agendar Sala</RentButton>
+        </div>
       </MiddleSide>
       <RightSide>
         <FriendList />

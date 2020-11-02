@@ -6,6 +6,7 @@ export const FriendsContainer = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
+  position: fixed;
 
   padding: 14px 10px 0 10px;
 `;
@@ -66,7 +67,9 @@ export const FriendsPanelHidden = styled.div<FriendsPanelHiddenProps>`
 export const FriendsPanel = styled.div`
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  overflow-y: scroll;
+
+  max-height: 450px;
 
   margin-top: 7px;
 
@@ -130,16 +133,6 @@ export const FriendEnrollment = styled.span`
 export const EnrollmentContainer = styled.div`
   display: flex;
   align-items: center;
-`;
-
-export const FriendHashTag = styled.span`
-  margin-right: 3px;
-
-  font-family: 'Ubuntu';
-  font-weight: bold;
-  font-size: 15px;
-
-  color: ${colors.dark};
 `;
 
 interface LineContainerProps {

@@ -137,7 +137,7 @@ export const PeriodButton = styled(Button)<PeriodButtonProps>`
   width: 10em;
 
   background-color: ${({ active }) => (active === false ? `${colors.terciary}` : `${colors.primary}`)};
-  color: ${({ active }) => (active === false ? `${colors.primary}` : `${colors.terciary}`)};
+  color: ${({ active }) => (active === false ? `${colors.text}` : `${colors.terciary}`)};
 
   &:hover {
     background-color: ${({ active }) => (active === false ? `${colors.lightprimary}` : `${colors.primary}`)};
@@ -155,12 +155,12 @@ export const ChooseHour = styled.div`
   flex-wrap: wrap;
 `;
 
-interface HourButtonProps {
+interface StyledButtonProps {
   colorActive?: boolean;
   visible?: boolean;
 }
 
-export const HourButton = styled(Button)<HourButtonProps>`
+export const HourButton = styled(Button)<StyledButtonProps>`
   display: ${({ visible }) => (visible === false ? 'none' : 'block')};
 
   width: 16em;
@@ -168,11 +168,27 @@ export const HourButton = styled(Button)<HourButtonProps>`
   margin-bottom: 1em;
 
   background-color: ${({ colorActive }) => (colorActive === false ? `${colors.terciary}` : `${colors.primary}`)};
-  color: ${({ colorActive }) => (colorActive === false ? `${colors.primary}` : `${colors.terciary}`)};
+  color: ${({ colorActive }) => (colorActive === false ? `${colors.text}` : `${colors.terciary}`)};
 
   &:hover {
     background-color: ${({ colorActive }) => (colorActive === false ? `${colors.lightprimary}` : `${colors.primary}`)};
   }
+`;
+
+export const RentButton = styled(Button)`
+  margin-bottom: 5px;
+
+  padding: 9px 25px;
+
+  color: ${colors.text};
+`;
+
+export const CancelButton = styled(Button)`
+  position: fixed;
+  left: 5px;
+  bottom: 5px;
+
+  padding: 9px 20px;
 `;
 
 export const RoomContainer = styled.div`
@@ -275,6 +291,17 @@ export const InputButton = styled.button`
 
   color: ${colors.terciary};
   background-color: ${colors.primary};
+`;
+
+interface ErrorContainerProps {
+  error?: boolean;
+}
+
+export const ErrorContainer = styled.div<ErrorContainerProps>`
+  display: none;
+  color: red;
+  padding: 0.2em;
+  ${(props) => props.error && `display: flex;`}
 `;
 
 export const ComponentList = styled.div`

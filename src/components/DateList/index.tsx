@@ -28,6 +28,7 @@ const DateList: React.FC<Props> = ({ selectDay }) => {
       {days.map((day) => (
         <WeekDay
           key={day}
+          disabled={day < today.getDay()}
           date={new Date(sunday.getTime() + day * DAY_IN_MILLISECONDS)}
           active={selectedWeekDay === day}
           onClick={() => setSelectedWeekDay(day)}
