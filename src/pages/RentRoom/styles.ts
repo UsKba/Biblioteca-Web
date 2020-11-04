@@ -189,6 +189,8 @@ export const CancelButton = styled(Button)`
   bottom: 5px;
 
   padding: 9px 20px;
+
+  color: ${colors.text};
 `;
 
 export const RoomContainer = styled.div`

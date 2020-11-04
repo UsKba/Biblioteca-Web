@@ -1,7 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 
-// import background from '~/assets/doodles.png';
-
 export default createGlobalStyle`
   * {
     margin: 0;

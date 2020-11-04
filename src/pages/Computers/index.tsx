@@ -73,42 +73,42 @@ const RoomComputers = () => {
                 <ComputerButton onClick={() => openModal('01')}>
                   <ComputerTextContainer>
                     <ComputerName>Computador 01</ComputerName>
-                    <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                    <ComputerSpan>Este computador está disponível</ComputerSpan>
                   </ComputerTextContainer>
                   <ComputerStatus status={0} />
                 </ComputerButton>
                 <ComputerButton onClick={() => openModal('02')}>
                   <ComputerTextContainer>
                     <ComputerName>Computador 02</ComputerName>
-                    <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                    <ComputerSpan>Este computador está disponível</ComputerSpan>
                   </ComputerTextContainer>
                   <ComputerStatus status={0} />
                 </ComputerButton>
                 <ComputerButton onClick={() => openModal('03')}>
                   <ComputerTextContainer>
                     <ComputerName>Computador 03</ComputerName>
-                    <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                    <ComputerSpan>Este computador está ausente há 2 horas e 30 minutos</ComputerSpan>
                   </ComputerTextContainer>
                   <ComputerStatus status={1} />
                 </ComputerButton>
                 <ComputerButton onClick={() => openModal('04')}>
                   <ComputerTextContainer>
                     <ComputerName>Computador 04</ComputerName>
-                    <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                    <ComputerSpan>Este computador está indisponível</ComputerSpan>
                   </ComputerTextContainer>
                   <ComputerStatus status={3} />
                 </ComputerButton>
                 <ComputerButton onClick={() => openModal('05')}>
                   <ComputerTextContainer>
                     <ComputerName>Computador 05</ComputerName>
-                    <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                    <ComputerSpan>Este computador está ausente há 2 horas e 30 minutos</ComputerSpan>
                   </ComputerTextContainer>
                   <ComputerStatus status={1} />
                 </ComputerButton>
                 <ComputerButton onClick={() => openModal('06')}>
                   <ComputerTextContainer>
                     <ComputerName>Computador 06</ComputerName>
-                    <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                    <ComputerSpan>Este computador está disponível</ComputerSpan>
                   </ComputerTextContainer>
                   <ComputerStatus status={0} />
                 </ComputerButton>
@@ -119,14 +119,14 @@ const RoomComputers = () => {
               <ComputerButton onClick={() => openModal('01')}>
                 <ComputerTextContainer>
                   <ComputerName>Computador 01</ComputerName>
-                  <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                  <ComputerSpan>Este computador está disponível</ComputerSpan>
                 </ComputerTextContainer>
                 <ComputerStatus status={0} />
               </ComputerButton>
               <ComputerButton onClick={() => openModal('02')}>
                 <ComputerTextContainer>
                   <ComputerName>Computador 02</ComputerName>
-                  <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                  <ComputerSpan>Este computador está disponível</ComputerSpan>
                 </ComputerTextContainer>
                 <ComputerStatus status={0} />
               </ComputerButton>
@@ -140,7 +140,7 @@ const RoomComputers = () => {
               <ComputerButton onClick={() => openModal('04')}>
                 <ComputerTextContainer>
                   <ComputerName>Computador 04</ComputerName>
-                  <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
+                  <ComputerSpan>Este computador está ausente há 2 horas e 30 minutos</ComputerSpan>
                 </ComputerTextContainer>
                 <ComputerStatus status={1} />
               </ComputerButton>

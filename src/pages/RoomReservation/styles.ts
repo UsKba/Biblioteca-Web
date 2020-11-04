@@ -155,6 +155,8 @@ export const TitleContainer = styled.div`
 
 export const RentButton = styled(Button)`
   margin: 0;
+
+  color: ${colors.text};
 `;
 
 export const StyledLink = styled(Link)`

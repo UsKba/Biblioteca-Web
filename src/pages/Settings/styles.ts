@@ -94,7 +94,7 @@ export const Label = styled.label`
   margin-right: 0.3em;
 
   font-family: 'Roboto';
-  font-size: 20px;
+  font-size: 26px;
   font-weight: bolder;
 
   color: ${colors.dark};
@@ -125,12 +125,12 @@ export const SettingTitle = styled.span`
   font-size: 18px;
   font-weight: bold;
 
-  color: #999;
+  color: ${colors.dark};
 `;
 
 export const SettingDesc = styled.span`
   font-family: 'Roboto';
   font-size: 14px;
 
-  color: #d8d8d8;
+  color: #999;
 `;

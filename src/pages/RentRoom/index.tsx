@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { useHistory, Link } from 'react-router-dom';
 
@@ -38,7 +38,6 @@ import {
   Image,
   RoomButton,
   GroupContainer,
-  Group,
   Components,
   ComponentsContainer,
   InputContainer,
@@ -85,7 +84,6 @@ const RentRoom: React.FC = () => {
 
   const [username, setUsername] = useState('');
   const [groupName, setGroupName] = useState('');
-  const [groupA, setGroupA] = useState('');
   const [components, setComponents] = useState<number[]>([]);
   const [schedules, setSchedules] = useState([] as ScheduleState[]);
   const [rooms, setRooms] = useState([] as RoomState[]);
@@ -115,15 +113,6 @@ const RentRoom: React.FC = () => {
     } else {
       setGroupNameError('');
     }
-  }
-
-  function handleNameGroup() {
-    if (groupName === '') {
-      alert('Por favor digite um nome');
-      return;
-    }
-
-    setGroupA(groupName);
   }
 
   function handleAddComponent() {
@@ -224,7 +213,7 @@ const RentRoom: React.FC = () => {
     <Container>
       <LeftSide>
         <Link to="/">
-          <CancelButton>Cancelar Reserva</CancelButton>
+          <CancelButton>Cancelar Agendamento</CancelButton>
         </Link>
         <ReserveList />
       </LeftSide>
@@ -290,14 +279,11 @@ const RentRoom: React.FC = () => {
               value={groupName}
               onChange={(event) => {
                 setGroupName(event.target.value);
+                console.log(event.target.value);
               }}
             />
           </InputContainer>
           <ErrorContainer error={groupNameError !== ''}>{groupNameError}</ErrorContainer>
-          <div>
-            <RentButton onClick={handleNameGroup}>Salvar</RentButton>
-          </div>
-          <Group>{groupA}</Group>
         </GroupContainer>
         <ComponentsContainer>
           <Title2>Adicione componentes:</Title2>

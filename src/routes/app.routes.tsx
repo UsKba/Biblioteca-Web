@@ -8,7 +8,6 @@ import Computers from '~/pages/Computers';
 import Home from '~/pages/Home';
 import Inbox from '~/pages/Inbox';
 import LibrarianReport from '~/pages/LibrarianReport';
-import LibraryView from '~/pages/LibraryView';
 import PageNotFound from '~/pages/PageNotFound';
 import RentRoom from '~/pages/RentRoom';
 import RoomReservation from '~/pages/RoomReservation';
@@ -32,7 +31,6 @@ export default function Routes() {
         <Route path="/settings-notification" exact component={Settings} />
         <Route path="/settings-general" exact component={Settings} />
         <Route path="/settings-voz" exact component={Settings} />
-        <Route path="/topview" exact component={LibraryView} />
         <Route path="/about" exact component={About} />
 
         <Route path="/inbox" exact component={Inbox} />

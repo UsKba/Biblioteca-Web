@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import {
   FaChalkboardTeacher,
-  FaBookOpen,
   FaHome,
   FaCog,
   FaBars,
   FaDesktop,
   FaEnvelope,
   FaTimes,
-  FaBell,
+  // FaBell,
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
@@ -67,13 +66,6 @@ const NavbarComponent: React.FC = () => {
             <StyledLink to="/">
               <FaHome />
               <SidebarItemName>Início</SidebarItemName>
-            </StyledLink>
-          </SidebarItem>
-
-          <SidebarItem>
-            <StyledLink to="/topview">
-              <FaBookOpen />
-              <SidebarItemName>Biblioteca</SidebarItemName>
             </StyledLink>
           </SidebarItem>
 

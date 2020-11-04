@@ -169,9 +169,9 @@ export const ComputerStatus = styled.div<ComputerStatusProps>`
 `;
 
 export const ComputerSpan = styled.span`
-  text-align: justify;
+  text-align: start;
 
-  max-width: 200px;
+  width: 230px;
 
   color: ${colors.dark};
 

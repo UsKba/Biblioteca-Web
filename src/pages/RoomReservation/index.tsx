@@ -34,7 +34,7 @@ const RoomReservation: React.FC = () => {
       <TitleContainer>
         <Title>Salas</Title>
         <StyledLink to="/rent">
-          <RentButton>Alugar sala</RentButton>
+          <RentButton>Agendar sala</RentButton>
         </StyledLink>
       </TitleContainer>
       <TableContainer>

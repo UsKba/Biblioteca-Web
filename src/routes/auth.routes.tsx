@@ -15,7 +15,6 @@ export default function Routes() {
         <Route path="/rent" exact component={AccessDenied} />
         <Route path="/report" exact component={AccessDenied} />
         <Route path="/settings" component={AccessDenied} />
-        <Route path="/topview" exact component={AccessDenied} />
         <Route path="/" exact component={Presentation} />
         <Route path="/" component={PageNotFound} />
       </Switch>
