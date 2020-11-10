@@ -105,6 +105,10 @@ const RentRoom: React.FC = () => {
     setSelectedScheduleId(firstScheduleId);
   }, [schedules, selectedPeriodId]);
 
+  function goBack() {
+    window.history.back();
+  }
+
   function validateGroupName() {
     if (groupName === '') {
       setGroupNameError('O nome do grupo não pode estar vazio');
@@ -213,7 +217,7 @@ const RentRoom: React.FC = () => {
     <Container>
       <LeftSide>
         <Link to="/">
-          <CancelButton>Cancelar Agendamento</CancelButton>
+          <CancelButton onClick={goBack}>Cancelar Agendamento</CancelButton>
         </Link>
         <ReserveList />
       </LeftSide>

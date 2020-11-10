@@ -12,6 +12,9 @@ export const WeekDayContainer = styled.div<WeekDayProps>`
   flex-direction: column;
   align-items: center;
 
+
+  max-width: 43px;
+
   padding: 10px 5px;
 
   border: 3px solid ${({ active }) => (active === false ? `${colors.terciary}` : `${colors.primary}`)};

@@ -24,6 +24,7 @@ export const TableContainer = styled.div`
   max-width: 950px;
 
   margin-bottom: 20px;
+  border-radius: 10px;
 
   background-color: ${colors.terciary};
 `;
@@ -45,6 +46,7 @@ export const TopSide = styled.div`
   height: 35%;
 
   padding: 0 18px 18px 50px;
+  border-radius: 10px 10px 0 0;
 
   background-color: ${colors.terciary};
 `;

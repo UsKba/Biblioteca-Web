@@ -92,27 +92,28 @@ export const Sidebar = styled.div<SidebarProps>`
   ${(props) => props.open && 'left: 0px;'}
 `;
 
-export const SidebarItem = styled.div`
-  margin: 10px 15px;
-`;
-
 export const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
 
+  padding: 10px;
+
   svg {
     color: ${colors.dark};
+
+    margin-left: 10px;
 
     font-size: 20px;
     font-size: 1.25rem;
   }
 
   &:hover {
+    background-color: ${colors.primary};
     svg {
-      color: ${colors.primary};
+      color: ${colors.terciary};
     }
     span {
-      color: ${colors.primary};
+      color: ${colors.terciary};
     }
   }
 `;

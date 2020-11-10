@@ -6,9 +6,10 @@ import {
   FaBars,
   FaDesktop,
   FaEnvelope,
-  FaTimes,
   // FaBell,
 } from 'react-icons/fa';
+import { GoSignOut } from 'react-icons/go';
+import { MdChatBubble } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
 import { useAuth } from '~/contexts/AuthContext';
@@ -20,7 +21,6 @@ import {
   LeftSide,
   RightSide,
   Sidebar,
-  SidebarItem,
   SidebarItemName,
   StyledLink,
   SidebarContainer,
@@ -62,42 +62,39 @@ const NavbarComponent: React.FC = () => {
 
       <SidebarContainer open={sidebarOpen}>
         <Sidebar open={sidebarOpen}>
-          <SidebarItem>
-            <StyledLink to="/">
-              <FaHome />
-              <SidebarItemName>Início</SidebarItemName>
-            </StyledLink>
-          </SidebarItem>
+          <StyledLink to="/">
+            <FaHome />
+            <SidebarItemName>Início</SidebarItemName>
+          </StyledLink>
 
-          <SidebarItem>
-            <StyledLink to="/reserve-morning">
-              <FaChalkboardTeacher />
-              <SidebarItemName>Salas</SidebarItemName>
-            </StyledLink>
-          </SidebarItem>
+          <StyledLink to="/reserve-morning">
+            <FaChalkboardTeacher />
+            <SidebarItemName>Salas</SidebarItemName>
+          </StyledLink>
 
-          <SidebarItem>
-            <StyledLink to="/computers">
-              <FaDesktop />
-              <SidebarItemName>Computadores</SidebarItemName>
-            </StyledLink>
-          </SidebarItem>
-          <SidebarItem>
-            <StyledLink to="/about">
-              <FaEnvelope />
-              <SidebarItemName>Sobre</SidebarItemName>
-            </StyledLink>
-          </SidebarItem>
-          <SidebarItem
+          <StyledLink to="/computers">
+            <FaDesktop />
+            <SidebarItemName>Computadores</SidebarItemName>
+          </StyledLink>
+
+          <StyledLink to="/report">
+            <MdChatBubble />
+            <SidebarItemName>Bibliotecário</SidebarItemName>
+          </StyledLink>
+
+          <StyledLink to="/about">
+            <FaEnvelope />
+            <SidebarItemName>Sobre</SidebarItemName>
+          </StyledLink>
+          <StyledLink
+            to="/"
             onClick={() => {
               handleSignOut();
             }}
           >
-            <StyledLink to="/">
-              <FaTimes />
-              <SidebarItemName>Sair</SidebarItemName>
-            </StyledLink>
-          </SidebarItem>
+            <GoSignOut />
+            <SidebarItemName>Sair</SidebarItemName>
+          </StyledLink>
         </Sidebar>
         <SpaceRemaining open={sidebarOpen} onClick={toggleSidebar} />
       </SidebarContainer>
