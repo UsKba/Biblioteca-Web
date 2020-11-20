@@ -19,8 +19,6 @@ import {
   MobileNav,
   MobileNavText,
   Line,
-  LibrarianButton,
-  StyledLink,
   EmptyContainer,
   EmptySpan,
   EmptyTitle,
@@ -67,10 +65,6 @@ const Home: React.FC = () => {
             Você não possui nenhuma notificação, quando ocorrer algo na biblioteca nós o avisaremos aqui.
           </EmptySpan>
         </EmptyContainer>
-
-        <StyledLink to="/report">
-          <LibrarianButton>Falar com o bibliotecário</LibrarianButton>
-        </StyledLink>
       </MiddleSide>
 
       <RightSide visible={screenSwipe === 2}>

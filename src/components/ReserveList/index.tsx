@@ -11,6 +11,7 @@ import {
   ReserveTopSide,
   ReserveBottomSide,
   ArrowTextContainer,
+  ReservesList,
   ReserveTitle,
   ReserveText,
   ReserveGroupName,
@@ -187,33 +188,34 @@ const ReserveList: React.FC = () => {
         <EmptyTitle>Não há reservas...</EmptyTitle>
         <EmptySpan>Você não possui reservas, reserve uma sala na página de reservas.</EmptySpan>
       </EmptyContainer>
+      <ReservesList>
+        {reserves.map((reserve, index) => (
+          <ReserveContainer key={String(reserve.id)} small={menuIndex === index} usersAmount={reserve.users.length}>
+            <ReserveTopSide onClick={() => toggleDropmenu(index)} rotateIcon={menuIndex === index}>
+              <ReserveTitle>{reserve.title}</ReserveTitle>
+              <ArrowTextContainer>
+                <ReserveText>{reserve.text}</ReserveText>
+                <FaChevronDown />
+              </ArrowTextContainer>
+              <ReserveText />
+              <ReserveGroupName>{reserve.groupTitle}</ReserveGroupName>
+            </ReserveTopSide>
 
-      {reserves.map((reserve, index) => (
-        <ReserveContainer key={String(reserve.id)} small={menuIndex === index} usersAmount={reserve.users.length}>
-          <ReserveTopSide onClick={() => toggleDropmenu(index)} rotateIcon={menuIndex === index}>
-            <ReserveTitle>{reserve.title}</ReserveTitle>
-            <ArrowTextContainer>
-              <ReserveText>{reserve.text}</ReserveText>
-              <FaChevronDown />
-            </ArrowTextContainer>
-            <ReserveText />
-            <ReserveGroupName>{reserve.groupTitle}</ReserveGroupName>
-          </ReserveTopSide>
-
-          <ReserveBottomSide>
-            <GroupMemberList>
-              {reserve.users.map((student) => (
-                <GroupMember key={student.id}>
-                  <GroupMemberIcon>{student.name[0]}</GroupMemberIcon>
-                  <GroupMemberName>{student.name}</GroupMemberName>
-                  <FaTimes onClick={() => deleteGroupMember(reserve.id, student.id)} />
-                </GroupMember>
-              ))}
-            </GroupMemberList>
-            <DeleteReserveButton onClick={() => deleteReserve(reserve.id)}>Deletar Reserva</DeleteReserveButton>
-          </ReserveBottomSide>
-        </ReserveContainer>
-      ))}
+            <ReserveBottomSide>
+              <GroupMemberList>
+                {reserve.users.map((student) => (
+                  <GroupMember key={student.id}>
+                    <GroupMemberIcon>{student.name[0]}</GroupMemberIcon>
+                    <GroupMemberName>{student.name}</GroupMemberName>
+                    <FaTimes onClick={() => deleteGroupMember(reserve.id, student.id)} />
+                  </GroupMember>
+                ))}
+              </GroupMemberList>
+              <DeleteReserveButton onClick={() => deleteReserve(reserve.id)}>Deletar Reserva</DeleteReserveButton>
+            </ReserveBottomSide>
+          </ReserveContainer>
+        ))}
+      </ReservesList>
     </Container>
   );
 };

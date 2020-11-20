@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { Link } from 'react-router-dom';
-
 import colors from '../../styles/colors';
 
 interface MobileModeProps {
@@ -163,30 +161,6 @@ export const Line = styled.div`
 
     font-family: 'Ubuntu';
   }
-`;
-export const LibrarianButton = styled.button`
-  padding: 15px;
-  border-radius: 5px;
-  border: none;
-
-  background-color: ${colors.secondary};
-  color: ${colors.terciary};
-
-  @media only screen and (max-width: 640px) {
-    margin-bottom: 10px;
-  }
-
-  &:hover {
-    background-color: ${colors.primary};
-  }
-
-  &:active {
-    background-color: rgba(99, 138, 242, 0.6);
-  }
-`;
-
-export const StyledLink = styled(Link)`
-  max-width: 210px;
 `;
 
 export const EmptyContainer = styled.div`

@@ -74,6 +74,10 @@ export const FriendsPanel = styled.div`
   margin-top: 7px;
 
   border-radius: 5px;
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
 `;
 
 export const FriendsPanelDetails = styled.div`

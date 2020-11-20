@@ -50,14 +50,27 @@ interface ReserveContainerProps {
   usersAmount: number;
 }
 
+export const ReservesList = styled.div`
+  overflow-y: scroll;
+  height: calc(100vh - 124px);
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+    margin: 0 0 10px 5px;
+  }
+
+  /* height: calc(100vh - 50px); */
+`;
+
 export const ReserveContainer = styled.div<ReserveContainerProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
+  overflow-y: hidden;
 
   height: 120px;
-  width: 100%;
+
+  width: 98%;
 
   padding: 10px;
   border-radius: 5px;

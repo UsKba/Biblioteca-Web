@@ -106,7 +106,7 @@ const RentRoom: React.FC = () => {
   }, [schedules, selectedPeriodId]);
 
   function goBack() {
-    window.history.back();
+    history.goBack();
   }
 
   function validateGroupName() {
