@@ -151,15 +151,17 @@ export const MobileNavText = styled.div`
   }
 `;
 
-export const Line = styled.div`
+interface LineProps {
+  active?: boolean;
+}
+
+export const Line = styled.div<LineProps>`
   @media screen and (max-width: 640px) {
     height: 3px;
 
     width: 80px;
 
-    background-color: #3d6dcc;
-
-    font-family: 'Ubuntu';
+    background-color: ${(props) => props.active && colors.primary};
   }
 `;
 

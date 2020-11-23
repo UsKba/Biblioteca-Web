@@ -114,6 +114,9 @@ export const ComputerList = styled.div<MobileModeProps>`
   height: 380px;
 
   overflow-y: auto;
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
 `;
 
 export const ComputerButton = styled.button`
@@ -132,6 +135,9 @@ export const ComputerButton = styled.button`
   border: none;
 
   background-color: ${colors.terciary};
+  @media only screen and (max-width: 640px) {
+    width: 100%;
+  }
 `;
 
 export const ComputerName = styled.span`

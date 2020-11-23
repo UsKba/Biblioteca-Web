@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
 // import api from '~/services/api';
+import colors from '~/styles/colors';
+
 import FriendList from '~/components/FriendList';
 import ReserveList from '~/components/ReserveList';
 
@@ -35,15 +37,15 @@ const Home: React.FC = () => {
       <MobileNav>
         <MobileNavText onClick={() => handleChangeSwipe(0)}>
           Reservas
-          <Line />
+          <Line active={screenSwipe === 0} />
         </MobileNavText>
         <MobileNavText onClick={() => handleChangeSwipe(1)}>
           Perfil
-          <Line />
+          <Line active={screenSwipe === 1} />
         </MobileNavText>
         <MobileNavText onClick={() => handleChangeSwipe(2)}>
           Amigos
-          <Line />
+          <Line active={screenSwipe === 2} />
         </MobileNavText>
       </MobileNav>
 

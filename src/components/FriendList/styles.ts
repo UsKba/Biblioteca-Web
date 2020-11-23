@@ -9,6 +9,10 @@ export const FriendsContainer = styled.div`
   position: fixed;
 
   padding: 14px 10px 0 10px;
+
+  @media only screen and (max-width: 640px) {
+    position: initial;
+  }
 `;
 
 export const TitlePanel = styled.div`

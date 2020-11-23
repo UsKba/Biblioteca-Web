@@ -43,10 +43,13 @@ export const MiddleSide = styled.div<MobileModeProps>`
 
   background-color: ${colors.terciary};
 
-  @media only screen and (max-width: 640px) {
+  /* @media only screen and (max-width: 640px) {
     display: ${(props) => !props.visible && 'none'};
 
     padding: 14px 10px 0 10px;
+  } */
+  @media only screen and (max-width: 640px) {
+    max-width: 100%;
   }
 `;
 
@@ -142,6 +145,14 @@ export const PeriodButton = styled(Button)<PeriodButtonProps>`
   &:hover {
     background-color: ${({ active }) => (active === false ? `${colors.lightprimary}` : `${colors.primary}`)};
   }
+  @media only screen and (max-width: 640px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 0;
+    padding: 0 55px;
+  }
 `;
 
 export const Hour = styled.div`
@@ -153,6 +164,10 @@ export const ChooseHour = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+
+  @media only screen and (max-width: 640px) {
+    justify-content: space-between;
+  }
 `;
 
 interface StyledButtonProps {
@@ -173,14 +188,25 @@ export const HourButton = styled(Button)<StyledButtonProps>`
   &:hover {
     background-color: ${({ colorActive }) => (colorActive === false ? `${colors.lightprimary}` : `${colors.primary}`)};
   }
+
+  @media only screen and (max-width: 640px) {
+    width: 45%;
+    padding: 5px 0;
+
+    font-size: 16px;
+  }
 `;
 
 export const RentButton = styled(Button)`
   margin-bottom: 5px;
+  align-self: flex-start;
 
   padding: 9px 25px;
 
   color: ${colors.text};
+  @media only screen and (max-width: 640px) {
+    align-self: center;
+  }
 `;
 
 export const CancelButton = styled(Button)`
@@ -202,9 +228,12 @@ export const ChooseRoom = styled.div`
   display: flex;
   justify-content: space-around;
 
-  width: 100%;
-
   padding: 14px;
+
+  @media only screen and (max-width: 640px) {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
 `;
 
 export const Room = styled.span`
@@ -240,6 +269,10 @@ export const Image = styled.img`
   width: 125;
 
   margin-top: 10px;
+
+  @media only screen and (max-width: 640px) {
+    height: 65px;
+  }
 `;
 
 export const GroupContainer = styled.div`
@@ -275,6 +308,12 @@ export const Components = styled.div`
 
 export const InputContainer = styled.div`
   display: flex;
+
+  @media only screen and (max-width: 640px) {
+    input {
+      width: 190px;
+    }
+  }
 `;
 
 export const InputButton = styled.button`

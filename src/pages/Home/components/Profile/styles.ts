@@ -79,8 +79,8 @@ export const ProfileIcon = styled.div`
   align-items: center;
   justify-content: center;
 
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
 
   border-radius: 100px;
 
@@ -89,7 +89,7 @@ export const ProfileIcon = styled.div`
 `;
 
 export const ProfileIconInitials = styled.span`
-  font-size: 35px;
+  font-size: 20px;
 `;
 
 export const ProfileRightSide = styled.div`

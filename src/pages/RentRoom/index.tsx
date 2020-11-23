@@ -318,9 +318,7 @@ const RentRoom: React.FC = () => {
             </ComponentList>
           </Components>
         </ComponentsContainer>
-        <div>
-          <RentButton onClick={handleCreateReserve}>Agendar Sala</RentButton>
-        </div>
+        <RentButton onClick={handleCreateReserve}>Agendar Sala</RentButton>
       </MiddleSide>
       <RightSide>
         <FriendList />

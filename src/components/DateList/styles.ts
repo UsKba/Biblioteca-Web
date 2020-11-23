@@ -12,6 +12,9 @@ export const Container = styled.div`
   height: 192px;
 
   padding: 0 50px;
+  @media only screen and (max-width: 640px) {
+    padding: 0;
+  }
 `;
 
 export const Chevrons = styled.div`
