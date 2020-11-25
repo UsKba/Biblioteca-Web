@@ -51,11 +51,11 @@ const RoomComputers = () => {
         <MobileNav>
           <MobileNavText onClick={() => handleChangeSwipe(0)}>
             Laboratório
-            <Line />
+            <Line active={screenSwipe === 0} />
           </MobileNavText>
           <MobileNavText onClick={() => handleChangeSwipe(1)}>
             Biblioteca
-            <Line />
+            <Line active={screenSwipe === 1} />
           </MobileNavText>
         </MobileNav>
 

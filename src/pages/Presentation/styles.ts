@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import colors from '~/styles/colors';
 
+import { Button } from '~/components/MainButton/styles';
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -11,6 +13,15 @@ export const Container = styled.div`
   align-self: center;
 
   width: 100%;
+`;
+
+export const LoginButton = styled(Button)`
+  @media screen and (max-width: 640px) {
+    height: 40px;
+    padding: 9px 37px;
+    display: flex;
+    align-items: center;
+  }
 `;
 
 export const TopSide = styled.div`

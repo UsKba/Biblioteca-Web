@@ -25,6 +25,7 @@ import {
   Line2,
   LineContainer,
   TextButton,
+  LoginButton,
 } from './styles';
 
 const Presentation: React.FC = () => {
@@ -37,7 +38,7 @@ const Presentation: React.FC = () => {
         <TextButton to="#">Sobre</TextButton>
         {!signed && (
           <a href={signInSuapUrl}>
-            <Button>{loading ? <Spinner /> : 'Entrar'}</Button>
+            <LoginButton>{loading ? <Spinner /> : 'Entrar'}</LoginButton>
           </a>
         )}
       </TopSide>
@@ -55,7 +56,7 @@ const Presentation: React.FC = () => {
           <H2>
             Com a Smart Library, você consegue reservar salas,
             <br />
-            cheque se computadores estão disponíveis.
+            checar se computadores estão disponíveis, entre outras.
           </H2>
 
           <IconList>

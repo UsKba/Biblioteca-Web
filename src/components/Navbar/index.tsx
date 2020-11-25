@@ -31,6 +31,12 @@ const NavbarComponent: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { signOut } = useAuth();
 
+  function closeIfMobile() {
+    if (window.innerWidth < 600) {
+      setSidebarOpen(false);
+    }
+  }
+
   function handleSignOut() {
     signOut();
   }
@@ -62,27 +68,27 @@ const NavbarComponent: React.FC = () => {
 
       <SidebarContainer open={sidebarOpen}>
         <Sidebar open={sidebarOpen}>
-          <StyledLink to="/">
+          <StyledLink onClick={closeIfMobile} to="/">
             <FaHome />
             <SidebarItemName>Início</SidebarItemName>
           </StyledLink>
 
-          <StyledLink to="/reserve-morning">
+          <StyledLink onClick={closeIfMobile} to="/reserve-morning">
             <FaChalkboardTeacher />
             <SidebarItemName>Salas</SidebarItemName>
           </StyledLink>
 
-          <StyledLink to="/computers">
+          <StyledLink onClick={closeIfMobile} to="/computers">
             <FaDesktop />
             <SidebarItemName>Computadores</SidebarItemName>
           </StyledLink>
 
-          <StyledLink to="/report">
+          <StyledLink onClick={closeIfMobile} to="/report">
             <MdChatBubble />
             <SidebarItemName>Bibliotecário</SidebarItemName>
           </StyledLink>
 
-          <StyledLink to="/about">
+          <StyledLink onClick={closeIfMobile} to="/about">
             <FaEnvelope />
             <SidebarItemName>Sobre</SidebarItemName>
           </StyledLink>
@@ -90,6 +96,7 @@ const NavbarComponent: React.FC = () => {
             to="/"
             onClick={() => {
               handleSignOut();
+              closeIfMobile();
             }}
           >
             <GoSignOut />

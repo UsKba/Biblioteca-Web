@@ -11,6 +11,10 @@ export const Container = styled.div`
   padding: 30px 15px;
 
   border-radius: 7px;
+
+  @media only screen and (max-width: 400px) {
+    flex-direction: column;
+  }
 `;
 
 export const LeftSide = styled.div`
@@ -24,6 +28,9 @@ export const LeftSide = styled.div`
   border-radius: 7px;
 
   background-color: ${colors.terciary};
+  @media only screen and (max-width: 400px) {
+    margin: 0 0 15px 0;
+  }
 `;
 
 export const RightSide = styled.div`
@@ -45,14 +52,16 @@ interface ButtonProps {
 export const ButtonList = styled.div`
   display: flex;
   flex-wrap: wrap;
-  align-self: center;
 
   max-width: 310px;
-  height: 470px;
 
   justify-content: space-between;
 
   padding: 0 10px 80px 10px;
+
+  @media (max-width: 400px) {
+    padding: 0px;
+  }
 `;
 
 export const Button = styled.button<ButtonProps>`
@@ -64,28 +73,33 @@ export const Button = styled.button<ButtonProps>`
   width: 140px;
   height: 120px;
 
+  font-size: 14px;
+
+  svg {
+    font-size: 32px;
+
+    color: ${({ active }) => (active === true ? `${colors.terciary}` : `${colors.dark}`)};
+  }
+
+  @media (max-width: 400px) {
+    width: 40vw;
+  }
+
   border-radius: 3px;
   border: solid 1px #d8d8d8;
   padding: 20px;
-
-  font-size: 14px;
+  margin-bottom: 10px;
   font-weight: 500;
 
   background-color: ${({ active }) => (active === true ? `${colors.primary}` : `${colors.terciary}`)};
   color: ${({ active }) => (active === true ? `${colors.terciary}` : `${colors.dark}`)};
 
   &:hover {
-    background-color: ${({ active }) => (active === true ? `${colors.primary}` : `${colors.lightprimary}`)};
+    background-color: ${({ active }) => (active === true ? `${colors.primary}` : `${colors.secondary}`)};
     color: ${colors.terciary};
     svg {
       color: ${colors.terciary};
     }
-  }
-
-  svg {
-    font-size: 35px;
-
-    color: ${({ active }) => (active === true ? `${colors.terciary}` : `${colors.dark}`)};
   }
 `;
 
@@ -133,4 +147,8 @@ export const SettingDesc = styled.span`
   font-size: 14px;
 
   color: #999;
+
+  @media (max-width: 400px) {
+    width: 225px;
+  }
 `;

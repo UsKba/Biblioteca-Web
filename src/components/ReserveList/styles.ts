@@ -10,11 +10,6 @@ export const Container = styled.div`
   flex: 1;
 
   padding: 14px;
-
-  @media only screen and (max-width: 640px) {
-    padding: 0;
-    margin-bottom: 31em;
-  }
 `;
 
 export const Title = styled.span`

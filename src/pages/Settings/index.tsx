@@ -43,10 +43,6 @@ const Settings: React.FC = () => {
             <FaUsers />
             Configurações de Grupo
           </Button>
-          <Button>
-            <FaCogs />
-            Configurações de Exemplo
-          </Button>
         </ButtonList>
       </LeftSide>
 

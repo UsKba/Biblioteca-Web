@@ -92,6 +92,12 @@ const ReserveList: React.FC = () => {
       return reserve.id === reserveId;
     });
 
+    const response = window.confirm('Tem certeza que deseja excluir este membro do grupo?');
+
+    if (!response) {
+      return;
+    }
+
     if (findReserve === undefined) {
       alert('Reserva não encontrada');
       return;
@@ -125,6 +131,11 @@ const ReserveList: React.FC = () => {
   }
 
   async function deleteReserve(reserveId: number) {
+    const response = window.confirm('Tem certeza que deseja excluir esta reserva?');
+
+    if (!response) {
+      return;
+    }
     try {
       await api.delete(`/reserves/${reserveId}`);
       alert('Reserva deletada');

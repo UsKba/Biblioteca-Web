@@ -21,6 +21,7 @@ export const Navbar = styled.ul`
   background-color: ${colors.terciary};
 
   list-style: none;
+  z-index: 5;
 `;
 
 export const LeftSide = styled.div`

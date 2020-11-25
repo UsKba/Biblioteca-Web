@@ -12,6 +12,10 @@ export const Title = styled.div`
   flex-direction: column;
 
   margin: 2em 0 0 5em;
+  @media screen and (max-width: 640px) {
+    align-items: center;
+    margin: 2em 0 0 0;
+  }
 `;
 
 export const H1 = styled.div`
@@ -20,6 +24,11 @@ export const H1 = styled.div`
   font-weight: bold;
 
   color: #322c42;
+  @media screen and (max-width: 640px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const Line = styled.div`
@@ -36,6 +45,9 @@ export const TextContainer = styled.div`
   margin: 67px 0 0 39px;
   border-left: solid 3px ${colors.primary};
   border-radius: 3px;
+  @media screen and (max-width: 640px) {
+    width: 80%;
+  }
 `;
 
 export const TextContainer2 = styled.div`
@@ -49,6 +61,9 @@ export const TextContainer2 = styled.div`
 
   border-right: solid 3px ${colors.primary};
   border-radius: 3px;
+  @media screen and (max-width: 640px) {
+    display: none;
+  }
 `;
 
 export const Text = styled.div`
@@ -66,8 +81,19 @@ export const Image = styled.img`
 
   margin-left: 10em;
   margin-right: 3em;
+  @media screen and (max-width: 640px) {
+    width: 80vw;
+    height: auto;
+    margin: 16px 0 0 0;
+
+    justify-content: center;
+  }
 `;
 
 export const MiddleSide = styled.div`
   display: flex;
+  @media screen and (max-width: 640px) {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
 `;

@@ -240,12 +240,16 @@ export const MobileNavText = styled.div`
   }
 `;
 
-export const Line = styled.div`
+interface LineStatus {
+  active: boolean;
+}
+
+export const Line = styled.div<LineStatus>`
   @media screen and (max-width: 640px) {
     height: 3px;
     width: auto;
 
-    background-color: #3d6dcc;
+    background-color: ${(props) => props.active && colors.primary};
 
     font-family: 'Ubuntu';
   }

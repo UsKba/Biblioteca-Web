@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 // import api from '~/services/api';
-import colors from '~/styles/colors';
 
 import FriendList from '~/components/FriendList';
 import ReserveList from '~/components/ReserveList';
