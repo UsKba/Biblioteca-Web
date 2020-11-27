@@ -141,6 +141,7 @@ export const FriendEnrollment = styled.span`
 export const EnrollmentContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-around;
 `;
 
 interface LineContainerProps {
@@ -216,4 +217,41 @@ export const PlusContainer = styled.div<PlusContainerProps>`
 
   ${(props) =>
     props.rotateIcon && `transform: rotate(45deg); svg{ color: ${colors.red}; &:hover { color: ${colors.lightred}};}`}
+`;
+
+export const PendingButton = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  align-items: center;
+  width: 280px;
+  height: 45px;
+  background-color: ${colors.terciary};
+  color: #666666;
+  cursor: pointer;
+`;
+
+interface PendingPanelHiddenProps {
+  appear?: boolean;
+}
+
+export const PendingPanelHidden = styled.div<PendingPanelHiddenProps>`
+  display: none;
+  flex-direction: column;
+  height: auto;
+
+  border-radius: 5px;
+  margin: 10px 0 10px 0;
+
+  background-color: ${colors.terciary};
+  ${(props) => props.appear && 'display: flex;'};
+`;
+
+export const AcceptContainer = styled.div`
+  display: flex;
+  width: 2.5em;
+  justify-content: space-between;
+  align-self: flex-end;
+  color: ${colors.red};
+  margin-left: 4em;
 `;

@@ -148,6 +148,12 @@ export const GroupMember = styled.div`
   margin-bottom: 7px;
 
   background-color: ${colors.background};
+`;
+
+export const GroupMemberIconArea = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
 
   svg {
     color: ${colors.red};
@@ -155,6 +161,14 @@ export const GroupMember = styled.div`
     &:hover {
       color: ${colors.lightred};
     }
+  }
+
+  svg:first-child {
+    cursor: default;
+    position: relative;
+    top: -4px;
+    color: ${colors.golden};
+    font-size: 10px;
   }
 `;
 
@@ -177,7 +191,7 @@ export const GroupMemberIcon = styled.div`
 `;
 
 export const GroupMemberName = styled.span`
-  margin-right: auto;
+  margin-right: 4px;
 
   font-size: 14px;
   font-family: 'Roboto';
@@ -197,7 +211,12 @@ export const ArrowTextContainer = styled.div`
   }
 `;
 
-export const DeleteReserveButton = styled.button`
+interface DeleteReserveButtonProps {
+  visible: boolean;
+}
+
+export const DeleteReserveButton = styled.button<DeleteReserveButtonProps>`
+  display: ${({ visible }) => (visible ? 'flex' : 'none')};
   text-align: center;
 
   margin-left: auto;
@@ -225,9 +244,12 @@ export const StyledLink = styled(Link)`
   height: 15px;
 `;
 
-export const EmptyContainer = styled.div`
-  display: flex;
-  display: none;
+interface EmptyContainerProps {
+  visible: boolean;
+}
+
+export const EmptyContainer = styled.div<EmptyContainerProps>`
+  display: ${({ visible }) => (visible ? 'flex' : 'none')};
   flex-direction: column;
   align-items: center;
   text-align: center;

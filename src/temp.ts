@@ -72,3 +72,18 @@ const userMapUpdated = users.map((user) => {
 
 console.log(userMapUpdated);
 */
+
+/*
+  let emptyContainerVisible;
+
+  if (reserves.length === 0){
+   emptyContainerVisible = true;
+  }else{
+    emptyContainerVisible = false;
+  }
+
+  É IGUAL A
+
+  emptyContainerVisible = reserves.length === 0
+
+  */

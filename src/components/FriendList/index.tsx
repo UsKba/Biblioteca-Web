@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { FaPlus } from 'react-icons/fa';
+import { FaPlus, FaArrowRight, FaTimes } from 'react-icons/fa';
+
+import colors from '~/styles/colors';
 
 import EnrollmentInput from '../EnrollmentInput';
 import {
@@ -22,17 +24,24 @@ import {
   EmptySpan,
   FriendsPanelHidden,
   PlusContainer,
+  PendingButton,
+  PendingPanelHidden,
+  AcceptContainer,
 } from './styles';
 
 const FriendList: React.FC = () => {
   const [friendListOpen, setFriendListOpen] = useState(false);
   const [lineOpen, setLineOpen] = useState(false);
+  const [pendingListOpen, setPendingListOpen] = useState(false);
 
   function toggleFriendList() {
     setFriendListOpen(!friendListOpen);
   }
   function toggleLine() {
     setLineOpen(!lineOpen);
+  }
+  function togglePendingList() {
+    setPendingListOpen(!pendingListOpen);
   }
 
   return (
@@ -55,6 +64,49 @@ const FriendList: React.FC = () => {
         <Line2 />
         <Line1 />
       </LineContainer>
+      <PendingButton
+        onClick={() => {
+          togglePendingList();
+        }}
+      >
+        Pedidos Pendentes
+        <FaArrowRight />
+      </PendingButton>
+
+      <PendingPanelHidden appear={pendingListOpen}>
+        <FriendsPanelDetails>
+          <FriendIcon>
+            <FriendIconInitials>A</FriendIconInitials>
+          </FriendIcon>
+          <FriendsDetails>
+            <FriendName>Arisson Santas</FriendName>
+            <EnrollmentContainer>
+              <FriendEnrollment>20181104010062</FriendEnrollment>
+              <AcceptContainer>
+                <FaPlus color={colors.primary} />
+
+                <FaTimes />
+              </AcceptContainer>
+            </EnrollmentContainer>
+          </FriendsDetails>
+        </FriendsPanelDetails>
+        <FriendsPanelDetails>
+          <FriendIcon>
+            <FriendIconInitials>H</FriendIconInitials>
+          </FriendIcon>
+          <FriendsDetails>
+            <FriendName>Hari Holiveiro</FriendName>
+            <EnrollmentContainer>
+              <FriendEnrollment>20181104010004</FriendEnrollment>
+              <AcceptContainer>
+                <FaPlus color={colors.primary} />
+
+                <FaTimes />
+              </AcceptContainer>
+            </EnrollmentContainer>
+          </FriendsDetails>
+        </FriendsPanelDetails>
+      </PendingPanelHidden>
 
       <FriendsPanelHidden small={friendListOpen}>
         <FriendsPanelDetails>

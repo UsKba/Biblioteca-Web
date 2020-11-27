@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { FaPlus, FaChevronDown, FaTimes } from 'react-icons/fa';
+import React, { useState, useEffect, useContext } from 'react';
+import { FaPlus, FaChevronDown, FaTimes, FaCrown } from 'react-icons/fa';
 
 import api from '~/services/api';
+
+import { useAuth } from '~/contexts/AuthContext';
 
 import {
   Container,
@@ -24,6 +26,7 @@ import {
   GroupMember,
   GroupMemberIcon,
   GroupMemberName,
+  GroupMemberIconArea,
 } from './styles';
 
 interface ReserveResponse {
@@ -78,6 +81,7 @@ interface ReserveState {
 const ReserveList: React.FC = () => {
   const [menuIndex, setMenuIndex] = useState<number>();
   const [reserves, setReserves] = useState([] as ReserveState[]);
+  const authContext = useAuth();
 
   function toggleDropmenu(index: number) {
     if (index === menuIndex) {
@@ -186,6 +190,30 @@ const ReserveList: React.FC = () => {
     loadReserves();
   }, []);
 
+  /*
+  let emptyContainerVisible;
+
+  if (reserves.length === 0){
+   emptyContainerVisible = true;
+  }else{
+    emptyContainerVisible = false;
+  }
+
+  É IGUAL A
+
+  emptyContainerVisible = reserves.length === 0
+
+  */
+
+  function amIPartyLeader(reserve: ReserveState) {
+    const leader = reserve.users.find((user) => user.role.slug === 'administrador');
+    console.log('Leader: ', leader);
+    if (!leader) return false;
+    console.log('I am: ', authContext.user);
+    console.log('Returning: ', authContext.user.enrollment === leader.enrollment);
+    return authContext.user.enrollment === leader.enrollment;
+  }
+
   return (
     <Container>
       <TitlePanel>
@@ -195,10 +223,11 @@ const ReserveList: React.FC = () => {
         </StyledLink>
       </TitlePanel>
 
-      <EmptyContainer>
+      <EmptyContainer visible={reserves.length === 0}>
         <EmptyTitle>Não há reservas...</EmptyTitle>
         <EmptySpan>Você não possui reservas, reserve uma sala na página de reservas.</EmptySpan>
       </EmptyContainer>
+
       <ReservesList>
         {reserves.map((reserve, index) => (
           <ReserveContainer key={String(reserve.id)} small={menuIndex === index} usersAmount={reserve.users.length}>
@@ -218,11 +247,25 @@ const ReserveList: React.FC = () => {
                   <GroupMember key={student.id}>
                     <GroupMemberIcon>{student.name[0]}</GroupMemberIcon>
                     <GroupMemberName>{student.name}</GroupMemberName>
-                    <FaTimes onClick={() => deleteGroupMember(reserve.id, student.id)} />
+
+                    <GroupMemberIconArea>
+                      <FaCrown visibility={student.role.slug === 'administrador' ? 'visible' : 'hidden'} />
+
+                      <FaTimes
+                        visibility={
+                          amIPartyLeader(reserve) && student.enrollment !== authContext.user.enrollment
+                            ? 'visible'
+                            : 'hidden'
+                        }
+                        onClick={() => deleteGroupMember(reserve.id, student.id)}
+                      />
+                    </GroupMemberIconArea>
                   </GroupMember>
                 ))}
               </GroupMemberList>
-              <DeleteReserveButton onClick={() => deleteReserve(reserve.id)}>Deletar Reserva</DeleteReserveButton>
+              <DeleteReserveButton visible={amIPartyLeader(reserve)} onClick={() => deleteReserve(reserve.id)}>
+                Deletar Reserva
+              </DeleteReserveButton>
             </ReserveBottomSide>
           </ReserveContainer>
         ))}
