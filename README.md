@@ -61,3 +61,12 @@ useEffect chama sua função assim que a página carregar
  function handleChangeSWipe(index: number) {
    setScreenSwipe(index)
  }
+
+IDS:
+1 - Idaslon (Lonlon)
+2 - Fellipe (ZanZan)
+3 - Nathan (NaNa)
+4 - Carlos (Kadu)
+5 - Alceu (Alce)
+6 - Francisco (Cisco)
+7 - Bruno (Bubu)

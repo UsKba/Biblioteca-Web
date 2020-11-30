@@ -42,21 +42,13 @@ interface ReserveResponse {
   };
   users: {
     id: number;
-    role: {
-      id: number;
-      name: string;
-      slug: string;
-    };
     enrollment: string;
     email: string;
     name: string;
   }[];
-  day: number;
   id: number;
-  month: number;
-  roomId: number;
-  scheduleId: number;
-  year: number;
+  date: string;
+  name: string;
 }
 
 interface ReserveState {
@@ -66,15 +58,9 @@ interface ReserveState {
   users: {
     name: string;
     id: number;
-    role: {
-      id: number;
-      name: string;
-      slug: string;
-    };
     enrollment: string;
     email: string;
   }[];
-
   id: number;
 }
 
@@ -160,22 +146,24 @@ const ReserveList: React.FC = () => {
       try {
         const response = await api.get<ReserveResponse[]>('/reserves');
         const formatter = new Intl.DateTimeFormat('pt-br', { month: 'long' });
-        console.log(response.data);
+        // console.log('Reservas:');
+        // console.log(response.data);
 
         const reservesFormatted = response.data.map((reserve) => {
-          const { year, month, day, id } = reserve;
+          const { date, name, id } = reserve;
           const { initials } = reserve.room;
           const { initialHour, endHour } = reserve.schedule;
 
-          const reserveDate = new Date(year, month, day);
-
+          const reserveDate = new Date(date);
           const monthFormatted = formatter.format(reserveDate);
+          const day = reserveDate.getDay();
+          const year = reserveDate.getFullYear();
+
           const title = `Reserva da sala ${initials}`;
           const text = `Sala reservada às ${initialHour} - ${endHour} no dia ${day} de ${monthFormatted} de ${year}`;
-
           return {
             title,
-            groupTitle: 'Os cara',
+            groupTitle: name,
             text,
             users: reserve.users,
             id,
@@ -206,12 +194,13 @@ const ReserveList: React.FC = () => {
   */
 
   function amIPartyLeader(reserve: ReserveState) {
-    const leader = reserve.users.find((user) => user.role.slug === 'administrador');
-    console.log('Leader: ', leader);
-    if (!leader) return false;
-    console.log('I am: ', authContext.user);
-    console.log('Returning: ', authContext.user.enrollment === leader.enrollment);
-    return authContext.user.enrollment === leader.enrollment;
+    return false;
+    // const leader = reserve.users.find((user) => user.role.slug === 'administrador');
+    // console.log('Leader: ', leader);
+    // if (!leader) return false;
+    // console.log('I am: ', authContext.user);
+    // console.log('Returning: ', authContext.user.enrollment === leader.enrollment);
+    // return authContext.user.enrollment === leader.enrollment;
   }
 
   return (
@@ -249,7 +238,7 @@ const ReserveList: React.FC = () => {
                     <GroupMemberName>{student.name}</GroupMemberName>
 
                     <GroupMemberIconArea>
-                      <FaCrown visibility={student.role.slug === 'administrador' ? 'visible' : 'hidden'} />
+                      {/* <FaCrown visibility={student.role.slug === 'administrador' ? 'visible' : 'hidden'} /> */}
 
                       <FaTimes
                         visibility={
@@ -263,7 +252,8 @@ const ReserveList: React.FC = () => {
                   </GroupMember>
                 ))}
               </GroupMemberList>
-              <DeleteReserveButton visible={amIPartyLeader(reserve)} onClick={() => deleteReserve(reserve.id)}>
+              <DeleteReserveButton visible onClick={() => deleteReserve(reserve.id)}>
+                {/* visible={amIPartyLeader(reserve)}  */}
                 Deletar Reserva
               </DeleteReserveButton>
             </ReserveBottomSide>

@@ -47,7 +47,7 @@ interface ReserveContainerProps {
 
 export const ReservesList = styled.div`
   overflow-y: scroll;
-  height: calc(100vh - 124px);
+  height: calc(100vh - 175px);
 
   ::-webkit-scrollbar-track {
     background-color: transparent;

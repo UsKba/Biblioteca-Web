@@ -43,13 +43,12 @@ export const MiddleSide = styled.div<MobileModeProps>`
 
   background-color: ${colors.terciary};
 
-  /* @media only screen and (max-width: 640px) {
-    display: ${(props) => !props.visible && 'none'};
-
-    padding: 14px 10px 0 10px;
-  } */
   @media only screen and (max-width: 640px) {
     max-width: 100%;
+  }
+  @media only screen and (min-width: 640px) {
+    overflow-y: scroll;
+    height: calc(100vh - 50px);
   }
 `;
 
@@ -216,6 +215,7 @@ export const CancelButton = styled(Button)`
 
   padding: 9px 20px;
 
+  background-color: ${colors.background};
   color: ${colors.text};
 `;
 

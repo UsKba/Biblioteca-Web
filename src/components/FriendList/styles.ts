@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import colors from '~/styles/colors';
 
 export const FriendsContainer = styled.div`
-  display: flex;
   flex: 1;
   flex-direction: column;
   position: fixed;
@@ -68,8 +67,12 @@ export const FriendsPanelHidden = styled.div<FriendsPanelHiddenProps>`
   ${(props) => props.small && ' height:155px; visibility: visible; opacity: 1;'}
 `;
 
-export const FriendsPanel = styled.div`
-  display: flex;
+interface FriendsPanelProps {
+  visible?: boolean;
+}
+
+export const FriendsPanel = styled.div<FriendsPanelProps>`
+  display: ${({ visible }) => (visible === false ? 'none' : 'flex')};
   flex-direction: column;
   overflow-y: scroll;
 

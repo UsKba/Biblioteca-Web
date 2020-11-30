@@ -33,6 +33,7 @@ const FriendList: React.FC = () => {
   const [friendListOpen, setFriendListOpen] = useState(false);
   const [lineOpen, setLineOpen] = useState(false);
   const [pendingListOpen, setPendingListOpen] = useState(false);
+  const [friendsPanelVisible, setFriendsPanelVisible] = useState(true);
 
   function toggleFriendList() {
     setFriendListOpen(!friendListOpen);
@@ -67,46 +68,49 @@ const FriendList: React.FC = () => {
       <PendingButton
         onClick={() => {
           togglePendingList();
+          setFriendsPanelVisible(!friendsPanelVisible);
         }}
       >
         Pedidos Pendentes
         <FaArrowRight />
       </PendingButton>
 
-      <PendingPanelHidden appear={pendingListOpen}>
-        <FriendsPanelDetails>
-          <FriendIcon>
-            <FriendIconInitials>A</FriendIconInitials>
-          </FriendIcon>
-          <FriendsDetails>
-            <FriendName>Arisson Santas</FriendName>
-            <EnrollmentContainer>
-              <FriendEnrollment>20181104010062</FriendEnrollment>
-              <AcceptContainer>
-                <FaPlus color={colors.primary} />
+      {/* <PendingPanelHidden appear={pendingListOpen}>
+        <FriendsPanel>
+          <FriendsPanelDetails>
+            <FriendIcon>
+              <FriendIconInitials>A</FriendIconInitials>
+            </FriendIcon>
+            <FriendsDetails>
+              <FriendName>Arisson Santas</FriendName>
+              <EnrollmentContainer>
+                <FriendEnrollment>20181104010062</FriendEnrollment>
+                <AcceptContainer>
+                  <FaPlus color={colors.primary} />
 
-                <FaTimes />
-              </AcceptContainer>
-            </EnrollmentContainer>
-          </FriendsDetails>
-        </FriendsPanelDetails>
-        <FriendsPanelDetails>
-          <FriendIcon>
-            <FriendIconInitials>H</FriendIconInitials>
-          </FriendIcon>
-          <FriendsDetails>
-            <FriendName>Hari Holiveiro</FriendName>
-            <EnrollmentContainer>
-              <FriendEnrollment>20181104010004</FriendEnrollment>
-              <AcceptContainer>
-                <FaPlus color={colors.primary} />
+                  <FaTimes />
+                </AcceptContainer>
+              </EnrollmentContainer>
+            </FriendsDetails>
+          </FriendsPanelDetails>
+          <FriendsPanelDetails>
+            <FriendIcon>
+              <FriendIconInitials>H</FriendIconInitials>
+            </FriendIcon>
+            <FriendsDetails>
+              <FriendName>Hari Holiveiro</FriendName>
+              <EnrollmentContainer>
+                <FriendEnrollment>20181104010004</FriendEnrollment>
+                <AcceptContainer>
+                  <FaPlus color={colors.primary} />
 
-                <FaTimes />
-              </AcceptContainer>
-            </EnrollmentContainer>
-          </FriendsDetails>
-        </FriendsPanelDetails>
-      </PendingPanelHidden>
+                  <FaTimes />
+                </AcceptContainer>
+              </EnrollmentContainer>
+            </FriendsDetails>
+          </FriendsPanelDetails>
+        </FriendsPanel>
+      </PendingPanelHidden> */}
 
       <FriendsPanelHidden small={friendListOpen}>
         <FriendsPanelDetails>
@@ -142,7 +146,7 @@ const FriendList: React.FC = () => {
         <EmptySpan>Você não possui amigos, clique em + para adicionar alguém.</EmptySpan>
       </EmptyContainer>
 
-      <FriendsPanel>
+      <FriendsPanel visible={friendsPanelVisible}>
         <FriendsPanelDetails>
           <FriendIcon>
             <FriendIconInitials>J</FriendIconInitials>

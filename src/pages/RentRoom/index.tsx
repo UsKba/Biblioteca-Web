@@ -159,6 +159,7 @@ const RentRoom: React.FC = () => {
   async function handleCreateReserve() {
     try {
       const response = await api.post<ReserveResponse>('/reserves', {
+        name: groupName,
         roomId: selectedRoomId,
         scheduleId: selectedScheduleId,
         day: selectedDay.getDate(),
@@ -296,7 +297,7 @@ const RentRoom: React.FC = () => {
               <EnrollmentInput
                 type="number"
                 ref={inputRef}
-                placeholder="Digite um nome"
+                placeholder="Digite uma matrícula"
                 hideIcon
                 backgroundColor={colors.background}
                 value={username}
