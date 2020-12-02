@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { FaPlus, FaChevronDown, FaTimes, FaCrown } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { FaPlus, FaChevronDown, FaTimes } from 'react-icons/fa';
 
 import api from '~/services/api';
 
@@ -115,7 +115,7 @@ const ReserveList: React.FC = () => {
       });
       setReserves(newReserves);
     } catch (e) {
-      console.log(e.response.data);
+      // console.log(e.response.data);
       alert(e.response.data.error);
     }
   }
@@ -136,7 +136,7 @@ const ReserveList: React.FC = () => {
 
       setReserves(newReserves);
     } catch (e) {
-      console.log(e.response.data);
+      // console.log(e.response.data);
       alert(e.response.data.error);
     }
   }
@@ -193,7 +193,8 @@ const ReserveList: React.FC = () => {
 
   */
 
-  function amIPartyLeader(reserve: ReserveState) {
+  function amIPartyLeader() {
+    // (reserve: ReserveState)
     return false;
     // const leader = reserve.users.find((user) => user.role.slug === 'administrador');
     // console.log('Leader: ', leader);
@@ -242,8 +243,9 @@ const ReserveList: React.FC = () => {
 
                       <FaTimes
                         visibility={
-                          amIPartyLeader(reserve) && student.enrollment !== authContext.user.enrollment
-                            ? 'visible'
+                          amIPartyLeader() && student.enrollment !== authContext.user.enrollment
+                            ? // reserve
+                              'visible'
                             : 'hidden'
                         }
                         onClick={() => deleteGroupMember(reserve.id, student.id)}

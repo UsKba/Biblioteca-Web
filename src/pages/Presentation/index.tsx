@@ -3,7 +3,6 @@ import { AiOutlineThunderbolt } from 'react-icons/ai';
 import { FaDesktop, FaUserPlus, FaChalkboardTeacher } from 'react-icons/fa';
 // import { Link } from 'react-router-dom';
 
-import Button from '~/components/MainButton';
 import Spinner from '~/components/Spinner';
 
 import image from '~/assets/home_image.svg';

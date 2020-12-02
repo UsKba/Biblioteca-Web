@@ -1,7 +1,7 @@
 import React from 'react';
 import { BsCardChecklist } from 'react-icons/bs';
-import { FaUserAlt, FaUsers, FaBell, FaCogs } from 'react-icons/fa';
-import { useHistory, Switch, Route } from 'react-router-dom';
+import { FaUserAlt, FaUsers, FaBell } from 'react-icons/fa';
+import { useHistory, Route } from 'react-router-dom';
 
 import ToggleSwitch from '~/components/ToggleSwitch';
 

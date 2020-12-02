@@ -76,7 +76,7 @@ export const FriendsPanel = styled.div<FriendsPanelProps>`
   flex-direction: column;
   overflow-y: scroll;
 
-  max-height: 450px;
+  max-height: 400px;
 
   margin-top: 7px;
 
@@ -143,8 +143,6 @@ export const FriendEnrollment = styled.span`
 
 export const EnrollmentContainer = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-around;
 `;
 
 interface LineContainerProps {
@@ -245,16 +243,14 @@ export const PendingPanelHidden = styled.div<PendingPanelHiddenProps>`
 
   border-radius: 5px;
   margin: 10px 0 10px 0;
+  transition: 0.5s;
 
-  background-color: ${colors.terciary};
   ${(props) => props.appear && 'display: flex;'};
 `;
 
 export const AcceptContainer = styled.div`
   display: flex;
-  width: 2.5em;
+  margin-left: 3em;
   justify-content: space-between;
-  align-self: flex-end;
   color: ${colors.red};
-  margin-left: 4em;
 `;

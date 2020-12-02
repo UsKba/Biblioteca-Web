@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom';
 import api from '~/services/api';
 import suap from '~/services/suap';
 
+import { useFriends } from '~/contexts/FriendsContext';
+
 interface User {
   name: string;
   email: string;
@@ -49,6 +51,7 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
   const history = useHistory();
+  const friends = useFriends();
   const [user, setUser] = useState({} as User);
   const [loading, setLoading] = useState(false);
   const [isSigned, setIsSigned] = useState(false);
@@ -77,6 +80,7 @@ export const AuthProvider: React.FC = ({ children }) => {
       setLoading(false);
       setIsSigned(true);
 
+      await friends.fetchData();
       // console.log(token);
       if (history.location.hash) {
         history.push('/');
@@ -94,6 +98,7 @@ export const AuthProvider: React.FC = ({ children }) => {
         api.defaults.headers.authorization = `Bearer ${storagedToken}`;
         setUser(JSON.parse(storagedUser));
         setIsSigned(true);
+        await friends.fetchData();
       }
     }
 

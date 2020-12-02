@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
 import { AuthProvider } from '~/contexts/AuthContext';
+import { FriendsProvider } from '~/contexts/FriendsContext';
 
 // import Routes from './routes';
 import Routes from './routes';
@@ -12,9 +13,11 @@ function App() {
     <>
       <GlobalStyle />
       <BrowserRouter>
-        <AuthProvider>
-          <Routes />
-        </AuthProvider>
+        <FriendsProvider>
+          <AuthProvider>
+            <Routes />
+          </AuthProvider>
+        </FriendsProvider>
       </BrowserRouter>
     </>
   );
