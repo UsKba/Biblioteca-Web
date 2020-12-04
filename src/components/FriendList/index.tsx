@@ -24,7 +24,7 @@ import {
   EmptyContainer,
   EmptyTitle,
   EmptySpan,
-  FriendsPanelHidden,
+  // FriendsPanelHidden,
   PlusContainer,
   PendingButton,
   PendingPanelHidden,
@@ -32,19 +32,19 @@ import {
 } from './styles';
 
 const FriendList: React.FC = () => {
-  const [friendListOpen, setFriendListOpen] = useState(false);
-  const [lineOpen, setLineOpen] = useState(false);
+  // const [friendListOpen, setFriendListOpen] = useState(false);
+  // const [lineOpen, setLineOpen] = useState(false);
   const [pendingListOpen, setPendingListOpen] = useState(false);
   const [friendsPanelVisible, setFriendsPanelVisible] = useState(true);
   const friendsContext = useFriends();
   const [search, setSearch] = useState('');
 
-  function toggleFriendList() {
-    setFriendListOpen(!friendListOpen);
-  }
-  function toggleLine() {
-    setLineOpen(!lineOpen);
-  }
+  // function toggleFriendList() {
+  //   setFriendListOpen(!friendListOpen);
+  // }
+  // function toggleLine() {
+  //   setLineOpen(!lineOpen);
+  // }
   function togglePendingList() {
     setPendingListOpen(!pendingListOpen);
   }
@@ -53,7 +53,8 @@ const FriendList: React.FC = () => {
     <FriendsContainer>
       <TitlePanel>
         <Title>Amigos</Title>
-        <PlusContainer rotateIcon={friendListOpen}>
+        <PlusContainer>
+          {/* rotateIcon={friendListOpen} */}
           <FaPlus
             onClick={() => {
               friendsContext.sendInvite(Number(search));
@@ -83,8 +84,8 @@ const FriendList: React.FC = () => {
       </PendingButton>
 
       <PendingPanelHidden appear={pendingListOpen}>
-        <FriendsPanel>
-          {friendsContext.invites.map((invite) => (
+        {/* <FriendsPanel>
+         {friendsContext.invites.map((invite) => (
             <FriendsPanelDetails key={invite.id}>
               <FriendIcon>
                 <FriendIconInitials>{invite.senderId}</FriendIconInitials>
@@ -102,6 +103,38 @@ const FriendList: React.FC = () => {
               </FriendsDetails>
             </FriendsPanelDetails>
           ))}
+        </FriendsPanel> */}
+        <FriendsPanel>
+          <FriendsPanelDetails>
+            <FriendIcon>
+              <FriendIconInitials>A</FriendIconInitials>
+            </FriendIcon>
+            <FriendsDetails>
+              <FriendName>Arisson Santas</FriendName>
+              <EnrollmentContainer>
+                <FriendEnrollment>20181104010062</FriendEnrollment>
+                <AcceptContainer>
+                  <FaPlus color={colors.primary} />
+                  <FaTimes />
+                </AcceptContainer>
+              </EnrollmentContainer>
+            </FriendsDetails>
+          </FriendsPanelDetails>
+          <FriendsPanelDetails>
+            <FriendIcon>
+              <FriendIconInitials>H</FriendIconInitials>
+            </FriendIcon>
+            <FriendsDetails>
+              <FriendName>Hari Holiveiro</FriendName>
+              <EnrollmentContainer>
+                <FriendEnrollment>20181104010004</FriendEnrollment>
+                <AcceptContainer>
+                  <FaPlus color={colors.primary} />
+                  <FaTimes />
+                </AcceptContainer>
+              </EnrollmentContainer>
+            </FriendsDetails>
+          </FriendsPanelDetails>
         </FriendsPanel>
       </PendingPanelHidden>
 

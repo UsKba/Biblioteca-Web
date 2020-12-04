@@ -11,10 +11,15 @@ export const FriendsContainer = styled.div`
 
   @media only screen and (max-width: 640px) {
     position: initial;
+    margin-bottom: 50vh;
   }
 `;
 
-export const TitlePanel = styled.div`
+interface TitlePanelProps {
+  rotateIcon?: boolean;
+}
+
+export const TitlePanel = styled.div<TitlePanelProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,6 +35,8 @@ export const TitlePanel = styled.div`
     &:hover {
       color: ${colors.primary};
     }
+    transition: 0.25s;
+    ${(props) => props.rotateIcon && `transform: rotate(180deg);`}
   }
 `;
 
@@ -243,9 +250,10 @@ export const PendingPanelHidden = styled.div<PendingPanelHiddenProps>`
 
   border-radius: 5px;
   margin: 10px 0 10px 0;
+  opacity: 0;
   transition: 0.5s;
 
-  ${(props) => props.appear && 'display: flex;'};
+  ${(props) => props.appear && 'display: flex; opacity: 1;'};
 `;
 
 export const AcceptContainer = styled.div`

@@ -17,7 +17,7 @@ export const Container = styled.div`
   background-color: #fff;
 
   @media only screen and (max-width: 640px) {
-    flex-direction: column;
+    display: none;
   }
 `;
 

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import colors from '~/styles/colors';
+
 import Status from '~/components/Status';
 
 import ComputerModal from './components/ComputerModal';
@@ -26,6 +28,10 @@ import {
   MobileNavText,
   MobileNav,
   Line,
+  MobileStatus,
+  MobileStatusContainer,
+  MobileStatusSpan,
+  MobileStatusList,
 } from './styles';
 
 const RoomComputers = () => {
@@ -153,6 +159,27 @@ const RoomComputers = () => {
             <ErrorSpanLink>Avise-me quando houver.</ErrorSpanLink>
           </ErrorContainer>
         </RightSide>
+        <MobileStatusList>
+          <MobileStatusContainer>
+            <MobileStatus bgColor={colors.computerStatus[0]} />
+            <MobileStatusSpan>Disponível</MobileStatusSpan>
+          </MobileStatusContainer>
+
+          <MobileStatusContainer>
+            <MobileStatus bgColor={colors.computerStatus[1]} />
+            <MobileStatusSpan>Ausente</MobileStatusSpan>
+          </MobileStatusContainer>
+
+          <MobileStatusContainer>
+            <MobileStatus bgColor={colors.computerStatus[2]} />
+            <MobileStatusSpan>Ocupado</MobileStatusSpan>
+          </MobileStatusContainer>
+
+          <MobileStatusContainer>
+            <MobileStatus bgColor={colors.computerStatus[3]} />
+            <MobileStatusSpan>Indisponível</MobileStatusSpan>
+          </MobileStatusContainer>
+        </MobileStatusList>
       </Container>
     </>
   );

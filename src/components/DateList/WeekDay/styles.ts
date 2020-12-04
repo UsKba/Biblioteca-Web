@@ -21,7 +21,7 @@ export const WeekDayContainer = styled.div<WeekDayProps>`
   border-radius: 100px;
   background-color: ${({ active }) => (active === false ? `${colors.terciary}` : `${colors.primary}`)};
 
-  ${({ disabled }) => disabled && `border: 3px solid ${colors.text}; opacity: 0.4;`}
+  ${({ disabled }) => disabled && `border: 3px solid ${colors.text}; opacity: 0.7;`}
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
 
   span {

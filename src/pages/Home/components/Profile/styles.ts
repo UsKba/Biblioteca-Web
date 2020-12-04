@@ -104,7 +104,12 @@ export const CampusA = styled.a`
   svg {
     font-size: 20px;
     color: ${colors.secondary};
-    &:hover {
+  }
+  &:hover {
+    svg {
+      color: ${colors.primary};
+    }
+    span {
       color: ${colors.primary};
     }
   }

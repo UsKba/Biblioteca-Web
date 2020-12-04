@@ -40,6 +40,9 @@ export const MiddleTop = styled.div`
   text-align: center;
 
   padding: 30px 0;
+  @media only screen and (max-width: 640px) {
+    padding-top: 0;
+  }
 `;
 
 export const MiddleBottom = styled.div`
@@ -212,6 +215,9 @@ export const ErrorSpanLink = styled.span`
   font-family: 'Roboto';
 
   cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const MobileNav = styled.div`
@@ -253,4 +259,51 @@ export const Line = styled.div<LineStatus>`
 
     font-family: 'Ubuntu';
   }
+`;
+
+export const MobileStatusList = styled.div`
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 25px;
+  width: 100%;
+
+  padding: 0 5px;
+
+  background-color: ${colors.terciary};
+
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  @media only screen and (max-width: 640px) {
+    display: flex;
+  }
+`;
+
+interface MobileStatusProps {
+  bgColor?: string;
+}
+
+export const MobileStatusContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const MobileStatus = styled.div<MobileStatusProps>`
+  border-radius: 100px;
+
+  height: 20px;
+  width: 20px;
+
+  margin-right: 3px;
+
+  background-color: ${(props) => props.bgColor};
+`;
+
+export const MobileStatusSpan = styled.span`
+  font-family: 'Roboto';
+  font-size: 12px;
+
+  color: ${colors.text};
 `;
