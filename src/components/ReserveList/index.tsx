@@ -17,7 +17,9 @@ import {
   ReserveTitle,
   ReserveText,
   ReserveGroupName,
+  ButtonsContainer,
   DeleteReserveButton,
+  QuitReserveButton,
   StyledLink,
   EmptyContainer,
   EmptyTitle,
@@ -254,10 +256,13 @@ const ReserveList: React.FC = () => {
                   </GroupMember>
                 ))}
               </GroupMemberList>
-              <DeleteReserveButton visible onClick={() => deleteReserve(reserve.id)}>
-                {/* visible={amIPartyLeader(reserve)}  */}
-                Deletar Reserva
-              </DeleteReserveButton>
+              <ButtonsContainer>
+                <DeleteReserveButton visible onClick={() => deleteReserve(reserve.id)}>
+                  {/* visible={amIPartyLeader(reserve)}  */}
+                  Deletar Reserva
+                </DeleteReserveButton>
+                <QuitReserveButton>Sair</QuitReserveButton>
+              </ButtonsContainer>
             </ReserveBottomSide>
           </ReserveContainer>
         ))}

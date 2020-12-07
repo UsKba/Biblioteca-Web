@@ -71,8 +71,6 @@ export const RoomScheduling = styled.div`
   flex-direction: column;
 
   width: 100%;
-
-  margin-top: 36px;
 `;
 
 export const DateListContainer = styled.div`
@@ -87,7 +85,7 @@ export const DateListContainer = styled.div`
 `;
 
 export const Title = styled.span`
-  margin-bottom: 20px;
+  margin-bottom: 36px;
 
   font-size: 36px;
   font-family: 'Ubuntu';
@@ -107,7 +105,7 @@ export const Title2 = styled.span`
 `;
 
 export const Title3 = styled.span`
-  margin: 20px 0 20px 0;
+  margin: 36px 0 20px 0;
 
   font-size: 18px;
   font-family: 'Ubuntu';
@@ -120,7 +118,7 @@ export const Period = styled.div`
   display: flex;
   flex-direction: column;
 
-  margin-bottom: 50px;
+  margin-bottom: 36px;
 `;
 
 export const ChoosePeriod = styled.div`
@@ -128,7 +126,6 @@ export const ChoosePeriod = styled.div`
   justify-content: space-around;
 
   width: 100%;
-  height: 4em;
 `;
 
 interface PeriodButtonProps {
@@ -157,6 +154,8 @@ export const PeriodButton = styled(Button)<PeriodButtonProps>`
 export const Hour = styled.div`
   display: flex;
   flex-direction: column;
+
+  margin-bottom: 16px;
 `;
 
 export const ChooseHour = styled.div`
@@ -177,7 +176,7 @@ interface StyledButtonProps {
 export const HourButton = styled(Button)<StyledButtonProps>`
   display: ${({ visible }) => (visible === false ? 'none' : 'block')};
 
-  width: 16em;
+  width: 250px;
 
   margin-bottom: 1em;
 
@@ -197,7 +196,7 @@ export const HourButton = styled(Button)<StyledButtonProps>`
 `;
 
 export const RentButton = styled(Button)`
-  margin-bottom: 5px;
+  margin: 26px 0 5px 0;
   align-self: flex-start;
 
   padding: 9px 25px;
@@ -222,13 +221,13 @@ export const CancelButton = styled(Button)`
 export const RoomContainer = styled.div`
   display: flex;
   flex-direction: column;
+
+  margin-bottom: 36px;
 `;
 
 export const ChooseRoom = styled.div`
   display: flex;
   justify-content: space-around;
-
-  padding: 14px;
 
   @media only screen and (max-width: 640px) {
     flex-wrap: wrap;
@@ -279,7 +278,7 @@ export const GroupContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  margin-bottom: 50px;
+  margin-bottom: 36px;
 `;
 
 export const Group = styled.span`

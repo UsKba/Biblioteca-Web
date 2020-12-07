@@ -76,6 +76,13 @@ interface RoomState {
   available: boolean;
 }
 
+interface User {
+  id: number;
+  enrollment: string;
+  email: string;
+  name: string;
+}
+
 const RentRoom: React.FC = () => {
   const history = useHistory();
 
@@ -84,7 +91,7 @@ const RentRoom: React.FC = () => {
 
   const [username, setUsername] = useState('');
   const [groupName, setGroupName] = useState('');
-  const [components, setComponents] = useState<number[]>([]);
+  const [components, setComponents] = useState<User[]>([]);
   const [schedules, setSchedules] = useState([] as ScheduleState[]);
   const [rooms, setRooms] = useState([] as RoomState[]);
   const [selectedDay, setSelectedDay] = useState<Date>(new Date());
@@ -119,9 +126,9 @@ const RentRoom: React.FC = () => {
     }
   }
 
-  function handleAddComponent() {
+  async function handleAddComponent() {
     const findComponent = components.find((element) => {
-      return element === Number(username);
+      return element.enrollment === username;
     });
 
     if (username === '') {
@@ -139,18 +146,25 @@ const RentRoom: React.FC = () => {
       return;
     }
 
-    setComponents([...components, Number(username)]);
-    setUsername('');
+    try {
+      const response = await api.get(`/search/${username}`);
+      console.log(response.data);
 
-    if (inputRef.current) {
-      inputRef.current.focus();
+      setComponents([...components, response.data]);
+      setUsername('');
+
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    } catch (e) {
+      alert('Digite uma matrícula!');
     }
   }
 
-  function removeComponent(componentId: number) {
-    if (componentId !== user.id) {
+  function removeComponent(componentEnrollment: string) {
+    if (componentEnrollment !== user.enrollment) {
       const newComponents = components.filter((element) => {
-        return element !== componentId;
+        return element.enrollment !== componentEnrollment;
       });
       setComponents(newComponents);
     }
@@ -166,7 +180,7 @@ const RentRoom: React.FC = () => {
         month: selectedDay.getMonth(),
         // janeiro = month: 0
         year: selectedDay.getFullYear(),
-        classmatesIDs: components,
+        classmatesIDs: [10, 1, 2],
       });
       console.log(response.data);
       history.push('/');
@@ -211,7 +225,7 @@ const RentRoom: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    setComponents([user.id]);
+    setComponents([user]);
   }, [user]);
 
   return (
@@ -311,9 +325,10 @@ const RentRoom: React.FC = () => {
             <Title3>Grupo:</Title3>
             <ComponentList>
               {components.map((component) => (
-                <Component key={component}>
-                  {component}
-                  <FaTimes onClick={() => removeComponent(component)} />
+                <Component key={component.enrollment}>
+                  {component.name}
+                  {component.enrollment}
+                  <FaTimes onClick={() => removeComponent(component.enrollment)} />
                 </Component>
               ))}
             </ComponentList>

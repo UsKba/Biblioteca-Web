@@ -9,7 +9,7 @@ export const Container = styled.div`
   flex-direction: column;
   flex: 1;
 
-  padding: 14px;
+  padding: 14px 10px 0 10px;
 `;
 
 export const Title = styled.span`
@@ -65,7 +65,7 @@ export const ReserveContainer = styled.div<ReserveContainerProps>`
 
   height: 120px;
 
-  width: 98%;
+  width: 100%;
 
   padding: 10px;
   border-radius: 5px;
@@ -135,6 +135,8 @@ export const ReserveGroupName = styled.span`
 export const GroupMemberList = styled.div`
   display: flex;
   flex-direction: column;
+
+  margin-top: 16px;
 
   width: 100%;
 `;
@@ -211,6 +213,11 @@ export const ArrowTextContainer = styled.div`
   }
 `;
 
+export const ButtonsContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 interface DeleteReserveButtonProps {
   visible: boolean;
 }
@@ -219,8 +226,29 @@ export const DeleteReserveButton = styled.button<DeleteReserveButtonProps>`
   display: ${({ visible }) => (visible ? 'flex' : 'none')};
   text-align: center;
 
+  margin-right: auto;
+
+  border-radius: 5px;
+  border: none;
+
+  font-size: 12.5px;
+
+  color: ${colors.text};
+  background-color: transparent;
+
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export const QuitReserveButton = styled.button`
+  display: flex;
+  text-align: center;
+
   margin-left: auto;
-  padding: 8px 6px;
+  padding: 6px 21px;
 
   border-radius: 5px;
   border: none;
@@ -228,14 +256,10 @@ export const DeleteReserveButton = styled.button<DeleteReserveButtonProps>`
   font-size: 12.5px;
 
   color: ${colors.terciary};
-  background-color: ${colors.secondary};
+  background-color: ${colors.red};
 
   &:hover {
-    background-color: ${colors.primary};
-  }
-
-  &:active {
-    background-color: rgba(99, 138, 242, 0.6);
+    background-color: ${colors.lightred};
   }
 `;
 
@@ -253,9 +277,6 @@ export const EmptyContainer = styled.div<EmptyContainerProps>`
   flex-direction: column;
   align-items: center;
   text-align: center;
-
-  max-width: 450px;
-  height: 100px;
 
   padding: 10px;
 
