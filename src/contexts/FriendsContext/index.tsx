@@ -4,8 +4,14 @@ import api from '~/services/api';
 
 interface Invite {
   id: number;
-  senderId: number;
   receiverId: number;
+
+  sender: {
+    id: number;
+    name: string;
+    email: string;
+    enrollment: string;
+  };
 }
 
 interface Friend {
@@ -19,7 +25,7 @@ interface FriendsContextData {
   friends: Friend[];
   invites: Invite[];
   fetchData: () => void;
-  sendInvite: (enrollment: number) => Promise<void>;
+  sendInvite: (enrollment: string) => Promise<void>;
   acceptInvite: (inviteId: number) => Promise<void>;
 }
 
@@ -37,9 +43,9 @@ export const FriendsProvider: React.FC = ({ children }) => {
     setInvites(invitesResponse.data);
   }, []);
 
-  const sendInvite = useCallback(async (enrrolment: number) => {
+  const sendInvite = useCallback(async (enrollment: string) => {
     await api.post('invites', {
-      receiverId: enrrolment,
+      receiverEnrollment: enrollment,
     });
   }, []);
 

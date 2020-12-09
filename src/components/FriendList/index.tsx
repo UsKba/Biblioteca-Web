@@ -57,7 +57,7 @@ const FriendList: React.FC = () => {
           {/* rotateIcon={friendListOpen} */}
           <FaPlus
             onClick={() => {
-              friendsContext.sendInvite(Number(search));
+              friendsContext.sendInvite(search);
               setSearch('');
               // toggleFriendList();
               // toggleLine();
@@ -84,16 +84,16 @@ const FriendList: React.FC = () => {
       </PendingButton>
 
       <PendingPanelHidden appear={pendingListOpen}>
-        {/* <FriendsPanel>
-         {friendsContext.invites.map((invite) => (
+        <FriendsPanel>
+          {friendsContext.invites.map((invite) => (
             <FriendsPanelDetails key={invite.id}>
               <FriendIcon>
-                <FriendIconInitials>{invite.senderId}</FriendIconInitials>
+                <FriendIconInitials>{invite.sender.name[0]}</FriendIconInitials>
               </FriendIcon>
               <FriendsDetails>
-                <FriendName>{invite.senderId}</FriendName>
+                <FriendName>{invite.sender.name}</FriendName>
                 <EnrollmentContainer>
-                  <FriendEnrollment>{invite.senderId}</FriendEnrollment>
+                  <FriendEnrollment>{invite.sender.enrollment}</FriendEnrollment>
                   <AcceptContainer>
                     <FaPlus color={colors.primary} onClick={() => friendsContext.acceptInvite(invite.id)} />
 
@@ -103,7 +103,7 @@ const FriendList: React.FC = () => {
               </FriendsDetails>
             </FriendsPanelDetails>
           ))}
-        </FriendsPanel> */}
+        </FriendsPanel>
         <FriendsPanel>
           <FriendsPanelDetails>
             <FriendIcon>

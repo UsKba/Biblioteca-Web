@@ -52,7 +52,6 @@ export const HashTag = styled.span`
 
 export const Enrollment = styled.span`
   color: ${colors.dark};
-
   font-size: 15px;
 `;
 

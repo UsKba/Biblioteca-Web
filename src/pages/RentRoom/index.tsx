@@ -45,6 +45,12 @@ import {
   ComponentList,
   Component,
   ErrorContainer,
+  Enrollment,
+  ComponentInfo,
+  HashTag,
+  ProfileIcon,
+  ProfileIconInitials,
+  ComponentContainer,
 } from './styles';
 
 interface ReserveResponse {
@@ -326,8 +332,19 @@ const RentRoom: React.FC = () => {
             <ComponentList>
               {components.map((component) => (
                 <Component key={component.enrollment}>
-                  {component.name}
-                  {component.enrollment}
+                  <ComponentContainer>
+                    <ProfileIcon>
+                      <ProfileIconInitials>{user.name[0].toUpperCase()}</ProfileIconInitials>
+                    </ProfileIcon>
+                    <ComponentInfo>
+                      {component.name}
+                      <Enrollment>
+                        {' '}
+                        <HashTag>#</HashTag>
+                        {component.enrollment}
+                      </Enrollment>
+                    </ComponentInfo>
+                  </ComponentContainer>
                   <FaTimes onClick={() => removeComponent(component.enrollment)} />
                 </Component>
               ))}

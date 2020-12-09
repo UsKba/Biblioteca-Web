@@ -351,16 +351,18 @@ export const ComponentList = styled.div`
 
 export const Component = styled.span`
   display: flex;
+
   justify-content: space-between;
+  align-items: center;
 
   font-size: 16px;
   font-family: 'Roboto';
 
   padding: 15px 5px;
 
-  height: 45px;
+  height: 65px;
   width: 100%;
-  max-width: 250px;
+  max-width: 500px;
 
   margin-bottom: 10px;
 
@@ -374,4 +376,48 @@ export const Component = styled.span`
       color: ${colors.lightred};
     }
   }
+`;
+
+export const ComponentInfo = styled.span`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Enrollment = styled.span`
+  color: ${colors.dark};
+  font-size: 15px;
+`;
+
+export const HashTag = styled.span`
+  margin-right: 5px;
+
+  color: ${colors.dark};
+
+  font-size: 19px;
+  font-weight: 600;
+  font-family: 'Ubuntu';
+`;
+
+export const ProfileIcon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 40px;
+  width: 40px;
+
+  border-radius: 100px;
+
+  background-color: ${colors.primary};
+  color: ${colors.terciary};
+`;
+
+export const ProfileIconInitials = styled.span`
+  font-size: 20px;
+`;
+
+export const ComponentContainer = styled.div`
+  display: flex;
+  width: 200px;
+  justify-content: space-around;
 `;

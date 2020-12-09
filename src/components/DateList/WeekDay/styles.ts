@@ -12,7 +12,6 @@ export const WeekDayContainer = styled.div<WeekDayProps>`
   flex-direction: column;
   align-items: center;
 
-
   max-width: 43px;
 
   padding: 10px 5px;
@@ -33,15 +32,13 @@ export const WeekDayContainer = styled.div<WeekDayProps>`
     border: 3px solid ${({ active }) => (active === false ? `${colors.lightprimary}` : `${colors.primary}`)};
     ${({ disabled }) => disabled && `border: 3px solid ${colors.text}; cursor: no-drop;`}
   }
-
-
 `;
 
 export const DayOfWeek = styled.span<WeekDayProps>`
-  margin-bottom: 15px;
-
   font-family: 'Ubuntu';
   font-size: 18px;
+
+  margin-bottom: 18px;
 
   color: ${colors.text};
 `;
