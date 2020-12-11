@@ -50,3 +50,11 @@ export const WeekDayNumber = styled.span`
 
   color: ${colors.text};
 `;
+
+export const Today = styled.span`
+  font-family: 'Roboto';
+  font-size: 20px;
+  font-weight: bold;
+
+  color: ${colors.text};
+`;

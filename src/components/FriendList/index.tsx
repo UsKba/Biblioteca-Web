@@ -32,6 +32,7 @@ import {
 } from './styles';
 
 const FriendList: React.FC = () => {
+  // const friendsPanelRef = useRef<HTMLDivElement>(null);
   // const [friendListOpen, setFriendListOpen] = useState(false);
   // const [lineOpen, setLineOpen] = useState(false);
   const [pendingListOpen, setPendingListOpen] = useState(false);
@@ -48,6 +49,12 @@ const FriendList: React.FC = () => {
   function togglePendingList() {
     setPendingListOpen(!pendingListOpen);
   }
+
+  // useEffect(() => {
+  //   // console.log(friendsPanelRef.current?.clientHeight);
+  //   // if (friendsPanelRef.current?.clientHeight < 400) {
+  //   // }
+  // }, [friendsPanelRef]);
 
   return (
     <FriendsContainer>
@@ -160,6 +167,104 @@ const FriendList: React.FC = () => {
             </FriendsDetails>
           </FriendsPanelDetails>
         ))}
+        {/* <FriendsPanelDetails>
+          <FriendIcon>
+            <FriendIconInitials>A</FriendIconInitials>
+          </FriendIcon>
+          <FriendsDetails>
+            <FriendName>AAAA</FriendName>
+            <EnrollmentContainer>
+              <FriendEnrollment>
+                <strong># </strong>
+                AAAAAAAAAAAA
+              </FriendEnrollment>
+            </EnrollmentContainer>
+          </FriendsDetails>
+        </FriendsPanelDetails>
+        <FriendsPanelDetails>
+          <FriendIcon>
+            <FriendIconInitials>A</FriendIconInitials>
+          </FriendIcon>
+          <FriendsDetails>
+            <FriendName>AAAA</FriendName>
+            <EnrollmentContainer>
+              <FriendEnrollment>
+                <strong># </strong>
+                AAAAAAAAAAAA
+              </FriendEnrollment>
+            </EnrollmentContainer>
+          </FriendsDetails>
+        </FriendsPanelDetails>
+        <FriendsPanelDetails>
+          <FriendIcon>
+            <FriendIconInitials>A</FriendIconInitials>
+          </FriendIcon>
+          <FriendsDetails>
+            <FriendName>AAAA</FriendName>
+            <EnrollmentContainer>
+              <FriendEnrollment>
+                <strong># </strong>
+                AAAAAAAAAAAA
+              </FriendEnrollment>
+            </EnrollmentContainer>
+          </FriendsDetails>
+        </FriendsPanelDetails>
+        <FriendsPanelDetails>
+          <FriendIcon>
+            <FriendIconInitials>A</FriendIconInitials>
+          </FriendIcon>
+          <FriendsDetails>
+            <FriendName>AAAA</FriendName>
+            <EnrollmentContainer>
+              <FriendEnrollment>
+                <strong># </strong>
+                AAAAAAAAAAAA
+              </FriendEnrollment>
+            </EnrollmentContainer>
+          </FriendsDetails>
+        </FriendsPanelDetails>
+        <FriendsPanelDetails>
+          <FriendIcon>
+            <FriendIconInitials>A</FriendIconInitials>
+          </FriendIcon>
+          <FriendsDetails>
+            <FriendName>AAAA</FriendName>
+            <EnrollmentContainer>
+              <FriendEnrollment>
+                <strong># </strong>
+                AAAAAAAAAAAA
+              </FriendEnrollment>
+            </EnrollmentContainer>
+          </FriendsDetails>
+        </FriendsPanelDetails>
+        <FriendsPanelDetails>
+          <FriendIcon>
+            <FriendIconInitials>A</FriendIconInitials>
+          </FriendIcon>
+          <FriendsDetails>
+            <FriendName>AAAA</FriendName>
+            <EnrollmentContainer>
+              <FriendEnrollment>
+                <strong># </strong>
+                AAAAAAAAAAAA
+              </FriendEnrollment>
+            </EnrollmentContainer>
+          </FriendsDetails>
+        </FriendsPanelDetails>
+        <FriendsPanelDetails>
+          <FriendIcon>
+            <FriendIconInitials>A</FriendIconInitials>
+          </FriendIcon>
+          <FriendsDetails>
+            <FriendName>AAAA</FriendName>
+            <EnrollmentContainer>
+              <FriendEnrollment>
+                <strong># </strong>
+                AAAAAAAAAAAA
+              </FriendEnrollment>
+            </EnrollmentContainer>
+          </FriendsDetails>
+        </FriendsPanelDetails> */}
       </FriendsPanel>
     </FriendsContainer>
   );

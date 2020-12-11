@@ -163,7 +163,7 @@ const RentRoom: React.FC = () => {
         inputRef.current.focus();
       }
     } catch (e) {
-      alert('Digite uma matrícula!');
+      alert(e.response.data.error);
     }
   }
 
@@ -186,7 +186,7 @@ const RentRoom: React.FC = () => {
         month: selectedDay.getMonth(),
         // janeiro = month: 0
         year: selectedDay.getFullYear(),
-        classmatesIDs: [10, 1, 2],
+        classmatesIDs: components.map((component) => component.id),
       });
       console.log(response.data);
       history.push('/');

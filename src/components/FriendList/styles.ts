@@ -5,9 +5,8 @@ import colors from '~/styles/colors';
 export const FriendsContainer = styled.div`
   flex: 1;
   flex-direction: column;
-  position: fixed;
 
-  padding: 14px 10px 0 10px;
+  padding: 14px 0 0 10px;
 
   @media only screen and (max-width: 640px) {
     position: initial;
@@ -88,7 +87,9 @@ export const FriendsPanel = styled.div<FriendsPanelProps>`
   margin-top: 7px;
 
   border-radius: 5px;
-
+  /* ::-webkit-scrollbar {
+    width: 0;
+  } */
   ::-webkit-scrollbar-track {
     background: transparent;
   }
@@ -97,6 +98,8 @@ export const FriendsPanel = styled.div<FriendsPanelProps>`
 export const FriendsPanelDetails = styled.div`
   display: flex;
   flex-direction: row;
+
+  width: 280px;
 
   margin-bottom: 10px;
   padding: 10px;
