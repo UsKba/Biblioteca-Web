@@ -39,7 +39,7 @@ export const LeftSide = styled.div<MobileModeProps>`
   display: flex;
 
   width: 100%;
-  max-width: 300px;
+  max-width: 310px;
 
   @media only screen and (max-width: 640px) {
     display: ${(props) => !props.visible && 'none'};
@@ -66,7 +66,7 @@ export const RightSide = styled.div<MobileModeProps>`
   justify-content: flex-start;
 
   width: 100%;
-  max-width: 300px;
+  max-width: 310px;
 
   @media only screen and (max-width: 640px) {
     display: ${(props) => !props.visible && 'none'};

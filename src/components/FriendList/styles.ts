@@ -91,7 +91,7 @@ export const FriendsPanel = styled.div<FriendsPanelProps>`
     width: 0;
   } */
   ::-webkit-scrollbar-track {
-    background: transparent;
+    background: #c9c9c9;
   }
 `;
 
@@ -225,7 +225,7 @@ interface PlusContainerProps {
 
 export const PlusContainer = styled.div<PlusContainerProps>`
   transition: 0.28s;
-
+  margin-right: 10px;
   ${(props) =>
     props.rotateIcon && `transform: rotate(45deg); svg{ color: ${colors.red}; &:hover { color: ${colors.lightred}};}`}
 `;

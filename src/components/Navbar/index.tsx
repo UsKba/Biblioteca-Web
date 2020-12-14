@@ -57,7 +57,7 @@ const NavbarComponent: React.FC = () => {
           </LeftSide>
 
           <RightSide>
-            <Link to="/settings">
+            <Link to="/configuracoes">
               <NavItem small>
                 <FaCog />
               </NavItem>
@@ -73,22 +73,22 @@ const NavbarComponent: React.FC = () => {
             <SidebarItemName>Início</SidebarItemName>
           </StyledLink>
 
-          <StyledLink onClick={closeIfMobile} to="/reserve-morning">
+          <StyledLink onClick={closeIfMobile} to="/salas-manha">
             <FaChalkboardTeacher />
             <SidebarItemName>Salas</SidebarItemName>
           </StyledLink>
 
-          <StyledLink onClick={closeIfMobile} to="/computers">
+          <StyledLink onClick={closeIfMobile} to="/computadores">
             <FaDesktop />
             <SidebarItemName>Computadores</SidebarItemName>
           </StyledLink>
 
-          <StyledLink onClick={closeIfMobile} to="/report">
+          <StyledLink onClick={closeIfMobile} to="/bibliotecario">
             <MdChatBubble />
             <SidebarItemName>Bibliotecário</SidebarItemName>
           </StyledLink>
 
-          <StyledLink onClick={closeIfMobile} to="/about">
+          <StyledLink onClick={closeIfMobile} to="/sobre">
             <FaEnvelope />
             <SidebarItemName>Sobre</SidebarItemName>
           </StyledLink>

@@ -58,23 +58,24 @@ input{
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 7px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
   background: #fff;
+  border-radius: 5px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #555;
+  background: #999;
   border-radius: 5px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #333;
+  background: #777;
 }
 `;
 

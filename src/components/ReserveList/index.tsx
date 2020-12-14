@@ -210,7 +210,7 @@ const ReserveList: React.FC = () => {
     <Container>
       <TitlePanel>
         <Title>Reservas</Title>
-        <StyledLink to="/rent">
+        <StyledLink to="/reservar">
           <FaPlus />
         </StyledLink>
       </TitlePanel>

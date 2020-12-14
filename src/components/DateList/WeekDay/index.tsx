@@ -1,17 +1,18 @@
 import React from 'react';
 
-import { DayOfWeek, WeekDayContainer, WeekDayNumber } from './styles';
+import { DayOfWeek, WeekDayContainer, WeekDayNumber, Today } from './styles';
 
 interface Props {
   date: Date;
   onClick: () => void;
   active: boolean;
   disabled?: boolean;
+  isToday?: boolean;
 }
 
 const WEEK_DAYS = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
 
-const WeekDay: React.FC<Props> = ({ date, onClick, active, disabled }) => {
+const WeekDay: React.FC<Props> = ({ date, onClick, active, disabled, isToday }) => {
   return (
     <WeekDayContainer
       disabled={disabled}
@@ -22,6 +23,9 @@ const WeekDay: React.FC<Props> = ({ date, onClick, active, disabled }) => {
     >
       <DayOfWeek>{WEEK_DAYS[date.getDay()]}</DayOfWeek>
       <WeekDayNumber>{date.getDate()}</WeekDayNumber>
+      <Today>
+      {isToday && <span>Hoje</span>}
+      </Today>
     </WeekDayContainer>
   );
 };

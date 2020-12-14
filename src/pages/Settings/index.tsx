@@ -27,19 +27,22 @@ const Settings: React.FC = () => {
       <LeftSide>
         <Label>Configurações</Label>
         <ButtonList>
-          <Button onClick={() => history.push('/settings-general')} active={pathname === '/settings-general'}>
+          <Button onClick={() => history.push('/configuracoes-geral')} active={pathname === '/configuracoes-geral'}>
             <BsCardChecklist />
             Configurações Gerais
           </Button>
-          <Button onClick={() => history.push('/settings-user')} active={pathname === '/settings-user'}>
+          <Button onClick={() => history.push('/configuracoes-usuario')} active={pathname === '/configuracoes-usuario'}>
             <FaUserAlt />
             Configurações do Usuário
           </Button>
-          <Button onClick={() => history.push('/settings-notification')} active={pathname === '/settings-notification'}>
+          <Button
+            onClick={() => history.push('/configuracoes-notificacao')}
+            active={pathname === '/configuracoes-notificacao'}
+          >
             <FaBell />
             Configurações de Notificações
           </Button>
-          <Button onClick={() => history.push('/settings-voz')} active={pathname === '/settings-voz'}>
+          <Button onClick={() => history.push('/configuracoes-grupo')} active={pathname === '/configuracoes-grupo'}>
             <FaUsers />
             Configurações de Grupo
           </Button>
@@ -47,7 +50,7 @@ const Settings: React.FC = () => {
       </LeftSide>
 
       <RightSide>
-        <Route path="/settings-user" exact>
+        <Route path="/configuracoes-usuario" exact>
           <Label>Configurações do Usuário</Label>
           <SettingContainer>
             <SettingSpanContainer>
@@ -58,7 +61,7 @@ const Settings: React.FC = () => {
           </SettingContainer>
         </Route>
 
-        <Route path="/settings-notification" exact>
+        <Route path="/configuracoes-notificacao" exact>
           <Label>Configurações de Notificação</Label>
           <SettingContainer>
             <SettingSpanContainer>
@@ -85,7 +88,7 @@ const Settings: React.FC = () => {
           </SettingContainer>
         </Route>
 
-        <Route path="/settings-voz" exact>
+        <Route path="/configuracoes-grupo" exact>
           <Label>Configurações de Grupo </Label>
           <SettingContainer>
             <SettingSpanContainer>
@@ -98,7 +101,7 @@ const Settings: React.FC = () => {
           </SettingContainer>
         </Route>
 
-        <Route path="/settings-general" exact>
+        <Route path="/configuracoes-geral" exact>
           <Label>Configurações Gerais</Label>
           <SettingContainer>
             <SettingSpanContainer>

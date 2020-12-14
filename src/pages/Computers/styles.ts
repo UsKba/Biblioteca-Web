@@ -118,7 +118,7 @@ export const ComputerList = styled.div<MobileModeProps>`
 
   overflow-y: auto;
   ::-webkit-scrollbar-track {
-    background: transparent;
+    background: #e0e0e0;
   }
 `;
 

@@ -17,6 +17,10 @@ const DateList: React.FC<Props> = ({ selectDay }) => {
   const [selectedWeekDay, setSelectedWeekDay] = useState(isWeekend(today) ? 1 : today.getDay());
   const days = [1, 2, 3, 4, 5];
 
+  function isToday(weekDay: number) {
+    return weekDay === today.getDay();
+  }
+
   useEffect(() => {
     if (!selectDay) return;
     const selectedDate = new Date(sunday.getTime() + selectedWeekDay * DAY_IN_MILLISECONDS);
@@ -32,6 +36,7 @@ const DateList: React.FC<Props> = ({ selectDay }) => {
           date={new Date(sunday.getTime() + day * DAY_IN_MILLISECONDS)}
           active={selectedWeekDay === day}
           onClick={() => setSelectedWeekDay(day)}
+          isToday={isToday(day)}
         />
       ))}
     </Container>

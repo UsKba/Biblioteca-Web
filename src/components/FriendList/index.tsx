@@ -167,20 +167,6 @@ const FriendList: React.FC = () => {
             </FriendsDetails>
           </FriendsPanelDetails>
         ))}
-        {/* <FriendsPanelDetails>
-          <FriendIcon>
-            <FriendIconInitials>A</FriendIconInitials>
-          </FriendIcon>
-          <FriendsDetails>
-            <FriendName>AAAA</FriendName>
-            <EnrollmentContainer>
-              <FriendEnrollment>
-                <strong># </strong>
-                AAAAAAAAAAAA
-              </FriendEnrollment>
-            </EnrollmentContainer>
-          </FriendsDetails>
-        </FriendsPanelDetails>
         <FriendsPanelDetails>
           <FriendIcon>
             <FriendIconInitials>A</FriendIconInitials>
@@ -264,7 +250,21 @@ const FriendList: React.FC = () => {
               </FriendEnrollment>
             </EnrollmentContainer>
           </FriendsDetails>
-        </FriendsPanelDetails> */}
+        </FriendsPanelDetails>
+        <FriendsPanelDetails>
+          <FriendIcon>
+            <FriendIconInitials>A</FriendIconInitials>
+          </FriendIcon>
+          <FriendsDetails>
+            <FriendName>AAAA</FriendName>
+            <EnrollmentContainer>
+              <FriendEnrollment>
+                <strong># </strong>
+                AAAAAAAAAAAA
+              </FriendEnrollment>
+            </EnrollmentContainer>
+          </FriendsDetails>
+        </FriendsPanelDetails>
       </FriendsPanel>
     </FriendsContainer>
   );

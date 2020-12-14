@@ -7,31 +7,34 @@ import About from '~/pages/About';
 import Computers from '~/pages/Computers';
 import Home from '~/pages/Home';
 import Inbox from '~/pages/Inbox';
-import LibrarianReport from '~/pages/LibrarianReport';
+import LibrarianMessage from '~/pages/LibrarianMessage';
 import PageNotFound from '~/pages/PageNotFound';
-import RentRoom from '~/pages/RentRoom';
-import RoomReservation from '~/pages/RoomReservation';
+import Reserve from '~/pages/Reserve';
+import Rooms from '~/pages/Rooms';
 import Settings from '~/pages/Settings';
 
 export default function Routes() {
   return (
     <>
-      <Route path={['/reserve', '/', '/computers', '/rent', '/report', '/settings', '/topview']} component={Navbar} />
+      <Route
+        path={['/reserve', '/', '/computers', '/reservar', '/report', '/settings', '/topview', '/sobre']}
+        component={Navbar}
+      />
       <Switch>
-        <Route path="/reserve" exact component={RoomReservation} />
-        <Route path="/reserve-morning" exact component={RoomReservation} />
-        <Route path="/reserve-afternoon" exact component={RoomReservation} />
-        <Route path="/reserve-night" exact component={RoomReservation} />
+        <Route path="/reserve" exact component={Rooms} />
+        <Route path="/salas-manha" exact component={Rooms} />
+        <Route path="/salas-tarde" exact component={Rooms} />
+        <Route path="/salas-noite" exact component={Rooms} />
         <Route path="/" exact component={Home} />
-        <Route path="/computers" exact component={Computers} />
-        <Route path="/rent" exact component={RentRoom} />
-        <Route path="/report" exact component={LibrarianReport} />
-        <Route path="/settings" exact component={Settings} />
-        <Route path="/settings-user" exact component={Settings} />
-        <Route path="/settings-notification" exact component={Settings} />
-        <Route path="/settings-general" exact component={Settings} />
-        <Route path="/settings-voz" exact component={Settings} />
-        <Route path="/about" exact component={About} />
+        <Route path="/computadores" exact component={Computers} />
+        <Route path="/reservar" exact component={Reserve} />
+        <Route path="/bibliotecario" exact component={LibrarianMessage} />
+        <Route path="/configuracoes" exact component={Settings} />
+        <Route path="/configuracoes-usuario" exact component={Settings} />
+        <Route path="/configuracoes-notificacao" exact component={Settings} />
+        <Route path="/configuracoes-geral" exact component={Settings} />
+        <Route path="/configuracoes-grupo" exact component={Settings} />
+        <Route path="/sobre" exact component={About} />
 
         <Route path="/inbox" exact component={Inbox} />
 
