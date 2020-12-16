@@ -162,7 +162,7 @@ const ReserveList: React.FC = () => {
           const year = reserveDate.getFullYear();
 
           const title = `Reserva da sala ${initials}`;
-          const text = `Sala reservada às ${initialHour} - ${endHour} no dia ${day} de ${monthFormatted} de ${year}`;
+          const text = `Horário: ${initialHour} - ${endHour} no Dia: ${day} de ${monthFormatted} de ${year}`;
           return {
             title,
             groupTitle: name,

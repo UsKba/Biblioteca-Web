@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import {
   FaChalkboardTeacher,
   FaHome,
@@ -10,7 +11,6 @@ import {
 } from 'react-icons/fa';
 import { GoSignOut } from 'react-icons/go';
 import { MdChatBubble } from 'react-icons/md';
-import { Link } from 'react-router-dom';
 
 import { useAuth } from '~/contexts/AuthContext';
 
@@ -25,6 +25,7 @@ import {
   StyledLink,
   SidebarContainer,
   SpaceRemaining,
+  PageTitle,
 } from './styles';
 
 const NavbarComponent: React.FC = () => {
@@ -45,6 +46,12 @@ const NavbarComponent: React.FC = () => {
     setSidebarOpen(!sidebarOpen);
   }
 
+  // const location = useLocation();
+
+  // // React.useEffect(() => {
+  // //   console.log('Location changed');
+  // // }, [location]);
+
   return (
     <div>
       <Container>
@@ -54,6 +61,7 @@ const NavbarComponent: React.FC = () => {
             <NavItem onClick={toggleSidebar}>
               <FaBars />
             </NavItem>
+            <PageTitle>Teste</PageTitle>
           </LeftSide>
 
           <RightSide>

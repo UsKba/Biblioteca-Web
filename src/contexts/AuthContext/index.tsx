@@ -129,10 +129,10 @@ export const AuthProvider: React.FC = ({ children }) => {
   }, [handleSignIn]);
 
   function signOut() {
-    history.push('/');
     localStorage.clear();
     suap.logout();
     setIsSigned(false);
+    history.push('/');
   }
 
   return (

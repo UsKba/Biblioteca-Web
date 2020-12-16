@@ -147,3 +147,9 @@ export const SpaceRemaining = styled.div<SpaceRemainingProps>`
 
   background-color: rgba(0, 0, 0, 0);
 `;
+
+export const PageTitle = styled.span`
+  font-family: 'Ubuntu';
+  font-size: 24px;
+  color: ${colors.dark};
+`;

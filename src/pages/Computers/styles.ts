@@ -157,6 +157,8 @@ export const ComputerTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  height: 60px;
+
 
   margin-left: 10px;
 `;

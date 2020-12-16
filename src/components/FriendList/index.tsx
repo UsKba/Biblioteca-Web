@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FiCheck } from 'react-icons/fi';
+import { MdBlock } from 'react-icons/md';
 import { FaPlus, FaArrowRight, FaTimes } from 'react-icons/fa';
 
 import colors from '~/styles/colors';
@@ -103,7 +105,6 @@ const FriendList: React.FC = () => {
                   <FriendEnrollment>{invite.sender.enrollment}</FriendEnrollment>
                   <AcceptContainer>
                     <FaPlus color={colors.primary} onClick={() => friendsContext.acceptInvite(invite.id)} />
-
                     <FaTimes />
                   </AcceptContainer>
                 </EnrollmentContainer>
@@ -121,8 +122,9 @@ const FriendList: React.FC = () => {
               <EnrollmentContainer>
                 <FriendEnrollment>20181104010062</FriendEnrollment>
                 <AcceptContainer>
-                  <FaPlus color={colors.primary} />
-                  <FaTimes />
+                  <FiCheck color={colors.primary} />
+                  <FaTimes color={colors.red} />
+                  <MdBlock color={colors.dark} />
                 </AcceptContainer>
               </EnrollmentContainer>
             </FriendsDetails>
@@ -136,8 +138,9 @@ const FriendList: React.FC = () => {
               <EnrollmentContainer>
                 <FriendEnrollment>20181104010004</FriendEnrollment>
                 <AcceptContainer>
-                  <FaPlus color={colors.primary} />
-                  <FaTimes />
+                  <FiCheck color={colors.primary} />
+                  <FaTimes color={colors.red} />
+                  <MdBlock color={colors.dark} />
                 </AcceptContainer>
               </EnrollmentContainer>
             </FriendsDetails>

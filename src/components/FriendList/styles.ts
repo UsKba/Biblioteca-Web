@@ -153,6 +153,7 @@ export const FriendEnrollment = styled.span`
 
 export const EnrollmentContainer = styled.div`
   display: flex;
+
 `;
 
 interface LineContainerProps {
@@ -261,7 +262,10 @@ export const PendingPanelHidden = styled.div<PendingPanelHiddenProps>`
 
 export const AcceptContainer = styled.div`
   display: flex;
-  margin-left: 3em;
+  margin-left: 1em;
+  width: 5em;
   justify-content: space-between;
-  color: ${colors.red};
+  svg {
+    cursor: pointer;
+  }
 `;
