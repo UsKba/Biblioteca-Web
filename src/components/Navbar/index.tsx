@@ -30,7 +30,25 @@ import {
 
 const NavbarComponent: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [pageTitle, setPageTitle] = useState('');
   const { signOut } = useAuth();
+  const location = useLocation();
+
+  const titlePages = {
+    '/': 'Início',
+    '/salas-manha': 'Salas',
+    '/salas-tarde': 'Salas',
+    '/salas-noite': 'Salas',
+    '/computadores': 'Computadores',
+    '/sobre': 'Sobre',
+    '/bibliotecario': 'Falar com bibliotecário',
+    '/reservar': 'Agendamento de salas',
+    '/configuracoes': 'Configurações',
+    '/configuracoes-geral': 'Configurações',
+    '/configuracoes-usuario': 'Configurações',
+    '/configuracoes-notificacao': 'Configurações',
+    '/configuracoes-grupo': 'Configurações',
+  };
 
   function closeIfMobile() {
     if (window.innerWidth < 600) {
@@ -46,11 +64,10 @@ const NavbarComponent: React.FC = () => {
     setSidebarOpen(!sidebarOpen);
   }
 
-  // const location = useLocation();
-
-  // // React.useEffect(() => {
-  // //   console.log('Location changed');
-  // // }, [location]);
+  React.useEffect(() => {
+    const title = titlePages[location.pathname];
+    setPageTitle(title);
+  }, [location.pathname, titlePages]);
 
   return (
     <div>
@@ -61,7 +78,7 @@ const NavbarComponent: React.FC = () => {
             <NavItem onClick={toggleSidebar}>
               <FaBars />
             </NavItem>
-            <PageTitle>Teste</PageTitle>
+            <PageTitle>{pageTitle}</PageTitle>
           </LeftSide>
 
           <RightSide>

@@ -177,6 +177,7 @@ export const HourButton = styled(Button)<StyledButtonProps>`
   display: ${({ visible }) => (visible === false ? 'none' : 'block')};
 
   width: 250px;
+  padding: 9px 32.5px;
 
   margin-bottom: 1em;
 

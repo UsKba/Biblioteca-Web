@@ -62,6 +62,8 @@ useEffect chama sua função assim que a página carregar
    setScreenSwipe(index)
  }
 
+ Ler sobre objetos em javascript
+
 IDS:
 1 - Idaslon (Lonlon)
 2 - Fellipe (ZanZan)

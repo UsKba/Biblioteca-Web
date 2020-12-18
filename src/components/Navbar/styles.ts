@@ -29,7 +29,7 @@ export const LeftSide = styled.div`
   align-items: center;
 
   li:first-child {
-    margin-right: 60px;
+    margin-right: 15px;
   }
 `;
 
@@ -151,5 +151,6 @@ export const SpaceRemaining = styled.div<SpaceRemainingProps>`
 export const PageTitle = styled.span`
   font-family: 'Ubuntu';
   font-size: 24px;
+  font-weight: bold;
   color: ${colors.dark};
 `;

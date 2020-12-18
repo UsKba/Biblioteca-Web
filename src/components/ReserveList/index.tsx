@@ -162,8 +162,8 @@ const ReserveList: React.FC = () => {
           const year = reserveDate.getFullYear();
 
           const title = `Reserva da sala ${initials}`;
-          const text = `Horário: ${initialHour} - ${endHour} no Dia: ${day} de ${monthFormatted} de ${year}`;
-          return {
+          const text = `Horário: ${initialHour} - ${endHour} no dia: ${day} de ${monthFormatted} de ${year}`;
+            return {
             title,
             groupTitle: name,
             text,
@@ -226,8 +226,10 @@ const ReserveList: React.FC = () => {
             <ReserveTopSide onClick={() => toggleDropmenu(index)} rotateIcon={menuIndex === index}>
               <ReserveTitle>{reserve.title}</ReserveTitle>
               <ArrowTextContainer>
-                <ReserveText>{reserve.text}</ReserveText>
-                <FaChevronDown />
+                  <ReserveText>{reserve.text}</ReserveText>
+
+                   <FaChevronDown />
+
               </ArrowTextContainer>
               <ReserveText />
               <ReserveGroupName>{reserve.groupTitle}</ReserveGroupName>

@@ -265,7 +265,7 @@ const RentRoom: React.FC = () => {
           </ChoosePeriod>
         </Period>
         <Hour>
-          <Title2>Escolha um horário</Title2>
+          <Title2>Escolha um Horário</Title2>
           <ChooseHour>
             {schedules.map((schedule) => (
               <HourButton

@@ -135,6 +135,8 @@ interface PeriodButtonProps {
 export const PeriodButton = styled(Button)<PeriodButtonProps>`
   width: 10em;
 
+  margin: 0;
+
   background-color: ${({ active }) => (active === false ? `${colors.terciary}` : `${colors.primary}`)};
   color: ${({ active }) => (active === false ? `${colors.text}` : `${colors.terciary}`)};
 
@@ -160,11 +162,16 @@ export const Hour = styled.div`
 
 export const ChooseHour = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-around;
   flex-wrap: wrap;
 
   @media only screen and (max-width: 640px) {
     justify-content: space-between;
+  }
+
+  &:after {
+    content: '';
+    width: 199.5px;
   }
 `;
 
@@ -176,9 +183,10 @@ interface StyledButtonProps {
 export const HourButton = styled(Button)<StyledButtonProps>`
   display: ${({ visible }) => (visible === false ? 'none' : 'block')};
 
-  width: 250px;
+  padding: 9px 39.5px;
 
-  margin-bottom: 1em;
+  margin: 0;
+  margin-bottom: 20px;
 
   background-color: ${({ colorActive }) => (colorActive === false ? `${colors.terciary}` : `${colors.primary}`)};
   color: ${({ colorActive }) => (colorActive === false ? `${colors.text}` : `${colors.terciary}`)};

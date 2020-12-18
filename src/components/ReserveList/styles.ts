@@ -74,7 +74,7 @@ export const ReserveContainer = styled.div<ReserveContainerProps>`
 
   transition: 0.25s;
   background-color: ${colors.terciary};
-  ${(props) => props.small && `height: ${170 + props.usersAmount * 46}px;`}//32px
+  ${(props) => props.small && `height: ${173 + props.usersAmount * 46}px;`}//32px
 `;
 
 interface ReserveTopSideProps {
@@ -116,7 +116,6 @@ export const ReserveTitle = styled.span`
 
 export const ReserveText = styled.span`
   font-size: 13px;
-  text-align: justify;
   color: ${colors.text};
 
   margin-bottom: 8px;
@@ -203,11 +202,10 @@ export const GroupMemberName = styled.span`
 
 export const ArrowTextContainer = styled.div`
   display: flex;
-
   svg {
     margin-left: 10px;
 
-    font-size: 20px;
+    font-size: 18px;
 
     color: ${colors.dark};
   }
