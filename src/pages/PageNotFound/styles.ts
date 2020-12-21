@@ -32,6 +32,8 @@ export const OutlineButton = styled(Button)`
   padding: 9px 0;
 
   font-size: 18px;
+
+  margin-right: 20px;
 `;
 
 export const T1 = styled.span`

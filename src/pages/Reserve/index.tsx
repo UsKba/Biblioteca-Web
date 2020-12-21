@@ -95,8 +95,8 @@ const Reserve: React.FC = () => {
   const { user } = useAuth();
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const [username, setUsername] = useState('');
-  const [groupName, setGroupName] = useState('');
+  const [enrollment, setEnrollment] = useState('');
+  const [reserveName, setReserveName] = useState('');
   const [components, setComponents] = useState<User[]>([]);
   const [schedules, setSchedules] = useState([] as ScheduleState[]);
   const [rooms, setRooms] = useState([] as RoomState[]);
@@ -107,7 +107,7 @@ const Reserve: React.FC = () => {
   const [selectedScheduleId, setSelectedScheduleId] = useState(1);
   const [selectedRoomId, setSelectedRoomId] = useState(1);
 
-  const [groupNameError, setGroupNameError] = useState('');
+  const [reserveNameError, setReserveNameError] = useState('');
   const [addComponentError, setAddComponentError] = useState('');
 
   useEffect(() => {
@@ -123,22 +123,22 @@ const Reserve: React.FC = () => {
   }
 
   function validateGroupName() {
-    if (groupName === '') {
-      setGroupNameError('O nome do grupo não pode estar vazio');
-    } else if (groupName.length < 3) {
-      setGroupNameError('O nome do grupo não pode ter menos que 3 caracteres');
+    if (reserveName === '') {
+      setReserveNameError('O nome da reserva não pode estar vazio');
+    } else if (reserveName.length < 3) {
+      setReserveNameError('O nome da reserva não pode ter menos que 3 caracteres');
     } else {
-      setGroupNameError('');
+      setReserveNameError('');
     }
   }
 
   async function handleAddComponent() {
     const findComponent = components.find((element) => {
-      return element.enrollment === username;
+      return element.enrollment === enrollment;
     });
 
-    if (username === '') {
-      setAddComponentError('Por favor digite um id');
+    if (enrollment === '') {
+      setAddComponentError('Por favor digite uma matrícula');
       return;
     }
 
@@ -153,17 +153,20 @@ const Reserve: React.FC = () => {
     }
 
     try {
-      const response = await api.get(`/search/${username}`);
-      console.log(response.data);
+      const response = await api.get(`/search`, { params: { enrollment } });
 
-      setComponents([...components, response.data]);
-      setUsername('');
+      if (response.data.length === 0) {
+        alert('Usuário não encontrado');
+        return;
+      }
+      setComponents([...components, response.data[0]]);
+      setEnrollment('');
 
       if (inputRef.current) {
         inputRef.current.focus();
       }
     } catch (e) {
-      alert(e.response.data.error);
+      console.log(e);
     }
   }
 
@@ -179,14 +182,14 @@ const Reserve: React.FC = () => {
   async function handleCreateReserve() {
     try {
       const response = await api.post<ReserveResponse>('/reserves', {
-        name: groupName,
+        name: reserveName,
         roomId: selectedRoomId,
         scheduleId: selectedScheduleId,
         day: selectedDay.getDate(),
         month: selectedDay.getMonth(),
         // janeiro = month: 0
         year: selectedDay.getFullYear(),
-        classmatesIDs: components.map((component) => component.id),
+        classmatesEnrollments: components.map((component) => component.enrollment),
       });
       console.log(response.data);
       history.push('/');
@@ -265,7 +268,7 @@ const Reserve: React.FC = () => {
           </ChoosePeriod>
         </Period>
         <Hour>
-          <Title2>Escolha um horário</Title2>
+          <Title2>Escolha um Horário</Title2>
           <ChooseHour>
             {schedules.map((schedule) => (
               <HourButton
@@ -301,14 +304,14 @@ const Reserve: React.FC = () => {
               hideIcon
               placeholder="Exemplo: Grupo de História"
               backgroundColor={colors.background}
-              value={groupName}
+              value={reserveName}
               onChange={(event) => {
-                setGroupName(event.target.value);
+                setReserveName(event.target.value);
                 console.log(event.target.value);
               }}
             />
           </InputContainer>
-          <ErrorContainer error={groupNameError !== ''}>{groupNameError}</ErrorContainer>
+          <ErrorContainer error={reserveNameError !== ''}>{reserveNameError}</ErrorContainer>
         </GroupContainer>
         <ComponentsContainer>
           <Title2>Adicione componentes:</Title2>
@@ -320,9 +323,9 @@ const Reserve: React.FC = () => {
                 placeholder="Digite uma matrícula"
                 hideIcon
                 backgroundColor={colors.background}
-                value={username}
+                value={enrollment}
                 onChange={(event) => {
-                  setUsername(event.target.value);
+                  setEnrollment(event.target.value);
                 }}
               />
               <InputButton onClick={handleAddComponent}>+</InputButton>

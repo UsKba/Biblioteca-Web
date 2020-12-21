@@ -109,6 +109,8 @@ export const ScheduleButton = styled(Button)<ButtonProps>`
   border: 2px solid ${colors.primary};
   border-radius: 100px;
 
+  margin-right: 20px;
+
   background-color: ${({ active }) => (active === true ? `${colors.primary}` : `${colors.terciary}`)};
   color: ${({ active }) => (active === true ? `${colors.terciary}` : `${colors.text}`)};
 `;

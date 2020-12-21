@@ -21,37 +21,74 @@ interface Friend {
   email: string;
 }
 
+interface FriendsRequests {
+  sent: {
+    id: number;
+    status: number;
+    sender: {
+      id: number;
+      name: string;
+      email: string;
+      enrollment: string;
+    };
+    receiver: {
+      id: number;
+      name: string;
+      email: string;
+      enrollment: string;
+    };
+  }[];
+  received: {
+    id: number;
+    status: number;
+    sender: {
+      id: number;
+      name: string;
+      email: string;
+      enrollment: string;
+    };
+    receiver: {
+      id: number;
+      name: string;
+      email: string;
+      enrollment: string;
+    };
+  }[];
+}
+
 interface FriendsContextData {
   friends: Friend[];
-  invites: Invite[];
+  requests: FriendsRequests;
   fetchData: () => void;
   sendInvite: (enrollment: string) => Promise<void>;
   acceptInvite: (inviteId: number) => Promise<void>;
+  recuseInvite: (inviteId: number) => Promise<void>;
 }
 
 const FriendsContext = createContext<FriendsContextData>({} as FriendsContextData);
 
 export const FriendsProvider: React.FC = ({ children }) => {
   const [friends, setFriends] = useState<Friend[]>([]);
-  const [invites, setInvites] = useState<Invite[]>([]);
+  const [requests, setRequests] = useState<FriendsRequests>({ sent: [], received: [] });
 
   const fetchData = useCallback(async () => {
     const friendsResponse = await api.get<Friend[]>('friends');
-    const invitesResponse = await api.get<Invite[]>('invites');
+    const requestsResponse = await api.get<FriendsRequests>('friends/request');
 
     setFriends(friendsResponse.data);
-    setInvites(invitesResponse.data);
+    setRequests(requestsResponse.data);
+    console.log('Fez o fetch');
   }, []);
 
   const sendInvite = useCallback(async (enrollment: string) => {
-    await api.post('invites', {
+    await api.post('friends/request', {
       receiverEnrollment: enrollment,
     });
   }, []);
 
   const acceptInvite = useCallback(
     async (inviteId: number) => {
-      await api.post('invites/confirmation', {
+      await api.post('friends/request/confirmation', {
         id: inviteId,
       });
 
@@ -60,8 +97,16 @@ export const FriendsProvider: React.FC = ({ children }) => {
     [fetchData]
   );
 
+  const recuseInvite = useCallback(
+    async (inviteId: number) => {
+      await api.delete(`friends/request/${inviteId}`);
+      fetchData();
+    },
+    [fetchData]
+  );
+
   return (
-    <FriendsContext.Provider value={{ friends, fetchData, invites, sendInvite, acceptInvite }}>
+    <FriendsContext.Provider value={{ friends, fetchData, requests, sendInvite, recuseInvite, acceptInvite }}>
       {children}
     </FriendsContext.Provider>
   );

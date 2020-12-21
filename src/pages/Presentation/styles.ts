@@ -16,6 +16,7 @@ export const Container = styled.div`
 `;
 
 export const LoginButton = styled(Button)`
+  margin-right: 20px;
   @media screen and (max-width: 640px) {
     height: 40px;
     padding: 9px 37px;

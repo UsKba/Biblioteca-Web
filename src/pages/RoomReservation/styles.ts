@@ -106,6 +106,8 @@ export const ScheduleButton = styled(Button)<ButtonProps>`
   width: 100%;
   height: 45px;
 
+  margin-right: 20px;
+
   border: 2px solid ${colors.primary};
   border-radius: 100px;
 

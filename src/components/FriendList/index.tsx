@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import { FaPlus, FaArrowRight, FaTimes } from 'react-icons/fa';
 import { FiCheck } from 'react-icons/fi';
 import { MdBlock } from 'react-icons/md';
-import { FaPlus, FaArrowRight, FaTimes } from 'react-icons/fa';
 
 import colors from '~/styles/colors';
 
@@ -92,68 +92,35 @@ const FriendList: React.FC = () => {
         <FaArrowRight />
       </PendingButton>
 
-      <PendingPanelHidden appear={pendingListOpen}>
-        <FriendsPanel>
-          {friendsContext.invites.map((invite) => (
-            <FriendsPanelDetails key={invite.id}>
-              <FriendIcon>
-                <FriendIconInitials>{invite.sender.name[0]}</FriendIconInitials>
-              </FriendIcon>
-              <FriendsDetails>
-                <FriendName>{invite.sender.name}</FriendName>
-                <EnrollmentContainer>
-                  <FriendEnrollment>{invite.sender.enrollment}</FriendEnrollment>
-                  <AcceptContainer>
-                    <FaPlus color={colors.primary} onClick={() => friendsContext.acceptInvite(invite.id)} />
-                    <FaTimes />
-                  </AcceptContainer>
-                </EnrollmentContainer>
-              </FriendsDetails>
-            </FriendsPanelDetails>
-          ))}
-        </FriendsPanel>
-        <FriendsPanel>
-          <FriendsPanelDetails>
-            <FriendIcon>
-              <FriendIconInitials>A</FriendIconInitials>
-            </FriendIcon>
-            <FriendsDetails>
-              <FriendName>Arisson Santas</FriendName>
-              <EnrollmentContainer>
-                <FriendEnrollment>20181104010062</FriendEnrollment>
-                <AcceptContainer>
-                  <FiCheck color={colors.primary} />
-                  <FaTimes color={colors.red} />
-                  <MdBlock color={colors.dark} />
-                </AcceptContainer>
-              </EnrollmentContainer>
-            </FriendsDetails>
-          </FriendsPanelDetails>
-          <FriendsPanelDetails>
-            <FriendIcon>
-              <FriendIconInitials>H</FriendIconInitials>
-            </FriendIcon>
-            <FriendsDetails>
-              <FriendName>Hari Holiveiro</FriendName>
-              <EnrollmentContainer>
-                <FriendEnrollment>20181104010004</FriendEnrollment>
-                <AcceptContainer>
-                  <FiCheck color={colors.primary} />
-                  <FaTimes color={colors.red} />
-                  <MdBlock color={colors.dark} />
-                </AcceptContainer>
-              </EnrollmentContainer>
-            </FriendsDetails>
-          </FriendsPanelDetails>
-        </FriendsPanel>
-      </PendingPanelHidden>
+      {/* Painel de procurar amigos para adicionar */}
 
-      <EmptyContainer>
-        <EmptyTitle>Ninguém aqui...</EmptyTitle>
-        <EmptySpan>Você não possui amigos, clique em + para adicionar alguém.</EmptySpan>
-      </EmptyContainer>
-
+      {/* Painel de pedidos de amizade */}
       <FriendsPanel visible={friendsPanelVisible}>
+        {friendsContext.requests.received.map((request) => (
+          <FriendsPanelDetails key={request.id}>
+            <FriendIcon>
+              <FriendIconInitials>{request.sender.name[0]}</FriendIconInitials>
+            </FriendIcon>
+            <FriendsDetails>
+              <FriendName>{request.sender.name}</FriendName>
+              <EnrollmentContainer>
+                <FriendEnrollment>{request.sender.enrollment}</FriendEnrollment>
+                <AcceptContainer>
+                  <FiCheck color={colors.primary} onClick={() => friendsContext.acceptInvite(request.id)} />
+                  <FaTimes color={colors.red} onClick={() => friendsContext.recuseInvite(request.id)} />
+                  <MdBlock color={colors.dark} />
+                </AcceptContainer>
+              </EnrollmentContainer>
+            </FriendsDetails>
+          </FriendsPanelDetails>
+        ))}
+
+        <EmptyContainer>
+          <EmptyTitle>Ninguém aqui...</EmptyTitle>
+          <EmptySpan>Você não possui amigos, clique em + para adicionar alguém.</EmptySpan>
+        </EmptyContainer>
+      </FriendsPanel>
+      <FriendsPanel visible={!friendsPanelVisible}>
         {friendsContext.friends.map((friend) => (
           <FriendsPanelDetails key={friend.id}>
             <FriendIcon>
@@ -170,104 +137,6 @@ const FriendList: React.FC = () => {
             </FriendsDetails>
           </FriendsPanelDetails>
         ))}
-        <FriendsPanelDetails>
-          <FriendIcon>
-            <FriendIconInitials>A</FriendIconInitials>
-          </FriendIcon>
-          <FriendsDetails>
-            <FriendName>AAAA</FriendName>
-            <EnrollmentContainer>
-              <FriendEnrollment>
-                <strong># </strong>
-                AAAAAAAAAAAA
-              </FriendEnrollment>
-            </EnrollmentContainer>
-          </FriendsDetails>
-        </FriendsPanelDetails>
-        <FriendsPanelDetails>
-          <FriendIcon>
-            <FriendIconInitials>A</FriendIconInitials>
-          </FriendIcon>
-          <FriendsDetails>
-            <FriendName>AAAA</FriendName>
-            <EnrollmentContainer>
-              <FriendEnrollment>
-                <strong># </strong>
-                AAAAAAAAAAAA
-              </FriendEnrollment>
-            </EnrollmentContainer>
-          </FriendsDetails>
-        </FriendsPanelDetails>
-        <FriendsPanelDetails>
-          <FriendIcon>
-            <FriendIconInitials>A</FriendIconInitials>
-          </FriendIcon>
-          <FriendsDetails>
-            <FriendName>AAAA</FriendName>
-            <EnrollmentContainer>
-              <FriendEnrollment>
-                <strong># </strong>
-                AAAAAAAAAAAA
-              </FriendEnrollment>
-            </EnrollmentContainer>
-          </FriendsDetails>
-        </FriendsPanelDetails>
-        <FriendsPanelDetails>
-          <FriendIcon>
-            <FriendIconInitials>A</FriendIconInitials>
-          </FriendIcon>
-          <FriendsDetails>
-            <FriendName>AAAA</FriendName>
-            <EnrollmentContainer>
-              <FriendEnrollment>
-                <strong># </strong>
-                AAAAAAAAAAAA
-              </FriendEnrollment>
-            </EnrollmentContainer>
-          </FriendsDetails>
-        </FriendsPanelDetails>
-        <FriendsPanelDetails>
-          <FriendIcon>
-            <FriendIconInitials>A</FriendIconInitials>
-          </FriendIcon>
-          <FriendsDetails>
-            <FriendName>AAAA</FriendName>
-            <EnrollmentContainer>
-              <FriendEnrollment>
-                <strong># </strong>
-                AAAAAAAAAAAA
-              </FriendEnrollment>
-            </EnrollmentContainer>
-          </FriendsDetails>
-        </FriendsPanelDetails>
-        <FriendsPanelDetails>
-          <FriendIcon>
-            <FriendIconInitials>A</FriendIconInitials>
-          </FriendIcon>
-          <FriendsDetails>
-            <FriendName>AAAA</FriendName>
-            <EnrollmentContainer>
-              <FriendEnrollment>
-                <strong># </strong>
-                AAAAAAAAAAAA
-              </FriendEnrollment>
-            </EnrollmentContainer>
-          </FriendsDetails>
-        </FriendsPanelDetails>
-        <FriendsPanelDetails>
-          <FriendIcon>
-            <FriendIconInitials>A</FriendIconInitials>
-          </FriendIcon>
-          <FriendsDetails>
-            <FriendName>AAAA</FriendName>
-            <EnrollmentContainer>
-              <FriendEnrollment>
-                <strong># </strong>
-                AAAAAAAAAAAA
-              </FriendEnrollment>
-            </EnrollmentContainer>
-          </FriendsDetails>
-        </FriendsPanelDetails>
       </FriendsPanel>
     </FriendsContainer>
   );
