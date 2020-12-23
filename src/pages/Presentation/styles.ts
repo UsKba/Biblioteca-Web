@@ -43,6 +43,10 @@ export const TextButton = styled(Link)`
 
   font-size: 20px;
   color: ${colors.dark};
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const BottomSide = styled.div`

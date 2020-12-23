@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { FaPlus, FaArrowRight, FaTimes } from 'react-icons/fa';
-import { FiCheck } from 'react-icons/fi';
+import { FaPlus, FaArrowRight } from 'react-icons/fa';
+import { FiCheck, FiX } from 'react-icons/fi';
 import { MdBlock } from 'react-icons/md';
 
 import colors from '~/styles/colors';
@@ -29,7 +29,6 @@ import {
   // FriendsPanelHidden,
   PlusContainer,
   PendingButton,
-  PendingPanelHidden,
   AcceptContainer,
 } from './styles';
 
@@ -107,7 +106,7 @@ const FriendList: React.FC = () => {
                 <FriendEnrollment>{request.sender.enrollment}</FriendEnrollment>
                 <AcceptContainer>
                   <FiCheck color={colors.primary} onClick={() => friendsContext.acceptInvite(request.id)} />
-                  <FaTimes color={colors.red} onClick={() => friendsContext.recuseInvite(request.id)} />
+                  <FiX color={colors.red} onClick={() => friendsContext.recuseInvite(request.id)} />
                   <MdBlock color={colors.dark} />
                 </AcceptContainer>
               </EnrollmentContainer>

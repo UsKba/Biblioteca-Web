@@ -34,7 +34,7 @@ const Presentation: React.FC = () => {
     <Container>
       <TopSide>
         <TextButton to="#">Suporte</TextButton>
-        <TextButton to="#">Sobre</TextButton>
+        <TextButton to="/sobre">Sobre</TextButton>
         {!signed && (
           <a href={signInSuapUrl}>
             <LoginButton>{loading ? <Spinner /> : 'Entrar'}</LoginButton>
