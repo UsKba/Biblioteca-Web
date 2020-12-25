@@ -247,7 +247,7 @@ const Reserve: React.FC = () => {
       </LeftSide>
       <MiddleSide>
         <RoomScheduling>
-          <Title>Agendamento de sala</Title>
+          {/* <Title>Agendamento de sala</Title> */}
           <Title2>Escolha uma data</Title2>
         </RoomScheduling>
         <DateListContainer>

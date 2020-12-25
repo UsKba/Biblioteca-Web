@@ -153,8 +153,8 @@ export const GroupMember = styled.div`
 
 export const GroupMemberIconArea = styled.div`
   display: flex;
-  justify-content: space-between;
-  flex: 1;
+
+  margin-left: auto;
 
   svg {
     color: ${colors.red};
@@ -162,14 +162,6 @@ export const GroupMemberIconArea = styled.div`
     &:hover {
       color: ${colors.lightred};
     }
-  }
-
-  svg:first-child {
-    cursor: default;
-    position: relative;
-    top: -4px;
-    color: ${colors.golden};
-    font-size: 10px;
   }
 `;
 
@@ -295,4 +287,12 @@ export const EmptySpan = styled.span`
   font-size: 14px;
 
   color: ${colors.text};
+`;
+
+interface AwardSvgProps {
+  visible: boolean;
+}
+
+export const AwardSvg = styled.img<AwardSvgProps>`
+  display: ${(props) => !props.visible && 'none'};
 `;

@@ -3,6 +3,7 @@ import { FaPlus, FaChevronDown, FaTimes } from 'react-icons/fa';
 
 import api from '~/services/api';
 
+import awardIcon from '~/assets/award.svg';
 import { useAuth } from '~/contexts/AuthContext';
 
 import {
@@ -29,7 +30,15 @@ import {
   GroupMemberIcon,
   GroupMemberName,
   GroupMemberIconArea,
+  AwardSvg,
 } from './styles';
+
+interface User {
+  id: number;
+  enrollment: string;
+  email: string;
+  name: string;
+}
 
 interface ReserveResponse {
   room: {
@@ -42,28 +51,20 @@ interface ReserveResponse {
     endHour: string;
     periodId: number;
   };
-  users: {
-    id: number;
-    enrollment: string;
-    email: string;
-    name: string;
-  }[];
+  users: User[];
   id: number;
   date: string;
   name: string;
+  adminId: number;
 }
 
 interface ReserveState {
   title: string;
   groupTitle: string;
   text: string;
-  users: {
-    name: string;
-    id: number;
-    enrollment: string;
-    email: string;
-  }[];
+  users: User[];
   id: number;
+  adminId: number;
 }
 
 const ReserveList: React.FC = () => {
@@ -79,12 +80,59 @@ const ReserveList: React.FC = () => {
     }
   }
 
+  function isReserveAdmin(reserve: ReserveState, user: User) {
+    if (reserve.adminId === user.id) {
+      return true;
+    }
+    return false;
+  }
+
+  function showDeleteIcon(reserve: ReserveState, user: User) {
+    if (isReserveAdmin(reserve, authContext.user)) {
+      if (authContext.user.id === user.id) {
+        return 'none';
+      }
+
+      return 'inline-block';
+    }
+
+    return 'none';
+  }
+
+  async function quitReserve(reserveToQuit: ReserveState) {
+    const response = window.confirm('Tem certeza que deseja sair desta reserva?');
+
+    if (!response) {
+      return;
+    }
+
+    if (reserveToQuit.users.length <= 3) {
+      const response2 = window.confirm(
+        'Atenção! Essa reserva possui apenas 3 membros, se você sair ela será deletada, tem certeza que deseja sair?'
+      );
+
+      if (!response2) {
+        return;
+      }
+    }
+
+    try {
+      await api.delete(`/reserves/${reserveToQuit.id}/users/${authContext.user.id}`);
+      const newReserves = reserves.filter((reserve) => {
+        return reserve.id !== reserveToQuit.id;
+      });
+      setReserves(newReserves);
+    } catch (e) {
+      alert('Erro ao sair da reserva!');
+    }
+  }
+
   async function deleteGroupMember(reserveId: number, userId: number) {
     const findReserve = reserves.find((reserve) => {
       return reserve.id === reserveId;
     });
 
-    const response = window.confirm('Tem certeza que deseja excluir este membro do grupo?');
+    const response = window.confirm('Tem certeza que deseja excluir este membro da reserva?');
 
     if (!response) {
       return;
@@ -169,6 +217,7 @@ const ReserveList: React.FC = () => {
             text,
             users: reserve.users,
             id,
+            adminId: reserve.adminId,
           };
         });
         setReserves(reservesFormatted);
@@ -179,32 +228,6 @@ const ReserveList: React.FC = () => {
     }
     loadReserves();
   }, []);
-
-  /*
-  let emptyContainerVisible;
-
-  if (reserves.length === 0){
-   emptyContainerVisible = true;
-  }else{
-    emptyContainerVisible = false;
-  }
-
-  É IGUAL A
-
-  emptyContainerVisible = reserves.length === 0
-
-  */
-
-  function amIPartyLeader() {
-    // (reserve: ReserveState)
-    return false;
-    // const leader = reserve.users.find((user) => user.role.slug === 'administrador');
-    // console.log('Leader: ', leader);
-    // if (!leader) return false;
-    // console.log('I am: ', authContext.user);
-    // console.log('Returning: ', authContext.user.enrollment === leader.enrollment);
-    // return authContext.user.enrollment === leader.enrollment;
-  }
 
   return (
     <Container>
@@ -236,22 +259,17 @@ const ReserveList: React.FC = () => {
 
             <ReserveBottomSide>
               <GroupMemberList>
-                {reserve.users.map((student) => (
-                  <GroupMember key={student.id}>
-                    <GroupMemberIcon>{student.name[0]}</GroupMemberIcon>
-                    <GroupMemberName>{student.name}</GroupMemberName>
+                {reserve.users.map((user) => (
+                  <GroupMember key={user.id}>
+                    <GroupMemberIcon>{user.name[0]}</GroupMemberIcon>
+                    <GroupMemberName>{user.name}</GroupMemberName>
 
                     <GroupMemberIconArea>
-                      {/* <FaCrown visibility={student.role.slug === 'administrador' ? 'visible' : 'hidden'} /> */}
+                      <AwardSvg src={awardIcon} alt="medalha" visible={isReserveAdmin(reserve, user)} />
 
                       <FaTimes
-                        visibility={
-                          amIPartyLeader() && student.enrollment !== authContext.user.enrollment
-                            ? // reserve
-                              'visible'
-                            : 'hidden'
-                        }
-                        onClick={() => deleteGroupMember(reserve.id, student.id)}
+                        display={showDeleteIcon(reserve, user)}
+                        onClick={() => deleteGroupMember(reserve.id, user.id)}
                       />
                     </GroupMemberIconArea>
                   </GroupMember>
@@ -262,7 +280,7 @@ const ReserveList: React.FC = () => {
                   {/* visible={amIPartyLeader(reserve)}  */}
                   Deletar Reserva
                 </DeleteReserveButton>
-                <QuitReserveButton>Sair</QuitReserveButton>
+                <QuitReserveButton onClick={() => quitReserve(reserve)}>Sair</QuitReserveButton>
               </ButtonsContainer>
             </ReserveBottomSide>
           </ReserveContainer>
