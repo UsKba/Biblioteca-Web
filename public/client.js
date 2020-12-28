@@ -249,7 +249,7 @@ const SuapClient = function (authHost, clientID, redirectURI) {
         window.location = redirectURI;
       },
       error(response) {
-        alert('Falha na comunicação com o SUAP');
+        // alert('Falha na comunicação com o SUAP');
         console.log(response);
       },
     });

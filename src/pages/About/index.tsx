@@ -1,10 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import image from '~/assets/about_img.svg';
+import { useAuth } from '~/contexts/AuthContext';
 
-import { Container, H1, Title, Line, TextContainer, TextContainer2, Text, Image, MiddleSide } from './styles';
+import { Container, H1, Title, Line, TextContainer, TextContainer2, Text, Image, MiddleSide, Back } from './styles';
 
 const About: React.FC = () => {
+  const { signed } = useAuth();
+
   return (
     <Container>
       <Title>
@@ -21,6 +25,7 @@ const About: React.FC = () => {
         </TextContainer>
         <Image src={image} />
       </MiddleSide>
+
       <TextContainer2>
         <Text>
           Com a aplicação é possível ver antes mesmo de sair de casa se as ferramentas que irá utilizar na biblioteca
@@ -28,6 +33,9 @@ const About: React.FC = () => {
           forma os alunos terão o acesso ao ambiente de uma maneira organizada, planejada e certa.
         </Text>
       </TextContainer2>
+      <Link to="/">
+        <Back isSigned={signed}>Voltar</Back>
+      </Link>
     </Container>
   );
 };

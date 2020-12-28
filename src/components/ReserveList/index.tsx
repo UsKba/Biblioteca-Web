@@ -276,7 +276,10 @@ const ReserveList: React.FC = () => {
                 ))}
               </GroupMemberList>
               <ButtonsContainer>
-                <DeleteReserveButton visible onClick={() => deleteReserve(reserve.id)}>
+                <DeleteReserveButton
+                  visible={isReserveAdmin(reserve, authContext.user)}
+                  onClick={() => deleteReserve(reserve.id)}
+                >
                   {/* visible={amIPartyLeader(reserve)}  */}
                   Deletar Reserva
                 </DeleteReserveButton>

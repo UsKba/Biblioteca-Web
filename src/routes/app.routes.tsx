@@ -6,7 +6,7 @@ import Navbar from '~/components/Navbar';
 import About from '~/pages/About';
 import Computers from '~/pages/Computers';
 import Home from '~/pages/Home';
-import Inbox from '~/pages/Inbox';
+// import Inbox from '~/pages/Inbox';
 import LibrarianMessage from '~/pages/LibrarianMessage';
 import PageNotFound from '~/pages/PageNotFound';
 import Reserve from '~/pages/Reserve';
@@ -17,11 +17,26 @@ export default function Routes() {
   return (
     <>
       <Route
-        path={['/reserve', '/', '/computers', '/reservar', '/report', '/settings', '/topview']}
+        path={[
+          '/salas-manha',
+          '/salas-tarde',
+          '/salas-noite',
+          '/',
+          '/computadores',
+          '/reservar',
+          'bibliotecario',
+          'configuracoes',
+          'configuracoes-usuario',
+          '/configuracoes-notificacao',
+          '/configuracoes-geral',
+          '/configuracoes-grupo',
+          '/bibliotecario',
+          '/sobre',
+        ]}
+        exact
         component={Navbar}
       />
       <Switch>
-        <Route path="/reserve" exact component={Rooms} />
         <Route path="/salas-manha" exact component={Rooms} />
         <Route path="/salas-tarde" exact component={Rooms} />
         <Route path="/salas-noite" exact component={Rooms} />
@@ -36,7 +51,7 @@ export default function Routes() {
         <Route path="/configuracoes-grupo" exact component={Settings} />
         <Route path="/sobre" exact component={About} />
 
-        <Route path="/inbox" exact component={Inbox} />
+        {/* <Route path="/inbox" exact component={Inbox} /> */}
 
         <Route path="/" component={PageNotFound} />
       </Switch>

@@ -123,9 +123,7 @@ const Reserve: React.FC = () => {
   }
 
   function validateGroupName() {
-    if (reserveName === '') {
-      setReserveNameError('O nome da reserva não pode estar vazio');
-    } else if (reserveName.length < 3) {
+    if (reserveName.length < 3) {
       setReserveNameError('O nome da reserva não pode ter menos que 3 caracteres');
     } else {
       setReserveNameError('');
@@ -195,7 +193,7 @@ const Reserve: React.FC = () => {
       history.push('/');
       alert('Reserva criada!');
     } catch (e) {
-      console.log(e);
+      // console.log(e);
       alert(e.response.data.error);
     }
   }
