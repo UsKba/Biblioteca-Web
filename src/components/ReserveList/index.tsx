@@ -40,7 +40,7 @@ interface User {
   name: string;
 }
 
-interface ReserveResponse {
+export interface ReserveResponse {
   room: {
     id: number;
     initials: string;

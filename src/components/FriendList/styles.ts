@@ -80,9 +80,9 @@ interface FriendsPanelProps {
 export const FriendsPanel = styled.div<FriendsPanelProps>`
   display: ${({ visible }) => (visible === false ? 'none' : 'flex')};
   flex-direction: column;
-  overflow-y: scroll;
+  overflow-y: auto;
 
-  max-height: 400px;
+  max-height: 390px;
 
   margin-top: 7px;
 
@@ -153,7 +153,6 @@ export const FriendEnrollment = styled.span`
 
 export const EnrollmentContainer = styled.div`
   display: flex;
-
 `;
 
 interface LineContainerProps {
@@ -163,8 +162,9 @@ interface LineContainerProps {
 export const LineContainer = styled.div<LineContainerProps>`
   display: flex;
 
-  margin: 15px 0 15px auto;
-  ${(props) => props.left && 'margin: 15px auto 15px 0;'}
+  margin: 15px 20px 15px 0;
+
+  justify-content: ${({ left }) => (left === false ? 'flex-end;' : 'flex-start;')};
 `;
 
 export const Line1 = styled.div`
@@ -189,49 +189,21 @@ export const Line2 = styled.div`
   }
 `;
 
-export const EmptyContainer = styled.div`
-  display: flex;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-
-  max-width: 450px;
-  height: 100px;
-
-  padding: 10px;
-
-  background-color: ${colors.terciary};
-`;
-
-export const EmptyTitle = styled.span`
-  font-family: 'Ubuntu';
-  font-size: 16px;
-
-  margin-bottom: 10px;
-
-  color: ${colors.dark};
-`;
-
-export const EmptySpan = styled.span`
-  font-family: 'Roboto';
-  font-size: 14px;
-
-  color: ${colors.text};
-`;
-
 interface PlusContainerProps {
   rotateIcon?: boolean;
 }
 
 export const PlusContainer = styled.div<PlusContainerProps>`
   transition: 0.28s;
-  margin-right: 10px;
+  margin-right: 20px;
+  svg {
+    font-size: 20px;
+  }
   ${(props) =>
     props.rotateIcon && `transform: rotate(45deg); svg{ color: ${colors.red}; &:hover { color: ${colors.lightred}};}`}
 `;
 
-export const PendingButton = styled.div`
+export const PendingButton = styled.button`
   display: flex;
   justify-content: space-between;
   padding: 15px;
@@ -240,7 +212,11 @@ export const PendingButton = styled.div`
   height: 45px;
   background-color: ${colors.terciary};
   color: #666666;
+  border: none;
   cursor: pointer;
+  svg {
+    margin-left: 45px;
+  }
 `;
 
 interface PendingPanelHiddenProps {
@@ -268,4 +244,55 @@ export const AcceptContainer = styled.div`
   svg {
     cursor: pointer;
   }
+`;
+
+interface PendingFriendsAlertProps {
+  visible?: boolean;
+}
+
+export const PendingFriendsAlert = styled.div<PendingFriendsAlertProps>`
+  display: ${({ visible }) => (visible === false ? 'none' : 'flex')};
+  align-items: center;
+  justify-content: center;
+
+  height: 20px;
+  width: 20px;
+
+  font-size: 12px;
+
+  border-radius: 100px;
+
+  background-color: ${colors.red};
+  color: ${colors.terciary};
+`;
+
+interface EmptyContainerProps {
+  visible: boolean;
+}
+
+export const EmptyContainer = styled.div<EmptyContainerProps>`
+  display: ${({ visible }) => (visible ? 'flex' : 'none')};
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  padding: 10px;
+
+  background-color: ${colors.terciary};
+`;
+
+export const EmptyTitle = styled.span`
+  margin-bottom: 10px;
+
+  font-family: 'Ubuntu';
+  font-size: 16px;
+
+  color: ${colors.dark};
+`;
+
+export const EmptySpan = styled.span`
+  font-family: 'Roboto';
+  font-size: 14px;
+
+  color: ${colors.text};
 `;
