@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useLocation, Link } from 'react-router-dom';
 import {
   FaChalkboardTeacher,
   FaHome,
@@ -11,6 +10,7 @@ import {
 } from 'react-icons/fa';
 import { GoSignOut } from 'react-icons/go';
 import { MdChatBubble } from 'react-icons/md';
+import { useLocation, Link } from 'react-router-dom';
 
 import { useAuth } from '~/contexts/AuthContext';
 
@@ -82,7 +82,7 @@ const NavbarComponent: React.FC = () => {
           </LeftSide>
 
           <RightSide>
-            <Link to="/configuracoes">
+            <Link to="/configuracoes-geral">
               <NavItem small>
                 <FaCog />
               </NavItem>

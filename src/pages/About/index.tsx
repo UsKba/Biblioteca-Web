@@ -1,10 +1,23 @@
 import React from 'react';
+import { FaArrowLeft } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 import image from '~/assets/about_img.svg';
 import { useAuth } from '~/contexts/AuthContext';
 
-import { Container, H1, Title, Line, TextContainer, TextContainer2, Text, Image, MiddleSide, Back } from './styles';
+import {
+  Container,
+  H1,
+  Title,
+  Line,
+  TextContainer,
+  TextContainer2,
+  Text,
+  Image,
+  MiddleSide,
+  Back,
+  GoBack,
+} from './styles';
 
 const About: React.FC = () => {
   const { signed } = useAuth();
@@ -12,7 +25,12 @@ const About: React.FC = () => {
   return (
     <Container>
       <Title>
-        <H1>Sobre</H1>
+        <GoBack>
+          <Link to="/">
+            <FaArrowLeft />
+          </Link>
+          <H1>Sobre</H1>
+        </GoBack>
         <Line />
       </Title>
       <MiddleSide>
@@ -33,9 +51,6 @@ const About: React.FC = () => {
           forma os alunos terão o acesso ao ambiente de uma maneira organizada, planejada e certa.
         </Text>
       </TextContainer2>
-      <Link to="/">
-        <Back isSigned={signed}>Voltar</Back>
-      </Link>
     </Container>
   );
 };

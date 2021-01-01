@@ -73,6 +73,14 @@ export const FriendsPanelHidden = styled.div<FriendsPanelHiddenProps>`
   ${(props) => props.small && ' height:155px; visibility: visible; opacity: 1;'}
 `;
 
+interface FriendSearchPanelProps {
+  visible?: boolean;
+}
+
+export const FriendSearchPanel = styled.div<FriendSearchPanelProps>`
+  display: ${({ visible }) => (visible === false ? 'none' : 'flex')};
+`;
+
 interface FriendsPanelProps {
   visible?: boolean;
 }
@@ -153,14 +161,19 @@ export const FriendEnrollment = styled.span`
 
 export const EnrollmentContainer = styled.div`
   display: flex;
+  svg {
+    color: ${colors.primary};
+  }
 `;
 
 interface LineContainerProps {
+  searchVisibilityToggle?: boolean;
+
   left?: boolean;
 }
 
 export const LineContainer = styled.div<LineContainerProps>`
-  display: flex;
+  display: ${({ searchVisibilityToggle }) => (searchVisibilityToggle === true ? 'none' : 'flex')};
 
   margin: 15px 20px 15px 0;
 
@@ -203,8 +216,12 @@ export const PlusContainer = styled.div<PlusContainerProps>`
     props.rotateIcon && `transform: rotate(45deg); svg{ color: ${colors.red}; &:hover { color: ${colors.lightred}};}`}
 `;
 
-export const PendingButton = styled.button`
-  display: flex;
+interface PendingButtonProps {
+  searchVisibilityToggle?: boolean;
+}
+
+export const PendingButton = styled.button<PendingButtonProps>`
+  display: ${({ searchVisibilityToggle }) => (searchVisibilityToggle === true ? 'none' : 'flex')};
   justify-content: space-between;
   padding: 15px;
   align-items: center;
@@ -214,9 +231,14 @@ export const PendingButton = styled.button`
   color: #666666;
   border: none;
   cursor: pointer;
-  svg {
-    margin-left: 45px;
-  }
+`;
+
+interface PendingIconContainerProps {
+  appearIcon?: boolean;
+}
+
+export const PendingIconContainer = styled.div<PendingIconContainerProps>`
+  ${(props) => !props.appearIcon && `display: none;`}
 `;
 
 interface PendingPanelHiddenProps {
@@ -267,11 +289,13 @@ export const PendingFriendsAlert = styled.div<PendingFriendsAlertProps>`
 `;
 
 interface EmptyContainerProps {
+  searchVisibilityToggle?: boolean;
   visible: boolean;
 }
 
 export const EmptyContainer = styled.div<EmptyContainerProps>`
   display: ${({ visible }) => (visible ? 'flex' : 'none')};
+  display: ${({ searchVisibilityToggle }) => (searchVisibilityToggle === true ? 'none' : 'flex')};
   flex-direction: column;
   align-items: center;
   text-align: center;

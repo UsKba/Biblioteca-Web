@@ -31,6 +31,8 @@ import {
   GroupMemberName,
   GroupMemberIconArea,
   AwardSvg,
+  BageCol,
+  BadgePending,
 } from './styles';
 
 interface User {
@@ -262,11 +264,13 @@ const ReserveList: React.FC = () => {
                 {reserve.users.map((user) => (
                   <GroupMember key={user.id}>
                     <GroupMemberIcon>{user.name[0]}</GroupMemberIcon>
-                    <GroupMemberName>{user.name}</GroupMemberName>
+                    <BageCol>
+                      <GroupMemberName>{user.name}</GroupMemberName>
+                      <BadgePending visible={false}>Pendente</BadgePending>
+                    </BageCol>
 
                     <GroupMemberIconArea>
                       <AwardSvg src={awardIcon} alt="medalha" visible={isReserveAdmin(reserve, user)} />
-
                       <FaTimes
                         display={showDeleteIcon(reserve, user)}
                         onClick={() => deleteGroupMember(reserve.id, user.id)}

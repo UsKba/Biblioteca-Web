@@ -37,6 +37,8 @@ export const Line = styled.div`
   height: 3px;
   width: 150px;
 
+  margin-left: 2.9em;
+
   background-color: ${colors.primary};
 `;
 
@@ -107,4 +109,20 @@ export interface BackProps {
 export const Back = styled(Button)<BackProps>`
   margin: 0 0 8px 55em;
   display: ${(props) => props.isSigned && 'none'};
+`;
+
+export const GoBack = styled.div`
+  display: flex;
+  align-items: center;
+  svg {
+    color: ${colors.dark};
+    font-size: 35px;
+    cursor: pointer;
+    margin-right: 0.3em;
+    align-self: center;
+
+    &:hover {
+      color: ${colors.primary};
+    }
+  }
 `;

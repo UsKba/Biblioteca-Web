@@ -296,3 +296,33 @@ interface AwardSvgProps {
 export const AwardSvg = styled.img<AwardSvgProps>`
   display: ${(props) => !props.visible && 'none'};
 `;
+
+interface BadgeVisibleProps {
+  visible?: boolean;
+}
+
+export const BadgePending = styled.div<BadgeVisibleProps>`
+  width: 55px;
+  height: 15px;
+  border-radius: 7px;
+  border: 2px solid ${colors.golden};
+  color: ${colors.golden};
+  font-size: 8px;
+  text-align: center;
+  display: ${(props) => !props.visible && 'none'};
+`;
+
+export const BadgeReject = styled.div`
+  width: 55px;
+  height: 15px;
+  border-radius: 7px;
+  border: 2px solid ${colors.red};
+  color: ${colors.red};
+  font-size: 8px;
+  text-align: center;
+`;
+
+export const BageCol = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

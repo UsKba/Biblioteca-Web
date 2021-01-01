@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AiOutlineUserAdd } from 'react-icons/ai';
-import { FaPlus, FaArrowRight } from 'react-icons/fa';
+import { FaPlus, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { FiCheck, FiX } from 'react-icons/fi';
 import { MdBlock } from 'react-icons/md';
 
@@ -32,24 +32,32 @@ import {
   PendingButton,
   AcceptContainer,
   PendingFriendsAlert,
+  PendingIconContainer,
+  FriendSearchPanel,
 } from './styles';
 
 const FriendList: React.FC = () => {
-  const [pendingListOpen, setPendingListOpen] = useState(false);
   const [friendsPanelVisible, setFriendsPanelVisible] = useState(true);
   const friendsContext = useFriends();
   const [search, setSearch] = useState('');
-  const [pendingButtonClicked, setPendingButtonClicked] = useState(false);
 
-  function togglePendingList() {
-    setPendingListOpen(!pendingListOpen);
-  }
+  const [pendingButtonClicked, setPendingButtonClicked] = useState(false);
+  const [iconPendingButtonClicked, setIconPendingButtonClicked] = useState(false);
+
+  const [searchPanelVisible, setSearchPanelVisible] = useState(false);
 
   function pendingButtonText() {
     if (pendingButtonClicked) {
       return 'Lista de amigos';
     }
     return 'Pedidos pendentes';
+  }
+
+  function openFriendSearchPanel() {
+    if (search.length > 1) {
+      return setSearchPanelVisible(true);
+    }
+    return setSearchPanelVisible(false);
   }
 
   return (
@@ -70,7 +78,15 @@ const FriendList: React.FC = () => {
         </PlusContainer>
       </TitlePanel>
 
-      <EnrollmentInput value={search} onChange={(event) => setSearch(event.target.value)} hideIcon />
+      <EnrollmentInput
+        value={search}
+        onChange={(event) => {
+          setSearch(event.target.value);
+          openFriendSearchPanel();
+          console.log(searchPanelVisible);
+        }}
+        hideIcon
+      />
 
       <LineContainer left={false}>
         <Line2 />
@@ -78,27 +94,56 @@ const FriendList: React.FC = () => {
       </LineContainer>
 
       <PendingButton
+        searchVisibilityToggle={searchPanelVisible}
         onClick={() => {
-          togglePendingList();
           setFriendsPanelVisible(!friendsPanelVisible);
           setPendingButtonClicked(!pendingButtonClicked);
+          setIconPendingButtonClicked(!iconPendingButtonClicked);
         }}
       >
+        <PendingIconContainer appearIcon={iconPendingButtonClicked}>
+          <FaArrowLeft />
+        </PendingIconContainer>
+
         <PendingFriendsAlert visible={false}>10</PendingFriendsAlert>
         {pendingButtonText()}
-        <FaArrowRight />
+
+        <PendingIconContainer appearIcon={!iconPendingButtonClicked}>
+          <FaArrowRight />
+        </PendingIconContainer>
       </PendingButton>
 
-      <LineContainer left>
+      <LineContainer left searchVisibilityToggle={searchPanelVisible}>
         <Line2 />
         <Line1 />
       </LineContainer>
 
       {/* Painel de procurar amigos para adicionar */}
 
+      <FriendSearchPanel visible={searchPanelVisible}>
+        <FriendsPanelDetails>
+          <FriendIcon>
+            <FriendIconInitials>C</FriendIconInitials>
+          </FriendIcon>
+          <FriendsDetails>
+            <FriendName>Cátio</FriendName>
+            <EnrollmentContainer>
+              <FriendEnrollment>
+                <strong># </strong>
+                20181104010069
+              </FriendEnrollment>
+              <FaPlus />
+            </EnrollmentContainer>
+          </FriendsDetails>
+        </FriendsPanelDetails>
+      </FriendSearchPanel>
+
       {/* Painel de pedidos de amizade */}
       <FriendsPanel visible={!friendsPanelVisible}>
-        <EmptyContainer visible={friendsContext.requests.received.length === 0}>
+        <EmptyContainer
+          visible={friendsContext.requests.received.length === 0}
+          searchVisibilityToggle={searchPanelVisible}
+        >
           <EmptyTitle>Nenhum pedido...</EmptyTitle>
           <EmptySpan>Você não possui pedidos pendentes.</EmptySpan>
         </EmptyContainer>
@@ -125,8 +170,9 @@ const FriendList: React.FC = () => {
         ))}
       </FriendsPanel>
 
+      {/* Painel de lista de amigos */}
       <FriendsPanel visible={friendsPanelVisible}>
-        <EmptyContainer visible={friendsContext.friends.length === 0}>
+        <EmptyContainer visible={friendsContext.friends.length === 0} searchVisibilityToggle={searchPanelVisible}>
           <EmptyTitle>Ninguém aqui...</EmptyTitle>
           <EmptySpan>Você não possui amigos, clique no ícone acima para adicionar alguém.</EmptySpan>
         </EmptyContainer>
