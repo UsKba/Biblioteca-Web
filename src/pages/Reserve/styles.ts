@@ -4,6 +4,8 @@ import colors from '~/styles/colors';
 
 import { Button } from '~/components/MainButton/styles';
 
+import { FiHelpCircle } from 'react-icons/fi';
+
 export const Container = styled.div`
   display: flex;
   flex: 1;
@@ -204,10 +206,10 @@ export const HourButton = styled(Button)<StyledButtonProps>`
 `;
 
 export const RentButton = styled(Button)`
-  margin: 26px 0 5px 0;
+  margin: 26px 0 46px 0;
   align-self: flex-start;
 
-  padding: 9px 25px;
+  padding: 9px 55px;
 
   color: ${colors.text};
   @media only screen and (max-width: 640px) {
@@ -215,15 +217,17 @@ export const RentButton = styled(Button)`
   }
 `;
 
-export const CancelButton = styled(Button)`
+export const CancelButton = styled.button`
   position: fixed;
-  left: 5px;
-  bottom: 5px;
+  left: 20px;
+  bottom: 45px;
 
-  padding: 9px 20px;
+  padding: 16px 45px;
 
-  background-color: ${colors.background};
-  color: ${colors.text};
+  border-radius: 10px;
+  border: none;
+  background-color: #ff5555;
+  color: ${colors.background};
 `;
 
 export const RoomContainer = styled.div`

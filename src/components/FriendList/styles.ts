@@ -222,7 +222,6 @@ interface PendingButtonProps {
 
 export const PendingButton = styled.button<PendingButtonProps>`
   display: ${({ searchVisibilityToggle }) => (searchVisibilityToggle === true ? 'none' : 'flex')};
-  justify-content: space-between;
   padding: 15px;
   align-items: center;
   width: 280px;
@@ -235,10 +234,12 @@ export const PendingButton = styled.button<PendingButtonProps>`
 
 interface PendingIconContainerProps {
   appearIcon?: boolean;
+  left?: boolean;
 }
 
 export const PendingIconContainer = styled.div<PendingIconContainerProps>`
   ${(props) => !props.appearIcon && `display: none;`}
+  ${({ left }) => (left === true ? 'margin-left: auto;' : 'margin-right: 10px;')}
 `;
 
 interface PendingPanelHiddenProps {
@@ -301,6 +302,7 @@ export const EmptyContainer = styled.div<EmptyContainerProps>`
   text-align: center;
 
   padding: 10px;
+  width: 280px;
 
   background-color: ${colors.terciary};
 `;
@@ -319,4 +321,30 @@ export const EmptySpan = styled.span`
   font-size: 14px;
 
   color: ${colors.text};
+`;
+
+export const SvgPlusContainer = styled.div`
+  display: flex;
+  align-items: center;
+
+  margin-left: auto;
+
+  svg {
+    color: ${colors.primary};
+    cursor: pointer;
+  }
+`;
+
+interface SearchResultsTextProps {
+  visible: boolean;
+}
+
+export const SearchResultsText = styled.span<SearchResultsTextProps>`
+  display: ${({ visible }) => (visible === false ? 'none' : 'flex')};
+
+  color: ${colors.dark};
+  font-size: 14px;
+  font-weight: bold;
+
+  margin-bottom: 10px;
 `;

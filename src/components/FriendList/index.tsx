@@ -34,6 +34,8 @@ import {
   PendingFriendsAlert,
   PendingIconContainer,
   FriendSearchPanel,
+  SvgPlusContainer,
+  SearchResultsText,
 } from './styles';
 
 const FriendList: React.FC = () => {
@@ -101,26 +103,33 @@ const FriendList: React.FC = () => {
           setIconPendingButtonClicked(!iconPendingButtonClicked);
         }}
       >
-        <PendingIconContainer appearIcon={iconPendingButtonClicked}>
+        <PendingIconContainer left={false} appearIcon={iconPendingButtonClicked}>
           <FaArrowLeft />
         </PendingIconContainer>
 
         <PendingFriendsAlert visible={false}>10</PendingFriendsAlert>
         {pendingButtonText()}
 
-        <PendingIconContainer appearIcon={!iconPendingButtonClicked}>
+        <PendingIconContainer left appearIcon={!iconPendingButtonClicked}>
           <FaArrowRight />
         </PendingIconContainer>
       </PendingButton>
 
       <LineContainer left searchVisibilityToggle={searchPanelVisible}>
-        <Line2 />
         <Line1 />
+        <Line2 />
       </LineContainer>
+
+      <SearchResultsText visible={searchPanelVisible}>Resultados da pesquisa:</SearchResultsText>
+      {/* <EmptyContainer visible>
+        <EmptyTitle>Ninguém foi encontrado...</EmptyTitle>
+        <EmptySpan>Confira a sua pesquisa e tente novamente!</EmptySpan>
+      </EmptyContainer> */}
 
       {/* Painel de procurar amigos para adicionar */}
 
       <FriendSearchPanel visible={searchPanelVisible}>
+
         <FriendsPanelDetails>
           <FriendIcon>
             <FriendIconInitials>C</FriendIconInitials>
@@ -132,9 +141,12 @@ const FriendList: React.FC = () => {
                 <strong># </strong>
                 20181104010069
               </FriendEnrollment>
-              <FaPlus />
             </EnrollmentContainer>
+
           </FriendsDetails>
+          <SvgPlusContainer>
+            <FaPlus />
+          </SvgPlusContainer>
         </FriendsPanelDetails>
       </FriendSearchPanel>
 

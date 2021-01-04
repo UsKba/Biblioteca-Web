@@ -8,6 +8,7 @@ import {
   FaEnvelope,
   // FaBell,
 } from 'react-icons/fa';
+import { FiHelpCircle } from 'react-icons/fi';
 import { GoSignOut } from 'react-icons/go';
 import { MdChatBubble } from 'react-icons/md';
 import { useLocation, Link } from 'react-router-dom';
@@ -82,9 +83,14 @@ const NavbarComponent: React.FC = () => {
           </LeftSide>
 
           <RightSide>
+            <Link to="/">
+              <NavItem small>
+                <FiHelpCircle title="Ajuda" />
+              </NavItem>
+            </Link>
             <Link to="/configuracoes-geral">
               <NavItem small>
-                <FaCog />
+                <FaCog title="Configurações" />
               </NavItem>
             </Link>
           </RightSide>

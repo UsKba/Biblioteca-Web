@@ -352,7 +352,7 @@ const Reserve: React.FC = () => {
             </ComponentList>
           </Components>
         </ComponentsContainer>
-        <RentButton onClick={handleCreateReserve}>Agendar Sala</RentButton>
+        <RentButton onClick={handleCreateReserve}>Confirmar</RentButton>
       </MiddleSide>
       <RightSide>
         <FriendList />
