@@ -144,7 +144,7 @@ export const GroupMember = styled.div`
   display: flex;
   align-items: center;
 
-  padding: 7px;
+  padding: 7px 10px 7px 7px;
   border-radius: 7px;
   margin-bottom: 7px;
 

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
+import { FiHelpCircle } from 'react-icons/fi';
+
 import colors from '~/styles/colors';
 
 import { Button } from '~/components/MainButton/styles';
-
-import { FiHelpCircle } from 'react-icons/fi';
 
 export const Container = styled.div`
   display: flex;
@@ -80,7 +80,6 @@ export const DateListContainer = styled.div`
   align-items: center;
   align-self: center;
 
-  height: 50px;
   width: 80%;
 
   margin-bottom: 40px;
@@ -222,11 +221,13 @@ export const CancelButton = styled.button`
   left: 20px;
   bottom: 45px;
 
-  padding: 16px 45px;
+  height: 50px;
+  width: 255px;
 
   border-radius: 10px;
   border: none;
   background-color: #ff5555;
+  font-size: 18px;
   color: ${colors.background};
 `;
 
@@ -331,8 +332,8 @@ export const InputButton = styled.button`
   align-items: center;
   justify-content: center;
 
-  height: 45px;
-  width: 45px;
+  height: 50px;
+  width: 50px;
 
   margin-left: 10px;
 
@@ -359,9 +360,11 @@ export const ErrorContainer = styled.div<ErrorContainerProps>`
 export const ComponentList = styled.div`
   display: flex;
   flex-direction: column;
+
+  margin-right: 60px;
 `;
 
-export const Component = styled.span`
+export const Component = styled.div`
   display: flex;
 
   justify-content: space-between;
@@ -374,7 +377,6 @@ export const Component = styled.span`
 
   height: 65px;
   width: 100%;
-  max-width: 500px;
 
   margin-bottom: 10px;
 
@@ -384,6 +386,7 @@ export const Component = styled.span`
   svg {
     cursor: pointer;
     color: ${colors.red};
+    margin-right: 20px;
     &:hover {
       color: ${colors.lightred};
     }
@@ -432,4 +435,42 @@ export const ComponentContainer = styled.div`
   display: flex;
   width: 200px;
   justify-content: space-around;
+`;
+
+export const SearchArea = styled.div`
+  display: flex;
+  flex: 1;
+
+  border-radius: 5px;
+`;
+
+export const SearchHashTag = styled.span`
+  display: flex;
+
+  height: 50px;
+  width: 35px;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Ubuntu';
+
+  color: #666666;
+  background: ${colors.background};
+`;
+
+export const SearchingBar = styled.input`
+  height: 50px;
+  width: 100%;
+
+  padding: 5px;
+
+  border: none;
+  border-radius: 0;
+
+  background-color: ${colors.background};
+
+  cursor: text;
 `;

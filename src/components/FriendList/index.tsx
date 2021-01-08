@@ -20,6 +20,7 @@ import {
   FriendIconInitials,
   TitlePanel,
   Title,
+  TitleSmall,
   EnrollmentContainer,
   Line1,
   Line2,
@@ -129,7 +130,6 @@ const FriendList: React.FC = () => {
       {/* Painel de procurar amigos para adicionar */}
 
       <FriendSearchPanel visible={searchPanelVisible}>
-
         <FriendsPanelDetails>
           <FriendIcon>
             <FriendIconInitials>C</FriendIconInitials>
@@ -142,7 +142,6 @@ const FriendList: React.FC = () => {
                 20181104010069
               </FriendEnrollment>
             </EnrollmentContainer>
-
           </FriendsDetails>
           <SvgPlusContainer>
             <FaPlus />
@@ -152,11 +151,16 @@ const FriendList: React.FC = () => {
 
       {/* Painel de pedidos de amizade */}
       <FriendsPanel visible={!friendsPanelVisible}>
+        <TitleSmall>Pedidos Recebidos</TitleSmall>
+        <LineContainer left>
+          <Line1 />
+          <Line2 />
+        </LineContainer>
         <EmptyContainer
           visible={friendsContext.requests.received.length === 0}
           searchVisibilityToggle={searchPanelVisible}
         >
-          <EmptyTitle>Nenhum pedido...</EmptyTitle>
+          <EmptyTitle>Nenhum pedido recebido...</EmptyTitle>
           <EmptySpan>Você não possui pedidos pendentes.</EmptySpan>
         </EmptyContainer>
 
@@ -180,6 +184,16 @@ const FriendList: React.FC = () => {
             </FriendsPanelDetails>
           </>
         ))}
+        <TitleSmall>Pedidos Enviados</TitleSmall>
+        <LineContainer left>
+          <Line1 />
+          <Line2 />
+        </LineContainer>
+
+        <EmptyContainer visible={friendsContext.requests.sent.length === 0} searchVisibilityToggle={searchPanelVisible}>
+          <EmptyTitle>Nenhum pedido enviado...</EmptyTitle>
+          <EmptySpan>Você não possui pedidos pendentes.</EmptySpan>
+        </EmptyContainer>
       </FriendsPanel>
 
       {/* Painel de lista de amigos */}

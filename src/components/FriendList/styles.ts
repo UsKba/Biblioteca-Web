@@ -51,6 +51,18 @@ export const Title = styled.span`
   }
 `;
 
+export const TitleSmall = styled.span`
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Ubuntu';
+
+  color: ${colors.dark};
+
+  @media screen and (max-width: 600px) {
+    font-size: 14px;
+  }
+`;
+
 // interface FriendPanelProps {
 //   goDown: boolean;
 // }
@@ -303,6 +315,8 @@ export const EmptyContainer = styled.div<EmptyContainerProps>`
 
   padding: 10px;
   width: 280px;
+
+  margin-bottom: 10px;
 
   background-color: ${colors.terciary};
 `;

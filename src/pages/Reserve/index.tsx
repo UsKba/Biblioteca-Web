@@ -51,6 +51,9 @@ import {
   ProfileIcon,
   ProfileIconInitials,
   ComponentContainer,
+  SearchArea,
+  SearchHashTag,
+  SearchingBar,
 } from './styles';
 
 interface ReserveResponse {
@@ -89,6 +92,15 @@ interface User {
   name: string;
 }
 
+interface ReserveState {
+  title: string;
+  groupTitle: string;
+  text: string;
+  users: User[];
+  id: number;
+  adminId: number;
+}
+
 const Reserve: React.FC = () => {
   const history = useHistory();
 
@@ -107,7 +119,6 @@ const Reserve: React.FC = () => {
   const [selectedScheduleId, setSelectedScheduleId] = useState(1);
   const [selectedRoomId, setSelectedRoomId] = useState(1);
 
-  const [reserveNameError, setReserveNameError] = useState('');
   const [addComponentError, setAddComponentError] = useState('');
 
   useEffect(() => {
@@ -120,14 +131,6 @@ const Reserve: React.FC = () => {
 
   function goBack() {
     history.goBack();
-  }
-
-  function validateGroupName() {
-    if (reserveName.length < 3) {
-      setReserveNameError('O nome da reserva não pode ter menos que 3 caracteres');
-    } else {
-      setReserveNameError('');
-    }
   }
 
   async function handleAddComponent() {
@@ -294,40 +297,40 @@ const Reserve: React.FC = () => {
         <GroupContainer>
           <Title2>Nomeie sua reserva:</Title2>
           <InputContainer>
-            <EnrollmentInput
-              type="text"
-              onBlur={() => {
-                validateGroupName();
-              }}
-              hideIcon
-              placeholder="Exemplo: Grupo de História"
-              backgroundColor={colors.background}
-              value={reserveName}
-              onChange={(event) => {
-                setReserveName(event.target.value);
-                console.log(event.target.value);
-              }}
-            />
+            <SearchArea>
+              <SearchHashTag>#</SearchHashTag>
+              <SearchingBar
+                type="text"
+                maxLength={25}
+                placeholder="Exemplo: Grupo de História"
+                value={reserveName}
+                onChange={(event) => {
+                  setReserveName(event.target.value);
+                  console.log(event.target.value);
+                }}
+                style={{ marginRight: '60px' }}
+              />
+            </SearchArea>
           </InputContainer>
-          <ErrorContainer error={reserveNameError !== ''}>{reserveNameError}</ErrorContainer>
         </GroupContainer>
         <ComponentsContainer>
           <Title2>Adicione componentes:</Title2>
           <Components>
             <InputContainer>
-              <EnrollmentInput
-                type="number"
-                ref={inputRef}
-                placeholder="Digite uma matrícula"
-                hideIcon
-                backgroundColor={colors.background}
-                value={enrollment}
-                onChange={(event) => {
-                  setEnrollment(event.target.value);
-                }}
-              />
+              <SearchArea>
+                <SearchingBar
+                  type="number"
+                  ref={inputRef}
+                  placeholder="Digite uma matrícula"
+                  value={enrollment}
+                  onChange={(event) => {
+                    setEnrollment(event.target.value);
+                  }}
+                />
+              </SearchArea>
               <InputButton onClick={handleAddComponent}>+</InputButton>
             </InputContainer>
+
             <ErrorContainer error={addComponentError !== ''}>{addComponentError}</ErrorContainer>
             <Title3>Grupo:</Title3>
             <ComponentList>
