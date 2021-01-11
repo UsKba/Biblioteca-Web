@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { AiOutlineUserAdd } from 'react-icons/ai';
-import { FaPlus, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { FaPlus, FaArrowLeft, FaArrowRight, FaChevronLeft } from 'react-icons/fa';
 import { FiCheck, FiX } from 'react-icons/fi';
 import { MdBlock } from 'react-icons/md';
+import { useLocation } from 'react-router-dom';
 
 import colors from '~/styles/colors';
 
@@ -37,17 +38,24 @@ import {
   FriendSearchPanel,
   SvgPlusContainer,
   SearchResultsText,
+  ReserveButtonDiv,
 } from './styles';
 
 const FriendList: React.FC = () => {
   const [friendsPanelVisible, setFriendsPanelVisible] = useState(true);
   const friendsContext = useFriends();
   const [search, setSearch] = useState('');
+  const [reserveButton, setReserveButton] = useState(false);
+  const location = useLocation();
 
   const [pendingButtonClicked, setPendingButtonClicked] = useState(false);
   const [iconPendingButtonClicked, setIconPendingButtonClicked] = useState(false);
 
   const [searchPanelVisible, setSearchPanelVisible] = useState(false);
+
+  const titlePages = {
+    '/reservar': true,
+  };
 
   function pendingButtonText() {
     if (pendingButtonClicked) {
@@ -62,6 +70,11 @@ const FriendList: React.FC = () => {
     }
     return setSearchPanelVisible(false);
   }
+
+  React.useEffect(() => {
+    const reserveButtonStatus = titlePages[location.pathname];
+    setReserveButton(reserveButtonStatus);
+  }, [location.pathname, titlePages]);
 
   return (
     <FriendsContainer>
@@ -156,10 +169,7 @@ const FriendList: React.FC = () => {
           <Line1 />
           <Line2 />
         </LineContainer>
-        <EmptyContainer
-          visible={friendsContext.requests.received.length === 0}
-          searchVisibilityToggle={searchPanelVisible}
-        >
+        <EmptyContainer visible={friendsContext.requests.received.length === 0}>
           <EmptyTitle>Nenhum pedido recebido...</EmptyTitle>
           <EmptySpan>Você não possui pedidos pendentes.</EmptySpan>
         </EmptyContainer>
@@ -190,7 +200,7 @@ const FriendList: React.FC = () => {
           <Line2 />
         </LineContainer>
 
-        <EmptyContainer visible={friendsContext.requests.sent.length === 0} searchVisibilityToggle={searchPanelVisible}>
+        <EmptyContainer visible={friendsContext.requests.sent.length === 0}>
           <EmptyTitle>Nenhum pedido enviado...</EmptyTitle>
           <EmptySpan>Você não possui pedidos pendentes.</EmptySpan>
         </EmptyContainer>
@@ -198,7 +208,7 @@ const FriendList: React.FC = () => {
 
       {/* Painel de lista de amigos */}
       <FriendsPanel visible={friendsPanelVisible}>
-        <EmptyContainer visible={friendsContext.friends.length === 0} searchVisibilityToggle={searchPanelVisible}>
+        <EmptyContainer visible={friendsContext.friends.length === 0}>
           <EmptyTitle>Ninguém aqui...</EmptyTitle>
           <EmptySpan>Você não possui amigos, clique no ícone acima para adicionar alguém.</EmptySpan>
         </EmptyContainer>
@@ -231,6 +241,9 @@ const FriendList: React.FC = () => {
                 </FriendEnrollment>
               </EnrollmentContainer>
             </FriendsDetails>
+            <ReserveButtonDiv visible={reserveButton}>
+              <FaChevronLeft />
+            </ReserveButtonDiv>
           </FriendsPanelDetails>
         ))}
       </FriendsPanel>

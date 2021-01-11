@@ -474,3 +474,11 @@ export const SearchingBar = styled.input`
 
   cursor: text;
 `;
+
+interface IconContainerProps {
+  visible: boolean;
+}
+
+export const IconContainer = styled.div<IconContainerProps>`
+  display: ${({ visible }) => (visible ? 'flex' : 'none')};
+`;

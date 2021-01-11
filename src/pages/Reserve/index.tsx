@@ -4,10 +4,7 @@ import { useHistory, Link } from 'react-router-dom';
 
 import api from '~/services/api';
 
-import colors from '~/styles/colors';
-
 import DateList from '~/components/DateList';
-import EnrollmentInput from '~/components/EnrollmentInput';
 import FriendList from '~/components/FriendList';
 import ReserveList from '~/components/ReserveList';
 
@@ -21,7 +18,6 @@ import {
   RightSide,
   RoomScheduling,
   DateListContainer,
-  Title,
   Title2,
   Title3,
   ChoosePeriod,
@@ -54,6 +50,7 @@ import {
   SearchArea,
   SearchHashTag,
   SearchingBar,
+  IconContainer,
 } from './styles';
 
 interface ReserveResponse {
@@ -169,6 +166,13 @@ const Reserve: React.FC = () => {
     } catch (e) {
       console.log(e);
     }
+  }
+
+  function isReserveAdmin(componentEnrollment: string) {
+    if (componentEnrollment !== user.enrollment) {
+      return true;
+    }
+    return false;
   }
 
   function removeComponent(componentEnrollment: string) {
@@ -349,7 +353,9 @@ const Reserve: React.FC = () => {
                       </Enrollment>
                     </ComponentInfo>
                   </ComponentContainer>
-                  <FaTimes onClick={() => removeComponent(component.enrollment)} />
+                  <IconContainer visible={isReserveAdmin(component.enrollment)}>
+                    <FaTimes onClick={() => removeComponent(component.enrollment)} />
+                  </IconContainer>
                 </Component>
               ))}
             </ComponentList>

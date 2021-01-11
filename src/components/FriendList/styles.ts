@@ -302,13 +302,11 @@ export const PendingFriendsAlert = styled.div<PendingFriendsAlertProps>`
 `;
 
 interface EmptyContainerProps {
-  searchVisibilityToggle?: boolean;
   visible: boolean;
 }
 
 export const EmptyContainer = styled.div<EmptyContainerProps>`
   display: ${({ visible }) => (visible ? 'flex' : 'none')};
-  display: ${({ searchVisibilityToggle }) => (searchVisibilityToggle === true ? 'none' : 'flex')};
   flex-direction: column;
   align-items: center;
   text-align: center;
@@ -361,4 +359,21 @@ export const SearchResultsText = styled.span<SearchResultsTextProps>`
   font-weight: bold;
 
   margin-bottom: 10px;
+`;
+
+interface ReserveButtonDivProps {
+  visible: boolean;
+}
+
+export const ReserveButtonDiv = styled.div<ReserveButtonDivProps>`
+  display: ${({ visible }) => (visible ? 'flex' : 'none')};
+  align-items: center;
+  justify-content: center;
+
+  margin-left: auto;
+
+  svg {
+    color: ${colors.primary};
+    cursor: pointer;
+  }
 `;
