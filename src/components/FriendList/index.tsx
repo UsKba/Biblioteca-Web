@@ -41,7 +41,18 @@ import {
   ReserveButtonDiv,
 } from './styles';
 
-const FriendList: React.FC = () => {
+interface Friend {
+  id: number;
+  name: string;
+  enrollment: string;
+  email: string;
+}
+
+interface FriendListProps {
+  onFriendClick?: (friend: Friend) => void;
+}
+
+const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
   const [friendsPanelVisible, setFriendsPanelVisible] = useState(true);
   const friendsContext = useFriends();
   const [search, setSearch] = useState('');
@@ -64,11 +75,19 @@ const FriendList: React.FC = () => {
     return 'Pedidos pendentes';
   }
 
-  function openFriendSearchPanel() {
-    if (search.length > 1) {
+  function openFriendSearchPanel(value: string) {
+    console.log(value.length);
+    setSearch(value);
+    if (value.length > 0) {
       return setSearchPanelVisible(true);
     }
     return setSearchPanelVisible(false);
+  }
+
+  function handleFriendClick(friend: Friend) {
+    if (onFriendClick) {
+      onFriendClick(friend);
+    }
   }
 
   React.useEffect(() => {
@@ -97,9 +116,7 @@ const FriendList: React.FC = () => {
       <EnrollmentInput
         value={search}
         onChange={(event) => {
-          setSearch(event.target.value);
-          openFriendSearchPanel();
-          console.log(searchPanelVisible);
+          openFriendSearchPanel(event.target.value);
         }}
         hideIcon
       />
@@ -242,7 +259,7 @@ const FriendList: React.FC = () => {
               </EnrollmentContainer>
             </FriendsDetails>
             <ReserveButtonDiv visible={reserveButton}>
-              <FaChevronLeft />
+              <FaChevronLeft onClick={() => handleFriendClick(friend)} />
             </ReserveButtonDiv>
           </FriendsPanelDetails>
         ))}

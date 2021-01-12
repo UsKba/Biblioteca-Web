@@ -98,6 +98,13 @@ interface ReserveState {
   adminId: number;
 }
 
+interface Friend {
+  id: number;
+  name: string;
+  enrollment: string;
+  email: string;
+}
+
 const Reserve: React.FC = () => {
   const history = useHistory();
 
@@ -203,6 +210,23 @@ const Reserve: React.FC = () => {
       // console.log(e);
       alert(e.response.data.error);
     }
+  }
+
+  function handleFriendClick(friend: Friend) {
+    const findComponent = components.find((element) => {
+      return element.enrollment === friend.enrollment;
+    });
+
+    if (findComponent !== undefined) {
+      alert('Não é possível adicionar o mesmo usuário duas vezes.');
+      return;
+    }
+
+    if (components.length >= 6) {
+      alert('Grupo cheio!');
+      return;
+    }
+    setComponents([...components, friend]);
   }
 
   useEffect(() => {
@@ -364,7 +388,7 @@ const Reserve: React.FC = () => {
         <RentButton onClick={handleCreateReserve}>Confirmar</RentButton>
       </MiddleSide>
       <RightSide>
-        <FriendList />
+        <FriendList onFriendClick={handleFriendClick} />
       </RightSide>
     </Container>
   );
