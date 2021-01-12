@@ -5,7 +5,6 @@ import { AuthProvider } from '~/contexts/AuthContext';
 import { FriendsProvider } from '~/contexts/FriendsContext';
 import { ReserveProvider } from '~/contexts/ReserveContext';
 
-// import Routes from './routes';
 import Routes from './routes';
 import GlobalStyle from './styles/global';
 
