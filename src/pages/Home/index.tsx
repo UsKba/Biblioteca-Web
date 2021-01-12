@@ -5,6 +5,8 @@ import React, { useState } from 'react';
 import FriendList from '~/components/FriendList';
 import ReserveList from '~/components/ReserveList';
 
+import { useReserve } from '~/contexts/ReserveContext';
+
 import Notifications from './components/Notifications';
 import Profile from './components/Profile';
 import Requests from './components/Requests';
@@ -67,6 +69,9 @@ const reserve = {
 
 const Home: React.FC = () => {
   const [screenSwipe, setScreenSwipe] = useState(1);
+
+  const { reserves } = useReserve();
+  console.log(reserves);
 
   function handleChangeSwipe(index: number) {
     setScreenSwipe(index);
