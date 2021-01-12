@@ -15,11 +15,11 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <FriendsProvider>
-          <AuthProvider>
-            <ReserveProvider>
+          <ReserveProvider>
+            <AuthProvider>
               <Routes />
-            </ReserveProvider>
-          </AuthProvider>
+            </AuthProvider>
+          </ReserveProvider>
         </FriendsProvider>
       </BrowserRouter>
     </>

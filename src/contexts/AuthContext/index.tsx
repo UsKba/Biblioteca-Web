@@ -6,6 +6,8 @@ import suap from '~/services/suap';
 
 import { useFriends } from '~/contexts/FriendsContext';
 
+import { useReserve } from '../ReserveContext';
+
 interface User {
   name: string;
   email: string;
@@ -51,10 +53,17 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
   const history = useHistory();
-  const friends = useFriends();
+  const { loadFriends } = useFriends();
+  const { loadReserves } = useReserve();
+
   const [user, setUser] = useState({} as User);
   const [loading, setLoading] = useState(false);
   const [isSigned, setIsSigned] = useState(false);
+
+  const handleLoginFinish = useCallback(async () => {
+    await loadFriends();
+    await loadReserves();
+  }, [loadFriends, loadReserves]);
 
   const handleSignIn = useCallback(
     async (formattedUser: SignInParams) => {
@@ -71,7 +80,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
       const { token } = response.data;
       const newUser = { ...response.data.user, campus };
-      // ... pega toda a informacao do response.data.user e poe no novo objeto
+
       localStorage.setItem('@RNAuth:user', JSON.stringify(newUser));
       localStorage.setItem('@RNAuth:token', token);
       api.defaults.headers = { authorization: `Bearer ${token}` };
@@ -80,13 +89,13 @@ export const AuthProvider: React.FC = ({ children }) => {
       setLoading(false);
       setIsSigned(true);
 
-      await friends.fetchData();
+      await handleLoginFinish();
       // console.log(token);
       if (history.location.hash) {
         history.push('/');
       }
     },
-    [history]
+    [handleLoginFinish, history]
   );
 
   useEffect(() => {
@@ -96,20 +105,19 @@ export const AuthProvider: React.FC = ({ children }) => {
 
       if (storagedUser && storagedToken) {
         api.defaults.headers.authorization = `Bearer ${storagedToken}`;
+
         setUser(JSON.parse(storagedUser));
         setIsSigned(true);
-        await friends.fetchData();
+
+        await handleLoginFinish();
       }
     }
 
     loadStoragedData();
-  }, []);
+  }, [handleLoginFinish]);
+
   useEffect(() => {
     suap.init();
-
-    // console.log('Entrou');
-    // console.log(suap.getLoginURL());
-    // console.log('Authenticado', suap.isAuthenticated());
 
     if (suap.isAuthenticated()) {
       const scope = 'identificacao email&state=';
@@ -122,6 +130,7 @@ export const AuthProvider: React.FC = ({ children }) => {
           enrollment: identificacao,
           campus,
         };
+
         // chamada artificial
         handleSignIn(formattedUser);
       });

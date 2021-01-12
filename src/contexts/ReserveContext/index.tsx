@@ -49,11 +49,7 @@ interface User {
 
 interface ReserveContextData {
   reserves: ReserveResponse[];
-  // groupTitle: string;
-  // text: string;
-  // users: User[];
-  // id: number;
-  // adminId: number;
+  loadReserves: () => Promise<void>;
 }
 
 const ReserveContext = createContext<ReserveContextData>({} as ReserveContextData);
@@ -61,23 +57,18 @@ const ReserveContext = createContext<ReserveContextData>({} as ReserveContextDat
 export const ReserveProvider: React.FC = ({ children }) => {
   const [reserves, setReserves] = useState<ReserveResponse[]>([]);
 
-  // useEffect(() => {
-  //   async function loadReserves() {
-  //     try {
-  //       const response = await api.get<ReserveResponse[]>('/reserves');
-  //       console.log('Reservas:');
-  //       console.log(response.data);
+  const loadReserves = useCallback(async () => {
+    try {
+      const response = await api.get<ReserveResponse[]>('/reserves');
 
-  //       setReserves(response.data);
-  //     } catch (e) {
-  //       // console.log(e.response.data);
-  //       // alert(e.response.data.error);
-  //     }
-  //   }
-  //   loadReserves();
-  // }, []);
+      setReserves(response.data);
+    } catch (e) {
+      // console.log(e.response.data);
+      // alert(e.response.data.error);
+    }
+  }, []);
 
-  return <ReserveContext.Provider value={{ reserves }}>{children}</ReserveContext.Provider>;
+  return <ReserveContext.Provider value={{ reserves, loadReserves }}>{children}</ReserveContext.Provider>;
 };
 
 export function useReserve() {

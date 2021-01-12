@@ -76,11 +76,12 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
   }
 
   function openFriendSearchPanel(value: string) {
-    console.log(value.length);
     setSearch(value);
+
     if (value.length > 0) {
       return setSearchPanelVisible(true);
     }
+
     return setSearchPanelVisible(false);
   }
 

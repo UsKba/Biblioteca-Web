@@ -171,7 +171,7 @@ const Reserve: React.FC = () => {
         inputRef.current.focus();
       }
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   }
 
@@ -203,7 +203,8 @@ const Reserve: React.FC = () => {
         year: selectedDay.getFullYear(),
         classmatesEnrollments: components.map((component) => component.enrollment),
       });
-      console.log(response.data);
+
+      // console.log(response.data);
       history.push('/');
       alert('Reserva criada!');
     } catch (e) {
@@ -235,7 +236,7 @@ const Reserve: React.FC = () => {
         const response = await api.get('/schedules');
         setSchedules(response.data);
       } catch (e) {
-        console.log(e.response.data);
+        // console.log(e.response.data);
       }
     }
 
@@ -244,7 +245,7 @@ const Reserve: React.FC = () => {
         const response = await api.get('/periods');
         setPeriods(response.data);
       } catch (e) {
-        console.log(e.response.data);
+        // console.log(e.response.data);
       }
     }
 
@@ -253,7 +254,7 @@ const Reserve: React.FC = () => {
         const response = await api.get('/rooms');
         setRooms(response.data);
       } catch (e) {
-        console.log(e.response.data);
+        // console.log(e.response.data);
       }
     }
 

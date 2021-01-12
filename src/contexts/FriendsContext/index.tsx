@@ -59,7 +59,7 @@ interface FriendsRequests {
 interface FriendsContextData {
   friends: Friend[];
   requests: FriendsRequests;
-  fetchData: () => void;
+  loadFriends: () => Promise<void>;
   sendInvite: (enrollment: string) => Promise<void>;
   acceptInvite: (inviteId: number) => Promise<void>;
   recuseInvite: (inviteId: number) => Promise<void>;
@@ -71,13 +71,12 @@ export const FriendsProvider: React.FC = ({ children }) => {
   const [friends, setFriends] = useState<Friend[]>([]);
   const [requests, setRequests] = useState<FriendsRequests>({ sent: [], received: [] });
 
-  const fetchData = useCallback(async () => {
+  const loadFriends = useCallback(async () => {
     const friendsResponse = await api.get<Friend[]>('friends');
     const requestsResponse = await api.get<FriendsRequests>('friends/request');
 
     setFriends(friendsResponse.data);
     setRequests(requestsResponse.data);
-    console.log('Fez o fetch');
   }, []);
 
   const sendInvite = useCallback(async (enrollment: string) => {
@@ -92,21 +91,21 @@ export const FriendsProvider: React.FC = ({ children }) => {
         id: inviteId,
       });
 
-      fetchData();
+      loadFriends();
     },
-    [fetchData]
+    [loadFriends]
   );
 
   const recuseInvite = useCallback(
     async (inviteId: number) => {
       await api.delete(`friends/request/${inviteId}`);
-      fetchData();
+      loadFriends();
     },
-    [fetchData]
+    [loadFriends]
   );
 
   return (
-    <FriendsContext.Provider value={{ friends, fetchData, requests, sendInvite, recuseInvite, acceptInvite }}>
+    <FriendsContext.Provider value={{ friends, loadFriends, requests, sendInvite, recuseInvite, acceptInvite }}>
       {children}
     </FriendsContext.Provider>
   );
