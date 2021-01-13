@@ -91,6 +91,7 @@ interface FriendSearchPanelProps {
 
 export const FriendSearchPanel = styled.div<FriendSearchPanelProps>`
   display: ${({ visible }) => (visible === false ? 'none' : 'flex')};
+  flex-direction: column;
 `;
 
 interface FriendsPanelProps {
@@ -335,7 +336,7 @@ export const EmptySpan = styled.span`
   color: ${colors.text};
 `;
 
-export const SvgPlusContainer = styled.div`
+export const SvgContainer = styled.div`
   display: flex;
   align-items: center;
 

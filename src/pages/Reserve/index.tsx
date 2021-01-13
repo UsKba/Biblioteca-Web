@@ -204,7 +204,7 @@ const Reserve: React.FC = () => {
         classmatesEnrollments: components.map((component) => component.enrollment),
       });
 
-      // console.log(response.data);
+      console.log(response.data);
       history.push('/');
       alert('Reserva criada!');
     } catch (e) {

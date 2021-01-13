@@ -7,6 +7,7 @@ import { useLocation } from 'react-router-dom';
 
 import colors from '~/styles/colors';
 
+import { useAuth } from '~/contexts/AuthContext';
 import { useFriends } from '~/contexts/FriendsContext';
 
 import EnrollmentInput from '../EnrollmentInput';
@@ -36,7 +37,7 @@ import {
   PendingFriendsAlert,
   PendingIconContainer,
   FriendSearchPanel,
-  SvgPlusContainer,
+  SvgContainer,
   SearchResultsText,
   ReserveButtonDiv,
 } from './styles';
@@ -54,7 +55,6 @@ interface FriendListProps {
 
 const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
   const [friendsPanelVisible, setFriendsPanelVisible] = useState(true);
-  const friendsContext = useFriends();
   const [search, setSearch] = useState('');
   const [reserveButton, setReserveButton] = useState(false);
   const location = useLocation();
@@ -63,6 +63,9 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
   const [iconPendingButtonClicked, setIconPendingButtonClicked] = useState(false);
 
   const [searchPanelVisible, setSearchPanelVisible] = useState(false);
+
+  const friendsContext = useFriends();
+  const authContext = useAuth();
 
   const titlePages = {
     '/reservar': true,
@@ -161,23 +164,34 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
       {/* Painel de procurar amigos para adicionar */}
 
       <FriendSearchPanel visible={searchPanelVisible}>
-        <FriendsPanelDetails>
-          <FriendIcon>
-            <FriendIconInitials>C</FriendIconInitials>
-          </FriendIcon>
-          <FriendsDetails>
-            <FriendName>Cátio</FriendName>
-            <EnrollmentContainer>
-              <FriendEnrollment>
-                <strong># </strong>
-                20181104010069
-              </FriendEnrollment>
-            </EnrollmentContainer>
-          </FriendsDetails>
-          <SvgPlusContainer>
-            <FaPlus />
-          </SvgPlusContainer>
-        </FriendsPanelDetails>
+        {friendsContext.users
+          .filter((user) => user.id !== authContext.user.id)
+          .map((user) => (
+            <>
+              <FriendsPanelDetails key={user.id}>
+                <FriendIcon>
+                  <FriendIconInitials>{user.name[0]}</FriendIconInitials>
+                </FriendIcon>
+                <FriendsDetails>
+                  <FriendName>{user.name}</FriendName>
+                  <EnrollmentContainer>
+                    <FriendEnrollment>{user.enrollment}</FriendEnrollment>
+                  </EnrollmentContainer>
+                </FriendsDetails>
+                <SvgContainer>
+                  <FaPlus
+                    onClick={() => {
+                      friendsContext.sendInvite(user.enrollment);
+                    }}
+                  />
+                </SvgContainer>
+              </FriendsPanelDetails>
+            </>
+          ))}
+        <LineContainer left>
+          <Line1 />
+          <Line2 />
+        </LineContainer>
       </FriendSearchPanel>
 
       {/* Painel de pedidos de amizade */}
@@ -217,6 +231,21 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
           <Line1 />
           <Line2 />
         </LineContainer>
+        {friendsContext.requests.sent.map((request) => (
+          <>
+            <FriendsPanelDetails key={request.id}>
+              <FriendIcon>
+                <FriendIconInitials>{request.receiver.name[0]}</FriendIconInitials>
+              </FriendIcon>
+              <FriendsDetails>
+                <FriendName>{request.receiver.name}</FriendName>
+                <EnrollmentContainer>
+                  <FriendEnrollment>{request.receiver.enrollment}</FriendEnrollment>
+                </EnrollmentContainer>
+              </FriendsDetails>
+            </FriendsPanelDetails>
+          </>
+        ))}
 
         <EmptyContainer visible={friendsContext.requests.sent.length === 0}>
           <EmptyTitle>Nenhum pedido enviado...</EmptyTitle>
@@ -230,6 +259,7 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
           <EmptyTitle>Ninguém aqui...</EmptyTitle>
           <EmptySpan>Você não possui amigos, clique no ícone acima para adicionar alguém.</EmptySpan>
         </EmptyContainer>
+
         {/* <FriendsPanelDetails>
           <FriendIcon>
             <FriendIconInitials>aaaaaaaaaaaa</FriendIconInitials>
