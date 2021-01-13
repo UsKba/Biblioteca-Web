@@ -40,22 +40,41 @@ const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) =>
 
     return text;
   }
+  function headerName() {
+    const admin = reserve.users.find((element) => element.id === reserve.adminId);
+    const username = admin ? admin.name : '';
+    const text = `${username}`;
+
+    return text;
+  }
+  function headerEmail() {
+    const admin = reserve.users.find((element) => element.id === reserve.adminId);
+    const email = admin ? admin.email : '';
+    const text = `<${email}>`;
+
+    return text;
+  }
+  function headerInitials() {
+    const admin = reserve.users.find((element) => element.id === reserve.adminId);
+    const initials = admin ? admin.name : '';
+    const text = `${initials.charAt(0)}`;
+
+    return text;
+  }
   return (
     <NotificationContainer>
       <Notification>
         <NotificationTop>
           <NotificationLeft>
             <FriendIcon>
-              <FriendIconInitials>T</FriendIconInitials>
+              <FriendIconInitials>{headerInitials()}</FriendIconInitials>
             </FriendIcon>
             <NotificationHead>
-              Tallys Aureliano Júnior
-              <NotificationMail>{'<tallys@aureliano.com.br>'}</NotificationMail>
+              {headerName()}
+              <NotificationMail>{headerEmail()}</NotificationMail>
             </NotificationHead>
           </NotificationLeft>
-          <NotificationRight>
-            <NotificationDate>15:31 - 22/08</NotificationDate>
-          </NotificationRight>
+          <NotificationRight>{/* <NotificationDate>15:31 - 22/08</NotificationDate> */}</NotificationRight>
         </NotificationTop>
 
         <NotificationText>
