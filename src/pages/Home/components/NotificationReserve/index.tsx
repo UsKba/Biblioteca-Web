@@ -20,11 +20,11 @@ import {
   ButtonsContainer,
 } from './styles';
 
-interface RequestProps {
+interface NotificationReserveProps {
   reserve: ReserveResponse;
 }
 
-const Requests: React.FC<RequestProps> = ({ reserve }) => {
+const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) => {
   function formatText() {
     const formatter = new Intl.DateTimeFormat('pt-br', { month: 'long' });
     const reserveDate = new Date(reserve.date);
@@ -71,4 +71,4 @@ const Requests: React.FC<RequestProps> = ({ reserve }) => {
   );
 };
 
-export default Requests;
+export default NotificationReserve;

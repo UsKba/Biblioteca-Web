@@ -1,18 +1,14 @@
-import React, { useState } from 'react';
-
-// import api from '~/services/api';
+import React, { useEffect, useState } from 'react';
 
 import FriendList from '~/components/FriendList';
-import ReserveList from '~/components/ReserveList';
+import ReserveList, { ReserveResponse } from '~/components/ReserveList';
 
+import { useAuth } from '~/contexts/AuthContext';
 import { useReserve } from '~/contexts/ReserveContext';
 
+import NotificationReserve from './components/NotificationReserve';
 import Notifications from './components/Notifications';
 import Profile from './components/Profile';
-import Requests from './components/Requests';
-
-// import { AxiosResponseError } from '~/types';
-
 import {
   Container,
   LeftSide,
@@ -28,50 +24,34 @@ import {
   EmptyTitle,
 } from './styles';
 
-const reserve = {
-  room: {
-    id: 1,
-    initials: 'F1-8',
-  },
-  schedule: {
-    id: 1,
-    initialHour: '08:00',
-    endHour: '09:00',
-    periodId: 1,
-  },
-  users: [
-    {
-      id: 1,
-      enrollment: '2018110401009',
-      email: 'dudu@gmail.com',
-      name: 'Tallys Aureliano',
-    },
-
-    {
-      id: 2,
-      enrollment: '2018110401010',
-      email: 'dede@gmail.com',
-      name: 'Tallys asd',
-    },
-
-    {
-      id: 5,
-      enrollment: '2018110401011',
-      email: 'dada@gmail.com',
-      name: 'Tallys 123',
-    },
-  ],
-  id: 2,
-  date: '2020/12/30',
-  name: 'Reserva história',
-  adminId: 1,
-};
-
 const Home: React.FC = () => {
+  const auth = useAuth();
   const [screenSwipe, setScreenSwipe] = useState(1);
-
+  const [pendingReserveList, setPendingReserveList] = useState([] as ReserveResponse[]);
   const { reserves } = useReserve();
-  console.log(reserves);
+  // console.log(reserves);
+
+  useEffect(() => {
+    if (reserves.length === 0) {
+      return;
+    }
+
+    const pendingReserves = [] as ReserveResponse[];
+
+    for (let i = 0; i < reserves.length; i += 1) {
+      const users1 = reserves[i].users;
+
+      const userLogged = users1.find((user) => user.id === auth.user.id);
+      if (userLogged?.status === 0) {
+        console.log('Usuário logado não aceitou a reserva');
+        pendingReserves.push(reserves[i]);
+      }
+
+      console.log(users1);
+    }
+
+    setPendingReserveList(pendingReserves);
+  }, [auth.user.id, reserves]);
 
   function handleChangeSwipe(index: number) {
     setScreenSwipe(index);
@@ -104,7 +84,10 @@ const Home: React.FC = () => {
 
         <Title>Notificações</Title>
         <Notifications />
-        <Requests reserve={reserve} />
+
+        {pendingReserveList.map((reserve) => (
+          <NotificationReserve key={reserve.id} reserve={reserve} />
+        ))}
 
         <EmptyContainer>
           <EmptyTitle>Caixa de correio vazia...</EmptyTitle>
