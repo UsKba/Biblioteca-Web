@@ -23,6 +23,7 @@ interface ReserveResponse {
       name: string;
       email: string;
       enrollment: string;
+      status: number;
     }
   ];
 }
