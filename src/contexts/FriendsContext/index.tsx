@@ -56,17 +56,10 @@ interface FriendsRequests {
   }[];
 }
 
-interface Users {
-  id: number;
-  name: string;
-  email: string;
-  enrollment: string;
-}
-
 interface FriendsContextData {
   friends: Friend[];
   requests: FriendsRequests;
-  users: Users[];
+
   loadFriends: () => Promise<void>;
   sendInvite: (enrollment: string) => Promise<void>;
   acceptInvite: (inviteId: number) => Promise<void>;
@@ -77,16 +70,14 @@ const FriendsContext = createContext<FriendsContextData>({} as FriendsContextDat
 
 export const FriendsProvider: React.FC = ({ children }) => {
   const [friends, setFriends] = useState<Friend[]>([]);
-  const [users, setUsers] = useState<Users[]>([]);
   const [requests, setRequests] = useState<FriendsRequests>({ sent: [], received: [] });
 
   const loadFriends = useCallback(async () => {
     const friendsResponse = await api.get<Friend[]>('friends');
-    const usersResponse = await api.get<Users[]>('users');
     const requestsResponse = await api.get<FriendsRequests>('friends/request');
 
     setFriends(friendsResponse.data);
-    setUsers(usersResponse.data);
+
     setRequests(requestsResponse.data);
   }, []);
 
@@ -117,7 +108,7 @@ export const FriendsProvider: React.FC = ({ children }) => {
   );
 
   return (
-    <FriendsContext.Provider value={{ friends, users, loadFriends, requests, sendInvite, recuseInvite, acceptInvite }}>
+    <FriendsContext.Provider value={{ friends, loadFriends, requests, sendInvite, recuseInvite, acceptInvite }}>
       {children}
     </FriendsContext.Provider>
   );

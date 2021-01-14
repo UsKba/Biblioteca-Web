@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { FaPlus, FaArrowLeft, FaArrowRight, FaChevronLeft } from 'react-icons/fa';
 import { FiCheck, FiX } from 'react-icons/fi';
 import { MdBlock } from 'react-icons/md';
 import { useLocation } from 'react-router-dom';
+
+import api from '~/services/api';
 
 import colors from '~/styles/colors';
 
@@ -49,6 +51,13 @@ interface Friend {
   email: string;
 }
 
+interface User {
+  id: number;
+  name: string;
+  enrollment: string;
+  email: string;
+}
+
 interface FriendListProps {
   onFriendClick?: (friend: Friend) => void;
 }
@@ -57,6 +66,7 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
   const [friendsPanelVisible, setFriendsPanelVisible] = useState(true);
   const [search, setSearch] = useState('');
   const [reserveButton, setReserveButton] = useState(false);
+  const [searchUsers, setSearchUsers] = useState([] as User[]);
   const location = useLocation();
 
   const [pendingButtonClicked, setPendingButtonClicked] = useState(false);
@@ -94,7 +104,17 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
     }
   }
 
-  React.useEffect(() => {
+  async function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+    openFriendSearchPanel(event.target.value);
+    const response = await api.get<User[]>('/search', {
+      params: {
+        enrollment: event.target.value,
+      },
+    });
+    setSearchUsers(response.data);
+  }
+
+  useEffect(() => {
     const reserveButtonStatus = titlePages[location.pathname];
     setReserveButton(reserveButtonStatus);
   }, [location.pathname, titlePages]);
@@ -117,13 +137,7 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
         </PlusContainer>
       </TitlePanel>
 
-      <EnrollmentInput
-        value={search}
-        onChange={(event) => {
-          openFriendSearchPanel(event.target.value);
-        }}
-        hideIcon
-      />
+      <EnrollmentInput value={search} onChange={handleInputChange} hideIcon />
 
       <LineContainer left={false}>
         <Line2 />
@@ -156,6 +170,10 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
       </LineContainer>
 
       <SearchResultsText visible={searchPanelVisible}>Resultados da pesquisa:</SearchResultsText>
+      <EmptyContainer visible={searchUsers.length === 0 && search !== ''}>
+        <EmptyTitle>Ninguém foi encontrado...</EmptyTitle>
+        <EmptySpan>Confira a sua pesquisa e tente novamente.</EmptySpan>
+      </EmptyContainer>
       {/* <EmptyContainer visible>
         <EmptyTitle>Ninguém foi encontrado...</EmptyTitle>
         <EmptySpan>Confira a sua pesquisa e tente novamente!</EmptySpan>
@@ -164,7 +182,7 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
       {/* Painel de procurar amigos para adicionar */}
 
       <FriendSearchPanel visible={searchPanelVisible}>
-        {friendsContext.users
+        {searchUsers
           .filter((user) => user.id !== authContext.user.id)
           .map((user) => (
             <>
