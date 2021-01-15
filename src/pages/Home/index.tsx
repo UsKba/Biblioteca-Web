@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react';
 
 import FriendList from '~/components/FriendList';
-import ReserveList, { ReserveResponse } from '~/components/ReserveList';
+import ReserveList from '~/components/ReserveList';
 
 import { useAuth } from '~/contexts/AuthContext';
 import { useReserve } from '~/contexts/ReserveContext';
+import { Reserve } from '~/types';
 
 import NotificationReserve from './components/NotificationReserve';
 import Notifications from './components/Notifications';
@@ -27,7 +28,7 @@ import {
 const Home: React.FC = () => {
   const auth = useAuth();
   const [screenSwipe, setScreenSwipe] = useState(1);
-  const [pendingReserveList, setPendingReserveList] = useState([] as ReserveResponse[]);
+  const [pendingReserveList, setPendingReserveList] = useState([] as Reserve[]);
   const { reserves } = useReserve();
 
   useEffect(() => {
@@ -35,7 +36,7 @@ const Home: React.FC = () => {
       return;
     }
 
-    const pendingReserves = [] as ReserveResponse[];
+    const pendingReserves = [] as Reserve[];
 
     for (let i = 0; i < reserves.length; i += 1) {
       const users1 = reserves[i].users;

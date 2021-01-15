@@ -6,6 +6,7 @@ import api from '~/services/api';
 
 import awardIcon from '~/assets/award.svg';
 import { useAuth } from '~/contexts/AuthContext';
+import { User, Reserve } from '~/types';
 
 import {
   Container,
@@ -36,34 +37,9 @@ import {
   BadgePending,
 } from './styles';
 
-interface User {
-  id: number;
-  enrollment: string;
-  email: string;
-  name: string;
-}
-
-export interface ReserveResponse {
-  room: {
-    id: number;
-    initials: string;
-  };
-  schedule: {
-    id: number;
-    initialHour: string;
-    endHour: string;
-    periodId: number;
-  };
-  users: User[];
-  id: number;
-  date: string;
-  name: string;
-  adminId: number;
-}
-
 interface ReserveState {
   title: string;
-  groupTitle: string;
+  groupTitle: string | null;
   text: string;
   users: User[];
   id: number;
@@ -212,7 +188,7 @@ const ReserveList: React.FC = () => {
   useEffect(() => {
     async function loadReserves() {
       try {
-        const response = await api.get<ReserveResponse[]>('/reserves');
+        const response = await api.get<Reserve[]>('/reserves');
         const formatter = new Intl.DateTimeFormat('pt-br', { month: 'long' });
         // console.log('Reservas:');
         // console.log(response.data);

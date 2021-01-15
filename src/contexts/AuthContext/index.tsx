@@ -5,16 +5,9 @@ import api from '~/services/api';
 import suap from '~/services/suap';
 
 import { useFriends } from '~/contexts/FriendsContext';
+import { User } from '~/types';
 
 import { useReserve } from '../ReserveContext';
-
-interface User {
-  name: string;
-  email: string;
-  enrollment: string;
-  campus: string;
-  id: number;
-}
 
 interface UserSuapResponse {
   nome: string;
@@ -30,22 +23,21 @@ interface SignInParams {
   campus: string;
 }
 
+// temp
+interface UserWithCampus extends User {
+  campus: string;
+}
+
 interface AuthContextData {
   signed: boolean;
-  user: User;
+  user: UserWithCampus;
   signInSuapUrl: string;
-  signOut(): void;
   loading: boolean;
+  signOut(): void;
 }
 
 interface UserBackendResponse {
-  // user: Omit<User, 'campus'>;
-  user: {
-    name: string;
-    email: string;
-    enrollment: string;
-    id: number;
-  };
+  user: User;
   token: string;
 }
 
@@ -56,7 +48,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   const { loadFriends } = useFriends();
   const { loadReserves } = useReserve();
 
-  const [user, setUser] = useState({} as User);
+  const [user, setUser] = useState({} as UserWithCampus);
   const [loading, setLoading] = useState(false);
   const [isSigned, setIsSigned] = useState(false);
 

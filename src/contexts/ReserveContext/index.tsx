@@ -1,66 +1,22 @@
-import React, { createContext, useState, useContext, useCallback, useEffect } from 'react';
+import React, { createContext, useState, useContext, useCallback } from 'react';
 
 import api from '~/services/api';
 
-interface ReserveResponse {
-  id: number;
-  name: string;
-  date: string;
-  adminId: number;
-  room: {
-    id: number;
-    initials: string;
-  };
-  schedule: {
-    id: number;
-    periodId: number;
-    initialHour: string;
-    endHour: string;
-  };
-  users: [
-    {
-      id: number;
-      name: string;
-      email: string;
-      enrollment: string;
-      status: number;
-    }
-  ];
-}
-
-interface PeriodState {
-  id: number;
-  name: string;
-  initialHour: string;
-  endHour: string;
-}
-
-interface RoomState {
-  id: number;
-  initials: string;
-  available: boolean;
-}
-
-interface User {
-  id: number;
-  enrollment: string;
-  email: string;
-  name: string;
-}
+import { Reserve } from '~/types';
 
 interface ReserveContextData {
-  reserves: ReserveResponse[];
+  reserves: Reserve[];
   loadReserves: () => Promise<void>;
 }
 
 const ReserveContext = createContext<ReserveContextData>({} as ReserveContextData);
 
 export const ReserveProvider: React.FC = ({ children }) => {
-  const [reserves, setReserves] = useState<ReserveResponse[]>([]);
+  const [reserves, setReserves] = useState<Reserve[]>([]);
 
   const loadReserves = useCallback(async () => {
     try {
-      const response = await api.get<ReserveResponse[]>('/reserves');
+      const response = await api.get<Reserve[]>('/reserves');
 
       setReserves(response.data);
     } catch (e) {

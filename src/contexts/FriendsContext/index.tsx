@@ -3,57 +3,20 @@ import React, { createContext, useState, useContext, useCallback } from 'react';
 
 import api from '~/services/api';
 
-interface Invite {
-  id: number;
-  receiverId: number;
-
-  sender: {
-    id: number;
-    name: string;
-    email: string;
-    enrollment: string;
-  };
-}
-
-interface Friend {
-  id: number;
-  name: string;
-  enrollment: string;
-  email: string;
-}
+import { Friend, User } from '~/types';
 
 interface FriendsRequests {
   sent: {
     id: number;
     status: number;
-    sender: {
-      id: number;
-      name: string;
-      email: string;
-      enrollment: string;
-    };
-    receiver: {
-      id: number;
-      name: string;
-      email: string;
-      enrollment: string;
-    };
+    sender: User;
+    receiver: User;
   }[];
   received: {
     id: number;
     status: number;
-    sender: {
-      id: number;
-      name: string;
-      email: string;
-      enrollment: string;
-    };
-    receiver: {
-      id: number;
-      name: string;
-      email: string;
-      enrollment: string;
-    };
+    sender: User;
+    receiver: User;
   }[];
 }
 

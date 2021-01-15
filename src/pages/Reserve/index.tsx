@@ -11,6 +11,14 @@ import ReserveList from '~/components/ReserveList';
 
 import roomPath from '~/assets/room.jpg';
 import { useAuth } from '~/contexts/AuthContext';
+import {
+  Friend,
+  User,
+  Schedule,
+  Reserve as ReserveInterface,
+  Room as RoomInterface,
+  Period as PeriodInterface,
+} from '~/types';
 
 import {
   Container,
@@ -54,58 +62,6 @@ import {
   IconContainer,
 } from './styles';
 
-interface ReserveResponse {
-  day: number;
-  id: number;
-  month: number;
-  roomId: number;
-  scheduleId: number;
-  year: number;
-}
-
-interface PeriodState {
-  id: number;
-  name: string;
-  initialHour: string;
-  endHour: string;
-}
-
-interface ScheduleState {
-  id: number;
-  initialHour: string;
-  endHour: string;
-  periodId: number;
-}
-
-interface RoomState {
-  id: number;
-  initials: string;
-  available: boolean;
-}
-
-interface User {
-  id: number;
-  enrollment: string;
-  email: string;
-  name: string;
-}
-
-interface ReserveState {
-  title: string;
-  groupTitle: string;
-  text: string;
-  users: User[];
-  id: number;
-  adminId: number;
-}
-
-interface Friend {
-  id: number;
-  name: string;
-  enrollment: string;
-  email: string;
-}
-
 const Reserve: React.FC = () => {
   const history = useHistory();
 
@@ -115,10 +71,10 @@ const Reserve: React.FC = () => {
   const [enrollment, setEnrollment] = useState('');
   const [reserveName, setReserveName] = useState('');
   const [components, setComponents] = useState<User[]>([]);
-  const [schedules, setSchedules] = useState([] as ScheduleState[]);
-  const [rooms, setRooms] = useState([] as RoomState[]);
+  const [schedules, setSchedules] = useState([] as Schedule[]);
+  const [rooms, setRooms] = useState([] as RoomInterface[]);
   const [selectedDay, setSelectedDay] = useState<Date>(new Date());
-  const [periods, setPeriods] = useState([] as PeriodState[]);
+  const [periods, setPeriods] = useState([] as PeriodInterface[]);
   const [selectedPeriodId, setSelectedPeriodId] = useState(1);
 
   const [selectedScheduleId, setSelectedScheduleId] = useState(1);
@@ -200,7 +156,7 @@ const Reserve: React.FC = () => {
 
   const handleCreateReserve = useCallback(async () => {
     try {
-      const response = await api.post<ReserveResponse>('/reserves', {
+      const response = await api.post<ReserveInterface>('/reserves', {
         name: reserveName,
         roomId: selectedRoomId,
         scheduleId: selectedScheduleId,

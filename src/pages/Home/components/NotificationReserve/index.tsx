@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
 
 import { FriendIcon, FriendIconInitials } from '~/components/FriendList/styles';
-import { ReserveResponse } from '~/components/ReserveList';
+
+import { Reserve } from '~/types';
 
 import {
   NotificationContainer,
@@ -21,7 +22,7 @@ import {
 } from './styles';
 
 interface NotificationReserveProps {
-  reserve: ReserveResponse;
+  reserve: Reserve;
 }
 
 const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) => {

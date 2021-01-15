@@ -11,6 +11,7 @@ import colors from '~/styles/colors';
 
 import { useAuth } from '~/contexts/AuthContext';
 import { useFriends } from '~/contexts/FriendsContext';
+import { User, Friend } from '~/types';
 
 import EnrollmentInput from '../EnrollmentInput';
 import {
@@ -43,20 +44,6 @@ import {
   SearchResultsText,
   ReserveButtonDiv,
 } from './styles';
-
-interface Friend {
-  id: number;
-  name: string;
-  enrollment: string;
-  email: string;
-}
-
-interface User {
-  id: number;
-  name: string;
-  enrollment: string;
-  email: string;
-}
 
 interface FriendListProps {
   onFriendClick?: (friend: Friend) => void;
