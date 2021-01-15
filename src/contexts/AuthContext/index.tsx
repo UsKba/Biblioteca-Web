@@ -137,12 +137,12 @@ export const AuthProvider: React.FC = ({ children }) => {
     }
   }, [handleSignIn]);
 
-  function signOut() {
+  const signOut = useCallback(() => {
     localStorage.clear();
     suap.logout();
     setIsSigned(false);
     history.push('/');
-  }
+  }, [history]);
 
   return (
     <AuthContext.Provider value={{ signed: isSigned, user, signInSuapUrl: suap.getLoginURL(), loading, signOut }}>

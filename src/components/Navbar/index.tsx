@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import {
   FaChalkboardTeacher,
   FaHome,
@@ -51,21 +51,21 @@ const NavbarComponent: React.FC = () => {
     '/configuracoes-grupo': 'Configurações',
   };
 
-  function closeIfMobile() {
+  const closeIfMobile = useCallback(() => {
     if (window.innerWidth < 600) {
       setSidebarOpen(false);
     }
-  }
+  }, []);
 
-  function handleSignOut() {
+  const handleSignOut = useCallback(() => {
     signOut();
-  }
+  }, [signOut]);
 
-  function toggleSidebar() {
+  const toggleSidebar = useCallback(() => {
     setSidebarOpen(!sidebarOpen);
-  }
+  }, [sidebarOpen]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const title = titlePages[location.pathname];
     setPageTitle(title);
   }, [location.pathname, titlePages]);

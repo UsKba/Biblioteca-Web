@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+/* eslint-disable no-alert */
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { useHistory, Link } from 'react-router-dom';
 
@@ -133,11 +134,11 @@ const Reserve: React.FC = () => {
     setSelectedScheduleId(firstScheduleId);
   }, [schedules, selectedPeriodId]);
 
-  function goBack() {
+  const goBack = useCallback(() => {
     history.goBack();
-  }
+  }, [history]);
 
-  async function handleAddComponent() {
+  const handleAddComponent = useCallback(async () => {
     const findComponent = components.find((element) => {
       return element.enrollment === enrollment;
     });
@@ -173,25 +174,31 @@ const Reserve: React.FC = () => {
     } catch (e) {
       // console.log(e);
     }
-  }
+  }, [components, enrollment]);
 
-  function isReserveAdmin(componentEnrollment: string) {
-    if (componentEnrollment !== user.enrollment) {
-      return true;
-    }
-    return false;
-  }
+  const isReserveAdmin = useCallback(
+    (componentEnrollment: string) => {
+      if (componentEnrollment !== user.enrollment) {
+        return true;
+      }
+      return false;
+    },
+    [user.enrollment]
+  );
 
-  function removeComponent(componentEnrollment: string) {
-    if (componentEnrollment !== user.enrollment) {
-      const newComponents = components.filter((element) => {
-        return element.enrollment !== componentEnrollment;
-      });
-      setComponents(newComponents);
-    }
-  }
+  const removeComponent = useCallback(
+    (componentEnrollment: string) => {
+      if (componentEnrollment !== user.enrollment) {
+        const newComponents = components.filter((element) => {
+          return element.enrollment !== componentEnrollment;
+        });
+        setComponents(newComponents);
+      }
+    },
+    [components, user.enrollment]
+  );
 
-  async function handleCreateReserve() {
+  const handleCreateReserve = useCallback(async () => {
     try {
       const response = await api.post<ReserveResponse>('/reserves', {
         name: reserveName,
@@ -211,24 +218,27 @@ const Reserve: React.FC = () => {
       // console.log(e);
       alert(e.response.data.error);
     }
-  }
+  }, [components, history, reserveName, selectedDay, selectedRoomId, selectedScheduleId]);
 
-  function handleFriendClick(friend: Friend) {
-    const findComponent = components.find((element) => {
-      return element.enrollment === friend.enrollment;
-    });
+  const handleFriendClick = useCallback(
+    (friend: Friend) => {
+      const findComponent = components.find((element) => {
+        return element.enrollment === friend.enrollment;
+      });
 
-    if (findComponent !== undefined) {
-      alert('Não é possível adicionar o mesmo usuário duas vezes.');
-      return;
-    }
+      if (findComponent !== undefined) {
+        alert('Não é possível adicionar o mesmo usuário duas vezes.');
+        return;
+      }
 
-    if (components.length >= 6) {
-      alert('Grupo cheio!');
-      return;
-    }
-    setComponents([...components, friend]);
-  }
+      if (components.length >= 6) {
+        alert('Grupo cheio!');
+        return;
+      }
+      setComponents([...components, friend]);
+    },
+    [components]
+  );
 
   useEffect(() => {
     async function loadSchedules() {

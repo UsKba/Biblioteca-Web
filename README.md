@@ -64,6 +64,12 @@ useEffect chama sua função assim que a página carregar
 
  Ler sobre objetos em javascript
 
+  // const goBack = useCallback(async(param: string) => {}, [])
+
+  // function goBack() {
+  //   history.goBack();
+  // }
+
 IDS:
 1 - Idaslon (Lonlon)
 2 - Fellipe (ZanZan)

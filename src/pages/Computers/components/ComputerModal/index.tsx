@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { FaDesktop } from 'react-icons/fa';
 
 import {
@@ -17,8 +17,12 @@ interface OwnProps {
   selectedComputer: string;
 }
 const ComputerModal: React.FC<OwnProps> = ({ modalVisible, setModalVisible, selectedComputer }) => {
+  const handleButtonClick = useCallback(() => {
+    setModalVisible(false);
+  }, [setModalVisible]);
+
   return (
-    <Alpha modalVisible={modalVisible} onClick={() => setModalVisible(false)}>
+    <Alpha modalVisible={modalVisible} onClick={handleButtonClick}>
       <Popup>
         <PopupContentTop>
           Computador: PC-

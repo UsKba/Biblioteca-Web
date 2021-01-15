@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { FriendIcon, FriendIconInitials } from '~/components/FriendList/styles';
 import { ReserveResponse } from '~/components/ReserveList';
@@ -25,7 +25,7 @@ interface NotificationReserveProps {
 }
 
 const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) => {
-  function formatText() {
+  const formatText = useCallback(() => {
     const formatter = new Intl.DateTimeFormat('pt-br', { month: 'long' });
     const reserveDate = new Date(reserve.date);
     const monthFormatted = formatter.format(reserveDate);
@@ -39,28 +39,32 @@ const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) =>
     const text = `${username}, te convidou para a reserva da sala ${roominitials} para o dia ${day} de ${monthFormatted}, no horário das ${initialHour} às  ${endHour}`;
 
     return text;
-  }
-  function headerName() {
+  }, [reserve.adminId, reserve.date, reserve.room.initials, reserve.schedule, reserve.users]);
+
+  const headerName = useCallback(() => {
     const admin = reserve.users.find((element) => element.id === reserve.adminId);
     const username = admin ? admin.name : '';
     const text = `${username}`;
 
     return text;
-  }
-  function headerEmail() {
+  }, [reserve.adminId, reserve.users]);
+
+  const headerEmail = useCallback(() => {
     const admin = reserve.users.find((element) => element.id === reserve.adminId);
     const email = admin ? admin.email : '';
     const text = `<${email}>`;
 
     return text;
-  }
-  function headerInitials() {
+  }, [reserve.adminId, reserve.users]);
+
+  const headerInitials = useCallback(() => {
     const admin = reserve.users.find((element) => element.id === reserve.adminId);
     const initials = admin ? admin.name : '';
     const text = `${initials.charAt(0)}`;
 
     return text;
-  }
+  }, [reserve.adminId, reserve.users]);
+
   return (
     <NotificationContainer>
       <Notification>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import getFirstDayOfWeek from '~/utils/firstDayOfWeek';
 import { isWeekend, DAY_IN_MILLISECONDS } from '~/utils/time';
@@ -17,9 +17,12 @@ const DateList: React.FC<Props> = ({ selectDay }) => {
   const [selectedWeekDay, setSelectedWeekDay] = useState(isWeekend(today) ? 1 : today.getDay());
   const days = [1, 2, 3, 4, 5];
 
-  function isToday(weekDay: number) {
-    return weekDay === today.getDay();
-  }
+  const isToday = useCallback(
+    (weekDay: number) => {
+      return weekDay === today.getDay();
+    },
+    [today]
+  );
 
   useEffect(() => {
     if (!selectDay) return;
@@ -27,6 +30,7 @@ const DateList: React.FC<Props> = ({ selectDay }) => {
     selectDay(selectedDate);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedWeekDay, selectDay, sunday.getTime]);
+
   return (
     <Container>
       {days.map((day) => (

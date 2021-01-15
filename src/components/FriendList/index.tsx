@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { FaPlus, FaArrowLeft, FaArrowRight, FaChevronLeft } from 'react-icons/fa';
 import { FiCheck, FiX } from 'react-icons/fi';
@@ -81,14 +81,14 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
     '/reservar': true,
   };
 
-  function pendingButtonText() {
+  const pendingButtonText = useCallback(() => {
     if (pendingButtonClicked) {
       return 'Lista de amigos';
     }
     return 'Pedidos pendentes';
-  }
+  }, [pendingButtonClicked]);
 
-  function openFriendSearchPanel(value: string) {
+  const openFriendSearchPanel = useCallback((value: string) => {
     setSearch(value);
 
     if (value.length > 0) {
@@ -96,23 +96,29 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
     }
 
     return setSearchPanelVisible(false);
-  }
+  }, []);
 
-  function handleFriendClick(friend: Friend) {
-    if (onFriendClick) {
-      onFriendClick(friend);
-    }
-  }
+  const handleFriendClick = useCallback(
+    (friend: Friend) => {
+      if (onFriendClick) {
+        onFriendClick(friend);
+      }
+    },
+    [onFriendClick]
+  );
 
-  async function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
-    openFriendSearchPanel(event.target.value);
-    const response = await api.get<User[]>('/search', {
-      params: {
-        enrollment: event.target.value,
-      },
-    });
-    setSearchUsers(response.data);
-  }
+  const handleInputChange = useCallback(
+    async (event: React.ChangeEvent<HTMLInputElement>) => {
+      openFriendSearchPanel(event.target.value);
+      const response = await api.get<User[]>('/search', {
+        params: {
+          enrollment: event.target.value,
+        },
+      });
+      setSearchUsers(response.data);
+    },
+    [openFriendSearchPanel]
+  );
 
   useEffect(() => {
     const reserveButtonStatus = titlePages[location.pathname];

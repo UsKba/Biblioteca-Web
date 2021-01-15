@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable no-alert */
+import React, { useState, useEffect, useCallback } from 'react';
 import { FaPlus, FaChevronDown, FaTimes } from 'react-icons/fa';
 
 import api from '~/services/api';
@@ -74,124 +75,139 @@ const ReserveList: React.FC = () => {
   const [reserves, setReserves] = useState([] as ReserveState[]);
   const authContext = useAuth();
 
-  function toggleDropmenu(index: number) {
-    if (index === menuIndex) {
-      setMenuIndex(undefined);
-    } else {
-      setMenuIndex(index);
-    }
-  }
+  const toggleDropmenu = useCallback(
+    (index: number) => {
+      if (index === menuIndex) {
+        setMenuIndex(undefined);
+      } else {
+        setMenuIndex(index);
+      }
+    },
+    [menuIndex]
+  );
 
-  function isReserveAdmin(reserve: ReserveState, user: User) {
+  const isReserveAdmin = useCallback((reserve: ReserveState, user: User) => {
     if (reserve.adminId === user.id) {
       return true;
     }
     return false;
-  }
+  }, []);
 
-  function showDeleteIcon(reserve: ReserveState, user: User) {
-    if (isReserveAdmin(reserve, authContext.user)) {
-      if (authContext.user.id === user.id) {
-        return 'none';
+  const showDeleteIcon = useCallback(
+    (reserve: ReserveState, user: User) => {
+      if (isReserveAdmin(reserve, authContext.user)) {
+        if (authContext.user.id === user.id) {
+          return 'none';
+        }
+
+        return 'inline-block';
       }
 
-      return 'inline-block';
-    }
+      return 'none';
+    },
+    [authContext.user, isReserveAdmin]
+  );
 
-    return 'none';
-  }
+  const quitReserve = useCallback(
+    async (reserveToQuit: ReserveState) => {
+      const response = window.confirm('Tem certeza que deseja sair desta reserva?');
 
-  async function quitReserve(reserveToQuit: ReserveState) {
-    const response = window.confirm('Tem certeza que deseja sair desta reserva?');
-
-    if (!response) {
-      return;
-    }
-
-    if (reserveToQuit.users.length <= 3) {
-      const response2 = window.confirm(
-        'Atenção! Essa reserva possui apenas 3 membros, se você sair ela será deletada, tem certeza que deseja sair?'
-      );
-
-      if (!response2) {
+      if (!response) {
         return;
       }
-    }
 
-    try {
-      await api.delete(`/reserves/${reserveToQuit.id}/users/${authContext.user.id}`);
-      const newReserves = reserves.filter((reserve) => {
-        return reserve.id !== reserveToQuit.id;
-      });
-      setReserves(newReserves);
-    } catch (e) {
-      alert('Erro ao sair da reserva!');
-    }
-  }
+      if (reserveToQuit.users.length <= 3) {
+        const response2 = window.confirm(
+          'Atenção! Essa reserva possui apenas 3 membros, se você sair ela será deletada, tem certeza que deseja sair?'
+        );
 
-  async function deleteGroupMember(reserveId: number, userId: number) {
-    const findReserve = reserves.find((reserve) => {
-      return reserve.id === reserveId;
-    });
-
-    const response = window.confirm('Tem certeza que deseja excluir este membro da reserva?');
-
-    if (!response) {
-      return;
-    }
-
-    if (findReserve === undefined) {
-      alert('Reserva não encontrada');
-      return;
-    }
-
-    if (findReserve.users.length <= 3) {
-      alert('Pelo menos 3 usuários na reserva são necessários');
-      return;
-    }
-    try {
-      await api.delete(`/reserves/${reserveId}/users/${userId}`);
-      alert('Usuário deletado!');
-
-      const newUsers = findReserve.users.filter((user) => {
-        return user.id !== userId;
-      });
-      const newReserves = reserves.map((reserve) => {
-        if (reserve.id === reserveId) {
-          return {
-            ...reserve,
-            users: newUsers,
-          };
+        if (!response2) {
+          return;
         }
-        return reserve;
-      });
-      setReserves(newReserves);
-    } catch (e) {
-      // console.log(e.response.data);
-      alert(e.response.data.error);
-    }
-  }
+      }
 
-  async function deleteReserve(reserveId: number) {
-    const response = window.confirm('Tem certeza que deseja excluir esta reserva?');
+      try {
+        await api.delete(`/reserves/${reserveToQuit.id}/users/${authContext.user.id}`);
+        const newReserves = reserves.filter((reserve) => {
+          return reserve.id !== reserveToQuit.id;
+        });
+        setReserves(newReserves);
+      } catch (e) {
+        alert('Erro ao sair da reserva!');
+      }
+    },
+    [authContext.user.id, reserves]
+  );
 
-    if (!response) {
-      return;
-    }
-    try {
-      await api.delete(`/reserves/${reserveId}`);
-      alert('Reserva deletada');
-
-      const newReserves = reserves.filter((reserve) => {
-        return reserve.id !== reserveId;
+  const deleteGroupMember = useCallback(
+    async (reserveId: number, userId: number) => {
+      const findReserve = reserves.find((reserve) => {
+        return reserve.id === reserveId;
       });
 
-      setReserves(newReserves);
-    } catch (e) {
-      // console.log(e.response.data);
-      alert(e.response.data.error);
-    }
-  }
+      const response = window.confirm('Tem certeza que deseja excluir este membro da reserva?');
+
+      if (!response) {
+        return;
+      }
+
+      if (findReserve === undefined) {
+        alert('Reserva não encontrada');
+        return;
+      }
+
+      if (findReserve.users.length <= 3) {
+        alert('Pelo menos 3 usuários na reserva são necessários');
+        return;
+      }
+      try {
+        await api.delete(`/reserves/${reserveId}/users/${userId}`);
+        alert('Usuário deletado!');
+
+        const newUsers = findReserve.users.filter((user) => {
+          return user.id !== userId;
+        });
+        const newReserves = reserves.map((reserve) => {
+          if (reserve.id === reserveId) {
+            return {
+              ...reserve,
+              users: newUsers,
+            };
+          }
+          return reserve;
+        });
+        setReserves(newReserves);
+      } catch (e) {
+        // console.log(e.response.data);
+        alert(e.response.data.error);
+      }
+    },
+    [reserves]
+  );
+
+  const deleteReserve = useCallback(
+    async (reserveId: number) => {
+      const response = window.confirm('Tem certeza que deseja excluir esta reserva?');
+
+      if (!response) {
+        return;
+      }
+      try {
+        await api.delete(`/reserves/${reserveId}`);
+        alert('Reserva deletada');
+
+        const newReserves = reserves.filter((reserve) => {
+          return reserve.id !== reserveId;
+        });
+
+        setReserves(newReserves);
+      } catch (e) {
+        // console.log(e.response.data);
+        alert(e.response.data.error);
+      }
+    },
+    [reserves]
+  );
 
   useEffect(() => {
     async function loadReserves() {

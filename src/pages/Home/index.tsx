@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 
 import FriendList from '~/components/FriendList';
 import ReserveList, { ReserveResponse } from '~/components/ReserveList';
@@ -29,7 +29,6 @@ const Home: React.FC = () => {
   const [screenSwipe, setScreenSwipe] = useState(1);
   const [pendingReserveList, setPendingReserveList] = useState([] as ReserveResponse[]);
   const { reserves } = useReserve();
-  // console.log(reserves);
 
   useEffect(() => {
     if (reserves.length === 0) {
@@ -43,19 +42,19 @@ const Home: React.FC = () => {
 
       const userLogged = users1.find((user) => user.id === auth.user.id);
       if (userLogged?.status === 0) {
-        console.log('Usuário logado não aceitou a reserva');
+        // console.log('Usuário logado não aceitou a reserva');
         pendingReserves.push(reserves[i]);
       }
-
-      console.log(users1);
+      // console.log(users1);
     }
 
     setPendingReserveList(pendingReserves);
   }, [auth.user.id, reserves]);
 
-  function handleChangeSwipe(index: number) {
+  const handleChangeSwipe = useCallback((index: number) => {
     setScreenSwipe(index);
-  }
+  }, []);
+
   return (
     <Container>
       <MobileNav>

@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { Button } from '~/components/MainButton/styles';
-
 import colors from '../../styles/colors';
 
 export const Container = styled.div`
@@ -100,15 +98,6 @@ export const MiddleSide = styled.div`
     flex-direction: column-reverse;
     align-items: center;
   }
-`;
-
-export interface BackProps {
-  isSigned: boolean;
-}
-
-export const Back = styled(Button)<BackProps>`
-  margin: 0 0 8px 55em;
-  display: ${(props) => props.isSigned && 'none'};
 `;
 
 export const GoBack = styled.div`

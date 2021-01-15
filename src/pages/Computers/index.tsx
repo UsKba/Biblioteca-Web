@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import colors from '~/styles/colors';
 
@@ -39,13 +39,15 @@ const RoomComputers = () => {
   const [selectedComputer, setSelectedComputer] = useState('');
   const [screenSwipe, setScreenSwipe] = useState(1);
 
-  function handleChangeSwipe(index: number) {
+  const handleChangeSwipe = useCallback((index: number) => {
     setScreenSwipe(index);
-  }
-  function openModal(computer: string) {
+  }, []);
+
+  const openModal = useCallback((computer: string) => {
     setSelectedComputer(computer);
     setModalVisible(true);
-  }
+  }, []);
+
   return (
     <>
       <ComputerModal
