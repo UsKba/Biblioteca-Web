@@ -311,6 +311,7 @@ export const Group = styled.span`
 export const ComponentsContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 40px;
 `;
 
 export const Components = styled.div`
@@ -320,6 +321,8 @@ export const Components = styled.div`
 
 export const InputContainer = styled.div`
   display: flex;
+
+  margin-right: 120px;
 
   @media only screen and (max-width: 640px) {
     input {
@@ -361,7 +364,7 @@ export const ComponentList = styled.div`
   display: flex;
   flex-direction: column;
 
-  margin-right: 60px;
+  margin-right: 180px;
 `;
 
 export const Component = styled.div`
@@ -442,6 +445,7 @@ export const SearchArea = styled.div`
   flex: 1;
 
   border-radius: 5px;
+  margin-bottom: 20px;
 `;
 
 export const SearchHashTag = styled.span`

@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { FaPlus, FaChevronDown, FaTimes } from 'react-icons/fa';
 
-import api from '~/services/api';
+import { getRequest, deleteRequest } from '~/utils/api';
 
 import awardIcon from '~/assets/award.svg';
 import { useAuth } from '~/contexts/AuthContext';
@@ -102,15 +102,18 @@ const ReserveList: React.FC = () => {
         }
       }
 
-      try {
-        await api.delete(`/reserves/${reserveToQuit.id}/users/${authContext.user.id}`);
-        const newReserves = reserves.filter((reserve) => {
-          return reserve.id !== reserveToQuit.id;
-        });
-        setReserves(newReserves);
-      } catch (e) {
-        alert('Erro ao sair da reserva!');
+      const { error } = await deleteRequest(`/reserves/${reserveToQuit.id}/users/${authContext.user.id}`);
+
+      if (error) {
+        alert(error.error);
+        return;
       }
+
+      const newReserves = reserves.filter((reserve) => {
+        return reserve.id !== reserveToQuit.id;
+      });
+
+      setReserves(newReserves);
     },
     [authContext.user.id, reserves]
   );
@@ -136,27 +139,28 @@ const ReserveList: React.FC = () => {
         alert('Pelo menos 3 usuários na reserva são necessários');
         return;
       }
-      try {
-        await api.delete(`/reserves/${reserveId}/users/${userId}`);
-        alert('Usuário deletado!');
 
-        const newUsers = findReserve.users.filter((user) => {
-          return user.id !== userId;
-        });
-        const newReserves = reserves.map((reserve) => {
-          if (reserve.id === reserveId) {
-            return {
-              ...reserve,
-              users: newUsers,
-            };
-          }
-          return reserve;
-        });
-        setReserves(newReserves);
-      } catch (e) {
-        // console.log(e.response.data);
-        alert(e.response.data.error);
+      const { error } = await deleteRequest(`/reserves/${reserveId}/users/${userId}`);
+
+      if (error) {
+        alert(error.error);
+        return;
       }
+
+      alert('Usuário deletado!');
+      const newUsers = findReserve.users.filter((user) => {
+        return user.id !== userId;
+      });
+      const newReserves = reserves.map((reserve) => {
+        if (reserve.id === reserveId) {
+          return {
+            ...reserve,
+            users: newUsers,
+          };
+        }
+        return reserve;
+      });
+      setReserves(newReserves);
     },
     [reserves]
   );
@@ -168,57 +172,58 @@ const ReserveList: React.FC = () => {
       if (!response) {
         return;
       }
-      try {
-        await api.delete(`/reserves/${reserveId}`);
-        alert('Reserva deletada');
 
-        const newReserves = reserves.filter((reserve) => {
-          return reserve.id !== reserveId;
-        });
+      const { error } = await deleteRequest(`/reserves/${reserveId}`);
 
-        setReserves(newReserves);
-      } catch (e) {
-        // console.log(e.response.data);
-        alert(e.response.data.error);
+      if (error) {
+        alert(error.error);
+        return;
       }
+      alert('Reserva deletada!');
+
+      const newReserves = reserves.filter((reserve) => {
+        return reserve.id !== reserveId;
+      });
+
+      setReserves(newReserves);
     },
     [reserves]
   );
 
   useEffect(() => {
     async function loadReserves() {
-      try {
-        const response = await api.get<Reserve[]>('/reserves');
-        const formatter = new Intl.DateTimeFormat('pt-br', { month: 'long' });
-        // console.log('Reservas:');
-        // console.log(response.data);
+      const { data, error } = await getRequest<Reserve[]>('/reserves');
 
-        const reservesFormatted = response.data.map((reserve) => {
-          const { date, name, id } = reserve;
-          const { initials } = reserve.room;
-          const { initialHour, endHour } = reserve.schedule;
-
-          const reserveDate = new Date(date);
-          const monthFormatted = formatter.format(reserveDate);
-          const day = reserveDate.getDate();
-          const year = reserveDate.getFullYear();
-
-          const title = `Reserva da sala ${initials}`;
-          const text = `Horário: ${initialHour} - ${endHour} no dia: ${day} de ${monthFormatted} de ${year}`;
-          return {
-            title,
-            groupTitle: name,
-            text,
-            users: reserve.users,
-            id,
-            adminId: reserve.adminId,
-          };
-        });
-        setReserves(reservesFormatted);
-      } catch (e) {
-        // console.log(e.response.data);
-        // alert(e.response.data.error);
+      if (error) {
+        alert(error.error);
+        return;
       }
+
+      const formatter = new Intl.DateTimeFormat('pt-br', { month: 'long' });
+
+      const reservesFormatted = data!.map((reserve) => {
+        const { date, name, id } = reserve;
+        const { initials } = reserve.room;
+        const { initialHour, endHour } = reserve.schedule;
+
+        const reserveDate = new Date(date);
+        const monthFormatted = formatter.format(reserveDate);
+        const day = reserveDate.getDate();
+        const year = reserveDate.getFullYear();
+
+        const title = `Reserva da sala ${initials}`;
+        const text = `Horário: ${initialHour} - ${endHour} no dia: ${day} de ${monthFormatted} de ${year}`;
+        return {
+          title,
+          groupTitle: name,
+          text,
+          users: reserve.users,
+          id,
+          adminId: reserve.adminId,
+        };
+      });
+
+      setReserves(reservesFormatted);
     }
     loadReserves();
   }, []);

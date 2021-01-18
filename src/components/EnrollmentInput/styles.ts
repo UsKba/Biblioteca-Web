@@ -4,10 +4,11 @@ import colors from '~/styles/colors';
 
 export interface SearchAreaProps {
   backgroundColor?: string;
+  visible?: boolean;
 }
 
 export const SearchArea = styled.div<SearchAreaProps>`
-  display: flex;
+  ${(props) => !props.visible && `display: none;`};
 
   height: 45px;
   width: 277px;

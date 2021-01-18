@@ -2,6 +2,8 @@ import React, { createContext, useState, useContext, useCallback } from 'react';
 
 import api from '~/services/api';
 
+import { getRequest } from '~/utils/api';
+
 import { Reserve } from '~/types';
 
 interface ReserveContextData {
@@ -15,14 +17,14 @@ export const ReserveProvider: React.FC = ({ children }) => {
   const [reserves, setReserves] = useState<Reserve[]>([]);
 
   const loadReserves = useCallback(async () => {
-    try {
-      const response = await api.get<Reserve[]>('/reserves');
+    const { data, error } = await getRequest('/reserves');
 
-      setReserves(response.data);
-    } catch (e) {
-      // console.log(e.response.data);
-      // alert(e.response.data.error);
+    if (error) {
+      alert(error.error);
+      return;
     }
+
+    setReserves(data);
   }, []);
 
   return <ReserveContext.Provider value={{ reserves, loadReserves }}>{children}</ReserveContext.Provider>;

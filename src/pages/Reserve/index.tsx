@@ -5,6 +5,8 @@ import { useHistory, Link } from 'react-router-dom';
 
 import api from '~/services/api';
 
+import { getRequest, postRequest } from '~/utils/api';
+
 import DateList from '~/components/DateList';
 import FriendList from '~/components/FriendList';
 import ReserveList from '~/components/ReserveList';
@@ -114,21 +116,23 @@ const Reserve: React.FC = () => {
       return;
     }
 
-    try {
-      const response = await api.get(`/search`, { params: { enrollment } });
+    const { data, error } = await getRequest('/search', { params: { enrollment } });
 
-      if (response.data.length === 0) {
-        alert('Usuário não encontrado');
-        return;
-      }
-      setComponents([...components, response.data[0]]);
-      setEnrollment('');
+    if (error) {
+      alert(error.error);
+      return;
+    }
 
-      if (inputRef.current) {
-        inputRef.current.focus();
-      }
-    } catch (e) {
-      // console.log(e);
+    if (data!.length === 0) {
+      alert('Usuário não encontrado');
+      return;
+    }
+
+    setComponents([...components, data[0]]);
+    setEnrollment('');
+
+    if (inputRef.current) {
+      inputRef.current.focus();
     }
   }, [components, enrollment]);
 
@@ -155,25 +159,25 @@ const Reserve: React.FC = () => {
   );
 
   const handleCreateReserve = useCallback(async () => {
-    try {
-      const response = await api.post<ReserveInterface>('/reserves', {
-        name: reserveName,
-        roomId: selectedRoomId,
-        scheduleId: selectedScheduleId,
-        day: selectedDay.getDate(),
-        month: selectedDay.getMonth(),
-        // janeiro = month: 0
-        year: selectedDay.getFullYear(),
-        classmatesEnrollments: components.map((component) => component.enrollment),
-      });
+    const { data, error } = await postRequest<ReserveInterface>('/reserves', {
+      name: reserveName,
+      roomId: selectedRoomId,
+      scheduleId: selectedScheduleId,
+      day: selectedDay.getDate(),
+      month: selectedDay.getMonth(),
+      // janeiro = month: 0
+      year: selectedDay.getFullYear(),
+      classmatesEnrollments: components.map((component) => component.enrollment),
+    });
 
-      console.log(response.data);
-      history.push('/');
-      alert('Reserva criada!');
-    } catch (e) {
-      // console.log(e);
-      alert(e.response.data.error);
+    if (error) {
+      alert(error.error);
+      return;
     }
+
+    console.log(data);
+    history.push('/');
+    alert('Reserva criada!');
   }, [components, history, reserveName, selectedDay, selectedRoomId, selectedScheduleId]);
 
   const handleFriendClick = useCallback(
@@ -198,30 +202,36 @@ const Reserve: React.FC = () => {
 
   useEffect(() => {
     async function loadSchedules() {
-      try {
-        const response = await api.get('/schedules');
-        setSchedules(response.data);
-      } catch (e) {
-        // console.log(e.response.data);
+      const { data, error } = await getRequest('/schedules');
+
+      if (error) {
+        alert(error.error);
+        return;
       }
+
+      setSchedules(data);
     }
 
     async function loadPeriods() {
-      try {
-        const response = await api.get('/periods');
-        setPeriods(response.data);
-      } catch (e) {
-        // console.log(e.response.data);
+      const { data, error } = await getRequest('/periods');
+
+      if (error) {
+        alert(error.error);
+        return;
       }
+
+      setPeriods(data);
     }
 
     async function loadRooms() {
-      try {
-        const response = await api.get('/rooms');
-        setRooms(response.data);
-      } catch (e) {
-        // console.log(e.response.data);
+      const { data, error } = await getRequest('/rooms');
+
+      if (error) {
+        alert(error.error);
+        return;
       }
+
+      setRooms(data);
     }
 
     loadSchedules();
@@ -289,25 +299,7 @@ const Reserve: React.FC = () => {
             ))}
           </ChooseRoom>
         </RoomContainer>
-        <GroupContainer>
-          <Title2>Nomeie sua reserva:</Title2>
-          <InputContainer>
-            <SearchArea>
-              <SearchHashTag>#</SearchHashTag>
-              <SearchingBar
-                type="text"
-                maxLength={25}
-                placeholder="Exemplo: Grupo de História"
-                value={reserveName}
-                onChange={(event) => {
-                  setReserveName(event.target.value);
-                  console.log(event.target.value);
-                }}
-                style={{ marginRight: '60px' }}
-              />
-            </SearchArea>
-          </InputContainer>
-        </GroupContainer>
+
         <ComponentsContainer>
           <Title2>Adicione componentes:</Title2>
           <Components>
@@ -327,7 +319,7 @@ const Reserve: React.FC = () => {
             </InputContainer>
 
             <ErrorContainer error={addComponentError !== ''}>{addComponentError}</ErrorContainer>
-            <Title3>Grupo:</Title3>
+            {/* <Title3>Grupo:</Title3> */}
             <ComponentList>
               {components.map((component) => (
                 <Component key={component.enrollment}>
@@ -352,6 +344,25 @@ const Reserve: React.FC = () => {
             </ComponentList>
           </Components>
         </ComponentsContainer>
+        <GroupContainer>
+          <Title2>Nomeie sua reserva:</Title2>
+          <InputContainer>
+            <SearchArea>
+              <SearchHashTag>#</SearchHashTag>
+              <SearchingBar
+                type="text"
+                maxLength={25}
+                placeholder="Exemplo: Grupo de História"
+                value={reserveName}
+                onChange={(event) => {
+                  setReserveName(event.target.value);
+                  console.log(event.target.value);
+                }}
+                style={{ marginRight: '60px' }}
+              />
+            </SearchArea>
+          </InputContainer>
+        </GroupContainer>
         <RentButton onClick={handleCreateReserve}>Confirmar</RentButton>
       </MiddleSide>
       <RightSide>

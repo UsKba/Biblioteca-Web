@@ -58,6 +58,8 @@ export const TitleSmall = styled.span`
 
   color: ${colors.dark};
 
+  margin-bottom: 15px;
+
   @media screen and (max-width: 600px) {
     font-size: 14px;
   }
@@ -65,7 +67,7 @@ export const TitleSmall = styled.span`
 
 // interface FriendPanelProps {
 //   goDown: boolean;
-// }
+// }r
 interface FriendsPanelHiddenProps {
   small?: boolean;
 }
@@ -216,17 +218,31 @@ export const Line2 = styled.div`
 `;
 
 interface PlusContainerProps {
-  rotateIcon?: boolean;
+  visible?: boolean;
 }
 
 export const PlusContainer = styled.div<PlusContainerProps>`
-  transition: 0.28s;
+  display: ${({ visible }) => (visible === true ? 'flex' : 'none')};
   margin-right: 20px;
   svg {
     font-size: 20px;
   }
-  ${(props) =>
-    props.rotateIcon && `transform: rotate(45deg); svg{ color: ${colors.red}; &:hover { color: ${colors.lightred}};}`}
+`;
+
+interface TimesContainerProps {
+  visible?: boolean;
+}
+
+export const TimesContainer = styled.div<TimesContainerProps>`
+  display: ${({ visible }) => (visible === true ? 'none' : 'flex')};
+  margin-right: 20px;
+  svg {
+    color: ${colors.red};
+    font-size: 20px;
+    &:hover {
+      color: ${colors.lightred};
+    }
+  }
 `;
 
 interface PendingButtonProps {

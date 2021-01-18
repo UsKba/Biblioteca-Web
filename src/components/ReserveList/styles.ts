@@ -115,7 +115,7 @@ export const ReserveTitle = styled.span`
 `;
 
 export const ReserveText = styled.span`
-  font-size: 13px;
+  font-size: 14px;
   color: ${colors.text};
 
   margin-bottom: 8px;

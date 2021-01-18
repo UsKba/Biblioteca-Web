@@ -18,11 +18,11 @@ interface OwmProps {
 }
 type Props = OwmProps & InputProps & SearchAreaProps;
 const EnrollmentInput: React.ForwardRefRenderFunction<HTMLInputElement, Props> = (
-  { hideIcon, backgroundColor, ...rest },
+  { hideIcon, backgroundColor, visible, ...rest },
   ref
 ) => {
   return (
-    <SearchArea backgroundColor={backgroundColor}>
+    <SearchArea backgroundColor={backgroundColor} visible={visible}>
       <SearchHashTag>#</SearchHashTag>
       <SearchingBar ref={ref} type="text" placeholder="Pesquise por amigos " {...rest} />
       {!hideIcon && (

@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { AiOutlineUserAdd } from 'react-icons/ai';
-import { FaPlus, FaArrowLeft, FaArrowRight, FaChevronLeft } from 'react-icons/fa';
+import { FaPlus, FaArrowLeft, FaArrowRight, FaChevronLeft, FaTimes } from 'react-icons/fa';
 import { FiCheck, FiX } from 'react-icons/fi';
 import { MdBlock } from 'react-icons/md';
 import { useLocation } from 'react-router-dom';
 
 import api from '~/services/api';
+
+import { getRequest } from '~/utils/api';
 
 import colors from '~/styles/colors';
 
@@ -33,8 +35,8 @@ import {
   EmptyContainer,
   EmptyTitle,
   EmptySpan,
-  // FriendsPanelHidden,
   PlusContainer,
+  TimesContainer,
   PendingButton,
   AcceptContainer,
   PendingFriendsAlert,
@@ -60,6 +62,7 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
   const [iconPendingButtonClicked, setIconPendingButtonClicked] = useState(false);
 
   const [searchPanelVisible, setSearchPanelVisible] = useState(false);
+  const [searchBarVisible, setSearchBarVisible] = useState(true);
 
   const friendsContext = useFriends();
   const authContext = useAuth();
@@ -68,12 +71,26 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
     '/reservar': true,
   };
 
+  const toggleSearchBars = useCallback(() => {
+    setSearchBarVisible(!searchBarVisible);
+  }, [searchBarVisible]);
+
   const pendingButtonText = useCallback(() => {
     if (pendingButtonClicked) {
       return 'Lista de amigos';
     }
     return 'Pedidos pendentes';
   }, [pendingButtonClicked]);
+
+  const openFriendAddPanel = useCallback((value: string) => {
+    setSearch(value);
+
+    if (value.length > 0) {
+      return setSearchPanelVisible(true);
+    }
+
+    return setSearchPanelVisible(false);
+  }, []);
 
   const openFriendSearchPanel = useCallback((value: string) => {
     setSearch(value);
@@ -96,13 +113,30 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
 
   const handleInputChange = useCallback(
     async (event: React.ChangeEvent<HTMLInputElement>) => {
-      openFriendSearchPanel(event.target.value);
-      const response = await api.get<User[]>('/search', {
+      openFriendAddPanel(event.target.value);
+
+      const { data } = await getRequest<User[]>('/search', {
         params: {
           enrollment: event.target.value,
         },
       });
-      setSearchUsers(response.data);
+
+      setSearchUsers(data || []);
+    },
+    [openFriendAddPanel]
+  );
+
+  const handleSearchFriends = useCallback(
+    async (event: React.ChangeEvent<HTMLInputElement>) => {
+      openFriendSearchPanel(event.target.value);
+
+      const { data } = await getRequest<User[]>('/friends', {
+        params: {
+          enrollment: event.target.value,
+        },
+      });
+
+      setSearchUsers(data || []);
     },
     [openFriendSearchPanel]
   );
@@ -116,21 +150,33 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
     <FriendsContainer>
       <TitlePanel>
         <Title>Amigos</Title>
-        <PlusContainer>
+        <PlusContainer visible={searchBarVisible}>
           {/* rotateIcon={friendListOpen} */}
           <AiOutlineUserAdd
             title="Adicionar amigos"
             onClick={() => {
-              friendsContext.sendInvite(search);
-              setSearch('');
-              // toggleFriendList();
-              // toggleLine();
+              toggleSearchBars();
             }}
           />
         </PlusContainer>
+        <TimesContainer visible={searchBarVisible}>
+          <FaTimes
+            onClick={() => {
+              toggleSearchBars();
+            }}
+          />
+        </TimesContainer>
       </TitlePanel>
 
-      <EnrollmentInput value={search} onChange={handleInputChange} hideIcon />
+      <EnrollmentInput value={search} onChange={handleSearchFriends} hideIcon visible={searchBarVisible} />
+
+      <EnrollmentInput
+        value={search}
+        placeholder="Adicione amigos"
+        onChange={handleInputChange}
+        hideIcon
+        visible={!searchBarVisible}
+      />
 
       <LineContainer left={false}>
         <Line2 />
@@ -167,11 +213,6 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
         <EmptyTitle>Ninguém foi encontrado...</EmptyTitle>
         <EmptySpan>Confira a sua pesquisa e tente novamente.</EmptySpan>
       </EmptyContainer>
-      {/* <EmptyContainer visible>
-        <EmptyTitle>Ninguém foi encontrado...</EmptyTitle>
-        <EmptySpan>Confira a sua pesquisa e tente novamente!</EmptySpan>
-      </EmptyContainer> */}
-
       {/* Painel de procurar amigos para adicionar */}
 
       <FriendSearchPanel visible={searchPanelVisible}>
@@ -208,10 +249,7 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
       {/* Painel de pedidos de amizade */}
       <FriendsPanel visible={!friendsPanelVisible}>
         <TitleSmall>Pedidos Recebidos</TitleSmall>
-        <LineContainer left>
-          <Line1 />
-          <Line2 />
-        </LineContainer>
+
         <EmptyContainer visible={friendsContext.requests.received.length === 0}>
           <EmptyTitle>Nenhum pedido recebido...</EmptyTitle>
           <EmptySpan>Você não possui pedidos pendentes.</EmptySpan>
@@ -238,10 +276,7 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
           </>
         ))}
         <TitleSmall>Pedidos Enviados</TitleSmall>
-        <LineContainer left>
-          <Line1 />
-          <Line2 />
-        </LineContainer>
+
         {friendsContext.requests.sent.map((request) => (
           <>
             <FriendsPanelDetails key={request.id}>
