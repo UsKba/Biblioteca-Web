@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { FiHelpCircle } from 'react-icons/fi';
-
 import colors from '~/styles/colors';
 
 import { Button } from '~/components/MainButton/styles';
@@ -103,16 +101,6 @@ export const Title2 = styled.span`
   font-weight: 500;
 
   color: ${colors.dark};
-`;
-
-export const Title3 = styled.span`
-  margin: 36px 0 20px 0;
-
-  font-size: 18px;
-  font-family: 'Ubuntu';
-  font-weight: bold;
-
-  color: ${colors.text};
 `;
 
 export const Period = styled.div`

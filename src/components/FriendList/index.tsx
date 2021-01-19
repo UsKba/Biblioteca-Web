@@ -5,8 +5,6 @@ import { FiCheck, FiX } from 'react-icons/fi';
 import { MdBlock } from 'react-icons/md';
 import { useLocation } from 'react-router-dom';
 
-import api from '~/services/api';
-
 import { getRequest } from '~/utils/api';
 
 import colors from '~/styles/colors';
@@ -121,9 +119,21 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
         },
       });
 
-      setSearchUsers(data || []);
+      const usersSearched = data || [];
+
+      const searchUsersFormatted = usersSearched
+        .filter((user) => user.id !== authContext.user.id)
+        .filter((user) => {
+          const userIsFriend = friendsContext.friends.find((friend) => {
+            return friend.id === user.id;
+          });
+
+          return !userIsFriend;
+        });
+
+      setSearchUsers(searchUsersFormatted);
     },
-    [openFriendAddPanel]
+    [authContext.user.id, openFriendAddPanel, friendsContext.friends]
   );
 
   const handleSearchFriends = useCallback(
@@ -216,30 +226,28 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
       {/* Painel de procurar amigos para adicionar */}
 
       <FriendSearchPanel visible={searchPanelVisible}>
-        {searchUsers
-          .filter((user) => user.id !== authContext.user.id)
-          .map((user) => (
-            <>
-              <FriendsPanelDetails key={user.id}>
-                <FriendIcon>
-                  <FriendIconInitials>{user.name[0]}</FriendIconInitials>
-                </FriendIcon>
-                <FriendsDetails>
-                  <FriendName>{user.name}</FriendName>
-                  <EnrollmentContainer>
-                    <FriendEnrollment>{user.enrollment}</FriendEnrollment>
-                  </EnrollmentContainer>
-                </FriendsDetails>
-                <SvgContainer>
-                  <FaPlus
-                    onClick={() => {
-                      friendsContext.sendInvite(user.enrollment);
-                    }}
-                  />
-                </SvgContainer>
-              </FriendsPanelDetails>
-            </>
-          ))}
+        {searchUsers.map((user) => (
+          <>
+            <FriendsPanelDetails key={user.id}>
+              <FriendIcon>
+                <FriendIconInitials>{user.name[0]}</FriendIconInitials>
+              </FriendIcon>
+              <FriendsDetails>
+                <FriendName>{user.name}</FriendName>
+                <EnrollmentContainer>
+                  <FriendEnrollment>{user.enrollment}</FriendEnrollment>
+                </EnrollmentContainer>
+              </FriendsDetails>
+              <SvgContainer>
+                <FaPlus
+                  onClick={() => {
+                    friendsContext.sendInvite(user.enrollment);
+                  }}
+                />
+              </SvgContainer>
+            </FriendsPanelDetails>
+          </>
+        ))}
         <LineContainer left>
           <Line1 />
           <Line2 />
@@ -255,42 +263,41 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
           <EmptySpan>Você não possui pedidos pendentes.</EmptySpan>
         </EmptyContainer>
 
-        {friendsContext.requests.received.map((request) => (
-          <>
-            <FriendsPanelDetails key={request.id}>
-              <FriendIcon>
-                <FriendIconInitials>{request.sender.name[0]}</FriendIconInitials>
-              </FriendIcon>
-              <FriendsDetails>
-                <FriendName>{request.sender.name}</FriendName>
-                <EnrollmentContainer>
-                  <FriendEnrollment>{request.sender.enrollment}</FriendEnrollment>
-                  <AcceptContainer>
-                    <FiCheck color={colors.primary} onClick={() => friendsContext.acceptInvite(request.id)} />
-                    <FiX color={colors.red} onClick={() => friendsContext.recuseInvite(request.id)} />
-                    <MdBlock color={colors.dark} />
-                  </AcceptContainer>
-                </EnrollmentContainer>
-              </FriendsDetails>
-            </FriendsPanelDetails>
-          </>
+        {friendsContext.requests.received.map((friendRequestReceived) => (
+          <FriendsPanelDetails key={friendRequestReceived.id}>
+            <FriendIcon>
+              <FriendIconInitials>{friendRequestReceived.sender.name[0]}</FriendIconInitials>
+            </FriendIcon>
+            <FriendsDetails>
+              <FriendName>{friendRequestReceived.sender.name}</FriendName>
+              <EnrollmentContainer>
+                <FriendEnrollment>{friendRequestReceived.sender.enrollment}</FriendEnrollment>
+                <AcceptContainer>
+                  <FiCheck
+                    color={colors.primary}
+                    onClick={() => friendsContext.acceptInvite(friendRequestReceived.id)}
+                  />
+                  <FiX color={colors.red} onClick={() => friendsContext.recuseInvite(friendRequestReceived.id)} />
+                  <MdBlock color={colors.dark} />
+                </AcceptContainer>
+              </EnrollmentContainer>
+            </FriendsDetails>
+          </FriendsPanelDetails>
         ))}
         <TitleSmall>Pedidos Enviados</TitleSmall>
 
-        {friendsContext.requests.sent.map((request) => (
-          <>
-            <FriendsPanelDetails key={request.id}>
-              <FriendIcon>
-                <FriendIconInitials>{request.receiver.name[0]}</FriendIconInitials>
-              </FriendIcon>
-              <FriendsDetails>
-                <FriendName>{request.receiver.name}</FriendName>
-                <EnrollmentContainer>
-                  <FriendEnrollment>{request.receiver.enrollment}</FriendEnrollment>
-                </EnrollmentContainer>
-              </FriendsDetails>
-            </FriendsPanelDetails>
-          </>
+        {friendsContext.requests.sent.map((friendRequestSent) => (
+          <FriendsPanelDetails key={friendRequestSent.id}>
+            <FriendIcon>
+              <FriendIconInitials>{friendRequestSent.receiver.name[0]}</FriendIconInitials>
+            </FriendIcon>
+            <FriendsDetails>
+              <FriendName>{friendRequestSent.receiver.name}</FriendName>
+              <EnrollmentContainer>
+                <FriendEnrollment>{friendRequestSent.receiver.enrollment}</FriendEnrollment>
+              </EnrollmentContainer>
+            </FriendsDetails>
+          </FriendsPanelDetails>
         ))}
 
         <EmptyContainer visible={friendsContext.requests.sent.length === 0}>

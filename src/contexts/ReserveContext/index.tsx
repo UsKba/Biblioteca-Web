@@ -1,7 +1,5 @@
 import React, { createContext, useState, useContext, useCallback } from 'react';
 
-import api from '~/services/api';
-
 import { getRequest } from '~/utils/api';
 
 import { Reserve } from '~/types';

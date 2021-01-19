@@ -10,7 +10,7 @@ import {
   NotificationMail,
   NotificationTitle,
   NotificationParaghaph,
-  NotificationDate,
+  // NotificationDate,
   NotificationText,
   Notification,
   NotificationTop,
@@ -65,6 +65,8 @@ const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) =>
 
     return text;
   }, [reserve.adminId, reserve.users]);
+
+  // const handleAcceptReserve = useCallback();
 
   return (
     <NotificationContainer>

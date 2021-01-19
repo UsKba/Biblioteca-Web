@@ -3,8 +3,6 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { useHistory, Link } from 'react-router-dom';
 
-import api from '~/services/api';
-
 import { getRequest, postRequest } from '~/utils/api';
 
 import DateList from '~/components/DateList';
@@ -30,7 +28,6 @@ import {
   RoomScheduling,
   DateListContainer,
   Title2,
-  Title3,
   ChoosePeriod,
   PeriodButton,
   Period,
