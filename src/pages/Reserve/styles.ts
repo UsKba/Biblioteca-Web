@@ -94,7 +94,7 @@ export const Title = styled.span`
 `;
 
 export const Title2 = styled.span`
-  margin-bottom: 36px;
+  margin-bottom: 20px;
 
   font-size: 24px;
   font-family: 'Ubuntu';
@@ -332,6 +332,7 @@ export const InputButton = styled.button`
   font-weight: bold;
 
   border: none;
+  border-radius: 5px;
 
   color: ${colors.terciary};
   background-color: ${colors.primary};
@@ -353,6 +354,7 @@ export const ComponentList = styled.div`
   flex-direction: column;
 
   margin-right: 180px;
+  border-radius: 4px;
 `;
 
 export const Component = styled.div`
@@ -460,7 +462,7 @@ export const SearchingBar = styled.input`
   padding: 5px;
 
   border: none;
-  border-radius: 0;
+  border-radius: 4px;
 
   background-color: ${colors.background};
 

@@ -314,6 +314,8 @@ export const PendingFriendsAlert = styled.div<PendingFriendsAlertProps>`
 
   border-radius: 100px;
 
+  margin-right: 10px;
+
   background-color: ${colors.red};
   color: ${colors.terciary};
 `;

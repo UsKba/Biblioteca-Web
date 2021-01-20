@@ -205,7 +205,9 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
           <FaArrowLeft />
         </PendingIconContainer>
 
-        <PendingFriendsAlert visible={false}>10</PendingFriendsAlert>
+        <PendingFriendsAlert visible={friendsContext.requests.received.length !== 0 && !iconPendingButtonClicked}>
+          {friendsContext.requests.received.length}
+        </PendingFriendsAlert>
         {pendingButtonText()}
 
         <PendingIconContainer left appearIcon={!iconPendingButtonClicked}>

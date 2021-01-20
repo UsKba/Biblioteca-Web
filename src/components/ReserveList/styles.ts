@@ -40,11 +40,6 @@ export const TitlePanel = styled.div`
   }
 `;
 
-interface ReserveContainerProps {
-  small?: boolean;
-  usersAmount: number;
-}
-
 export const ReservesList = styled.div`
   overflow-y: scroll;
   max-height: calc(100vh - 175px);
@@ -57,6 +52,12 @@ export const ReservesList = styled.div`
   /* height: calc(100vh - 50px); */
 `;
 
+interface ReserveContainerProps {
+  small?: boolean;
+  usersAmount: number;
+  title?: boolean;
+}
+
 export const ReserveContainer = styled.div<ReserveContainerProps>`
   display: flex;
   flex-direction: column;
@@ -64,6 +65,7 @@ export const ReserveContainer = styled.div<ReserveContainerProps>`
   overflow-y: hidden;
 
   height: 120px;
+  /* height: ${({ title }) => (title ? '120px' : '100px')}; */
 
   width: 100%;
 

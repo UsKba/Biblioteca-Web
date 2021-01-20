@@ -1,7 +1,10 @@
 import React, { useCallback } from 'react';
 
+import { postRequest } from '~/utils/api';
+
 import { FriendIcon, FriendIconInitials } from '~/components/FriendList/styles';
 
+import { useAuth } from '~/contexts/AuthContext';
 import { Reserve } from '~/types';
 
 import {
@@ -42,6 +45,9 @@ const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) =>
     return text;
   }, [reserve.adminId, reserve.date, reserve.room.initials, reserve.schedule, reserve.users]);
 
+  // const reserveContext = useReserve();
+  const authContext = useAuth();
+
   const headerName = useCallback(() => {
     const admin = reserve.users.find((element) => element.id === reserve.adminId);
     const username = admin ? admin.name : '';
@@ -66,7 +72,27 @@ const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) =>
     return text;
   }, [reserve.adminId, reserve.users]);
 
-  // const handleAcceptReserve = useCallback();
+  const handleAcceptReserve = useCallback(async () => {
+    const { error } = await postRequest(`/reserves/${reserve.id}/accept`, {
+      userId: authContext.user.id,
+      reserveId: reserve.id,
+      status: 1,
+    });
+    if (error) {
+      alert(error.error);
+    }
+  }, [reserve.id, authContext.user.id]);
+
+  const handleRefuseReserve = useCallback(async () => {
+    const { error } = await postRequest(`/reserves/${reserve.id}/refuse`, {
+      userId: authContext.user.id,
+      reserveId: reserve.id,
+      status: 2,
+    });
+    if (error) {
+      alert(error.error);
+    }
+  }, [reserve.id, authContext.user.id]);
 
   return (
     <NotificationContainer>
@@ -88,8 +114,10 @@ const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) =>
           <NotificationTitle>Convite de reserva de sala</NotificationTitle>
           <NotificationParaghaph>{formatText()}</NotificationParaghaph>
           <ButtonsContainer>
-            <Accept>Aceitar</Accept>
-            <Reject>Rejeitar</Reject>
+            <Accept onClick={handleAcceptReserve}>Aceitar</Accept>
+            <Reject onClick={handleRefuseReserve}>Rejeitar</Reject>
+            {/* <Accept>Aceitar</Accept>
+            <Reject>Rejeitar</Reject> */}
           </ButtonsContainer>
         </NotificationText>
       </Notification>

@@ -156,7 +156,7 @@ const Reserve: React.FC = () => {
   );
 
   const handleCreateReserve = useCallback(async () => {
-    const { data, error } = await postRequest<ReserveInterface>('/reserves', {
+    const { error } = await postRequest<ReserveInterface>('/reserves', {
       name: reserveName,
       roomId: selectedRoomId,
       scheduleId: selectedScheduleId,
@@ -172,7 +172,7 @@ const Reserve: React.FC = () => {
       return;
     }
 
-    console.log(data);
+    // console.log(data);
     history.push('/');
     alert('Reserva criada!');
   }, [components, history, reserveName, selectedDay, selectedRoomId, selectedScheduleId]);
@@ -297,6 +297,25 @@ const Reserve: React.FC = () => {
           </ChooseRoom>
         </RoomContainer>
 
+        <GroupContainer>
+          <Title2>Nome da Reserva</Title2>
+          <InputContainer>
+            <SearchArea>
+              <SearchHashTag>#</SearchHashTag>
+              <SearchingBar
+                type="text"
+                maxLength={25}
+                placeholder="Digite o Nome do Grupo"
+                value={reserveName}
+                onChange={(event) => {
+                  setReserveName(event.target.value);
+                  console.log(event.target.value);
+                }}
+                style={{ marginRight: '60px' }}
+              />
+            </SearchArea>
+          </InputContainer>
+        </GroupContainer>
         <ComponentsContainer>
           <Title2>Adicione componentes:</Title2>
           <Components>
@@ -341,25 +360,6 @@ const Reserve: React.FC = () => {
             </ComponentList>
           </Components>
         </ComponentsContainer>
-        <GroupContainer>
-          <Title2>Nomeie sua reserva:</Title2>
-          <InputContainer>
-            <SearchArea>
-              <SearchHashTag>#</SearchHashTag>
-              <SearchingBar
-                type="text"
-                maxLength={25}
-                placeholder="Exemplo: Grupo de História"
-                value={reserveName}
-                onChange={(event) => {
-                  setReserveName(event.target.value);
-                  console.log(event.target.value);
-                }}
-                style={{ marginRight: '60px' }}
-              />
-            </SearchArea>
-          </InputContainer>
-        </GroupContainer>
         <RentButton onClick={handleCreateReserve}>Confirmar</RentButton>
       </MiddleSide>
       <RightSide>
