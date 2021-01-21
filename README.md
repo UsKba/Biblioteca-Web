@@ -82,3 +82,16 @@ IDS:
 9 - Bruno Real
 10 - Nathan Real
 11 - Idaslon Real
+
+const reserveConfig = {
+  statusPending: 0,
+  statusAccepted: 1,
+  statusRefused: 2,
+};
+
+export default reserveConfig;
+
+
+Boolean ('') é false
+
+Boolean ('aeqbasaf') é true

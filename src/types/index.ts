@@ -11,14 +11,11 @@ export interface User {
   name: string;
   enrollment: string;
   email: string;
+  color: string;
+  role: string;
 }
 
-export interface Friend {
-  id: number;
-  name: string;
-  enrollment: string;
-  email: string;
-}
+export type Friend = User;
 
 export interface Room {
   id: number;

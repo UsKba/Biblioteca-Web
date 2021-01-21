@@ -23,7 +23,7 @@ const Notifications: React.FC = () => {
       <Notification>
         <NotificationTop>
           <NotificationLeft>
-            <FriendIcon>
+            <FriendIcon bgColor="#638AF2">
               <FriendIconInitials>T</FriendIconInitials>
             </FriendIcon>
             <NotificationHead>

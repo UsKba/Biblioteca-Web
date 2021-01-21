@@ -5,6 +5,7 @@ import { FaPlus, FaChevronDown, FaTimes } from 'react-icons/fa';
 import { getRequest, deleteRequest } from '~/utils/api';
 
 import awardIcon from '~/assets/award.svg';
+import reserveConfig from '~/config/reserve';
 import { useAuth } from '~/contexts/AuthContext';
 import { User, Reserve } from '~/types';
 
@@ -37,11 +38,15 @@ import {
   BadgePending,
 } from './styles';
 
+interface UserReserve extends User {
+  status: number;
+}
+
 interface ReserveState {
   title: string;
   groupTitle: string | null;
   text: string;
-  users: User[];
+  users: UserReserve[];
   id: number;
   adminId: number;
 }
@@ -244,7 +249,12 @@ const ReserveList: React.FC = () => {
 
       <ReservesList>
         {reserves.map((reserve, index) => (
-          <ReserveContainer key={String(reserve.id)} small={menuIndex === index} usersAmount={reserve.users.length}>
+          <ReserveContainer
+            key={String(reserve.id)}
+            small={menuIndex === index}
+            usersAmount={reserve.users.length}
+            title2={Boolean(reserve.title)}
+          >
             <ReserveTopSide onClick={() => toggleDropmenu(index)} rotateIcon={menuIndex === index}>
               <ReserveTitle>{reserve.title}</ReserveTitle>
               <ArrowTextContainer>
@@ -260,10 +270,10 @@ const ReserveList: React.FC = () => {
               <GroupMemberList>
                 {reserve.users.map((user) => (
                   <GroupMember key={user.id}>
-                    <GroupMemberIcon>{user.name[0]}</GroupMemberIcon>
+                    <GroupMemberIcon bgColor={user.color}>{user.name[0]}</GroupMemberIcon>
                     <BageCol>
                       <GroupMemberName>{user.name}</GroupMemberName>
-                      <BadgePending visible={false}>Pendente</BadgePending>
+                      <BadgePending visible={user.status === reserveConfig.statusPending}>Pendente</BadgePending>
                     </BageCol>
 
                     <GroupMemberIconArea>

@@ -27,7 +27,7 @@ const Profile: React.FC = () => {
     <Container>
       <ProfileLeftSide>
         <EnrollmentAndInformation>
-          <ProfileIcon>
+          <ProfileIcon bgColor={user.color}>
             <ProfileIconInitials>{user.name[0].toUpperCase()}</ProfileIconInitials>
           </ProfileIcon>
           <ProfileInformation>

@@ -22,7 +22,7 @@ export async function getRequest<T = any, E = RequestError>(url: string, config?
   }
 }
 
-export async function postRequest<T = any, E = RequestError>(url: string, data: any, config?: AxiosRequestConfig) {
+export async function postRequest<T = any, E = RequestError>(url: string, data?: any, config?: AxiosRequestConfig) {
   try {
     const response = await api.post(url, data, config);
 

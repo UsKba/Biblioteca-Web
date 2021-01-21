@@ -340,7 +340,7 @@ const Reserve: React.FC = () => {
               {components.map((component) => (
                 <Component key={component.enrollment}>
                   <ComponentContainer>
-                    <ProfileIcon>
+                    <ProfileIcon bgColor={component.color}>
                       <ProfileIconInitials>{component.name[0].toUpperCase()}</ProfileIconInitials>
                     </ProfileIcon>
                     <ComponentInfo>

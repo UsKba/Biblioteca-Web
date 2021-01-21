@@ -132,7 +132,11 @@ export const FriendsPanelDetails = styled.div`
   background-color: ${colors.terciary};
 `;
 
-export const FriendIcon = styled.div`
+interface FriendIconProps {
+  bgColor: string;
+}
+
+export const FriendIcon = styled.div<FriendIconProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -144,7 +148,7 @@ export const FriendIcon = styled.div`
 
   border-radius: 100px;
 
-  background-color: #638af2;
+  background-color: ${(props) => props.bgColor};
   color: ${colors.terciary};
 `;
 

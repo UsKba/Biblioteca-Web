@@ -55,7 +55,7 @@ export const ReservesList = styled.div`
 interface ReserveContainerProps {
   small?: boolean;
   usersAmount: number;
-  title?: boolean;
+  title2: boolean;
 }
 
 export const ReserveContainer = styled.div<ReserveContainerProps>`
@@ -64,8 +64,7 @@ export const ReserveContainer = styled.div<ReserveContainerProps>`
   align-items: center;
   overflow-y: hidden;
 
-  height: 120px;
-  /* height: ${({ title }) => (title ? '120px' : '100px')}; */
+  height: ${({ title2 }) => (title2 ? '120px' : '100px')};
 
   width: 100%;
 
@@ -167,7 +166,11 @@ export const GroupMemberIconArea = styled.div`
   }
 `;
 
-export const GroupMemberIcon = styled.div`
+interface GroupMemberIcon {
+  bgColor: string;
+}
+
+export const GroupMemberIcon = styled.div<GroupMemberIcon>`
   text-align: center;
 
   height: 25px;
@@ -182,7 +185,7 @@ export const GroupMemberIcon = styled.div`
   font-family: 'Roboto';
 
   color: ${colors.terciary};
-  background-color: ${colors.secondary};
+  background-color: ${(props) => props.bgColor};
 `;
 
 export const GroupMemberName = styled.span`
@@ -307,8 +310,8 @@ export const BadgePending = styled.div<BadgeVisibleProps>`
   width: 55px;
   height: 15px;
   border-radius: 7px;
-  border: 2px solid ${colors.golden};
-  color: ${colors.golden};
+  border: 2px solid #faa61a;
+  color: #faa61a;
   font-size: 8px;
   text-align: center;
   display: ${(props) => !props.visible && 'none'};

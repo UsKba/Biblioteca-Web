@@ -73,7 +73,11 @@ export const EnrollmentAndInformation = styled.div`
   display: flex;
 `;
 
-export const ProfileIcon = styled.div`
+interface ProfileIconProps {
+  bgColor: string;
+}
+
+export const ProfileIcon = styled.div<ProfileIconProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,7 +87,7 @@ export const ProfileIcon = styled.div`
 
   border-radius: 100px;
 
-  background-color: ${colors.primary};
+  background-color: ${(props) => props.bgColor};
   color: ${colors.terciary};
 `;
 

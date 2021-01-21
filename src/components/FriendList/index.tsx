@@ -161,7 +161,6 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
       <TitlePanel>
         <Title>Amigos</Title>
         <PlusContainer visible={searchBarVisible}>
-          {/* rotateIcon={friendListOpen} */}
           <AiOutlineUserAdd
             title="Adicionar amigos"
             onClick={() => {
@@ -225,13 +224,14 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
         <EmptyTitle>Ninguém foi encontrado...</EmptyTitle>
         <EmptySpan>Confira a sua pesquisa e tente novamente.</EmptySpan>
       </EmptyContainer>
+
       {/* Painel de procurar amigos para adicionar */}
 
       <FriendSearchPanel visible={searchPanelVisible}>
         {searchUsers.map((user) => (
           <>
             <FriendsPanelDetails key={user.id}>
-              <FriendIcon>
+              <FriendIcon bgColor={user.color}>
                 <FriendIconInitials>{user.name[0]}</FriendIconInitials>
               </FriendIcon>
               <FriendsDetails>
@@ -267,7 +267,7 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
 
         {friendsContext.requests.received.map((friendRequestReceived) => (
           <FriendsPanelDetails key={friendRequestReceived.id}>
-            <FriendIcon>
+            <FriendIcon bgColor={friendRequestReceived.sender.color}>
               <FriendIconInitials>{friendRequestReceived.sender.name[0]}</FriendIconInitials>
             </FriendIcon>
             <FriendsDetails>
@@ -290,7 +290,7 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
 
         {friendsContext.requests.sent.map((friendRequestSent) => (
           <FriendsPanelDetails key={friendRequestSent.id}>
-            <FriendIcon>
+            <FriendIcon bgColor={friendRequestSent.receiver.color}>
               <FriendIconInitials>{friendRequestSent.receiver.name[0]}</FriendIconInitials>
             </FriendIcon>
             <FriendsDetails>
@@ -315,24 +315,9 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
           <EmptySpan>Você não possui amigos, clique no ícone acima para adicionar alguém.</EmptySpan>
         </EmptyContainer>
 
-        {/* <FriendsPanelDetails>
-          <FriendIcon>
-            <FriendIconInitials>aaaaaaaaaaaa</FriendIconInitials>
-          </FriendIcon>
-          <FriendsDetails>
-            <FriendName>aaaaaaaa</FriendName>
-            <EnrollmentContainer>
-              <FriendEnrollment>
-                <strong># </strong>
-                aaaaaaaaaaaaaa
-              </FriendEnrollment>
-            </EnrollmentContainer>
-          </FriendsDetails>
-        </FriendsPanelDetails> */}
-
         {friendsContext.friends.map((friend) => (
           <FriendsPanelDetails key={friend.id}>
-            <FriendIcon>
+            <FriendIcon bgColor={friend.color}>
               <FriendIconInitials>{friend.name[0]}</FriendIconInitials>
             </FriendIcon>
             <FriendsDetails>

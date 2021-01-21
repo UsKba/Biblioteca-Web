@@ -4,7 +4,6 @@ import { postRequest } from '~/utils/api';
 
 import { FriendIcon, FriendIconInitials } from '~/components/FriendList/styles';
 
-import { useAuth } from '~/contexts/AuthContext';
 import { Reserve } from '~/types';
 
 import {
@@ -45,9 +44,6 @@ const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) =>
     return text;
   }, [reserve.adminId, reserve.date, reserve.room.initials, reserve.schedule, reserve.users]);
 
-  // const reserveContext = useReserve();
-  const authContext = useAuth();
-
   const headerName = useCallback(() => {
     const admin = reserve.users.find((element) => element.id === reserve.adminId);
     const username = admin ? admin.name : '';
@@ -72,34 +68,31 @@ const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) =>
     return text;
   }, [reserve.adminId, reserve.users]);
 
+  const adminColor = useCallback(() => {
+    const admin = reserve.users.find((element) => element.id === reserve.adminId);
+    return admin?.color || '';
+  }, [reserve.adminId, reserve.users]);
+
   const handleAcceptReserve = useCallback(async () => {
-    const { error } = await postRequest(`/reserves/${reserve.id}/accept`, {
-      userId: authContext.user.id,
-      reserveId: reserve.id,
-      status: 1,
-    });
+    const { error } = await postRequest(`/reserves/${reserve.id}/accept`);
     if (error) {
       alert(error.error);
     }
-  }, [reserve.id, authContext.user.id]);
+  }, [reserve.id]);
 
   const handleRefuseReserve = useCallback(async () => {
-    const { error } = await postRequest(`/reserves/${reserve.id}/refuse`, {
-      userId: authContext.user.id,
-      reserveId: reserve.id,
-      status: 2,
-    });
+    const { error } = await postRequest(`/reserves/${reserve.id}/refuse`);
     if (error) {
       alert(error.error);
     }
-  }, [reserve.id, authContext.user.id]);
+  }, [reserve.id]);
 
   return (
     <NotificationContainer>
       <Notification>
         <NotificationTop>
           <NotificationLeft>
-            <FriendIcon>
+            <FriendIcon bgColor={adminColor()}>
               <FriendIconInitials>{headerInitials()}</FriendIconInitials>
             </FriendIcon>
             <NotificationHead>
