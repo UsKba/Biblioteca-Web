@@ -8,7 +8,7 @@ export const Container = styled.div`
   max-height: 220px;
   width: 100%;
 
-  padding: 18px;
+  padding: 25px 25px 35px 25px;
   margin-bottom: 40px;
 
   background-color: ${colors.terciary};
@@ -29,8 +29,6 @@ export const ProfileInformation = styled.div`
 `;
 
 export const ProfileName = styled.span`
-  margin-bottom: 10px;
-
   color: ${colors.dark};
 
   font-size: 25px;
@@ -38,16 +36,6 @@ export const ProfileName = styled.span`
   @media only screen and (max-width: 640px) {
     font-size: 18px;
   }
-`;
-
-export const HashTag = styled.span`
-  margin-right: 5px;
-
-  color: ${colors.dark};
-
-  font-size: 19px;
-  font-weight: 600;
-  font-family: 'Ubuntu';
 `;
 
 export const Enrollment = styled.span`
@@ -71,6 +59,8 @@ export const EnrollmentContainer = styled.div`
 
 export const EnrollmentAndInformation = styled.div`
   display: flex;
+
+  align-items: center;
 `;
 
 interface ProfileIconProps {
@@ -82,8 +72,8 @@ export const ProfileIcon = styled.div<ProfileIconProps>`
   align-items: center;
   justify-content: center;
 
-  height: 40px;
-  width: 40px;
+  height: 60px;
+  width: 60px;
 
   border-radius: 100px;
 
@@ -92,7 +82,7 @@ export const ProfileIcon = styled.div<ProfileIconProps>`
 `;
 
 export const ProfileIconInitials = styled.span`
-  font-size: 20px;
+  font-size: 35px;
 `;
 
 export const ProfileRightSide = styled.div`

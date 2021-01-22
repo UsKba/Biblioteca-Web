@@ -122,10 +122,12 @@ export const FriendsPanelDetails = styled.div`
   display: flex;
   flex-direction: row;
 
+  align-items: center;
+
   width: 280px;
 
   margin-bottom: 10px;
-  padding: 10px;
+  padding: 7px;
 
   border-radius: 5px;
 
@@ -160,12 +162,14 @@ export const FriendsDetails = styled.span`
   display: flex;
   flex-direction: column;
 
+  justify-content: space-between;
+
+  height: 35px;
+
   margin-left: 11px;
 `;
 
 export const FriendName = styled.span`
-  margin-bottom: 3px;
-
   font-size: 14px;
   font-weight: 600;
 
@@ -176,13 +180,6 @@ export const FriendEnrollment = styled.span`
   font-size: 14px;
 
   color: ${colors.dark};
-`;
-
-export const EnrollmentContainer = styled.div`
-  display: flex;
-  svg {
-    color: ${colors.primary};
-  }
 `;
 
 interface LineContainerProps {
@@ -255,13 +252,16 @@ interface PendingButtonProps {
 
 export const PendingButton = styled.button<PendingButtonProps>`
   display: ${({ searchVisibilityToggle }) => (searchVisibilityToggle === true ? 'none' : 'flex')};
-  padding: 15px;
-  align-items: center;
-  width: 280px;
+
   height: 45px;
+  width: 280px;
+
+  padding: 15px;
+  border: none;
+
   background-color: ${colors.terciary};
   color: #666666;
-  border: none;
+
   cursor: pointer;
 `;
 

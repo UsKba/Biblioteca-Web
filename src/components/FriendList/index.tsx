@@ -26,7 +26,6 @@ import {
   TitlePanel,
   Title,
   TitleSmall,
-  EnrollmentContainer,
   Line1,
   Line2,
   LineContainer,
@@ -236,9 +235,7 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
               </FriendIcon>
               <FriendsDetails>
                 <FriendName>{user.name}</FriendName>
-                <EnrollmentContainer>
-                  <FriendEnrollment>{user.enrollment}</FriendEnrollment>
-                </EnrollmentContainer>
+                <FriendEnrollment>{user.enrollment}</FriendEnrollment>
               </FriendsDetails>
               <SvgContainer>
                 <FaPlus
@@ -272,17 +269,15 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
             </FriendIcon>
             <FriendsDetails>
               <FriendName>{friendRequestReceived.sender.name}</FriendName>
-              <EnrollmentContainer>
-                <FriendEnrollment>{friendRequestReceived.sender.enrollment}</FriendEnrollment>
-                <AcceptContainer>
-                  <FiCheck
-                    color={colors.primary}
-                    onClick={() => friendsContext.acceptInvite(friendRequestReceived.id)}
-                  />
-                  <FiX color={colors.red} onClick={() => friendsContext.recuseInvite(friendRequestReceived.id)} />
-                  <MdBlock color={colors.dark} />
-                </AcceptContainer>
-              </EnrollmentContainer>
+              <FriendEnrollment>
+                <strong># </strong>
+                {friendRequestReceived.sender.enrollment}
+              </FriendEnrollment>
+              <AcceptContainer>
+                <FiCheck color={colors.primary} onClick={() => friendsContext.acceptInvite(friendRequestReceived.id)} />
+                <FiX color={colors.red} onClick={() => friendsContext.recuseInvite(friendRequestReceived.id)} />
+                <MdBlock color={colors.dark} />
+              </AcceptContainer>
             </FriendsDetails>
           </FriendsPanelDetails>
         ))}
@@ -295,9 +290,10 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
             </FriendIcon>
             <FriendsDetails>
               <FriendName>{friendRequestSent.receiver.name}</FriendName>
-              <EnrollmentContainer>
-                <FriendEnrollment>{friendRequestSent.receiver.enrollment}</FriendEnrollment>
-              </EnrollmentContainer>
+              <FriendEnrollment>
+                <strong># </strong>
+                {friendRequestSent.receiver.enrollment}
+              </FriendEnrollment>
             </FriendsDetails>
           </FriendsPanelDetails>
         ))}
@@ -322,12 +318,10 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
             </FriendIcon>
             <FriendsDetails>
               <FriendName>{friend.name}</FriendName>
-              <EnrollmentContainer>
-                <FriendEnrollment>
-                  <strong># </strong>
-                  {friend.enrollment}
-                </FriendEnrollment>
-              </EnrollmentContainer>
+              <FriendEnrollment>
+                <strong># </strong>
+                {friend.enrollment}
+              </FriendEnrollment>
             </FriendsDetails>
             <ReserveButtonDiv visible={reserveButton}>
               <FaChevronLeft onClick={() => handleFriendClick(friend)} />

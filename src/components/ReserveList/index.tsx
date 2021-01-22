@@ -74,6 +74,13 @@ const ReserveList: React.FC = () => {
     return false;
   }, []);
 
+  const cardVisible = useCallback((reserve: ReserveState) => {
+    if (reserve.users.filter((user) => user.status === reserveConfig.statusAccepted)) {
+      return true;
+    }
+    return false;
+  }, []);
+
   const showDeleteIcon = useCallback(
     (reserve: ReserveState, user: User) => {
       if (isReserveAdmin(reserve, authContext.user)) {
@@ -250,10 +257,11 @@ const ReserveList: React.FC = () => {
       <ReservesList>
         {reserves.map((reserve, index) => (
           <ReserveContainer
+            visible={cardVisible(reserve)}
             key={String(reserve.id)}
             small={menuIndex === index}
             usersAmount={reserve.users.length}
-            title2={Boolean(reserve.title)}
+            reserveTitle={Boolean(reserve.groupTitle)}
           >
             <ReserveTopSide onClick={() => toggleDropmenu(index)} rotateIcon={menuIndex === index}>
               <ReserveTitle>{reserve.title}</ReserveTitle>

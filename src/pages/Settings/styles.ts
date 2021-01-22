@@ -95,7 +95,7 @@ export const Button = styled.button<ButtonProps>`
   color: ${({ active }) => (active === true ? `${colors.terciary}` : `${colors.dark}`)};
 
   &:hover {
-    background-color: ${({ active }) => (active === true ? `${colors.primary}` : `${colors.secondary}`)};
+    background-color: ${({ active }) => (active === true ? `${colors.primary}` : `${colors.lightprimary}`)};
     color: ${colors.terciary};
     svg {
       color: ${colors.terciary};

@@ -55,16 +55,17 @@ export const ReservesList = styled.div`
 interface ReserveContainerProps {
   small?: boolean;
   usersAmount: number;
-  title2: boolean;
+  reserveTitle: boolean;
+  visible: boolean;
 }
 
 export const ReserveContainer = styled.div<ReserveContainerProps>`
-  display: flex;
+  display: ${({ visible }) => (visible ? 'flex' : 'none')};
   flex-direction: column;
   align-items: center;
   overflow-y: hidden;
 
-  height: ${({ title2 }) => (title2 ? '120px' : '100px')};
+  height: ${({ reserveTitle }) => (reserveTitle ? '120px' : '100px')};
 
   width: 100%;
 
@@ -86,9 +87,10 @@ export const ReserveTopSide = styled.div<ReserveTopSideProps>`
   display: flex;
   flex-direction: column;
 
-  padding-bottom: 15px;
+  margin-bottom: 10px;
 
   cursor: pointer;
+
   svg {
     transition: 0.25s;
     ${(props) => props.rotateIcon && `transform: rotate(180deg);`}
@@ -144,6 +146,8 @@ export const GroupMemberList = styled.div`
 export const GroupMember = styled.div`
   display: flex;
   align-items: center;
+
+  max-height: 39px;
 
   padding: 7px 10px 7px 7px;
   border-radius: 7px;

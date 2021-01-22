@@ -8,7 +8,7 @@ import { useReserve } from '~/contexts/ReserveContext';
 import { Reserve } from '~/types';
 
 import NotificationReserve from './components/NotificationReserve';
-import Notifications from './components/Notifications';
+// import Notifications from './components/Notifications';
 import Profile from './components/Profile';
 import {
   Container,
@@ -82,8 +82,8 @@ const Home: React.FC = () => {
         <Title>Perfil</Title>
         <Profile />
 
-        <Title>Notificações</Title>
-        <Notifications />
+        {/* <Title>Avisos</Title> */}
+        {/* <Notifications /> */}
 
         {pendingReserveList.map((reserve) => (
           <NotificationReserve key={reserve.id} reserve={reserve} />

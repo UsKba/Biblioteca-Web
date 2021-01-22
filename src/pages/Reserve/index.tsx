@@ -48,7 +48,7 @@ import {
   InputButton,
   ComponentList,
   Component,
-  ErrorContainer,
+  // ErrorContainer,
   Enrollment,
   ComponentInfo,
   HashTag,
@@ -79,7 +79,7 @@ const Reserve: React.FC = () => {
   const [selectedScheduleId, setSelectedScheduleId] = useState(1);
   const [selectedRoomId, setSelectedRoomId] = useState(1);
 
-  const [addComponentError, setAddComponentError] = useState('');
+  // const [addComponentError, setAddComponentError] = useState('');
 
   useEffect(() => {
     const selectedPeriodSchedules = schedules.filter((schedule) => schedule.periodId === selectedPeriodId);
@@ -98,20 +98,25 @@ const Reserve: React.FC = () => {
       return element.enrollment === enrollment;
     });
 
-    if (enrollment === '') {
-      setAddComponentError('Por favor digite uma matrícula');
-      return;
-    }
+    // if (findComponent === undefined) {
+    //   setAddComponentError('Por favor digite uma matrícula válida');
+    //   return;
+    // }
 
-    if (findComponent !== undefined) {
-      setAddComponentError('Não é possível adicionar o mesmo usuário duas vezes.');
-      return;
-    }
+    // if (enrollment === '') {
+    //   setAddComponentError('Por favor digite uma matrícula');
+    //   return;
+    // }
 
-    if (components.length >= 6) {
-      setAddComponentError('Grupo cheio!');
-      return;
-    }
+    // if (findComponent !== undefined) {
+    //   setAddComponentError('Não é possível adicionar o mesmo usuário duas vezes.');
+    //   return;
+    // }
+
+    // if (components.length >= 6) {
+    //   setAddComponentError('Grupo cheio!');
+    //   return;
+    // }
 
     const { data, error } = await getRequest('/search', { params: { enrollment } });
 
@@ -122,6 +127,16 @@ const Reserve: React.FC = () => {
 
     if (data!.length === 0) {
       alert('Usuário não encontrado');
+      return;
+    }
+
+    if (findComponent !== undefined) {
+      alert('Não é possível adicionar o mesmo usuário duas vezes');
+      return;
+    }
+
+    if (components.length >= 6) {
+      alert('Grupo cheio');
       return;
     }
 
@@ -244,7 +259,7 @@ const Reserve: React.FC = () => {
     <Container>
       <LeftSide>
         <Link to="/">
-          <CancelButton onClick={goBack}>Cancelar Agendamento</CancelButton>
+          <CancelButton onClick={goBack}>Cancelar Reserva</CancelButton>
         </Link>
         <ReserveList />
       </LeftSide>
@@ -334,8 +349,8 @@ const Reserve: React.FC = () => {
               <InputButton onClick={handleAddComponent}>+</InputButton>
             </InputContainer>
 
-            <ErrorContainer error={addComponentError !== ''}>{addComponentError}</ErrorContainer>
-            {/* <Title3>Grupo:</Title3> */}
+            {/* <ErrorContainer error={addComponentError !== ''}>{addComponentError}</ErrorContainer> */}
+
             <ComponentList>
               {components.map((component) => (
                 <Component key={component.enrollment}>

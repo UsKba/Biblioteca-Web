@@ -25,7 +25,6 @@ const Settings: React.FC = () => {
   return (
     <Container>
       <LeftSide>
-        <Label>Configurações</Label>
         <ButtonList>
           <Button onClick={() => history.push('/configuracoes-geral')} active={pathname === '/configuracoes-geral'}>
             <BsCardChecklist />

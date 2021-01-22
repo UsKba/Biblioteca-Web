@@ -11,7 +11,6 @@ import {
   ProfileLeftSide,
   ProfileRightSide,
   ProfileName,
-  HashTag,
   Enrollment,
   EnrollmentContainer,
   EnrollmentAndInformation,
@@ -33,8 +32,10 @@ const Profile: React.FC = () => {
           <ProfileInformation>
             <ProfileName>{user.name}</ProfileName>
             <EnrollmentContainer>
-              <HashTag>#</HashTag>
-              <Enrollment>{user.enrollment}</Enrollment>
+              <Enrollment>
+                <strong># </strong>
+                {user.enrollment}
+              </Enrollment>
             </EnrollmentContainer>
           </ProfileInformation>
         </EnrollmentAndInformation>

@@ -206,17 +206,21 @@ export const RentButton = styled(Button)`
 
 export const CancelButton = styled.button`
   position: fixed;
-  left: 20px;
-  bottom: 45px;
+  left: 15px;
+  bottom: 15px;
 
   height: 50px;
   width: 255px;
 
   border-radius: 10px;
   border: none;
-  background-color: #ff5555;
+  background-color: ${colors.red};
   font-size: 18px;
   color: ${colors.background};
+
+  &:hover {
+    background-color: ${colors.lightred};
+  }
 `;
 
 export const RoomContainer = styled.div`
