@@ -4,6 +4,7 @@ import { postRequest } from '~/utils/api';
 
 import { FriendIcon, FriendIconInitials } from '~/components/FriendList/styles';
 
+import { useReserve } from '~/contexts/ReserveContext';
 import { Reserve } from '~/types';
 
 import {
@@ -28,6 +29,7 @@ interface NotificationReserveProps {
 }
 
 const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) => {
+  const reserveContext = useReserve();
   const formatText = useCallback(() => {
     const formatter = new Intl.DateTimeFormat('pt-br', { month: 'long' });
     const reserveDate = new Date(reserve.date);
@@ -73,20 +75,6 @@ const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) =>
     return admin?.color || '';
   }, [reserve.adminId, reserve.users]);
 
-  const handleAcceptReserve = useCallback(async () => {
-    const { error } = await postRequest(`/reserves/${reserve.id}/accept`);
-    if (error) {
-      alert(error.error);
-    }
-  }, [reserve.id]);
-
-  const handleRefuseReserve = useCallback(async () => {
-    const { error } = await postRequest(`/reserves/${reserve.id}/refuse`);
-    if (error) {
-      alert(error.error);
-    }
-  }, [reserve.id]);
-
   return (
     <NotificationContainer>
       <Notification>
@@ -107,8 +95,8 @@ const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) =>
           <NotificationTitle>Convite de reserva de sala</NotificationTitle>
           <NotificationParaghaph>{formatText()}</NotificationParaghaph>
           <ButtonsContainer>
-            <Accept onClick={handleAcceptReserve}>Aceitar</Accept>
-            <Reject onClick={handleRefuseReserve}>Rejeitar</Reject>
+            <Accept onClick={() => reserveContext.handleAcceptReserve(reserve.id)}>Aceitar</Accept>
+            <Reject onClick={() => reserveContext.handleRefuseReserve(reserve.id)}>Rejeitar</Reject>
             {/* <Accept>Aceitar</Accept>
             <Reject>Rejeitar</Reject> */}
           </ButtonsContainer>

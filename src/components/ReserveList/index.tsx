@@ -75,7 +75,8 @@ const ReserveList: React.FC = () => {
   }, []);
 
   const cardVisible = useCallback((reserve: ReserveState) => {
-    if (reserve.users.filter((user) => user.status === reserveConfig.statusAccepted)) {
+    const loggedUser = reserve.users.find((user) => authContext.user.id === user.id);
+    if (loggedUser?.status === reserveConfig.statusAccepted) {
       return true;
     }
     return false;

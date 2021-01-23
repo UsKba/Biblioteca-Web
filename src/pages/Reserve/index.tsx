@@ -48,7 +48,7 @@ import {
   InputButton,
   ComponentList,
   Component,
-  // ErrorContainer,
+  ErrorContainer,
   Enrollment,
   ComponentInfo,
   HashTag,
@@ -79,7 +79,7 @@ const Reserve: React.FC = () => {
   const [selectedScheduleId, setSelectedScheduleId] = useState(1);
   const [selectedRoomId, setSelectedRoomId] = useState(1);
 
-  // const [addComponentError, setAddComponentError] = useState('');
+  const [addComponentError, setAddComponentError] = useState('');
 
   useEffect(() => {
     const selectedPeriodSchedules = schedules.filter((schedule) => schedule.periodId === selectedPeriodId);
@@ -98,25 +98,25 @@ const Reserve: React.FC = () => {
       return element.enrollment === enrollment;
     });
 
-    // if (findComponent === undefined) {
-    //   setAddComponentError('Por favor digite uma matrícula válida');
-    //   return;
-    // }
+    if (findComponent === undefined) {
+      setAddComponentError('Por favor digite uma matrícula válida');
+      return;
+    }
 
-    // if (enrollment === '') {
-    //   setAddComponentError('Por favor digite uma matrícula');
-    //   return;
-    // }
+    if (enrollment === '') {
+      setAddComponentError('Por favor digite uma matrícula');
+      return;
+    }
 
-    // if (findComponent !== undefined) {
-    //   setAddComponentError('Não é possível adicionar o mesmo usuário duas vezes.');
-    //   return;
-    // }
+    if (findComponent !== undefined) {
+      setAddComponentError('Não é possível adicionar o mesmo usuário duas vezes.');
+      return;
+    }
 
-    // if (components.length >= 6) {
-    //   setAddComponentError('Grupo cheio!');
-    //   return;
-    // }
+    if (components.length >= 6) {
+      setAddComponentError('Grupo cheio!');
+      return;
+    }
 
     const { data, error } = await getRequest('/search', { params: { enrollment } });
 
@@ -175,7 +175,8 @@ const Reserve: React.FC = () => {
       name: reserveName,
       roomId: selectedRoomId,
       scheduleId: selectedScheduleId,
-      day: selectedDay.getDate(),
+      // day: selectedDay.getDate(),
+      day: 25,
       month: selectedDay.getMonth(),
       // janeiro = month: 0
       year: selectedDay.getFullYear(),
@@ -343,13 +344,16 @@ const Reserve: React.FC = () => {
                   value={enrollment}
                   onChange={(event) => {
                     setEnrollment(event.target.value);
+                    if (addComponentError) {
+                      setAddComponentError('');
+                    }
                   }}
                 />
               </SearchArea>
               <InputButton onClick={handleAddComponent}>+</InputButton>
             </InputContainer>
 
-            {/* <ErrorContainer error={addComponentError !== ''}>{addComponentError}</ErrorContainer> */}
+            <ErrorContainer error={addComponentError !== ''}>{addComponentError}</ErrorContainer>
 
             <ComponentList>
               {components.map((component) => (
