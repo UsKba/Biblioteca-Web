@@ -13,13 +13,13 @@ function App() {
     <>
       <GlobalStyle />
       <BrowserRouter>
-        <FriendsProvider>
-          <ReserveProvider>
-            <AuthProvider>
+        <AuthProvider>
+          <FriendsProvider>
+            <ReserveProvider>
               <Routes />
-            </AuthProvider>
-          </ReserveProvider>
-        </FriendsProvider>
+            </ReserveProvider>
+          </FriendsProvider>
+        </AuthProvider>
       </BrowserRouter>
     </>
   );

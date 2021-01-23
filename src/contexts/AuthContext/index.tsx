@@ -1,13 +1,12 @@
 import React, { createContext, useState, useEffect, useContext, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import { useListener } from '~/hooks/listener';
+
 import api from '~/services/api';
 import suap from '~/services/suap';
 
-import { useFriends } from '~/contexts/FriendsContext';
 import { User } from '~/types';
-
-import { useReserve } from '../ReserveContext';
 
 interface UserSuapResponse {
   nome: string;
@@ -45,6 +44,8 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
   const history = useHistory();
+  const {} = useListener();
+
   const { loadFriends } = useFriends();
   const { loadReserves } = useReserve();
 
