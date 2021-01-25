@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useCallback } from 'react';
+import React, { createContext, useState, useContext, useCallback, useEffect } from 'react';
 
 import { getRequest, postRequest } from '~/utils/api';
 
@@ -76,6 +76,13 @@ export const ReserveProvider: React.FC = ({ children }) => {
 
     setReserves(data);
   }, []);
+
+  useEffect(() => {
+    authContext.addListener(loadReserves);
+    return () => {
+      authContext.removeListener(loadReserves);
+    };
+  }, [authContext, loadReserves]);
 
   return (
     <ReserveContext.Provider value={{ reserves, loadReserves, handleAcceptReserve, handleRefuseReserve }}>

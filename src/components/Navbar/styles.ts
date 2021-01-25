@@ -93,6 +93,29 @@ export const Sidebar = styled.div<SidebarProps>`
   ${(props) => props.open && 'left: 0px;'}
 `;
 
+interface NotificationContainerProps {
+  open: boolean;
+}
+
+export const NotificationContainer = styled.div<NotificationContainerProps>`
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  position: absolute;
+  top: -320px;
+
+  width: 320px;
+  height: 320px;
+  margin-left: 990px;
+  margin-top: 0px;
+
+  background-color: ${colors.terciary};
+
+  transition: 0.5s;
+
+  ${(props) => props.open && 'top: 0px; margin-top: 60px;'}
+`;
+
 export const StyledLink = styled(Link)`
   display: flex;
   align-items: center;

@@ -1,13 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import {
-  FaChalkboardTeacher,
-  FaHome,
-  FaCog,
-  FaBars,
-  FaDesktop,
-  FaEnvelope,
-  // FaBell,
-} from 'react-icons/fa';
+import { FaChalkboardTeacher, FaHome, FaCog, FaBars, FaDesktop, FaEnvelope, FaBell } from 'react-icons/fa';
 import { FiHelpCircle } from 'react-icons/fi';
 import { GoSignOut } from 'react-icons/go';
 import { MdChatBubble } from 'react-icons/md';
@@ -27,10 +19,12 @@ import {
   SidebarContainer,
   SpaceRemaining,
   PageTitle,
+  NotificationContainer,
 } from './styles';
 
 const NavbarComponent: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [notificationOpen, setnotificationOpen] = useState(false);
   const [pageTitle, setPageTitle] = useState('');
   const { signOut } = useAuth();
   const location = useLocation();
@@ -65,6 +59,10 @@ const NavbarComponent: React.FC = () => {
     setSidebarOpen(!sidebarOpen);
   }, [sidebarOpen]);
 
+  const toggleNotifications = useCallback(() => {
+    setnotificationOpen(!notificationOpen);
+  }, [notificationOpen]);
+
   useEffect(() => {
     const title = titlePages[location.pathname];
     setPageTitle(title);
@@ -83,11 +81,10 @@ const NavbarComponent: React.FC = () => {
           </LeftSide>
 
           <RightSide>
-            <Link to="/">
-              <NavItem small>
-                <FiHelpCircle title="Ajuda" />
-              </NavItem>
-            </Link>
+            <NavItem small onClick={toggleNotifications}>
+              <FaBell title="Ajuda" />
+            </NavItem>
+
             <Link to="/configuracoes-geral">
               <NavItem small>
                 <FaCog title="Configurações" />
@@ -97,6 +94,7 @@ const NavbarComponent: React.FC = () => {
         </Navbar>
       </Container>
 
+      <NotificationContainer open={notificationOpen} />
       <SidebarContainer open={sidebarOpen}>
         <Sidebar open={sidebarOpen}>
           <StyledLink onClick={closeIfMobile} to="/">

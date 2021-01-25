@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect, useContext, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { useListener } from '~/hooks/listener';
+import { useAsyncListener } from '~/hooks/listener';
 
 import api from '~/services/api';
 import suap from '~/services/suap';
@@ -27,12 +27,16 @@ interface UserWithCampus extends User {
   campus: string;
 }
 
+type Listener = () => Promise<void>;
+
 interface AuthContextData {
   signed: boolean;
   user: UserWithCampus;
   signInSuapUrl: string;
   loading: boolean;
   signOut(): void;
+  addListener: (listener: Listener) => void;
+  removeListener: (listener: Listener) => void;
 }
 
 interface UserBackendResponse {
@@ -44,19 +48,19 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
   const history = useHistory();
-  const {} = useListener();
+  const signInListener = useAsyncListener();
 
-  const { loadFriends } = useFriends();
-  const { loadReserves } = useReserve();
+  // const { loadFriends } = useFriends();
+  // const { loadReserves } = useReserve();
 
   const [user, setUser] = useState({} as UserWithCampus);
   const [loading, setLoading] = useState(false);
   const [isSigned, setIsSigned] = useState(false);
 
-  const handleLoginFinish = useCallback(async () => {
-    await loadFriends();
-    await loadReserves();
-  }, [loadFriends, loadReserves]);
+  // const handleLoginFinish = useCallback(async () => {
+  //   await loadFriends();
+  //   await loadReserves();
+  // }, [loadFriends, loadReserves]);
 
   const handleSignIn = useCallback(
     async (formattedUser: SignInParams) => {
@@ -82,13 +86,13 @@ export const AuthProvider: React.FC = ({ children }) => {
       setLoading(false);
       setIsSigned(true);
 
-      await handleLoginFinish();
+      await signInListener.notifyListeners();
       // console.log(token);
       if (history.location.hash) {
         history.push('/');
       }
     },
-    [handleLoginFinish, history]
+    [history]
   );
 
   useEffect(() => {
@@ -102,12 +106,12 @@ export const AuthProvider: React.FC = ({ children }) => {
         setUser(JSON.parse(storagedUser));
         setIsSigned(true);
 
-        await handleLoginFinish();
+        await signInListener.notifyListeners();
       }
     }
 
     loadStoragedData();
-  }, [handleLoginFinish]);
+  }, []);
 
   useEffect(() => {
     suap.init();
@@ -138,7 +142,17 @@ export const AuthProvider: React.FC = ({ children }) => {
   }, [history]);
 
   return (
-    <AuthContext.Provider value={{ signed: isSigned, user, signInSuapUrl: suap.getLoginURL(), loading, signOut }}>
+    <AuthContext.Provider
+      value={{
+        signed: isSigned,
+        user,
+        signInSuapUrl: suap.getLoginURL(),
+        loading,
+        signOut,
+        addListener: signInListener.addListener,
+        removeListener: signInListener.removeListener,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

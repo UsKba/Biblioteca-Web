@@ -250,6 +250,7 @@ const ReserveList: React.FC = () => {
         </StyledLink>
       </TitlePanel>
 
+      {/* <EmptyContainer visible={reserves.filter((reserves) => reserves.length === 0)}> */}
       <EmptyContainer visible={reserves.length === 0}>
         <EmptyTitle>Não há reservas...</EmptyTitle>
         <EmptySpan>Você não possui reservas, reserve uma sala na página de reservas.</EmptySpan>

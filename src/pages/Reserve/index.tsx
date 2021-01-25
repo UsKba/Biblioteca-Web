@@ -98,11 +98,6 @@ const Reserve: React.FC = () => {
       return element.enrollment === enrollment;
     });
 
-    if (findComponent === undefined) {
-      setAddComponentError('Por favor digite uma matrícula válida');
-      return;
-    }
-
     if (enrollment === '') {
       setAddComponentError('Por favor digite uma matrícula');
       return;
@@ -175,8 +170,7 @@ const Reserve: React.FC = () => {
       name: reserveName,
       roomId: selectedRoomId,
       scheduleId: selectedScheduleId,
-      // day: selectedDay.getDate(),
-      day: 25,
+      day: selectedDay.getDate(),
       month: selectedDay.getMonth(),
       // janeiro = month: 0
       year: selectedDay.getFullYear(),

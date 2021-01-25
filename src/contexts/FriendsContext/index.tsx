@@ -1,8 +1,9 @@
 /* eslint-disable no-alert */
-import React, { createContext, useState, useContext, useCallback } from 'react';
+import React, { createContext, useState, useContext, useCallback, useEffect } from 'react';
 
 import api from '~/services/api';
 
+import { useAuth } from '~/contexts/AuthContext';
 import { Friend, User } from '~/types';
 
 interface FriendsRequests {
@@ -33,6 +34,7 @@ interface FriendsContextData {
 const FriendsContext = createContext<FriendsContextData>({} as FriendsContextData);
 
 export const FriendsProvider: React.FC = ({ children }) => {
+  const authContext = useAuth();
   const [friends, setFriends] = useState<Friend[]>([]);
   const [requests, setRequests] = useState<FriendsRequests>({ sent: [], received: [] });
 
@@ -70,6 +72,13 @@ export const FriendsProvider: React.FC = ({ children }) => {
     },
     [loadFriends]
   );
+
+  useEffect(() => {
+    authContext.addListener(loadFriends);
+    return () => {
+      authContext.removeListener(loadFriends);
+    };
+  }, [authContext, loadFriends]);
 
   return (
     <FriendsContext.Provider value={{ friends, loadFriends, requests, sendInvite, recuseInvite, acceptInvite }}>
