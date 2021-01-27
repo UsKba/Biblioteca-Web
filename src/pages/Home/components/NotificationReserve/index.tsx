@@ -41,7 +41,7 @@ const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) =>
     const roominitials = reserve.room.initials;
     const { initialHour } = reserve.schedule;
     const { endHour } = reserve.schedule;
-    const text = `${username}, te convidou para a reserva da sala ${roominitials} para o dia ${day} de ${monthFormatted}, no horário das ${initialHour} às  ${endHour}`;
+    const text = `${username}, te convidou para a reserva da sala ${roominitials} para o dia ${day} de ${monthFormatted}, no horário das ${initialHour} às ${endHour}`;
 
     return text;
   }, [reserve.adminId, reserve.date, reserve.room.initials, reserve.schedule, reserve.users]);
@@ -94,13 +94,11 @@ const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) =>
         <NotificationText>
           <NotificationTitle>Convite de reserva de sala</NotificationTitle>
           <NotificationParaghaph>{formatText()}</NotificationParaghaph>
-          <ButtonsContainer>
-            <Accept onClick={() => reserveContext.handleAcceptReserve(reserve.id)}>Aceitar</Accept>
-            <Reject onClick={() => reserveContext.handleRefuseReserve(reserve.id)}>Rejeitar</Reject>
-            {/* <Accept>Aceitar</Accept>
-            <Reject>Rejeitar</Reject> */}
-          </ButtonsContainer>
         </NotificationText>
+        <ButtonsContainer>
+          <Accept onClick={() => reserveContext.handleAcceptReserve(reserve.id)}>Aceitar</Accept>
+          <Reject onClick={() => reserveContext.handleRefuseReserve(reserve.id)}>Rejeitar</Reject>
+        </ButtonsContainer>
       </Notification>
     </NotificationContainer>
   );

@@ -372,8 +372,10 @@ export const Component = styled.div`
 
   padding: 15px 5px;
 
-  height: 65px;
+  height: 50px;
   width: 100%;
+
+  padding: 5px;
 
   margin-bottom: 10px;
 

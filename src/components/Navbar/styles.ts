@@ -102,18 +102,29 @@ export const NotificationContainer = styled.div<NotificationContainerProps>`
   flex-direction: column;
   z-index: 1;
   position: absolute;
-  top: -320px;
+  top: -200vh;
+  right: 20px;
 
   width: 320px;
-  height: 320px;
-  margin-left: 990px;
+  height: 480px;
   margin-top: 0px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ccc;
+  overflow-y: auto;
 
   background-color: ${colors.terciary};
 
   transition: 0.5s;
 
   ${(props) => props.open && 'top: 0px; margin-top: 60px;'}
+`;
+
+export const NotificationTitle = styled.div`
+  color: ${colors.dark};
+  font-size: 22px;
+  font-weight: bold;
+  padding: 15px;
+  border-bottom: solid 1px #ccc;
 `;
 
 export const StyledLink = styled(Link)`

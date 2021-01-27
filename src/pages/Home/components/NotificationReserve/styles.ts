@@ -5,17 +5,16 @@ import colors from '~/styles/colors';
 export const NotificationContainer = styled.div`
   display: flex;
 
-  width: 100%;
-
-  padding: 18px 18px 14px 15px;
-  margin-bottom: 40px;
+  padding: 10px 18px 14px 15px;
 
   background-color: ${colors.terciary};
+  border-bottom: solid 1px #ccc;
 `;
 
 export const NotificationHead = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: left;
 
   height: 2em;
 
@@ -42,7 +41,7 @@ export const NotificationTitle = styled.span`
 
   font-family: 'Ubuntu';
   font-weight: bold;
-  font-size: 19px;
+  font-size: 18px;
   @media only screen and (max-width: 640px) {
     font-size: 15px;
   }
@@ -51,7 +50,7 @@ export const NotificationTitle = styled.span`
 export const NotificationParaghaph = styled.span`
   text-align: justify;
 
-  margin: 10px 50px 0 0;
+  margin: 10px 20px 0 0;
 
   color: ${colors.dark};
 
@@ -150,5 +149,6 @@ export const Reject = styled.button`
 export const ButtonsContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  margin-left: 27em;
+  margin-left: 6em;
+  margin-top: 1em;
 `;

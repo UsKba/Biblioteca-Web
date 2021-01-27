@@ -1,10 +1,10 @@
 import React from 'react';
-import { useHistory, Switch, Route } from 'react-router-dom';
+import { BsPlus } from 'react-icons/bs';
+import { useHistory, Switch, Route, Link } from 'react-router-dom';
 
 import colors from '~/styles/colors';
 
-import DateList from '~/components/DateList';
-
+import DateList from './components/DateList';
 import {
   // Container,
   // TableContainer,
@@ -27,6 +27,9 @@ import {
   TableColumn,
   RoomTitle,
   RoomCard,
+  RoomCardHour,
+  Dropdown,
+  RentButton,
 } from './styles';
 
 const Rooms: React.FC = () => {
@@ -38,43 +41,281 @@ const Rooms: React.FC = () => {
 
   return (
     <Container>
-      <TableTopInformation />
+      <TableTopInformation>
+        <Dropdown>
+          <option onClick={() => history.push('/salas-manha')}>Manhã</option>
+          <option onClick={() => history.push('/salas-tarde')}>Tarde</option>
+          <option onClick={() => history.push('/salas-noite')}>Noite</option>
+        </Dropdown>
+
+        <DateList />
+        <Link to="/reservar">
+          <RentButton>Reservar sala</RentButton>
+        </Link>
+      </TableTopInformation>
       <Table>
-        <TableColumn>
-          <RoomTitle>F1-3</RoomTitle>
-          <RoomCard />
-          <RoomCard />
-          <RoomCard />
-          <RoomCard />
-          <RoomCard />
-        </TableColumn>
+        <Switch>
+          <Route path="/salas-manha" exact>
+            <TableColumn>
+              <RoomTitle>F1-3</RoomTitle>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>7:15 - 8:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>8:00 - 9:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>9:00 - 10:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>10:00 - 11:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>11:00 - 12:00</RoomCardHour>
+              </RoomCard>
+            </TableColumn>
 
-        <TableColumn>
-          <RoomTitle>F1-4</RoomTitle>
-          <RoomCard />
-          <RoomCard />
-          <RoomCard />
-          <RoomCard />
-          <RoomCard />
-        </TableColumn>
+            <TableColumn>
+              <RoomTitle>F1-4</RoomTitle>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>7:15 - 8:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>8:00 - 9:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>9:00 - 10:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>10:00 - 11:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>11:00 - 12:00</RoomCardHour>
+              </RoomCard>
+            </TableColumn>
 
-        <TableColumn>
-          <RoomTitle>F1-5</RoomTitle>
-          <RoomCard />
-          <RoomCard />
-          <RoomCard />
-          <RoomCard />
-          <RoomCard />
-        </TableColumn>
+            <TableColumn>
+              <RoomTitle>F1-5</RoomTitle>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>7:15 - 8:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>8:00 - 9:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>9:00 - 10:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>10:00 - 11:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>11:00 - 12:00</RoomCardHour>
+              </RoomCard>
+            </TableColumn>
 
-        <TableColumn>
-          <RoomTitle>F1-6</RoomTitle>
-          <RoomCard />
-          <RoomCard />
-          <RoomCard />
-          <RoomCard />
-          <RoomCard />
-        </TableColumn>
+            <TableColumn removeBorder>
+              <RoomTitle>F1-6</RoomTitle>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>7:15 - 8:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>8:00 - 9:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>9:00 - 10:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>10:00 - 11:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>11:00 - 12:00</RoomCardHour>
+              </RoomCard>
+            </TableColumn>
+          </Route>
+
+          <Route path="/salas-tarde" exact>
+            <TableColumn>
+              <RoomTitle>F1-3</RoomTitle>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>13:15 - 14:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>14:00 - 15:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>16:00 - 17:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>17:00 - 18:00</RoomCardHour>
+              </RoomCard>
+            </TableColumn>
+
+            <TableColumn>
+              <RoomTitle>F1-4</RoomTitle>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>13:15 - 14:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>14:00 - 15:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>16:00 - 17:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>17:00 - 18:00</RoomCardHour>
+              </RoomCard>
+            </TableColumn>
+
+            <TableColumn>
+              <RoomTitle>F1-5</RoomTitle>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>13:15 - 14:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>14:00 - 15:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>16:00 - 17:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>17:00 - 18:00</RoomCardHour>
+              </RoomCard>
+            </TableColumn>
+
+            <TableColumn removeBorder>
+              <RoomTitle>F1-6</RoomTitle>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>13:15 - 14:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>14:00 - 15:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>16:00 - 17:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>17:00 - 18:00</RoomCardHour>
+              </RoomCard>
+            </TableColumn>
+          </Route>
+          <Route path="/salas-noite" exact>
+            <TableColumn>
+              <RoomTitle>F1-3</RoomTitle>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>18:15 - 19:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>19:00 - 20:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>20:00 - 21:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>21:00 - 22:00</RoomCardHour>
+              </RoomCard>
+            </TableColumn>
+
+            <TableColumn>
+              <RoomTitle>F1-4</RoomTitle>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>18:15 - 19:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>19:00 - 20:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>20:00 - 21:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>21:00 - 22:00</RoomCardHour>
+              </RoomCard>
+            </TableColumn>
+
+            <TableColumn>
+              <RoomTitle>F1-5</RoomTitle>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>18:15 - 19:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>19:00 - 20:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>20:00 - 21:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>21:00 - 22:00</RoomCardHour>
+              </RoomCard>
+            </TableColumn>
+
+            <TableColumn removeBorder>
+              <RoomTitle>F1-6</RoomTitle>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>18:15 - 19:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>19:00 - 20:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>20:00 - 21:00</RoomCardHour>
+              </RoomCard>
+              <RoomCard>
+                <BsPlus />
+                <RoomCardHour>21:00 - 22:00</RoomCardHour>
+              </RoomCard>
+            </TableColumn>
+          </Route>
+        </Switch>
       </Table>
     </Container>
     // <Container>

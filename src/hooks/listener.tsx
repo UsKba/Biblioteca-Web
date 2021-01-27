@@ -43,13 +43,11 @@ export function useAsyncListener<T extends DefaultAsyncListener>() {
   }, []);
 
   const notifyListeners = useCallback(async (data?: any) => {
-    console.log('iniciou');
     for (let i = 0; i < listeners.current.length; i += 1) {
       const listenerFn = listeners.current[i];
       // eslint-disable-next-line no-await-in-loop
       await listenerFn(data);
     }
-    console.log('terminou');
   }, []);
 
   return {

@@ -6,6 +6,9 @@ import { MdChatBubble } from 'react-icons/md';
 import { useLocation, Link } from 'react-router-dom';
 
 import { useAuth } from '~/contexts/AuthContext';
+import { useReserve } from '~/contexts/ReserveContext';
+import NotificationReserve from '~/pages/Home/components/NotificationReserve';
+import { Reserve } from '~/types';
 
 import {
   Container,
@@ -20,6 +23,7 @@ import {
   SpaceRemaining,
   PageTitle,
   NotificationContainer,
+  NotificationTitle,
 } from './styles';
 
 const NavbarComponent: React.FC = () => {
@@ -27,7 +31,10 @@ const NavbarComponent: React.FC = () => {
   const [notificationOpen, setnotificationOpen] = useState(false);
   const [pageTitle, setPageTitle] = useState('');
   const { signOut } = useAuth();
+  const auth = useAuth();
   const location = useLocation();
+  const [pendingReserveList, setPendingReserveList] = useState([] as Reserve[]);
+  const { reserves } = useReserve();
 
   const titlePages = {
     '/': 'Início',
@@ -68,6 +75,28 @@ const NavbarComponent: React.FC = () => {
     setPageTitle(title);
   }, [location.pathname, titlePages]);
 
+  useEffect(() => {
+    if (reserves.length === 0) {
+      return;
+    }
+
+    const pendingReserves = [] as Reserve[];
+
+    for (let i = 0; i < reserves.length; i += 1) {
+      const users1 = reserves[i].users;
+
+      // eslint-disable-next-line no-loop-func
+      const userLogged = users1.find((user) => user.id === auth.user.id);
+      if (userLogged?.status === 0) {
+        // console.log('Usuário logado não aceitou a reserva');
+        pendingReserves.push(reserves[i]);
+      }
+      // console.log(users1);
+    }
+
+    setPendingReserveList(pendingReserves);
+  }, [auth.user.id, reserves]);
+
   return (
     <div>
       <Container>
@@ -94,7 +123,12 @@ const NavbarComponent: React.FC = () => {
         </Navbar>
       </Container>
 
-      <NotificationContainer open={notificationOpen} />
+      <NotificationContainer open={notificationOpen}>
+        <NotificationTitle>Notificações</NotificationTitle>
+        {pendingReserveList.map((reserve) => (
+          <NotificationReserve key={reserve.id} reserve={reserve} />
+        ))}
+      </NotificationContainer>
       <SidebarContainer open={sidebarOpen}>
         <Sidebar open={sidebarOpen}>
           <StyledLink onClick={closeIfMobile} to="/">
