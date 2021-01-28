@@ -29,18 +29,18 @@ export const ReserveProvider: React.FC = ({ children }) => {
 
       const findReserve = reserves.find((reserve) => reserve.id === reserveId);
       console.log(authContext.user);
-      const findUser = findReserve?.users.find((user) => authContext.user.id === user.id);
+      const userLogged = findReserve?.users.find((user) => authContext.user.id === user.id);
 
-      if (!findReserve || !findUser) {
-        console.log('aqui', findReserve, findUser);
+      if (!findReserve || !userLogged) {
+        console.log('aqui', findReserve, userLogged);
         return;
       }
 
-      const newUsers = findReserve.users.filter((user) => user.id !== findUser.id);
+      const newUsers = findReserve.users.filter((user) => user.id !== userLogged.id);
       const updatedUsers = [
         ...newUsers,
         {
-          ...findUser,
+          ...userLogged,
           status: reserveConfig.statusAccepted,
         },
       ];

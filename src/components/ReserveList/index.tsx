@@ -82,6 +82,27 @@ const ReserveList: React.FC = () => {
     return false;
   }, []);
 
+  const userLoggedAccepted = useCallback(
+    (reserve: ReserveState) => {
+      const loggedUser = reserve.users.find((user) => authContext.user.id === user.id);
+      if (loggedUser?.status === reserveConfig.statusAccepted) {
+        return true;
+      }
+      return false;
+    },
+    [authContext.user.id]
+  );
+
+  const userLoggedRefusedAllReserves = useCallback(() => {
+    for (let i = 0; i < reserves.length; i += 1) {
+      const userAccepted = userLoggedAccepted(reserves[i]);
+      if (userAccepted) {
+        return false;
+      }
+    }
+    return true;
+  }, [reserves, userLoggedAccepted]);
+
   const showDeleteIcon = useCallback(
     (reserve: ReserveState, user: User) => {
       if (isReserveAdmin(reserve, authContext.user)) {
@@ -250,8 +271,7 @@ const ReserveList: React.FC = () => {
         </StyledLink>
       </TitlePanel>
 
-      {/* <EmptyContainer visible={reserves.filter((reserves) => reserves.length === 0)}> */}
-      <EmptyContainer visible={reserves.length === 0}>
+      <EmptyContainer visible={reserves.length === 0 || userLoggedRefusedAllReserves()}>
         <EmptyTitle>Não há reservas...</EmptyTitle>
         <EmptySpan>Você não possui reservas, reserve uma sala na página de reservas.</EmptySpan>
       </EmptyContainer>
