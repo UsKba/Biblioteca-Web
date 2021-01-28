@@ -2,12 +2,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { FaPlus, FaChevronDown, FaTimes } from 'react-icons/fa';
 
-import { getRequest, deleteRequest } from '~/utils/api';
+import { deleteRequest } from '~/utils/api';
 
 import awardIcon from '~/assets/award.svg';
 import reserveConfig from '~/config/reserve';
 import { useAuth } from '~/contexts/AuthContext';
-import { User, Reserve } from '~/types';
+import { useReserve } from '~/contexts/ReserveContext';
+import { User } from '~/types';
 
 import {
   Container,
@@ -55,6 +56,7 @@ const ReserveList: React.FC = () => {
   const [menuIndex, setMenuIndex] = useState<number>();
   const [reserves, setReserves] = useState([] as ReserveState[]);
   const authContext = useAuth();
+  const reserveContext = useReserve();
 
   const toggleDropmenu = useCallback(
     (index: number) => {
@@ -80,6 +82,7 @@ const ReserveList: React.FC = () => {
       return true;
     }
     return false;
+    // [to-do bug] ao colocar dependência, para de funcionar
   }, []);
 
   const userLoggedAccepted = useCallback(
@@ -226,16 +229,9 @@ const ReserveList: React.FC = () => {
 
   useEffect(() => {
     async function loadReserves() {
-      const { data, error } = await getRequest<Reserve[]>('/reserves');
-
-      if (error) {
-        alert(error.error);
-        return;
-      }
-
       const formatter = new Intl.DateTimeFormat('pt-br', { month: 'long' });
 
-      const reservesFormatted = data!.map((reserve) => {
+      const reservesFormatted = reserveContext.reserves.map((reserve) => {
         const { date, name, id } = reserve;
         const { initials } = reserve.room;
         const { initialHour, endHour } = reserve.schedule;
@@ -260,7 +256,7 @@ const ReserveList: React.FC = () => {
       setReserves(reservesFormatted);
     }
     loadReserves();
-  }, []);
+  }, [reserveContext.reserves]);
 
   return (
     <Container>
