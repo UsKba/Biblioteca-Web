@@ -33,7 +33,7 @@ export const Table = styled.div`
   width: 100%;
   max-width: 1200px;
 
-  border: solid 0.5px ${colors.grey};
+  border: solid 0.5px rgba(50, 44, 66, 0.5);
   border-radius: 5px;
 
   background-color: ${colors.terciary};
@@ -53,7 +53,7 @@ export const TableColumn = styled.div<TableColumnProps>`
   flex: 1;
 
   padding: 20px 35px;
-  border-right: ${(props) => (props.removeBorder === true ? 'none' : `solid 0.5px ${colors.grey};`)};
+  border-right: ${(props) => (props.removeBorder === true ? 'none' : `solid 0.5px rgba(50, 44, 66, 0.5);`)};
 `;
 
 export const RoomTitle = styled.div`
@@ -85,11 +85,14 @@ export const RoomCard = styled.div<RoomCardProps>`
 
   background-color: ${(props) => (props.isReserved === true ? colors.red : colors.primary)};
 
+  &:hover {
+    cursor: pointer;
+    background-color: ${(props) => (props.isReserved === true ? colors.lightred : colors.lightprimary)};
+  }
+
   svg {
     font-size: 40px;
     color: ${colors.terciary};
-
-    cursor: pointer;
   }
 `;
 
@@ -121,12 +124,18 @@ export const Dropdown = styled.select`
   color: ${colors.dark};
 
   outline: none;
-  border: solid 0.5px ${colors.grey};
+  border: solid 0.5px rgba(50, 44, 66, 0.5);
   border-radius: 5px;
 `;
 
 export const RentButton = styled(Button)`
   margin: 0;
+  border-radius: 5px;
+  border: solid 0.5px rgba(50, 44, 66, 0.5);
 
   color: ${colors.text};
+
+  &:hover {
+    border: solid 0.5px ${colors.primary};
+  }
 `;

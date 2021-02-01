@@ -2,11 +2,18 @@ import React from 'react';
 
 import { Container, Title, Text, ButtonsDiv, DeclineButton, AcceptButton } from './styles';
 
-const ConfirmModal: React.FC = () => {
+interface ModalProps {
+  modalTitle: string;
+  modalContent: string;
+  onOpen?: () => void;
+  onClose?: () => void;
+}
+
+const ConfirmModal: React.FC<ModalProps> = ({ modalTitle, modalContent, onOpen, onClose }) => {
   return (
     <Container>
-      <Title>Sair da Reserva</Title>
-      <Text>Você realmente deseja sair desta reserva?</Text>
+      <Title>{modalTitle}</Title>
+      <Text>{modalContent}</Text>
       <ButtonsDiv>
         <DeclineButton>Não</DeclineButton>
         <AcceptButton>Sim</AcceptButton>

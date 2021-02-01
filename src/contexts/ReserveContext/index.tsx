@@ -59,12 +59,43 @@ export const ReserveProvider: React.FC = ({ children }) => {
     [authContext.user, reserves]
   );
 
-  const handleRefuseReserve = useCallback(async (reserveId: number) => {
-    const { error } = await postRequest(`/reserves/${reserveId}/refuse`);
-    if (error) {
-      alert(error.error);
-    }
-  }, []);
+  const handleRefuseReserve = useCallback(
+    async (reserveId: number) => {
+      const { error } = await postRequest(`/reserves/${reserveId}/refuse`);
+      if (error) {
+        alert(error.error);
+      }
+      const findReserve = reserves.find((reserve) => reserve.id === reserveId);
+      console.log(authContext.user);
+      const userLogged = findReserve?.users.find((user) => authContext.user.id === user.id);
+
+      if (!findReserve || !userLogged) {
+        console.log('aqui', findReserve, userLogged);
+        return;
+      }
+
+      const newUsers = findReserve.users.filter((user) => user.id !== userLogged.id);
+      const updatedUsers = [
+        ...newUsers,
+        {
+          ...userLogged,
+          status: reserveConfig.statusRefused,
+        },
+      ];
+
+      const newReserves = reserves.filter((reserve) => reserve.id !== findReserve.id);
+      const updatedReserves = [
+        ...newReserves,
+        {
+          ...findReserve,
+          users: updatedUsers,
+        },
+      ];
+      console.log(updatedReserves);
+      setReserves(updatedReserves);
+    },
+    [authContext.user, reserves]
+  );
 
   const loadReserves = useCallback(async () => {
     const { data, error } = await getRequest('/reserves');

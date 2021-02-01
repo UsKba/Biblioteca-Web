@@ -6,7 +6,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 370px;
-  height: 240px;
+  height: 220px;
 
   border-radius: 5px;
   background-color: ${colors.terciary};

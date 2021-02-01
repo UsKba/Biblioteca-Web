@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { BsPlus } from 'react-icons/bs';
 import { useHistory, Switch, Route, Link } from 'react-router-dom';
 
@@ -39,13 +39,32 @@ const Rooms: React.FC = () => {
   const reserveDate = new Date();
   const monthFormatted = formatter.format(reserveDate);
 
+  const changePeriod = useCallback(
+    (periodValue) => {
+      if (periodValue === '1') {
+        history.push('/salas-manha');
+        return;
+      }
+      if (periodValue === '2') {
+        history.push('/salas-tarde');
+        return;
+      }
+      if (periodValue === '3') {
+        history.push('/salas-noite');
+      }
+    },
+    [history]
+  );
+
   return (
     <Container>
       <TableTopInformation>
-        <Dropdown>
-          <option onClick={() => history.push('/salas-manha')}>Manhã</option>
-          <option onClick={() => history.push('/salas-tarde')}>Tarde</option>
-          <option onClick={() => history.push('/salas-noite')}>Noite</option>
+        <Dropdown onChange={(event) => changePeriod(event.target.value)}>
+          <option value="1" selected>
+            Manhã
+          </option>
+          <option value="2">Tarde</option>
+          <option value="3">Noite</option>
         </Dropdown>
 
         <DateList />

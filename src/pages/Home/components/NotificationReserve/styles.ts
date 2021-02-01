@@ -2,10 +2,13 @@ import styled from 'styled-components';
 
 import colors from '~/styles/colors';
 
+import { FriendIcon } from '~/components/FriendList/styles';
+
 export const NotificationContainer = styled.div`
   display: flex;
+  flex-direction: column;
 
-  padding: 10px 18px 14px 15px;
+  padding: 15px 10px;
 
   background-color: ${colors.terciary};
   border-bottom: solid 1px #ccc;
@@ -82,10 +85,6 @@ export const NotificationText = styled.div`
   }
 `;
 
-export const Notification = styled.div`
-  display: column;
-`;
-
 export const NotificationTop = styled.div`
   display: flex;
   justify-content: space-between;
@@ -103,14 +102,18 @@ export const NotificationRight = styled.div`
 export const Accept = styled.button`
   display: flex;
   align-items: center;
-
   align-self: center;
+
   height: 30px;
+
+  margin-left: auto;
   padding: 9px 20px;
   border: 2px solid ${colors.primary};
   border-radius: 100px;
-  background-color: transparent;
+
   color: ${colors.primary};
+  background-color: transparent;
+
   font-size: 14px;
   transition: 0.3s;
   &:hover {
@@ -127,12 +130,17 @@ export const Reject = styled.button`
   display: flex;
   align-items: center;
   align-self: center;
+
   height: 30px;
+
+  margin-left: 10px;
   padding: 9px 20px;
   border: 2px solid ${colors.red};
   border-radius: 100px;
-  background-color: transparent;
+
   color: ${colors.red};
+  background-color: transparent;
+
   font-size: 14px;
   transition: 0.3s;
   &:hover {
@@ -148,7 +156,10 @@ export const Reject = styled.button`
 
 export const ButtonsContainer = styled.div`
   display: flex;
-  justify-content: space-around;
-  margin-left: 6em;
-  margin-top: 1em;
+
+  margin-top: 16px;
+`;
+
+export const UserIcon = styled(FriendIcon)`
+  margin-left: 0;
 `;

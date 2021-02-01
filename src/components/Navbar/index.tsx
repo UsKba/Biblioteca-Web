@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
+import { BsPentagon } from 'react-icons/bs';
 import { FaChalkboardTeacher, FaHome, FaCog, FaBars, FaDesktop, FaEnvelope, FaBell } from 'react-icons/fa';
 import { FiHelpCircle } from 'react-icons/fi';
 import { GoSignOut } from 'react-icons/go';
@@ -28,7 +29,8 @@ import {
 
 const NavbarComponent: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [notificationOpen, setnotificationOpen] = useState(false);
+  const [notificationOpen, setNotificationOpen] = useState(false);
+  const [notificationExists, setNotificationExists] = useState(false);
   const [pageTitle, setPageTitle] = useState('');
   const { signOut } = useAuth();
   const auth = useAuth();
@@ -67,7 +69,7 @@ const NavbarComponent: React.FC = () => {
   }, [sidebarOpen]);
 
   const toggleNotifications = useCallback(() => {
-    setnotificationOpen(!notificationOpen);
+    setNotificationOpen(!notificationOpen);
   }, [notificationOpen]);
 
   useEffect(() => {
@@ -77,6 +79,7 @@ const NavbarComponent: React.FC = () => {
 
   useEffect(() => {
     if (reserves.length === 0) {
+      setNotificationExists(false);
       return;
     }
 
@@ -90,6 +93,7 @@ const NavbarComponent: React.FC = () => {
       if (userLogged?.status === 0) {
         // console.log('Usuário logado não aceitou a reserva');
         pendingReserves.push(reserves[i]);
+        setNotificationExists(true);
       }
       // console.log(users1);
     }
@@ -110,7 +114,7 @@ const NavbarComponent: React.FC = () => {
           </LeftSide>
 
           <RightSide>
-            <NavItem small onClick={toggleNotifications}>
+            <NavItem small onClick={toggleNotifications} notificationsPending={notificationExists}>
               <FaBell title="Ajuda" />
             </NavItem>
 

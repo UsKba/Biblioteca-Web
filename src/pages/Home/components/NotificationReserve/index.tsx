@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 import { postRequest } from '~/utils/api';
 
-import { FriendIcon, FriendIconInitials } from '~/components/FriendList/styles';
+import { FriendIconInitials } from '~/components/FriendList/styles';
 
 import { useReserve } from '~/contexts/ReserveContext';
 import { Reserve } from '~/types';
@@ -15,13 +15,13 @@ import {
   NotificationParaghaph,
   // NotificationDate,
   NotificationText,
-  Notification,
   NotificationTop,
   NotificationLeft,
   NotificationRight,
   Accept,
   Reject,
   ButtonsContainer,
+  UserIcon,
 } from './styles';
 
 interface NotificationReserveProps {
@@ -75,31 +75,39 @@ const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) =>
     return admin?.color || '';
   }, [reserve.adminId, reserve.users]);
 
+  const reserveTitle = useCallback(() => {
+    const { name } = reserve;
+    const text = ` ${name}`;
+
+    return text;
+  }, [reserve]);
+
   return (
     <NotificationContainer>
-      <Notification>
-        <NotificationTop>
-          <NotificationLeft>
-            <FriendIcon bgColor={adminColor()}>
-              <FriendIconInitials>{headerInitials()}</FriendIconInitials>
-            </FriendIcon>
-            <NotificationHead>
-              {headerName()}
-              <NotificationMail>{headerEmail()}</NotificationMail>
-            </NotificationHead>
-          </NotificationLeft>
-          <NotificationRight>{/* <NotificationDate>15:31 - 22/08</NotificationDate> */}</NotificationRight>
-        </NotificationTop>
+      <NotificationTop>
+        <NotificationLeft>
+          <UserIcon bgColor={adminColor()}>
+            <FriendIconInitials>{headerInitials()}</FriendIconInitials>
+          </UserIcon>
+          <NotificationHead>
+            {headerName()}
+            <NotificationMail>{headerEmail()}</NotificationMail>
+          </NotificationHead>
+        </NotificationLeft>
+        <NotificationRight>{/* <NotificationDate>15:31 - 22/08</NotificationDate> */}</NotificationRight>
+      </NotificationTop>
 
-        <NotificationText>
-          <NotificationTitle>Convite de reserva de sala</NotificationTitle>
-          <NotificationParaghaph>{formatText()}</NotificationParaghaph>
-        </NotificationText>
-        <ButtonsContainer>
-          <Accept onClick={() => reserveContext.handleAcceptReserve(reserve.id)}>Aceitar</Accept>
-          <Reject onClick={() => reserveContext.handleRefuseReserve(reserve.id)}>Rejeitar</Reject>
-        </ButtonsContainer>
-      </Notification>
+      <NotificationText>
+        <NotificationTitle>
+          Convite de reserva de sala:
+          {reserveTitle()}
+        </NotificationTitle>
+        <NotificationParaghaph>{formatText()}</NotificationParaghaph>
+      </NotificationText>
+      <ButtonsContainer>
+        <Accept onClick={() => reserveContext.handleAcceptReserve(reserve.id)}>Aceitar</Accept>
+        <Reject onClick={() => reserveContext.handleRefuseReserve(reserve.id)}>Rejeitar</Reject>
+      </ButtonsContainer>
     </NotificationContainer>
   );
 };

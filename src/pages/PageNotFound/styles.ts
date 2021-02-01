@@ -63,9 +63,9 @@ export const T2 = styled.p`
 
 export const Buttons = styled.div`
   display: flex;
-  justify-content: space-between;
 
   margin-top: 5em;
+
   @media only screen and (max-width: 640px) {
     flex-direction: column;
   }

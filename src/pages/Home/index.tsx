@@ -1,9 +1,11 @@
 import React, { useState, useCallback } from 'react';
 
+import ConfirmModal from '~/components/ConfirmModal';
 import FriendList from '~/components/FriendList';
 import ReserveList from '~/components/ReserveList';
 
 // import Notifications from './components/Notifications';
+
 import Profile from './components/Profile';
 import {
   Container,
@@ -52,6 +54,8 @@ const Home: React.FC = () => {
       <MiddleSide visible={screenSwipe === 1}>
         <Title>Perfil</Title>
         <Profile />
+
+        {/* <ConfirmModal modalTitle="Titulo teste" modalContent="alo aol" /> */}
 
         {/* <Title>Avisos</Title> */}
         {/* <Notifications /> */}

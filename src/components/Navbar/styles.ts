@@ -43,6 +43,7 @@ export const Logo = styled.img`
 
 interface NavItemProps {
   small?: boolean;
+  notificationsPending?: boolean;
 }
 
 export const NavItem = styled.li<NavItemProps>`
@@ -57,7 +58,7 @@ export const NavItem = styled.li<NavItemProps>`
   ${(props) => props.small && 'margin-right: 0px;'}
 
   svg {
-    color: ${colors.dark};
+    color: ${(props) => (props.notificationsPending === true ? colors.red : colors.dark)};
 
     font-size: 24px;
     font-size: 1.5rem;
