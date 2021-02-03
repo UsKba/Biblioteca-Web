@@ -30,6 +30,8 @@ export const NotificationMail = styled.span`
   margin-left: 5px;
 
   color: #666666;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   font-size: 14px;
   @media only screen and (max-width: 640px) {

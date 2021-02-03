@@ -29,7 +29,7 @@ export const TableTopInformation = styled.div`
 export const Table = styled.div`
   display: flex;
 
-  height: 550px;
+  height: 500px;
   width: 100%;
   max-width: 1200px;
 
@@ -52,7 +52,7 @@ export const TableColumn = styled.div<TableColumnProps>`
   height: 100%;
   flex: 1;
 
-  padding: 20px 35px;
+  padding: 20px 35px 40px;
   border-right: ${(props) => (props.removeBorder === true ? 'none' : `solid 0.5px rgba(50, 44, 66, 0.5);`)};
 `;
 

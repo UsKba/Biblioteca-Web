@@ -2,6 +2,22 @@ import styled from 'styled-components';
 
 import colors from '~/styles/colors';
 
+interface ModalProps {
+  visible?: boolean;
+}
+
+export const Modal = styled.div<ModalProps>`
+  display: ${({ visible }) => (visible === false ? 'none' : 'flex')};
+
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  margin: auto;
+  position: fixed;
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -10,6 +26,7 @@ export const Container = styled.div`
 
   border-radius: 5px;
   background-color: ${colors.terciary};
+  box-shadow: 0 0 10px #ccc;
 `;
 
 export const Title = styled.div`
@@ -44,9 +61,13 @@ export const DeclineButton = styled.button`
   height: 40px;
 
   color: ${colors.dark};
-  text-decoration: underline;
+
   background-color: ${colors.terciary};
   border: none;
+
+  hover {
+    text-decoration: underline;
+  }
 `;
 
 export const AcceptButton = styled.button`

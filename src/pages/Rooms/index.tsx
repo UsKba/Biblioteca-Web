@@ -93,10 +93,6 @@ const Rooms: React.FC = () => {
                 <BsPlus />
                 <RoomCardHour>10:00 - 11:00</RoomCardHour>
               </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>11:00 - 12:00</RoomCardHour>
-              </RoomCard>
             </TableColumn>
 
             <TableColumn>
@@ -116,10 +112,6 @@ const Rooms: React.FC = () => {
               <RoomCard>
                 <BsPlus />
                 <RoomCardHour>10:00 - 11:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>11:00 - 12:00</RoomCardHour>
               </RoomCard>
             </TableColumn>
 
@@ -141,10 +133,6 @@ const Rooms: React.FC = () => {
                 <BsPlus />
                 <RoomCardHour>10:00 - 11:00</RoomCardHour>
               </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>11:00 - 12:00</RoomCardHour>
-              </RoomCard>
             </TableColumn>
 
             <TableColumn removeBorder>
@@ -164,10 +152,6 @@ const Rooms: React.FC = () => {
               <RoomCard>
                 <BsPlus />
                 <RoomCardHour>10:00 - 11:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>11:00 - 12:00</RoomCardHour>
               </RoomCard>
             </TableColumn>
           </Route>

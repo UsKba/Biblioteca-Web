@@ -31,6 +31,8 @@ const Home: React.FC = () => {
 
   return (
     <Container>
+      {/* <ConfirmModal modalTitle="Titulo teste" modalContent="alo aol" /> */}
+
       <MobileNav>
         <MobileNavText onClick={() => handleChangeSwipe(0)}>
           Reservas
@@ -54,8 +56,6 @@ const Home: React.FC = () => {
       <MiddleSide visible={screenSwipe === 1}>
         <Title>Perfil</Title>
         <Profile />
-
-        {/* <ConfirmModal modalTitle="Titulo teste" modalContent="alo aol" /> */}
 
         {/* <Title>Avisos</Title> */}
         {/* <Notifications /> */}

@@ -82,6 +82,26 @@ const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) =>
     return text;
   }, [reserve]);
 
+  const refuseReserve = useCallback(() => {
+    const response = window.confirm('Tem certeza que deseja recusar o pedido desta reserva?');
+
+    if (!response) {
+      return;
+    }
+
+    if (reserve.users.length <= 3) {
+      const response2 = window.confirm(
+        'Atenção! Essa reserva possui apenas 3 membros, se você recusar ela será deletada, tem certeza que deseja sair?'
+      );
+
+      if (!response2) {
+        return;
+      }
+    }
+
+    reserveContext.handleRefuseReserve(reserve.id);
+  }, [reserve.id, reserveContext]);
+
   return (
     <NotificationContainer>
       <NotificationTop>
@@ -106,7 +126,7 @@ const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) =>
       </NotificationText>
       <ButtonsContainer>
         <Accept onClick={() => reserveContext.handleAcceptReserve(reserve.id)}>Aceitar</Accept>
-        <Reject onClick={() => reserveContext.handleRefuseReserve(reserve.id)}>Rejeitar</Reject>
+        <Reject onClick={() => refuseReserve()}>Rejeitar</Reject>
       </ButtonsContainer>
     </NotificationContainer>
   );

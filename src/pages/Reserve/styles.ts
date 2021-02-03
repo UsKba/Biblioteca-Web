@@ -340,6 +340,10 @@ export const InputButton = styled.button`
 
   color: ${colors.terciary};
   background-color: ${colors.primary};
+
+  &:hover {
+    background-color: ${colors.lightprimary};
+  }
 `;
 
 interface ErrorContainerProps {
