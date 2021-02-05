@@ -18,8 +18,10 @@ import {
   FriendsContainer,
   FriendsPanel,
   FriendsDetails,
+  FriendRequestDetails,
   FriendName,
   FriendEnrollment,
+  FriendNameAndEnrollmentContainer,
   FriendsPanelDetails,
   FriendIcon,
   FriendIconInitials,
@@ -267,18 +269,20 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
             <FriendIcon bgColor={friendRequestReceived.sender.color}>
               <FriendIconInitials>{friendRequestReceived.sender.name[0]}</FriendIconInitials>
             </FriendIcon>
-            <FriendsDetails>
-              <FriendName>{friendRequestReceived.sender.name}</FriendName>
-              <FriendEnrollment>
-                <strong># </strong>
-                {friendRequestReceived.sender.enrollment}
-              </FriendEnrollment>
+            <FriendRequestDetails>
+              <FriendNameAndEnrollmentContainer>
+                <FriendName>{friendRequestReceived.sender.name}</FriendName>
+                <FriendEnrollment>
+                  <strong># </strong>
+                  {friendRequestReceived.sender.enrollment}
+                </FriendEnrollment>
+              </FriendNameAndEnrollmentContainer>
               <AcceptContainer>
                 <FiCheck color={colors.primary} onClick={() => friendsContext.acceptInvite(friendRequestReceived.id)} />
                 <FiX color={colors.red} onClick={() => friendsContext.recuseInvite(friendRequestReceived.id)} />
                 <MdBlock color={colors.dark} />
               </AcceptContainer>
-            </FriendsDetails>
+            </FriendRequestDetails>
           </FriendsPanelDetails>
         ))}
         <TitleSmall>Pedidos Enviados</TitleSmall>

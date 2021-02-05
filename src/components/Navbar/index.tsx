@@ -1,7 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { BsPentagon } from 'react-icons/bs';
 import { FaChalkboardTeacher, FaHome, FaCog, FaBars, FaDesktop, FaEnvelope, FaBell } from 'react-icons/fa';
-import { FiHelpCircle } from 'react-icons/fi';
 import { GoSignOut } from 'react-icons/go';
 import { MdChatBubble } from 'react-icons/md';
 import { useLocation, Link } from 'react-router-dom';
@@ -40,9 +38,7 @@ const NavbarComponent: React.FC = () => {
 
   const titlePages = {
     '/': 'Início',
-    '/salas-manha': 'Salas',
-    '/salas-tarde': 'Salas',
-    '/salas-noite': 'Salas',
+    '/salas': 'Salas',
     '/computadores': 'Computadores',
     '/sobre': 'Sobre',
     '/bibliotecario': 'Contatar bibliotecário',
@@ -140,7 +136,7 @@ const NavbarComponent: React.FC = () => {
             <SidebarItemName>Início</SidebarItemName>
           </StyledLink>
 
-          <StyledLink onClick={closeIfMobile} to="/salas-manha">
+          <StyledLink onClick={closeIfMobile} to="/salas">
             <FaChalkboardTeacher />
             <SidebarItemName>Salas</SidebarItemName>
           </StyledLink>

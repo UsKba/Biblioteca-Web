@@ -83,6 +83,7 @@ const ReserveList: React.FC = () => {
     }
     return false;
     // [to-do bug] ao colocar dependência, para de funcionar
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const userLoggedAccepted = useCallback(

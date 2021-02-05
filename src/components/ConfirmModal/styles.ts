@@ -2,24 +2,24 @@ import styled from 'styled-components';
 
 import colors from '~/styles/colors';
 
-interface ModalProps {
+// export const Modal = styled.div<ModalProps>`
+//   display: ${({ visible }) => (visible === false ? 'none' : 'flex')};
+
+//   width: 100%;
+//   height: 100%;
+//   align-items: center;
+//   justify-content: center;
+//   z-index: 1;
+//   margin: auto;
+//   position: fixed;
+// `;
+
+interface ContainerProps {
   visible?: boolean;
 }
 
-export const Modal = styled.div<ModalProps>`
+export const Container = styled.div<ContainerProps>`
   display: ${({ visible }) => (visible === false ? 'none' : 'flex')};
-
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-  margin: auto;
-  position: fixed;
-`;
-
-export const Container = styled.div`
-  display: flex;
   flex-direction: column;
   width: 370px;
   height: 220px;
@@ -50,7 +50,7 @@ export const ButtonsDiv = styled.div`
   display: flex;
   width: 200px;
   justify-content: space-between;
-  margin: 40px 0 0 140px;
+  margin: 20px 0 40px 145px;
 
   font-size: 20px;
   font-family: 'Roboto';
@@ -65,7 +65,7 @@ export const DeclineButton = styled.button`
   background-color: ${colors.terciary};
   border: none;
 
-  hover {
+  :hover {
     text-decoration: underline;
   }
 `;

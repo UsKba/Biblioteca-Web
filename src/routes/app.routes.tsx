@@ -18,9 +18,7 @@ export default function Routes() {
     <>
       <Route
         path={[
-          '/salas-manha',
-          '/salas-tarde',
-          '/salas-noite',
+          '/salas',
           '/',
           '/computadores',
           '/reservar',
@@ -37,9 +35,7 @@ export default function Routes() {
         component={Navbar}
       />
       <Switch>
-        <Route path="/salas-manha" exact component={Rooms} />
-        <Route path="/salas-tarde" exact component={Rooms} />
-        <Route path="/salas-noite" exact component={Rooms} />
+        <Route path="/salas" exact component={Rooms} />
         <Route path="/" exact component={Home} />
         <Route path="/computadores" exact component={Computers} />
         <Route path="/reservar" exact component={Reserve} />

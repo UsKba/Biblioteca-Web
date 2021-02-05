@@ -92,7 +92,7 @@ export const AuthProvider: React.FC = ({ children }) => {
         history.push('/');
       }
     },
-    [history]
+    [history, signInListener]
   );
 
   useEffect(() => {
@@ -111,6 +111,8 @@ export const AuthProvider: React.FC = ({ children }) => {
     }
 
     loadStoragedData();
+    // bug ao adicionar a dependência signInListener o site crasha
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

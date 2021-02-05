@@ -1,14 +1,13 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-alert */
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsPlus } from 'react-icons/bs';
-import { useHistory, Switch, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { getRequest } from '~/utils/api';
 import getFirstDayOfWeek from '~/utils/firstDayOfWeek';
 
-import colors from '~/styles/colors';
-
-import { Reserve } from '~/types/';
+import { Reserve, Period as PeriodInterface } from '~/types/';
 
 import DateList from './components/DateList';
 import {
@@ -19,37 +18,19 @@ import {
   RoomTitle,
   RoomCard,
   RoomCardHour,
-  Dropdown,
+  // Dropdown,
   RentButton,
+  PeriodButtonList,
+  PeriodButton,
 } from './styles';
 
 const Rooms: React.FC = () => {
-  const history = useHistory();
-  const { pathname } = history.location;
-  const formatter = new Intl.DateTimeFormat('pt-br', { month: 'long' });
-  const reserveDate = new Date();
-  const monthFormatted = formatter.format(reserveDate);
   const [reserves, setReserves] = useState([] as Reserve[]);
-
-  const changePeriod = useCallback(
-    (periodValue) => {
-      if (periodValue === '1') {
-        history.push('/salas-manha');
-        return;
-      }
-      if (periodValue === '2') {
-        history.push('/salas-tarde');
-        return;
-      }
-      if (periodValue === '3') {
-        history.push('/salas-noite');
-      }
-    },
-    [history]
-  );
+  const [periods, setPeriods] = useState([] as PeriodInterface[]);
+  const [selectedPeriodId, setSelectedPeriodId] = useState(1);
 
   useEffect(() => {
-    async function getReserves() {
+    async function loadReserves() {
       const sunday = getFirstDayOfWeek();
       const monday = new Date(sunday.getFullYear(), sunday.getMonth(), sunday.getDate() + 1);
       const friday = new Date(sunday.getFullYear(), sunday.getMonth(), sunday.getDate() + 5);
@@ -83,17 +64,35 @@ const Rooms: React.FC = () => {
       setReserves(data || []);
     }
 
-    getReserves();
+    async function loadPeriods() {
+      const { data, error } = await getRequest('/periods');
+
+      if (error) {
+        alert(error.error);
+        return;
+      }
+
+      setPeriods(data);
+    }
+
+    loadReserves();
+    loadPeriods();
   }, []);
 
   return (
     <Container>
       <TableTopInformation>
-        <Dropdown onChange={(event) => changePeriod(event.target.value)}>
-          <option value="1">Manhã</option>
-          <option value="2">Tarde</option>
-          <option value="3">Noite</option>
-        </Dropdown>
+        <PeriodButtonList>
+          {periods.map((period) => (
+            <PeriodButton
+              key={period.id}
+              onClick={() => setSelectedPeriodId(period.id)}
+              active={selectedPeriodId === period.id}
+            >
+              {period.name}
+            </PeriodButton>
+          ))}
+        </PeriodButtonList>
 
         <DateList />
         <Link to="/reservar">
@@ -101,194 +100,34 @@ const Rooms: React.FC = () => {
         </Link>
       </TableTopInformation>
       <Table>
-        <Switch>
-          <Route path="/salas-manha" exact>
-            {reserves.map((reserve) => (
-              <TableColumn key={reserve.id}>
-                <RoomTitle>F1-3</RoomTitle>
-                <RoomCard>
-                  <BsPlus />
-                  <RoomCardHour>7:15 - 8:00</RoomCardHour>
-                </RoomCard>
-                <RoomCard>
-                  <BsPlus />
-                  <RoomCardHour>8:00 - 9:00</RoomCardHour>
-                </RoomCard>
-                <RoomCard>
-                  <BsPlus />
-                  <RoomCardHour>9:00 - 10:00</RoomCardHour>
-                </RoomCard>
-                <RoomCard>
-                  <BsPlus />
-                  <RoomCardHour>10:00 - 11:00</RoomCardHour>
-                </RoomCard>
-              </TableColumn>
-            ))}
-          </Route>
+        {reserves.map((reserve) => (
+          <TableColumn key={reserve.id} visible={reserve.schedule.periodId === selectedPeriodId}>
+            <RoomTitle>{reserve.room.initials}</RoomTitle>
+            <RoomCard isReserved>
+              <BsPlus />
+              <RoomCardHour>
+                {reserve.schedule.initialHour} - {reserve.schedule.endHour}
+              </RoomCardHour>
+            </RoomCard>
 
-          <Route path="/salas-tarde" exact>
-            <TableColumn>
-              <RoomTitle>F1-3</RoomTitle>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>13:15 - 14:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>14:00 - 15:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>16:00 - 17:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>17:00 - 18:00</RoomCardHour>
-              </RoomCard>
-            </TableColumn>
-
-            <TableColumn>
-              <RoomTitle>F1-4</RoomTitle>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>13:15 - 14:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>14:00 - 15:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>16:00 - 17:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>17:00 - 18:00</RoomCardHour>
-              </RoomCard>
-            </TableColumn>
-
-            <TableColumn>
-              <RoomTitle>F1-5</RoomTitle>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>13:15 - 14:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>14:00 - 15:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>16:00 - 17:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>17:00 - 18:00</RoomCardHour>
-              </RoomCard>
-            </TableColumn>
-
-            <TableColumn removeBorder>
-              <RoomTitle>F1-6</RoomTitle>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>13:15 - 14:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>14:00 - 15:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>16:00 - 17:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>17:00 - 18:00</RoomCardHour>
-              </RoomCard>
-            </TableColumn>
-          </Route>
-          <Route path="/salas-noite" exact>
-            <TableColumn>
-              <RoomTitle>F1-3</RoomTitle>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>18:15 - 19:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>19:00 - 20:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>20:00 - 21:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>21:00 - 22:00</RoomCardHour>
-              </RoomCard>
-            </TableColumn>
-
-            <TableColumn>
-              <RoomTitle>F1-4</RoomTitle>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>18:15 - 19:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>19:00 - 20:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>20:00 - 21:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>21:00 - 22:00</RoomCardHour>
-              </RoomCard>
-            </TableColumn>
-
-            <TableColumn>
-              <RoomTitle>F1-5</RoomTitle>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>18:15 - 19:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>19:00 - 20:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>20:00 - 21:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>21:00 - 22:00</RoomCardHour>
-              </RoomCard>
-            </TableColumn>
-
-            <TableColumn removeBorder>
-              <RoomTitle>F1-6</RoomTitle>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>18:15 - 19:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>19:00 - 20:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>20:00 - 21:00</RoomCardHour>
-              </RoomCard>
-              <RoomCard>
-                <BsPlus />
-                <RoomCardHour>21:00 - 22:00</RoomCardHour>
-              </RoomCard>
-            </TableColumn>
-          </Route>
-        </Switch>
+            {/* <RoomCard>
+              <BsPlus />
+              <RoomCardHour>7:15 - 8:00</RoomCardHour>
+            </RoomCard>
+            <RoomCard>
+              <BsPlus />
+              <RoomCardHour>8:00 - 9:00</RoomCardHour>
+            </RoomCard>
+            <RoomCard>
+              <BsPlus />
+              <RoomCardHour>9:00 - 10:00</RoomCardHour>
+            </RoomCard>
+            <RoomCard>
+              <BsPlus />
+              <RoomCardHour>10:00 - 11:00</RoomCardHour>
+            </RoomCard> */}
+          </TableColumn>
+        ))}
       </Table>
     </Container>
   );

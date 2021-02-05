@@ -1,12 +1,14 @@
 import React, { useState, useCallback } from 'react';
 
-import ConfirmModal from '~/components/ConfirmModal';
+// import ConfirmModal from '~/components/ConfirmModal';
 import FriendList from '~/components/FriendList';
 import ReserveList from '~/components/ReserveList';
 
+import Profile from './components/Profile';
+import Warning from './components/Warning';
+
 // import Notifications from './components/Notifications';
 
-import Profile from './components/Profile';
 import {
   Container,
   LeftSide,
@@ -31,8 +33,6 @@ const Home: React.FC = () => {
 
   return (
     <Container>
-      {/* <ConfirmModal modalTitle="Titulo teste" modalContent="alo aol" /> */}
-
       <MobileNav>
         <MobileNavText onClick={() => handleChangeSwipe(0)}>
           Reservas
@@ -56,6 +56,11 @@ const Home: React.FC = () => {
       <MiddleSide visible={screenSwipe === 1}>
         <Title>Perfil</Title>
         <Profile />
+
+        <Title>Avisos</Title>
+        <Warning />
+
+        {/* <ConfirmModal modalTitle="Sair da Reserva" modalContent="Você realmente deseja sair dessa reserva?" /> */}
 
         {/* <Title>Avisos</Title> */}
         {/* <Notifications /> */}

@@ -158,11 +158,20 @@ export const FriendIconInitials = styled.span`
   font-size: 15px;
 `;
 
-export const FriendsDetails = styled.span`
+export const FriendsDetails = styled.div`
   display: flex;
   flex-direction: column;
 
   justify-content: space-between;
+
+  height: 35px;
+
+  margin-left: 11px;
+`;
+
+export const FriendRequestDetails = styled.div`
+  display: flex;
+  flex: 1;
 
   height: 35px;
 
@@ -180,6 +189,11 @@ export const FriendEnrollment = styled.span`
   font-size: 14px;
 
   color: ${colors.dark};
+`;
+
+export const FriendNameAndEnrollmentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 interface LineContainerProps {
@@ -294,9 +308,12 @@ export const PendingPanelHidden = styled.div<PendingPanelHiddenProps>`
 
 export const AcceptContainer = styled.div`
   display: flex;
-  margin-left: 1em;
-  width: 5em;
   justify-content: space-between;
+  align-items: center;
+
+  width: 5em;
+
+  margin-left: auto;
   svg {
     cursor: pointer;
   }

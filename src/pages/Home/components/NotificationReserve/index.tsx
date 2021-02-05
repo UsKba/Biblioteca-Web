@@ -1,6 +1,5 @@
+/* eslint-disable no-alert */
 import React, { useCallback } from 'react';
-
-import { postRequest } from '~/utils/api';
 
 import { FriendIconInitials } from '~/components/FriendList/styles';
 
@@ -100,7 +99,7 @@ const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) =>
     }
 
     reserveContext.handleRefuseReserve(reserve.id);
-  }, [reserve.id, reserveContext]);
+  }, [reserve.id, reserve.users.length, reserveContext]);
 
   return (
     <NotificationContainer>
