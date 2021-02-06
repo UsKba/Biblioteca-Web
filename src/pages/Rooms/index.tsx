@@ -30,11 +30,17 @@ const Rooms: React.FC = () => {
   const [rooms, setRooms] = useState([] as Room[]);
   const [schedules, setSchedules] = useState([] as Schedule[]);
   const [selectedPeriodId, setSelectedPeriodId] = useState(1);
+  const [selectedWeekday, setSelectedWeekday] = useState<number>();
 
   const isRoomReserved = useCallback(
     (room: Room, schedule: Schedule) => {
       const findReserve = reserves.find((reserve) => {
-        return reserve.room.initials === room.initials && reserve.schedule.id === schedule.id;
+        const date = new Date(reserve.date);
+        return (
+          reserve.room.initials === room.initials &&
+          reserve.schedule.id === schedule.id &&
+          date.getDay() === selectedWeekday
+        );
       });
 
       if (findReserve) {
@@ -43,8 +49,12 @@ const Rooms: React.FC = () => {
 
       return false;
     },
-    [reserves]
+    [reserves, selectedWeekday]
   );
+
+  const onWeekdayChange = useCallback((weekday: number) => {
+    setSelectedWeekday(weekday);
+  }, []);
 
   useEffect(() => {
     async function loadReserves() {
@@ -125,7 +135,7 @@ const Rooms: React.FC = () => {
           ))}
         </PeriodButtonList>
 
-        <DateList />
+        <DateList onWeekdayChange={onWeekdayChange} />
         <Link to="/reservar">
           <RentButton>Reservar sala</RentButton>
         </Link>
