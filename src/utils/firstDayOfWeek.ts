@@ -1,16 +1,14 @@
-// HOJE É DIA 28! no oitavo dia deus fez o corsa
-
 const DAY_IN_MILLISECONDS = 24 * 60 * 60 * 1000;
 
 // -1 = Sábado, 0 = Domingo, 1 = Segunda, 2 = Terça...
 
 export default function getFirstDayOfWeek(): Date {
   const today = new Date();
-  let todayDayOfWeek = today.getDay();
+  const todayDayOfWeek = today.getDay();
 
-  if (todayDayOfWeek === 6) {
-    todayDayOfWeek = -1;
-  }
+  // if (todayDayOfWeek === 6) {
+  //   todayDayOfWeek = -1;
+  // }
 
   const daysToSubtract = todayDayOfWeek;
 

@@ -1,13 +1,13 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-alert */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { BsPlus } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
 import { getRequest } from '~/utils/api';
 import getFirstDayOfWeek from '~/utils/firstDayOfWeek';
 
-import { Reserve, Period as PeriodInterface } from '~/types/';
+import { Reserve, Period as PeriodInterface, Room, Schedule } from '~/types/';
 
 import DateList from './components/DateList';
 import {
@@ -27,7 +27,24 @@ import {
 const Rooms: React.FC = () => {
   const [reserves, setReserves] = useState([] as Reserve[]);
   const [periods, setPeriods] = useState([] as PeriodInterface[]);
+  const [rooms, setRooms] = useState([] as Room[]);
+  const [schedules, setSchedules] = useState([] as Schedule[]);
   const [selectedPeriodId, setSelectedPeriodId] = useState(1);
+
+  const isRoomReserved = useCallback(
+    (room: Room, schedule: Schedule) => {
+      const findReserve = reserves.find((reserve) => {
+        return reserve.room.initials === room.initials && reserve.schedule.id === schedule.id;
+      });
+
+      if (findReserve) {
+        return true;
+      }
+
+      return false;
+    },
+    [reserves]
+  );
 
   useEffect(() => {
     async function loadReserves() {
@@ -50,16 +67,6 @@ const Rooms: React.FC = () => {
         return;
       }
 
-      const mondayReserves = data.filter((reserve) => {
-        const dateOfReserve = new Date(reserve.date);
-
-        if (dateOfReserve.getUTCDay() === 1) {
-          return true;
-        }
-        return false;
-      });
-
-      console.log(mondayReserves);
       console.log(data);
       setReserves(data || []);
     }
@@ -75,8 +82,32 @@ const Rooms: React.FC = () => {
       setPeriods(data);
     }
 
+    async function loadRooms() {
+      const { data, error } = await getRequest('/rooms');
+
+      if (error) {
+        alert(error.error);
+        return;
+      }
+
+      setRooms(data);
+    }
+
+    async function loadSchedules() {
+      const { data, error } = await getRequest('/schedules');
+
+      if (error) {
+        alert(error.error);
+        return;
+      }
+
+      setSchedules(data);
+    }
+
     loadReserves();
     loadPeriods();
+    loadSchedules();
+    loadRooms();
   }, []);
 
   return (
@@ -100,32 +131,20 @@ const Rooms: React.FC = () => {
         </Link>
       </TableTopInformation>
       <Table>
-        {reserves.map((reserve) => (
-          <TableColumn key={reserve.id} visible={reserve.schedule.periodId === selectedPeriodId}>
-            <RoomTitle>{reserve.room.initials}</RoomTitle>
-            <RoomCard isReserved>
-              <BsPlus />
-              <RoomCardHour>
-                {reserve.schedule.initialHour} - {reserve.schedule.endHour}
-              </RoomCardHour>
-            </RoomCard>
+        {rooms.map((room) => (
+          <TableColumn key={room.initials}>
+            <RoomTitle>{room.initials}</RoomTitle>
 
-            {/* <RoomCard>
-              <BsPlus />
-              <RoomCardHour>7:15 - 8:00</RoomCardHour>
-            </RoomCard>
-            <RoomCard>
-              <BsPlus />
-              <RoomCardHour>8:00 - 9:00</RoomCardHour>
-            </RoomCard>
-            <RoomCard>
-              <BsPlus />
-              <RoomCardHour>9:00 - 10:00</RoomCardHour>
-            </RoomCard>
-            <RoomCard>
-              <BsPlus />
-              <RoomCardHour>10:00 - 11:00</RoomCardHour>
-            </RoomCard> */}
+            {schedules
+              .filter((schedule) => schedule.periodId === selectedPeriodId)
+              .map((schedule) => (
+                <RoomCard key={schedule.id} isReserved={isRoomReserved(room, schedule)}>
+                  <BsPlus />
+                  <RoomCardHour>
+                    {schedule.initialHour} - {schedule.endHour}
+                  </RoomCardHour>
+                </RoomCard>
+              ))}
           </TableColumn>
         ))}
       </Table>
