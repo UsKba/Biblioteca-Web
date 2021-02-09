@@ -17,8 +17,10 @@ import {
   TableColumn,
   RoomTitle,
   RoomCard,
+  RoomCardInformation,
   RoomCardHour,
-  // Dropdown,
+  Dropdown,
+  Option,
   RentButton,
   PeriodButtonList,
   PeriodButton,
@@ -123,17 +125,11 @@ const Rooms: React.FC = () => {
   return (
     <Container>
       <TableTopInformation>
-        <PeriodButtonList>
-          {periods.map((period) => (
-            <PeriodButton
-              key={period.id}
-              onClick={() => setSelectedPeriodId(period.id)}
-              active={selectedPeriodId === period.id}
-            >
-              {period.name}
-            </PeriodButton>
-          ))}
-        </PeriodButtonList>
+        <Dropdown onChange={(event) => setSelectedPeriodId(Number(event.target.value))}>
+          <Option value="1">Manhã</Option>
+          <Option value="2">Tarde</Option>
+          <Option value="3">Noite</Option>
+        </Dropdown>
 
         <DateList onWeekdayChange={onWeekdayChange} />
         <Link to="/reservar">
@@ -148,11 +144,20 @@ const Rooms: React.FC = () => {
             {schedules
               .filter((schedule) => schedule.periodId === selectedPeriodId)
               .map((schedule) => (
-                <RoomCard key={schedule.id} isReserved={isRoomReserved(room, schedule)}>
-                  <BsPlus />
-                  <RoomCardHour>
-                    {schedule.initialHour} - {schedule.endHour}
-                  </RoomCardHour>
+                <RoomCard key={schedule.id}>
+                  {isRoomReserved(room, schedule) ? (
+                    <RoomCardInformation isReserved>
+                      Sala reservada
+                      <RoomCardHour>Até {schedule.endHour}</RoomCardHour>
+                    </RoomCardInformation>
+                  ) : (
+                    <RoomCardInformation isReserved={false}>
+                      <BsPlus />
+                      <RoomCardHour>
+                        {schedule.initialHour} - {schedule.endHour}
+                      </RoomCardHour>
+                    </RoomCardInformation>
+                  )}
                 </RoomCard>
               ))}
           </TableColumn>

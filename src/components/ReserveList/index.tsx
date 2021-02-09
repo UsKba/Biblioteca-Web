@@ -1,5 +1,8 @@
 /* eslint-disable no-alert */
 import React, { useState, useEffect, useCallback } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 import { FaPlus, FaChevronDown, FaTimes } from 'react-icons/fa';
 
 import { deleteRequest } from '~/utils/api';
@@ -53,6 +56,18 @@ interface ReserveState {
 }
 
 const ReserveList: React.FC = () => {
+  function handleMinimumUsers() {
+    toast.dark('Pelo menos 3 usuários na reserva são necessários', {});
+  }
+  function handleNotFindReserve() {
+    toast.dark('Reserva não encontrada', {});
+  }
+  function handleDeleteReserveToast() {
+    toast.dark('Reserva deletada!', {});
+  }
+  function handleDeleteUserToast() {
+    toast.dark('Usuário deletado!', {});
+  }
   const [menuIndex, setMenuIndex] = useState<number>();
   const [reserves, setReserves] = useState([] as ReserveState[]);
   const authContext = useAuth();
@@ -169,12 +184,14 @@ const ReserveList: React.FC = () => {
       }
 
       if (findReserve === undefined) {
-        alert('Reserva não encontrada');
+        handleNotFindReserve();
+        // alert('Reserva não encontrada');
         return;
       }
 
       if (findReserve.users.length <= 3) {
-        alert('Pelo menos 3 usuários na reserva são necessários');
+        handleMinimumUsers();
+        // alert('Pelo menos 3 usuários na reserva são necessários');
         return;
       }
 
@@ -184,8 +201,8 @@ const ReserveList: React.FC = () => {
         alert(error.error);
         return;
       }
-
-      alert('Usuário deletado!');
+      handleDeleteUserToast();
+      // alert('Usuário deletado!');
       const newUsers = findReserve.users.filter((user) => {
         return user.id !== userId;
       });
@@ -217,7 +234,8 @@ const ReserveList: React.FC = () => {
         alert(error.error);
         return;
       }
-      alert('Reserva deletada!');
+      handleDeleteReserveToast();
+      // alert('Reserva deletada!');
 
       const newReserves = reserves.filter((reserve) => {
         return reserve.id !== reserveId;
@@ -261,6 +279,17 @@ const ReserveList: React.FC = () => {
 
   return (
     <Container>
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <TitlePanel>
         <Title>Reservas</Title>
         <StyledLink to="/reservar">

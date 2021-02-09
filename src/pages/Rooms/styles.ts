@@ -29,7 +29,6 @@ export const TableTopInformation = styled.div`
 export const Table = styled.div`
   display: flex;
 
-  height: 500px;
   width: 100%;
   max-width: 1200px;
 
@@ -40,7 +39,6 @@ export const Table = styled.div`
 `;
 
 interface TableColumnProps {
-  removeBorder?: boolean;
   visible?: boolean;
 }
 
@@ -48,13 +46,16 @@ export const TableColumn = styled.div<TableColumnProps>`
   display: ${({ visible }) => (visible === false ? 'none' : 'flex')};
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 
-  height: 100%;
+  min-height: 535px;
   flex: 1;
 
-  padding: 20px 35px 40px;
-  border-right: ${(props) => (props.removeBorder === true ? 'none' : `solid 0.5px rgba(50, 44, 66, 0.5);`)};
+  padding: 15px 35px;
+  border-right: solid 0.5px rgba(50, 44, 66, 0.5);
+
+  &:last-child {
+    border-right: none;
+  }
 `;
 
 export const RoomTitle = styled.div`
@@ -73,17 +74,29 @@ interface RoomCardProps {
 
 export const RoomCard = styled.div<RoomCardProps>`
   display: flex;
+
+  width: 100%;
+`;
+
+interface RoomCardInformationProps {
+  isReserved?: boolean;
+}
+
+export const RoomCardInformation = styled.div<RoomCardInformationProps>`
+  display: flex;
+  flex: 1;
   flex-direction: column;
+
+  height: 79px;
 
   align-items: center;
   justify-content: space-between;
 
-  height: 79px;
-  width: 100%;
-
   padding: 12px;
+  margin-bottom: 10px;
   border-radius: 5px;
 
+  color: ${colors.terciary};
   background-color: ${(props) => (props.isReserved === true ? colors.red : colors.primary)};
 
   &:hover {
@@ -118,7 +131,7 @@ export const Dropdown = styled.select`
   height: 40px;
   width: 200px;
 
-  padding: 10px 8px;
+  padding: 10px;
 
   font-family: 'Roboto';
   font-weight: bold;
@@ -128,6 +141,8 @@ export const Dropdown = styled.select`
   border: solid 0.5px rgba(50, 44, 66, 0.5);
   border-radius: 5px;
 `;
+
+export const Option = styled.option``;
 
 export const RentButton = styled(Button)`
   margin: 0;

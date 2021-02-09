@@ -1,7 +1,10 @@
 /* eslint-disable no-alert */
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+
+import 'react-toastify/dist/ReactToastify.css';
 import { FaTimes } from 'react-icons/fa';
 import { useHistory, Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 import { getRequest, postRequest } from '~/utils/api';
 
@@ -62,6 +65,21 @@ import {
 } from './styles';
 
 const Reserve: React.FC = () => {
+  function handleMatricula() {
+    toast.dark('Digite uma matrícula com pelo menos 14 números', {});
+  }
+  function handleFindComponent() {
+    toast.dark('Usuário não encontrado', {});
+  }
+  function handleAddDoubleComponent() {
+    toast.dark('Não é possível adicionar o mesmo usuário duas vezes', {});
+  }
+  function handleFullGroup() {
+    toast.dark('Grupo Cheio', {});
+  }
+  function handleCreateReserveToast() {
+    toast.dark('Reserva Criada!', {});
+  }
   const history = useHistory();
 
   const { user } = useAuth();
@@ -116,7 +134,8 @@ const Reserve: React.FC = () => {
     const { data, error } = await getRequest('/search', { params: { enrollment } });
 
     if (enrollment.length < 14) {
-      alert('Digite uma matrícula com pelo menos 14 números');
+      handleMatricula();
+      // alert('Digite uma matrícula com pelo menos 14 números');
       return;
     }
 
@@ -126,17 +145,20 @@ const Reserve: React.FC = () => {
     }
 
     if (data!.length === 0) {
-      alert('Usuário não encontrado');
+      handleFindComponent();
+      // alert('Usuário não encontrado');
       return;
     }
 
     if (findComponent !== undefined) {
-      alert('Não é possível adicionar o mesmo usuário duas vezes');
+      handleAddDoubleComponent();
+      // alert('Não é possível adicionar o mesmo usuário duas vezes');
       return;
     }
 
     if (components.length >= 6) {
-      alert('Grupo cheio');
+      handleFullGroup();
+      // alert('Grupo cheio');
       return;
     }
 
@@ -189,7 +211,7 @@ const Reserve: React.FC = () => {
 
     // console.log(data);
     history.push('/');
-    alert('Reserva criada!');
+    handleCreateReserveToast();
   }, [components, history, reserveName, selectedDay, selectedRoomId, selectedScheduleId]);
 
   const handleFriendClick = useCallback(
@@ -199,12 +221,14 @@ const Reserve: React.FC = () => {
       });
 
       if (findComponent !== undefined) {
-        alert('Não é possível adicionar o mesmo usuário duas vezes.');
+        handleAddDoubleComponent();
+        // alert('Não é possível adicionar o mesmo usuário duas vezes.');
         return;
       }
 
       if (components.length >= 6) {
-        alert('Grupo cheio!');
+        handleFullGroup();
+        // alert('Grupo cheio!');
         return;
       }
       setComponents([...components, friend]);
@@ -257,6 +281,18 @@ const Reserve: React.FC = () => {
 
   return (
     <Container>
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+
       <LeftSide>
         <Link to="/">
           <CancelButton onClick={goBack}>Cancelar Reserva</CancelButton>
