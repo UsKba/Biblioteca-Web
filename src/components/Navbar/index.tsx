@@ -23,6 +23,7 @@ import {
   PageTitle,
   NotificationContainer,
   NotificationTitle,
+  RedBall,
 } from './styles';
 
 const NavbarComponent: React.FC = () => {
@@ -110,7 +111,9 @@ const NavbarComponent: React.FC = () => {
           </LeftSide>
 
           <RightSide>
-            <NavItem small onClick={toggleNotifications} notificationsPending={notificationExists}>
+            <RedBall newNotifications={notificationExists}>{pendingReserveList.length}</RedBall>
+
+            <NavItem small onClick={toggleNotifications}>
               <FaBell title="Ajuda" />
             </NavItem>
 

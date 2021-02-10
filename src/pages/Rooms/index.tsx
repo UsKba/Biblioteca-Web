@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { BsPlus } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 import { getRequest } from '~/utils/api';
 import getFirstDayOfWeek from '~/utils/firstDayOfWeek';
@@ -27,6 +28,9 @@ import {
 } from './styles';
 
 const Rooms: React.FC = () => {
+  function handleListReserves() {
+    toast.dark('Erro ao listar as reservas', {});
+  }
   const [reserves, setReserves] = useState([] as Reserve[]);
   const [periods, setPeriods] = useState([] as PeriodInterface[]);
   const [rooms, setRooms] = useState([] as Room[]);
@@ -75,7 +79,7 @@ const Rooms: React.FC = () => {
       });
 
       if (error || !data) {
-        alert('Erro ao listar as reservas');
+        handleListReserves();
         return;
       }
 
@@ -124,6 +128,17 @@ const Rooms: React.FC = () => {
 
   return (
     <Container>
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <TableTopInformation>
         <Dropdown onChange={(event) => setSelectedPeriodId(Number(event.target.value))}>
           <Option value="1">Manhã</Option>

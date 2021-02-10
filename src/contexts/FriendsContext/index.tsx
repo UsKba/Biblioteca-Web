@@ -1,5 +1,6 @@
 /* eslint-disable no-alert */
 import React, { createContext, useState, useContext, useCallback, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
 import api from '~/services/api';
 
@@ -34,6 +35,9 @@ interface FriendsContextData {
 const FriendsContext = createContext<FriendsContextData>({} as FriendsContextData);
 
 export const FriendsProvider: React.FC = ({ children }) => {
+  function handleSendRequest() {
+    toast.dark('Pedido enviado!', {});
+  }
   const authContext = useAuth();
   const [friends, setFriends] = useState<Friend[]>([]);
   const [requests, setRequests] = useState<FriendsRequests>({ sent: [], received: [] });
@@ -51,7 +55,7 @@ export const FriendsProvider: React.FC = ({ children }) => {
     await api.post('friends/request', {
       receiverEnrollment: enrollment,
     });
-    alert('Pedido enviado.');
+    handleSendRequest();
   }, []);
 
   const acceptInvite = useCallback(
@@ -83,6 +87,17 @@ export const FriendsProvider: React.FC = ({ children }) => {
   return (
     <FriendsContext.Provider value={{ friends, loadFriends, requests, sendInvite, recuseInvite, acceptInvite }}>
       {children}
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </FriendsContext.Provider>
   );
 };

@@ -189,3 +189,26 @@ export const PageTitle = styled.span`
   font-weight: bold;
   color: ${colors.dark};
 `;
+
+interface RedBallProps {
+  newNotifications?: boolean;
+}
+
+export const RedBall = styled.div<RedBallProps>`
+  display: ${({ newNotifications }) => (newNotifications ? 'flex' : 'none')};
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+
+  height: 16px;
+  width: 16px;
+
+  font-size: 12px;
+
+  border-radius: 100px;
+
+  margin: 5px -36px 0 0;
+
+  background-color: ${colors.red};
+  color: ${colors.terciary};
+`;
