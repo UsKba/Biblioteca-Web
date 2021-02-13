@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 
-import ConfirmModal from '~/components/ConfirmModal';
+// import ConfirmModal from '~/components/ConfirmModal';
 import FriendList from '~/components/FriendList';
 import ReserveList from '~/components/ReserveList';
 
@@ -25,16 +25,16 @@ import {
 } from './styles';
 
 const Home: React.FC = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+  // const [modalVisible, setModalVisible] = useState(false);
   const [screenSwipe, setScreenSwipe] = useState(1);
 
-  const handleOpenModal = useCallback(() => {
-    setModalVisible(true);
-  }, []);
+  // const handleOpenModal = useCallback(() => {
+  //   setModalVisible(true);
+  // }, []);
 
-  const handleCloseModal = useCallback(() => {
-    setModalVisible(false);
-  }, []);
+  // const handleCloseModal = useCallback(() => {
+  //   setModalVisible(false);
+  // }, []);
 
   const handleChangeSwipe = useCallback((index: number) => {
     setScreenSwipe(index);
@@ -57,24 +57,24 @@ const Home: React.FC = () => {
         </MobileNavText>
       </MobileNav>
 
-      <LeftSide onClick={handleOpenModal} visible={screenSwipe === 0}>
+      <LeftSide visible={screenSwipe === 0}>
         <ReserveList />
         <SideLine backGroundColor="#3D6DCC" alignment="flex-end" />
       </LeftSide>
 
-      <MiddleSide onClick={handleCloseModal} visible={screenSwipe === 1}>
+      <MiddleSide visible={screenSwipe === 1}>
         <Title>Perfil</Title>
         <Profile />
 
         <Title>Avisos</Title>
         <Warning />
 
-        <ConfirmModal
+        {/* <ConfirmModal
           visible={modalVisible}
           setVisible={setModalVisible}
           title="Sair da Reserva"
           content="Você realmente deseja sair dessa reserva?"
-        />
+        /> */}
 
         {/* <Title>Avisos</Title> */}
         {/* <Notifications /> */}

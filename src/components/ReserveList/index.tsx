@@ -13,6 +13,7 @@ import { useAuth } from '~/contexts/AuthContext';
 import { useReserve } from '~/contexts/ReserveContext';
 import { User } from '~/types';
 
+import QuitReserveModal from './QuitReserveModal';
 import {
   Container,
   Title,
@@ -46,7 +47,7 @@ interface UserReserve extends User {
   status: number;
 }
 
-interface ReserveState {
+export interface ReserveState {
   title: string;
   groupTitle: string | null;
   text: string;
@@ -56,6 +57,32 @@ interface ReserveState {
 }
 
 const ReserveList: React.FC = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [reserveToQuit, setReserveToQuit] = useState<ReserveState>();
+  const [menuIndex, setMenuIndex] = useState<number>();
+  const [reserves, setReserves] = useState([] as ReserveState[]);
+  const authContext = useAuth();
+  const reserveContext = useReserve();
+
+  const handleQuitReserve = useCallback(async () => {
+    if (!reserveToQuit) {
+      return;
+    }
+
+    const { error } = await deleteRequest(`/reserves/${reserveToQuit.id}/users/${authContext.user.id}`);
+
+    if (error) {
+      alert(error.error);
+      return;
+    }
+
+    const newReserves = reserves.filter((reserve) => {
+      return reserve.id !== reserveToQuit.id;
+    });
+
+    setReserves(newReserves);
+  }, [authContext.user.id, reserveToQuit, reserves]);
+
   function handleMinimumUsers() {
     toast.dark('Pelo menos 3 usuários na reserva são necessários', {});
   }
@@ -68,10 +95,6 @@ const ReserveList: React.FC = () => {
   function handleDeleteUserToast() {
     toast.dark('Usuário deletado!', {});
   }
-  const [menuIndex, setMenuIndex] = useState<number>();
-  const [reserves, setReserves] = useState([] as ReserveState[]);
-  const authContext = useAuth();
-  const reserveContext = useReserve();
 
   const toggleDropmenu = useCallback(
     (index: number) => {
@@ -137,39 +160,10 @@ const ReserveList: React.FC = () => {
     [authContext.user, isReserveAdmin]
   );
 
-  const quitReserve = useCallback(
-    async (reserveToQuit: ReserveState) => {
-      const response = window.confirm('Tem certeza que deseja sair desta reserva?');
-
-      if (!response) {
-        return;
-      }
-
-      if (reserveToQuit.users.length <= 3) {
-        const response2 = window.confirm(
-          'Atenção! Essa reserva possui apenas 3 membros, se você sair ela será deletada, tem certeza que deseja sair?'
-        );
-
-        if (!response2) {
-          return;
-        }
-      }
-
-      const { error } = await deleteRequest(`/reserves/${reserveToQuit.id}/users/${authContext.user.id}`);
-
-      if (error) {
-        alert(error.error);
-        return;
-      }
-
-      const newReserves = reserves.filter((reserve) => {
-        return reserve.id !== reserveToQuit.id;
-      });
-
-      setReserves(newReserves);
-    },
-    [authContext.user.id, reserves]
-  );
+  const quitReserve = useCallback((reserve: ReserveState) => {
+    setModalVisible(true);
+    setReserveToQuit(reserve);
+  }, []);
 
   const deleteGroupMember = useCallback(
     async (reserveId: number, userId: number) => {
@@ -289,6 +283,13 @@ const ReserveList: React.FC = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
+      />
+
+      <QuitReserveModal
+        visible={modalVisible}
+        setVisible={setModalVisible}
+        reserveToQuit={reserveToQuit || ({} as ReserveState)}
+        onConfirm={handleQuitReserve}
       />
       <TitlePanel>
         <Title>Reservas</Title>
