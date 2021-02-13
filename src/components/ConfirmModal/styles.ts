@@ -19,6 +19,10 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
   display: ${({ visible }) => (visible === false ? 'none' : 'flex')};
   flex-direction: column;
   width: 370px;
@@ -27,6 +31,7 @@ export const Container = styled.div<ContainerProps>`
   border-radius: 5px;
   background-color: ${colors.terciary};
   box-shadow: 0 0 10px #ccc;
+  transform: translate(-50%, -50%);
 `;
 
 export const Title = styled.div`

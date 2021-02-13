@@ -3,24 +3,22 @@ import React, { useCallback, useState } from 'react';
 import { Container, Title, Text, ButtonsDiv, DeclineButton, AcceptButton } from './styles';
 
 interface ModalProps {
-  // modalVisible: boolean;
-  // setModalVisible: (newState: boolean) => void;
-  modalTitle: string;
-  modalContent: string;
+  visible: boolean;
+  setVisible: (newState: boolean) => void;
+  title: string;
+  content: string;
   onOpen?: () => void;
   onClose?: () => void;
 }
 
-const ConfirmModal: React.FC<ModalProps> = ({ modalTitle, modalContent, onOpen, onClose }) => {
-  const [modalVisible, setModalVisible] = useState(true);
-
+const ConfirmModal: React.FC<ModalProps> = ({ visible, setVisible, title, content, onOpen, onClose }) => {
   const handleButtonClick = useCallback(() => {
-    setModalVisible(false);
-  }, [setModalVisible]);
+    setVisible(false);
+  }, [setVisible]);
   return (
     <Container>
-      <Title>{modalTitle}</Title>
-      <Text>{modalContent}</Text>
+      <Title>{title}</Title>
+      <Text>{content}</Text>
       <ButtonsDiv>
         <DeclineButton onClick={handleButtonClick}>Não</DeclineButton>
         <AcceptButton>Sim</AcceptButton>
