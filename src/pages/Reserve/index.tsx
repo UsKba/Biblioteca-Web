@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { FaTimes } from 'react-icons/fa';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory, Link, useLocation } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
 import { getRequest, postRequest } from '~/utils/api';
@@ -64,7 +64,15 @@ import {
   IconContainer,
 } from './styles';
 
+interface ReserveLocationState {
+  room: RoomInterface;
+  schedule: Schedule;
+  weekDay: number;
+}
+
 const Reserve: React.FC = () => {
+  const location = useLocation();
+
   function handleMatricula() {
     toast.dark('Digite uma matrícula com pelo menos 14 números', {});
   }
@@ -100,12 +108,30 @@ const Reserve: React.FC = () => {
   const [addComponentError, setAddComponentError] = useState('');
 
   useEffect(() => {
-    const selectedPeriodSchedules = schedules.filter((schedule) => schedule.periodId === selectedPeriodId);
-    if (selectedPeriodSchedules.length === 0) return;
-    const firstScheduleId = selectedPeriodSchedules[0].id;
+    const data = location.state as ReserveLocationState | undefined;
 
-    setSelectedScheduleId(firstScheduleId);
-  }, [schedules, selectedPeriodId]);
+    if (!data) {
+      const selectedPeriodSchedules = schedules.filter((schedule) => schedule.periodId === selectedPeriodId);
+      if (selectedPeriodSchedules.length === 0) return;
+      const firstScheduleId = selectedPeriodSchedules[0].id;
+
+      setSelectedScheduleId(firstScheduleId);
+
+      return;
+    }
+
+    const now = new Date();
+    const sumDays = data.weekDay - now.getDay();
+    const date = new Date(now.getFullYear(), now.getMonth(), now.getDate() + sumDays);
+
+    setSelectedDay(date);
+    setSelectedPeriodId(data.schedule.periodId);
+    setSelectedScheduleId(data.schedule.id);
+    setSelectedRoomId(data.room.id);
+
+    console.log(data.schedule.id);
+    console.log(data.schedule.periodId);
+  }, [location.state, schedules, selectedPeriodId]);
 
   const goBack = useCallback(() => {
     history.goBack();
@@ -246,6 +272,7 @@ const Reserve: React.FC = () => {
       }
 
       setSchedules(data);
+      console.log(data);
     }
 
     async function loadPeriods() {

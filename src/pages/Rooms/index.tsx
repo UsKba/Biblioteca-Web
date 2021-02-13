@@ -2,7 +2,7 @@
 /* eslint-disable no-alert */
 import React, { useEffect, useState, useCallback } from 'react';
 import { BsPlus } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
 import { getRequest } from '~/utils/api';
@@ -23,20 +23,31 @@ import {
   Dropdown,
   Option,
   RentButton,
-  PeriodButtonList,
-  PeriodButton,
 } from './styles';
 
 const Rooms: React.FC = () => {
-  function handleListReserves() {
-    toast.dark('Erro ao listar as reservas', {});
-  }
+  const history = useHistory();
+
   const [reserves, setReserves] = useState([] as Reserve[]);
   const [periods, setPeriods] = useState([] as PeriodInterface[]);
   const [rooms, setRooms] = useState([] as Room[]);
   const [schedules, setSchedules] = useState([] as Schedule[]);
   const [selectedPeriodId, setSelectedPeriodId] = useState(1);
   const [selectedWeekday, setSelectedWeekday] = useState<number>();
+
+  function handleListReserves() {
+    toast.dark('Erro ao listar as reservas', {});
+  }
+
+  const handleReserveClick = useCallback(
+    (schedule: Schedule, room: Room) => {
+      history.push({
+        pathname: '/reservar',
+        state: { schedule, room, weekDay: selectedWeekday },
+      });
+    },
+    [history, selectedWeekday]
+  );
 
   const isRoomReserved = useCallback(
     (room: Room, schedule: Schedule) => {
@@ -159,7 +170,7 @@ const Rooms: React.FC = () => {
             {schedules
               .filter((schedule) => schedule.periodId === selectedPeriodId)
               .map((schedule) => (
-                <RoomCard key={schedule.id}>
+                <RoomCard key={schedule.id} onClick={() => handleReserveClick(schedule, room)}>
                   {isRoomReserved(room, schedule) ? (
                     <RoomCardInformation isReserved>
                       Sala reservada

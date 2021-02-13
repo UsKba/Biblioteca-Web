@@ -155,32 +155,3 @@ export const RentButton = styled(Button)`
     border: solid 0.5px ${colors.primary};
   }
 `;
-
-export const PeriodButtonList = styled.div`
-  display: flex;
-  justify-content: space-between;
-
-  width: 100%;
-  max-width: 400px;
-`;
-
-interface PeriodButtonProps {
-  active?: boolean;
-}
-
-export const PeriodButton = styled(Button)<PeriodButtonProps>`
-  width: 120px;
-
-  margin: 0 0 7px 0;
-  padding: 7px 15px;
-  border-radius: 5px;
-  border: solid 0.5px rgba(50, 44, 66, 0.5);
-
-  background-color: ${({ active }) => (active === false ? `${colors.terciary}` : `${colors.primary}`)};
-  color: ${({ active }) => (active === false ? `${colors.text}` : `${colors.terciary}`)};
-
-  &:hover {
-    border: solid 0.5px ${colors.primary};
-    background-color: ${({ active }) => (active === false ? `${colors.lightprimary}` : `${colors.primary}`)};
-  }
-`;
