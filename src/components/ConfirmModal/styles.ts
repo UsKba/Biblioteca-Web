@@ -45,6 +45,8 @@ export const Title = styled.div`
 
 export const Text = styled.div`
   padding: 20px;
+  min-height: 100px;
+  max-height: 100px;
   font-size: 18px;
   color: ${colors.dark};
   font-family: 'Roboto';
@@ -55,7 +57,7 @@ export const ButtonsDiv = styled.div`
   display: flex;
   width: 200px;
   justify-content: space-between;
-  margin: 20px 0 40px 145px;
+  margin: 10px 0 40px 145px;
 
   font-size: 20px;
   font-family: 'Roboto';

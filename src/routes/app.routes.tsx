@@ -6,8 +6,6 @@ import Navbar from '~/components/Navbar';
 import About from '~/pages/About';
 import Computers from '~/pages/Computers';
 import Home from '~/pages/Home';
-// import Inbox from '~/pages/Inbox';
-import LibrarianMessage from '~/pages/LibrarianMessage';
 import PageNotFound from '~/pages/PageNotFound';
 import Reserve from '~/pages/Reserve';
 import Rooms from '~/pages/Rooms';
@@ -39,7 +37,7 @@ export default function Routes() {
         <Route path="/" exact component={Home} />
         <Route path="/computadores" exact component={Computers} />
         <Route path="/reservar" exact component={Reserve} />
-        <Route path="/bibliotecario" exact component={LibrarianMessage} />
+
         <Route path="/configuracoes" exact component={Settings} />
         <Route path="/configuracoes-usuario" exact component={Settings} />
         <Route path="/configuracoes-notificacao" exact component={Settings} />

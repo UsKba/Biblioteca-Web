@@ -252,10 +252,20 @@ const ReserveList: React.FC = () => {
         const reserveDate = new Date(date);
         const monthFormatted = formatter.format(reserveDate);
         const day = reserveDate.getDate();
+        const month = reserveDate.getMonth() + 1;
+
         const year = reserveDate.getFullYear();
 
+        function getDayName(dateStr, locale) {
+          const nameDate = new Date(dateStr);
+          return nameDate.toLocaleDateString(locale, { weekday: 'long' });
+        }
+
+        const dateStr = `${month}/${day}/${year}`;
+        const dayName = getDayName(dateStr, 'pt-BR');
         const title = `Reserva da sala ${initials}`;
-        const text = `Horário: ${initialHour} - ${endHour} no dia: ${day} de ${monthFormatted} de ${year}`;
+        const text = `Horário: ${initialHour} - ${endHour} no dia: ${day} de ${monthFormatted} de ${year} (${dayName})`;
+
         return {
           title,
           groupTitle: name,

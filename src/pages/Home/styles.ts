@@ -86,8 +86,8 @@ export const SideLine = styled.div<LineStatus>`
   height: 100%;
 
   align-self: ${(props) => props.alignment};
-
-  background-color: ${(props) => props.backGroundColor};
+  background-color: #d8d8d8;
+  /* background-color: ${(props) => props.backGroundColor}; */
 
   @media only screen and (max-width: 640px) {
     display: none;

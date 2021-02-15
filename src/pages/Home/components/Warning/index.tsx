@@ -1,7 +1,6 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable react/no-danger-with-children */
-import React, { useState, useCallback } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState } from 'react';
 
 import maintenance from '~/assets/maintenance.svg';
 

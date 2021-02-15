@@ -29,7 +29,7 @@ const Rooms: React.FC = () => {
   const history = useHistory();
 
   const [reserves, setReserves] = useState([] as Reserve[]);
-  const [periods, setPeriods] = useState([] as PeriodInterface[]);
+  const [, setPeriods] = useState([] as PeriodInterface[]);
   const [rooms, setRooms] = useState([] as Room[]);
   const [schedules, setSchedules] = useState([] as Schedule[]);
   const [selectedPeriodId, setSelectedPeriodId] = useState(1);
@@ -94,7 +94,7 @@ const Rooms: React.FC = () => {
         return;
       }
 
-      console.log(data);
+      // console.log(data);
       setReserves(data || []);
     }
 

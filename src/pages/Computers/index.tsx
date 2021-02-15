@@ -4,7 +4,6 @@ import colors from '~/styles/colors';
 
 import Status from '~/components/Status';
 
-import ComputerModal from './components/ComputerModal';
 import {
   Container,
   LeftSide,
@@ -17,7 +16,7 @@ import {
   H1,
   H2,
   ComputerList,
-  ComputerButton,
+  ComputerContainer,
   ComputerName,
   ComputerSpan,
   ErrorContainer,
@@ -35,26 +34,14 @@ import {
 } from './styles';
 
 const RoomComputers = () => {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [selectedComputer, setSelectedComputer] = useState('');
   const [screenSwipe, setScreenSwipe] = useState(1);
 
   const handleChangeSwipe = useCallback((index: number) => {
     setScreenSwipe(index);
   }, []);
 
-  const openModal = useCallback((computer: string) => {
-    setSelectedComputer(computer);
-    setModalVisible(true);
-  }, []);
-
   return (
     <>
-      <ComputerModal
-        modalVisible={modalVisible}
-        setModalVisible={setModalVisible}
-        selectedComputer={selectedComputer}
-      />
       <Container>
         <MobileNav>
           <MobileNavText onClick={() => handleChangeSwipe(0)}>
@@ -78,80 +65,80 @@ const RoomComputers = () => {
             <MiddleLeft visible={screenSwipe === 0}>
               <H2>Laboratório</H2>
               <ComputerList>
-                <ComputerButton onClick={() => openModal('01')}>
+                <ComputerContainer>
                   <ComputerTextContainer>
                     <ComputerName>Computador 01</ComputerName>
                     <ComputerSpan>Este computador está disponível</ComputerSpan>
                   </ComputerTextContainer>
                   <ComputerStatus status={0} />
-                </ComputerButton>
-                <ComputerButton onClick={() => openModal('02')}>
+                </ComputerContainer>
+                <ComputerContainer>
                   <ComputerTextContainer>
                     <ComputerName>Computador 02</ComputerName>
                     <ComputerSpan>Este computador está disponível</ComputerSpan>
                   </ComputerTextContainer>
                   <ComputerStatus status={0} />
-                </ComputerButton>
-                <ComputerButton onClick={() => openModal('03')}>
+                </ComputerContainer>
+                <ComputerContainer>
                   <ComputerTextContainer>
                     <ComputerName>Computador 03</ComputerName>
                     <ComputerSpan>Este computador está ausente há 2 horas e 30 minutos</ComputerSpan>
                   </ComputerTextContainer>
                   <ComputerStatus status={1} />
-                </ComputerButton>
-                <ComputerButton onClick={() => openModal('04')}>
+                </ComputerContainer>
+                <ComputerContainer>
                   <ComputerTextContainer>
                     <ComputerName>Computador 04</ComputerName>
                     <ComputerSpan>Este computador está indisponível</ComputerSpan>
                   </ComputerTextContainer>
                   <ComputerStatus status={3} />
-                </ComputerButton>
-                <ComputerButton onClick={() => openModal('05')}>
+                </ComputerContainer>
+                <ComputerContainer>
                   <ComputerTextContainer>
                     <ComputerName>Computador 05</ComputerName>
                     <ComputerSpan>Este computador está ausente há 2 horas e 30 minutos</ComputerSpan>
                   </ComputerTextContainer>
                   <ComputerStatus status={1} />
-                </ComputerButton>
-                <ComputerButton onClick={() => openModal('06')}>
+                </ComputerContainer>
+                <ComputerContainer>
                   <ComputerTextContainer>
                     <ComputerName>Computador 06</ComputerName>
                     <ComputerSpan>Este computador está disponível</ComputerSpan>
                   </ComputerTextContainer>
                   <ComputerStatus status={0} />
-                </ComputerButton>
+                </ComputerContainer>
               </ComputerList>
             </MiddleLeft>
             <MiddleRight visible={screenSwipe === 1}>
               <H2>Biblioteca</H2>
-              <ComputerButton onClick={() => openModal('01')}>
+              <ComputerContainer>
                 <ComputerTextContainer>
                   <ComputerName>Computador 01</ComputerName>
                   <ComputerSpan>Este computador está disponível</ComputerSpan>
                 </ComputerTextContainer>
                 <ComputerStatus status={0} />
-              </ComputerButton>
-              <ComputerButton onClick={() => openModal('02')}>
+              </ComputerContainer>
+              <ComputerContainer>
                 <ComputerTextContainer>
                   <ComputerName>Computador 02</ComputerName>
                   <ComputerSpan>Este computador está disponível</ComputerSpan>
                 </ComputerTextContainer>
                 <ComputerStatus status={0} />
-              </ComputerButton>
-              <ComputerButton onClick={() => openModal('03')}>
+              </ComputerContainer>
+              <ComputerContainer>
                 <ComputerTextContainer>
                   <ComputerName>Computador 03</ComputerName>
                   <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
                 </ComputerTextContainer>
                 <ComputerStatus status={2} />
-              </ComputerButton>
-              <ComputerButton onClick={() => openModal('04')}>
+              </ComputerContainer>
+              <ComputerContainer>
                 <ComputerTextContainer>
                   <ComputerName>Computador 04</ComputerName>
                   <ComputerSpan>Este computador está ausente há 2 horas e 30 minutos</ComputerSpan>
                 </ComputerTextContainer>
                 <ComputerStatus status={1} />
-              </ComputerButton>
+              </ComputerContainer>
             </MiddleRight>
           </MiddleBottom>
         </MiddleSide>

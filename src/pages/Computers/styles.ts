@@ -122,7 +122,7 @@ export const ComputerList = styled.div<MobileModeProps>`
   }
 `;
 
-export const ComputerButton = styled.button`
+export const ComputerContainer = styled.div`
   display: flex;
 
   align-items: center;
@@ -158,7 +158,6 @@ export const ComputerTextContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   height: 60px;
-
 
   margin-left: 10px;
 `;

@@ -3,14 +3,17 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 import image from '~/assets/about_img.svg';
+import { useAuth } from '~/contexts/AuthContext';
 
 import { Container, H1, Title, Line, TextContainer, TextContainer2, Text, Image, MiddleSide, GoBack } from './styles';
 
 const About: React.FC = () => {
+  const authContext = useAuth();
+
   return (
     <Container>
       <Title>
-        <GoBack>
+        <GoBack arrowVisibility={authContext.signed}>
           <Link to="/">
             <FaArrowLeft />
           </Link>

@@ -225,12 +225,12 @@ const SuapClient = function (authHost, clientID, redirectURI) {
       headers: { Authorization: `Bearer ${token.getValue()}`, Accept: 'application/json' },
       type: 'GET',
       success(response) {
-        console.log(response);
+        // console.log(response);
         callback(response);
       },
       error(response) {
         alert('Falha na comunicação com o SUAP');
-        console.log(response);
+        // console.log(response);
       },
     });
   };

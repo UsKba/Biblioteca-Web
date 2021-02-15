@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { FaChalkboardTeacher, FaHome, FaCog, FaBars, FaDesktop, FaEnvelope, FaBell } from 'react-icons/fa';
 import { GoSignOut } from 'react-icons/go';
-import { MdChatBubble } from 'react-icons/md';
 import { useLocation, Link } from 'react-router-dom';
 
 import { useAuth } from '~/contexts/AuthContext';
@@ -42,7 +41,6 @@ const NavbarComponent: React.FC = () => {
     '/salas': 'Salas',
     '/computadores': 'Computadores',
     '/sobre': 'Sobre',
-    '/bibliotecario': 'Contatar bibliotecário',
     '/reservar': 'Reserva de salas',
     '/configuracoes': 'Configurações',
     '/configuracoes-geral': 'Configurações',
@@ -147,11 +145,6 @@ const NavbarComponent: React.FC = () => {
           <StyledLink onClick={closeIfMobile} to="/computadores">
             <FaDesktop />
             <SidebarItemName>Computadores</SidebarItemName>
-          </StyledLink>
-
-          <StyledLink onClick={closeIfMobile} to="/bibliotecario">
-            <MdChatBubble />
-            <SidebarItemName>Bibliotecário</SidebarItemName>
           </StyledLink>
 
           <StyledLink onClick={closeIfMobile} to="/sobre">

@@ -129,8 +129,10 @@ const Reserve: React.FC = () => {
     setSelectedScheduleId(data.schedule.id);
     setSelectedRoomId(data.room.id);
 
-    console.log(data.schedule.id);
-    console.log(data.schedule.periodId);
+    console.log(date);
+
+    // console.log(data.schedule.id);
+    // console.log(data.schedule.periodId);
   }, [location.state, schedules, selectedPeriodId]);
 
   const goBack = useCallback(() => {
@@ -236,6 +238,7 @@ const Reserve: React.FC = () => {
     }
 
     // console.log(data);
+
     history.push('/');
     handleCreateReserveToast();
   }, [components, history, reserveName, selectedDay, selectedRoomId, selectedScheduleId]);
@@ -272,7 +275,8 @@ const Reserve: React.FC = () => {
       }
 
       setSchedules(data);
-      console.log(data);
+
+      // console.log(data);
     }
 
     async function loadPeriods() {
@@ -387,7 +391,7 @@ const Reserve: React.FC = () => {
                 value={reserveName}
                 onChange={(event) => {
                   setReserveName(event.target.value);
-                  console.log(event.target.value);
+                  // console.log(event.target.value);
                 }}
                 style={{ marginRight: '60px' }}
               />

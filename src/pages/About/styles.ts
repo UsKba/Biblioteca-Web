@@ -11,6 +11,9 @@ export const Title = styled.div`
   display: flex;
   flex-direction: column;
 
+  width: 100%;
+  max-width: 200px;
+
   margin: 2em 0 0 5em;
   @media screen and (max-width: 640px) {
     align-items: center;
@@ -22,6 +25,8 @@ export const H1 = styled.div`
   font-family: 'Ubuntu';
   font-size: 55px;
   font-weight: bold;
+
+  margin-left: auto;
 
   color: #322c42;
   @media screen and (max-width: 640px) {
@@ -35,7 +40,7 @@ export const Line = styled.div`
   height: 3px;
   width: 150px;
 
-  margin-left: 2.9em;
+  margin-left: auto;
 
   background-color: ${colors.primary};
 `;
@@ -100,15 +105,19 @@ export const MiddleSide = styled.div`
   }
 `;
 
-export const GoBack = styled.div`
+interface GoBackProps {
+  arrowVisibility?: boolean;
+}
+
+export const GoBack = styled.div<GoBackProps>`
   display: flex;
   align-items: center;
   svg {
+    display: ${({ arrowVisibility }) => (arrowVisibility === true ? 'none' : 'flex')};
     color: ${colors.dark};
     font-size: 35px;
     cursor: pointer;
     margin-right: 0.3em;
-    align-self: center;
 
     &:hover {
       color: ${colors.primary};

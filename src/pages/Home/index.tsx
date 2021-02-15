@@ -59,7 +59,7 @@ const Home: React.FC = () => {
 
       <LeftSide visible={screenSwipe === 0}>
         <ReserveList />
-        <SideLine backGroundColor="#3D6DCC" alignment="flex-end" />
+        <SideLine alignment="flex-end" />
       </LeftSide>
 
       <MiddleSide visible={screenSwipe === 1}>
@@ -88,7 +88,7 @@ const Home: React.FC = () => {
       </MiddleSide>
 
       <RightSide visible={screenSwipe === 2}>
-        <SideLine backGroundColor="#638AF2" alignment="flex-start" />
+        <SideLine alignment="flex-start" />
         <FriendList />
       </RightSide>
     </Container>

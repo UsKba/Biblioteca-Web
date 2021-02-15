@@ -94,6 +94,7 @@ export const ProfileRightSide = styled.div`
 export const CampusA = styled.a`
   display: flex;
   align-items: top;
+  max-height: 20px;
   svg {
     font-size: 20px;
     color: ${colors.secondary};
