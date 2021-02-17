@@ -1,4 +1,5 @@
 /* eslint-disable no-alert */
+
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -86,7 +87,7 @@ const Reserve: React.FC = () => {
     toast.dark('Grupo Cheio', {});
   }
   function handleCreateReserveToast() {
-    toast.dark('Reserva Criada!', {});
+    toast('Reserva Criada!', {});
   }
   const history = useHistory();
 

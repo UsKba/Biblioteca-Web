@@ -28,6 +28,8 @@ export const TableTopInformation = styled.div`
 
 export const Table = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
 
   width: 100%;
   max-width: 1200px;
@@ -36,6 +38,22 @@ export const Table = styled.div`
   border-radius: 5px;
 
   background-color: ${colors.terciary};
+`;
+
+interface TableWarningProps {
+  visible?: boolean;
+}
+
+export const TableWarning = styled.span<TableWarningProps>`
+  display: ${({ visible }) => (visible === true ? 'none' : 'flex')};
+
+  font-size: 24px;
+  font-family: 'Ubuntu';
+  font-weight: bold;
+
+  color: ${colors.dark};
+
+  margin: 215px 0 215px 0;
 `;
 
 interface TableColumnProps {
@@ -149,6 +167,7 @@ export const RentButton = styled(Button)`
   border-radius: 5px;
   border: solid 0.5px rgba(50, 44, 66, 0.5);
 
+  background-color: ${colors.terciary};
   color: ${colors.text};
 
   &:hover {

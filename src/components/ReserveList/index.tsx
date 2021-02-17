@@ -1,9 +1,10 @@
 /* eslint-disable no-alert */
 import React, { useState, useEffect, useCallback } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { FaPlus, FaChevronDown, FaTimes } from 'react-icons/fa';
+import { useLocation } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 import { deleteRequest } from '~/utils/api';
 
@@ -54,6 +55,7 @@ export interface ReserveState {
   users: UserReserve[];
   id: number;
   adminId: number;
+  date: number;
 }
 
 const ReserveList: React.FC = () => {
@@ -63,6 +65,9 @@ const ReserveList: React.FC = () => {
   const [reserves, setReserves] = useState([] as ReserveState[]);
   const authContext = useAuth();
   const reserveContext = useReserve();
+  const location = useLocation();
+
+  const pageTitle = { '/reservar': false };
 
   const handleQuitReserve = useCallback(async () => {
     if (!reserveToQuit) {
@@ -109,6 +114,15 @@ const ReserveList: React.FC = () => {
 
   const isReserveAdmin = useCallback((reserve: ReserveState, user: User) => {
     if (reserve.adminId === user.id) {
+      return true;
+    }
+    return false;
+  }, []);
+
+  const reserveDayClose = useCallback((reserve: ReserveState) => {
+    const d = new Date();
+
+    if (reserve.date === d.getDate()) {
       return true;
     }
     return false;
@@ -273,6 +287,7 @@ const ReserveList: React.FC = () => {
           users: reserve.users,
           id,
           adminId: reserve.adminId,
+          date: reserveDate.getDate(),
         };
       });
 
@@ -280,6 +295,11 @@ const ReserveList: React.FC = () => {
     }
     loadReserves();
   }, [reserveContext.reserves]);
+
+  const checkPageURL = useCallback(() => {
+    const title = pageTitle[location.pathname];
+    return title;
+  }, [location.pathname, pageTitle]);
 
   return (
     <Container>
@@ -301,7 +321,7 @@ const ReserveList: React.FC = () => {
         reserveToQuit={reserveToQuit || ({} as ReserveState)}
         onConfirm={handleQuitReserve}
       />
-      <TitlePanel>
+      <TitlePanel visible={checkPageURL()}>
         <Title>Reservas</Title>
         <StyledLink to="/reservar">
           <FaPlus />
@@ -321,6 +341,7 @@ const ReserveList: React.FC = () => {
             small={menuIndex === index}
             usersAmount={reserve.users.length}
             reserveTitle={Boolean(reserve.groupTitle)}
+            changeColor={reserveDayClose(reserve)}
           >
             <ReserveTopSide onClick={() => toggleDropmenu(index)} rotateIcon={menuIndex === index}>
               <ReserveTitle>{reserve.title}</ReserveTitle>

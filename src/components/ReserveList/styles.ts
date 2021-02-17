@@ -23,13 +23,18 @@ export const Title = styled.span`
   }
 `;
 
-export const TitlePanel = styled.div`
+interface TitlePanelProps {
+  visible?: boolean;
+}
+
+export const TitlePanel = styled.div<TitlePanelProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   margin-bottom: 20px;
   svg {
+    display: ${({ visible }) => (visible === false ? 'none' : 'flex')};
     color: ${colors.secondary};
     font-size: 15px;
     cursor: pointer;
@@ -57,6 +62,7 @@ interface ReserveContainerProps {
   usersAmount: number;
   reserveTitle: boolean;
   visible: boolean;
+  changeColor: boolean;
 }
 
 export const ReserveContainer = styled.div<ReserveContainerProps>`
@@ -71,7 +77,7 @@ export const ReserveContainer = styled.div<ReserveContainerProps>`
 
   padding: 10px;
   border-radius: 5px;
-  border-left: solid 6px ${colors.primary};
+  border-left: ${({ changeColor }) => (changeColor ? `solid 6px ${colors.red}` : `solid 6px ${colors.primary}`)};
   margin-bottom: 10px;
 
   transition: 0.25s;

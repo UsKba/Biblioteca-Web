@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
 import getFirstDayOfWeek from '~/utils/firstDayOfWeek';
-import { isWeekend, DAY_IN_MILLISECONDS } from '~/utils/time';
+import { DAY_IN_MILLISECONDS } from '~/utils/time';
 
 import { Container } from './styles';
 import WeekDay from './WeekDay';
@@ -13,8 +13,8 @@ interface Props {
 const DateList: React.FC<Props> = ({ selectDay }) => {
   const sunday = getFirstDayOfWeek();
   const today = new Date();
-
-  const [selectedWeekDay, setSelectedWeekDay] = useState(isWeekend(today) ? 1 : today.getDay());
+  // const [selectedWeekDay, setSelectedWeekDay] = useState(isWeekend(today) ? 1 : today.getDay());
+  const [selectedWeekDay, setSelectedWeekDay] = useState(today.getDay());
   const days = [1, 2, 3, 4, 5];
 
   const isToday = useCallback(

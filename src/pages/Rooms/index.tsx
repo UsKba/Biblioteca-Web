@@ -16,6 +16,7 @@ import {
   TableTopInformation,
   Table,
   TableColumn,
+  TableWarning,
   RoomTitle,
   RoomCard,
   RoomCardInformation,
@@ -137,6 +138,14 @@ const Rooms: React.FC = () => {
     loadRooms();
   }, []);
 
+  const weekendCheck = useCallback(() => {
+    const today = new Date();
+    if (today.getDay() < 1 || today.getDay() > 5) {
+      return false;
+    }
+    return true;
+  }, []);
+
   return (
     <Container>
       <ToastContainer
@@ -163,8 +172,9 @@ const Rooms: React.FC = () => {
         </Link>
       </TableTopInformation>
       <Table>
+        <TableWarning visible={weekendCheck()}>Reserva de salas indisponível nos finais de semana.</TableWarning>
         {rooms.map((room) => (
-          <TableColumn key={room.initials}>
+          <TableColumn key={room.initials} visible={weekendCheck()}>
             <RoomTitle>{room.initials}</RoomTitle>
 
             {schedules
