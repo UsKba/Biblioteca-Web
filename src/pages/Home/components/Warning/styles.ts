@@ -7,8 +7,10 @@ import { Button } from '~/components/MainButton/styles';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: ${colors.terciary};
+
   margin-bottom: 60px;
+
+  background-color: ${colors.terciary};
 `;
 
 export const WarningTitle = styled.div`
@@ -18,13 +20,12 @@ export const WarningTitle = styled.div`
   height: 40px;
   width: 100%;
 
-  background-color: ${colors.primary};
-  color: ${colors.terciary};
+  color: ${colors.dark};
 
   padding: 6px;
+  border-bottom: solid 2px ${colors.primary};
 
   font-size: 22px;
-  font-weight: bold;
   font-family: 'Ubuntu';
 `;
 

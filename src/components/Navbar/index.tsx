@@ -5,9 +5,9 @@ import { useLocation, Link } from 'react-router-dom';
 
 import { useAuth } from '~/contexts/AuthContext';
 import { useReserve } from '~/contexts/ReserveContext';
-import NotificationReserve from '~/pages/Home/components/NotificationReserve';
 import { Reserve } from '~/types';
 
+import NotificationReserve from './NotificationReserve';
 import {
   Container,
   Navbar,

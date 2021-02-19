@@ -1,4 +1,6 @@
 import React, { useState, useCallback } from 'react';
+import AwesomeSlider from 'react-awesome-slider';
+import 'react-awesome-slider/dist/styles.css';
 
 // import ConfirmModal from '~/components/ConfirmModal';
 import FriendList from '~/components/FriendList';
@@ -40,6 +42,15 @@ const Home: React.FC = () => {
     setScreenSwipe(index);
   }, []);
 
+  const slider = (
+    <AwesomeSlider>
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+    </AwesomeSlider>
+  );
+
   return (
     <Container>
       <MobileNav>
@@ -68,16 +79,6 @@ const Home: React.FC = () => {
 
         <Title>Avisos</Title>
         <Warning />
-
-        {/* <ConfirmModal
-          visible={modalVisible}
-          setVisible={setModalVisible}
-          title="Sair da Reserva"
-          content="Você realmente deseja sair dessa reserva?"
-        /> */}
-
-        {/* <Title>Avisos</Title> */}
-        {/* <Notifications /> */}
 
         <EmptyContainer>
           <EmptyTitle>Caixa de correio vazia...</EmptyTitle>
