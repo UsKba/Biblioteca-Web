@@ -20,5 +20,3 @@ export const Chevrons = styled.div`
     color: ${colors.dark};
   }
 `;
-
-

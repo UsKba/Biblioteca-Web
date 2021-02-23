@@ -5,7 +5,6 @@ module.exports = {
     jest: true,
   },
   extends: [
-    'react-app',
     'airbnb',
 
     'prettier/@typescript-eslint',
@@ -14,15 +13,7 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:@typescript-eslint/recommended',
   ],
-  plugins: [
-    '@typescript-eslint',
-    'import',
-    'import-helpers',
-    'jsx-a11y',
-    'react',
-    'react-hooks',
-    'prettier'
-  ],
+  plugins: ['@typescript-eslint', 'import', 'import-helpers', 'jsx-a11y', 'react', 'react-hooks', 'prettier'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -68,11 +59,11 @@ module.exports = {
       'error',
       'ignorePackages',
       {
-        'js': 'never',
-        'jsx': 'never',
-        'ts': 'never',
-        'tsx': 'never'
-      }
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
     ],
     'import-helpers/order-imports': [
       'warn',
@@ -100,11 +91,10 @@ module.exports = {
         extensions: ['.jsx', '.tsx'],
       },
     ],
-
   },
   settings: {
     react: {
-      version: 'detect' // Tells eslint-plugin-react to automatically detect the version of React to use
+      version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use
     },
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts', '.tsx'],
