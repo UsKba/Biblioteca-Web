@@ -21,17 +21,17 @@ export const WeekDayContainer = styled.div<WeekDayProps>`
   border-radius: 80px;
   background-color: ${({ active }) => (active === false ? `${colors.terciary}` : `${colors.primary}`)};
 
-  ${({ disabled }) => disabled && `border: 3px solid ${colors.text}B2; opacity: 0.7;`}
+  ${({ disabled }) => disabled && `border: 3px solid ${colors.text}B2; opacity: 0.7;`};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
 
   span {
     color: ${({ active }) => (active === false ? `${colors.text}B2;` : `${colors.terciary};`)};
-    ${({ disabled }) => disabled && `color: ${colors.text}B2;`}
+    ${({ disabled }) => disabled && `color: ${colors.text}B2;`};
   }
 
   &:hover {
     border: 3px solid ${({ active }) => (active === false ? `${colors.lightprimary}` : `${colors.primary}`)};
-    ${({ disabled }) => disabled && `border: 3px solid ${colors.text}B2; cursor: no-drop;`}
+    ${({ disabled }) => disabled && `border: 3px solid ${colors.text}B2; cursor: no-drop;`};
   }
 `;
 

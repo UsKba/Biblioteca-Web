@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useCallback } from 'react';
 
 import getFirstDayOfWeek from '~/utils/firstDayOfWeek';
@@ -28,7 +29,6 @@ const DateList: React.FC<Props> = ({ selectDay }) => {
     if (!selectDay) return;
     const selectedDate = new Date(sunday.getTime() + selectedWeekDay * DAY_IN_MILLISECONDS);
     selectDay(selectedDate);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedWeekDay, selectDay, sunday.getTime]);
 
   return (

@@ -50,6 +50,10 @@ interface FriendListProps {
   onFriendClick?: (friend: Friend) => void;
 }
 
+const titlePages = {
+  '/reservar': true,
+};
+
 const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
   const [friendsPanelVisible, setFriendsPanelVisible] = useState(true);
   const [search, setSearch] = useState('');
@@ -65,10 +69,6 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
 
   const friendsContext = useFriends();
   const authContext = useAuth();
-
-  const titlePages = {
-    '/reservar': true,
-  };
 
   const toggleSearchBars = useCallback(() => {
     setSearchBarVisible(!searchBarVisible);
@@ -155,7 +155,7 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
   useEffect(() => {
     const reserveButtonStatus = titlePages[location.pathname];
     setReserveButton(reserveButtonStatus);
-  }, [location.pathname, titlePages]);
+  }, [location.pathname]);
 
   return (
     <FriendsContainer>

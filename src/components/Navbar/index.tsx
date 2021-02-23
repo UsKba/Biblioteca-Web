@@ -25,6 +25,19 @@ import {
   RedBall,
 } from './styles';
 
+const titlePages = {
+  '/': 'Início',
+  '/salas': 'Salas',
+  '/computadores': 'Computadores',
+  '/sobre': 'Sobre',
+  '/reservar': 'Reserva de salas',
+  '/configuracoes': 'Configurações',
+  '/configuracoes-geral': 'Configurações',
+  '/configuracoes-usuario': 'Configurações',
+  '/configuracoes-notificacao': 'Configurações',
+  '/configuracoes-grupo': 'Configurações',
+};
+
 const NavbarComponent: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [notificationOpen, setNotificationOpen] = useState(false);
@@ -35,19 +48,6 @@ const NavbarComponent: React.FC = () => {
   const location = useLocation();
   const [pendingReserveList, setPendingReserveList] = useState([] as Reserve[]);
   const { reserves } = useReserve();
-
-  const titlePages = {
-    '/': 'Início',
-    '/salas': 'Salas',
-    '/computadores': 'Computadores',
-    '/sobre': 'Sobre',
-    '/reservar': 'Reserva de salas',
-    '/configuracoes': 'Configurações',
-    '/configuracoes-geral': 'Configurações',
-    '/configuracoes-usuario': 'Configurações',
-    '/configuracoes-notificacao': 'Configurações',
-    '/configuracoes-grupo': 'Configurações',
-  };
 
   const closeIfMobile = useCallback(() => {
     if (window.innerWidth < 600) {
@@ -70,7 +70,7 @@ const NavbarComponent: React.FC = () => {
   useEffect(() => {
     const title = titlePages[location.pathname];
     setPageTitle(title);
-  }, [location.pathname, titlePages]);
+  }, [location.pathname]);
 
   useEffect(() => {
     if (reserves.length === 0) {

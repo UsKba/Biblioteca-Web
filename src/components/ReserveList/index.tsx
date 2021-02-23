@@ -1,6 +1,5 @@
 /* eslint-disable no-alert */
 import React, { useState, useEffect, useCallback } from 'react';
-
 import 'react-toastify/dist/ReactToastify.css';
 import { FaPlus, FaChevronDown, FaTimes } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
@@ -43,20 +42,9 @@ import {
   BageCol,
   BadgePending,
 } from './styles';
+import { ReserveState } from './types';
 
-interface UserReserve extends User {
-  status: number;
-}
-
-export interface ReserveState {
-  title: string;
-  groupTitle: string | null;
-  text: string;
-  users: UserReserve[];
-  id: number;
-  adminId: number;
-  date: number;
-}
+const pageTitle = { '/reservar': false };
 
 const ReserveList: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -66,8 +54,6 @@ const ReserveList: React.FC = () => {
   const authContext = useAuth();
   const reserveContext = useReserve();
   const location = useLocation();
-
-  const pageTitle = { '/reservar': false };
 
   const handleQuitReserve = useCallback(async () => {
     if (!reserveToQuit) {
@@ -299,7 +285,7 @@ const ReserveList: React.FC = () => {
   const checkPageURL = useCallback(() => {
     const title = pageTitle[location.pathname];
     return title;
-  }, [location.pathname, pageTitle]);
+  }, [location.pathname]);
 
   return (
     <Container>

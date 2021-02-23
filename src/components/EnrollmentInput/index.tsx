@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
-import { SearchingBar, SearchArea, SearchHashTag, IconContainer } from './styles';
+import { SearchingBar, SearchArea, SearchHashTag, IconContainer, SearchAreaProps } from './styles';
 
 // const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
 //   const isKeyValid = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]+$/.test(e.key);

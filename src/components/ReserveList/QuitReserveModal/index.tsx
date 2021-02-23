@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 
 import ConfirmModal from '~/components/ConfirmModal';
 
-import { ReserveState } from '../index';
+import { ReserveState } from '../types';
 
 interface Props {
   visible: boolean;
