@@ -100,7 +100,7 @@ interface RoomCardInformationProps {
   isReserved?: boolean;
 }
 
-export const RoomCardInformation = styled.div<RoomCardInformationProps>`
+export const RoomCardInformation = styled.button<RoomCardInformationProps>`
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -113,13 +113,14 @@ export const RoomCardInformation = styled.div<RoomCardInformationProps>`
   padding: 12px;
   margin-bottom: 10px;
   border-radius: 5px;
+  border-style: none;
 
   color: ${colors.terciary};
-  background-color: ${(props) => (props.isReserved === true ? colors.red : colors.primary)};
+  background-color: ${(props) => (props.isReserved ? colors.red : colors.primary)};
 
   &:hover {
-    cursor: pointer;
-    background-color: ${(props) => (props.isReserved === true ? colors.lightred : colors.lightprimary)};
+    cursor: ${(props) => (props.isReserved ? 'not-allowed' : 'pointer')};
+    background-color: ${(props) => (props.isReserved ? colors.lightred : colors.lightprimary)};
   }
 
   svg {

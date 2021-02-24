@@ -48,7 +48,6 @@
     "react-app-rewired": "^2.1.8",
     "react-is": "^16.13.1"
   },
-
   "browserslist": {
     "production": [
       ">0.2%",

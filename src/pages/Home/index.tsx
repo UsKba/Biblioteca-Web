@@ -1,10 +1,10 @@
 import React, { useState, useCallback } from 'react';
-import AwesomeSlider from 'react-awesome-slider';
-import 'react-awesome-slider/dist/styles.css';
 
 // import ConfirmModal from '~/components/ConfirmModal';
 import FriendList from '~/components/FriendList';
 import ReserveList from '~/components/ReserveList';
+
+import maintenance from '~/assets/maintenance.svg';
 
 import Profile from './components/Profile';
 import Warning from './components/Warning';
@@ -42,15 +42,6 @@ const Home: React.FC = () => {
     setScreenSwipe(index);
   }, []);
 
-  const slider = (
-    <AwesomeSlider>
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
-      <div>4</div>
-    </AwesomeSlider>
-  );
-
   return (
     <Container>
       <MobileNav>
@@ -76,7 +67,6 @@ const Home: React.FC = () => {
       <MiddleSide visible={screenSwipe === 1}>
         <Title>Perfil</Title>
         <Profile />
-
         <Title>Avisos</Title>
         <Warning />
 

@@ -12,7 +12,6 @@ export const WeekDayContainer = styled.div<WeekDayProps>`
   flex-direction: column;
   align-items: center;
 
-
   ${({ disabled }) => disabled && `opacity: 0.7;`}
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
 

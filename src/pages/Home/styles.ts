@@ -195,3 +195,11 @@ export const EmptySpan = styled.span`
   font-family: 'Roboto';
   font-size: 14px;
 `;
+
+export const Image = styled.img`
+  margin-right: 20px;
+
+  @media only screen and (max-width: 640px) {
+    display: none;
+  }
+`;

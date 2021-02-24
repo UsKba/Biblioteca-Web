@@ -75,7 +75,7 @@ const Reserve: React.FC = () => {
   const location = useLocation();
 
   function handleMatricula() {
-    toast.dark('Digite uma matrícula com pelo menos 14 números', {});
+    toast.dark('Matrícula inválida', {});
   }
   function handleFindComponent() {
     toast.dark('Usuário não encontrado', {});

@@ -30,6 +30,7 @@ const Rooms: React.FC = () => {
   const history = useHistory();
 
   const [reserves, setReserves] = useState([] as Reserve[]);
+  const [reserveRoomState, setReserveRoomState] = useState(false);
   const [, setPeriods] = useState([] as PeriodInterface[]);
   const [rooms, setRooms] = useState([] as Room[]);
   const [schedules, setSchedules] = useState([] as Schedule[]);
@@ -42,12 +43,14 @@ const Rooms: React.FC = () => {
 
   const handleReserveClick = useCallback(
     (schedule: Schedule, room: Room) => {
-      history.push({
-        pathname: '/reservar',
-        state: { schedule, room, weekDay: selectedWeekday },
-      });
+      if (!reserveRoomState) {
+        history.push({
+          pathname: '/reservar',
+          state: { schedule, room, weekDay: selectedWeekday },
+        });
+      }
     },
-    [history, selectedWeekday]
+    [history, reserveRoomState, selectedWeekday]
   );
 
   const isRoomReserved = useCallback(
@@ -182,7 +185,7 @@ const Rooms: React.FC = () => {
               .map((schedule) => (
                 <RoomCard key={schedule.id} onClick={() => handleReserveClick(schedule, room)}>
                   {isRoomReserved(room, schedule) ? (
-                    <RoomCardInformation isReserved>
+                    <RoomCardInformation isReserved disabled>
                       Sala reservada
                       <RoomCardHour>Até {schedule.endHour}</RoomCardHour>
                     </RoomCardInformation>
