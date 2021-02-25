@@ -101,8 +101,8 @@ const Reserve: React.FC = () => {
   const [rooms, setRooms] = useState([] as RoomInterface[]);
   const [selectedDay, setSelectedDay] = useState<Date>(new Date());
   const [periods, setPeriods] = useState([] as PeriodInterface[]);
-  const [selectedPeriodId, setSelectedPeriodId] = useState(1);
 
+  const [selectedPeriodId, setSelectedPeriodId] = useState(1);
   const [selectedScheduleId, setSelectedScheduleId] = useState(1);
   const [selectedRoomId, setSelectedRoomId] = useState(1);
 
@@ -130,11 +130,11 @@ const Reserve: React.FC = () => {
     setSelectedScheduleId(data.schedule.id);
     setSelectedRoomId(data.room.id);
 
-    console.log(date);
+    // console.log(date);
 
     // console.log(data.schedule.id);
     // console.log(data.schedule.periodId);
-  }, [location.state, schedules, selectedPeriodId]);
+  }, [location, schedules, selectedPeriodId]);
 
   const goBack = useCallback(() => {
     history.goBack();
@@ -337,7 +337,7 @@ const Reserve: React.FC = () => {
           <Title2>Escolha uma data</Title2>
         </RoomScheduling>
         <DateListContainer>
-          <DateList selectDay={setSelectedDay} />
+          <DateList selectDay={setSelectedDay} defaultWeekDay={selectedDay.getDay()} />
         </DateListContainer>
         <Period>
           <Title2>Escolha um turno</Title2>
@@ -345,7 +345,9 @@ const Reserve: React.FC = () => {
             {periods.map((period) => (
               <PeriodButton
                 key={period.id}
-                onClick={() => setSelectedPeriodId(period.id)}
+                onClick={() => {
+                  setSelectedPeriodId(period.id);
+                }}
                 active={selectedPeriodId === period.id}
               >
                 {period.name}

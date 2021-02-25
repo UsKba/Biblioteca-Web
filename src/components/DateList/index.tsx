@@ -8,10 +8,11 @@ import { Container } from './styles';
 import WeekDay from './WeekDay';
 
 interface Props {
+  defaultWeekDay?: number;
   selectDay?: (day: Date) => void;
 }
 
-const DateList: React.FC<Props> = ({ selectDay }) => {
+const DateList: React.FC<Props> = ({ defaultWeekDay, selectDay }) => {
   const sunday = getFirstDayOfWeek();
   const today = new Date();
   // const [selectedWeekDay, setSelectedWeekDay] = useState(isWeekend(today) ? 1 : today.getDay());
@@ -30,6 +31,14 @@ const DateList: React.FC<Props> = ({ selectDay }) => {
     const selectedDate = new Date(sunday.getTime() + selectedWeekDay * DAY_IN_MILLISECONDS);
     selectDay(selectedDate);
   }, [selectedWeekDay, selectDay, sunday.getTime]);
+
+  useEffect(() => {
+    if (defaultWeekDay) {
+      setSelectedWeekDay(defaultWeekDay);
+    }
+  }, [defaultWeekDay]);
+
+  console.log(`selectedWeekDay:${selectedWeekDay} defaultWeekDay: ${defaultWeekDay}`);
 
   return (
     <Container>

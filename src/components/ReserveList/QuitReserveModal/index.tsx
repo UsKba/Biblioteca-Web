@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 
 import ConfirmModal from '~/components/ConfirmModal';
 
@@ -15,9 +15,15 @@ const QuitReserveModal: React.FC<Props> = ({ visible, setVisible, reserveToQuit,
   const [content, setContent] = useState('Você realmente deseja sair dessa reserva?');
   const [entered, setEntered] = useState(false);
 
+  const reset = useCallback(() => {
+    setEntered(false);
+    setContent('Você realmente deseja sair dessa reserva?');
+  }, []);
+
   const handleAcceptClick = useCallback(() => {
     if (entered) {
       onConfirm();
+      reset();
       return;
     }
 
@@ -26,8 +32,11 @@ const QuitReserveModal: React.FC<Props> = ({ visible, setVisible, reserveToQuit,
       setContent(
         'Atenção! Essa reserva possui apenas 3 membros, se você sair ela será deletada, tem certeza que deseja sair?'
       );
+    } else {
+      onConfirm();
+      reset();
     }
-  }, [reserveToQuit.users, entered, onConfirm]);
+  }, [reserveToQuit.users, entered, onConfirm, reset]);
 
   return (
     <ConfirmModal
@@ -36,6 +45,7 @@ const QuitReserveModal: React.FC<Props> = ({ visible, setVisible, reserveToQuit,
       title="Sair da Reserva"
       content={content}
       onAcceptClick={handleAcceptClick}
+      onDeclineClick={reset}
     />
   );
 };

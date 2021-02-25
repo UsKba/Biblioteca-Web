@@ -59,7 +59,7 @@ const ReserveList: React.FC = () => {
     if (!reserveToQuit) {
       return;
     }
-
+    setModalVisible(false);
     const { error } = await deleteRequest(`/reserves/${reserveToQuit.id}/users/${authContext.user.id}`);
 
     if (error) {

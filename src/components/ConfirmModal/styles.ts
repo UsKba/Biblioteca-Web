@@ -22,6 +22,7 @@ export const Container = styled.div<ContainerProps>`
   position: fixed;
   top: 50%;
   left: 50%;
+  z-index: 3;
 
   display: ${({ visible }) => (visible === false ? 'none' : 'flex')};
   flex-direction: column;

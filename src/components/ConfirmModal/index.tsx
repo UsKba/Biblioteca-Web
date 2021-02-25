@@ -8,12 +8,17 @@ interface ModalProps {
   title: string;
   content: string;
   onAcceptClick?(): void;
+  onDeclineClick?(): void;
 }
 
-const ConfirmModal: React.FC<ModalProps> = ({ visible, setVisible, title, content, onAcceptClick }) => {
+const ConfirmModal: React.FC<ModalProps> = ({ visible, setVisible, title, content, onAcceptClick, onDeclineClick }) => {
   const handleDeclineClick = useCallback(() => {
     setVisible(false);
-  }, [setVisible]);
+
+    if (onDeclineClick) {
+      onDeclineClick();
+    }
+  }, [setVisible, onDeclineClick]);
 
   const handleAcceptClick = useCallback(() => {
     if (onAcceptClick) {
