@@ -36,7 +36,7 @@ const FriendsContext = createContext<FriendsContextData>({} as FriendsContextDat
 
 export const FriendsProvider: React.FC = ({ children }) => {
   function handleSendRequest() {
-    toast('Pedido enviado!', {});
+    toast.dark('Pedido enviado!', {});
   }
   const authContext = useAuth();
   const [friends, setFriends] = useState<Friend[]>([]);

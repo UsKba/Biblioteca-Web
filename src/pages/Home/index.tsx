@@ -68,6 +68,7 @@ const Home: React.FC = () => {
         <Title>Perfil</Title>
         <Profile />
         <Title>Avisos</Title>
+
         <Warning />
 
         <EmptyContainer>

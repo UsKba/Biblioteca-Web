@@ -1,7 +1,6 @@
 /* eslint-disable no-alert */
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-
 import 'react-toastify/dist/ReactToastify.css';
 import { FaTimes } from 'react-icons/fa';
 import { useHistory, Link, useLocation } from 'react-router-dom';
@@ -87,7 +86,7 @@ const Reserve: React.FC = () => {
     toast.dark('Grupo Cheio', {});
   }
   function handleCreateReserveToast() {
-    toast('Reserva Criada!', {});
+    toast.dark('Reserva Criada!', {});
   }
   const history = useHistory();
 

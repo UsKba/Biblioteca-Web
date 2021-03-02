@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+import colors from '~/styles/colors';
+
 export default createGlobalStyle`
   * {
     margin: 0;
@@ -22,8 +24,7 @@ input{
 }
 
   html{
-    background-color: #F0F2F5;
-
+    background-color: ${colors.background};
   }
 
   body {
@@ -31,6 +32,7 @@ input{
     flex: 1;
     flex-direction: column;
     min-height: 100vh;
+    background-color: ${colors.background};
   }
 
   a{
@@ -77,6 +79,6 @@ input{
 ::-webkit-scrollbar-thumb:hover {
   background: #777;
 }
-`;
 
-/* #AACC00, #2B9348 */
+
+`;

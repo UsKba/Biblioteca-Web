@@ -35,6 +35,12 @@ import {
 
 const RoomComputers = () => {
   const [screenSwipe, setScreenSwipe] = useState(1);
+  const computers = ['01', '02', '03', '04', '05', '06'];
+  const computersDesc = [
+    'Este computador está disponível',
+    'Este computador está indisponível',
+    'Este computador está ausente há 2 horas e 30 minutos',
+  ];
 
   const handleChangeSwipe = useCallback((index: number) => {
     setScreenSwipe(index);
@@ -65,7 +71,16 @@ const RoomComputers = () => {
             <MiddleLeft visible={screenSwipe === 0}>
               <H2>Laboratório</H2>
               <ComputerList>
-                <ComputerContainer>
+                {computers.map((computer) => (
+                  <ComputerContainer key={computer}>
+                    <ComputerTextContainer>
+                      <ComputerName>Computador 01</ComputerName>
+                      <ComputerSpan>{computersDesc[0]}</ComputerSpan>
+                    </ComputerTextContainer>
+                    <ComputerStatus status={0} />
+                  </ComputerContainer>
+                ))}
+                {/* <ComputerContainer>
                   <ComputerTextContainer>
                     <ComputerName>Computador 01</ComputerName>
                     <ComputerSpan>Este computador está disponível</ComputerSpan>
@@ -106,7 +121,7 @@ const RoomComputers = () => {
                     <ComputerSpan>Este computador está disponível</ComputerSpan>
                   </ComputerTextContainer>
                   <ComputerStatus status={0} />
-                </ComputerContainer>
+                </ComputerContainer> */}
               </ComputerList>
             </MiddleLeft>
             <MiddleRight visible={screenSwipe === 1}>

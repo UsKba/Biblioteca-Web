@@ -1,10 +1,8 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable react/no-danger-with-children */
-import React, { useState } from 'react';
-import AwesomeSlider from 'react-awesome-slider';
 
-import 'react-awesome-slider/dist/styles.css';
-import colors from '~/styles/colors';
+import React, { useState } from 'react';
+// import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 
 import maintenance from '~/assets/maintenance.svg';
 
@@ -36,15 +34,13 @@ const Warning: React.FC = () => {
     'No entanto, em razão da pandemia de Covid-19, o equipamento não pôde ser entregue na data prevista, e os testes prévios com os ambientes simulados da eleição não foram realizados. “A inteligência artificial demorou a processar os dados no volume desejado. Além disso, houve uma falha em um dos núcleos do equipamento”.';
 
   return (
-    <AwesomeSlider>
-      <Container style={{ backgroundColor: `${colors.terciary}` }}>
-        <WarningTitle>Biblioteca Fechada</WarningTitle>
-        <WarningBody>
-          <Image src={maintenance} />
-          <SmartText text={htmlText} />
-        </WarningBody>
-      </Container>
-    </AwesomeSlider>
+    <Container>
+      <WarningTitle>Biblioteca Fechada</WarningTitle>
+      <WarningBody>
+        <Image src={maintenance} />
+        <SmartText text={htmlText} />
+      </WarningBody>
+    </Container>
   );
 };
 

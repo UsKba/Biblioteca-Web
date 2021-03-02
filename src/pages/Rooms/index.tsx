@@ -177,7 +177,7 @@ const Rooms: React.FC = () => {
       <Table>
         <TableWarning visible={weekendCheck()}>Reserva de salas indisponível nos finais de semana.</TableWarning>
         {rooms.map((room) => (
-          <TableColumn key={room.initials} visible={weekendCheck()}>
+          <TableColumn key={room.id} visible={weekendCheck()}>
             <RoomTitle>{room.initials}</RoomTitle>
 
             {schedules
