@@ -19,9 +19,13 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 
-input{
-  outline: none;
-}
+  input{
+    outline: none;
+  }
+
+  div{
+    outline: none;
+  }
 
   html{
     background-color: ${colors.background};
@@ -80,5 +84,34 @@ input{
   background: #777;
 }
 
+
+//slider
+
+//a div dos botões do slider
+.jtItyS {
+  height: 28px;
+  align-items: center;
+}
+
+//navigator
+.iNRFYi{
+  background-color: #adabb3;
+  box-shadow: none;
+}
+
+//navigator selecionado
+.jtxYAF {
+  background-color: ${colors.dark};
+  box-shadow: none;
+  height: 18px;
+  width: 18px;
+}
+
+
+button.rec-dot:hover,
+button.rec-dot:active,
+button.rec-dot:focus {
+  box-shadow: none;
+}
 
 `;

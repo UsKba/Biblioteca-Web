@@ -1,12 +1,13 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable react/no-danger-with-children */
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 // import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
+import Carousel from 'react-elastic-carousel';
 
 import maintenance from '~/assets/maintenance.svg';
 
-import { Container, WarningTitle, WarningBody, Image, Text, ViewButton } from './styles';
+import { Container, CustomCarousel, WarningTitle, WarningBody, Image, Text, ViewButton } from './styles';
 
 const Warning: React.FC = () => {
   const [showLess, setShowLess] = useState(true);
@@ -34,13 +35,29 @@ const Warning: React.FC = () => {
     'No entanto, em razão da pandemia de Covid-19, o equipamento não pôde ser entregue na data prevista, e os testes prévios com os ambientes simulados da eleição não foram realizados. “A inteligência artificial demorou a processar os dados no volume desejado. Além disso, houve uma falha em um dos núcleos do equipamento”.';
 
   return (
-    <Container>
-      <WarningTitle>Biblioteca Fechada</WarningTitle>
-      <WarningBody>
-        <Image src={maintenance} />
-        <SmartText text={htmlText} />
-      </WarningBody>
-    </Container>
+    <CustomCarousel isRTL={false} showArrows={false} enableAutoPlay autoPlaySpeed={5000}>
+      <Container>
+        <WarningTitle>Biblioteca Fechada</WarningTitle>
+        <WarningBody>
+          <Image src={maintenance} />
+          <SmartText text={htmlText} />
+        </WarningBody>
+      </Container>
+      <Container>
+        <WarningTitle>Biblioteca Fechada2</WarningTitle>
+        <WarningBody>
+          <Image src={maintenance} />
+          <SmartText text={htmlText} />
+        </WarningBody>
+      </Container>
+      <Container>
+        <WarningTitle>Biblioteca Fechada3</WarningTitle>
+        <WarningBody>
+          <Image src={maintenance} />
+          <SmartText text={htmlText} />
+        </WarningBody>
+      </Container>
+    </CustomCarousel>
   );
 };
 

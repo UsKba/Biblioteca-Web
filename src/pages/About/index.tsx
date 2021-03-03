@@ -12,13 +12,13 @@ const About: React.FC = () => {
 
   return (
     <Container>
+      <GoBack arrowVisibility={authContext.signed}>
+        <Link to="/">
+          <FaArrowLeft />
+        </Link>
+      </GoBack>
       <Title>
-        <GoBack arrowVisibility={authContext.signed}>
-          <Link to="/">
-            <FaArrowLeft />
-          </Link>
-          <H1>Sobre</H1>
-        </GoBack>
+        <H1>Sobre</H1>
         <Line />
       </Title>
       <MiddleSide>

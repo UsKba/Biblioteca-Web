@@ -112,12 +112,16 @@ interface GoBackProps {
 export const GoBack = styled.div<GoBackProps>`
   display: flex;
   align-items: center;
+  position: absolute;
+
+  top: 25px;
+  left: 25px;
+
   svg {
     display: ${({ arrowVisibility }) => (arrowVisibility === true ? 'none' : 'flex')};
     color: ${colors.dark};
     font-size: 35px;
     cursor: pointer;
-    margin-right: 0.3em;
 
     &:hover {
       color: ${colors.primary};

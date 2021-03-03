@@ -46,6 +46,7 @@ export const Line2 = styled.div`
   align-self: center;
   border-radius: 5px;
   background-color: ${colors.primary};
+  margin-bottom: 30px;
 `;
 
 export const Text = styled.div`
@@ -62,6 +63,20 @@ export const Text = styled.div`
   text-justify: inter-word;
 `;
 
+export const HideText = styled.div`
+  margin: 30px 100px 45px 50px;
+
+  color: ${colors.dark};
+
+  font-size: 18px;
+  font-family: 'Roboto';
+  font-weight: lighter;
+
+  text-align: justify;
+  text-justify: inter-word;
+  overflow: hidden;
+`;
+
 export const Image = styled.img`
   display: flex;
 `;
@@ -71,7 +86,6 @@ export const MiddleSide = styled.div`
   margin: 100px 0 50px 0;
   flex-direction: column;
   width: auto;
-  justify-content: space-around;
 `;
 
 export const BottomSide = styled.div`
@@ -95,4 +109,63 @@ export const ButtonLibrary = styled(Button)`
 export const ReferenceGmail = styled.a`
   display: flex;
   align-self: center;
+`;
+
+interface QuestionProps {
+  big?: boolean;
+}
+
+export const Question = styled.div<QuestionProps>`
+  display: flex;
+  flex-direction: column;
+  height: ${(props) => (props.big === true ? '200px' : '60px')};
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 20px;
+  box-shadow: 0 3px 2px rgba(0, 0, 0, 0.072);
+  background-color: ${colors.terciary};
+  transition: 0.5s;
+  padding: 20px;
+
+  svg {
+    color: ${colors.dark};
+    font-size: 20px;
+    transform: ${(props) => props.big === true && 'rotate(180deg)'};
+    transition: 0.5s;
+  }
+`;
+
+export const QuestionText = styled.div`
+  color: ${colors.dark};
+  font-size: 18px;
+  font-family: 'Roboto';
+`;
+
+export const QuestionContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+interface GoBackProps {
+  arrowVisibility?: boolean;
+}
+
+export const GoBack = styled.div<GoBackProps>`
+  display: flex;
+  position: absolute;
+  align-items: center;
+
+  top: 25px;
+  left: 25px;
+
+  svg {
+    display: ${({ arrowVisibility }) => (arrowVisibility === true ? 'none' : 'flex')};
+    color: ${colors.dark};
+    font-size: 35px;
+    cursor: pointer;
+
+    &:hover {
+      color: ${colors.primary};
+    }
+  }
 `;

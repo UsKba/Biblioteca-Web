@@ -33,7 +33,7 @@ const Presentation: React.FC = () => {
   return (
     <Container>
       <TopSide>
-        <TextButton to="#">Suporte</TextButton>
+        <TextButton to="/ajuda">Ajuda</TextButton>
         <TextButton to="/sobre">Sobre</TextButton>
         {!signed && (
           <a href={signInSuapUrl}>

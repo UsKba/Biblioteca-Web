@@ -7,6 +7,7 @@ import About from '~/pages/About';
 import Computers from '~/pages/Computers';
 import Help from '~/pages/Help';
 import Home from '~/pages/Home';
+import MakeWarning from '~/pages/MakeWarning';
 import PageNotFound from '~/pages/PageNotFound';
 import Reserve from '~/pages/Reserve';
 import Rooms from '~/pages/Rooms';
@@ -30,6 +31,7 @@ export default function Routes() {
           '/bibliotecario',
           '/sobre',
           '/ajuda',
+          '/criar-aviso',
         ]}
         exact
         component={Navbar}
@@ -47,6 +49,7 @@ export default function Routes() {
         <Route path="/configuracoes-grupo" exact component={Settings} />
         <Route path="/sobre" exact component={About} />
         <Route path="/ajuda" exact component={Help} />
+        <Route path="/criar-aviso" exact component={MakeWarning} />
 
         {/* <Route path="/inbox" exact component={Inbox} /> */}
 

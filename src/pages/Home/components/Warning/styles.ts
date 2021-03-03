@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import Carousel from 'react-elastic-carousel';
+
 import colors from '~/styles/colors';
 
 import { Button } from '~/components/MainButton/styles';
@@ -9,6 +11,12 @@ export const Container = styled.div`
   flex-direction: column;
 
   background-color: ${colors.terciary};
+`;
+
+export const CustomCarousel = styled(Carousel)`
+  button {
+    outline: none;
+  }
 `;
 
 export const WarningTitle = styled.div`

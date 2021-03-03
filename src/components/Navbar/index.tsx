@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { FaChalkboardTeacher, FaHome, FaCog, FaBars, FaDesktop, FaEnvelope, FaBell } from 'react-icons/fa';
 import { GoSignOut } from 'react-icons/go';
+import { IoMdHelp } from 'react-icons/io';
 import { useLocation, Link } from 'react-router-dom';
 
 import { useAuth } from '~/contexts/AuthContext';
@@ -151,6 +152,12 @@ const NavbarComponent: React.FC = () => {
             <FaEnvelope />
             <SidebarItemName>Sobre</SidebarItemName>
           </StyledLink>
+
+          <StyledLink onClick={closeIfMobile} to="/ajuda">
+            <IoMdHelp />
+            <SidebarItemName>Ajuda</SidebarItemName>
+          </StyledLink>
+
           <StyledLink
             to="/"
             onClick={() => {
