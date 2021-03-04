@@ -124,14 +124,14 @@ export const Question = styled.div<QuestionProps>`
   margin-top: 20px;
   box-shadow: 0 3px 2px rgba(0, 0, 0, 0.072);
   background-color: ${colors.terciary};
-  transition: 0.5s;
+  transition: 0.3s ease;
   padding: 20px;
 
   svg {
     color: ${colors.dark};
     font-size: 20px;
     transform: ${(props) => props.big === true && 'rotate(180deg)'};
-    transition: 0.5s;
+    transition: 0.3s ease;
   }
 `;
 

@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable react/no-danger-with-children */
 
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 // import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import Carousel from 'react-elastic-carousel';
 
@@ -11,6 +11,26 @@ import { Container, CustomCarousel, WarningTitle, WarningBody, Image, Text, View
 
 const Warning: React.FC = () => {
   const [showLess, setShowLess] = useState(true);
+
+  const resetTimeout = useRef<any>();
+  const itemsPerPage = 3;
+  const carouselRef = useRef<any>(null);
+  const carouselTime = 10000;
+
+  const htmlText =
+    'No entanto, em razão da pandemia de Covid-19, o equipamento não pôde ser entregue na data prevista, e os testes prévios com os ambientes simulados da eleição não foram realizados. “A inteligência artificial demorou a processar os dados no volume desejado. Além disso, houve uma falha em um dos núcleos do equipamento”.';
+
+  const handleNextEnd = useCallback(({ index }) => {
+    clearTimeout(resetTimeout.current);
+
+    if (index + 1 === itemsPerPage) {
+      resetTimeout.current = setTimeout(() => {
+        if (carouselRef.current != null) {
+          carouselRef.current?.goTo(0);
+        }
+      }, carouselTime);
+    }
+  }, []);
 
   const SmartText = ({ text, length = 200 }) => {
     if (text.length < length) {
@@ -31,11 +51,16 @@ const Warning: React.FC = () => {
       </div>
     );
   };
-  const htmlText =
-    'No entanto, em razão da pandemia de Covid-19, o equipamento não pôde ser entregue na data prevista, e os testes prévios com os ambientes simulados da eleição não foram realizados. “A inteligência artificial demorou a processar os dados no volume desejado. Além disso, houve uma falha em um dos núcleos do equipamento”.';
 
   return (
-    <CustomCarousel isRTL={false} showArrows={false} enableAutoPlay autoPlaySpeed={5000}>
+    <CustomCarousel
+      ref={carouselRef}
+      isRTL={false}
+      showArrows={false}
+      enableAutoPlay
+      autoPlaySpeed={carouselTime}
+      onNextEnd={handleNextEnd}
+    >
       <Container>
         <WarningTitle>Biblioteca Fechada</WarningTitle>
         <WarningBody>
