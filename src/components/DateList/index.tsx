@@ -38,8 +38,6 @@ const DateList: React.FC<Props> = ({ defaultWeekDay, selectDay }) => {
     }
   }, [defaultWeekDay]);
 
-  console.log(`selectedWeekDay:${selectedWeekDay} defaultWeekDay: ${defaultWeekDay}`);
-
   return (
     <Container>
       {days.map((day) => (

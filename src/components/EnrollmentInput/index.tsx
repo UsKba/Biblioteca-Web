@@ -3,15 +3,6 @@ import { FaSearch } from 'react-icons/fa';
 
 import { SearchingBar, SearchArea, SearchHashTag, IconContainer, SearchAreaProps } from './styles';
 
-// const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-//   const isKeyValid = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]+$/.test(e.key);
-//   if (!isKeyValid) {
-//     e.preventDefault();
-//   }
-// };
-
-// onKeyDown={handleKeyDown}
-
 type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 interface OwmProps {
   hideIcon?: boolean;

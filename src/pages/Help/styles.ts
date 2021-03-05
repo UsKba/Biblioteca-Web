@@ -118,14 +118,19 @@ interface QuestionProps {
 export const Question = styled.div<QuestionProps>`
   display: flex;
   flex-direction: column;
+
   height: ${(props) => (props.big === true ? '200px' : '60px')};
   width: 100%;
-  border-radius: 5px;
-  margin-top: 20px;
-  box-shadow: 0 3px 2px rgba(0, 0, 0, 0.072);
-  background-color: ${colors.terciary};
-  transition: 0.3s ease;
+
   padding: 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: 0 3px 2px rgba(0, 0, 0, 0.072);
+
+  background-color: ${colors.terciary};
+
+  cursor: pointer;
+  transition: 0.3s ease;
 
   svg {
     color: ${colors.dark};
