@@ -33,10 +33,14 @@ export const ScrollMenu = styled.div`
 `;
 
 export const Image = styled.img`
-  width: 190px;
   height: 190px;
-  background-color: ${colors.background};
+  width: 190px;
+
   margin: 0 11px 12px 0;
+
+  background-color: ${colors.background};
+
+  cursor: pointer;
 `;
 
 export const Input = styled.input`

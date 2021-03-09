@@ -28,7 +28,7 @@ export const WarningTitle = styled.div`
 
   color: ${colors.dark};
 
-  padding: 6px;
+  padding: 12px;
   border-bottom: solid 2px ${colors.primary};
 
   font-size: 22px;

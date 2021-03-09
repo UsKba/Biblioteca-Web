@@ -4,6 +4,9 @@ import colors from '~/styles/colors';
 
 import Status from '~/components/Status';
 
+import { useAuth } from '~/contexts/AuthContext';
+
+import ComputerCard from './Components/ComputerCard';
 import {
   Container,
   LeftSide,
@@ -16,14 +19,9 @@ import {
   H1,
   H2,
   ComputerList,
-  ComputerContainer,
-  ComputerName,
-  ComputerSpan,
   ErrorContainer,
   ErrorSpan,
   ErrorSpanLink,
-  ComputerStatus,
-  ComputerTextContainer,
   MobileNavText,
   MobileNav,
   Line,
@@ -34,17 +32,46 @@ import {
 } from './styles';
 
 const RoomComputers = () => {
+  const authContext = useAuth();
   const [screenSwipe, setScreenSwipe] = useState(1);
-  const computers = ['01', '02', '03', '04', '05', '06'];
-  const computersDesc = [
-    'Este computador está disponível',
-    'Este computador está indisponível',
-    'Este computador está ausente há 2 horas e 30 minutos',
+  const [settingsVisiblity, setSettingsVisiblity] = useState(-1);
+
+  const computers = [
+    {
+      id: 1,
+      name: '01',
+      desc: 'Este computador está disponível',
+      status: 0,
+    },
+    {
+      id: 2,
+      name: '02',
+      desc: 'Este computador está indisponível',
+      status: 2,
+    },
+    {
+      id: 3,
+      name: '03',
+      desc: 'Este computador está disponível',
+      status: 0,
+    },
+    {
+      id: 4,
+      name: '04',
+      desc: 'Este computador está indisponível',
+      status: 3,
+    },
   ];
 
   const handleChangeSwipe = useCallback((index: number) => {
     setScreenSwipe(index);
   }, []);
+
+  const handleSettingsClick = useCallback((index: number) => {
+    setSettingsVisiblity(index);
+  }, []);
+
+  // const changeSettingsVisibility = useCallback(() => {}, []);
 
   return (
     <>
@@ -63,6 +90,7 @@ const RoomComputers = () => {
         <LeftSide>
           <Status />
         </LeftSide>
+
         <MiddleSide>
           <MiddleTop>
             <H1>Computadores</H1>
@@ -71,92 +99,33 @@ const RoomComputers = () => {
             <MiddleLeft visible={screenSwipe === 0}>
               <H2>Laboratório</H2>
               <ComputerList>
-                {computers.map((computer) => (
-                  <ComputerContainer key={computer}>
-                    <ComputerTextContainer>
-                      <ComputerName>Computador 01</ComputerName>
-                      <ComputerSpan>{computersDesc[0]}</ComputerSpan>
-                    </ComputerTextContainer>
-                    <ComputerStatus status={0} />
-                  </ComputerContainer>
+                {computers.map((computer, index) => (
+                  <ComputerCard
+                    key={computer.id}
+                    computer={computer}
+                    settingsOpen={index === settingsVisiblity}
+                    settingsClick={() => handleSettingsClick(index)}
+                  />
                 ))}
-                {/* <ComputerContainer>
-                  <ComputerTextContainer>
-                    <ComputerName>Computador 01</ComputerName>
-                    <ComputerSpan>Este computador está disponível</ComputerSpan>
-                  </ComputerTextContainer>
-                  <ComputerStatus status={0} />
-                </ComputerContainer>
-                <ComputerContainer>
-                  <ComputerTextContainer>
-                    <ComputerName>Computador 02</ComputerName>
-                    <ComputerSpan>Este computador está disponível</ComputerSpan>
-                  </ComputerTextContainer>
-                  <ComputerStatus status={0} />
-                </ComputerContainer>
-                <ComputerContainer>
-                  <ComputerTextContainer>
-                    <ComputerName>Computador 03</ComputerName>
-                    <ComputerSpan>Este computador está ausente há 2 horas e 30 minutos</ComputerSpan>
-                  </ComputerTextContainer>
-                  <ComputerStatus status={1} />
-                </ComputerContainer>
-                <ComputerContainer>
-                  <ComputerTextContainer>
-                    <ComputerName>Computador 04</ComputerName>
-                    <ComputerSpan>Este computador está indisponível</ComputerSpan>
-                  </ComputerTextContainer>
-                  <ComputerStatus status={3} />
-                </ComputerContainer>
-                <ComputerContainer>
-                  <ComputerTextContainer>
-                    <ComputerName>Computador 05</ComputerName>
-                    <ComputerSpan>Este computador está ausente há 2 horas e 30 minutos</ComputerSpan>
-                  </ComputerTextContainer>
-                  <ComputerStatus status={1} />
-                </ComputerContainer>
-                <ComputerContainer>
-                  <ComputerTextContainer>
-                    <ComputerName>Computador 06</ComputerName>
-                    <ComputerSpan>Este computador está disponível</ComputerSpan>
-                  </ComputerTextContainer>
-                  <ComputerStatus status={0} />
-                </ComputerContainer> */}
               </ComputerList>
             </MiddleLeft>
+
             <MiddleRight visible={screenSwipe === 1}>
               <H2>Biblioteca</H2>
-              <ComputerContainer>
-                <ComputerTextContainer>
-                  <ComputerName>Computador 01</ComputerName>
-                  <ComputerSpan>Este computador está disponível</ComputerSpan>
-                </ComputerTextContainer>
-                <ComputerStatus status={0} />
-              </ComputerContainer>
-              <ComputerContainer>
-                <ComputerTextContainer>
-                  <ComputerName>Computador 02</ComputerName>
-                  <ComputerSpan>Este computador está disponível</ComputerSpan>
-                </ComputerTextContainer>
-                <ComputerStatus status={0} />
-              </ComputerContainer>
-              <ComputerContainer>
-                <ComputerTextContainer>
-                  <ComputerName>Computador 03</ComputerName>
-                  <ComputerSpan>Este computador está em uso há 2 horas e 30 minutos</ComputerSpan>
-                </ComputerTextContainer>
-                <ComputerStatus status={2} />
-              </ComputerContainer>
-              <ComputerContainer>
-                <ComputerTextContainer>
-                  <ComputerName>Computador 04</ComputerName>
-                  <ComputerSpan>Este computador está ausente há 2 horas e 30 minutos</ComputerSpan>
-                </ComputerTextContainer>
-                <ComputerStatus status={1} />
-              </ComputerContainer>
+              <ComputerList>
+                {computers.map((computer, index) => (
+                  <ComputerCard
+                    key={computer.id}
+                    computer={computer}
+                    settingsOpen={index === settingsVisiblity}
+                    settingsClick={() => handleSettingsClick(index)}
+                  />
+                ))}
+              </ComputerList>
             </MiddleRight>
           </MiddleBottom>
         </MiddleSide>
+
         <RightSide>
           <ErrorContainer>
             <ErrorSpan>Nehum computador disponível no momento.</ErrorSpan>

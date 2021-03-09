@@ -92,6 +92,7 @@ interface RoomCardProps {
 
 export const RoomCard = styled.div<RoomCardProps>`
   display: flex;
+  position: relative;
 
   width: 100%;
 `;
@@ -173,5 +174,23 @@ export const RentButton = styled(Button)`
 
   &:hover {
     border: solid 0.5px ${colors.primary};
+  }
+`;
+
+export interface DotsProps {
+  visible?: boolean;
+}
+
+export const DotsContainer = styled.div<DotsProps>`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 5px;
+  right: 0;
+
+  svg {
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
   }
 `;

@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-alert */
 import React, { useEffect, useState, useCallback } from 'react';
+import { BiDotsVerticalRounded } from 'react-icons/bi';
 import { BsPlus } from 'react-icons/bs';
 import { Link, useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -8,6 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { getRequest } from '~/utils/api';
 import getFirstDayOfWeek from '~/utils/firstDayOfWeek';
 
+import { useAuth } from '~/contexts/AuthContext';
 import { Reserve, Period as PeriodInterface, Room, Schedule } from '~/types/';
 
 import DateList from './components/DateList';
@@ -24,10 +26,12 @@ import {
   Dropdown,
   Option,
   RentButton,
+  DotsContainer,
 } from './styles';
 
 const Rooms: React.FC = () => {
   const history = useHistory();
+  const authContext = useAuth();
 
   const [reserves, setReserves] = useState([] as Reserve[]);
   const [reserveRoomState, setReserveRoomState] = useState(false);
@@ -149,6 +153,14 @@ const Rooms: React.FC = () => {
     return true;
   }, []);
 
+  const checkUserRole = useCallback(() => {
+    if (authContext.user.role === 'student') {
+      return false;
+    }
+
+    return true;
+  }, [authContext.user.role]);
+
   return (
     <Container>
       <ToastContainer
@@ -197,6 +209,10 @@ const Rooms: React.FC = () => {
                       </RoomCardHour>
                     </RoomCardInformation>
                   )}
+
+                  <DotsContainer visible={checkUserRole()}>
+                    <BiDotsVerticalRounded />
+                  </DotsContainer>
                 </RoomCard>
               ))}
           </TableColumn>

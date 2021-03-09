@@ -117,76 +117,10 @@ export const ComputerList = styled.div<MobileModeProps>`
   height: 380px;
 
   overflow-y: auto;
+
   ::-webkit-scrollbar-track {
     background: #e0e0e0;
   }
-`;
-
-export const ComputerContainer = styled.div`
-  display: flex;
-
-  align-items: center;
-  justify-content: space-between;
-
-  width: 95%;
-
-  margin-bottom: 12px;
-  padding: 10px 8px;
-
-  border-left: solid 6px ${colors.primary};
-  border-radius: 4px;
-  border: none;
-
-  background-color: ${colors.terciary};
-  @media only screen and (max-width: 640px) {
-    width: 100%;
-  }
-`;
-
-export const ComputerName = styled.span`
-  margin-bottom: 5px;
-
-  color: ${colors.dark};
-
-  font-size: 18px;
-  font-family: 'Roboto';
-  font-weight: 600;
-`;
-
-export const ComputerTextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  height: 60px;
-
-  margin-left: 10px;
-`;
-
-interface ComputerStatusProps {
-  status: number;
-}
-
-export const ComputerStatus = styled.div<ComputerStatusProps>`
-  display: flex;
-
-  width: 22px;
-  height: 22px;
-
-  margin-right: 10px;
-  border-radius: 100px;
-
-  background-color: ${({ status }) => colors.computerStatus[status]};
-`;
-
-export const ComputerSpan = styled.span`
-  text-align: start;
-
-  width: 230px;
-
-  color: ${colors.dark};
-
-  font-size: 15px;
-  font-family: 'Roboto';
 `;
 
 export const ErrorContainer = styled.div`

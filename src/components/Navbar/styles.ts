@@ -128,8 +128,12 @@ export const NotificationTitle = styled.div`
   border-bottom: solid 1px #ccc;
 `;
 
-export const StyledLink = styled(Link)`
-  display: flex;
+interface StyledLinkProps {
+  visible?: boolean;
+}
+
+export const StyledLink = styled(Link)<StyledLinkProps>`
+  display: ${({ visible }) => (visible === false ? 'none' : 'flex')};
   align-items: center;
 
   padding: 10px;

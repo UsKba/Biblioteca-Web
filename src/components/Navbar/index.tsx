@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
+import { BsFillChatSquareDotsFill } from 'react-icons/bs';
 import { FaChalkboardTeacher, FaHome, FaCog, FaBars, FaDesktop, FaEnvelope, FaBell } from 'react-icons/fa';
 import { GoSignOut } from 'react-icons/go';
 import { IoMdHelp } from 'react-icons/io';
@@ -45,10 +46,18 @@ const NavbarComponent: React.FC = () => {
   const [notificationExists, setNotificationExists] = useState(false);
   const [pageTitle, setPageTitle] = useState('');
   const { signOut } = useAuth();
-  const auth = useAuth();
+  const authContext = useAuth();
   const location = useLocation();
   const [pendingReserveList, setPendingReserveList] = useState([] as Reserve[]);
   const { reserves } = useReserve();
+
+  const checkUserRole = useCallback(() => {
+    if (authContext.user.role === 'student') {
+      return false;
+    }
+
+    return true;
+  }, [authContext.user.role]);
 
   const closeIfMobile = useCallback(() => {
     if (window.innerWidth < 600) {
@@ -85,7 +94,7 @@ const NavbarComponent: React.FC = () => {
       const users1 = reserves[i].users;
 
       // eslint-disable-next-line no-loop-func
-      const userLogged = users1.find((user) => user.id === auth.user.id);
+      const userLogged = users1.find((user) => user.id === authContext.user.id);
       if (userLogged?.status === 0) {
         // console.log('Usuário logado não aceitou a reserva');
         pendingReserves.push(reserves[i]);
@@ -95,7 +104,7 @@ const NavbarComponent: React.FC = () => {
     }
 
     setPendingReserveList(pendingReserves);
-  }, [auth.user.id, reserves]);
+  }, [authContext.user.id, reserves]);
 
   return (
     <div>
@@ -136,6 +145,11 @@ const NavbarComponent: React.FC = () => {
           <StyledLink onClick={closeIfMobile} to="/">
             <FaHome />
             <SidebarItemName>Início</SidebarItemName>
+          </StyledLink>
+
+          <StyledLink onClick={closeIfMobile} to="/criar-aviso" visible={checkUserRole()}>
+            <BsFillChatSquareDotsFill />
+            <SidebarItemName>Criar Aviso</SidebarItemName>
           </StyledLink>
 
           <StyledLink onClick={closeIfMobile} to="/salas">

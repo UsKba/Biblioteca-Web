@@ -87,3 +87,13 @@ console.log(userMapUpdated);
   emptyContainerVisible = reserves.length === 0
 
   */
+
+// Verificar se é ADM{
+//   const checkUserRole = useCallback(() => {
+//     if (authContext.user.role === 'student') {
+//       return false;
+//     }
+
+//     return true;
+//   }, [authContext.user.role]);
+// }
