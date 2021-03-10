@@ -7,7 +7,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-self: center;
   width: 850px;
-  height: 600px;
+  height: 100%;
   margin: 20px 0 20px 0;
   flex-direction: column;
   border-radius: 5px;
@@ -46,7 +46,7 @@ export const Image = styled.img`
 export const Input = styled.input`
   height: 50px;
 
-  margin-top: 12px;
+  margin-top: 10px;
   padding: 16px 12px;
 
   border-style: none;
@@ -62,13 +62,13 @@ export const TextArea = styled.textarea`
   height: 200px;
   width: 100%;
 
-  margin-top: 12px;
+  margin-top: 10px;
   padding: 15px;
 
   border-style: none;
   outline: none;
-
   resize: none;
+
   text-align: top;
   font-family: 'Roboto';
   font-size: 14px;
@@ -93,6 +93,7 @@ export const PublishButton = styled.button`
   color: ${colors.primary};
   border: 2px solid ${colors.primary};
   border-radius: 30px;
+  background-color: white;
 
   transition: 0.3s;
   &:hover {
@@ -110,6 +111,7 @@ export const CancelButton = styled.button`
 
   border: 2px solid ${colors.red};
   border-radius: 30px;
+  background-color: white;
 
   transition: 0.3s;
 
@@ -117,4 +119,14 @@ export const CancelButton = styled.button`
     color: ${colors.terciary};
     background-color: ${colors.red};
   }
+`;
+
+export const Title = styled.span`
+  margin-top: 10px;
+
+  font-size: 24px;
+  font-family: 'Ubuntu';
+  font-weight: 500;
+
+  color: ${colors.dark};
 `;

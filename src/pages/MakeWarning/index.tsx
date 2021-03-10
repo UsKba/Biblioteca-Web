@@ -13,12 +13,13 @@ import {
   ButtonsContainer,
   PublishButton,
   CancelButton,
+  Title,
 } from './styles';
 
 const MakeWarning: React.FC = () => {
   return (
     <Container>
-      <LitteTitle>Escolha uma imagem para o aviso</LitteTitle>
+      <Title>Escolha uma imagem para o aviso</Title>
       <ImageChooserContainer>
         <ScrollMenu>
           <Image src={Maintenance} />
@@ -28,7 +29,11 @@ const MakeWarning: React.FC = () => {
           <Image src={Maintenance} />
         </ScrollMenu>
       </ImageChooserContainer>
+      <Title>Escolha o título do aviso</Title>
+
       <Input type="text" maxLength={25} placeholder="Título do aviso" />
+      <Title>Adicione uma descrição</Title>
+
       <TextArea maxLength={300} />
 
       <ButtonsContainer>

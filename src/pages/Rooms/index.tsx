@@ -27,12 +27,14 @@ import {
   Option,
   RentButton,
   DotsContainer,
+  OptionsDropdown,
+  EditButton,
+  CancelButton,
 } from './styles';
 
 const Rooms: React.FC = () => {
   const history = useHistory();
   const authContext = useAuth();
-
   const [reserves, setReserves] = useState([] as Reserve[]);
   const [reserveRoomState, setReserveRoomState] = useState(false);
   const [, setPeriods] = useState([] as PeriodInterface[]);
@@ -40,6 +42,9 @@ const Rooms: React.FC = () => {
   const [schedules, setSchedules] = useState([] as Schedule[]);
   const [selectedPeriodId, setSelectedPeriodId] = useState(1);
   const [selectedWeekday, setSelectedWeekday] = useState<number>();
+  const [dotsDrop, setDotsDrop] = useState(false);
+  const [menuIndex, setMenuIndex] = useState<number>();
+  const [menuIndex2, setMenuIndex2] = useState<number>();
 
   function handleListReserves() {
     toast.dark('Erro ao listar as reservas', {});
@@ -161,6 +166,19 @@ const Rooms: React.FC = () => {
     return true;
   }, [authContext.user.role]);
 
+  const toggleSettingsMenu = useCallback(
+    (index: number, index2: number) => {
+      if (index === menuIndex) {
+        setMenuIndex(undefined);
+        setMenuIndex2(undefined);
+      } else {
+        setMenuIndex(index);
+        setMenuIndex2(index2);
+      }
+    },
+    [menuIndex]
+  );
+
   return (
     <Container>
       <ToastContainer
@@ -188,21 +206,21 @@ const Rooms: React.FC = () => {
       </TableTopInformation>
       <Table>
         <TableWarning visible={weekendCheck()}>Reserva de salas indisponível nos finais de semana.</TableWarning>
-        {rooms.map((room) => (
+        {rooms.map((room, index) => (
           <TableColumn key={room.id} visible={weekendCheck()}>
             <RoomTitle>{room.initials}</RoomTitle>
 
             {schedules
               .filter((schedule) => schedule.periodId === selectedPeriodId)
-              .map((schedule) => (
-                <RoomCard key={schedule.id} onClick={() => handleReserveClick(schedule, room)}>
+              .map((schedule, index2) => (
+                <RoomCard key={schedule.id}>
                   {isRoomReserved(room, schedule) ? (
                     <RoomCardInformation isReserved disabled>
                       Sala reservada
                       <RoomCardHour>Até {schedule.endHour}</RoomCardHour>
                     </RoomCardInformation>
                   ) : (
-                    <RoomCardInformation isReserved={false}>
+                    <RoomCardInformation isReserved={false} onClick={() => handleReserveClick(schedule, room)}>
                       <BsPlus />
                       <RoomCardHour>
                         {schedule.initialHour} - {schedule.endHour}
@@ -211,7 +229,11 @@ const Rooms: React.FC = () => {
                   )}
 
                   <DotsContainer visible={checkUserRole()}>
-                    <BiDotsVerticalRounded />
+                    <BiDotsVerticalRounded onClick={() => toggleSettingsMenu(index, index2)} />
+                    <OptionsDropdown visible={menuIndex === index && menuIndex2 === index2}>
+                      <EditButton>Editar</EditButton>
+                      <CancelButton>Cancelar</CancelButton>
+                    </OptionsDropdown>
                   </DotsContainer>
                 </RoomCard>
               ))}

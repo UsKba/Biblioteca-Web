@@ -107,11 +107,39 @@ export default createGlobalStyle`
   width: 18px;
 }
 
+.Toastify__close-button > svg {
+  margin-top: 15px;
+}
 
-button.rec-dot:hover,
-button.rec-dot:active,
-button.rec-dot:focus {
+.Toastify__toast--dark {
+  background-color: #333333;
+}
+
+button.rec-dot:active, button.rec-dot:focus{
   box-shadow: none;
 }
+
+button.rec-dot:hover {
+  background-color: rgba(50, 44, 66, 0.6);
+  box-shadow: none;
+}
+
+button.rec-dot{
+  background-color: rgba(50, 44, 66, 0.4);
+  box-shadow: none;
+}
+
+button.rec-dot_active, button.rec-dot_active:hover {
+  background-color: rgb(50, 44, 66);
+  height: 18px;
+  width: 18px;
+}
+
+div.rec-pagination{
+  display: flex;
+  align-items: center;
+  height: 28px;
+}
+
 
 `;

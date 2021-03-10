@@ -182,15 +182,50 @@ export interface DotsProps {
 }
 
 export const DotsContainer = styled.div<DotsProps>`
-  display: flex;
+  display: ${({ visible }) => (visible === false ? 'none' : 'flex')};
   flex-direction: column;
   position: absolute;
   top: 5px;
   right: 0;
+  z-index: 5;
 
   svg {
     font-size: 28px;
     color: white;
     cursor: pointer;
   }
+`;
+
+export interface OptionsDropdownProps {
+  visible?: boolean;
+}
+
+export const OptionsDropdown = styled.div<OptionsDropdownProps>`
+  display: ${({ visible }) => (visible === true ? 'flex' : 'none')};
+  flex-direction: column;
+  position: absolute;
+
+  z-index: 10;
+  height: 60px;
+  width: 140px;
+  background-color: white;
+  margin-top: 26px;
+`;
+
+export const EditButton = styled.button`
+  width: 100%;
+  border-style: none;
+  background-color: white;
+  align-self: center;
+  border: 1px solid grey;
+  border-bottom: none;
+  padding: 8px;
+`;
+
+export const CancelButton = styled.button`
+  width: 100%;
+  border-style: none;
+  background-color: white;
+  border: 1px solid grey;
+  padding: 8px;
 `;
