@@ -34,7 +34,8 @@ import {
 const RoomComputers = () => {
   const authContext = useAuth();
   const [screenSwipe, setScreenSwipe] = useState(1);
-  const [settingsVisiblity, setSettingsVisiblity] = useState(-1);
+  const [settingsIndex, setSettingsIndex] = useState(-1);
+  const [computerLocal, setComputerLocal] = useState(-1);
 
   const computers = [
     {
@@ -67,9 +68,18 @@ const RoomComputers = () => {
     setScreenSwipe(index);
   }, []);
 
-  const handleSettingsClick = useCallback((index: number) => {
-    setSettingsVisiblity(index);
-  }, []);
+  const handleSettingsClick = useCallback(
+    (index: number, computerLocalNumber: number) => {
+      if (settingsIndex === index && computerLocal === computerLocalNumber) {
+        setSettingsIndex(-1);
+        setComputerLocal(-1);
+      } else {
+        setSettingsIndex(index);
+        setComputerLocal(computerLocalNumber);
+      }
+    },
+    [computerLocal, settingsIndex]
+  );
 
   // const changeSettingsVisibility = useCallback(() => {}, []);
 
@@ -103,8 +113,8 @@ const RoomComputers = () => {
                   <ComputerCard
                     key={computer.id}
                     computer={computer}
-                    settingsOpen={index === settingsVisiblity}
-                    settingsClick={() => handleSettingsClick(index)}
+                    settingsOpen={index === settingsIndex && computerLocal === 1}
+                    settingsClick={() => handleSettingsClick(index, 1)}
                   />
                 ))}
               </ComputerList>
@@ -117,8 +127,8 @@ const RoomComputers = () => {
                   <ComputerCard
                     key={computer.id}
                     computer={computer}
-                    settingsOpen={index === settingsVisiblity}
-                    settingsClick={() => handleSettingsClick(index)}
+                    settingsOpen={index === settingsIndex && computerLocal === 0}
+                    settingsClick={() => handleSettingsClick(index, 0)}
                   />
                 ))}
               </ComputerList>
