@@ -11,6 +11,15 @@ import {
   ComputerTextContainer,
   SettingsContainer,
   SettingsIconContainer,
+  SettingsTitle,
+  SettingsText,
+  SettingsButtonsContainer,
+  CancelButton,
+  SaveButton,
+  Dropdown,
+  Option,
+  DropdownContainer,
+  DropdownLabel,
 } from './styles';
 
 interface Computer {
@@ -28,6 +37,8 @@ interface ComputerCardProps {
 
 const ComputerCard: React.FC<ComputerCardProps> = ({ computer, settingsOpen, settingsClick }) => {
   const authContext = useAuth();
+  const [selectedComputerStatus, setSelectedComputerStatus] = useState(Number);
+  const [temporaryComputerStatus, setTemporaryComputerStatus] = useState(Number);
 
   // const changeSettingsVisibility = useCallback(() => {
   //   setSettingsVisibility(!settingsVisibility);
@@ -47,12 +58,36 @@ const ComputerCard: React.FC<ComputerCardProps> = ({ computer, settingsOpen, set
         <ComputerName>{`Computador ${computer.name}`}</ComputerName>
         <ComputerSpan>{computer.desc}</ComputerSpan>
       </ComputerTextContainer>
-      <ComputerStatus status={computer.status} />
+      <ComputerStatus status={selectedComputerStatus} />
 
       <SettingsIconContainer visible={checkUserRole()} onClick={() => settingsClick()}>
         <BiDotsVerticalRounded />
-        <SettingsContainer visible={settingsOpen} />
       </SettingsIconContainer>
+
+      <SettingsContainer visible={settingsOpen}>
+        <SettingsTitle>Laboratório</SettingsTitle>
+        <SettingsText>{`Computador ${computer.name}`}</SettingsText>
+        <DropdownContainer>
+          <DropdownLabel>Status:</DropdownLabel>
+          <Dropdown onChange={(event) => setTemporaryComputerStatus(Number(event.target.value))}>
+            <Option value="0">Disponível</Option>
+            <Option value="1">Ausente</Option>
+            <Option value="2">Indisponível</Option>
+            <Option value="3">Ocupado</Option>
+          </Dropdown>
+        </DropdownContainer>
+        <SettingsButtonsContainer>
+          <CancelButton onClick={() => settingsClick()}>Cancelar</CancelButton>
+          <SaveButton
+            onClick={() => {
+              setSelectedComputerStatus(temporaryComputerStatus);
+              settingsClick();
+            }}
+          >
+            Salvar
+          </SaveButton>
+        </SettingsButtonsContainer>
+      </SettingsContainer>
     </ComputerContainer>
   );
 };

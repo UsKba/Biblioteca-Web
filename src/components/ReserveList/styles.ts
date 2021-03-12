@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import colors from '~/styles/colors';
 
+import { SearchArea } from '~/components/EnrollmentInput/styles';
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -82,7 +84,7 @@ export const ReserveContainer = styled.div<ReserveContainerProps>`
 
   transition: 0.25s;
   background-color: ${colors.terciary};
-  ${(props) => props.small && `height: ${173 + props.usersAmount * 46}px;`}//32px
+  ${(props) => props.small && `height: ${219 + props.usersAmount * 46}px;`}//32px
 `;
 
 interface ReserveTopSideProps {
@@ -338,6 +340,42 @@ export const BadgeReject = styled.div`
 `;
 
 export const BageCol = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const EnrollmentContainer = styled.div`
+  display: flex;
+`;
+
+export const EnrollmentInput = styled.input`
+  flex: 1;
+
+  height: 39px;
+  width: auto;
+
+  border: none;
+  padding: 5px 10px;
+  margin: 0 0 7px 0;
+
+  font-size: 12px;
+
+  background-color: ${colors.background};
+`;
+
+export const EnrollmentButton = styled.button`
+  height: 38px;
+  width: 38px;
+
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+
+  color: ${colors.terciary};
+  background-color: ${colors.primary};
+`;
+
+export const MemberEnrollmentContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;

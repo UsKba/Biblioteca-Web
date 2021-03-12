@@ -24,6 +24,8 @@ import {
   GoBack,
   HideText,
   QuestionContainer,
+  EmailArea,
+  Emails,
 } from './styles';
 
 const Help: React.FC = () => {
@@ -107,6 +109,10 @@ const Help: React.FC = () => {
         >
           <ButtonLibrary>Falar com o bibliotecário</ButtonLibrary>
         </ReferenceGmail>
+        <EmailArea>
+          <Emails>biblioteca@ifrn.com</Emails>
+          <Emails>uskaba4@gmail.com</Emails>
+        </EmailArea>
       </BottomSide>
     </Container>
   );

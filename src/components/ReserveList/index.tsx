@@ -41,6 +41,10 @@ import {
   AwardSvg,
   BageCol,
   BadgePending,
+  EnrollmentContainer,
+  EnrollmentInput,
+  EnrollmentButton,
+  MemberEnrollmentContainer,
 } from './styles';
 import { ReserveState } from './types';
 
@@ -51,6 +55,7 @@ const ReserveList: React.FC = () => {
   const [reserveToQuit, setReserveToQuit] = useState<ReserveState>();
   const [menuIndex, setMenuIndex] = useState<number>();
   const [reserves, setReserves] = useState([] as ReserveState[]);
+  const [enrollment, setEnrollment] = useState('');
   const authContext = useAuth();
   const reserveContext = useReserve();
   const location = useLocation();
@@ -360,6 +365,19 @@ const ReserveList: React.FC = () => {
                   </GroupMember>
                 ))}
               </GroupMemberList>
+              <EnrollmentContainer>
+                <EnrollmentInput
+                  type="number"
+                  placeholder="Adicione mais colegas na reserva"
+                  value={enrollment}
+                  onChange={(event) => {
+                    setEnrollment(event.target.value);
+                  }}
+                />
+                <EnrollmentButton>
+                  <FaPlus />
+                </EnrollmentButton>
+              </EnrollmentContainer>
               <ButtonsContainer>
                 <DeleteReserveButton
                   visible={isReserveAdmin(reserve, authContext.user)}

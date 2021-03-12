@@ -7,26 +7,20 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
-export const Title = styled.div`
+export const H1 = styled.h1`
   display: flex;
-  flex-direction: column;
-
-  width: 100%;
-  max-width: 200px;
-
-  margin: 2em 0 0 5em;
-  @media screen and (max-width: 640px) {
-    align-items: center;
-    margin: 2em 0 0 0;
-  }
-`;
-
-export const H1 = styled.div`
+  width: fit-content;
   font-family: 'Ubuntu';
-  font-size: 55px;
-  font-weight: bold;
+  font-size: 50px;
+  font-weight: lighter;
 
-  margin-left: auto;
+  padding-bottom: 15px;
+  border-bottom: solid 3px ${colors.primary};
+
+  /* text-decoration: underline ${colors.lightprimary};
+  text-underline-position: under; */
+
+  margin: 50px 0 0 100px;
 
   color: #322c42;
   @media screen and (max-width: 640px) {
@@ -36,40 +30,14 @@ export const H1 = styled.div`
   }
 `;
 
-export const Line = styled.div`
-  height: 3px;
-  width: 150px;
-
-  margin-left: auto;
-
-  background-color: ${colors.primary};
-`;
-
 export const TextContainer = styled.div`
-  width: 30em;
-  height: 8em;
+  width: 1000px;
 
-  margin: 67px 0 0 39px;
-  border-left: solid 3px ${colors.primary};
+  margin: 30px 0 0 100px;
   border-radius: 3px;
+
   @media screen and (max-width: 640px) {
     width: 80%;
-  }
-`;
-
-export const TextContainer2 = styled.div`
-  display: flex;
-  align-self: right;
-
-  width: 35em;
-  height: 10em;
-
-  margin: 20px 0 20px 700px;
-
-  border-right: solid 3px ${colors.primary};
-  border-radius: 3px;
-  @media screen and (max-width: 640px) {
-    display: none;
   }
 `;
 
@@ -77,31 +45,22 @@ export const Text = styled.div`
   padding: 5px;
 
   font-family: 'Roboto';
+  text-align: justify;
+  text-justify: inter-word;
   font-size: 20px;
 `;
 
 export const Image = styled.img`
-  display: flex;
-
   width: 500px;
   height: 400px;
 
-  margin-left: 10em;
-  margin-right: 3em;
+  margin: 0 100px 40px auto;
   @media screen and (max-width: 640px) {
     width: 80vw;
     height: auto;
     margin: 16px 0 0 0;
 
     justify-content: center;
-  }
-`;
-
-export const MiddleSide = styled.div`
-  display: flex;
-  @media screen and (max-width: 640px) {
-    flex-direction: column-reverse;
-    align-items: center;
   }
 `;
 
