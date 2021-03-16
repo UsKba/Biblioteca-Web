@@ -41,7 +41,7 @@ const RoomComputers = () => {
     {
       id: 1,
       name: '01',
-      desc: 'Este computador está disponível',
+      desc: 'Este computador está funcionando',
       status: 0,
     },
     {
@@ -53,7 +53,7 @@ const RoomComputers = () => {
     {
       id: 3,
       name: '03',
-      desc: 'Este computador está disponível',
+      desc: 'Este computador está funcionando',
       status: 0,
     },
     {
@@ -137,11 +137,12 @@ const RoomComputers = () => {
         </MiddleSide>
 
         <RightSide>
-          <ErrorContainer>
+          <ErrorContainer visible={false}>
             <ErrorSpan>Nehum computador disponível no momento.</ErrorSpan>
             <ErrorSpanLink>Avise-me quando houver.</ErrorSpanLink>
           </ErrorContainer>
         </RightSide>
+
         <MobileStatusList>
           <MobileStatusContainer>
             <MobileStatus bgColor={colors.computerStatus[0]} />

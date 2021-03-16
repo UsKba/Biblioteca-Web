@@ -203,29 +203,152 @@ export interface OptionsDropdownProps {
 export const OptionsDropdown = styled.div<OptionsDropdownProps>`
   display: ${({ visible }) => (visible === true ? 'flex' : 'none')};
   flex-direction: column;
-  position: absolute;
 
+  position: absolute;
   z-index: 10;
+
   height: 60px;
   width: 140px;
-  background-color: white;
+
   margin-top: 26px;
+
+  box-shadow: 2px 2px 15px ${colors.dark};
 `;
 
 export const EditButton = styled.button`
-  width: 100%;
-  border-style: none;
-  background-color: white;
   align-self: center;
-  border: 1px solid grey;
-  border-bottom: none;
+  z-index: 10;
+
+  width: 100%;
+
   padding: 8px;
+  border: none;
+  border-bottom: 1px solid rgba(50, 44, 66, 0.3);
+  border-radius: 3px 3px 0 0;
+
+  color: ${colors.dark};
+  background-color: ${colors.terciary};
+
+  &:hover {
+    color: ${colors.primary};
+  }
+`;
+
+export const CancelReserveButton = styled.button`
+  width: 100%;
+  z-index: 10;
+
+  padding: 8px;
+  border: none;
+  border-radius: 0 0 3px 3px;
+
+  color: ${colors.dark};
+  background-color: ${colors.terciary};
+
+  &:hover {
+    color: ${colors.red};
+  }
+`;
+
+interface SettingsContainerProps {
+  visible?: boolean;
+}
+
+export const SettingsContainer = styled.div<SettingsContainerProps>`
+  display: ${({ visible }) => (visible === true ? 'flex' : 'none')};
+  flex-direction: column;
+  position: fixed;
+  top: 30%;
+  left: 40%;
+  z-index: 10;
+
+  height: 250px;
+  width: 350px;
+
+  background-color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+`;
+
+export const SettingsTitle = styled.span`
+  width: 100%;
+
+  color: ${colors.dark};
+
+  font-size: 24px;
+  font-family: 'Roboto';
+  font-weight: bold;
+
+  padding: 15px;
+  text-align: center;
+`;
+
+export const SettingsText = styled.span`
+  width: 100%;
+
+  color: ${colors.dark};
+
+  font-size: 18px;
+  font-family: 'Roboto';
+  text-align: center;
+`;
+
+export const SettingsButtonsContainer = styled.div`
+  display: flex;
+  justify-self: flex-end;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  bottom: 20px;
 `;
 
 export const CancelButton = styled.button`
-  width: 100%;
-  border-style: none;
+  color: ${colors.dark};
+  font-size: 18px;
+  font-family: 'Roboto';
+  width: 75px;
+  height: 15px;
+  background-color: none;
+  background: none;
+  border: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export const SaveButton = styled.button`
+  padding: 7px 27px;
+
+  font-weight: bold;
+
+  color: ${colors.primary};
+  border: 2px solid ${colors.primary};
+  border-radius: 4px;
   background-color: white;
-  border: 1px solid grey;
-  padding: 8px;
+  margin-top: 6px;
+
+  transition: 0.3s;
+  &:hover {
+    color: ${colors.terciary};
+    background-color: ${colors.primary};
+  }
+`;
+
+export const DropdownContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+`;
+
+export const DropdownLabel = styled.span`
+  width: auto;
+  padding: 10px;
+  color: ${colors.dark};
+
+  font-size: 18px;
+  font-family: 'Roboto';
+  text-align: center;
 `;

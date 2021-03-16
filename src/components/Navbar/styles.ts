@@ -83,7 +83,7 @@ export const Sidebar = styled.div<SidebarProps>`
   left: -272px;
 
   height: 100%;
-  width: 270px;
+  width: 250px;
 
   border-radius: 0px 0px 7px 7px;
 

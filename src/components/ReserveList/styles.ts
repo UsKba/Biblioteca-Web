@@ -65,26 +65,28 @@ interface ReserveContainerProps {
   reserveTitle: boolean;
   visible: boolean;
   changeColor: boolean;
+  big?: boolean;
 }
 
 export const ReserveContainer = styled.div<ReserveContainerProps>`
-  display: ${({ visible }) => (visible ? 'flex' : 'none')};
+  display: ${({ visible }) => (visible === true ? 'flex' : 'none')};
   flex-direction: column;
   align-items: center;
   overflow-y: hidden;
 
-  height: ${({ reserveTitle }) => (reserveTitle ? '120px' : '100px')};
+  height: 120px;
+  height: ${(props) => props.small && `${219 + props.usersAmount * 46}px`};
+  height: ${(props) => props.small && props.big && `${303 + props.usersAmount * 46}px`};
 
   width: 100%;
 
   padding: 10px;
   border-radius: 5px;
-  border-left: ${({ changeColor }) => (changeColor ? `solid 6px ${colors.red}` : `solid 6px ${colors.primary}`)};
+  border-left: ${({ changeColor }) => (changeColor ? `solid 6px rgb(43, 147, 72)` : `solid 6px ${colors.primary}`)};
   margin-bottom: 10px;
 
   transition: 0.25s;
   background-color: ${colors.terciary};
-  ${(props) => props.small && `height: ${219 + props.usersAmount * 46}px;`}//32px
 `;
 
 interface ReserveTopSideProps {
@@ -378,4 +380,46 @@ export const EnrollmentButton = styled.button`
 export const MemberEnrollmentContainer = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const TodayContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+interface TodayProps {
+  visible?: boolean;
+}
+
+export const Today = styled.div<TodayProps>`
+  display: ${({ visible }) => (visible ? 'flex' : 'none')};
+  color: rgb(43, 147, 72);
+
+  font-size: 14px;
+  font-family: 'Ubuntu';
+  font-weight: bold;
+`;
+
+interface AddComponentContainerProps {
+  big?: boolean;
+}
+
+export const AddComponentContainer = styled.div<AddComponentContainerProps>`
+  display: flex;
+  width: 250px;
+  height: ${({ big }) => (big === false ? '39px' : '125px')};
+  background-color: ${colors.background};
+  border-radius: 5px;
+  color: ${colors.text};
+  padding: 12px 0 0 12px;
+  font-size: 14px;
+
+  svg {
+    margin-left: 70px;
+    color: ${colors.primary};
+    cursor: pointer;
+    &:hover {
+      color: ${colors.lightprimary};
+    }
+  }
 `;

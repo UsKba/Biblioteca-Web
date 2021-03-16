@@ -9,8 +9,9 @@ import {
   ComputerSpan,
   ComputerStatus,
   ComputerTextContainer,
-  SettingsContainer,
+  ComputerStatusContainer,
   SettingsIconContainer,
+  SettingsContainer,
   SettingsTitle,
   SettingsText,
   SettingsButtonsContainer,
@@ -56,9 +57,11 @@ const ComputerCard: React.FC<ComputerCardProps> = ({ computer, settingsOpen, set
     <ComputerContainer>
       <ComputerTextContainer>
         <ComputerName>{`Computador ${computer.name}`}</ComputerName>
-        <ComputerSpan>{computer.desc}</ComputerSpan>
+        <ComputerStatusContainer>
+          <ComputerStatus status={selectedComputerStatus} />
+          <ComputerSpan>{computer.desc}</ComputerSpan>
+        </ComputerStatusContainer>
       </ComputerTextContainer>
-      <ComputerStatus status={selectedComputerStatus} />
 
       <SettingsIconContainer visible={checkUserRole()} onClick={() => settingsClick()}>
         <BiDotsVerticalRounded />
@@ -71,9 +74,7 @@ const ComputerCard: React.FC<ComputerCardProps> = ({ computer, settingsOpen, set
           <DropdownLabel>Status:</DropdownLabel>
           <Dropdown onChange={(event) => setTemporaryComputerStatus(Number(event.target.value))}>
             <Option value="0">Disponível</Option>
-            <Option value="1">Ausente</Option>
-            <Option value="2">Indisponível</Option>
-            <Option value="3">Ocupado</Option>
+            <Option value="3">Indisponível</Option>
           </Dropdown>
         </DropdownContainer>
         <SettingsButtonsContainer>

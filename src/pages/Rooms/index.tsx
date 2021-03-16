@@ -29,7 +29,15 @@ import {
   DotsContainer,
   OptionsDropdown,
   EditButton,
+  CancelReserveButton,
+  SettingsContainer,
+  SettingsTitle,
+  SettingsText,
+  SettingsButtonsContainer,
   CancelButton,
+  SaveButton,
+  DropdownContainer,
+  DropdownLabel,
 } from './styles';
 
 const Rooms: React.FC = () => {
@@ -42,9 +50,11 @@ const Rooms: React.FC = () => {
   const [schedules, setSchedules] = useState([] as Schedule[]);
   const [selectedPeriodId, setSelectedPeriodId] = useState(1);
   const [selectedWeekday, setSelectedWeekday] = useState<number>();
-  const [dotsDrop, setDotsDrop] = useState(false);
   const [menuIndex, setMenuIndex] = useState<number>();
   const [menuIndex2, setMenuIndex2] = useState<number>();
+  const [settingsModalStatus, setSettingsModalStatus] = useState(false);
+  const [selectedReserveStatus, setSelectedReserveStatus] = useState(Number);
+  const [temporaryReserveStatus, setTemporaryReserveStatus] = useState(Number);
 
   function handleListReserves() {
     toast.dark('Erro ao listar as reservas', {});
@@ -179,6 +189,10 @@ const Rooms: React.FC = () => {
     [menuIndex]
   );
 
+  const handleSettingsModal = useCallback(() => {
+    setSettingsModalStatus(!settingsModalStatus);
+  }, [settingsModalStatus]);
+
   return (
     <Container>
       <ToastContainer
@@ -229,12 +243,42 @@ const Rooms: React.FC = () => {
                   )}
 
                   <DotsContainer visible={checkUserRole()}>
-                    <BiDotsVerticalRounded onClick={() => toggleSettingsMenu(index, index2)} />
+                    <BiDotsVerticalRounded
+                      onClick={() => {
+                        toggleSettingsMenu(index, index2);
+                        setSettingsModalStatus(false);
+                      }}
+                    />
                     <OptionsDropdown visible={menuIndex === index && menuIndex2 === index2}>
-                      <EditButton>Editar</EditButton>
-                      <CancelButton>Cancelar</CancelButton>
+                      <EditButton onClick={() => handleSettingsModal()}>Editar</EditButton>
+                      <CancelReserveButton>Cancelar Reserva</CancelReserveButton>
                     </OptionsDropdown>
                   </DotsContainer>
+
+                  <SettingsContainer visible={settingsModalStatus}>
+                    <SettingsTitle>Sala {room.initials}</SettingsTitle>
+                    <SettingsText>Reservada até as {schedule.endHour}</SettingsText>
+
+                    <DropdownContainer>
+                      <DropdownLabel>Status:</DropdownLabel>
+                      <Dropdown onChange={(event) => setTemporaryReserveStatus(Number(event.target.value))}>
+                        <Option value="0">Disponível</Option>
+                        <Option value="1">Reservada</Option>
+                        <Option value="2">Indisponível</Option>
+                      </Dropdown>
+                    </DropdownContainer>
+
+                    <SettingsButtonsContainer>
+                      <CancelButton onClick={() => setSettingsModalStatus(false)}>Cancelar</CancelButton>
+                      <SaveButton
+                        onClick={() => {
+                          setSelectedReserveStatus(temporaryReserveStatus);
+                        }}
+                      >
+                        Salvar
+                      </SaveButton>
+                    </SettingsButtonsContainer>
+                  </SettingsContainer>
                 </RoomCard>
               ))}
           </TableColumn>

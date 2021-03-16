@@ -7,17 +7,7 @@ const Status: React.FC = () => {
     <Container>
       <StatusContainer>
         <StatusColor status={0} />
-        <StatusSpan>Disponível</StatusSpan>
-      </StatusContainer>
-
-      <StatusContainer>
-        <StatusColor status={1} />
-        <StatusSpan>Ausente</StatusSpan>
-      </StatusContainer>
-
-      <StatusContainer>
-        <StatusColor status={2} />
-        <StatusSpan>Ocupado</StatusSpan>
+        <StatusSpan>Funcionando</StatusSpan>
       </StatusContainer>
 
       <StatusContainer>

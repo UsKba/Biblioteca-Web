@@ -93,7 +93,7 @@ export const MiddleRight = styled.div<MobileModeProps>`
 `;
 
 export const H1 = styled.span`
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 
   color: ${colors.dark};
 
@@ -104,6 +104,7 @@ export const H1 = styled.span`
 
 export const H2 = styled.span`
   color: ${colors.dark};
+  margin-bottom: 15px;
 
   font-size: 25px;
   font-family: 'Ubuntu';
@@ -123,8 +124,12 @@ export const ComputerList = styled.div<MobileModeProps>`
   }
 `;
 
-export const ErrorContainer = styled.div`
-  display: flex;
+interface ErrorContainerProps {
+  visible: boolean;
+}
+
+export const ErrorContainer = styled.div<ErrorContainerProps>`
+  display: ${({ visible }) => (visible === true ? 'flex' : 'none')};
   flex-direction: column;
 
   padding: 10px;

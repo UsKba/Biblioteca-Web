@@ -38,6 +38,8 @@ export const ComputerTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: space-between;
+
   height: 60px;
 
   margin-left: 10px;
@@ -53,16 +55,21 @@ export const ComputerStatus = styled.div<ComputerStatusProps>`
   width: 22px;
   height: 22px;
 
-  margin: 0 10px 0 auto;
+  margin: 0 5px 0 0;
   border-radius: 100px;
 
   background-color: ${({ status }) => colors.computerStatus[status]};
 `;
 
+export const ComputerStatusContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const ComputerSpan = styled.span`
   text-align: start;
 
-  width: 230px;
+  width: 250px;
 
   color: ${colors.dark};
 
@@ -94,11 +101,10 @@ interface SettingsContainerProps {
 export const SettingsContainer = styled.div<SettingsContainerProps>`
   display: ${({ visible }) => (visible === true ? 'flex' : 'none')};
   flex-direction: column;
-  position: absolute;
-  z-index: 1;
-
-  top: 25px;
-  right: 10px;
+  position: fixed;
+  top: 30%;
+  left: 40%;
+  z-index: 3;
 
   height: 250px;
   width: 280px;

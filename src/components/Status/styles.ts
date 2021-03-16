@@ -7,14 +7,13 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
-  max-height: 8.5em;
+  width: 150px;
 
-  padding: 4px;
-
+  padding: 8px 4px;
   border-left: solid 6px ${colors.primary};
-  border-radius: 7px;
+  border-radius: 5px;
 
-  background-color: #fff;
+  background-color: ${colors.terciary};
 
   @media only screen and (max-width: 640px) {
     display: none;
@@ -26,8 +25,8 @@ interface ComputerStatusProps {
 }
 
 export const StatusColor = styled.div<ComputerStatusProps>`
-  width: 20px;
-  height: 20px;
+  height: 12px;
+  width: 12px;
 
   border-radius: 50%;
 
@@ -37,12 +36,10 @@ export const StatusColor = styled.div<ComputerStatusProps>`
 export const StatusContainer = styled.div`
   display: flex;
   align-items: center;
-
-  padding: 2px;
 `;
 
 export const StatusSpan = styled.span`
   margin-left: 5px;
 
-  font-size: 16px;
+  font-size: 15px;
 `;

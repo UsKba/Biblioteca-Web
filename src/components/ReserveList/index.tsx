@@ -45,6 +45,9 @@ import {
   EnrollmentInput,
   EnrollmentButton,
   MemberEnrollmentContainer,
+  TodayContainer,
+  Today,
+  AddComponentContainer,
 } from './styles';
 import { ReserveState } from './types';
 
@@ -55,10 +58,12 @@ const ReserveList: React.FC = () => {
   const [reserveToQuit, setReserveToQuit] = useState<ReserveState>();
   const [menuIndex, setMenuIndex] = useState<number>();
   const [reserves, setReserves] = useState([] as ReserveState[]);
-  const [enrollment, setEnrollment] = useState('');
   const authContext = useAuth();
   const reserveContext = useReserve();
   const location = useLocation();
+  const [bigIndex, setBigIndex] = useState<number>();
+
+  console.log(bigIndex, menuIndex);
 
   const handleQuitReserve = useCallback(async () => {
     if (!reserveToQuit) {
@@ -101,6 +106,17 @@ const ReserveList: React.FC = () => {
       }
     },
     [menuIndex]
+  );
+
+  const toggleBigIndex = useCallback(
+    (index: number) => {
+      if (index === bigIndex) {
+        setBigIndex(undefined);
+      } else {
+        setBigIndex(index);
+      }
+    },
+    [bigIndex]
   );
 
   const isReserveAdmin = useCallback((reserve: ReserveState, user: User) => {
@@ -333,16 +349,21 @@ const ReserveList: React.FC = () => {
             usersAmount={reserve.users.length}
             reserveTitle={Boolean(reserve.groupTitle)}
             changeColor={reserveDayClose(reserve)}
+            big={bigIndex === index}
           >
             <ReserveTopSide onClick={() => toggleDropmenu(index)} rotateIcon={menuIndex === index}>
               <ReserveTitle>{reserve.title}</ReserveTitle>
+
               <ArrowTextContainer>
                 <ReserveText>{reserve.text}</ReserveText>
 
                 <FaChevronDown />
               </ArrowTextContainer>
               <ReserveText />
-              <ReserveGroupName>{reserve.groupTitle}</ReserveGroupName>
+              <TodayContainer>
+                <ReserveGroupName>{reserve.groupTitle}</ReserveGroupName>
+                <Today visible={reserveDayClose(reserve)}>Hoje</Today>
+              </TodayContainer>
             </ReserveTopSide>
 
             <ReserveBottomSide>
@@ -365,7 +386,7 @@ const ReserveList: React.FC = () => {
                   </GroupMember>
                 ))}
               </GroupMemberList>
-              <EnrollmentContainer>
+              {/* <EnrollmentContainer>
                 <EnrollmentInput
                   type="number"
                   placeholder="Adicione mais colegas na reserva"
@@ -377,7 +398,11 @@ const ReserveList: React.FC = () => {
                 <EnrollmentButton>
                   <FaPlus />
                 </EnrollmentButton>
-              </EnrollmentContainer>
+              </EnrollmentContainer> */}
+              <AddComponentContainer onClick={() => toggleBigIndex(index)} big={bigIndex === index}>
+                Adicionar Componente
+                <FaPlus />
+              </AddComponentContainer>
               <ButtonsContainer>
                 <DeleteReserveButton
                   visible={isReserveAdmin(reserve, authContext.user)}
