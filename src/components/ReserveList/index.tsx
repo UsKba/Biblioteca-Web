@@ -1,6 +1,7 @@
 /* eslint-disable no-alert */
 import React, { useState, useEffect, useCallback } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
+import { BsHash } from 'react-icons/bs';
 import { FaPlus, FaChevronDown, FaTimes } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -48,6 +49,11 @@ import {
   TodayContainer,
   Today,
   AddComponentContainer,
+  AddComponentTop,
+  AddComponentButtons,
+  CancellButton,
+  AddButton,
+  Hashtag,
 } from './styles';
 import { ReserveState } from './types';
 
@@ -62,8 +68,6 @@ const ReserveList: React.FC = () => {
   const reserveContext = useReserve();
   const location = useLocation();
   const [bigIndex, setBigIndex] = useState<number>();
-
-  console.log(bigIndex, menuIndex);
 
   const handleQuitReserve = useCallback(async () => {
     if (!reserveToQuit) {
@@ -386,22 +390,26 @@ const ReserveList: React.FC = () => {
                   </GroupMember>
                 ))}
               </GroupMemberList>
-              {/* <EnrollmentContainer>
-                <EnrollmentInput
-                  type="number"
-                  placeholder="Adicione mais colegas na reserva"
-                  value={enrollment}
-                  onChange={(event) => {
-                    setEnrollment(event.target.value);
-                  }}
-                />
-                <EnrollmentButton>
-                  <FaPlus />
-                </EnrollmentButton>
-              </EnrollmentContainer> */}
-              <AddComponentContainer onClick={() => toggleBigIndex(index)} big={bigIndex === index}>
-                Adicionar Componente
-                <FaPlus />
+
+              <AddComponentContainer big={bigIndex === index} rotateIcon={bigIndex === index}>
+                <AddComponentTop>
+                  Adicionar Componente
+                  <FaPlus onClick={() => toggleBigIndex(index)} />
+                </AddComponentTop>
+                <EnrollmentContainer>
+                  <Hashtag>#</Hashtag>
+                  <EnrollmentInput
+                    type="number"
+                    placeholder="Digite uma matrícula"
+                    onChange={(event) => {
+                      setEnrollment(event.target.value);
+                    }}
+                  />
+                </EnrollmentContainer>
+                <AddComponentButtons>
+                  <CancellButton onClick={() => toggleBigIndex(index)}>Cancelar</CancellButton>
+                  <AddButton>Adicionar</AddButton>
+                </AddComponentButtons>
               </AddComponentContainer>
               <ButtonsContainer>
                 <DeleteReserveButton

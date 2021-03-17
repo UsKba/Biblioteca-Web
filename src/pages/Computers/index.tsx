@@ -48,7 +48,7 @@ const RoomComputers = () => {
       id: 2,
       name: '02',
       desc: 'Este computador está indisponível',
-      status: 2,
+      status: 3,
     },
     {
       id: 3,

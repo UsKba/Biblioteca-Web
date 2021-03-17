@@ -15,11 +15,6 @@ export const Container = styled.div`
   padding: 40px 30px;
 `;
 
-export const LitteTitle = styled.div`
-  font-size: 18px;
-  font-family: Roboto;
-`;
-
 export const ImageChooserContainer = styled.div`
   display: flex;
   flex-direction: column-reverse;
@@ -32,15 +27,25 @@ export const ScrollMenu = styled.div`
   white-space: nowrap;
 `;
 
-export const Image = styled.img`
+interface ImageProps {
+  active: boolean;
+}
+
+export const Image = styled.img<ImageProps>`
   height: 190px;
   width: 190px;
 
   margin: 0 11px 12px 0;
+  border: solid 3px ${(props) => (props.active === false ? colors.terciary : colors.primary)};
+  border-radius: 8px;
 
   background-color: ${colors.background};
 
   cursor: pointer;
+
+  &:hover {
+    border: solid 3px ${(props) => (props.active === false ? colors.lightprimary : colors.primary)};
+  }
 `;
 
 export const Input = styled.input`
@@ -124,9 +129,89 @@ export const CancelButton = styled.button`
 export const Title = styled.span`
   margin-top: 10px;
 
+  font-size: 20px;
+  font-family: 'Ubuntu';
+  font-weight: 500;
+
+  color: ${colors.dark};
+`;
+
+export const WarningTypeContainer = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 50px;
+`;
+
+export const WarningTypeTitle = styled.span`
   font-size: 24px;
   font-family: 'Ubuntu';
   font-weight: 500;
 
   color: ${colors.dark};
+`;
+
+export const WarningTypeDropdown = styled.select`
+  height: 40px;
+  width: 200px;
+
+  padding: 10px;
+
+  font-family: 'Roboto';
+  font-weight: bold;
+  color: ${colors.dark};
+
+  outline: none;
+  border: solid 0.5px rgba(50, 44, 66, 0.5);
+  border-radius: 5px;
+`;
+
+interface RoomOptionContainerProps {
+  visible: boolean;
+}
+
+export const RoomOptionContainer = styled.div<RoomOptionContainerProps>`
+  display: ${(props) => (props.visible === true ? 'flex' : 'none')};
+  justify-content: space-between;
+
+  margin-top: 10px;
+`;
+
+interface ComputerOptionContainerProps {
+  visible: boolean;
+}
+
+export const ComputerOptionContainer = styled.div<ComputerOptionContainerProps>`
+  display: ${(props) => (props.visible === true ? 'flex' : 'none')};
+  justify-content: space-between;
+
+  margin-top: 10px;
+`;
+
+interface LibraryOptionContainerProps {
+  visible: boolean;
+}
+
+export const LibraryOptionContainer = styled.div<LibraryOptionContainerProps>`
+  display: ${(props) => (props.visible === true ? 'flex' : 'none')};
+  justify-content: space-between;
+
+  margin-top: 10px;
+`;
+
+export const OptionDropdown = styled.select`
+  height: 40px;
+  width: 300px;
+
+  padding: 10px;
+
+  font-family: 'Roboto';
+  font-weight: bold;
+  color: ${colors.dark};
+
+  outline: none;
+  border: solid 0.5px rgba(50, 44, 66, 0.5);
+  border-radius: 5px;
 `;

@@ -41,6 +41,15 @@ const ComputerCard: React.FC<ComputerCardProps> = ({ computer, settingsOpen, set
   const [selectedComputerStatus, setSelectedComputerStatus] = useState(Number);
   const [temporaryComputerStatus, setTemporaryComputerStatus] = useState(Number);
 
+  const computerDescs = [
+    {
+      desc: 'Este computador está funcionando',
+    },
+    {
+      desc: 'Este computador está indisponível',
+    },
+  ];
+
   // const changeSettingsVisibility = useCallback(() => {
   //   setSettingsVisibility(!settingsVisibility);
   // }, [settingsVisibility]);

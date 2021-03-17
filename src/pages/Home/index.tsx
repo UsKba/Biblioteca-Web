@@ -4,8 +4,6 @@ import React, { useState, useCallback } from 'react';
 import FriendList from '~/components/FriendList';
 import ReserveList from '~/components/ReserveList';
 
-import maintenance from '~/assets/maintenance.svg';
-
 import Profile from './components/Profile';
 import Warning from './components/Warning';
 

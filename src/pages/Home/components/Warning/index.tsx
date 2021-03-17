@@ -6,6 +6,8 @@ import React, { useCallback, useRef, useState } from 'react';
 import Carousel from 'react-elastic-carousel';
 
 import maintenance from '~/assets/maintenance.svg';
+import studyGroup from '~/assets/warnings/study_group.svg';
+import time from '~/assets/warnings/time.svg';
 
 import { Container, CustomCarousel, WarningTitle, WarningBody, Image, Text, ViewButton } from './styles';
 
@@ -69,16 +71,16 @@ const Warning: React.FC = () => {
         </WarningBody>
       </Container>
       <Container>
-        <WarningTitle>Biblioteca Fechada2</WarningTitle>
+        <WarningTitle>Orientações para trabalhos</WarningTitle>
         <WarningBody>
-          <Image src={maintenance} />
+          <Image src={studyGroup} />
           <SmartText text={htmlText} />
         </WarningBody>
       </Container>
       <Container>
-        <WarningTitle>Biblioteca Fechada3</WarningTitle>
+        <WarningTitle>Volta para a biblioteca</WarningTitle>
         <WarningBody>
-          <Image src={maintenance} />
+          <Image src={time} />
           <SmartText text={htmlText} />
         </WarningBody>
       </Container>

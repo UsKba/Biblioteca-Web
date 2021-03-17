@@ -42,6 +42,9 @@ export const WarningBody = styled.div`
 `;
 
 export const Image = styled.img`
+  height: 176px;
+  width: 280px;
+
   margin-right: 20px;
 
   @media only screen and (max-width: 640px) {

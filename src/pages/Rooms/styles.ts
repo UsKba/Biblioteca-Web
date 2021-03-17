@@ -36,7 +36,7 @@ export const Table = styled.div`
 
   border: solid 0.5px rgba(50, 44, 66, 0.5);
   border-radius: 5px;
-
+  margin-bottom: 40px;
   background-color: ${colors.terciary};
 `;
 
@@ -46,14 +46,14 @@ interface TableWarningProps {
 
 export const TableWarning = styled.span<TableWarningProps>`
   display: ${({ visible }) => (visible === true ? 'none' : 'flex')};
-
-  font-size: 24px;
+  width: 800px;
+  font-size: 50px;
   font-family: 'Ubuntu';
   font-weight: bold;
 
   color: ${colors.dark};
 
-  margin: 215px 0 215px 0;
+  margin: 215px 0 0 0;
 `;
 
 interface TableColumnProps {
@@ -351,4 +351,11 @@ export const DropdownLabel = styled.span`
   font-size: 18px;
   font-family: 'Roboto';
   text-align: center;
+`;
+
+export const Image = styled.img`
+  height: 330px;
+  width: 260px;
+
+  margin-left: 40px;
 `;

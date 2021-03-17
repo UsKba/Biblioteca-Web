@@ -348,8 +348,9 @@ export const BageCol = styled.div`
 
 export const EnrollmentContainer = styled.div`
   display: flex;
+  justify-items: space-between;
+  text-align: center;
 `;
-
 export const EnrollmentInput = styled.input`
   flex: 1;
 
@@ -357,12 +358,24 @@ export const EnrollmentInput = styled.input`
   width: auto;
 
   border: none;
+  border-radius: 0 5px 5px 0;
   padding: 5px 10px;
-  margin: 0 0 7px 0;
+  margin: 15px 0 7px 0;
 
   font-size: 12px;
 
-  background-color: ${colors.background};
+  background-color: ${colors.terciary};
+`;
+
+export const Hashtag = styled.div`
+  font-size: 18px;
+  height: 39px;
+  margin-top: 15px;
+  font-weight: bold;
+  background-color: ${colors.terciary};
+  text-align: center;
+  padding: 8px 0 0 5px;
+  border-radius: 5px 0 0 5px;
 `;
 
 export const EnrollmentButton = styled.button`
@@ -402,24 +415,67 @@ export const Today = styled.div<TodayProps>`
 
 interface AddComponentContainerProps {
   big?: boolean;
+  rotateIcon?: boolean;
 }
 
 export const AddComponentContainer = styled.div<AddComponentContainerProps>`
   display: flex;
+  flex-direction: column;
   width: 250px;
-  height: ${({ big }) => (big === false ? '39px' : '125px')};
+  height: ${({ big }) => (big === false ? '39px' : '135px')};
   background-color: ${colors.background};
   border-radius: 5px;
   color: ${colors.text};
-  padding: 12px 0 0 12px;
+  padding: 10px 10px 0 10px;
   font-size: 14px;
+  transition: 0.25s;
+  overflow: hidden;
 
   svg {
-    margin-left: 70px;
     color: ${colors.primary};
     cursor: pointer;
+    transition: 0.25s;
+    ${(props) => props.rotateIcon && `transform: rotate(45deg);`}
     &:hover {
       color: ${colors.lightprimary};
     }
   }
+`;
+
+export const AddComponentTop = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const AddComponentButtons = styled.div`
+  display: flex;
+  width: 100%;
+  height: 80px;
+  justify-content: space-between;
+`;
+
+export const CancellButton = styled.button`
+  width: 80px;
+  height: 30px;
+
+  color: ${colors.dark};
+
+  background-color: ${colors.background};
+  border: none;
+  font-size: 15px;
+
+  :hover {
+    text-decoration: underline;
+  }
+`;
+
+export const AddButton = styled.button`
+  width: 80px;
+  height: 30px;
+
+  color: white;
+  background-color: ${colors.primary};
+  border: none;
+  font-size: 15px;
+  border-radius: 5px;
 `;

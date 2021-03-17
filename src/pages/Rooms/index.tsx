@@ -9,6 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { getRequest } from '~/utils/api';
 import getFirstDayOfWeek from '~/utils/firstDayOfWeek';
 
+import Megaphone from '~/assets/megaphone_alt.svg';
 import { useAuth } from '~/contexts/AuthContext';
 import { Reserve, Period as PeriodInterface, Room, Schedule } from '~/types/';
 
@@ -38,6 +39,7 @@ import {
   SaveButton,
   DropdownContainer,
   DropdownLabel,
+  Image,
 } from './styles';
 
 const Rooms: React.FC = () => {
@@ -219,7 +221,10 @@ const Rooms: React.FC = () => {
         </Link>
       </TableTopInformation>
       <Table>
-        <TableWarning visible={weekendCheck()}>Reserva de salas indisponível nos finais de semana.</TableWarning>
+        <TableWarning visible={weekendCheck()}>
+          Reserva de salas indisponível {'\n'} nos finais {'\n'} de semana.
+          <Image src={Megaphone} />
+        </TableWarning>
         {rooms.map((room, index) => (
           <TableColumn key={room.id} visible={weekendCheck()}>
             <RoomTitle>{room.initials}</RoomTitle>
