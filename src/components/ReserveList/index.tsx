@@ -398,13 +398,7 @@ const ReserveList: React.FC = () => {
                 </AddComponentTop>
                 <EnrollmentContainer>
                   <Hashtag>#</Hashtag>
-                  <EnrollmentInput
-                    type="number"
-                    placeholder="Digite uma matrícula"
-                    onChange={(event) => {
-                      setEnrollment(event.target.value);
-                    }}
-                  />
+                  <EnrollmentInput type="number" placeholder="Digite uma matrícula" />
                 </EnrollmentContainer>
                 <AddComponentButtons>
                   <CancellButton onClick={() => toggleBigIndex(index)}>Cancelar</CancellButton>
