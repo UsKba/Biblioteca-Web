@@ -20,6 +20,7 @@ export type Friend = User;
 export interface Room {
   id: number;
   initials: string;
+  status: number;
 }
 
 export interface Schedule {
