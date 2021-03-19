@@ -97,3 +97,7 @@ console.log(userMapUpdated);
 //     return true;
 //   }, [authContext.user.role]);
 // }
+
+// <div id ="alo">alo</div>
+
+// <a href ="/inicial#alo"></a>

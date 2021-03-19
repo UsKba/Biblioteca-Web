@@ -63,13 +63,6 @@ export const NotificationParaghaph = styled.span`
   font-family: 'Roboto';
 `;
 
-export const NotificationDate = styled.span`
-  font-size: 12px;
-  font-family: 'Roboto';
-
-  color: #666666;
-`;
-
 export const NotificationText = styled.div`
   display: flex;
   flex-direction: column;

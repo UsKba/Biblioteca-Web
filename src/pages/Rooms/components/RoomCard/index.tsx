@@ -48,6 +48,28 @@ const RoomCard: React.FC<RoomCardProps> = ({
         <RoomCardInformation disabled IsBroken>
           Sala indisponível
         </RoomCardInformation>
+
+        <DotsContainer visible={checkUserIsAdmin(authContext.user)}>
+          <BiDotsVerticalRounded onClick={handleDotsClick} />
+          <OptionsDropdown visible={optionsDropdownVisible}>
+            <EditButton
+              onClick={() => {
+                setModalVisible(true);
+                closeSettingsMenu();
+              }}
+            >
+              Editar
+            </EditButton>
+            <CancelReserveButton>Cancelar Reserva</CancelReserveButton>
+          </OptionsDropdown>
+        </DotsContainer>
+
+        <RoomCardModal
+          room={room}
+          schedule={schedule}
+          visible={modalVisible}
+          handleButtonClick={() => setModalVisible(false)}
+        />
       </Container>
     );
   }
@@ -85,7 +107,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
         room={room}
         schedule={schedule}
         visible={modalVisible}
-        handleCancelClick={() => setModalVisible(false)}
+        handleButtonClick={() => setModalVisible(false)}
       />
     </Container>
   );

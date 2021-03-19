@@ -1,4 +1,6 @@
 import React, { useState, useCallback } from 'react';
+import { AiOutlineQuestionCircle } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 import colors from '~/styles/colors';
 
@@ -29,6 +31,7 @@ import {
   MobileStatusContainer,
   MobileStatusSpan,
   MobileStatusList,
+  PageHelpContainer,
 } from './styles';
 
 const RoomComputers = () => {
@@ -142,6 +145,12 @@ const RoomComputers = () => {
             <ErrorSpanLink>Avise-me quando houver.</ErrorSpanLink>
           </ErrorContainer>
         </RightSide>
+
+        <PageHelpContainer>
+          <a href="/ajuda#perguntas">
+            <AiOutlineQuestionCircle />
+          </a>
+        </PageHelpContainer>
 
         <MobileStatusList>
           <MobileStatusContainer>

@@ -247,3 +247,14 @@ export const MobileStatusSpan = styled.span`
 
   color: ${colors.text};
 `;
+
+export const PageHelpContainer = styled.div`
+  position: absolute;
+  bottom: 30px;
+  right: 37px;
+
+  svg {
+    color: ${colors.dark};
+    font-size: 35px;
+  }
+`;

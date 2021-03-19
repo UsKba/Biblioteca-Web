@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-alert */
 import React, { useEffect, useState, useCallback } from 'react';
+import { AiOutlineQuestionCircle } from 'react-icons/ai';
 import { Link, useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -24,6 +25,7 @@ import {
   Option,
   RentButton,
   Image,
+  PageHelpContainer,
 } from './styles';
 
 const Rooms: React.FC = () => {
@@ -169,6 +171,12 @@ const Rooms: React.FC = () => {
 
   return (
     <Container>
+      <PageHelpContainer>
+        <a href="/ajuda#perguntas">
+          <AiOutlineQuestionCircle />
+        </a>
+      </PageHelpContainer>
+
       <ToastContainer
         position="bottom-left"
         autoClose={5000}
@@ -197,28 +205,30 @@ const Rooms: React.FC = () => {
           Reserva de salas indisponível {'\n'} nos finais {'\n'} de semana.
           <Image src={Megaphone} />
         </TableWarning>
-        {rooms.map((room, index) => (
-          <TableColumn key={room.id} visible={weekendCheck()}>
-            <RoomTitle>{room.initials}</RoomTitle>
+        {rooms
+          .sort((a, b) => a.id - b.id)
+          .map((room, index) => (
+            <TableColumn key={room.id} visible={weekendCheck()}>
+              <RoomTitle>{room.initials}</RoomTitle>
 
-            {schedules
-              .filter((schedule) => schedule.periodId === selectedPeriodId)
-              .map((schedule, index2) => (
-                <RoomCard
-                  key={schedule.id}
-                  schedule={schedule}
-                  room={room}
-                  roomReserved={isRoomReserved(room, schedule)}
-                  optionsDropdownVisible={menuIndex === index && menuIndex2 === index2}
-                  handleReserveClick={handleReserveClick}
-                  handleDotsClick={() => {
-                    toggleSettingsMenu(index, index2);
-                  }}
-                  closeSettingsMenu={closeSettingsMenu}
-                />
-              ))}
-          </TableColumn>
-        ))}
+              {schedules
+                .filter((schedule) => schedule.periodId === selectedPeriodId)
+                .map((schedule, index2) => (
+                  <RoomCard
+                    key={schedule.id}
+                    schedule={schedule}
+                    room={room}
+                    roomReserved={isRoomReserved(room, schedule)}
+                    optionsDropdownVisible={menuIndex === index && menuIndex2 === index2}
+                    handleReserveClick={handleReserveClick}
+                    handleDotsClick={() => {
+                      toggleSettingsMenu(index, index2);
+                    }}
+                    closeSettingsMenu={closeSettingsMenu}
+                  />
+                ))}
+            </TableColumn>
+          ))}
       </Table>
     </Container>
   );

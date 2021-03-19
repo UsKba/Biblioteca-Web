@@ -85,7 +85,7 @@ const Help: React.FC = () => {
         <Image src={Img1} />
       </TopSide>
       <MiddleSide>
-        <Title>Perguntas Frequentes</Title>
+        <Title id="perguntas">Perguntas Frequentes</Title>
         <Line2 />
 
         {questions.map((question, index) => (

@@ -250,6 +250,7 @@ export const Room = styled.span`
 
 interface RoomButtonProps {
   active?: boolean;
+  isBroken?: boolean;
 }
 
 export const RoomButton = styled.button<RoomButtonProps>`
@@ -258,12 +259,14 @@ export const RoomButton = styled.button<RoomButtonProps>`
 
   padding: 10px;
 
+  border: 3px solid ${(props) => props.isBroken && `${colors.black}`};
   border: 3px solid ${({ active }) => (active === false ? `${colors.terciary}` : `${colors.primary}`)};
   border-radius: 8px;
 
   background-color: transparent;
 
   &:hover {
+    border: 3px solid ${(props) => props.isBroken && `${colors.lightblack}`};
     border: 3px solid ${({ active }) => (active === false ? `${colors.lightprimary}` : `${colors.primary}`)};
   }
 `;
@@ -489,4 +492,15 @@ interface IconContainerProps {
 
 export const IconContainer = styled.div<IconContainerProps>`
   display: ${({ visible }) => (visible ? 'flex' : 'none')};
+`;
+
+export const PageHelpContainer = styled.div`
+  position: absolute;
+  bottom: 30px;
+  right: 37px;
+
+  svg {
+    color: ${colors.dark};
+    font-size: 35px;
+  }
 `;

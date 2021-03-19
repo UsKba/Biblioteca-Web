@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
+import { AiOutlineQuestionCircle } from 'react-icons/ai';
 import { FaTimes } from 'react-icons/fa';
 import { useHistory, Link, useLocation } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -62,6 +63,7 @@ import {
   SearchHashTag,
   SearchingBar,
   IconContainer,
+  PageHelpContainer,
 } from './styles';
 
 interface ReserveLocationState {
@@ -95,6 +97,8 @@ const Reserve: React.FC = () => {
 
   const [enrollment, setEnrollment] = useState('');
   const [reserveName, setReserveName] = useState('');
+  const [addComponentError, setAddComponentError] = useState('');
+
   const [components, setComponents] = useState<User[]>([]);
   const [schedules, setSchedules] = useState([] as Schedule[]);
   const [rooms, setRooms] = useState([] as RoomInterface[]);
@@ -104,8 +108,6 @@ const Reserve: React.FC = () => {
   const [selectedPeriodId, setSelectedPeriodId] = useState(1);
   const [selectedScheduleId, setSelectedScheduleId] = useState(1);
   const [selectedRoomId, setSelectedRoomId] = useState(1);
-
-  const [addComponentError, setAddComponentError] = useState('');
 
   useEffect(() => {
     const data = location.state as ReserveLocationState | undefined;
@@ -128,11 +130,6 @@ const Reserve: React.FC = () => {
     setSelectedPeriodId(data.schedule.periodId);
     setSelectedScheduleId(data.schedule.id);
     setSelectedRoomId(data.room.id);
-
-    // console.log(date);
-
-    // console.log(data.schedule.id);
-    // console.log(data.schedule.periodId);
   }, [location, schedules, selectedPeriodId]);
 
   const goBack = useCallback(() => {
@@ -236,8 +233,6 @@ const Reserve: React.FC = () => {
       alert(error.error);
       return;
     }
-
-    // console.log(data);
 
     history.push('/');
     handleCreateReserveToast();
@@ -372,12 +367,19 @@ const Reserve: React.FC = () => {
         <RoomContainer>
           <Title2>Escolha uma sala</Title2>
           <ChooseRoom>
-            {rooms.map((room) => (
-              <RoomButton key={room.id} onClick={() => setSelectedRoomId(room.id)} active={selectedRoomId === room.id}>
-                <Room>{room.initials}</Room>
-                <Image src={roomPath} />
-              </RoomButton>
-            ))}
+            {rooms
+              .sort((a, b) => a.id - b.id)
+              .map((room) => (
+                <RoomButton
+                  key={room.id}
+                  onClick={() => setSelectedRoomId(room.id)}
+                  active={selectedRoomId === room.id}
+                  isBroken={room.status === 1}
+                >
+                  <Room>{room.initials}</Room>
+                  <Image src={roomPath} />
+                </RoomButton>
+              ))}
           </ChooseRoom>
         </RoomContainer>
 
@@ -452,6 +454,11 @@ const Reserve: React.FC = () => {
       <RightSide>
         <FriendList onFriendClick={handleFriendClick} />
       </RightSide>
+      <PageHelpContainer>
+        <a href="/ajuda#perguntas">
+          <AiOutlineQuestionCircle />
+        </a>
+      </PageHelpContainer>
     </Container>
   );
 };

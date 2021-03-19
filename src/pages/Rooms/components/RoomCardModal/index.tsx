@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+
+import { putRequest } from '~/utils/api';
 
 import { Room, Schedule } from '~/types/';
 
@@ -19,33 +21,48 @@ interface RoomCardModalProps {
   room: Room;
   schedule: Schedule;
   visible: boolean;
-  handleCancelClick: () => void;
+  handleButtonClick: () => void;
 }
 
-const RoomCardModal: React.FC<RoomCardModalProps> = ({ room, schedule, visible, handleCancelClick }) => {
+const RoomCardModal: React.FC<RoomCardModalProps> = ({ room, schedule, visible, handleButtonClick }) => {
   const [selectedReserveStatus, setSelectedReserveStatus] = useState(Number);
   const [temporaryReserveStatus, setTemporaryReserveStatus] = useState(Number);
+
+  console.log(room.initials);
+
+  const changeReserveStatus = useCallback(
+    async (reserveStatus: number) => {
+      const { error } = await putRequest(`/rooms/${room.id}`, {
+        status: reserveStatus,
+      });
+      if (error) {
+        alert(error.error);
+      }
+    },
+    [room.id]
+  );
 
   return (
     <HiddenContainer visible={visible}>
       <SettingsContainer>
-        <SettingsTitle>{`Sala ${room.initials}`}</SettingsTitle>
-        <SettingsText>{`Reservada até as ${schedule.endHour}`}</SettingsText>
+        <SettingsTitle>{`Sala ${room.initials} (${room.status})`}</SettingsTitle>
+        <SettingsText>{`Horário: ${schedule.initialHour} - ${schedule.endHour}`}</SettingsText>
 
         <DropdownContainer>
           <DropdownLabel>Status:</DropdownLabel>
           <Dropdown onChange={(event) => setTemporaryReserveStatus(Number(event.target.value))}>
             <Option value="0">Disponível</Option>
-            <Option value="1">Reservada</Option>
-            <Option value="2">Indisponível</Option>
+            <Option value="1">Indisponível</Option>
+            <Option value="2">Reservada</Option>
           </Dropdown>
         </DropdownContainer>
 
         <SettingsButtonsContainer>
-          <CancelButton onClick={() => handleCancelClick()}>Cancelar</CancelButton>
+          <CancelButton onClick={() => handleButtonClick()}>Cancelar</CancelButton>
           <SaveButton
             onClick={() => {
               setSelectedReserveStatus(temporaryReserveStatus);
+              changeReserveStatus(selectedReserveStatus);
             }}
           >
             Salvar

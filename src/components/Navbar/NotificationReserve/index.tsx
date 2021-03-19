@@ -12,7 +12,6 @@ import {
   NotificationMail,
   NotificationTitle,
   NotificationParaghaph,
-  // NotificationDate,
   NotificationText,
   NotificationTop,
   NotificationLeft,

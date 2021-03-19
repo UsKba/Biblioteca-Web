@@ -39,7 +39,9 @@ export const RoomCardInformation = styled.button<RoomCardInformationProps>`
 
   &:hover {
     cursor: ${(props) => (props.isReserved ? 'not-allowed' : 'pointer')};
+    cursor: ${(props) => props.IsBroken && 'not-allowed'};
     background-color: ${(props) => (props.isReserved ? colors.lightred : colors.lightprimary)};
+    background-color: ${(props) => props.IsBroken && colors.lightblack};
   }
 
   svg {

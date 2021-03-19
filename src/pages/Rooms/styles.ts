@@ -8,7 +8,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  flex: 1;
+  height: 100vh;
+  width: 100%;
 
   align-items: center;
   justify-content: center;
@@ -131,4 +132,16 @@ export const Image = styled.img`
   width: 260px;
 
   margin-left: 40px;
+`;
+
+export const PageHelpContainer = styled.div`
+  position: fixed;
+
+  right: 37px;
+  bottom: 30px;
+
+  svg {
+    color: ${colors.dark};
+    font-size: 35px;
+  }
 `;
