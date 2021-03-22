@@ -8,6 +8,7 @@ import { useHistory, Link, useLocation } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
 import { getRequest, postRequest } from '~/utils/api';
+import { checkUserIsAdmin } from '~/utils/user';
 
 import DateList from '~/components/DateList';
 import FriendList from '~/components/FriendList';
@@ -93,6 +94,7 @@ const Reserve: React.FC = () => {
   const history = useHistory();
 
   const { user } = useAuth();
+  const authContext = useAuth();
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [enrollment, setEnrollment] = useState('');
@@ -207,14 +209,14 @@ const Reserve: React.FC = () => {
 
   const removeComponent = useCallback(
     (componentEnrollment: string) => {
-      if (componentEnrollment !== user.enrollment) {
+      if (componentEnrollment !== user.enrollment || checkUserIsAdmin(authContext.user)) {
         const newComponents = components.filter((element) => {
           return element.enrollment !== componentEnrollment;
         });
         setComponents(newComponents);
       }
     },
-    [components, user.enrollment]
+    [authContext.user, components, user.enrollment]
   );
 
   const handleCreateReserve = useCallback(async () => {
@@ -302,8 +304,10 @@ const Reserve: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    setComponents([user]);
-  }, [user]);
+    if (!checkUserIsAdmin(authContext.user)) {
+      setComponents([user]);
+    }
+  }, [authContext.user, user]);
 
   return (
     <Container>
@@ -441,7 +445,7 @@ const Reserve: React.FC = () => {
                       </Enrollment>
                     </ComponentInfo>
                   </ComponentContainer>
-                  <IconContainer visible={isReserveAdmin(component.enrollment)}>
+                  <IconContainer visible={isReserveAdmin(component.enrollment) || checkUserIsAdmin(authContext.user)}>
                     <FaTimes onClick={() => removeComponent(component.enrollment)} />
                   </IconContainer>
                 </Component>

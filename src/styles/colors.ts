@@ -13,10 +13,10 @@ const colors = {
   lightblack: '#454545',
   golden: '#f7cf2f',
 
-  computerStatus: ['#2B9348', '#faa61a', '#f55', '#333'],
+  computerStatus: ['#2B9348', '#333'],
   roomStatus: ['#2B9348', '#638AF2', '#EF476F', '#333'],
   lineStatus: ['#638AF2', '#a9bef5'],
-  // sua sala, disponpível, ocupada, indisponível
+  // sua sala, disponível, ocupada, indisponível
 
   // #ffd942
 };

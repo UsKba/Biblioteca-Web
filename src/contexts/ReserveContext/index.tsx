@@ -28,11 +28,11 @@ export const ReserveProvider: React.FC = ({ children }) => {
       }
 
       const findReserve = reserves.find((reserve) => reserve.id === reserveId);
-      console.log(authContext.user);
+
       const userLogged = findReserve?.users.find((user) => authContext.user.id === user.id);
 
       if (!findReserve || !userLogged) {
-        console.log('aqui', findReserve, userLogged);
+        // console.log(findReserve, userLogged);
         return;
       }
 
@@ -53,7 +53,6 @@ export const ReserveProvider: React.FC = ({ children }) => {
           users: updatedUsers,
         },
       ];
-      console.log(updatedReserves);
       setReserves(updatedReserves);
     },
     [authContext.user, reserves]
@@ -66,11 +65,11 @@ export const ReserveProvider: React.FC = ({ children }) => {
         alert(error.error);
       }
       const findReserve = reserves.find((reserve) => reserve.id === reserveId);
-      console.log(authContext.user);
+
       const userLogged = findReserve?.users.find((user) => authContext.user.id === user.id);
 
       if (!findReserve || !userLogged) {
-        console.log('aqui', findReserve, userLogged);
+        // console.log(findReserve, userLogged);
         return;
       }
 
@@ -91,7 +90,7 @@ export const ReserveProvider: React.FC = ({ children }) => {
           users: updatedUsers,
         },
       ];
-      console.log(updatedReserves);
+
       setReserves(updatedReserves);
     },
     [authContext.user, reserves]

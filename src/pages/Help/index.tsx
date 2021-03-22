@@ -36,19 +36,25 @@ const Help: React.FC = () => {
       id: 1,
       text: 'Como posso reservar uma sala?',
       response:
-        'Como a Central de Ajuda não foi criada para engenheiros de ciência da computação, os artigos não devem ser usados para compreender os detalhes técnicos de um componente específico dos nossos sistemas. Os artigos foram escritos para fornecer aos anunciantes uma compreensão conceitual, não técnica, do funcionamento do Smart Library. Para saber mais sobre a Smart Library, leia os artigos de cada tópico ou digite sua pergunta para o suporte.',
+        'Existem duas maneiras: no topo esquerdo da página inicial,você pode clicar no símbolo "+" que ele te levará para a página de reserva. Você também pode acessar a página de "Salas" no menu lateral; lá você pode clicar em qualquer sala disponível, que também será levado(a) para a página de criação de reserva, com esta sala já selecionada. Você pode cancelar uma reserva a qualquer momento.',
     },
     {
       id: 2,
       text: 'Meus dados estão seguros?',
       response:
-        'A autenticação em duas etapas é uma camada adicional de segurança para sua conta. Em vez de depender apenas de uma senha, a autenticação em duas etapas oferece uma segunda verificação para ajudar a garantir que apenas você possa acessar sua conta',
+        'O site conta com uma camada de segurança do próprio sistema do IFRN. Ao logar com o SUAP, o site recolhe as seguintes informações: nome, matrícula, e-mail acadêmico e campus. Em nenhuma ocasião a equipe da Smart Library vai pedir sua senha. Jamais compartilhe sua senha do SUAP com ninguém.',
     },
     {
       id: 3,
       text: 'Como posso adicionar um amigo?',
       response:
-        'Clique na barra de pesquisa no canto superior esquerdo de qualquer página do site. Digite o nome do seu amigo na barra de pesquisa e clique em Para enviar uma solicitação de amizade a alguém, clique em ao lado da foto do perfil da pessoa.',
+        'Clique no íncone da pessoa no canto superior esquerdo em qualquer página do site. Digite o nome do seu amigo na barra de pesquisa e clique em "+" para enviar uma solicitação de amizade para esta pessoa.',
+    },
+    {
+      id: 4,
+      text: 'Não consigo criar uma reserva, o que pode ser?',
+      response:
+        'Verifique os avisos que aparecem na página. A reserva precisa de no mínimo 3 pessoas, e só pode ser criada para aquela semana. Você não pode criar reservas nos finais de semana, nem para horários que já passaram (Exemplo: Criar uma reserva para as 9h, porém já são 9:10). Caso esteja enfrentando outro problema com a reserva ou outros, por favor entre em contanto com o suporte abaixo.',
     },
   ];
 
@@ -75,11 +81,10 @@ const Help: React.FC = () => {
           <Title>Central de Ajuda</Title>
           <Line />
           <Text>
-            Como a Central de Ajuda não foi criada para engenheiros de ciência da computação, os artigos não devem ser
-            usados para compreender os detalhes técnicos de um componente específico dos nossos sistemas. Os artigos
-            foram escritos para fornecer aos anunciantes uma compreensão conceitual, não técnica, do funcionamento do
-            Smart Library. Para saber mais sobre a Smart Library, leia os artigos de cada tópico ou digite sua pergunta
-            para o suporte.
+            Caso esteja com algum problema com o site, verifique alguma das soluções mais comuns abaixo. Se você acha
+            que alguma coisa está fora do lugar, ou que alguma ferramenta não está funcionando, você pode falar
+            diretamente com a equipe de suporte pelo e-mail. Dúvidas da própria biblioteca devem ser direcionados ao
+            e-mail do bibliotecário. Os respectivos e-mails estão no fim desta página.
           </Text>
         </TextContainer>
         <Image src={Img1} />

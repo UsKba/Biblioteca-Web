@@ -1,7 +1,11 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 
+import { putRequest } from '~/utils/api';
+import { checkUserIsAdmin } from '~/utils/user';
+
 import { useAuth } from '~/contexts/AuthContext';
+import { Computer } from '~/types/';
 
 import {
   ComputerContainer,
@@ -23,13 +27,6 @@ import {
   DropdownLabel,
 } from './styles';
 
-interface Computer {
-  name: string;
-  id: number;
-  desc: string;
-  status: number;
-}
-
 interface ComputerCardProps {
   computer: Computer;
   settingsOpen: boolean;
@@ -40,50 +37,50 @@ const ComputerCard: React.FC<ComputerCardProps> = ({ computer, settingsOpen, set
   const authContext = useAuth();
   const [selectedComputerStatus, setSelectedComputerStatus] = useState(Number);
   const [temporaryComputerStatus, setTemporaryComputerStatus] = useState(Number);
+  const [computerDesc, setComputerDesc] = useState(String);
 
-  const computerDescs = [
-    {
-      desc: 'Este computador está funcionando',
+  const changeComputerStatus = useCallback(
+    async (computerStatus: number) => {
+      const { error } = await putRequest(`/computers/${computer.id}`, {
+        status: computerStatus,
+      });
+      if (error) {
+        alert(error.error);
+      }
     },
-    {
-      desc: 'Este computador está indisponível',
-    },
-  ];
+    [computer.id]
+  );
 
-  // const changeSettingsVisibility = useCallback(() => {
-  //   setSettingsVisibility(!settingsVisibility);
-  // }, [settingsVisibility]);
-
-  const checkUserRole = useCallback(() => {
-    if (authContext.user.role === 'student') {
-      return false;
+  useEffect(() => {
+    if (computer.status === 0) {
+      setComputerDesc('funcionando');
+    } else {
+      setComputerDesc('indisponível');
     }
-
-    return true;
-  }, [authContext.user.role]);
+  }, [computer.status]);
 
   return (
     <ComputerContainer>
       <ComputerTextContainer>
-        <ComputerName>{`Computador ${computer.name}`}</ComputerName>
+        <ComputerName>{`Computador ${computer.identification}`}</ComputerName>
         <ComputerStatusContainer>
-          <ComputerStatus status={selectedComputerStatus} />
-          <ComputerSpan>{computer.desc}</ComputerSpan>
+          <ComputerStatus status={computer.status} />
+          <ComputerSpan>{`O computador está ${computerDesc}`}</ComputerSpan>
         </ComputerStatusContainer>
       </ComputerTextContainer>
 
-      <SettingsIconContainer visible={checkUserRole()} onClick={() => settingsClick()}>
+      <SettingsIconContainer visible={checkUserIsAdmin(authContext.user)} onClick={() => settingsClick()}>
         <BiDotsVerticalRounded />
       </SettingsIconContainer>
 
       <SettingsContainer visible={settingsOpen}>
-        <SettingsTitle>Laboratório</SettingsTitle>
-        <SettingsText>{`Computador ${computer.name}`}</SettingsText>
+        <SettingsTitle>{`${computer.local.name}`}</SettingsTitle>
+        <SettingsText>{`Computador ${computer.identification}`}</SettingsText>
         <DropdownContainer>
           <DropdownLabel>Status:</DropdownLabel>
           <Dropdown onChange={(event) => setTemporaryComputerStatus(Number(event.target.value))}>
-            <Option value="0">Disponível</Option>
-            <Option value="3">Indisponível</Option>
+            <Option value="0">Funcionando</Option>
+            <Option value="1">Indisponível</Option>
           </Dropdown>
         </DropdownContainer>
         <SettingsButtonsContainer>
@@ -91,6 +88,7 @@ const ComputerCard: React.FC<ComputerCardProps> = ({ computer, settingsOpen, set
           <SaveButton
             onClick={() => {
               setSelectedComputerStatus(temporaryComputerStatus);
+              changeComputerStatus(selectedComputerStatus);
               settingsClick();
             }}
           >

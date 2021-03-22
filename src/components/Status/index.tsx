@@ -11,7 +11,7 @@ const Status: React.FC = () => {
       </StatusContainer>
 
       <StatusContainer>
-        <StatusColor status={3} />
+        <StatusColor status={1} />
         <StatusSpan>Indisponível</StatusSpan>
       </StatusContainer>
     </Container>

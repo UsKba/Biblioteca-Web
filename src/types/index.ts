@@ -50,3 +50,13 @@ export interface Period {
   initialHour: string;
   endHour: string;
 }
+
+export interface Computer {
+  id: number;
+  status: number;
+  identification: string;
+  local: {
+    id: number;
+    name: string;
+  };
+}

@@ -28,8 +28,6 @@ const RoomCardModal: React.FC<RoomCardModalProps> = ({ room, schedule, visible, 
   const [selectedReserveStatus, setSelectedReserveStatus] = useState(Number);
   const [temporaryReserveStatus, setTemporaryReserveStatus] = useState(Number);
 
-  console.log(room.initials);
-
   const changeReserveStatus = useCallback(
     async (reserveStatus: number) => {
       const { error } = await putRequest(`/rooms/${room.id}`, {
@@ -53,7 +51,6 @@ const RoomCardModal: React.FC<RoomCardModalProps> = ({ room, schedule, visible, 
           <Dropdown onChange={(event) => setTemporaryReserveStatus(Number(event.target.value))}>
             <Option value="0">Disponível</Option>
             <Option value="1">Indisponível</Option>
-            <Option value="2">Reservada</Option>
           </Dropdown>
         </DropdownContainer>
 

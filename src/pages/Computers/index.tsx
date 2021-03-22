@@ -1,12 +1,14 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { AiOutlineQuestionCircle } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+
+import { getRequest } from '~/utils/api';
 
 import colors from '~/styles/colors';
 
 import Status from '~/components/Status';
 
 import { useAuth } from '~/contexts/AuthContext';
+import { Computer } from '~/types/';
 
 import ComputerCard from './Components/ComputerCard';
 import {
@@ -35,56 +37,40 @@ import {
 } from './styles';
 
 const RoomComputers = () => {
-  const authContext = useAuth();
   const [screenSwipe, setScreenSwipe] = useState(1);
   const [settingsIndex, setSettingsIndex] = useState(-1);
-  const [computerLocal, setComputerLocal] = useState(-1);
 
-  const computers = [
-    {
-      id: 1,
-      name: '01',
-      desc: 'Este computador está funcionando',
-      status: 0,
-    },
-    {
-      id: 2,
-      name: '02',
-      desc: 'Este computador está indisponível',
-      status: 3,
-    },
-    {
-      id: 3,
-      name: '03',
-      desc: 'Este computador está funcionando',
-      status: 0,
-    },
-    {
-      id: 4,
-      name: '04',
-      desc: 'Este computador está indisponível',
-      status: 3,
-    },
-  ];
+  const [computers, setComputers] = useState([] as Computer[]);
+
+  useEffect(() => {
+    async function loadComputers() {
+      const { data, error } = await getRequest('/computers');
+
+      if (error) {
+        alert(error.error);
+        return;
+      }
+
+      setComputers(data);
+    }
+
+    loadComputers();
+  }, []);
 
   const handleChangeSwipe = useCallback((index: number) => {
     setScreenSwipe(index);
   }, []);
 
   const handleSettingsClick = useCallback(
-    (index: number, computerLocalNumber: number) => {
-      if (settingsIndex === index && computerLocal === computerLocalNumber) {
+    (index: number) => {
+      if (settingsIndex === index) {
         setSettingsIndex(-1);
-        setComputerLocal(-1);
       } else {
         setSettingsIndex(index);
-        setComputerLocal(computerLocalNumber);
       }
     },
-    [computerLocal, settingsIndex]
+    [settingsIndex]
   );
-
-  // const changeSettingsVisibility = useCallback(() => {}, []);
 
   return (
     <>
@@ -112,29 +98,39 @@ const RoomComputers = () => {
             <MiddleLeft visible={screenSwipe === 0}>
               <H2>Laboratório</H2>
               <ComputerList>
-                {computers.map((computer, index) => (
-                  <ComputerCard
-                    key={computer.id}
-                    computer={computer}
-                    settingsOpen={index === settingsIndex && computerLocal === 1}
-                    settingsClick={() => handleSettingsClick(index, 1)}
-                  />
-                ))}
+                {computers.map((computer, index) => {
+                  if (computer.local.id === 1) {
+                    return (
+                      <ComputerCard
+                        key={computer.id}
+                        computer={computer}
+                        settingsOpen={index === settingsIndex}
+                        settingsClick={() => handleSettingsClick(index)}
+                      />
+                    );
+                  }
+
+                  return undefined;
+                })}
               </ComputerList>
             </MiddleLeft>
 
             <MiddleRight visible={screenSwipe === 1}>
               <H2>Biblioteca</H2>
-              <ComputerList>
-                {computers.map((computer, index) => (
-                  <ComputerCard
-                    key={computer.id}
-                    computer={computer}
-                    settingsOpen={index === settingsIndex && computerLocal === 0}
-                    settingsClick={() => handleSettingsClick(index, 0)}
-                  />
-                ))}
-              </ComputerList>
+              {computers.map((computer, index) => {
+                if (computer.local.id === 2) {
+                  return (
+                    <ComputerCard
+                      key={computer.id}
+                      computer={computer}
+                      settingsOpen={index === settingsIndex}
+                      settingsClick={() => handleSettingsClick(index)}
+                    />
+                  );
+                }
+
+                return undefined;
+              })}
             </MiddleRight>
           </MiddleBottom>
         </MiddleSide>

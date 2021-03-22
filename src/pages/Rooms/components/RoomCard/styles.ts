@@ -90,7 +90,7 @@ export const OptionsDropdown = styled.div<OptionsDropdownProps>`
   height: 60px;
   width: 140px;
 
-  margin-top: 26px;
+  margin: 26px 0 0 20px;
 
   box-shadow: 2px 2px 15px ${colors.dark};
 `;

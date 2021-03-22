@@ -30,9 +30,8 @@ import {
 
 const Rooms: React.FC = () => {
   const history = useHistory();
-  const authContext = useAuth();
-  const [reserves, setReserves] = useState([] as Reserve[]);
 
+  const [reserves, setReserves] = useState([] as Reserve[]);
   const [, setPeriods] = useState([] as PeriodInterface[]);
   const [rooms, setRooms] = useState([] as Room[]);
   const [schedules, setSchedules] = useState([] as Schedule[]);

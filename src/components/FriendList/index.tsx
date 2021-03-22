@@ -312,7 +312,7 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
       <FriendsPanel visible={friendsPanelVisible}>
         <EmptyContainer visible={friendsContext.friends.length === 0}>
           <EmptyTitle>Ninguém aqui...</EmptyTitle>
-          <EmptySpan>Você não possui amigos, clique no ícone acima para adicionar alguém.</EmptySpan>
+          <EmptySpan>Você não possui amigos, clique no ícone de pessoa acima para adicionar alguém.</EmptySpan>
         </EmptyContainer>
 
         {friendsContext.friends.map((friend) => (

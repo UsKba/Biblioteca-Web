@@ -1,9 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { BsFillChatSquareDotsFill } from 'react-icons/bs';
-import { FaChalkboardTeacher, FaHome, FaCog, FaBars, FaDesktop, FaEnvelope, FaBell } from 'react-icons/fa';
+import { FaChalkboardTeacher, FaHome, FaCog, FaBars, FaDesktop, FaEnvelope, FaBell, FaEdit } from 'react-icons/fa';
 import { GoSignOut } from 'react-icons/go';
 import { IoMdHelp } from 'react-icons/io';
 import { useLocation, Link } from 'react-router-dom';
+
+import { checkUserIsAdmin } from '~/utils/user';
 
 import { useAuth } from '~/contexts/AuthContext';
 import { useReserve } from '~/contexts/ReserveContext';
@@ -50,14 +51,6 @@ const NavbarComponent: React.FC = () => {
   const location = useLocation();
   const [pendingReserveList, setPendingReserveList] = useState([] as Reserve[]);
   const { reserves } = useReserve();
-
-  const checkUserRole = useCallback(() => {
-    if (authContext.user.role === 'student') {
-      return false;
-    }
-
-    return true;
-  }, [authContext.user.role]);
 
   const closeIfMobile = useCallback(() => {
     if (window.innerWidth < 600) {
@@ -147,8 +140,8 @@ const NavbarComponent: React.FC = () => {
             <SidebarItemName>Início</SidebarItemName>
           </StyledLink>
 
-          <StyledLink onClick={closeIfMobile} to="/criar-aviso" visible={checkUserRole()}>
-            <BsFillChatSquareDotsFill />
+          <StyledLink onClick={closeIfMobile} to="/criar-aviso" visible={checkUserIsAdmin(authContext.user)}>
+            <FaEdit />
             <SidebarItemName>Criar Aviso</SidebarItemName>
           </StyledLink>
 

@@ -119,7 +119,7 @@ export const Question = styled.div<QuestionProps>`
   display: flex;
   flex-direction: column;
 
-  height: ${(props) => (props.big === true ? '200px' : '60px')};
+  height: ${(props) => (props.big === true ? '224px' : '60px')};
   width: 100%;
 
   padding: 20px;
