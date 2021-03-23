@@ -115,6 +115,10 @@ export const ChoosePeriod = styled.div`
   justify-content: space-around;
 
   width: 100%;
+
+  @media only screen and (min-width: 1700px) {
+    padding: 0 75px;
+  }
 `;
 
 interface PeriodButtonProps {
@@ -156,6 +160,10 @@ export const ChooseHour = styled.div`
 
   @media only screen and (max-width: 640px) {
     justify-content: space-between;
+  }
+
+  @media only screen and (min-width: 1700px) {
+    padding: 0 75px;
   }
 
   &:after {

@@ -60,6 +60,7 @@ const RoomCardModal: React.FC<RoomCardModalProps> = ({ room, schedule, visible, 
             onClick={() => {
               setSelectedReserveStatus(temporaryReserveStatus);
               changeReserveStatus(selectedReserveStatus);
+              // handleButtonClick();
             }}
           >
             Salvar

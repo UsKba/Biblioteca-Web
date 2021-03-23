@@ -13,6 +13,8 @@ export const Container = styled.div`
 
   align-items: center;
   justify-content: center;
+  @media only screen and (min-width: 1700px) {
+  }
 `;
 
 export const TableTopInformation = styled.div`
@@ -25,6 +27,9 @@ export const TableTopInformation = styled.div`
 
   margin-top: 30px;
   padding-bottom: 10px;
+  @media only screen and (max-height: 600px) {
+    margin-top: 160px;
+  }
 `;
 
 export const Table = styled.div`
@@ -39,6 +44,9 @@ export const Table = styled.div`
   border-radius: 5px;
   margin-bottom: 40px;
   background-color: ${colors.terciary};
+  @media only screen and (min-width: 1700px) {
+    max-width: 1500px;
+  }
 `;
 
 interface TableWarningProps {

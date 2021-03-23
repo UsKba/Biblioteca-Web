@@ -5,6 +5,9 @@ import colors from '../../styles/colors';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  @media only screen and (max-width: 1200px) {
+    margin-right: 70px;
+  }
 `;
 
 export const H1 = styled.h1`
@@ -36,7 +39,7 @@ export const TextContainer = styled.div`
   margin: 30px 0 0 100px;
   border-radius: 3px;
 
-  @media screen and (max-width: 640px) {
+  @media screen and (max-width: 1200px) {
     width: 80%;
   }
 `;

@@ -12,6 +12,9 @@ export const Container = styled.div`
   flex: 1;
 
   padding: 14px 10px 0 10px;
+  @media only screen and (min-height: 1700px) {
+    margin-right: auto;
+  }
 `;
 
 export const Title = styled.span`

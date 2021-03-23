@@ -47,7 +47,7 @@ export const Image = styled.img`
 
   margin-right: 20px;
 
-  @media only screen and (max-width: 640px) {
+  @media only screen and (max-width: 1200px) {
     display: none;
   }
 `;

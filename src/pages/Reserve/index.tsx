@@ -310,7 +310,7 @@ const Reserve: React.FC = () => {
   }, [authContext.user, user]);
 
   return (
-    <Container>
+    <>
       <ToastContainer
         position="bottom-left"
         autoClose={5000}
@@ -323,147 +323,150 @@ const Reserve: React.FC = () => {
         pauseOnHover
       />
 
-      <LeftSide>
-        <Link to="/">
-          <CancelButton onClick={goBack}>Cancelar Reserva</CancelButton>
-        </Link>
-        <ReserveList />
-      </LeftSide>
-      <MiddleSide>
-        <RoomScheduling>
-          {/* <Title>Agendamento de sala</Title> */}
-          <Title2>Escolha uma data</Title2>
-        </RoomScheduling>
-        <DateListContainer>
-          <DateList selectDay={setSelectedDay} defaultWeekDay={selectedDay.getDay()} />
-        </DateListContainer>
-        <Period>
-          <Title2>Escolha um turno</Title2>
-          <ChoosePeriod>
-            {periods.map((period) => (
-              <PeriodButton
-                key={period.id}
-                onClick={() => {
-                  setSelectedPeriodId(period.id);
-                }}
-                active={selectedPeriodId === period.id}
-              >
-                {period.name}
-              </PeriodButton>
-            ))}
-          </ChoosePeriod>
-        </Period>
-        <Hour>
-          <Title2>Escolha um Horário</Title2>
-          <ChooseHour>
-            {schedules.map((schedule) => (
-              <HourButton
-                key={schedule.id}
-                onClick={() => setSelectedScheduleId(schedule.id)}
-                colorActive={selectedScheduleId === schedule.id}
-                visible={schedule.periodId === selectedPeriodId}
-              >
-                {`${schedule.initialHour} - ${schedule.endHour} `}
-              </HourButton>
-            ))}
-          </ChooseHour>
-        </Hour>
-        <RoomContainer>
-          <Title2>Escolha uma sala</Title2>
-          <ChooseRoom>
-            {rooms
-              .sort((a, b) => a.id - b.id)
-              .map((room) => (
-                <RoomButton
-                  key={room.id}
-                  onClick={() => setSelectedRoomId(room.id)}
-                  active={selectedRoomId === room.id}
-                  isBroken={room.status === 1}
-                >
-                  <Room>{room.initials}</Room>
-                  <Image src={roomPath} />
-                </RoomButton>
-              ))}
-          </ChooseRoom>
-        </RoomContainer>
+      <Container>
+        <LeftSide>
+          <Link to="/">
+            <CancelButton onClick={goBack}>Cancelar Reserva</CancelButton>
+          </Link>
+          <ReserveList />
+        </LeftSide>
 
-        <GroupContainer>
-          <Title2>Nome da Reserva</Title2>
-          <InputContainer>
-            <SearchArea>
-              <SearchHashTag>#</SearchHashTag>
-              <SearchingBar
-                type="text"
-                maxLength={25}
-                placeholder="Digite o Nome do Grupo"
-                value={reserveName}
-                onChange={(event) => {
-                  setReserveName(event.target.value);
-                  // console.log(event.target.value);
-                }}
-                style={{ marginRight: '60px' }}
-              />
-            </SearchArea>
-          </InputContainer>
-        </GroupContainer>
-        <ComponentsContainer>
-          <Title2>Adicione componentes:</Title2>
-          <Components>
+        <MiddleSide>
+          <RoomScheduling>
+            {/* <Title>Agendamento de sala</Title> */}
+            <Title2>Escolha uma data</Title2>
+          </RoomScheduling>
+          <DateListContainer>
+            <DateList selectDay={setSelectedDay} defaultWeekDay={selectedDay.getDay()} />
+          </DateListContainer>
+          <Period>
+            <Title2>Escolha um turno</Title2>
+            <ChoosePeriod>
+              {periods.map((period) => (
+                <PeriodButton
+                  key={period.id}
+                  onClick={() => {
+                    setSelectedPeriodId(period.id);
+                  }}
+                  active={selectedPeriodId === period.id}
+                >
+                  {period.name}
+                </PeriodButton>
+              ))}
+            </ChoosePeriod>
+          </Period>
+          <Hour>
+            <Title2>Escolha um Horário</Title2>
+            <ChooseHour>
+              {schedules.map((schedule) => (
+                <HourButton
+                  key={schedule.id}
+                  onClick={() => setSelectedScheduleId(schedule.id)}
+                  colorActive={selectedScheduleId === schedule.id}
+                  visible={schedule.periodId === selectedPeriodId}
+                >
+                  {`${schedule.initialHour} - ${schedule.endHour} `}
+                </HourButton>
+              ))}
+            </ChooseHour>
+          </Hour>
+          <RoomContainer>
+            <Title2>Escolha uma sala</Title2>
+            <ChooseRoom>
+              {rooms
+                .sort((a, b) => a.id - b.id)
+                .map((room) => (
+                  <RoomButton
+                    key={room.id}
+                    onClick={() => setSelectedRoomId(room.id)}
+                    active={selectedRoomId === room.id}
+                    isBroken={room.status === 1}
+                  >
+                    <Room>{room.initials}</Room>
+                    <Image src={roomPath} />
+                  </RoomButton>
+                ))}
+            </ChooseRoom>
+          </RoomContainer>
+
+          <GroupContainer>
+            <Title2>Nome da Reserva</Title2>
             <InputContainer>
               <SearchArea>
+                <SearchHashTag>#</SearchHashTag>
                 <SearchingBar
-                  type="number"
-                  ref={inputRef}
-                  placeholder="Digite uma matrícula"
-                  value={enrollment}
+                  type="text"
+                  maxLength={25}
+                  placeholder="Digite o Nome do Grupo"
+                  value={reserveName}
                   onChange={(event) => {
-                    setEnrollment(event.target.value);
-                    if (addComponentError) {
-                      setAddComponentError('');
-                    }
+                    setReserveName(event.target.value);
+                    // console.log(event.target.value);
                   }}
+                  style={{ marginRight: '60px' }}
                 />
               </SearchArea>
-              <InputButton onClick={handleAddComponent}>+</InputButton>
             </InputContainer>
+          </GroupContainer>
+          <ComponentsContainer>
+            <Title2>Adicione componentes:</Title2>
+            <Components>
+              <InputContainer>
+                <SearchArea>
+                  <SearchingBar
+                    type="number"
+                    ref={inputRef}
+                    placeholder="Digite uma matrícula"
+                    value={enrollment}
+                    onChange={(event) => {
+                      setEnrollment(event.target.value);
+                      if (addComponentError) {
+                        setAddComponentError('');
+                      }
+                    }}
+                  />
+                </SearchArea>
+                <InputButton onClick={handleAddComponent}>+</InputButton>
+              </InputContainer>
 
-            <ErrorContainer error={addComponentError !== ''}>{addComponentError}</ErrorContainer>
+              <ErrorContainer error={addComponentError !== ''}>{addComponentError}</ErrorContainer>
 
-            <ComponentList>
-              {components.map((component) => (
-                <Component key={component.enrollment}>
-                  <ComponentContainer>
-                    <ProfileIcon bgColor={component.color}>
-                      <ProfileIconInitials>{component.name[0].toUpperCase()}</ProfileIconInitials>
-                    </ProfileIcon>
-                    <ComponentInfo>
-                      {component.name}
-                      <Enrollment>
-                        {' '}
-                        <HashTag>#</HashTag>
-                        {component.enrollment}
-                      </Enrollment>
-                    </ComponentInfo>
-                  </ComponentContainer>
-                  <IconContainer visible={isReserveAdmin(component.enrollment) || checkUserIsAdmin(authContext.user)}>
-                    <FaTimes onClick={() => removeComponent(component.enrollment)} />
-                  </IconContainer>
-                </Component>
-              ))}
-            </ComponentList>
-          </Components>
-        </ComponentsContainer>
-        <RentButton onClick={handleCreateReserve}>Confirmar</RentButton>
-      </MiddleSide>
-      <RightSide>
-        <FriendList onFriendClick={handleFriendClick} />
-      </RightSide>
-      <PageHelpContainer>
-        <a href="/ajuda#perguntas">
-          <AiOutlineQuestionCircle />
-        </a>
-      </PageHelpContainer>
-    </Container>
+              <ComponentList>
+                {components.map((component) => (
+                  <Component key={component.enrollment}>
+                    <ComponentContainer>
+                      <ProfileIcon bgColor={component.color}>
+                        <ProfileIconInitials>{component.name[0].toUpperCase()}</ProfileIconInitials>
+                      </ProfileIcon>
+                      <ComponentInfo>
+                        {component.name}
+                        <Enrollment>
+                          {' '}
+                          <HashTag>#</HashTag>
+                          {component.enrollment}
+                        </Enrollment>
+                      </ComponentInfo>
+                    </ComponentContainer>
+                    <IconContainer visible={isReserveAdmin(component.enrollment) || checkUserIsAdmin(authContext.user)}>
+                      <FaTimes onClick={() => removeComponent(component.enrollment)} />
+                    </IconContainer>
+                  </Component>
+                ))}
+              </ComponentList>
+            </Components>
+          </ComponentsContainer>
+          <RentButton onClick={handleCreateReserve}>Confirmar</RentButton>
+        </MiddleSide>
+        <RightSide>
+          <FriendList onFriendClick={handleFriendClick} />
+        </RightSide>
+        <PageHelpContainer>
+          <a href="/ajuda#perguntas">
+            <AiOutlineQuestionCircle />
+          </a>
+        </PageHelpContainer>
+      </Container>
+    </>
   );
 };
 

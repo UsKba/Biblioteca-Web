@@ -12,8 +12,9 @@ import awardIcon from '~/assets/award.svg';
 import reserveConfig from '~/config/reserve';
 import { useAuth } from '~/contexts/AuthContext';
 import { useReserve } from '~/contexts/ReserveContext';
-import { User } from '~/types';
+import { User, Reserve } from '~/types';
 
+import DeleteMemberModal from './DeleteMemberModal';
 import QuitReserveModal from './QuitReserveModal';
 import {
   Container,
@@ -60,8 +61,12 @@ import { ReserveState } from './types';
 const pageTitle = { '/reservar': false };
 
 const ReserveList: React.FC = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [quitReserveModalVisible, setQuitReserveModalVisible] = useState(false);
+  const [deleteMemberModalVisible, setDeleteMemberModalVisible] = useState(false);
   const [reserveToQuit, setReserveToQuit] = useState<ReserveState>();
+  const [reserveToDeleteMember, setReserveToDeleteMember] = useState({} as ReserveState);
+  const [reserveToDeleteMemberId, setReserveToDeleteMemberId] = useState<number>();
+
   const [menuIndex, setMenuIndex] = useState<number>();
   const [reserves, setReserves] = useState([] as ReserveState[]);
   const authContext = useAuth();
@@ -73,7 +78,9 @@ const ReserveList: React.FC = () => {
     if (!reserveToQuit) {
       return;
     }
-    setModalVisible(false);
+
+    setQuitReserveModalVisible(false);
+
     const { error } = await deleteRequest(`/reserves/${reserveToQuit.id}/users/${authContext.user.id}`);
 
     if (error) {
@@ -88,9 +95,6 @@ const ReserveList: React.FC = () => {
     setReserves(newReserves);
   }, [authContext.user.id, reserveToQuit, reserves]);
 
-  function handleMinimumUsers() {
-    toast.dark('Pelo menos 3 usuários na reserva são necessários', {});
-  }
   function handleNotFindReserve() {
     toast.dark('Reserva não encontrada', {});
   }
@@ -186,9 +190,36 @@ const ReserveList: React.FC = () => {
   );
 
   const quitReserve = useCallback((reserve: ReserveState) => {
-    setModalVisible(true);
+    setQuitReserveModalVisible(true);
     setReserveToQuit(reserve);
   }, []);
+
+  const handleDeleteMember = useCallback(async () => {
+    console.log('aqui');
+    setDeleteMemberModalVisible(false);
+
+    const { error } = await deleteRequest(`/reserves/${reserveToDeleteMember.id}/users/${reserveToDeleteMemberId}`);
+
+    if (error) {
+      alert(error.error);
+      return;
+    }
+    handleDeleteUserToast();
+    // alert('Usuário deletado!');
+    const newUsers = reserveToDeleteMember.users.filter((user) => {
+      return user.id !== reserveToDeleteMemberId;
+    });
+    const newReserves = reserves.map((reserve) => {
+      if (reserve.id === reserveToDeleteMember.id) {
+        return {
+          ...reserve,
+          users: newUsers,
+        };
+      }
+      return reserve;
+    });
+    setReserves(newReserves);
+  }, [reserves, reserveToDeleteMember, reserveToDeleteMemberId]);
 
   const deleteGroupMember = useCallback(
     async (reserveId: number, userId: number) => {
@@ -196,45 +227,36 @@ const ReserveList: React.FC = () => {
         return reserve.id === reserveId;
       });
 
-      const response = window.confirm('Tem certeza que deseja excluir este membro da reserva?');
-
-      if (!response) {
-        return;
-      }
-
       if (findReserve === undefined) {
         handleNotFindReserve();
-        // alert('Reserva não encontrada');
         return;
       }
 
-      if (findReserve.users.length <= 3) {
-        handleMinimumUsers();
-        // alert('Pelo menos 3 usuários na reserva são necessários');
-        return;
-      }
+      setReserveToDeleteMember(findReserve);
+      setDeleteMemberModalVisible(true);
+      setReserveToDeleteMemberId(userId);
 
-      const { error } = await deleteRequest(`/reserves/${reserveId}/users/${userId}`);
+      // const { error } = await deleteRequest(`/reserves/${reserveId}/users/${userId}`);
 
-      if (error) {
-        alert(error.error);
-        return;
-      }
-      handleDeleteUserToast();
-      // alert('Usuário deletado!');
-      const newUsers = findReserve.users.filter((user) => {
-        return user.id !== userId;
-      });
-      const newReserves = reserves.map((reserve) => {
-        if (reserve.id === reserveId) {
-          return {
-            ...reserve,
-            users: newUsers,
-          };
-        }
-        return reserve;
-      });
-      setReserves(newReserves);
+      // if (error) {
+      //   alert(error.error);
+      //   return;
+      // }
+      // handleDeleteUserToast();
+      // // alert('Usuário deletado!');
+      // const newUsers = findReserve.users.filter((user) => {
+      //   return user.id !== userId;
+      // });
+      // const newReserves = reserves.map((reserve) => {
+      //   if (reserve.id === reserveId) {
+      //     return {
+      //       ...reserve,
+      //       users: newUsers,
+      //     };
+      //   }
+      //   return reserve;
+      // });
+      // setReserves(newReserves);
     },
     [reserves]
   );
@@ -327,11 +349,18 @@ const ReserveList: React.FC = () => {
       />
 
       <QuitReserveModal
-        visible={modalVisible}
-        setVisible={setModalVisible}
+        visible={quitReserveModalVisible}
+        setVisible={setQuitReserveModalVisible}
         reserveToQuit={reserveToQuit || ({} as ReserveState)}
         onConfirm={handleQuitReserve}
       />
+      <DeleteMemberModal
+        visible={deleteMemberModalVisible}
+        setVisible={setDeleteMemberModalVisible}
+        reserveToDeleteMember={reserveToDeleteMember || ({} as ReserveState)}
+        onConfirm={handleDeleteMember}
+      />
+
       <TitlePanel visible={checkPageURL()}>
         <Title>Reservas</Title>
         <StyledLink to="/reservar">

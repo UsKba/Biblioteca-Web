@@ -1,11 +1,12 @@
 /* eslint-disable no-alert */
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { FriendIconInitials } from '~/components/FriendList/styles';
 
 import { useReserve } from '~/contexts/ReserveContext';
 import { Reserve } from '~/types';
 
+import RefuseReserveModal from './RefuseReserveModal';
 import {
   NotificationContainer,
   NotificationHead,
@@ -27,6 +28,7 @@ interface NotificationReserveProps {
 }
 
 const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) => {
+  const [modalVisible, setModalVisible] = useState(false);
   const reserveContext = useReserve();
   const formatText = useCallback(() => {
     const formatter = new Intl.DateTimeFormat('pt-br', { month: 'long' });
@@ -80,28 +82,24 @@ const NotificationReserve: React.FC<NotificationReserveProps> = ({ reserve }) =>
     return text;
   }, [reserve]);
 
-  const refuseReserve = useCallback(() => {
-    const response = window.confirm('Tem certeza que deseja recusar o pedido desta reserva?');
-
-    if (!response) {
-      return;
-    }
-
-    if (reserve.users.length <= 3) {
-      const response2 = window.confirm(
-        'Atenção! Essa reserva possui apenas 3 membros, se você recusar ela será deletada, tem certeza que deseja sair?'
-      );
-
-      if (!response2) {
-        return;
-      }
-    }
-
+  const handleRefuseReserve = useCallback(async () => {
+    setModalVisible(false);
     reserveContext.handleRefuseReserve(reserve.id);
-  }, [reserve.id, reserve.users.length, reserveContext]);
+  }, [reserve.id, reserveContext]);
+
+  const refuseReserve = useCallback(() => {
+    setModalVisible(true);
+  }, []);
 
   return (
     <NotificationContainer>
+      <RefuseReserveModal
+        visible={modalVisible}
+        setVisible={setModalVisible}
+        reserveToQuit={reserve || ({} as Reserve)}
+        onConfirm={handleRefuseReserve}
+      />
+
       <NotificationTop>
         <NotificationLeft>
           <UserIcon bgColor={adminColor()}>

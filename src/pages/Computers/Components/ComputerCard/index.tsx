@@ -51,13 +51,17 @@ const ComputerCard: React.FC<ComputerCardProps> = ({ computer, settingsOpen, set
     [computer.id]
   );
 
-  useEffect(() => {
-    if (computer.status === 0) {
+  const changeComputerDesc = useCallback((computerStatus: number) => {
+    if (computerStatus === 0) {
       setComputerDesc('funcionando');
     } else {
       setComputerDesc('indisponível');
     }
-  }, [computer.status]);
+  }, []);
+
+  useEffect(() => {
+    changeComputerDesc(computer.status);
+  }, [changeComputerDesc, computer.status]);
 
   return (
     <ComputerContainer>
@@ -89,7 +93,8 @@ const ComputerCard: React.FC<ComputerCardProps> = ({ computer, settingsOpen, set
             onClick={() => {
               setSelectedComputerStatus(temporaryComputerStatus);
               changeComputerStatus(selectedComputerStatus);
-              settingsClick();
+              changeComputerDesc(computer.status);
+              // settingsClick();
             }}
           >
             Salvar

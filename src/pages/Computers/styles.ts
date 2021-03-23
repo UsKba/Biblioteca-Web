@@ -19,6 +19,10 @@ export const LeftSide = styled.div`
   flex-direction: column;
 
   padding: 20px;
+
+  @media only screen and (max-width: 640px) {
+    display: none;
+  }
 `;
 
 export const RightSide = styled.div`
@@ -33,16 +37,9 @@ export const MiddleSide = styled.div`
   display: flex;
   flex: 2;
 
+  margin-top: 90px;
+
   flex-direction: column;
-`;
-
-export const MiddleTop = styled.div`
-  text-align: center;
-
-  padding: 30px 0;
-  @media only screen and (max-width: 640px) {
-    padding-top: 0;
-  }
 `;
 
 export const MiddleBottom = styled.div`
@@ -92,16 +89,6 @@ export const MiddleRight = styled.div<MobileModeProps>`
   }
 `;
 
-export const H1 = styled.span`
-  margin-bottom: 20px;
-
-  color: ${colors.dark};
-
-  font-size: 32px;
-  font-family: 'Ubuntu';
-  font-weight: bold;
-`;
-
 export const H2 = styled.span`
   color: ${colors.dark};
   margin-bottom: 15px;
@@ -115,7 +102,7 @@ export const ComputerList = styled.div<MobileModeProps>`
   display: flex;
   flex-direction: column;
 
-  height: 380px;
+  height: 365px;
 
   overflow-y: auto;
 
@@ -209,7 +196,7 @@ export const MobileStatusList = styled.div`
   height: 25px;
   width: 100%;
 
-  padding: 0 5px;
+  padding: 0 20px;
 
   background-color: ${colors.terciary};
 
@@ -233,8 +220,8 @@ export const MobileStatusContainer = styled.div`
 export const MobileStatus = styled.div<MobileStatusProps>`
   border-radius: 100px;
 
-  height: 20px;
-  width: 20px;
+  height: 16px;
+  width: 16px;
 
   margin-right: 3px;
 
@@ -256,5 +243,9 @@ export const PageHelpContainer = styled.div`
   svg {
     color: ${colors.dark};
     font-size: 35px;
+  }
+
+  @media only screen and (max-width: 640px) {
+    right: 10px;
   }
 `;

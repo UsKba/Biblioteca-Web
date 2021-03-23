@@ -59,6 +59,9 @@ export const MiddleSide = styled.div<MobileModeProps>`
     display: ${(props) => !props.visible && 'none'};
     padding: 14px 10px 0 10px;
   }
+  @media only screen and (min-width: 1700px) {
+    max-width: 1500px;
+  }
 `;
 
 export const RightSide = styled.div<MobileModeProps>`

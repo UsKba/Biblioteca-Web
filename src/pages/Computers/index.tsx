@@ -15,12 +15,10 @@ import {
   Container,
   LeftSide,
   MiddleSide,
-  MiddleTop,
   MiddleBottom,
   MiddleLeft,
   MiddleRight,
   RightSide,
-  H1,
   H2,
   ComputerList,
   ErrorContainer,
@@ -91,15 +89,35 @@ const RoomComputers = () => {
         </LeftSide>
 
         <MiddleSide>
-          <MiddleTop>
-            <H1>Computadores</H1>
-          </MiddleTop>
           <MiddleBottom>
             <MiddleLeft visible={screenSwipe === 0}>
               <H2>Laboratório</H2>
               <ComputerList>
-                {computers.map((computer, index) => {
-                  if (computer.local.id === 1) {
+                {computers
+                  .sort((a, b) => a.id - b.id)
+                  .map((computer, index) => {
+                    if (computer.local.id === 1) {
+                      return (
+                        <ComputerCard
+                          key={computer.id}
+                          computer={computer}
+                          settingsOpen={index === settingsIndex}
+                          settingsClick={() => handleSettingsClick(index)}
+                        />
+                      );
+                    }
+
+                    return undefined;
+                  })}
+              </ComputerList>
+            </MiddleLeft>
+
+            <MiddleRight visible={screenSwipe === 1}>
+              <H2>Biblioteca</H2>
+              {computers
+                .sort((a, b) => a.id - b.id)
+                .map((computer, index) => {
+                  if (computer.local.id === 2) {
                     return (
                       <ComputerCard
                         key={computer.id}
@@ -112,25 +130,6 @@ const RoomComputers = () => {
 
                   return undefined;
                 })}
-              </ComputerList>
-            </MiddleLeft>
-
-            <MiddleRight visible={screenSwipe === 1}>
-              <H2>Biblioteca</H2>
-              {computers.map((computer, index) => {
-                if (computer.local.id === 2) {
-                  return (
-                    <ComputerCard
-                      key={computer.id}
-                      computer={computer}
-                      settingsOpen={index === settingsIndex}
-                      settingsClick={() => handleSettingsClick(index)}
-                    />
-                  );
-                }
-
-                return undefined;
-              })}
             </MiddleRight>
           </MiddleBottom>
         </MiddleSide>
@@ -151,21 +150,11 @@ const RoomComputers = () => {
         <MobileStatusList>
           <MobileStatusContainer>
             <MobileStatus bgColor={colors.computerStatus[0]} />
-            <MobileStatusSpan>Disponível</MobileStatusSpan>
+            <MobileStatusSpan>Funcionando</MobileStatusSpan>
           </MobileStatusContainer>
 
           <MobileStatusContainer>
             <MobileStatus bgColor={colors.computerStatus[1]} />
-            <MobileStatusSpan>Ausente</MobileStatusSpan>
-          </MobileStatusContainer>
-
-          <MobileStatusContainer>
-            <MobileStatus bgColor={colors.computerStatus[2]} />
-            <MobileStatusSpan>Ocupado</MobileStatusSpan>
-          </MobileStatusContainer>
-
-          <MobileStatusContainer>
-            <MobileStatus bgColor={colors.computerStatus[3]} />
             <MobileStatusSpan>Indisponível</MobileStatusSpan>
           </MobileStatusContainer>
         </MobileStatusList>
