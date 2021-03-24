@@ -107,7 +107,7 @@ const Rooms: React.FC = () => {
       const { data, error } = await getRequest('/periods');
 
       if (error) {
-        alert(error.error);
+        toast.dark(error.error);
         return;
       }
 
@@ -118,7 +118,7 @@ const Rooms: React.FC = () => {
       const { data, error } = await getRequest('/rooms');
 
       if (error) {
-        alert(error.error);
+        toast.dark(error.error);
         return;
       }
 
@@ -129,7 +129,7 @@ const Rooms: React.FC = () => {
       const { data, error } = await getRequest('/schedules');
 
       if (error) {
-        alert(error.error);
+        toast.dark(error.error);
         return;
       }
 

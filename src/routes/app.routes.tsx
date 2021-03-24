@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
+
+import { checkUserIsAdmin } from '~/utils/user';
 
 import Navbar from '~/components/Navbar';
 
+import { useAuth } from '~/contexts/AuthContext';
 import About from '~/pages/About';
 import Computers from '~/pages/Computers';
 import Help from '~/pages/Help';
@@ -14,6 +17,17 @@ import Rooms from '~/pages/Rooms';
 import Settings from '~/pages/Settings';
 
 export default function Routes() {
+  const authContext = useAuth();
+
+  const [userStatus, setUserStatus] = useState(Boolean);
+
+  useEffect(() => {
+    if (checkUserIsAdmin(authContext.user)) {
+      setUserStatus(true);
+    }
+    setUserStatus(false);
+  }, [authContext.user]);
+
   return (
     <>
       <Route
@@ -49,14 +63,15 @@ export default function Routes() {
         <Route path="/configuracoes-grupo" exact component={Settings} />
         <Route path="/sobre" exact component={About} />
         <Route path="/ajuda" exact component={Help} />
-        <Route path="/criar-aviso" exact component={MakeWarning} />
-
-        {/* <Route path="/inbox" exact component={Inbox} /> */}
-
+        <>
+          {userStatus ? (
+            <Route path="/criar-aviso" exact component={MakeWarning} />
+          ) : (
+            <Route path="/criar-aviso" exact component={MakeWarning} />
+          )}
+        </>
         <Route path="/" component={PageNotFound} />
       </Switch>
-
-      {/* <Route path="/" exact component={Dashboard} /> */}
     </>
   );
 }

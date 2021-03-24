@@ -85,27 +85,6 @@ export default createGlobalStyle`
 }
 
 
-//slider
-
-//a div dos botões do slider
-.jtItyS {
-  height: 28px;
-  align-items: center;
-}
-
-//navigator
-.iNRFYi{
-  background-color: #adabb3;
-  box-shadow: none;
-}
-
-//navigator selecionado
-.jtxYAF {
-  background-color: ${colors.dark};
-  box-shadow: none;
-  height: 18px;
-  width: 18px;
-}
 
 .Toastify__close-button > svg {
   margin-top: 15px;
@@ -114,6 +93,8 @@ export default createGlobalStyle`
 .Toastify__toast--dark {
   background-color: #333333;
 }
+
+//slider
 
 button.rec-dot:active, button.rec-dot:focus{
   box-shadow: none;

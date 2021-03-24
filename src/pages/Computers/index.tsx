@@ -1,6 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { AiOutlineQuestionCircle } from 'react-icons/ai';
 
+import 'react-toastify/dist/ReactToastify.css';
+
+import { ToastContainer, toast } from 'react-toastify';
+
 import { getRequest } from '~/utils/api';
 
 import colors from '~/styles/colors';
@@ -45,7 +49,7 @@ const RoomComputers = () => {
       const { data, error } = await getRequest('/computers');
 
       if (error) {
-        alert(error.error);
+        toast.dark(error.error);
         return;
       }
 
@@ -72,6 +76,17 @@ const RoomComputers = () => {
 
   return (
     <>
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Container>
         <MobileNav>
           <MobileNavText onClick={() => handleChangeSwipe(0)}>

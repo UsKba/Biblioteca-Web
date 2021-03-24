@@ -91,6 +91,7 @@ const Reserve: React.FC = () => {
   function handleCreateReserveToast() {
     toast.dark('Reserva Criada!', {});
   }
+
   const history = useHistory();
 
   const { user } = useAuth();
@@ -167,7 +168,7 @@ const Reserve: React.FC = () => {
     }
 
     if (error) {
-      alert(error.error);
+      toast.dark(error.error);
       return;
     }
 
@@ -232,7 +233,7 @@ const Reserve: React.FC = () => {
     });
 
     if (error) {
-      alert(error.error);
+      toast.dark(error.error);
       return;
     }
 
@@ -267,7 +268,7 @@ const Reserve: React.FC = () => {
       const { data, error } = await getRequest('/schedules');
 
       if (error) {
-        alert(error.error);
+        toast.dark(error.error);
         return;
       }
 
@@ -280,7 +281,7 @@ const Reserve: React.FC = () => {
       const { data, error } = await getRequest('/periods');
 
       if (error) {
-        alert(error.error);
+        toast.dark(error.error);
         return;
       }
 
@@ -291,7 +292,7 @@ const Reserve: React.FC = () => {
       const { data, error } = await getRequest('/rooms');
 
       if (error) {
-        alert(error.error);
+        toast.dark(error.error);
         return;
       }
 

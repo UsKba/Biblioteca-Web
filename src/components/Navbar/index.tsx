@@ -112,7 +112,9 @@ const NavbarComponent: React.FC = () => {
           </LeftSide>
 
           <RightSide>
-            <RedBall newNotifications={notificationExists}>{pendingReserveList.length}</RedBall>
+            <RedBall newNotifications={notificationExists && pendingReserveList.length !== 0}>
+              {pendingReserveList.length}
+            </RedBall>
 
             <NavItem small onClick={toggleNotifications}>
               <FaBell title="Ajuda" />

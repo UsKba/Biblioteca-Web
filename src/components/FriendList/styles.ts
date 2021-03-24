@@ -266,6 +266,7 @@ interface PendingButtonProps {
 
 export const PendingButton = styled.button<PendingButtonProps>`
   display: ${({ searchVisibilityToggle }) => (searchVisibilityToggle === true ? 'none' : 'flex')};
+  align-items: center;
 
   height: 45px;
   width: 280px;
