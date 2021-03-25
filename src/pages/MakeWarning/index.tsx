@@ -24,11 +24,17 @@ import {
   ComputerOptionContainer,
   LibraryOptionContainer,
   OptionDropdown,
+  DateOptionContainer,
+  DateDropdown,
+  DateInput,
+  HourInput,
 } from './styles';
 
 const MakeWarning: React.FC = () => {
   const [activeWarning, setActivewarning] = useState(1);
   const [activeWarningType, setActiveWarningType] = useState(Number);
+  const [activeDatePicker, setActiveDatePicker] = useState(Number);
+  const [finalDate, setFinalDate] = useState('');
 
   const warnings = [
     {
@@ -64,7 +70,9 @@ const MakeWarning: React.FC = () => {
           <option value="3">Biblioteca</option>
         </WarningTypeDropdown>
       </WarningTypeContainer>
+
       <Title>Escolha uma imagem para o aviso</Title>
+
       <ImageChooserContainer>
         <ScrollMenu>
           {warnings.map((warning) => (
@@ -122,29 +130,29 @@ const MakeWarning: React.FC = () => {
       </ComputerOptionContainer>
 
       <LibraryOptionContainer visible={activeWarningType === 3}>
-        <OptionDropdown>
-          <option value="" disabled selected>
-            Escolha o dia inicial de fechamento
-          </option>
-          <option value="0">01</option>
-          <option value="1">02</option>
-          <option value="2">03</option>
-          <option value="3">04</option>
-        </OptionDropdown>
-
-        <OptionDropdown>
-          <option value="" disabled selected>
-            Escolha o dia final de fechamento
-          </option>
-          <option value="0">01</option>
-          <option value="1">02</option>
-          <option value="2">03</option>
-          <option value="3">04</option>
-        </OptionDropdown>
+        <Title>Escolha o dia inicial de fechamento</Title>
+        <DateInput type="date" />
       </LibraryOptionContainer>
 
       <Title>Adicione uma descrição</Title>
       <TextArea maxLength={300} />
+
+      <Title>Data de finalização do aviso:</Title>
+      <DateOptionContainer>
+        <DateDropdown onChange={(event) => setActiveDatePicker(Number(event.target.value))}>
+          <option value="0">Uma semana</option>
+          <option value="1">Um mês</option>
+          <option value="2">Escolher data</option>
+        </DateDropdown>
+        <DateInput
+          type="date"
+          visible={activeDatePicker === 2}
+          onChange={(event) => {
+            setFinalDate(event.target.value);
+          }}
+        />
+        <HourInput placeholder="Hora" visible={activeDatePicker === 2} />
+      </DateOptionContainer>
 
       <ButtonsContainer>
         <CancelButton>Cancelar</CancelButton>

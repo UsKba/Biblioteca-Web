@@ -178,13 +178,22 @@ export const GoBack = styled.div<GoBackProps>`
 export const EmailArea = styled.div`
   display: flex;
   flex-direction: column;
-  width: 150px;
+
   align-items: center;
-  align-self: center;
+
   margin-top: 20px;
 `;
 
 export const Emails = styled.div`
+  display: flex;
+  align-items: center;
+
+  color: #767676;
+  font-size: 21px;
+  padding: 4px;
+`;
+
+export const EmailsB = styled.b`
   color: #767676;
   font-size: 21px;
   padding: 4px;
