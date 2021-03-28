@@ -36,7 +36,6 @@ interface ComputerCardProps {
 const ComputerCard: React.FC<ComputerCardProps> = ({ computer, settingsOpen, settingsClick }) => {
   const authContext = useAuth();
   const [selectedComputerStatus, setSelectedComputerStatus] = useState(Number);
-  const [temporaryComputerStatus, setTemporaryComputerStatus] = useState(Number);
   const [computerDesc, setComputerDesc] = useState(String);
 
   const changeComputerStatus = useCallback(
@@ -82,7 +81,7 @@ const ComputerCard: React.FC<ComputerCardProps> = ({ computer, settingsOpen, set
         <SettingsText>{`Computador ${computer.identification}`}</SettingsText>
         <DropdownContainer>
           <DropdownLabel>Status:</DropdownLabel>
-          <Dropdown onChange={(event) => setTemporaryComputerStatus(Number(event.target.value))}>
+          <Dropdown onChange={(event) => setSelectedComputerStatus(Number(event.target.value))}>
             <Option value="0">Funcionando</Option>
             <Option value="1">Indisponível</Option>
           </Dropdown>
@@ -91,10 +90,9 @@ const ComputerCard: React.FC<ComputerCardProps> = ({ computer, settingsOpen, set
           <CancelButton onClick={() => settingsClick()}>Cancelar</CancelButton>
           <SaveButton
             onClick={() => {
-              setSelectedComputerStatus(temporaryComputerStatus);
               changeComputerStatus(selectedComputerStatus);
               changeComputerDesc(computer.status);
-              // settingsClick();
+              settingsClick();
             }}
           >
             Salvar

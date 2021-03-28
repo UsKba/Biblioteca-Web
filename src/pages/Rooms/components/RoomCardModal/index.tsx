@@ -26,7 +26,6 @@ interface RoomCardModalProps {
 
 const RoomCardModal: React.FC<RoomCardModalProps> = ({ room, schedule, visible, handleButtonClick }) => {
   const [selectedReserveStatus, setSelectedReserveStatus] = useState(Number);
-  const [temporaryReserveStatus, setTemporaryReserveStatus] = useState(Number);
 
   const changeReserveStatus = useCallback(
     async (reserveStatus: number) => {
@@ -48,7 +47,7 @@ const RoomCardModal: React.FC<RoomCardModalProps> = ({ room, schedule, visible, 
 
         <DropdownContainer>
           <DropdownLabel>Status:</DropdownLabel>
-          <Dropdown onChange={(event) => setTemporaryReserveStatus(Number(event.target.value))}>
+          <Dropdown onChange={(event) => setSelectedReserveStatus(Number(event.target.value))}>
             <Option value="0">Disponível</Option>
             <Option value="1">Indisponível</Option>
           </Dropdown>
@@ -58,9 +57,8 @@ const RoomCardModal: React.FC<RoomCardModalProps> = ({ room, schedule, visible, 
           <CancelButton onClick={() => handleButtonClick()}>Cancelar</CancelButton>
           <SaveButton
             onClick={() => {
-              setSelectedReserveStatus(temporaryReserveStatus);
               changeReserveStatus(selectedReserveStatus);
-              // handleButtonClick();
+              handleButtonClick();
             }}
           >
             Salvar
