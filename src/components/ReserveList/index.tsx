@@ -8,6 +8,8 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import { deleteRequest } from '~/utils/api';
 
+import ConfirmModal from '~/components/ConfirmModal';
+
 import awardIcon from '~/assets/award.svg';
 import reserveConfig from '~/config/reserve';
 import { useAuth } from '~/contexts/AuthContext';
@@ -63,6 +65,8 @@ const pageTitle = { '/reservar': false };
 const ReserveList: React.FC = () => {
   const [quitReserveModalVisible, setQuitReserveModalVisible] = useState(false);
   const [deleteMemberModalVisible, setDeleteMemberModalVisible] = useState(false);
+  const [deleteReserveModalVisible, setDeleteReserveModalVisible] = useState(false);
+  const [deleteReserveId, setDeleteReserveId] = useState<number>();
   const [reserveToQuit, setReserveToQuit] = useState<ReserveState>();
   const [reserveToDeleteMember, setReserveToDeleteMember] = useState({} as ReserveState);
   const [reserveToDeleteMemberId, setReserveToDeleteMemberId] = useState<number>();
@@ -235,57 +239,36 @@ const ReserveList: React.FC = () => {
       setReserveToDeleteMember(findReserve);
       setDeleteMemberModalVisible(true);
       setReserveToDeleteMemberId(userId);
-
-      // const { error } = await deleteRequest(`/reserves/${reserveId}/users/${userId}`);
-
-      // if (error) {
-      //   alert(error.error);
-      //   return;
-      // }
-      // handleDeleteUserToast();
-      // // alert('Usuário deletado!');
-      // const newUsers = findReserve.users.filter((user) => {
-      //   return user.id !== userId;
-      // });
-      // const newReserves = reserves.map((reserve) => {
-      //   if (reserve.id === reserveId) {
-      //     return {
-      //       ...reserve,
-      //       users: newUsers,
-      //     };
-      //   }
-      //   return reserve;
-      // });
-      // setReserves(newReserves);
     },
     [reserves]
   );
 
-  const deleteReserve = useCallback(
-    async (reserveId: number) => {
-      const response = window.confirm('Tem certeza que deseja excluir esta reserva?');
+  const handleDeleteReserve = useCallback(async () => {
+    if (!deleteReserveId) {
+      return;
+    }
 
-      if (!response) {
-        return;
-      }
+    const { error } = await deleteRequest(`/reserves/${deleteReserveId}`);
 
-      const { error } = await deleteRequest(`/reserves/${reserveId}`);
+    if (error) {
+      alert(error.error);
+      return;
+    }
+    handleDeleteReserveToast();
+    // alert('Reserva deletada!');
 
-      if (error) {
-        alert(error.error);
-        return;
-      }
-      handleDeleteReserveToast();
-      // alert('Reserva deletada!');
+    const newReserves = reserves.filter((reserve) => {
+      return reserve.id !== deleteReserveId;
+    });
 
-      const newReserves = reserves.filter((reserve) => {
-        return reserve.id !== reserveId;
-      });
+    setReserves(newReserves);
+    setDeleteReserveModalVisible(false);
+  }, [reserves, deleteReserveId]);
 
-      setReserves(newReserves);
-    },
-    [reserves]
-  );
+  const deleteReserve = useCallback((reserveId: number) => {
+    setDeleteReserveModalVisible(true);
+    setDeleteReserveId(reserveId);
+  }, []);
 
   useEffect(() => {
     async function loadReserves() {
@@ -359,6 +342,13 @@ const ReserveList: React.FC = () => {
         setVisible={setDeleteMemberModalVisible}
         reserveToDeleteMember={reserveToDeleteMember || ({} as ReserveState)}
         onConfirm={handleDeleteMember}
+      />
+      <ConfirmModal
+        visible={deleteReserveModalVisible}
+        setVisible={setDeleteReserveModalVisible}
+        title="Deletar Reserva?"
+        content="Tem certeza que deseja deletar esta reserva? Esta ação é irreversível!"
+        onAcceptClick={handleDeleteReserve}
       />
 
       <TitlePanel visible={checkPageURL()}>
