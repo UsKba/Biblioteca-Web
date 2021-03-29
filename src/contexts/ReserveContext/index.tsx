@@ -8,6 +8,7 @@ import { Reserve } from '~/types';
 
 interface ReserveContextData {
   reserves: Reserve[];
+  addReserve: (reserve: Reserve) => void;
   loadReserves: () => Promise<void>;
   handleAcceptReserve: (reserveId: number) => void;
   handleRefuseReserve: (reserveId: number) => void;
@@ -56,6 +57,13 @@ export const ReserveProvider: React.FC = ({ children }) => {
       setReserves(updatedReserves);
     },
     [authContext.user, reserves]
+  );
+
+  const addReserve = useCallback(
+    (reserve: Reserve) => {
+      setReserves([...reserves, reserve]);
+    },
+    [reserves]
   );
 
   const handleRefuseReserve = useCallback(
@@ -115,7 +123,7 @@ export const ReserveProvider: React.FC = ({ children }) => {
   }, [authContext, loadReserves]);
 
   return (
-    <ReserveContext.Provider value={{ reserves, loadReserves, handleAcceptReserve, handleRefuseReserve }}>
+    <ReserveContext.Provider value={{ reserves, addReserve, loadReserves, handleAcceptReserve, handleRefuseReserve }}>
       {children}
     </ReserveContext.Provider>
   );

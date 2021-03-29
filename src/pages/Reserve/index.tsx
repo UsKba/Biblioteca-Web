@@ -16,6 +16,7 @@ import ReserveList from '~/components/ReserveList';
 
 import roomPath from '~/assets/room.jpg';
 import { useAuth } from '~/contexts/AuthContext';
+import { useReserve } from '~/contexts/ReserveContext';
 import {
   Friend,
   User,
@@ -96,6 +97,7 @@ const Reserve: React.FC = () => {
 
   const { user } = useAuth();
   const authContext = useAuth();
+  const reserveContext = useReserve();
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [enrollment, setEnrollment] = useState('');
@@ -221,7 +223,7 @@ const Reserve: React.FC = () => {
   );
 
   const handleCreateReserve = useCallback(async () => {
-    const { error } = await postRequest<ReserveInterface>('/reserves', {
+    const { data, error } = await postRequest<ReserveInterface>('/reserves', {
       name: reserveName,
       roomId: selectedRoomId,
       scheduleId: selectedScheduleId,
@@ -237,9 +239,13 @@ const Reserve: React.FC = () => {
       return;
     }
 
+    if (data) {
+      reserveContext.addReserve(data);
+    }
+
     history.push('/');
     handleCreateReserveToast();
-  }, [components, history, reserveName, selectedDay, selectedRoomId, selectedScheduleId]);
+  }, [components, history, reserveName, selectedDay, selectedRoomId, selectedScheduleId, reserveContext]);
 
   const handleFriendClick = useCallback(
     (friend: Friend) => {

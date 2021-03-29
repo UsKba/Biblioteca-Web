@@ -1,5 +1,5 @@
 import { AxiosRequestConfig } from 'axios';
-import useSWR from 'swr';
+// import useSWR from 'swr';
 
 import api from '~/services/api';
 
@@ -23,16 +23,16 @@ export async function getRequest<T = any, E = RequestError>(url: string, config?
   }
 }
 
-export async function useFetch<T = any, E = RequestError>(url: string) {
-  // eslint-disable-next-line no-shadow
-  const { data, error } = useSWR<T, E>(url, async (url) => {
-    const response = await api.get(url);
+// export async function useFetch<T = any, E = RequestError>(url: string) {
+//   // eslint-disable-next-line no-shadow
+//   const { data, error } = useSWR<T, E>(url, async (url) => {
+//     const response = await api.get(url);
 
-    return response.data;
-  });
+//     return response.data;
+//   });
 
-  return { data, error };
-}
+//   return { data, error };
+// }
 
 // export function useFetch<T = any, E = RequestError>(url: string, config?: AxiosRequestConfig) {
 //   // eslint-disable-next-line no-shadow
