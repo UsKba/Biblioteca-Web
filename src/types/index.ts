@@ -60,3 +60,26 @@ export interface Computer {
     name: string;
   };
 }
+
+export interface Notice {
+  id: number;
+  type: number;
+  title: string;
+  content: string;
+  imageCode: number;
+  status: number;
+  createdAt: string;
+  expiredAt: string;
+
+  // caso seja de sala
+  roomData?: {
+    roomId: number;
+    roomStatus: number;
+  };
+
+  // caso seja de computador
+  computerData?: {
+    computerId: number;
+    computerStatus: number;
+  };
+}

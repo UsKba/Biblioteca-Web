@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { AuthProvider } from '~/contexts/AuthContext';
 import { FriendsProvider } from '~/contexts/FriendsContext';
+import { NoticeProvider } from '~/contexts/NoticeContext';
 import { ReserveProvider } from '~/contexts/ReserveContext';
 
 import Routes from './routes';
@@ -15,11 +16,13 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <AuthProvider>
-          <FriendsProvider>
-            <ReserveProvider>
-              <Routes />
-            </ReserveProvider>
-          </FriendsProvider>
+          <NoticeProvider>
+            <FriendsProvider>
+              <ReserveProvider>
+                <Routes />
+              </ReserveProvider>
+            </FriendsProvider>
+          </NoticeProvider>
         </AuthProvider>
       </BrowserRouter>
     </>
