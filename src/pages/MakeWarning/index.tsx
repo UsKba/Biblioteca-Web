@@ -151,7 +151,7 @@ const MakeWarning: React.FC = () => {
             setFinalDate(event.target.value);
           }}
         />
-        <HourInput placeholder="Hora" visible={activeDatePicker === 2} />
+        {/* <HourInput placeholder="Hora" visible={activeDatePicker === 2} /> */}
       </DateOptionContainer>
 
       <ButtonsContainer>
