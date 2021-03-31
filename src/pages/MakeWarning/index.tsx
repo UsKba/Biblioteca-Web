@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 import Maintenance from '~/assets/maintenance.svg';
 import MaintenanceAlt from '~/assets/warnings/maintenance_alt.svg';
@@ -42,6 +43,11 @@ const datePickerConfig = {
   userDate: 3,
 };
 
+interface CustomNoticeData {
+  id: number;
+  status: number;
+}
+
 const MakeWarning: React.FC = () => {
   const history = useHistory();
   const noticeContext = useNotice();
@@ -52,29 +58,43 @@ const MakeWarning: React.FC = () => {
   const [finalDate, setFinalDate] = useState('');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [roomData, setRoomData] = useState<CustomNoticeData>({} as CustomNoticeData);
+  const [computerData, setComputerData] = useState<CustomNoticeData>({} as CustomNoticeData);
 
   const warningImages = [
     {
-      id: 1,
+      id: 0,
       source: Maintenance,
     },
     {
-      id: 2,
+      id: 1,
       source: MaintenanceAlt,
     },
     {
-      id: 3,
+      id: 2,
       source: Megaphone,
     },
     {
-      id: 4,
+      id: 3,
       source: StudyGroup,
     },
     {
-      id: 5,
+      id: 4,
       source: Time,
     },
   ];
+
+  function handleCreateNoticeToast() {
+    toast.dark('Reserva Criada!', {});
+  }
+
+  function handleMissingRoomToast() {
+    toast.dark('Preencha as informações da sala!', {});
+  }
+
+  function handleMissingComputerToast() {
+    toast.dark('Preencha as informações do computador!', {});
+  }
 
   const handleCreateWarning = useCallback(async () => {
     function getExpiredAt() {
@@ -99,7 +119,30 @@ const MakeWarning: React.FC = () => {
       return expiredAt;
     }
 
+    function getData() {
+      let data;
+
+      if (activeType === noticeConfig.types.room) {
+        data = roomData;
+      }
+
+      if (activeType === noticeConfig.types.computer) {
+        data = computerData;
+      }
+
+      return data;
+    }
+
+    // if (activeType === noticeConfig.types.room && !roomData) {
+    //   return;
+    // }
+
+    // if (activeType === noticeConfig.types.computer && !computerData) {
+    //   return;
+    // }
+
     const expiredAt = getExpiredAt();
+    const data = getData();
 
     await noticeContext.createNotice({
       type: activeType,
@@ -107,13 +150,42 @@ const MakeWarning: React.FC = () => {
       title,
       content: description,
       expiredAt,
+      data,
     });
 
+    handleCreateNoticeToast();
     history.push('/');
-  }, [activeDatePicker, activeImageCode, activeType, description, finalDate, history, noticeContext, title]);
+  }, [
+    activeDatePicker,
+    activeImageCode,
+    activeType,
+    computerData,
+    description,
+    finalDate,
+    history,
+    noticeContext,
+    roomData,
+    title,
+  ]);
+
+  const goBack = useCallback(() => {
+    history.goBack();
+  }, [history]);
 
   return (
     <Container>
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+
       <WarningTypeContainer>
         <WarningTypeTitle>Escolha o tipo de aviso</WarningTypeTitle>
         <WarningTypeDropdown onChange={(event) => setActiveType(Number(event.target.value))}>
@@ -142,7 +214,7 @@ const MakeWarning: React.FC = () => {
       <Input type="text" onChange={(event) => setTitle(event.target.value)} maxLength={25} />
 
       <RoomOptionContainer visible={activeType === 1}>
-        <OptionDropdown>
+        <OptionDropdown onChange={(event) => setRoomData({ ...roomData, id: Number(event.target.value) })}>
           <option value="" disabled selected>
             Escolha a sala
           </option>
@@ -152,7 +224,7 @@ const MakeWarning: React.FC = () => {
           <option value="4">F1-6</option>
         </OptionDropdown>
 
-        <OptionDropdown>
+        <OptionDropdown onChange={(event) => setRoomData({ ...roomData, status: Number(event.target.value) })}>
           <option value="" disabled selected>
             Status
           </option>
@@ -162,9 +234,12 @@ const MakeWarning: React.FC = () => {
       </RoomOptionContainer>
 
       <ComputerOptionContainer visible={activeType === 2}>
-        <OptionDropdown>
+        <OptionDropdown onChange={(event) => setComputerData({ ...computerData, id: Number(event.target.value) })}>
           <option value="" disabled selected>
             Escolha o computador
+          </option>
+          <option value="" disabled>
+            Laboratório
           </option>
           <option value="1">01</option>
           <option value="2">02</option>
@@ -174,9 +249,16 @@ const MakeWarning: React.FC = () => {
           <option value="6">06</option>
           <option value="7">07</option>
           <option value="8">08</option>
+          <option value="" disabled>
+            Biblioteca
+          </option>
+          <option value="9">01</option>
+          <option value="10">02</option>
+          <option value="11">03</option>
+          <option value="12">04</option>
         </OptionDropdown>
 
-        <OptionDropdown>
+        <OptionDropdown onChange={(event) => setComputerData({ ...computerData, status: Number(event.target.value) })}>
           <option value="" disabled selected>
             Status
           </option>
@@ -184,11 +266,6 @@ const MakeWarning: React.FC = () => {
           <option value={computerConfig.indisponible}>Indisponível</option>
         </OptionDropdown>
       </ComputerOptionContainer>
-
-      <LibraryOptionContainer visible={activeType === 3}>
-        <Title>Escolha o dia inicial de fechamento</Title>
-        <DateInput type="date" />
-      </LibraryOptionContainer>
 
       <Title>Adicione uma descrição</Title>
       <TextArea maxLength={300} onChange={(event) => setDescription(event.target.value)} />
@@ -211,7 +288,7 @@ const MakeWarning: React.FC = () => {
       </DateOptionContainer>
 
       <ButtonsContainer>
-        <CancelButton>Cancelar</CancelButton>
+        <CancelButton onClick={goBack}>Cancelar</CancelButton>
         <PublishButton onClick={handleCreateWarning}>Publicar</PublishButton>
       </ButtonsContainer>
     </Container>

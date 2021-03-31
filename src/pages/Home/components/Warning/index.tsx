@@ -1,26 +1,47 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable react/no-danger-with-children */
 
-import React, { useCallback, useRef, useState } from 'react';
-// import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Carousel from 'react-elastic-carousel';
+import { ToastContainer, toast } from 'react-toastify';
 
-import maintenance from '~/assets/maintenance.svg';
-import studyGroup from '~/assets/warnings/study_group.svg';
-import time from '~/assets/warnings/time.svg';
+import { getRequest } from '~/utils/api';
 
-import { Container, CustomCarousel, WarningTitle, WarningBody, Image, Text, ViewButton } from './styles';
+import Maintenance from '~/assets/maintenance.svg';
+import MaintenanceAlt from '~/assets/warnings/maintenance_alt.svg';
+import Megaphone from '~/assets/warnings/megaphone.svg';
+import StudyGroup from '~/assets/warnings/study_group.svg';
+import Time from '~/assets/warnings/time.svg';
+import { useNotice } from '~/contexts/NoticeContext';
+import { Notice } from '~/types';
+
+import {
+  Container,
+  CustomCarousel,
+  WarningTitle,
+  WarningBody,
+  Image,
+  Text,
+  ViewButton,
+  EmptyCenterContainer,
+  EmptyContainer,
+  EmptyTitle,
+  EmptySpan,
+} from './styles';
+
+const warningImages = [Maintenance, MaintenanceAlt, Megaphone, StudyGroup, Time];
 
 const Warning: React.FC = () => {
+  const noticeContext = useNotice();
+
+  const [notices, setNotices] = useState([] as Notice[]);
+
   const [showLess, setShowLess] = useState(true);
 
   const resetTimeout = useRef<any>();
   const itemsPerPage = 3;
   const carouselRef = useRef<any>(null);
   const carouselTime = 10000;
-
-  const htmlText =
-    'No entanto, em razão da pandemia de Covid-19, o equipamento não pôde ser entregue na data prevista, e os testes prévios com os ambientes simulados da eleição não foram realizados. “A inteligência artificial demorou a processar os dados no volume desejado. Além disso, houve uma falha em um dos núcleos do equipamento”.';
 
   const handleNextEnd = useCallback(({ index }) => {
     clearTimeout(resetTimeout.current);
@@ -54,37 +75,57 @@ const Warning: React.FC = () => {
     );
   };
 
+  useEffect(() => {
+    async function loadNotices() {
+      const { data, error } = await getRequest('/notices');
+      if (error) {
+        toast.dark(error.error);
+        return;
+      }
+      setNotices(data);
+    }
+    loadNotices();
+  }, []);
+
   return (
-    <CustomCarousel
-      ref={carouselRef}
-      isRTL={false}
-      showArrows={false}
-      enableAutoPlay
-      autoPlaySpeed={carouselTime}
-      onNextEnd={handleNextEnd}
-    >
-      <Container>
-        <WarningTitle>Biblioteca Fechada</WarningTitle>
-        <WarningBody>
-          <Image src={maintenance} />
-          <SmartText text={htmlText} />
-        </WarningBody>
-      </Container>
-      <Container>
-        <WarningTitle>Orientações para trabalhos</WarningTitle>
-        <WarningBody>
-          <Image src={studyGroup} />
-          <SmartText text={htmlText} />
-        </WarningBody>
-      </Container>
-      <Container>
-        <WarningTitle>Volta para a biblioteca</WarningTitle>
-        <WarningBody>
-          <Image src={time} />
-          <SmartText text={htmlText} />
-        </WarningBody>
-      </Container>
-    </CustomCarousel>
+    <>
+      <EmptyCenterContainer>
+        <EmptyContainer visible={notices.length === 0}>
+          <EmptyTitle>Sem avisos...</EmptyTitle>
+          <EmptySpan>Nenhum aviso no momento, quando o bibliotecário(a) mandar um, ele aparecerá aqui.</EmptySpan>
+        </EmptyContainer>
+      </EmptyCenterContainer>
+
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      <CustomCarousel
+        ref={carouselRef}
+        isRTL={false}
+        showArrows={false}
+        enableAutoPlay
+        autoPlaySpeed={carouselTime}
+        onNextEnd={handleNextEnd}
+      >
+        {notices.map((notice) => (
+          <Container key={notice.id}>
+            <WarningTitle>{notice.title}</WarningTitle>
+            <WarningBody>
+              <Image src={warningImages[notice.imageCode]} />
+              <SmartText text={notice.content} />
+            </WarningBody>
+          </Container>
+        ))}
+      </CustomCarousel>
+    </>
   );
 };
 

@@ -244,8 +244,9 @@ const Reserve: React.FC = () => {
     }
 
     history.push('/');
+
     handleCreateReserveToast();
-  }, [components, history, reserveName, selectedDay, selectedRoomId, selectedScheduleId, reserveContext]);
+  }, [components, reserveName, history, selectedDay, selectedRoomId, selectedScheduleId, reserveContext]);
 
   const handleFriendClick = useCallback(
     (friend: Friend) => {

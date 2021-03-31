@@ -95,3 +95,5 @@ export default reserveConfig;
 Boolean ('') é false
 
 Boolean ('aeqbasaf') é true
+
+'No entanto, em razão da pandemia de Covid-19, o equipamento não pôde ser entregue na data prevista, e os testes prévios com os ambientes simulados da eleição não foram realizados. “A inteligência artificial demorou a processar os dados no volume desejado. Além disso, houve uma falha em um dos núcleos do equipamento”.';

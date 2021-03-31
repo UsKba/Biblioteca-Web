@@ -10,6 +10,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
+  width: 100%;
+
   background-color: ${colors.terciary};
 `;
 
@@ -80,4 +82,44 @@ export const ViewButton = styled(Button)`
   &:hover {
     border: solid 0.5px ${colors.primary};
   }
+`;
+export const EmptyCenterContainer = styled.div`
+  display: flex;
+
+  justify-content: center;
+
+  width: 100%;
+`;
+
+interface EmptyContainerProps {
+  visible: boolean;
+}
+
+export const EmptyContainer = styled.div<EmptyContainerProps>`
+  display: ${({ visible }) => (visible ? 'flex' : 'none')};
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  width: 280px;
+
+  padding: 10px;
+
+  background-color: ${colors.terciary};
+`;
+
+export const EmptyTitle = styled.span`
+  margin-bottom: 10px;
+
+  font-family: 'Ubuntu';
+  font-size: 16px;
+
+  color: ${colors.dark};
+`;
+
+export const EmptySpan = styled.span`
+  font-family: 'Roboto';
+  font-size: 14px;
+
+  color: ${colors.text};
 `;
