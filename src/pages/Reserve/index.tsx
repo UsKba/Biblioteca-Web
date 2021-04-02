@@ -163,7 +163,7 @@ const Reserve: React.FC = () => {
 
     const { data, error } = await getRequest('/search', { params: { enrollment } });
 
-    if (enrollment.length < 14) {
+    if (enrollment.length < 6) {
       handleMatricula();
       // alert('Digite uma matrícula com pelo menos 14 números');
       return;
