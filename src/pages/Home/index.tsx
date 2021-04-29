@@ -39,9 +39,12 @@ const Home: React.FC = () => {
   const handleChangeSwipe = useCallback((index: number) => {
     setScreenSwipe(index);
   }, []);
+  const TITLE = 'Smart Library';
 
   return (
     <Container>
+      <title>{TITLE}</title>
+
       <MobileNav>
         <MobileNavText onClick={() => handleChangeSwipe(0)}>
           Reservas
@@ -71,9 +74,7 @@ const Home: React.FC = () => {
 
         <EmptyContainer>
           <EmptyTitle>Caixa de correio vazia...</EmptyTitle>
-          <EmptySpan>
-            Você não possui nenhuma notificação, quando ocorrer algo na biblioteca nós o avisaremos aqui.
-          </EmptySpan>
+          <EmptySpan>Nenhum aviso encontrado, quando ocorrer algo na biblioteca nós o avisaremos aqui.</EmptySpan>
         </EmptyContainer>
       </MiddleSide>
 

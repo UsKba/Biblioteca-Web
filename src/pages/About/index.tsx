@@ -9,8 +9,12 @@ import { Container, H1, TextContainer, Text, Image, GoBack } from './styles';
 
 const About: React.FC = () => {
   const authContext = useAuth();
+
+  const TITLE = 'Sobre - Smart Library';
   return (
     <Container>
+      <title>{TITLE}</title>
+
       <GoBack arrowVisibility={authContext.signed}>
         <Link to="/">
           <FaArrowLeft />

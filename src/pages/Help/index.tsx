@@ -69,9 +69,11 @@ const Help: React.FC = () => {
     },
     [activeQuestionIndex]
   );
+  const TITLE = 'Ajuda - Smart Library';
 
   return (
     <Container>
+      <title>{TITLE}</title>
       <GoBack arrowVisibility={authContext.signed}>
         <Link to="/">
           <FaArrowLeft />

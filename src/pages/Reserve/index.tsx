@@ -317,6 +317,7 @@ const Reserve: React.FC = () => {
     }
   }, [authContext.user, user]);
 
+  const TITLE = 'Reserva - Smart Library';
   return (
     <>
       <ToastContainer
@@ -332,9 +333,10 @@ const Reserve: React.FC = () => {
       />
 
       <Container>
+        <title>{TITLE}</title>
         <LeftSide>
           <Link to="/">
-            <CancelButton onClick={goBack}>Cancelar Reserva</CancelButton>
+            <CancelButton onClick={goBack}>Cancelar criação de reserva</CancelButton>
           </Link>
           <ReserveList />
         </LeftSide>

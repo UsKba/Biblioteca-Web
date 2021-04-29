@@ -26,6 +26,9 @@ import {
   NotificationContainer,
   NotificationTitle,
   RedBall,
+  EmptyContainer,
+  EmptyTitle,
+  EmptySpan,
 } from './styles';
 
 const titlePages = {
@@ -117,14 +120,8 @@ const NavbarComponent: React.FC = () => {
             </RedBall>
 
             <NavItem small onClick={toggleNotifications}>
-              <FaBell title="Ajuda" />
+              <FaBell title="Notificações" />
             </NavItem>
-
-            <Link to="/configuracoes-geral">
-              <NavItem small>
-                <FaCog title="Configurações" />
-              </NavItem>
-            </Link>
           </RightSide>
         </Navbar>
       </Container>
@@ -134,6 +131,11 @@ const NavbarComponent: React.FC = () => {
         {pendingReserveList.map((reserve) => (
           <NotificationReserve key={reserve.id} reserve={reserve} />
         ))}
+
+        <EmptyContainer visible={pendingReserveList.length === 0}>
+          <EmptyTitle>Não há notificações</EmptyTitle>
+          <EmptySpan>Quando alguém te convidar para uma reserva, o convite aparecerá aqui.</EmptySpan>
+        </EmptyContainer>
       </NotificationContainer>
       <SidebarContainer open={sidebarOpen}>
         <Sidebar open={sidebarOpen}>

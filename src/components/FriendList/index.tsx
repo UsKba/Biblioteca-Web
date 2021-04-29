@@ -44,6 +44,7 @@ import {
   SvgContainer,
   SearchResultsText,
   ReserveButtonDiv,
+  AddFriendIconText,
 } from './styles';
 
 interface FriendListProps {
@@ -116,7 +117,8 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
 
       const { data } = await getRequest<User[]>('/search', {
         params: {
-          enrollment: event.target.value,
+          name: event.target.value,
+          // enrollment: event.target.value,
         },
       });
 
@@ -141,15 +143,28 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
     async (event: React.ChangeEvent<HTMLInputElement>) => {
       openFriendSearchPanel(event.target.value);
 
-      const { data } = await getRequest<User[]>('/friends', {
+      const { data } = await getRequest<User[]>('/search', {
         params: {
-          enrollment: event.target.value,
+          name: event.target.value,
+          // enrollment: event.target.value,
         },
       });
 
-      setSearchUsers(data || []);
+      const usersSearched = data || [];
+
+      const searchUsersFormatted = usersSearched
+        .filter((user) => user.id !== authContext.user.id)
+        .filter((user) => {
+          const userIsFriend = friendsContext.friends.find((friend) => {
+            return friend.id === user.id;
+          });
+
+          return userIsFriend;
+        });
+
+      setSearchUsers(searchUsersFormatted);
     },
-    [openFriendSearchPanel]
+    [authContext.user.id, friendsContext.friends, openFriendSearchPanel]
   );
 
   useEffect(() => {
@@ -161,7 +176,13 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
     <FriendsContainer>
       <TitlePanel>
         <Title>Amigos</Title>
-        <PlusContainer visible={searchBarVisible}>
+        <PlusContainer
+          visible={searchBarVisible}
+          onClick={() => {
+            toggleSearchBars();
+          }}
+        >
+          <AddFriendIconText>Adicionar amigos</AddFriendIconText>
           <AiOutlineUserAdd
             title="Adicionar amigos"
             onClick={() => {
@@ -239,7 +260,10 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
                 <FriendName>{user.name}</FriendName>
                 <FriendEnrollment>{user.enrollment}</FriendEnrollment>
               </FriendsDetails>
-              <SvgContainer>
+              <ReserveButtonDiv visible={reserveButton && searchBarVisible}>
+                <FaChevronLeft onClick={() => handleFriendClick(user)} />
+              </ReserveButtonDiv>
+              <SvgContainer visible={!searchBarVisible}>
                 <FaPlus
                   onClick={() => {
                     friendsContext.sendInvite(user.enrollment);

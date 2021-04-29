@@ -376,8 +376,12 @@ export const EmptySpan = styled.span`
   color: ${colors.text};
 `;
 
-export const SvgContainer = styled.div`
-  display: flex;
+interface SvgContainerProps {
+  visible: boolean;
+}
+
+export const SvgContainer = styled.div<SvgContainerProps>`
+  display: ${(props) => (props.visible === true ? 'flex' : 'none')};
   align-items: center;
 
   margin-left: auto;
@@ -417,4 +421,12 @@ export const ReserveButtonDiv = styled.div<ReserveButtonDivProps>`
     color: ${colors.primary};
     cursor: pointer;
   }
+`;
+
+export const AddFriendIconText = styled.span`
+  font-size: 14px;
+  color: ${colors.text};
+  display: flex;
+  margin: 2px 0 0 4em;
+  cursor: pointer;
 `;

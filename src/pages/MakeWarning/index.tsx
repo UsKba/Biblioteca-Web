@@ -171,9 +171,12 @@ const MakeWarning: React.FC = () => {
   const goBack = useCallback(() => {
     history.goBack();
   }, [history]);
+  const TITLE = 'Aviso - Smart Library';
 
   return (
     <Container>
+      <title>{TITLE}</title>
+
       <ToastContainer
         position="bottom-left"
         autoClose={5000}

@@ -133,7 +133,6 @@ export const ReserveTitle = styled.span`
 export const ReserveText = styled.span`
   font-size: 14px;
   color: ${colors.text};
-
   margin-bottom: 8px;
 `;
 
@@ -276,8 +275,8 @@ export const QuitReserveButton = styled.button`
 `;
 
 export const StyledLink = styled(Link)`
-  max-width: 15px;
-  height: 15px;
+  display: flex;
+  align-items: center;
 `;
 
 interface EmptyContainerProps {
@@ -481,4 +480,12 @@ export const AddButton = styled.button`
   border: none;
   font-size: 15px;
   border-radius: 5px;
+`;
+
+export const CreateReserveText = styled.div`
+  font-size: 14px;
+  color: ${colors.text};
+  display: flex;
+
+  margin-right: 3px;
 `;

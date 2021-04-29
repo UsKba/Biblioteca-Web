@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FiMapPin } from 'react-icons/fi';
 
 import { useAuth } from '~/contexts/AuthContext';
@@ -21,6 +21,15 @@ import {
 
 const Profile: React.FC = () => {
   const { user } = useAuth();
+  const [campusURL, setCampusURL] = useState('');
+
+  useEffect(() => {
+    if (user.campus === 'CA') {
+      setCampusURL('https://goo.gl/maps/ALWeMF7grNxuXKQc6');
+    } else {
+      setCampusURL('');
+    }
+  }, [user.campus]);
 
   return (
     <Container>
@@ -42,7 +51,7 @@ const Profile: React.FC = () => {
         <Email>{user.email}</Email>
       </ProfileLeftSide>
       <ProfileRightSide>
-        <CampusA href="https://goo.gl/maps/ALWeMF7grNxuXKQc6" target="_blank" rel="noopener noreferrer">
+        <CampusA href={campusURL} target="_blank" rel="noopener noreferrer">
           <Campus>{user.campus}</Campus>
           <FiMapPin />
         </CampusA>

@@ -168,8 +168,12 @@ const Rooms: React.FC = () => {
     setMenuIndex2(undefined);
   }, []);
 
+  const TITLE = 'Salas - Smart Library';
+
   return (
     <Container>
+      <title>{TITLE}</title>
+
       <PageHelpContainer>
         <a href="/ajuda#perguntas">
           <AiOutlineQuestionCircle />

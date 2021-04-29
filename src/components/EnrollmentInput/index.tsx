@@ -15,7 +15,7 @@ const EnrollmentInput: React.ForwardRefRenderFunction<HTMLInputElement, Props> =
   return (
     <SearchArea backgroundColor={backgroundColor} visible={visible}>
       <SearchHashTag>#</SearchHashTag>
-      <SearchingBar ref={ref} type="text" placeholder="Pesquise por amigos " {...rest} />
+      <SearchingBar ref={ref} type="text" placeholder="Encontre amigos adicionados" {...rest} />
       {!hideIcon && (
         <IconContainer>
           <FaSearch />

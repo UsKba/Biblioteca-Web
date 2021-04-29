@@ -216,3 +216,39 @@ export const RedBall = styled.div<RedBallProps>`
   background-color: ${colors.red};
   color: ${colors.terciary};
 `;
+
+interface EmptyContainerProps {
+  visible: boolean;
+}
+
+export const EmptyContainer = styled.div<EmptyContainerProps>`
+  align-self: center;
+
+  display: ${({ visible }) => (visible ? 'flex' : 'none')};
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  padding: 10px;
+  width: 280px;
+
+  margin: 25px 0 10px 0;
+
+  background-color: ${colors.terciary};
+`;
+
+export const EmptyTitle = styled.span`
+  margin-bottom: 10px;
+
+  font-family: 'Ubuntu';
+  font-size: 16px;
+
+  color: ${colors.dark};
+`;
+
+export const EmptySpan = styled.span`
+  font-family: 'Roboto';
+  font-size: 14px;
+
+  color: ${colors.text};
+`;

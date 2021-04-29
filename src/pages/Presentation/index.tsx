@@ -30,8 +30,12 @@ import {
 const Presentation: React.FC = () => {
   const { signed, signInSuapUrl, loading } = useAuth();
 
+  const TITLE = 'Smart Library';
+
   return (
     <Container>
+      <title>{TITLE}</title>
+
       <TopSide>
         <TextButton to="/ajuda">Ajuda</TextButton>
         <TextButton to="/sobre">Sobre</TextButton>

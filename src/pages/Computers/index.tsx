@@ -74,6 +74,8 @@ const RoomComputers = () => {
     [settingsIndex]
   );
 
+  const TITLE = 'Computadores - Smart Library';
+
   return (
     <>
       <ToastContainer
@@ -88,6 +90,7 @@ const RoomComputers = () => {
         pauseOnHover
       />
       <Container>
+        <title>{TITLE}</title>
         <MobileNav>
           <MobileNavText onClick={() => handleChangeSwipe(0)}>
             Laboratório

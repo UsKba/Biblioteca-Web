@@ -57,6 +57,7 @@ import {
   CancellButton,
   AddButton,
   Hashtag,
+  CreateReserveText,
 } from './styles';
 import { ReserveState } from './types';
 
@@ -354,6 +355,8 @@ const ReserveList: React.FC = () => {
       <TitlePanel visible={checkPageURL()}>
         <Title>Reservas</Title>
         <StyledLink to="/reservar">
+          <CreateReserveText>Criar reserva</CreateReserveText>
+
           <FaPlus />
         </StyledLink>
       </TitlePanel>
