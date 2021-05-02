@@ -44,6 +44,7 @@ import {
   SvgContainer,
   SearchResultsText,
   ReserveButtonDiv,
+  ReserveButtonText,
   AddFriendIconText,
 } from './styles';
 
@@ -351,8 +352,9 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
                 {friend.enrollment}
               </FriendEnrollment>
             </FriendsDetails>
-            <ReserveButtonDiv visible={reserveButton}>
-              <FaChevronLeft onClick={() => handleFriendClick(friend)} />
+            <ReserveButtonDiv visible={reserveButton} onClick={() => handleFriendClick(friend)}>
+              <ReserveButtonText>{`Adicionar \na reserva`}</ReserveButtonText>
+              <FaChevronLeft />
             </ReserveButtonDiv>
           </FriendsPanelDetails>
         ))}

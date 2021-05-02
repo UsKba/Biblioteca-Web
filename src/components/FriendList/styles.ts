@@ -423,6 +423,23 @@ export const ReserveButtonDiv = styled.div<ReserveButtonDivProps>`
   }
 `;
 
+export const ReserveButtonText = styled.span`
+  font-size: 10px;
+  max-width: 55px;
+
+  text-align: center;
+
+  margin-right: 4px;
+
+  color: ${colors.text};
+
+  cursor: pointer;
+
+  &:hover {
+    color: ${colors.primary};
+  }
+`;
+
 export const AddFriendIconText = styled.span`
   font-size: 14px;
   color: ${colors.text};

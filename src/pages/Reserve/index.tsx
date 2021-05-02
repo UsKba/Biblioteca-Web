@@ -14,6 +14,10 @@ import DateList from '~/components/DateList';
 import FriendList from '~/components/FriendList';
 import ReserveList from '~/components/ReserveList';
 
+import f13 from '~/assets/F1-3.jpg';
+import f14 from '~/assets/F1-4.jpg';
+import f15 from '~/assets/F1-5.jpg';
+import f16 from '~/assets/F1-6.jpg';
 import roomPath from '~/assets/room.jpg';
 import { useAuth } from '~/contexts/AuthContext';
 import { useReserve } from '~/contexts/ReserveContext';
@@ -113,6 +117,25 @@ const Reserve: React.FC = () => {
   const [selectedPeriodId, setSelectedPeriodId] = useState(1);
   const [selectedScheduleId, setSelectedScheduleId] = useState(1);
   const [selectedRoomId, setSelectedRoomId] = useState(1);
+
+  const roomImages = [
+    {
+      id: 1,
+      source: f13,
+    },
+    {
+      id: 2,
+      source: f14,
+    },
+    {
+      id: 3,
+      source: f15,
+    },
+    {
+      id: 4,
+      source: f16,
+    },
+  ];
 
   useEffect(() => {
     const data = location.state as ReserveLocationState | undefined;
@@ -393,7 +416,9 @@ const Reserve: React.FC = () => {
                     isBroken={room.status === 1}
                   >
                     <Room>{room.initials}</Room>
-                    <Image src={roomPath} />
+                    {roomImages.map((image) => (
+                      <>{image.id === room.id && <Image key={image.id} src={image.source} />}</>
+                    ))}
                   </RoomButton>
                 ))}
             </ChooseRoom>
