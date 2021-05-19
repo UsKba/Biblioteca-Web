@@ -119,6 +119,7 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
       const { data } = await getRequest<User[]>('/search', {
         params: {
           name: event.target.value,
+          // name: event.target.value.toUpperCase(),
           // enrollment: event.target.value,
         },
       });
@@ -147,6 +148,7 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
       const { data } = await getRequest<User[]>('/search', {
         params: {
           name: event.target.value,
+          // name: event.target.value.toUpperCase(),
           // enrollment: event.target.value,
         },
       });
@@ -200,8 +202,10 @@ const FriendList: React.FC<FriendListProps> = ({ onFriendClick }) => {
         </TimesContainer>
       </TitlePanel>
 
+      {/* Pesquisar amigos adicionados */}
       <EnrollmentInput value={search} onChange={handleSearchFriends} hideIcon visible={searchBarVisible} />
 
+      {/* Adicionar Amigos */}
       <EnrollmentInput
         value={search}
         placeholder="Adicione amigos"
