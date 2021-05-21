@@ -48,6 +48,10 @@ export const TitlePanel = styled.div<TitlePanelProps>`
       color: ${colors.primary};
     }
   }
+
+  div {
+    display: ${({ visible }) => (visible === false ? 'none' : 'flex')};
+  }
 `;
 
 export const ReservesList = styled.div`
@@ -277,6 +281,16 @@ export const QuitReserveButton = styled.button`
 export const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
+
+  &:hover {
+    div {
+      color: ${colors.primary};
+    }
+
+    svg {
+      color: ${colors.primary};
+    }
+  }
 `;
 
 interface EmptyContainerProps {
@@ -290,6 +304,7 @@ export const EmptyContainer = styled.div<EmptyContainerProps>`
   text-align: center;
 
   padding: 10px;
+  border-radius: 3px;
 
   background-color: ${colors.terciary};
 `;
@@ -297,7 +312,8 @@ export const EmptyContainer = styled.div<EmptyContainerProps>`
 export const EmptyTitle = styled.span`
   margin-bottom: 10px;
 
-  font-family: 'Ubuntu';
+  font-family: 'Roboto';
+  font-weight: bold;
   font-size: 16px;
 
   color: ${colors.dark};
@@ -487,5 +503,5 @@ export const CreateReserveText = styled.div`
   color: ${colors.text};
   display: flex;
 
-  margin-right: 3px;
+  margin-right: 5px;
 `;

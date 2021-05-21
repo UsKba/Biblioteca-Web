@@ -125,10 +125,10 @@ export const Option = styled.option``;
 export const RentButton = styled(Button)`
   margin: 0;
   border-radius: 5px;
-  border: solid 0.5px rgba(50, 44, 66, 0.5);
+  border: solid 0.5px #322c42;
 
   background-color: ${colors.terciary};
-  color: ${colors.text};
+  color: ${colors.dark};
 
   &:hover {
     border: solid 0.5px ${colors.primary};

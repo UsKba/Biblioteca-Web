@@ -14,6 +14,7 @@ import {
   Line,
   Line2,
   Title,
+  Title2,
   LittleTitle,
   Text,
   Image,
@@ -93,7 +94,7 @@ const Help: React.FC = () => {
         <Image src={Img1} />
       </TopSide>
       <MiddleSide>
-        <Title id="perguntas">Perguntas Frequentes</Title>
+        <Title2 id="perguntas">Perguntas Frequentes</Title2>
         <Line2 />
 
         {questions.map((question, index) => (

@@ -10,7 +10,7 @@ export const Container = styled.div`
 
   padding: 25px 25px 35px 25px;
   margin-bottom: 40px;
-
+  border-radius: 3px;
   background-color: ${colors.terciary};
 `;
 

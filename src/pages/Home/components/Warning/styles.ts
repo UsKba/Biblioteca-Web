@@ -19,6 +19,10 @@ export const CustomCarousel = styled(Carousel)`
   button {
     outline: none;
   }
+
+  #Container {
+    border-radius: 3px;
+  }
 `;
 
 export const WarningTitle = styled.div`
@@ -31,7 +35,7 @@ export const WarningTitle = styled.div`
   color: ${colors.dark};
 
   padding: 12px;
-  border-bottom: solid 2px ${colors.primary};
+  border-bottom: solid 1.5px ${colors.gray};
 
   font-size: 22px;
   font-family: 'Ubuntu';
@@ -40,7 +44,21 @@ export const WarningTitle = styled.div`
 export const WarningBody = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 65px 15px;
+  padding: 45px 15px;
+`;
+
+export const WarningDate = styled.span`
+  align-self: flex-end;
+
+  font-family: 'Roboto';
+  font-size: 16px;
+
+  color: ${colors.dark};
+
+  margin: 0 5px 5px 0;
+
+  span {
+  }
 `;
 
 export const Image = styled.img`
@@ -104,6 +122,7 @@ export const EmptyContainer = styled.div<EmptyContainerProps>`
   width: 280px;
 
   padding: 10px;
+  border-radius: 3px;
 
   background-color: ${colors.terciary};
 `;
@@ -111,7 +130,8 @@ export const EmptyContainer = styled.div<EmptyContainerProps>`
 export const EmptyTitle = styled.span`
   margin-bottom: 10px;
 
-  font-family: 'Ubuntu';
+  font-family: 'Roboto';
+  font-weight: bold;
   font-size: 16px;
 
   color: ${colors.dark};

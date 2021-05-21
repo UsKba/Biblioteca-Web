@@ -42,6 +42,8 @@ const titlePages = {
   '/configuracoes-usuario': 'Configurações',
   '/configuracoes-notificacao': 'Configurações',
   '/configuracoes-grupo': 'Configurações',
+  '/criar-aviso': 'Criar aviso',
+  '/ajuda': 'Ajuda',
 };
 
 const NavbarComponent: React.FC = () => {

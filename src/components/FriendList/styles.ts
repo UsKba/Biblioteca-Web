@@ -129,7 +129,7 @@ export const FriendsPanelDetails = styled.div`
   margin-bottom: 10px;
   padding: 7px;
 
-  border-radius: 5px;
+  border-radius: 3px;
 
   background-color: ${colors.terciary};
 `;
@@ -241,6 +241,16 @@ export const PlusContainer = styled.div<PlusContainerProps>`
   margin-right: 20px;
   svg {
     font-size: 20px;
+  }
+
+  &:hover {
+    span {
+      color: ${colors.primary};
+    }
+
+    svg {
+      color: ${colors.primary};
+    }
   }
 `;
 
@@ -356,6 +366,7 @@ export const EmptyContainer = styled.div<EmptyContainerProps>`
   width: 280px;
 
   margin-bottom: 10px;
+  border-radius: 3px;
 
   background-color: ${colors.terciary};
 `;
@@ -444,6 +455,6 @@ export const AddFriendIconText = styled.span`
   font-size: 14px;
   color: ${colors.text};
   display: flex;
-  margin: 2px 0 0 4em;
+  margin: 2px 5px 0 4em;
   cursor: pointer;
 `;

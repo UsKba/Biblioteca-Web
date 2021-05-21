@@ -13,7 +13,7 @@ export const SearchArea = styled.div<SearchAreaProps>`
   height: 45px;
   width: 277px;
 
-  border-radius: 6px;
+  border-radius: 3px;
 
   background-color: ${(props) => props.backgroundColor || colors.terciary};
 `;

@@ -179,6 +179,7 @@ export const EmptyContainer = styled.div`
   max-width: 450px;
 
   padding: 10px;
+  border-radius: 3px;
 
   background-color: ${colors.terciary};
 `;
@@ -188,7 +189,8 @@ export const EmptyTitle = styled.span`
 
   color: ${colors.dark};
 
-  font-family: 'Ubuntu';
+  font-family: 'Roboto';
+  font-weight: bold;
   font-size: 16px;
 `;
 

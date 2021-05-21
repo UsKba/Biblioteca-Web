@@ -155,7 +155,7 @@ const RoomComputers = () => {
         <RightSide>
           <ErrorContainer visible={false}>
             <ErrorSpan>Nehum computador disponível no momento.</ErrorSpan>
-            <ErrorSpanLink>Avise-me quando houver.</ErrorSpanLink>
+            {/* <ErrorSpanLink>Avise-me quando houver.</ErrorSpanLink> */}
           </ErrorContainer>
         </RightSide>
 

@@ -23,6 +23,14 @@ export const TextContainer = styled.div`
 `;
 
 export const Title = styled.div`
+  align-self: left;
+  color: ${colors.dark};
+  font-size: 53px;
+  font-family: 'Ubuntu';
+  font-weight: bold;
+`;
+
+export const Title2 = styled.div`
   align-self: center;
   color: ${colors.dark};
   font-size: 53px;
@@ -34,7 +42,7 @@ export const Line = styled.div`
   height: 5px;
   width: 422px;
   margin-top: 2px;
-  align-self: center;
+  align-self: left;
   border-radius: 5px;
   background-color: ${colors.primary};
 `;

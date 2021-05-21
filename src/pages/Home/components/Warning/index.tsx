@@ -20,6 +20,7 @@ import {
   CustomCarousel,
   WarningTitle,
   WarningBody,
+  WarningDate,
   Image,
   Text,
   ViewButton,
@@ -116,12 +117,19 @@ const Warning: React.FC = () => {
         onNextEnd={handleNextEnd}
       >
         {notices.map((notice) => (
-          <Container key={notice.id}>
+          <Container id="Container" key={notice.id}>
             <WarningTitle>{notice.title}</WarningTitle>
             <WarningBody>
               <Image src={warningImages[notice.imageCode]} />
               <SmartText text={notice.content} />
             </WarningBody>
+            <WarningDate>
+              <span>{notice.createdAt.slice(8, 10)}</span>
+              <span>/</span>
+              <span>{notice.createdAt.slice(5, 7)}</span>
+              <span>/</span>
+              <span>{notice.createdAt.slice(0, 4)}</span>
+            </WarningDate>
           </Container>
         ))}
       </CustomCarousel>

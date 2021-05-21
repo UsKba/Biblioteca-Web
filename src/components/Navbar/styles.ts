@@ -191,7 +191,10 @@ export const PageTitle = styled.span`
   font-family: 'Ubuntu';
   font-size: 24px;
   font-weight: bold;
+
   color: ${colors.dark};
+
+  opacity: 0.75;
 `;
 
 interface RedBallProps {
@@ -233,6 +236,7 @@ export const EmptyContainer = styled.div<EmptyContainerProps>`
   width: 280px;
 
   margin: 25px 0 10px 0;
+  border-radius: 3px;
 
   background-color: ${colors.terciary};
 `;
@@ -240,7 +244,8 @@ export const EmptyContainer = styled.div<EmptyContainerProps>`
 export const EmptyTitle = styled.span`
   margin-bottom: 10px;
 
-  font-family: 'Ubuntu';
+  font-family: 'Roboto';
+  font-weight: bold;
   font-size: 16px;
 
   color: ${colors.dark};

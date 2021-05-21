@@ -171,7 +171,7 @@ const MakeWarning: React.FC = () => {
   const goBack = useCallback(() => {
     history.goBack();
   }, [history]);
-  const TITLE = 'Aviso - Smart Library';
+  const TITLE = 'Criar aviso - Smart Library';
 
   return (
     <Container>

@@ -11,6 +11,7 @@ const colors = {
   lightred: '#ff6969',
   black: '#333',
   lightblack: '#454545',
+  gray: '#6e6e6e',
   golden: '#f7cf2f',
 
   computerStatus: ['#2B9348', '#333'],
