@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const CLIENT_ID = 'wurAwIOtAWr4n7lDr6iGKvZUqW09Z0kmMHnDO513';
+const CLIENT_ID = 'fZBIVS7bwbeHlHa6HK9nQR3j2sELX5kiCGK9JHgZ';
 let REDIRECT_URI = 'http://localhost:3000/';
 const SUAP_URL = 'https://suap.ifrn.edu.br';
 
