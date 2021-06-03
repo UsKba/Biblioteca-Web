@@ -13,6 +13,17 @@ export const Container = styled.div`
   border-radius: 5px;
   background-color: ${colors.terciary};
   padding: 40px 30px;
+  @media screen and (max-width: 820px) {
+    display: none;
+  }
+`;
+
+export const MobileWarning = styled.div`
+  @media screen and (max-width: 640px) {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+  }
 `;
 
 export const ImageChooserContainer = styled.div`

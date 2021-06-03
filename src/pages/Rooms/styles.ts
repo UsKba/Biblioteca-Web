@@ -13,8 +13,6 @@ export const Container = styled.div`
 
   align-items: center;
   justify-content: center;
-  @media only screen and (min-width: 1700px) {
-  }
 `;
 
 export const TableTopInformation = styled.div`
@@ -28,7 +26,13 @@ export const TableTopInformation = styled.div`
   margin-top: 30px;
   padding-bottom: 10px;
   @media only screen and (max-height: 600px) {
-    margin-top: 160px;
+    margin-top: 250px;
+  }
+
+  @media only screen and (max-width: 640px) {
+    padding: 0 12px;
+
+    margin: 250px 0 35px 0;
   }
 `;
 
@@ -67,21 +71,30 @@ export const TableWarning = styled.span<TableWarningProps>`
 
 interface TableColumnProps {
   visible?: boolean;
+  mobileVisible?: boolean;
 }
 
 export const TableColumn = styled.div<TableColumnProps>`
   display: ${({ visible }) => (visible === false ? 'none' : 'flex')};
+
   flex-direction: column;
   align-items: center;
 
   min-height: 535px;
   flex: 1;
 
-  padding: 15px 35px;
+  padding: 15px 35px 5px 35px;
   border-right: solid 0.5px rgba(50, 44, 66, 0.5);
 
   &:last-child {
     border-right: none;
+  }
+
+  @media only screen and (max-width: 640px) {
+    display: ${({ mobileVisible }) => (mobileVisible === false ? 'none' : 'flex')};
+
+    justify-self: center;
+    min-height: auto;
   }
 `;
 
@@ -93,6 +106,10 @@ export const RoomTitle = styled.div`
   color: ${colors.dark};
 
   margin-bottom: 30px;
+
+  @media only screen and (max-width: 640px) {
+    display: none;
+  }
 `;
 
 export const ReserveCardContainer = styled.div`
@@ -118,6 +135,10 @@ export const Dropdown = styled.select`
   outline: none;
   border: solid 0.5px rgba(50, 44, 66, 0.5);
   border-radius: 5px;
+
+  @media only screen and (max-width: 640px) {
+    width: 150px;
+  }
 `;
 
 export const Option = styled.option``;
@@ -125,13 +146,24 @@ export const Option = styled.option``;
 export const RentButton = styled(Button)`
   margin: 0;
   border-radius: 5px;
-  border: solid 0.5px #322c42;
+  border: solid 0.5px rgba(50, 44, 66, 0.5);
 
   background-color: ${colors.terciary};
   color: ${colors.dark};
 
+  font-weight: bold;
+
   &:hover {
     border: solid 0.5px ${colors.primary};
+  }
+
+  @media only screen and (max-width: 640px) {
+    width: 150px;
+    height: 40px;
+
+    font-size: 16px;
+
+    padding: 9px 0px;
   }
 `;
 
@@ -151,5 +183,74 @@ export const PageHelpContainer = styled.div`
   svg {
     color: ${colors.dark};
     font-size: 35px;
+  }
+
+  @media only screen and (max-width: 640px) {
+    display: none;
+  }
+`;
+
+export const DateListContainer = styled.div`
+  @media only screen and (max-width: 640px) {
+    position: absolute;
+    display: flex;
+
+    width: 100%;
+    justify-content: center;
+
+    top: 80px;
+  }
+
+  div {
+    width: 300px;
+  }
+`;
+
+export const MobileNavContainer = styled.div`
+  position: absolute;
+  display: flex;
+
+  top: 150px;
+
+  justify-content: center;
+  width: 100%;
+`;
+
+export const MobileNav = styled.div`
+  display: none;
+  @media only screen and (max-width: 640px) {
+    display: flex;
+    align-self: center;
+
+    justify-content: space-around;
+    position: absolute;
+
+    width: 250px;
+    height: 30px;
+
+    margin-top: 14px;
+  }
+`;
+
+export const MobileNavText = styled.div<LineProps>`
+  @media only screen and (max-width: 640px) {
+    text-align: center;
+
+    font-size: 24px;
+    font-family: 'Ubuntu';
+  }
+`;
+
+interface LineProps {
+  active?: boolean;
+}
+
+export const Line = styled.div<LineProps>`
+  @media screen and (max-width: 640px) {
+    height: 3px;
+
+    width: 50px;
+
+    background-color: ${(props) => props.active && colors.primary};
   }
 `;

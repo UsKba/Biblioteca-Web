@@ -9,6 +9,9 @@ export const Container = styled.div`
   flex-direction: column;
   margin: 70px 0 0px 120px;
   width: 80%;
+  @media screen and (max-width: 640px) {
+    margin: 70px 0 0px 40px;
+  }
 `;
 
 export const TopSide = styled.div`
@@ -28,6 +31,9 @@ export const Title = styled.div`
   font-size: 53px;
   font-family: 'Ubuntu';
   font-weight: bold;
+  @media screen and (max-width: 640px) {
+    font-size: 30px;
+  }
 `;
 
 export const Title2 = styled.div`
@@ -36,15 +42,23 @@ export const Title2 = styled.div`
   font-size: 53px;
   font-family: 'Ubuntu';
   font-weight: bold;
+  @media screen and (max-width: 640px) {
+    font-size: 30px;
+    align-self: left;
+  }
 `;
 
 export const Line = styled.div`
   height: 5px;
   width: 422px;
   margin-top: 2px;
-  align-self: left;
+  align-self: start;
   border-radius: 5px;
   background-color: ${colors.primary};
+  @media screen and (max-width: 640px) {
+    height: 3px;
+    width: 240px;
+  }
 `;
 
 export const Line2 = styled.div`
@@ -55,6 +69,13 @@ export const Line2 = styled.div`
   border-radius: 5px;
   background-color: ${colors.primary};
   margin-bottom: 30px;
+  @media screen and (max-width: 640px) {
+    height: 3px;
+    width: 240px;
+  }
+  @media screen and (max-width: 400px) {
+    align-self: start;
+  }
 `;
 
 export const Text = styled.div`
@@ -69,6 +90,9 @@ export const Text = styled.div`
 
   text-align: justify;
   text-justify: inter-word;
+  @media screen and (max-width: 640px) {
+    width: 280px;
+  }
 `;
 
 export const HideText = styled.div`
@@ -83,10 +107,16 @@ export const HideText = styled.div`
   text-align: justify;
   text-justify: inter-word;
   overflow: hidden;
+  @media screen and (max-width: 640px) {
+    margin: 20px 20px 45px 20px;
+  }
 `;
 
 export const Image = styled.img`
   display: flex;
+  @media screen and (max-width: 640px) {
+    display: none;
+  }
 `;
 
 export const MiddleSide = styled.div`
@@ -107,6 +137,8 @@ export const LittleTitle = styled.div`
   color: ${colors.dark};
   font-size: 23px;
   font-family: 'Ubuntu';
+  @media screen and (max-width: 640px) {
+  }
 `;
 
 export const ButtonLibrary = styled(Button)`
@@ -146,12 +178,21 @@ export const Question = styled.div<QuestionProps>`
     transform: ${(props) => props.big === true && 'rotate(180deg)'};
     transition: 0.3s ease;
   }
+  @media screen and (max-width: 640px) {
+    height: ${(props) => (props.big === true ? '524px' : '60px')};
+  }
+  @media screen and (max-width: 270px) {
+    height: ${(props) => (props.big === true ? '524px' : '80px')};
+  }
 `;
 
 export const QuestionText = styled.div`
   color: ${colors.dark};
   font-size: 18px;
   font-family: 'Roboto';
+  @media screen and (max-width: 640px) {
+    font-size: 15px;
+  }
 `;
 
 export const QuestionContainer = styled.div`
@@ -199,10 +240,16 @@ export const Emails = styled.div`
   color: #767676;
   font-size: 21px;
   padding: 4px;
+  @media screen and (max-width: 640px) {
+    font-size: 18px;
+  }
 `;
 
 export const EmailsB = styled.b`
   color: #767676;
   font-size: 21px;
   padding: 4px;
+  @media screen and (max-width: 640px) {
+    font-size: 18px;
+  }
 `;

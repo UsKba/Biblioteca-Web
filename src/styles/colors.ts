@@ -6,6 +6,7 @@ const colors = {
   terciary: '#fff',
   background: '#F0F2F5',
   dark: '#322C42',
+  transparent_dark: 'rgba(50, 44, 66, 0.5)',
   blue: '#1c91ff',
   red: '#ff5555',
   lightred: '#ff6969',

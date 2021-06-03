@@ -26,6 +26,11 @@ import {
   RentButton,
   Image,
   PageHelpContainer,
+  DateListContainer,
+  MobileNavContainer,
+  MobileNav,
+  MobileNavText,
+  Line,
 } from './styles';
 
 const Rooms: React.FC = () => {
@@ -39,6 +44,7 @@ const Rooms: React.FC = () => {
   const [selectedWeekday, setSelectedWeekday] = useState<number>();
   const [menuIndex, setMenuIndex] = useState<number>();
   const [menuIndex2, setMenuIndex2] = useState<number>();
+  const [screenSwipe, setScreenSwipe] = useState(1);
 
   function handleListReserves() {
     toast.dark('Erro ao listar as reservas', {});
@@ -140,7 +146,7 @@ const Rooms: React.FC = () => {
     loadPeriods();
     loadSchedules();
     loadRooms();
-  }, []);
+  }, [rooms]);
 
   const weekendCheck = useCallback(() => {
     const today = new Date();
@@ -166,6 +172,10 @@ const Rooms: React.FC = () => {
   const closeSettingsMenu = useCallback(() => {
     setMenuIndex(undefined);
     setMenuIndex2(undefined);
+  }, []);
+
+  const handleChangeSwipe = useCallback((index: number) => {
+    setScreenSwipe(index);
   }, []);
 
   const TITLE = 'Salas - Smart Library';
@@ -198,7 +208,31 @@ const Rooms: React.FC = () => {
           <Option value="3">Noite</Option>
         </Dropdown>
 
-        <DateList onWeekdayChange={onWeekdayChange} />
+        <DateListContainer>
+          <DateList onWeekdayChange={onWeekdayChange} />
+        </DateListContainer>
+
+        <MobileNavContainer>
+          <MobileNav>
+            <MobileNavText onClick={() => handleChangeSwipe(1)}>
+              F1-3
+              <Line active={screenSwipe === 1} />
+            </MobileNavText>
+            <MobileNavText onClick={() => handleChangeSwipe(2)}>
+              F1-4
+              <Line active={screenSwipe === 2} />
+            </MobileNavText>
+            <MobileNavText onClick={() => handleChangeSwipe(3)}>
+              F1-5
+              <Line active={screenSwipe === 3} />
+            </MobileNavText>
+            <MobileNavText onClick={() => handleChangeSwipe(4)}>
+              F1-6
+              <Line active={screenSwipe === 4} />
+            </MobileNavText>
+          </MobileNav>
+        </MobileNavContainer>
+
         <Link to="/reservar">
           <RentButton>Reservar sala</RentButton>
         </Link>
@@ -211,7 +245,7 @@ const Rooms: React.FC = () => {
         {rooms
           .sort((a, b) => a.id - b.id)
           .map((room, index) => (
-            <TableColumn key={room.id} visible={weekendCheck()}>
+            <TableColumn key={room.id} visible={weekendCheck()} mobileVisible={room.id === screenSwipe}>
               <RoomTitle>{room.initials}</RoomTitle>
 
               {schedules

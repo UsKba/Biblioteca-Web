@@ -1,0 +1,1438 @@
+[33mcommit 7a2958f8366a5bcd48be8f360ee10572d6036d40[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed May 26 09:24:43 2021 -0300
+
+    Alterado client id do services do suap
+
+[33mcommit d1dd94624c6297fa304a899a232d50bf0a87f646[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri May 21 10:02:35 2021 -0300
+
+    Mudanças visuais no site, avisos agora com data de criação
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 85ee6deac364f0e26f25b0e24b5617d71a1c1928[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed May 19 19:53:04 2021 -0300
+
+    adicionado comentários para a substituição dos inputs de pesquisa e adição de amigos para somente letras
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 9f891e41b75765e296ae05882f2a2e81a310c2b0[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Sat May 1 21:04:58 2021 -0300
+
+    Fotos diferentes para cada sala adicionadas e texto para auxiliar entendimento do usuário ao adicionar um amigo em uma reserva
+
+[33mcommit f7b5bb858562fdba8071869fc359bff415b30ee0[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Thu Apr 29 11:08:37 2021 -0300
+
+    Adicionado títulos em ícones da página inicial, title em ícones sem texto, remoção temporária da página de configurações, remoção do ícone de + na pesquisa de amigos já adicionado, título da aba correspondente a página atual,  mensagem de não há notificações adicionada e botão do maps funcionando apenas para usuários do campus CA
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 25c84e5f4c4105177f708e9ed46f47a40f8ffbc2[m
+Author: NovaDrake76 <NovaDrake76@gmail.com>
+Date:   Fri Apr 2 13:51:30 2021 -0300
+
+    professor pode reservar sala
+
+[33mcommit 668cc3764c4eb61d54a93cadfecab648831ee915[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Mar 31 17:31:17 2021 -0300
+
+    Criação de avisos funcional, botão de cancelar na página de criação de avisos funcional e mensagem de nao há avisos na página inicial adicionada
+
+[33mcommit d4ea426bea10dd342c8c466656166f3926b23420[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Tue Mar 30 16:29:05 2021 -0300
+
+    Implementação da criação de avisos no projeto iniciada
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 644905665690fce548a8963e2fbaca59523e59b5[m
+Author: NovaDrake76 <NovaDrake76@gmail.com>
+Date:   Tue Mar 30 08:46:37 2021 -0300
+
+    input de hora na criação de avisos removido
+
+[33mcommit d00cbc722d20a2a0daf23460c6a681c813c0dc38[m
+Merge: 6ddfaf1 7708c88
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Sat Mar 27 21:06:27 2021 -0300
+
+    Merge branch 'master' of https://github.com/UsKba/Biblioteca-Web
+
+[33mcommit 7708c886418b5c1fb925e9383738fef16a7f9397[m
+Author: NovaDrake76 <NovaDrake76@gmail.com>
+Date:   Mon Mar 29 20:18:18 2021 -0300
+
+    Modal de deletar reserva criado, reserva aparecendo automaticamente ao criar reserva
+
+[33mcommit 6ddfaf11382a445cbd5860a519a02675bf7fe1c4[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Sat Mar 27 21:06:10 2021 -0300
+
+    Modais do bibliotecário funcionais
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit fc6463c35b16ca18a3820278318d58bd68b1945c[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Thu Mar 25 10:13:03 2021 -0300
+
+    Redesign no visual dos avisos e emails da página de ajuda
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 8e96fc208010a3e054c4f4ef4ab5be055011db88[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Mar 24 09:31:46 2021 -0300
+
+    substituição dos erros do backend para toasts, modal de aceitar concluído, erros visuais nos alertas de notificações de reservas na lista de amigos e página de criação de avisos bloqueada para estudantes
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 31d0a437856ed9b31bbe0c119cb3769538b40b6a[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Tue Mar 23 11:10:20 2021 -0300
+
+    Consertados bugs de resolução, modais de recusar pedido da reserva e excluir um membro da reserva feitos, computadores implementados do backend
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit e8aab2567f9ba15b51ba4f2a58c88286aad49285[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Mar 22 10:59:45 2021 -0300
+
+    Modal dos computadores centralizado, texto da página de ajuda atualizado, ícone de criar aviso alterado na navbar, bibliotecário com reserva de sala alterada e computadores implementados do backend
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit ea644d93a22334f55b7780b7300b94568a2c3b81[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Mar 19 10:44:03 2021 -0300
+
+    Botão de redirecionamento adicionado nas páginas de salas, computadores e reserva, estilização de uma página indisponível na tabela e progresso da implementação da funcionalidade do modal do bibliotecário
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit e7a9798a06237f639956994e1842c59a2aa2fc04[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Thu Mar 18 16:02:01 2021 -0300
+
+    Página de salas refatorada
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit a1a502c514f3111a2daac1d095196a7d6cec69e2[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Mar 17 10:49:05 2021 -0300
+
+    consertado erro no reservelist
+
+[33mcommit 5407a60086b61f28361cdf0f0c6e9128504b2f9b[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Mar 17 10:43:49 2021 -0300
+
+    Redesign do botão de adição de componentes no card de reserva, svg adicionado na mensagem de indisponibilidade de salas nos finais de semana, imagens adicionadas para criação de aviso e tipos de aviso adicionados na página de criação
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit be0f3781f9f96640cf24c5f98b73e4b1d69a9101[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Tue Mar 16 11:05:35 2021 -0300
+
+    Tamanho da sidebar consertada, restruturação da funcionalidade e redesign na página dos computadores, Modal do bibliotecário na página de salas adicionado (incompleto) e Botão de adicioanr componentes na reserva alterado (incompleto)
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit ef33aeb62ee57902e2e7ced756b9e2428b769684[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Mar 12 11:22:25 2021 -0300
+
+    Botão de adicionar componentes nos cards de reserva, página dos computadores adapatada para o bibliotecario, redesign na página sobre, adição dos emails na página de ajuda
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit ff374cfd12d697d9a5f409b3c36e3f2690b14af1[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Thu Mar 11 08:49:35 2021 -0300
+
+    Opção de editar os computadores funcionando
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 777206f89522461645fe9db15c875717230a0101[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Mar 10 10:34:48 2021 -0300
+
+    navigators do carrossel consertados, redesign dos toasts e página de criar avisos foi estilizada e progresso na adição das configuraçoes da página de sala para o bibliotecario
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit db6717482fa016166b18948dc9b4eef75946c6f7[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Tue Mar 9 11:28:23 2021 -0300
+
+    Adição dos ícones de edição com visibilidade funcional do bibliotecário nas páginas de computadores e salas
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit d8f5f462aa1b06daffb8171116d0422d38f68dd4[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Mar 5 09:21:15 2021 -0300
+
+    Estilização da página de criar avisos
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 89de281b8d7821dfb43ab138d875424c84afe733[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Thu Mar 4 09:02:30 2021 -0300
+
+    Carrossel agora com loop de itens funcional e accordions da página de ajuda
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 986302df6f64480aa0e2e0f377c8ec6aa01241fe[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Mar 3 11:07:49 2021 -0300
+
+    Progresso na página de suporte, Criação da página de criar avisos e carrossel de avisos implementado
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit f7c5d5790c4d817502b855d72370e5904f74a1aa[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Tue Mar 2 11:02:25 2021 -0300
+
+    Página de suporte criada, Cores dos toasts consertadas, Key do map das salas trocado de iniciais para id e dias da semana agora não selecionáveis durante finais de semana na tabela e página de reserva
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit a479b3a69041a33db9f512da8a53765f099c0e92[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Thu Feb 25 10:45:17 2021 -0300
+
+    Consertado os modais e o erro do dia não ser armazenado na reserva ao clicar no card de sala
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: Fellpz9 <zanathann@gmail.com>
+
+[33mcommit a1040dc455f1933c603d62a2d07ebb5181a3298d[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Feb 24 11:03:11 2021 -0300
+
+    Progresso na adição do slider e avisos e card de sala reservada agora nao mais clicável
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 1b98289c28dd04401860e9d3a853a64e1dc912d3[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Tue Feb 23 15:24:05 2021 -0300
+
+    consertado o erro de versões das dependencias
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 3676c34f40fdfbc6fc902e5baa896e7e7792e50d[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Tue Feb 23 14:41:39 2021 -0300
+
+    Correçao de erro do eslint
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit ef0b641f230cb2174442c45cb179f8d76781cd8a[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Feb 19 11:08:45 2021 -0300
+
+    Redesign na sessão de avisos e progresso na implementação de sliders no projeto
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit d2bf5137d404d8a424abf3a1266b584e9b2a1979[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Feb 17 11:00:00 2021 -0300
+
+    Cor da borda lateral do card de serva agora muda com base na proximidade do dia da reserva, problemas de seleção dos dias da tabela no final de semana consertados, mensagem profisória de indisponibilidade da tabela adicionada durante os finais de semana, e botão de reservar sala agora desaparece ao entra na página de reserva
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 5f0be017e53195c68091efa6ac013a026316fbdf[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Feb 15 11:03:53 2021 -0300
+
+    Nome do dia da semana adicionado ao card de reserva, ícone do campus consertado, barras verticais da página inicial alteradas, warnings retirados, modais dos computadores, página de falar com o bibliotecário e a de inbox removidas e seta da página sobre teve visibilidade consertada
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit cc21322a97941e655821b65afa4fe1de294e53f5[m
+Author: NovaDrake76 <NovaDrake76@gmail.com>
+Date:   Sat Feb 13 14:49:49 2021 -0300
+
+    modal atualizado
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 875c1bc9f103d225cc8ca94955303d22e75d5ae5[m
+Author: NovaDrake76 <NovaDrake76@gmail.com>
+Date:   Sat Feb 13 13:35:19 2021 -0300
+
+    modal iniciado
+
+[33mcommit 818516c071a1753b1f5e859d430992c590220c76[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Sat Feb 13 11:32:18 2021 -0300
+
+    Tabela de salas agora armazenando e mandando a sala clicada para a reserva
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit da588626f4f6a65e690f784555e1a3a0db8c4ce3[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Feb 10 11:01:23 2021 -0300
+
+    Estilização do alerta de notificação alterado e texto do aviso na página inicial agora com limite de caracteres e botão de ver mais
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 7a9c9e333236453fae8c2254fe06c234697dd64a[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Tue Feb 9 11:10:43 2021 -0300
+
+    Estilização na tabela de salas concluída e toasts implementados no projeto
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit f3faac65b7c84fe91338ed17bf7d9c2f33a6a02c[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Sat Feb 6 11:22:19 2021 -0300
+
+    Tabela de salas agora funcional
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit f918c464e99e7067c64a325f093adb99e4c53762[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Sat Feb 6 10:16:22 2021 -0300
+
+    Progresso na tabela de salas
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 5b075b838bcbfb0e6964c9d992af92a4c8942e16[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Feb 5 11:14:05 2021 -0300
+
+    Design pedido de amizade corrigido, warnings do código retirado, alterações no modal de confirmaçao e componente de avisos criado na página inicial
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit b1d389bbb7553da23b6015f51803873a05bc3d8f[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Thu Feb 4 10:59:38 2021 -0300
+
+    progresso na tabela de salas(nao terminado)
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 16fdfdadc7d263b10d1b8e57824ab95a420a842d[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Feb 3 10:56:32 2021 -0300
+
+    Alterações no modal de confirmaçaõ e no email de um pedido de reserva, mudança visual no botão de reserva de sala, bug na adição de matrícula na página de reserva e confirmação ao recusar um pedido de reserva
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 5b7392825275eb308262a6172e6b119b3e0033e5[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Feb 1 11:10:04 2021 -0300
+
+    dropdown da tabela funcionando, mudanças visuais nas páginas de salas, de erro e nas notificações, cor do sino mudando quando há reservas pendentes e cards de reserva não aparecendo enquanto um convite não for aceito, modal de confirmacao recebendo valores
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit f3a430c0d00431c159f2a5574b375f6442d0743c[m
+Author: NovaDrake76 <NovaDrake76@gmail.com>
+Date:   Fri Jan 29 10:16:17 2021 -0300
+
+    Modal de confirmar criado
+
+[33mcommit bfbc511bed1d9004b0c17c8648ab38883f998a69[m
+Author: NovaDrake76 <NovaDrake76@gmail.com>
+Date:   Thu Jan 28 10:55:18 2021 -0300
+
+    botão de aceitar reserva funcionando
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 3037518ce1b9c4981db0c345f23a7f2c14f3c87a[m
+Author: NovaDrake76 <NovaDrake76@gmail.com>
+Date:   Thu Jan 28 10:15:00 2021 -0300
+
+    card de 'não há reservas' consertado
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit abf5d0349deec38c859b1acac8d9a0532322b5c0[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Jan 27 11:04:39 2021 -0300
+
+    Design da tabela terminado, notificações funcionando no icone de sino e alterações visuais na página de reserva
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit c9b49f0b436f2e44fedc507b724b9badb8817e34[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Jan 25 11:23:52 2021 -0300
+
+    eslint espaço removido
+
+[33mcommit 9e31f9e1510b6e94816d06eb7273948046ff2879[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Jan 25 11:15:00 2021 -0300
+
+    Redesign da tabela de salas começado (nao terminado), página de hook terminada, notificações na navbar implementada (não terminada) e reservas só aparecem ao aceitar o convite
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 9f2e51cd7ca1f742c1510e06a9b3b70574bbc27d[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Sat Jan 23 16:13:34 2021 -0300
+
+    Página de hook criada(não terminada)
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: Fellpz9 <zanathann@gmail.com>
+
+[33mcommit 797295f468c1d236fc6fc54bcfa37c3cc5dd457a[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Sat Jan 23 15:50:29 2021 -0300
+
+    Erros da página de reserva agora funcionais e implementação de aceitar o convite de uma reserva sem reiniciar a página (não terminado)
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 70d132e40c7fa6e0f328db798230b51e0aa1513d[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Jan 22 11:07:59 2021 -0300
+
+    Mudanças visuais nas páginas de reserva, configurações, no perfil e notificações da página inicial, lista de amigos e lista de reservas, e início da lógica de esconder reservas até aceitar seus convites
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 6163f724843d2097dafc5a064122dd40ce60aaf8[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Thu Jan 21 10:50:48 2021 -0300
+
+    Cores dos ícones dos usuários funcionando parcialmente, badges de status do usuário na reserva funcionais e recusar e aceitar reserva funcional
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit e1d3b89a987715a910d4b6d631bb9cec2f9566d1[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Jan 20 10:58:21 2021 -0300
+
+    Alteração no design do agendamento de salas, ícone de quantidade de pedidos pendentes adicionado e começo na implementação da funcionalidade do convite de reserva
+
+[33mcommit ab39e2e76005c9e9589350e02ade6e94e9d5e9e4[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Tue Jan 19 10:00:56 2021 -0300
+
+    Adição de amigos não mostra mais seus amigos adicionados, warnings consertados e erro nos pedidos de amizade consertados
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 3c6193278260854095dbfe9d4de24f49aa517469[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Jan 18 11:13:31 2021 -0300
+
+    tamanho da fonte do card da reserva alterado, alteracoes visuais da pagina do agendamento de salas, pesquisa de amigos adicionada junto com um botão para alternar entre adição e pesquisa de amigos e refatoraçao da api
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit d7049321094749615262af16baa2de38f2c0937a[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Jan 15 11:08:28 2021 -0300
+
+    Código refatorado: interfaces globais adicionadas
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit cfca65260ce1e9327b65a5a5252b820be262d66f[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Jan 15 10:33:17 2021 -0300
+
+    Pastas desnecessárias excluídas
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit abe9355d4ef397591be757f4cb58d21280badcdc[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Jan 15 10:27:49 2021 -0300
+
+    Código refatorad: funções substituidas por useCallback
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 27694f2653c6c102ffc18973e84e586c05f01416[m
+Merge: 8171170 6daa6ff
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Thu Jan 14 15:45:07 2021 -0300
+
+    Merge branch 'master' of https://github.com/UsKba/Biblioteca-Web
+
+[33mcommit 8171170c4fdc594fc6a94e7de2ee115576c8d407[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Thu Jan 14 15:44:55 2021 -0300
+
+    Pesquisa de amigos agora funciona e agora com mensagem de nenhuma amigo encontrado
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 6daa6ff67e5cef228666030008d3d813f08b3e95[m
+Author: NovaDrake76 <NovaDrake76@gmail.com>
+Date:   Wed Jan 13 14:53:01 2021 -0300
+
+    texto do título da notificação de reserva funcional
+
+[33mcommit b26b9262f81c23b729f3d2219c621a5239c40f22[m
+Merge: 2652716 9f9f63c
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Jan 13 10:58:44 2021 -0300
+
+    Merge branch 'master' of https://github.com/UsKba/Biblioteca-Web
+
+[33mcommit 26527160eb4ba59c35ed67f8b1fb523002f9bee8[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Jan 13 10:58:38 2021 -0300
+
+    Pedidos enviados agora funcionando, pesquisa de amigos parcialmente funcional
+
+[33mcommit 9f9f63c42d3a13928d316fbcb0e60f0146b5cbb9[m
+Author: NovaDrake76 <NovaDrake76@gmail.com>
+Date:   Wed Jan 13 10:56:27 2021 -0300
+
+    Contexto da notificação funcional e listagem de notificações de reserva
+
+[33mcommit c277df17749e5793a0031dd4af7a60b980555612[m
+Author: DestroyeerU <destroyeeru18@gmail.com>
+Date:   Tue Jan 12 13:52:06 2021 -0300
+
+    redux removido
+
+[33mcommit 2dcc0dd504b8e2f6f9ccbf1d5ffe52a04e81f012[m
+Author: DestroyeerU <destroyeeru18@gmail.com>
+Date:   Tue Jan 12 13:34:32 2021 -0300
+
+    Correção de erro nos contextos
+
+[33mcommit 3edf4655f9a6b3502f4746fe237fbe193e9e3888[m
+Author: NovaDrake76 <NovaDrake76@gmail.com>
+Date:   Tue Jan 12 10:46:18 2021 -0300
+
+    Iniciou o contexto das reservas, inacabado
+
+[33mcommit a8a683a39214817e3343a19e274082b0e66fb868[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Tue Jan 12 09:58:32 2021 -0300
+
+    consertado o bug dos caracteres no input de pesquisa de amigos e agora amigos podem ser adicionados pela lista de amigos no agendamento de salas
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 07eb491a741bff75df19d34cbd362829787d907c[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Jan 11 10:56:42 2021 -0300
+
+    Pedidos de amizade agora funcionais, Icone de 'X' agora removido se o usuário for o criador da reserva na página de agendamentos e botão de adicionar componente na reserva adicionado na lita de amigos
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 0390f99952961c65aadf8dcd8b6847d2aa6098b7[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Jan 8 11:09:16 2021 -0300
+
+    Limite de caractere colocado, alterada a estilizacao de agendar a sala, erro do input de nome de grupo agora nao limita menos que 3 caracteres, espaçamento entre as divs nas datas de agendamento consertados, e estilizacao das divs de nomear uma reserva e adicao de componentes alteradas
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 59dccdd569bed94064669c35407d7704fcbb30b8[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Jan 4 11:05:01 2021 -0300
+
+    Estilizacao e margens dos botoes de confirmar e cancelar agendamento, adicao do icone de ajuda na navbar, consertado o design dos cards de usuario dos resultados da pesquisa, o espacamento da seta e no texto no botão de lista de amigos e a margem dos cartões de falta de amigos e pedidos
+
+[33mcommit 92fb645d64d4829067ecd35cf2e644486cf8cbbb[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Jan 1 11:06:14 2021 -0300
+
+    Seta para voltar na página sobre adicionada, etiquetas na reservas adicionadas, seta agora troca de lado ao alternar entre lista de amigos e pedidos pendentes e resultados da pesquisa adicionado
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit a255fcbb5df20aa3c8bc21704ac642ba2b28db07[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Dec 30 11:14:49 2020 -0300
+
+    Notificação de convite para reserva feita e progresso na nova versão da lista de amigos
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 23826519ebfdbe17f7927897aaa93ac13956d5de[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Dec 28 11:24:01 2020 -0300
+
+    Retirar o aviso de o nome da reserva não poder estar vazio durante o agendamento de uma reserva, retirar o botão de deletar reserva quando o usuario nao é o dono da reserva, consertada mensagem de falha na comunicação com o suap
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 54027699749307efbb9f87d6bc5a1b639844bf04[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Dec 25 11:07:37 2020 -0300
+
+    Botão de sair da reserva funcional, Funcoes de administrador da reserva implementadas, mensagens de confirmacao ao sair da reserva e ao excluir um membro numa reserva de apenas 3 membros adicionadas
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 5c402cf1edf7335512bf995fc65663f71177c517[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Dec 23 10:48:40 2020 -0300
+
+    Mudanças visuais no card de pedido de amizade pendente e na página de apresentação, versão mobile da pagina nao encontrada feita, pagina de acesso negado nao mais utilizada removida
+
+[33mcommit 420ab609421cc34b2a09106ae3f998491603d0cd[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Dec 21 11:08:44 2020 -0300
+
+    Rotas de agendamento de sala e lista de amigos consertadas
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: BrunooEduardooP <brunooeduardoop@gmail.com>
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 6cc94b2da136c3983308d273362513598f1991e8[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Dec 18 11:02:28 2020 -0300
+
+    Consertada uma confusão na descrição dos cards das rerservas, Nome da página atual agor a aparece na topbar do site e progresso feito no conserto das margens dos botões da página de agendamento
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit f74052097ba605d9ed500e5f7f75f3eb19e82478[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Dec 16 11:08:16 2020 -0300
+
+    Mensagem de falha na comunicação do SUAP ao sair do site não mais aparecendo, assets desnecessários removidos, tamanho dos cards de computadores consertado  e design dos cards de pedidos de amizade consertado
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 444216cb2b78e3c2bb08171a224b19948ba30919[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Dec 14 11:53:01 2020 -0300
+
+    Pastas renomeadas e urls renomeados, scrollbar alterada visualmente, redesign do datelist, hoje aparecendo no datelist, e ícone do membro adicionado em uma reserva agora consertado
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit f6a3cc79ef6ddeeb03d892b6f0f29279cbd0ea01[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Dec 11 11:19:31 2020 -0300
+
+    Consertado bug ao adicionar a matrícula, consertada altura no agendamento de salas e bug do scroll consumindo espaço na lista de amigos corrigido
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit df655ba373bceda311e8d36d1b0a813b3ac4cd4a[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Dec 9 11:01:43 2020 -0300
+
+    Dados do usuário agora aparecendo ao adiciona-lo na reserva (por matricula), progresso nos pedidos de amizade pendentes
+    
+    Co-authored-by: BrunooEduardooP <brunooeduardoop@gmail.com>
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit c1ff4db555e1c772ec95fb8f2335643077958cae[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Dec 7 11:17:43 2020 -0300
+
+    Largura dos botões dos horários na página de agendamento consertados, botão sair do grupo adicionado nas reservas junto com redesign do botão de deletar reserva, Largura das reservas consertadas, problema na margem das reservas sem nome consertao
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 75911eaf7fa9249d678924200afd2a7471eb73e8[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Dec 4 12:00:20 2020 -0300
+
+    Adicionado a listagem dos status dos computadores para versão mobile da página dos computadores, continuado desenvolvimento dos pedidos pendentes
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 3b5aa56875fb4b31f79230a0ae45f71aa9d59a9d[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Dec 2 11:08:35 2020 -0300
+
+    Implementado barra de amigos funcional e sistema de convite de amizade
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: BrunooEduardooP <brunooeduardoop@gmail.com>
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 269219e7054e74d6bc6dc37dee840dbe41d546f8[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Nov 30 11:23:31 2020 -0300
+
+    nome da reserva agora funcional, alterado o overflow-y da lista de reservas, lista de amigos e agendamento de salas e alterado funcionalidade do botão de pedidos pendentes
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 2353095d5c2e11269a0d2471ef77953786a3f56e[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Nov 27 11:20:56 2020 -0300
+
+    Adicionada parte dos convites pendentes na lista de amigos. Reservas: Adicionado ícone para o lider da reserva, membros normais não podem mais deletar a reserva ou membros da reserva
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: BrunooEduardooP <brunooeduardoop@gmail.com>
+
+[33mcommit 905f399bfe47f1147e6c22a3978a06b15ff58e9f[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Nov 25 11:16:34 2020 -0300
+
+    Paginas mobile: computador e inicial consertadas, configurações criada, sidebar mobile agora fechando após cada clique, página inicial. Confirmação ao deletar uma reserva e os membros da reserva
+    
+    Co-authored-by: BrunooEduardooP <brunooeduardoop@gmail.com>
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit c150ceef11b85f6b5d028c944576a9bd74d3f218[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Nov 23 11:06:01 2020 -0300
+
+    Consertadas as versões mobile das páginas de agendamento, computadores, página inicial
+    
+    Co-authored-by: BrunooEduardooP <brunooeduardoop@gmail.com>
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 4c006d4f9bd1ef4b9ad437a64fd6d30c682420ed[m
+Merge: c1006e0 14eb362
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Nov 20 11:12:10 2020 -0300
+
+    Merge branch 'master' of https://github.com/UsKba/Biblioteca-Web
+
+[33mcommit c1006e0500b1053e205129f25b22824c94b012e7[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Nov 20 11:11:08 2020 -0300
+
+    Alterado visuais em datelist, scrollbar adicionada na reservelist e funcionalidade de cancelar reserva consertada
+    
+    Co-authored-by: BrunooEduardooP <brunooeduardoop@gmail.com>
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 14eb36214d91045ae5f4213da78b538ea251fcfa[m
+Author: Bruno Eduardo de Souza Medeiros <brunooeduardoop@gmail.com>
+Date:   Wed Nov 11 10:34:07 2020 -0300
+
+    Updated suap client id
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: Fellpz9 <zanathann@gmail.com>
+
+[33mcommit ea3d194642bb589634a34d01372b23338777eca8[m
+Author: Bruno Eduardo de Souza Medeiros <brunooeduardoop@gmail.com>
+Date:   Wed Nov 11 10:21:46 2020 -0300
+
+    Updated suap.js redirect_uri when production mode to new netlify url
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: Fellpz9 <zanathann@gmail.com>
+
+[33mcommit afb895b469beda2d651837c5b90658dc98a2ab4d[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Tue Nov 10 10:53:48 2020 -0300
+
+    Alterações visuais na tabela de salas e sidebar, botão de cancelamento de reserva agora totalmente funcional(retornando a última página acessada)
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 53274a8077135e3d4d11014dc74f200d7b894531[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Nov 4 10:53:36 2020 -0300
+
+    Deletada página da biblioteca, alterações visuais em: agendamento de sala, dias da semana, tabela de salas e configurações, input de nome da reserva agora alterado e linguagem no html mudada de inglês para português brasileiro.
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit b3ae30e56256fbfdc7e23c255275ffa2f253bd36[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Nov 2 11:29:32 2020 -0300
+
+     Nome 'Grupos' substituídos por 'Reservas', Lista de amigos agora fixa e com próprio scroll, primeiras opções já selecionadas no agendamento de salas e removido opção de clicar em uma data que já passou no angedamento
+    
+    Co-authored-by: BrunooEduardooP <brunooeduardoop@gmail.com>
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 023976b43898b9eb55cda033ca6107da769a8ca4[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Oct 30 11:08:27 2020 -0300
+
+    Sidebar agora fechando com um clique fora da tela e box-shadow retirada, refatoração nos styles
+    
+    Co-authored-by: BrunooEduardooP <brunooeduardoop@gmail.com>
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 202d7c7f586e9972c1c8acce2d0c70d5b80d0aa6[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Oct 26 11:16:48 2020 -0300
+
+    Alterações visuais na reserva e datelist agora funcional
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: BrunooEduardooP <brunooeduardoop@gmail.com>
+
+[33mcommit fe3a9b783f91f856f877b0f1d8ee73491871230f[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Oct 23 11:38:56 2020 -0300
+
+    Apagado páginas desnecessárias em computadores
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 9c9c9f1249434b39b1e25755928e0d90b4a290bc[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Oct 23 11:13:44 2020 -0300
+
+    Terminados o deletamento de componentes e reserva da lista de reservas e refatoração do código
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 2f98acea0927b8565e623313a1e0151a07326708[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Sat Oct 17 18:20:02 2020 -0300
+
+    Começado o sistema de deletar membros de uma reserva já criada
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit de9591c675355f27dffd648d81ec469d29696369[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Oct 16 11:33:59 2020 -0300
+
+    Lista de Reserva: Nome da sala, usuários e horário agora funcionais, mudança visual para a exclusão. Reserva da sala: Lista de reserva agora presente durante a reserva da sala
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit a1a8eb3b6a90d4472a729dfb0bb1d6d99c30069c[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Oct 12 10:56:08 2020 -0300
+
+    Reserva de sala: Adição da nomeação do grupo e adição de ícone para remoção de componentes do grupo
+
+[33mcommit e94d0192cbb3ed6e0a01f75c5ade534106a08c94[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Sun Oct 11 11:55:56 2020 -0300
+
+    Reserva de salas: Horários e salas agora dinamicamente passados na request, implementação da remoção de usuários, input agora com foto após a adição de um componente ao grupo e novas verificações antes de adicionar um usuário a reserva.
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 2460e55490264df3b86add2f79fd1dfa6afecffb[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Oct 9 11:31:38 2020 -0300
+
+    Correção visual na lista de reservas e nas páginas de reserva e computadores, adição das salas, horários e turnos ao back-end na reserva de sala e adição da versão mobile da página dos computadores
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit c5d3973be1447af67e8ff4853312d965ed642937[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Oct 7 18:40:28 2020 -0300
+
+     Data atual agora aparece na página de salas e correção visual na página de salas
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 10435d25dcec9ad43572670cd987c9a18508c260[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Oct 5 11:14:49 2020 -0300
+
+    Remoção da lixeira e dias da reserva agora são alterados com base no turno
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 250a57b4280a2e83697404806e25a623f62bb7b1[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Sun Oct 4 19:56:46 2020 -0300
+
+    listagem das reservas na página inicial
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit c2c2b66f8d46328e4998f5fb7856b871e931f8d0[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Sun Oct 4 16:11:57 2020 -0300
+
+    início da implementação do backend na criação de reservas
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit b4da6e349a04c4810bd00afc7eac64251236991c[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Sep 30 16:39:34 2020 -0300
+
+    Adição de mais opções de configurações e início da alteração das notificações na página inicial
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 8defbdd829e37e02fcdd77cd6257a7761f3e1080[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Sep 28 16:12:08 2020 -0300
+
+     dias da semana agora selecionáveis em datelist, botões agora salvam o clique em reserva de sala, criada página sobre e adição de status nos computadores
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 35ff5addbf3c27b4a7bdb496e09f8102bdadb35e[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Sep 25 16:45:12 2020 -0300
+
+    Ajustes na página de mensagem ao bibliotecário, redesign da página de configurações, adição do componente toggle switch, 1 cor adicionada
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 1bb967ccc4a34dc6de053bb1d1c9f35104137b18[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Sep 23 16:39:06 2020 -0300
+
+    Criado o componente status, redesign terminado na página mensagem ao bibliotecário e da página de computadores
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: BrunooEduardooP <brunooeduardoop@gmail.com>
+
+[33mcommit 5f30a65e6aad8cbda04e03e30389f66040dd4314[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Sep 21 16:52:25 2020 -0300
+
+    Mudanças visuais na página inicial (barra de amigos agora com transição funcional), início do redesign da página de mensagem ao bibliotecário, adição de horários selecionáveis na página de reserva de sala
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: BrunooEduardooP <brunooeduardoop@gmail.com>
+
+[33mcommit fa8377c04ba5e5753cc96fe13e60956f2fe88b6a[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Sep 18 16:45:55 2020 -0300
+
+    Expansão do card de reserva agora funcional e adição da expansão na procura de amigos
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: BrunooEduardooP <brunooeduardoop@gmail.com>
+
+[33mcommit 01f5afea15f0837d75b53cf055d72db1becabcb8[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Sep 16 16:47:42 2020 -0300
+
+    Componente de reservas da página inicial agora com dropdown, adição de mensagens quando o usuário não possui nada na página inicial, adição de botão na lista de reserva do da página inicial para a página de reserva de sala
+    
+    <nathan.araujo@academico.ifrn.edu.br>
+    <destroyeeru18@gmail.com>
+
+[33mcommit 4294f21e67e3cf4cd32d769229f8e4d750984a17[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Sep 14 16:14:57 2020 -0300
+
+    Alteração nas rotas, sidebar, e página dos computadores, mudança nas urls do perfil e página inicial (agora página inicial e página de apresentação, respectivamente) e adição de componentes do grupo na página inicial
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 2237fae792d4ec88a4d41d3cd97487f8661594df[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Sep 11 16:43:54 2020 -0300
+
+    Refeita a tela de agendamento de salas
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit e15d4b86d450f7c139784e9e340fe90ec5dfe0dc[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Sep 9 16:57:36 2020 -0300
+
+     Alteração no visual das páginas de erro e de reserva
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit da04122ee1e10b0c2d5816cd87efd0b9288ee2e4[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Tue Sep 8 15:19:01 2020 -0300
+
+    Mudanças visuais na página de perfil, (incluindo lista de amigos e lista de reservas)
+
+[33mcommit 136853039c324ef4a6a9f5d497a706126559e97f[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Sep 7 19:04:51 2020 -0300
+
+    Adição na responsividade da página inicial e de perfil, início do redesign da página de reserva de sala, alterações no botão da página inicial e do perfil e alteração no input da barra de amigos
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 30dfec409b0f69f7536c231a34f9f3ae6c21c571[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Sep 4 16:30:37 2020 -0300
+
+    Finalização da página do perfil, alterações visuais na página da biblioteca e no spinner, e adaptação das páginas do perfil e inicial
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit ed05d70c034783fbf5c1ca012e90728148e407a4[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Sep 4 16:26:36 2020 -0300
+
+    Finalização da página do perfil, alterações visuais na página da biblioteca e no spinner, e adaptação das páginas do perfil e inicial
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 3299ae8697a486ac7668d1df673682d78d3e5615[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Sep 2 16:52:11 2020 -0300
+
+    Perfil alterado completamente
+    
+    NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 10e59acb4d2716a5368aa510a3fc44c18d27e438[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Tue Sep 1 21:07:54 2020 -0300
+
+     Mudanças visuais no perfil
+
+[33mcommit 9fa65c614c46af87e702ebcea4b636fff404c4c9[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Aug 31 16:16:24 2020 -0300
+
+    Mudanças visuais na página inicial
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 64d1dedfef8243f5b73f73c6c5e99ec369171cac[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Aug 28 16:40:01 2020 -0300
+
+    Funcionalidade nos botões da página da biblioteca
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 9f262f5cedb93f0581160610dbfd9fe9863d0eb9[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Aug 26 16:33:37 2020 -0300
+
+    Armazenação do token funcional, mudanças visuais ao plano de fundo das páginas, titúlo da página alterado
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+    Co-authored-by: BrunooEduardooP <brunooeduardoop@gmail.com>
+
+[33mcommit b31c86ed154347fb937b675671e28cb2e3688a5b[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Aug 24 16:05:43 2020 -0300
+
+    url da api modificada
+
+[33mcommit 063f7a8ab137568c2405a67d09c73fa21a804e39[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Aug 24 15:56:25 2020 -0300
+
+    adição do arquivo de configuração netlify
+
+[33mcommit b5114657bf88203edad32fb47cf74197dba32389[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Aug 24 15:52:02 2020 -0300
+
+    URI de redirecionamento modificado
+
+[33mcommit 099ec61c36166e8fd79904b73443ca14faf0041e[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Aug 24 15:44:09 2020 -0300
+
+    Alterações visuais na página do perfil e correção no redirecionamento de páginas durante o logoff do usuário
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: BrunooEduardooP <brunooeduardoop@gmail.com>
+
+[33mcommit 284f1651d33b1ec175fea31ccad489cf578a8954[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Aug 21 16:36:37 2020 -0300
+
+    Adições de duas novas páginas relacionadas a erros, alterações na navbar e página de perfil
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit 94986ef3dc820eb7a0e2f7f5fa6216c653adbbbc[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Thu Aug 20 15:44:50 2020 -0300
+
+    implementação da context api com a api do suap, botão com carregamento na tela de login, página do perfil integrado com a context api e correção de bug visual na página de perfil e páginas desnecessárias deletadas
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+
+[33mcommit bd22e7d54dfb0cc6e88b52bcb242b007480b713e[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Aug 17 16:23:20 2020 -0300
+
+    Implementação da API do suap com o login (não integrado com o back-end)
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit ef6bb51507c593afe66f3e880293265141933170[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Aug 14 16:09:42 2020 -0300
+
+    Modal terminado, padronização dos containers das páginas
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: BrunooEduardooP <brunooeduardoop@gmail.com>
+
+[33mcommit 6c72b2a8a22ac251e84fc51d83e964986e35050b[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Aug 12 16:17:02 2020 -0300
+
+    Criado nova pagina inicial
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 0e36b4c9d12c10a3869fbe82c31a7c9a09f590b4[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Aug 10 17:28:26 2020 -0300
+
+    Terminada segunda parte da página dos computadores, e implementado popup na tela dos computadores
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: BrunooEduardooP <brunooeduardoop@gmail.com>
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 559b2072923f1fb066a61d42148bb36a344a0ac8[m
+Author: DestroyeerU <destroyeeru18@gmail.com>
+Date:   Sat Aug 8 18:27:40 2020 -0300
+
+    fontawesome substituido por react-icons, remocao temporaria da pagina de gerenciamento de salas e correcoes no codigo
+    
+    Co-authored-by: Fellpz9 <zanathann@gmail.com>
+
+[33mcommit 675f4b2363c60a527cb115f1fc86440d3be5c338[m
+Author: DestroyeerU <destroyeeru18@gmail.com>
+Date:   Sat Aug 8 16:46:43 2020 -0300
+
+    Login e Profile integradas com a API
+    
+    Co-authored-by: Fellpz9 <zanathann@gmail.com>
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit ec6472501f5bf2026e479ab0ded5742d7bb7324c[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Sat Aug 8 14:53:49 2020 -0300
+
+    yarn.lock atualizado
+
+[33mcommit 9deb0925fb7c3fd6b40b05ca41f962026670d9ec[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Aug 7 17:05:06 2020 -0300
+
+    Página de computadores agora funcional
+    
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 87adee30235a0a4425ceaaa1a3832f1306e3bfa8[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Aug 5 16:13:09 2020 -0300
+
+    Perfil alterado visualmente
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+    Co-authored-by: DestroyeerU <destroyeeru18@gmail.com>
+    Co-authored-by: BrunooEduardooP <brunooeduardoop@gmail.com>
+
+[33mcommit 7411c2818c5f99412159131c46f3b5775eb9c465[m
+Author: NovaDrake76 <NovaDrake76@gmail.com>
+Date:   Mon Aug 3 18:31:47 2020 -0300
+
+    alterou navbar visualmente, adicionou sidebar
+
+[33mcommit 883de473252765cc6a9f853f740b4652816819bb[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Aug 3 16:11:42 2020 -0300
+
+     Perfil alterado visualmente, navbar alterada
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit a4a2c70d115787b101c77dfbcec2808517c86be3[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Jul 31 16:29:17 2020 -0300
+
+    Logo alterada, alterações nas páginas de reserva de sala, mensagem ao bibliotecário, e computadores
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit acece22a8e5922e9c4e6125f9088519db7070d84[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Jul 29 16:01:11 2020 -0300
+
+    Mudanças visuais em todas as páginas do usuário e alterações na página inicial, barra de amigos foi movida para um arquivo único
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit f4e9a70cccc3bbe77b5f82639fc82b8ff4091f85[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Jul 27 17:11:04 2020 -0300
+
+    Criada página de gestão de reserva de salas e alterações visuais no perfil junto com o botão de adição de amigos
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit 2f7a51de414952baa3cb5b89aeae63b2ad4e2894[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Jul 24 15:40:30 2020 -0300
+
+    Criada sidebar para o bibliotecário
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit fa64eba817042d5ca2d0029185f9293fc72deeb8[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Jul 22 16:34:09 2020 -0300
+
+    Criada a página de gestão de estudantes do bibliotecario
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit e1759d64946d1a6d236c71979a236b07065eb6d9[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Jul 22 08:46:18 2020 -0300
+
+    mudanças visuais na tela dos computadores, reserva de sala, configurações, login e junção das páginas iniciail e do perfil,
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit c63172e0e637bb19063b6f3b5035239286ee3bff[m
+Author: NovaDrake76 <NovaDrake76@gmail.com>
+Date:   Mon Jul 13 17:05:57 2020 -0300
+
+    Criado pagina dos computadores do bibliotecario Co-authored-by: Fellpz9 <zanathann@gmail.com>
+
+[33mcommit 0f9e65214478448947cc7c952bd96b3bc449d83f[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Sat Jul 11 16:30:34 2020 -0300
+
+    Criada inbox do bibliotecario
+    
+    Co-authored-by: NovaDrake76 <novadrake76@gmail.com>
+
+[33mcommit bf3dae5fd4ae4cfafab0ceb2926da94458c04272[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Thu Jul 9 16:18:38 2020 -0300
+
+    atualizada página de visão geral da biblioteca
+    
+    Co-authored-by: NovaDrake76 <novadrake76@gmail.com>
+
+[33mcommit b3b29cdcf5bf266c879d065c19a399a6f5a83d0c[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Fri Jul 3 16:45:59 2020 -0300
+
+    Criado página de visão geral da biblioteca
+    
+    Co-authored-by: NovaDrake76 <novadrake76@gmail.com>
+
+[33mcommit f23110c367f4a4b51d87e74beaf657f896e87f64[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Wed Jul 1 16:07:58 2020 -0300
+
+    alterações na página de configurações
+    
+    Co-authored-by: NovaDrake76 <novadrake76@gmail.com>
+    Co-authored-by: Bruno Eduardo de Souza Medeiros <BrunooEduardooP@gmail.com>
+
+[33mcommit 983b198c1e0f7e3027a4c5bfd39f32aefbe34651[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Mon Jun 29 16:14:08 2020 -0300
+
+    criada pagina de configuracoes e navbar alterada
+    
+    Co-authored-by: NovaDrake76 <novadrake76@gmail.com>
+    Co-authored-by: BrunooEduardooP <brunooeduardoop@gmail.com>
+
+[33mcommit f03b873850df6aa0c1132a33ee7b25fb992f6d47[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Thu Jun 25 16:02:44 2020 -0300
+
+    navbar e pagina de reserva de sala alteradas
+    
+    Co-authored-by: NovaDrake76 <nathan.araujo@academico.ifrn.edu.br>
+
+[33mcommit f1f318c8272bbcc2dd5e54327f3979caab699ed5[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Tue Jun 23 16:19:59 2020 -0300
+
+    foi criado a tela para reservar a sala, navbar levemente modificada
+
+[33mcommit 0c4fc04205c4a2113dc2b430905c4c2efc5b4627[m
+Merge: eb47f1e 3bd1a02
+Author: NovaDrake76 <NovaDrake76@gmail.com>
+Date:   Fri Jun 19 16:27:44 2020 -0300
+
+    Merge branch 'master' of https://github.com/UsKba/Biblioteca-Web
+
+[33mcommit eb47f1e6f0bc1940f25ef593903fa7d59f5471a2[m
+Author: NovaDrake76 <NovaDrake76@gmail.com>
+Date:   Fri Jun 19 16:26:23 2020 -0300
+
+    alterou border radius e margin top de Computers e de Reserve, adicionou documento temporario contendo informacoes do map
+
+[33mcommit 3bd1a02e5958eec45e7d0df444cf0fbff8d4b096[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Sat May 30 16:43:02 2020 -0300
+
+    Consertou o perfil
+
+[33mcommit ec2ea2c2a459dbbbc494a30791f4c17e0fbd9d81[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Sat May 30 16:00:36 2020 -0300
+
+    Pequenas alteraçoes visuais em computadores
+
+[33mcommit 813ef57a69f20dc3c1cf9400fcbbe82798d56033[m
+Author: NovaDrake76 <NovaDrake76@gmail.com>
+Date:   Thu May 28 16:24:05 2020 -0300
+
+    Corrigiu tabela de amigos, Adicionou links na Navbar
+    
+    Co-authored-by: Fellpz9 <zanathann@gmail.com>
+
+[33mcommit 7ce5f11e5127ac9665a66da43c47c6c9d423b2a7[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Thu May 28 11:58:59 2020 -0300
+
+    Criou pasta perfil, computadores,cores e  alterou design em reserva
+    
+    Co-authored-by: NovaDrake76 <novadrake76@gmail.com>
+    Co-authored-by: BrunooEduardooP <BrunooEduardooP@gmail.com>
+    Co-authored-by: DestroyeerU <destroyeeru@gmail.com>
+
+[33mcommit 1b3f3ae4b08317f3dcad1824634b7fe83ac1f388[m
+Author: Fellpz9 <zanathann@gmail.com>
+Date:   Tue May 26 15:11:58 2020 -0300
+
+    Pequenas mudanças no design de reserva e pagina inicial
+
+[33mcommit 15ca055de9e0ff9c68cd2b19f13a2b24244034a4[m
+Author: NovaDrake76 <NovaDrake76@gmail.com>
+Date:   Sun May 24 17:53:41 2020 -0300
+
+    modificou tela reserva e a inicial
+    >>
+    >>
+    >> Co-authored-by: Fellpz9 <zanathann@gmail.com>
+    >> Co-authored-by: BrunooEduardooP <brunooeduardoop@gmail.com>
+
+[33mcommit 3f23a0579c935c2ddbea598364aa55fb7fbdcae6[m
+Author: Bruno <brunooeduardoop@gmail.com>
+Date:   Sun May 24 14:59:33 2020 -0300
+
+    Started reservation table
+
+[33mcommit d3053a25cca0b85c9456c38369898f0c33605e69[m
+Author: Bruno <brunooeduardoop@gmail.com>
+Date:   Sat May 23 11:27:18 2020 -0300
+
+    Alterou a data em reserva
+    
+    Co-authored-by: Fellpz9 <zanathann@gmail.com>
+
+[33mcommit b349d0fa60ba876596ea018587730a2ce4d328e1[m
+Author: Bruno <brunooeduardoop@gmail.com>
+Date:   Sat May 23 11:23:45 2020 -0300
+
+    Arrumou margem da data em reserva Co-authored-by: Fellpz9 <zanathann@gmail.com>
+
+[33mcommit 3f4ae34c5854c37e1fda74216006f8a32cc64f0b[m
+Author: Bruno <brunooeduardoop@gmail.com>
+Date:   Sat May 23 11:18:40 2020 -0300
+
+    Colocou a parte da data em reserva de salas, modificou rotas e alterou a navbar
+
+[33mcommit ee8054e3f53cdae828223ba628495a101ed4cde2[m
+Author: Bruno <brunooeduardoop@gmail.com>
+Date:   Sat May 23 09:46:27 2020 -0300
+
+    criou room reservation
+
+[33mcommit a866b8d88423e4959778595980d4defee07f1b69[m
+Author: Bruno <brunooeduardoop@gmail.com>
+Date:   Sat May 23 09:11:41 2020 -0300
+
+    Modificou routes.tsx
+
+[33mcommit a373c967c520b99dd5a8e1dfe6483855298cb2c2[m
+Author: Bruno <brunooeduardoop@gmail.com>
+Date:   Sat May 23 08:51:32 2020 -0300
+
+    Criou a navbar
+
+[33mcommit b4d335aad3d53299894eb2eb0d568cd1f296104f[m
+Author: Bruno <brunooeduardoop@gmail.com>
+Date:   Thu May 21 15:17:54 2020 -0300
+
+    Login screen
+
+[33mcommit 88b29ff7f5c65682824fd1ec0628231baddb74be[m
+Author: Bruno <brunooeduardoop@gmail.com>
+Date:   Mon May 18 16:36:34 2020 -0300
+
+    Added login screen and login route
+
+[33mcommit b9c3c645fd86d81ba27bb4dd97e3ac9b45ef1b0c[m
+Author: Idaslon <51955733+DestroyeerU@users.noreply.github.com>
+Date:   Sun May 17 15:09:18 2020 -0300
+
+    Update .eslintrc.js
+
+[33mcommit 4f37c9c3f1fa48b844aebd959047c98292836a4b[m
+Author: DestroyeerU <destroyeeru18@gmail.com>
+Date:   Tue May 12 15:31:23 2020 -0300
+
+    Initial Commit

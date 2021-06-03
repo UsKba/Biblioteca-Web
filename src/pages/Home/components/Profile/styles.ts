@@ -116,4 +116,7 @@ export const Campus = styled.span`
 
   font-size: 19px;
   font-weight: bold;
+  @media screen and (max-width: 640px) {
+    margin-right: 0;
+  }
 `;

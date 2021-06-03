@@ -8,6 +8,10 @@ export const Container = styled.div`
   @media only screen and (max-width: 1200px) {
     margin-right: 70px;
   }
+  @media only screen and (max-width: 640px) {
+    margin-right: 30px;
+    margin-left: 0;
+  }
 `;
 
 export const H1 = styled.h1`
@@ -30,6 +34,8 @@ export const H1 = styled.h1`
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 30px;
+    margin: 50px 0 0 20px;
   }
 `;
 
@@ -41,6 +47,9 @@ export const TextContainer = styled.div`
 
   @media screen and (max-width: 1200px) {
     width: 80%;
+  }
+  @media screen and (max-width: 640px) {
+    margin: 30px 0 0 40px;
   }
 `;
 

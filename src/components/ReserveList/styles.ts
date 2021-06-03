@@ -15,6 +15,9 @@ export const Container = styled.div`
   @media only screen and (min-height: 1700px) {
     margin-right: auto;
   }
+  @media only screen and (max-width: 640px) {
+    margin-bottom: 65vh;
+  }
 `;
 
 export const Title = styled.span`

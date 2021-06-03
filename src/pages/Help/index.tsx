@@ -120,11 +120,11 @@ const Help: React.FC = () => {
         </ReferenceGmail>
         <EmailArea>
           <Emails>
-            <EmailsB>E-mail do bibliotecário: </EmailsB>
+            <EmailsB>E-mail bibliotecário: </EmailsB>
             biblioteca@ifrn.com
           </Emails>
           <Emails>
-            <EmailsB>E-mail do suporte: </EmailsB>
+            <EmailsB>E-mail suporte: </EmailsB>
             uskaba4@gmail.com
           </Emails>
         </EmailArea>
