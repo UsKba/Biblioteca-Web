@@ -33,6 +33,8 @@ export const TableTopInformation = styled.div`
     padding: 0 12px;
 
     margin: 250px 0 35px 0;
+
+    justify-content: center;
   }
 `;
 
@@ -93,7 +95,6 @@ export const TableColumn = styled.div<TableColumnProps>`
   @media only screen and (max-width: 640px) {
     display: ${({ mobileVisible }) => (mobileVisible === false ? 'none' : 'flex')};
 
-    justify-self: center;
     min-height: auto;
   }
 `;
@@ -138,6 +139,7 @@ export const Dropdown = styled.select`
 
   @media only screen and (max-width: 640px) {
     width: 150px;
+    margin-right: auto;
   }
 `;
 
@@ -193,10 +195,6 @@ export const PageHelpContainer = styled.div`
 export const DateListContainer = styled.div`
   @media only screen and (max-width: 640px) {
     position: absolute;
-    display: flex;
-
-    width: 100%;
-    justify-content: center;
 
     top: 80px;
   }
@@ -208,22 +206,16 @@ export const DateListContainer = styled.div`
 
 export const MobileNavContainer = styled.div`
   position: absolute;
-  display: flex;
 
   top: 150px;
-
-  justify-content: center;
-  width: 100%;
 `;
 
 export const MobileNav = styled.div`
   display: none;
   @media only screen and (max-width: 640px) {
     display: flex;
-    align-self: center;
 
     justify-content: space-around;
-    position: absolute;
 
     width: 250px;
     height: 30px;
@@ -238,6 +230,7 @@ export const MobileNavText = styled.div<LineProps>`
 
     font-size: 24px;
     font-family: 'Ubuntu';
+    color: ${colors.dark};
   }
 `;
 

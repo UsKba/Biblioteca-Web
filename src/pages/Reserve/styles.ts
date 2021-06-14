@@ -45,6 +45,7 @@ export const MiddleSide = styled.div<MobileModeProps>`
 
   @media only screen and (max-width: 640px) {
     max-width: 100%;
+    padding: 14px 10px 0 10px;
   }
   @media only screen and (min-width: 640px) {
     overflow-y: scroll;
@@ -81,6 +82,10 @@ export const DateListContainer = styled.div`
   width: 80%;
 
   margin-bottom: 40px;
+
+  @media only screen and (max-width: 640px) {
+    align-self: start;
+  }
 `;
 
 export const Title = styled.span`
@@ -328,8 +333,10 @@ export const InputContainer = styled.div`
   margin-right: 120px;
 
   @media only screen and (max-width: 640px) {
+    margin-right: 80px;
+
     input {
-      width: 190px;
+      width: 200px;
     }
   }
 `;
@@ -510,5 +517,10 @@ export const PageHelpContainer = styled.div`
   svg {
     color: ${colors.dark};
     font-size: 35px;
+  }
+  @media only screen and (max-width: 640px) {
+    bottom: 0;
+    top: 60px;
+    right: 20px;
   }
 `;

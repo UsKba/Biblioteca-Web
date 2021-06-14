@@ -33,6 +33,10 @@ export const WeekDayContainer = styled.div<WeekDayProps>`
     border: 3px solid ${({ active }) => (active === false ? `${colors.lightprimary}` : `${colors.primary}`)};
     ${({ disabled }) => disabled && `border: 3px solid ${colors.text}B2; cursor: no-drop;`};
   }
+
+  @media only screen and (max-width: 640px) {
+    margin-right: 15px;
+  }
 `;
 
 export const DayOfWeek = styled.span<WeekDayProps>`

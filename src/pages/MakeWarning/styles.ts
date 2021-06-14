@@ -19,6 +19,7 @@ export const Container = styled.div`
 `;
 
 export const MobileWarning = styled.div`
+  display: none;
   @media screen and (max-width: 640px) {
     display: flex;
     flex-direction: column;
