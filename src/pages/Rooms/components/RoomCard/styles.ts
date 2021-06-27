@@ -4,10 +4,11 @@ import colors from '~/styles/colors';
 
 interface ContainerProps {
   isReserved?: boolean;
+  visible?: boolean;
 }
 
 export const Container = styled.div<ContainerProps>`
-  display: flex;
+  display: ${({ visible }) => (visible === false ? 'none' : 'flex')};
   position: relative;
 
   width: 100%;

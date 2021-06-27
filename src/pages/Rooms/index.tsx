@@ -201,7 +201,7 @@ const Rooms: React.FC = () => {
         draggable
         pauseOnHover
       />
-      <TableTopInformation>
+      <TableTopInformation margin={weekendCheck()}>
         <Dropdown onChange={(event) => setSelectedPeriodId(Number(event.target.value))}>
           <Option value="1">Manhã</Option>
           <Option value="2">Tarde</Option>
@@ -256,6 +256,7 @@ const Rooms: React.FC = () => {
                     schedule={schedule}
                     room={room}
                     roomReserved={isRoomReserved(room, schedule)}
+                    isWeekendCheck={weekendCheck()}
                     optionsDropdownVisible={menuIndex === index && menuIndex2 === index2}
                     handleReserveClick={handleReserveClick}
                     handleDotsClick={() => {

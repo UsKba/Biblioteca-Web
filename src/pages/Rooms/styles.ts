@@ -15,7 +15,11 @@ export const Container = styled.div`
   justify-content: center;
 `;
 
-export const TableTopInformation = styled.div`
+interface TableTopInformation {
+  margin?: boolean;
+}
+
+export const TableTopInformation = styled.div<TableTopInformation>`
   display: flex;
   justify-content: space-between;
 
@@ -32,8 +36,7 @@ export const TableTopInformation = styled.div`
   @media only screen and (max-width: 640px) {
     padding: 0 12px;
 
-    margin: 250px 0 35px 0;
-
+    margin: ${({ margin }) => (margin === true ? '250px 0 35px 0' : '0')};
     justify-content: center;
   }
 `;
@@ -61,14 +64,22 @@ interface TableWarningProps {
 
 export const TableWarning = styled.span<TableWarningProps>`
   display: ${({ visible }) => (visible === true ? 'none' : 'flex')};
-  width: 800px;
+  width: 100%;
   font-size: 50px;
   font-family: 'Ubuntu';
   font-weight: bold;
 
   color: ${colors.dark};
 
+  padding-left: 15px;
+
   margin: 215px 0 0 0;
+
+  @media only screen and (max-width: 640px) {
+    margin: 0;
+
+    font-size: 30px;
+  }
 `;
 
 interface TableColumnProps {
@@ -174,6 +185,10 @@ export const Image = styled.img`
   width: 260px;
 
   margin-left: 40px;
+
+  @media only screen and (max-width: 640px) {
+    display: none;
+  }
 `;
 
 export const PageHelpContainer = styled.div`

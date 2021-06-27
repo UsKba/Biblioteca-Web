@@ -24,6 +24,7 @@ interface RoomCardProps {
   room: Room;
   roomReserved: boolean;
   optionsDropdownVisible: boolean;
+  isWeekendCheck: boolean;
 
   handleReserveClick: (schedule: Schedule, room: Room) => void;
   handleDotsClick: () => void;
@@ -35,6 +36,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
   room,
   roomReserved,
   optionsDropdownVisible,
+  isWeekendCheck,
   handleReserveClick,
   handleDotsClick,
   closeSettingsMenu,
@@ -44,7 +46,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
 
   if (room.status === roomConfig.indisponible) {
     return (
-      <Container>
+      <Container visible={isWeekendCheck}>
         <RoomCardInformation disabled IsBroken>
           Sala indisponível
         </RoomCardInformation>
@@ -75,7 +77,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
   }
 
   return (
-    <Container>
+    <Container visible={isWeekendCheck}>
       {roomReserved ? (
         <RoomCardInformation isReserved disabled>
           Sala reservada

@@ -246,6 +246,7 @@ export const PageHelpContainer = styled.div`
   }
 
   @media only screen and (max-width: 640px) {
+    top: 60px;
     right: 10px;
   }
 `;
