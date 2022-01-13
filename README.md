@@ -1,4 +1,4 @@
-# typescript-advanced-template
+# Smart Library
 
 React template with eslint prettier redux/sagas configurations
 
